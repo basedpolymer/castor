@@ -1,5 +1,6 @@
 [package]
 name = "engine-media"
+description = "Castor media engine: ffmpeg/ffprobe sidecars, whisper.cpp transcription, yt-dlp"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -7,3 +8,8 @@ license.workspace = true
 [dependencies]
 anyhow.workspace = true
 castor-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tempfile.workspace = true
+parking_lot.workspace = true

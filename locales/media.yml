@@ -1,0 +1,1681 @@
+_version: 2
+# Owner: video + audio tools (crates/tools-media, crates/engine-media) — agent C.
+# English is the reference; French by agent C.
+
+video.trim.name:
+  en: "Trim video"
+  fr: "Couper une vidéo"
+video.trim.desc:
+  en: "Keep only the part you need."
+  fr: "Ne garder que le passage utile."
+video.trim.verb:
+  en: "Trim"
+  fr: "Couper"
+video.trim.keywords:
+  en: "cut clip shorten start end range"
+  fr: "couper extrait raccourcir début fin passage"
+video.trim.opt.start:
+  en: "Start"
+  fr: "Début"
+video.trim.opt.start.help:
+  en: "A time like 1:23, 83 or 1m23s."
+  fr: "Un temps comme 1:23, 83 ou 1m23s."
+video.trim.opt.until:
+  en: "Keep until"
+  fr: "Garder jusqu'à"
+video.trim.opt.until.end:
+  en: "An end time"
+  fr: "Un temps de fin"
+video.trim.opt.until.duration:
+  en: "A duration"
+  fr: "Une durée"
+video.trim.opt.end:
+  en: "End"
+  fr: "Fin"
+video.trim.opt.end.help:
+  en: "Empty = end of the video."
+  fr: "Vide = fin de la vidéo."
+video.trim.opt.length:
+  en: "Duration"
+  fr: "Durée"
+video.trim.opt.cut:
+  en: "Cut"
+  fr: "Coupe"
+video.trim.opt.cut.help:
+  en: "Exact re-encodes the edges for frame-accurate cuts. Fast copies the streams and cuts at the nearest keyframe (can start up to a few seconds early)."
+  fr: "Exacte ré-encode pour couper à l'image près. Rapide copie les flux et coupe à l'image-clé la plus proche (peut commencer quelques secondes plus tôt)."
+video.trim.opt.cut.exact:
+  en: "Exact"
+  fr: "Exacte"
+video.trim.opt.cut.fast:
+  en: "Fast (no re-encoding)"
+  fr: "Rapide (sans ré-encodage)"
+video.convert.name:
+  en: "Convert video"
+  fr: "Convertir une vidéo"
+video.convert.desc:
+  en: "MP4, MOV, MKV, WebM, AVI or GIF — without quality loss when possible."
+  fr: "MP4, MOV, MKV, WebM, AVI ou GIF — sans perte quand c'est possible."
+video.convert.verb:
+  en: "Convert"
+  fr: "Convertir"
+video.convert.keywords:
+  en: "format mp4 mov mkv webm avi remux transcode codec"
+  fr: "format mp4 mov mkv webm avi conteneur transcoder codec"
+video.convert.opt.codec:
+  en: "Video codec"
+  fr: "Codec vidéo"
+video.convert.opt.codec.help:
+  en: "Automatic keeps the current codec when the format accepts it."
+  fr: "Automatique garde le codec actuel si le format l'accepte."
+video.convert.opt.codec.auto:
+  en: "Automatic"
+  fr: "Automatique"
+video.convert.opt.remux:
+  en: "Copy streams when possible"
+  fr: "Copier les flux si possible"
+video.convert.opt.remux.help:
+  en: "Only the container changes: instant, no quality loss."
+  fr: "Seul le conteneur change : instantané, sans perte."
+video.convert.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.convert.opt.quality.help:
+  en: "Best keeps the picture visually identical; Small saves the most space."
+  fr: "Meilleure garde une image visuellement identique ; Légère gagne le plus de place."
+video.convert.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.convert.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.convert.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.convert.opt.hardware:
+  en: "Fast (hardware encoder)"
+  fr: "Rapide (encodeur matériel)"
+video.convert.opt.hardware.help:
+  en: "Uses the graphics chip when available. Faster, slightly larger files. Falls back to software automatically."
+  fr: "Utilise la puce graphique si possible. Plus rapide, fichiers un peu plus gros. Repli automatique sur le logiciel."
+video.extract-audio.name:
+  en: "Extract audio"
+  fr: "Extraire l'audio"
+video.extract-audio.desc:
+  en: "The soundtrack as an audio file, untouched when possible."
+  fr: "La bande-son en fichier audio, intacte si possible."
+video.extract-audio.verb:
+  en: "Extract"
+  fr: "Extraire"
+video.extract-audio.keywords:
+  en: "soundtrack mp3 audio rip sound music"
+  fr: "bande-son mp3 audio son musique"
+video.extract-audio.opt.format:
+  en: "Format"
+  fr: "Format"
+video.extract-audio.opt.format.help:
+  en: "Original copies the sound as it is, without re-encoding."
+  fr: "Original copie le son tel quel, sans ré-encodage."
+video.extract-audio.opt.format.auto:
+  en: "Original (no re-encoding)"
+  fr: "Original (sans ré-encodage)"
+video.extract-audio.opt.bitrate:
+  en: "Bitrate"
+  fr: "Débit"
+video.extract-audio.opt.tracks:
+  en: "Tracks"
+  fr: "Pistes"
+video.extract-audio.opt.tracks.first:
+  en: "First track"
+  fr: "Première piste"
+video.extract-audio.opt.tracks.all:
+  en: "Every track"
+  fr: "Toutes les pistes"
+video.to-gif.name:
+  en: "Video to GIF"
+  fr: "Vidéo en GIF"
+video.to-gif.desc:
+  en: "Animated GIFs with clean colours."
+  fr: "Des GIF animés aux couleurs propres."
+video.to-gif.verb:
+  en: "Make GIF"
+  fr: "Créer le GIF"
+video.to-gif.keywords:
+  en: "gif animated animation meme loop"
+  fr: "gif animé animation mème boucle"
+video.to-gif.opt.preset:
+  en: "Preset"
+  fr: "Préréglage"
+video.to-gif.opt.preset.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.to-gif.opt.preset.balanced:
+  en: "Balanced"
+  fr: "Équilibré"
+video.to-gif.opt.preset.small:
+  en: "Small"
+  fr: "Léger"
+video.to-gif.opt.preset.custom:
+  en: "Custom"
+  fr: "Personnalisé"
+video.to-gif.opt.fps:
+  en: "Frame rate"
+  fr: "Images par seconde"
+video.to-gif.opt.width:
+  en: "Width"
+  fr: "Largeur"
+video.to-gif.opt.colors:
+  en: "Colours"
+  fr: "Couleurs"
+video.to-gif.opt.colors.help:
+  en: "Fewer colours, smaller file."
+  fr: "Moins de couleurs, fichier plus léger."
+video.to-gif.opt.dither:
+  en: "Dithering"
+  fr: "Tramage"
+video.to-gif.opt.dither.help:
+  en: "Smooths gradients with fewer colours. Pattern compresses best."
+  fr: "Adoucit les dégradés avec peu de couleurs. Le motif se compresse le mieux."
+video.to-gif.opt.dither.sierra2_4a:
+  en: "Smooth (Sierra)"
+  fr: "Doux (Sierra)"
+video.to-gif.opt.dither.floyd_steinberg:
+  en: "Floyd–Steinberg"
+  fr: "Floyd–Steinberg"
+video.to-gif.opt.dither.bayer:
+  en: "Pattern (Bayer)"
+  fr: "Motif (Bayer)"
+video.to-gif.opt.dither.none:
+  en: "None"
+  fr: "Aucun"
+video.to-gif.opt.start:
+  en: "Start"
+  fr: "Début"
+video.to-gif.opt.start.help:
+  en: "A time like 1:23, 83 or 1m23s."
+  fr: "Un temps comme 1:23, 83 ou 1m23s."
+video.to-gif.opt.length:
+  en: "Duration"
+  fr: "Durée"
+video.to-gif.opt.length.help:
+  en: "Empty = until the end."
+  fr: "Vide = jusqu'à la fin."
+video.to-gif.opt.loop:
+  en: "Loop forever"
+  fr: "Boucler sans fin"
+video.to-gif.caption:
+  en: "%{w} × %{h} px · %{fps} fps · %{colors} colours"
+  fr: "%{w} × %{h} px · %{fps} im/s · %{colors} couleurs"
+video.compress.name:
+  en: "Compress video"
+  fr: "Compresser une vidéo"
+video.compress.desc:
+  en: "Smaller videos that still look right."
+  fr: "Des vidéos plus légères qui restent belles."
+video.compress.verb:
+  en: "Compress"
+  fr: "Compresser"
+video.compress.keywords:
+  en: "shrink smaller reduce size email discord whatsapp h264 hevc av1"
+  fr: "réduire alléger taille poids courriel discord whatsapp h264 hevc av1"
+video.compress.opt.mode:
+  en: "Mode"
+  fr: "Mode"
+video.compress.opt.mode.help:
+  en: "Same codec re-encodes with the codec the video already uses."
+  fr: "Même codec ré-encode avec le codec déjà utilisé par la vidéo."
+video.compress.opt.mode.quality:
+  en: "Target quality"
+  fr: "Qualité visée"
+video.compress.opt.mode.size:
+  en: "Target size"
+  fr: "Taille visée"
+video.compress.opt.mode.keep:
+  en: "Same codec"
+  fr: "Même codec"
+video.compress.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.compress.opt.quality.help:
+  en: "Best keeps the picture visually identical; Small saves the most space."
+  fr: "Meilleure garde une image visuellement identique ; Légère gagne le plus de place."
+video.compress.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.compress.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.compress.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.compress.opt.target:
+  en: "Target size"
+  fr: "Taille visée"
+video.compress.opt.target.help:
+  en: "For the whole file, sound included."
+  fr: "Pour tout le fichier, son compris."
+video.compress.opt.codec:
+  en: "Codec"
+  fr: "Codec"
+video.compress.opt.codec.help:
+  en: "H.264 plays everywhere. H.265 and AV1 are smaller but slower to encode."
+  fr: "H.264 se lit partout. H.265 et AV1 sont plus légers mais plus lents à encoder."
+video.compress.opt.max_res:
+  en: "Max resolution"
+  fr: "Résolution max."
+video.compress.opt.max_res.original:
+  en: "Original"
+  fr: "Originale"
+video.compress.opt.audio:
+  en: "Audio bitrate"
+  fr: "Débit audio"
+video.compress.opt.hardware:
+  en: "Fast (hardware encoder)"
+  fr: "Rapide (encodeur matériel)"
+video.compress.opt.hardware.help:
+  en: "Uses the graphics chip when available. Faster, slightly larger files. Falls back to software automatically."
+  fr: "Utilise la puce graphique si possible. Plus rapide, fichiers un peu plus gros. Repli automatique sur le logiciel."
+video.compress.done:
+  en: "Neatly gnawed."
+  fr: "Proprement rongé."
+video.split.name:
+  en: "Split video"
+  fr: "Découper une vidéo"
+video.split.desc:
+  en: "Equal parts, fixed lengths or scene changes."
+  fr: "Parts égales, durée fixe ou changements de plan."
+video.split.verb:
+  en: "Split"
+  fr: "Découper"
+video.split.keywords:
+  en: "cut parts segments chunks scenes chapters"
+  fr: "découper parties segments morceaux plans chapitres"
+video.split.opt.by:
+  en: "Split by"
+  fr: "Découper par"
+video.split.opt.by.parts:
+  en: "Equal parts"
+  fr: "Parts égales"
+video.split.opt.by.length:
+  en: "Fixed length"
+  fr: "Durée fixe"
+video.split.opt.by.scenes:
+  en: "Scene changes"
+  fr: "Changements de plan"
+video.split.opt.parts:
+  en: "Parts"
+  fr: "Parties"
+video.split.opt.length:
+  en: "Part length"
+  fr: "Durée d'une partie"
+video.split.opt.length.help:
+  en: "A time like 1:00, 60 or 1m."
+  fr: "Un temps comme 1:00, 60 ou 1m."
+video.split.opt.sensitivity:
+  en: "Sensitivity"
+  fr: "Sensibilité"
+video.split.opt.sensitivity.help:
+  en: "Higher finds more, subtler cuts."
+  fr: "Plus haut trouve plus de coupes, plus subtiles."
+video.split.opt.min_part:
+  en: "Shortest part"
+  fr: "Partie la plus courte"
+video.split.opt.cut:
+  en: "Cut"
+  fr: "Coupe"
+video.split.opt.cut.help:
+  en: "Exact re-encodes the edges for frame-accurate cuts. Fast copies the streams and cuts at the nearest keyframe (can start up to a few seconds early)."
+  fr: "Exacte ré-encode pour couper à l'image près. Rapide copie les flux et coupe à l'image-clé la plus proche (peut commencer quelques secondes plus tôt)."
+video.split.opt.cut.exact:
+  en: "Exact"
+  fr: "Exacte"
+video.split.opt.cut.fast:
+  en: "Fast (no re-encoding)"
+  fr: "Rapide (sans ré-encodage)"
+video.resize.name:
+  en: "Resize video"
+  fr: "Redimensionner une vidéo"
+video.resize.desc:
+  en: "1080p, 720p, exact size or percentage."
+  fr: "1080p, 720p, taille exacte ou pourcentage."
+video.resize.verb:
+  en: "Resize"
+  fr: "Redimensionner"
+video.resize.keywords:
+  en: "scale resolution 1080p 720p 4k downscale upscale dimensions"
+  fr: "échelle résolution 1080p 720p 4k réduire agrandir dimensions"
+video.resize.opt.preset:
+  en: "Size"
+  fr: "Taille"
+video.resize.opt.preset.help:
+  en: "Presets set the short side, so vertical videos work too."
+  fr: "Les préréglages fixent le petit côté : les vidéos verticales marchent aussi."
+video.resize.opt.preset.percent:
+  en: "Percentage"
+  fr: "Pourcentage"
+video.resize.opt.preset.custom:
+  en: "Exact size"
+  fr: "Taille exacte"
+video.resize.opt.percent:
+  en: "Scale"
+  fr: "Échelle"
+video.resize.opt.size:
+  en: "Width × height"
+  fr: "Largeur × hauteur"
+video.resize.opt.fit:
+  en: "Fit"
+  fr: "Ajustement"
+video.resize.opt.fit.fit:
+  en: "Fit inside"
+  fr: "Contenir"
+video.resize.opt.fit.pad:
+  en: "Fit with bars"
+  fr: "Contenir avec bandes"
+video.resize.opt.fit.fill:
+  en: "Fill (crop)"
+  fr: "Remplir (rogner)"
+video.resize.opt.fit.stretch:
+  en: "Stretch"
+  fr: "Étirer"
+video.resize.opt.pad_color:
+  en: "Bar colour"
+  fr: "Couleur des bandes"
+video.resize.opt.upscale:
+  en: "Allow enlarging"
+  fr: "Autoriser l'agrandissement"
+video.resize.opt.upscale.help:
+  en: "Off: smaller videos are left as they are."
+  fr: "Désactivé : les vidéos plus petites restent telles quelles."
+video.resize.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.resize.opt.quality.help:
+  en: "Best keeps the picture visually identical; Small saves the most space."
+  fr: "Meilleure garde une image visuellement identique ; Légère gagne le plus de place."
+video.resize.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.resize.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.resize.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.resize.opt.hardware:
+  en: "Fast (hardware encoder)"
+  fr: "Rapide (encodeur matériel)"
+video.resize.opt.hardware.help:
+  en: "Uses the graphics chip when available. Faster, slightly larger files. Falls back to software automatically."
+  fr: "Utilise la puce graphique si possible. Plus rapide, fichiers un peu plus gros. Repli automatique sur le logiciel."
+video.crop.name:
+  en: "Crop video"
+  fr: "Recadrer une vidéo"
+video.crop.desc:
+  en: "9:16, 1:1, 4:5… or remove black bars."
+  fr: "9:16, 1:1, 4:5… ou supprimer les bandes noires."
+video.crop.verb:
+  en: "Crop"
+  fr: "Recadrer"
+video.crop.keywords:
+  en: "aspect ratio vertical square reels tiktok shorts black bars letterbox"
+  fr: "format ratio vertical carré reels tiktok shorts bandes noires"
+video.crop.opt.mode:
+  en: "Crop to"
+  fr: "Recadrer en"
+video.crop.opt.mode.auto:
+  en: "Remove black bars"
+  fr: "Supprimer les bandes noires"
+video.crop.opt.mode.custom:
+  en: "Exact size"
+  fr: "Taille exacte"
+video.crop.opt.size:
+  en: "Width × height"
+  fr: "Largeur × hauteur"
+video.crop.opt.anchor:
+  en: "Keep"
+  fr: "Garder"
+video.crop.opt.anchor.help:
+  en: "Which part of the picture to keep."
+  fr: "La partie de l'image à garder."
+video.crop.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.crop.opt.quality.help:
+  en: "Best keeps the picture visually identical; Small saves the most space."
+  fr: "Meilleure garde une image visuellement identique ; Légère gagne le plus de place."
+video.crop.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.crop.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.crop.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.crop.opt.hardware:
+  en: "Fast (hardware encoder)"
+  fr: "Rapide (encodeur matériel)"
+video.crop.opt.hardware.help:
+  en: "Uses the graphics chip when available. Faster, slightly larger files. Falls back to software automatically."
+  fr: "Utilise la puce graphique si possible. Plus rapide, fichiers un peu plus gros. Repli automatique sur le logiciel."
+video.rotate.name:
+  en: "Rotate video"
+  fr: "Pivoter une vidéo"
+video.rotate.desc:
+  en: "Turn or flip, losslessly when possible."
+  fr: "Tourner ou retourner, sans perte si possible."
+video.rotate.verb:
+  en: "Rotate"
+  fr: "Pivoter"
+video.rotate.keywords:
+  en: "turn flip mirror sideways portrait landscape upside down orientation"
+  fr: "tourner retourner miroir portrait paysage à l'envers orientation"
+video.rotate.opt.angle:
+  en: "Rotate"
+  fr: "Rotation"
+video.rotate.opt.angle.90:
+  en: "90° clockwise"
+  fr: "90° horaire"
+video.rotate.opt.angle.180:
+  en: "180°"
+  fr: "180°"
+video.rotate.opt.angle.270:
+  en: "90° counter-clockwise"
+  fr: "90° antihoraire"
+video.rotate.opt.angle.0:
+  en: "No rotation"
+  fr: "Aucune rotation"
+video.rotate.opt.flip:
+  en: "Flip"
+  fr: "Retourner"
+video.rotate.opt.flip.none:
+  en: "No"
+  fr: "Non"
+video.rotate.opt.flip.horizontal:
+  en: "Mirror"
+  fr: "Miroir"
+video.rotate.opt.flip.vertical:
+  en: "Upside down"
+  fr: "Tête en bas"
+video.rotate.opt.lossless:
+  en: "Lossless (orientation flag)"
+  fr: "Sans perte (indicateur d'orientation)"
+video.rotate.opt.lossless.help:
+  en: "MP4 and MOV: instant, no re-encoding. A few old players ignore the flag."
+  fr: "MP4 et MOV : instantané, sans ré-encodage. Quelques vieux lecteurs ignorent l'indicateur."
+video.rotate.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.rotate.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.rotate.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.rotate.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.speed.name:
+  en: "Change speed"
+  fr: "Changer la vitesse"
+video.speed.desc:
+  en: "Faster or slower, from 0.25× to 4×."
+  fr: "Plus vite ou plus lent, de 0,25× à 4×."
+video.speed.verb:
+  en: "Apply"
+  fr: "Appliquer"
+video.speed.keywords:
+  en: "fast slow motion timelapse faster slower tempo"
+  fr: "rapide ralenti accéléré vitesse tempo"
+video.speed.opt.factor:
+  en: "Speed"
+  fr: "Vitesse"
+video.speed.opt.pitch:
+  en: "Pitch"
+  fr: "Hauteur du son"
+video.speed.opt.pitch.help:
+  en: "Keep sounds natural; Shift changes the pitch like a tape."
+  fr: "Garder sonne naturel ; Décaler change la hauteur comme une bande magnétique."
+video.speed.opt.pitch.keep:
+  en: "Keep"
+  fr: "Garder"
+video.speed.opt.pitch.shift:
+  en: "Shift with speed"
+  fr: "Décaler avec la vitesse"
+audio.speed.name:
+  en: "Audio speed"
+  fr: "Vitesse audio"
+audio.speed.desc:
+  en: "Faster or slower, pitch kept or shifted."
+  fr: "Plus vite ou plus lent, hauteur gardée ou décalée."
+audio.speed.verb:
+  en: "Apply"
+  fr: "Appliquer"
+audio.speed.keywords:
+  en: "fast slow tempo pitch nightcore faster slower podcast"
+  fr: "rapide lent tempo hauteur nightcore accélérer ralentir podcast"
+audio.speed.opt.factor:
+  en: "Speed"
+  fr: "Vitesse"
+audio.speed.opt.pitch:
+  en: "Pitch"
+  fr: "Hauteur du son"
+audio.speed.opt.pitch.help:
+  en: "Keep sounds natural; Shift changes the pitch like a tape."
+  fr: "Garder sonne naturel ; Décaler change la hauteur comme une bande magnétique."
+audio.speed.opt.pitch.keep:
+  en: "Keep"
+  fr: "Garder"
+audio.speed.opt.pitch.shift:
+  en: "Shift with speed"
+  fr: "Décaler avec la vitesse"
+video.mute.name:
+  en: "Mute video"
+  fr: "Couper le son"
+video.mute.desc:
+  en: "Remove the sound, keep the picture untouched."
+  fr: "Retirer le son, l'image reste intacte."
+video.mute.verb:
+  en: "Mute"
+  fr: "Couper le son"
+video.mute.keywords:
+  en: "silent remove audio no sound strip audio"
+  fr: "muet retirer son sans son supprimer audio"
+video.join.name:
+  en: "Join videos"
+  fr: "Assembler des vidéos"
+video.join.desc:
+  en: "One video from many, in queue order."
+  fr: "Une vidéo à partir de plusieurs, dans l'ordre de la file."
+video.join.verb:
+  en: "Join"
+  fr: "Assembler"
+video.join.keywords:
+  en: "merge combine concatenate append stitch"
+  fr: "fusionner combiner concaténer assembler coller"
+video.join.opt.mode:
+  en: "Method"
+  fr: "Méthode"
+video.join.opt.mode.help:
+  en: "Automatic copies without re-encoding when every file has the same format."
+  fr: "Automatique copie sans ré-encoder quand tous les fichiers ont le même format."
+video.join.opt.mode.auto:
+  en: "Automatic"
+  fr: "Automatique"
+video.join.opt.mode.reencode:
+  en: "Re-encode"
+  fr: "Ré-encoder"
+video.join.opt.size:
+  en: "Picture size"
+  fr: "Taille de l'image"
+video.join.opt.size.first:
+  en: "Like the first video"
+  fr: "Comme la première vidéo"
+video.join.opt.size.largest:
+  en: "Like the largest video"
+  fr: "Comme la plus grande vidéo"
+video.join.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.join.opt.quality.help:
+  en: "Best keeps the picture visually identical; Small saves the most space."
+  fr: "Meilleure garde une image visuellement identique ; Légère gagne le plus de place."
+video.join.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.join.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.join.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.join.opt.codec:
+  en: "Codec"
+  fr: "Codec"
+video.insert-clips.name:
+  en: "Insert clips"
+  fr: "Insérer des clips"
+video.insert-clips.desc:
+  en: "Intro, a clip at the first pause, outro."
+  fr: "Intro, un clip à la première pause, outro."
+video.insert-clips.verb:
+  en: "Insert"
+  fr: "Insérer"
+video.insert-clips.keywords:
+  en: "intro outro ad sponsor bumper insert splice"
+  fr: "intro outro pub sponsor jingle insérer"
+video.insert-clips.opt.intro:
+  en: "Intro"
+  fr: "Intro"
+video.insert-clips.opt.clip:
+  en: "Clip"
+  fr: "Clip"
+video.insert-clips.opt.after:
+  en: "Insert the clip after"
+  fr: "Insérer le clip après"
+video.insert-clips.opt.after.help:
+  en: "At the first pause after this time."
+  fr: "À la première pause après ce moment."
+video.insert-clips.opt.outro:
+  en: "Outro"
+  fr: "Outro"
+video.insert-clips.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.insert-clips.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.insert-clips.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.insert-clips.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.watermark.name:
+  en: "Watermark video"
+  fr: "Filigraner une vidéo"
+video.watermark.desc:
+  en: "A logo or a line of text, where you want it."
+  fr: "Un logo ou une ligne de texte, où vous voulez."
+video.watermark.verb:
+  en: "Watermark"
+  fr: "Filigraner"
+video.watermark.keywords:
+  en: "logo brand overlay copyright stamp text"
+  fr: "logo marque incrustation copyright tampon texte"
+video.watermark.opt.kind:
+  en: "Watermark"
+  fr: "Filigrane"
+video.watermark.opt.kind.image:
+  en: "Image"
+  fr: "Image"
+video.watermark.opt.kind.text:
+  en: "Text"
+  fr: "Texte"
+video.watermark.opt.image:
+  en: "Image"
+  fr: "Image"
+video.watermark.opt.image.help:
+  en: "PNG with transparency works best."
+  fr: "Un PNG avec transparence donne le meilleur résultat."
+video.watermark.opt.text:
+  en: "Text"
+  fr: "Texte"
+video.watermark.opt.font:
+  en: "Font"
+  fr: "Police"
+video.watermark.opt.size:
+  en: "Size"
+  fr: "Taille"
+video.watermark.opt.size.help:
+  en: "Image: share of the video width. Text: relative to the height."
+  fr: "Image : part de la largeur de la vidéo. Texte : relatif à la hauteur."
+video.watermark.opt.margin:
+  en: "Margin"
+  fr: "Marge"
+video.watermark.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.watermark.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.watermark.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.watermark.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.captions.name:
+  en: "Caption video"
+  fr: "Sous-titrer une vidéo"
+video.captions.desc:
+  en: "Captions from speech or a subtitle file, in style."
+  fr: "Des sous-titres depuis la parole ou un fichier, avec du style."
+video.captions.verb:
+  en: "Caption"
+  fr: "Sous-titrer"
+video.captions.keywords:
+  en: "subtitles subtitle srt burn karaoke reels tiktok accessibility whisper"
+  fr: "sous-titres srt incruster karaoké reels tiktok accessibilité whisper"
+video.captions.opt.source:
+  en: "Captions from"
+  fr: "Sous-titres depuis"
+video.captions.opt.source.speech:
+  en: "Speech (automatic)"
+  fr: "La parole (automatique)"
+video.captions.opt.source.file:
+  en: "A subtitle file"
+  fr: "Un fichier de sous-titres"
+video.captions.opt.subtitles:
+  en: "Subtitle file"
+  fr: "Fichier de sous-titres"
+video.captions.opt.mode:
+  en: "Add as"
+  fr: "Ajouter en"
+video.captions.opt.mode.help:
+  en: "A subtitle track can be turned on and off in players, without re-encoding."
+  fr: "Une piste de sous-titres s'active ou se désactive dans les lecteurs, sans ré-encodage."
+video.captions.opt.mode.burn:
+  en: "Burnt into the picture"
+  fr: "Incrustés dans l'image"
+video.captions.opt.mode.soft:
+  en: "Subtitle track"
+  fr: "Piste de sous-titres"
+video.captions.opt.style:
+  en: "Style"
+  fr: "Style"
+video.captions.opt.style.classic:
+  en: "Classic"
+  fr: "Classique"
+video.captions.opt.style.box:
+  en: "Box"
+  fr: "Encadré"
+video.captions.opt.style.karaoke:
+  en: "Word highlight"
+  fr: "Mot surligné"
+video.captions.opt.style.minimal:
+  en: "Minimal"
+  fr: "Minimal"
+video.captions.opt.font:
+  en: "Font"
+  fr: "Police"
+video.captions.opt.size:
+  en: "Text size"
+  fr: "Taille du texte"
+video.captions.opt.position:
+  en: "Position"
+  fr: "Position"
+video.captions.opt.position.bottom:
+  en: "Bottom"
+  fr: "En bas"
+video.captions.opt.position.middle:
+  en: "Middle"
+  fr: "Au milieu"
+video.captions.opt.position.top:
+  en: "Top"
+  fr: "En haut"
+video.captions.opt.accent:
+  en: "Highlight colour"
+  fr: "Couleur de surlignage"
+video.captions.opt.export_srt:
+  en: "Also save an SRT file"
+  fr: "Enregistrer aussi un fichier SRT"
+video.captions.opt.model:
+  en: "Model"
+  fr: "Modèle"
+video.captions.opt.model.help:
+  en: "Bigger models are more accurate and slower. Each is downloaded once, then works offline."
+  fr: "Les gros modèles sont plus précis et plus lents. Chacun est téléchargé une fois, puis fonctionne hors ligne."
+video.captions.opt.model.tiny:
+  en: "Tiny — fastest"
+  fr: "Tiny — le plus rapide"
+video.captions.opt.model.base:
+  en: "Base"
+  fr: "Base"
+video.captions.opt.model.small:
+  en: "Small — balanced"
+  fr: "Small — équilibré"
+video.captions.opt.model.medium:
+  en: "Medium"
+  fr: "Medium"
+video.captions.opt.model.turbo:
+  en: "Large v3 Turbo — most accurate"
+  fr: "Large v3 Turbo — le plus précis"
+video.captions.opt.detect:
+  en: "Detect the language"
+  fr: "Détecter la langue"
+video.captions.opt.language:
+  en: "Spoken language"
+  fr: "Langue parlée"
+video.captions.opt.translate:
+  en: "Translate to English"
+  fr: "Traduire en anglais"
+video.captions.opt.variant:
+  en: "Model precision"
+  fr: "Précision du modèle"
+video.captions.opt.variant.help:
+  en: "Compact models are smaller and faster with a tiny loss of accuracy."
+  fr: "Les modèles compacts sont plus légers et rapides, pour une perte de précision minime."
+video.captions.opt.variant.q5:
+  en: "Compact (5-bit)"
+  fr: "Compact (5 bits)"
+video.captions.opt.variant.q8:
+  en: "Standard (8-bit)"
+  fr: "Standard (8 bits)"
+video.captions.opt.variant.full:
+  en: "Full"
+  fr: "Complet"
+video.captions.opt.vad:
+  en: "Skip silences (VAD)"
+  fr: "Ignorer les silences (VAD)"
+video.captions.opt.vad.help:
+  en: "Detects speech first: faster on long recordings and avoids invented text in silences. Word timings are less precise."
+  fr: "Détecte d'abord la parole : plus rapide sur les longs enregistrements et évite du texte inventé dans les silences. Le minutage des mots est moins précis."
+video.captions.opt.accurate:
+  en: "Thorough decoding (slower)"
+  fr: "Décodage approfondi (plus lent)"
+video.captions.opt.prompt:
+  en: "Names and words to expect"
+  fr: "Noms et mots attendus"
+video.captions.opt.prompt.help:
+  en: "Helps spelling of names, brands and jargon."
+  fr: "Aide à bien écrire les noms, marques et termes techniques."
+video.captions.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.captions.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.captions.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.captions.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.add-audio.name:
+  en: "Add audio"
+  fr: "Ajouter de l'audio"
+video.add-audio.desc:
+  en: "Replace the sound or mix in music."
+  fr: "Remplacer le son ou ajouter une musique."
+video.add-audio.verb:
+  en: "Add audio"
+  fr: "Ajouter l'audio"
+video.add-audio.keywords:
+  en: "music soundtrack background music voiceover replace audio dub mix"
+  fr: "musique bande-son fond sonore voix off remplacer audio doublage mixer"
+video.add-audio.opt.audio:
+  en: "Audio file"
+  fr: "Fichier audio"
+video.add-audio.opt.mode:
+  en: "Mode"
+  fr: "Mode"
+video.add-audio.opt.mode.replace:
+  en: "Replace the sound"
+  fr: "Remplacer le son"
+video.add-audio.opt.mode.mix:
+  en: "Mix with the sound"
+  fr: "Mélanger au son"
+video.add-audio.opt.volume:
+  en: "New audio volume"
+  fr: "Volume du nouvel audio"
+video.add-audio.opt.original:
+  en: "Original volume"
+  fr: "Volume d'origine"
+video.add-audio.opt.loop:
+  en: "Loop to the end"
+  fr: "Boucler jusqu'à la fin"
+video.add-audio.opt.loop.help:
+  en: "Repeats a short audio file until the video ends."
+  fr: "Répète un audio court jusqu'à la fin de la vidéo."
+video.add-audio.opt.fade:
+  en: "Fade in and out"
+  fr: "Fondu d'entrée et de sortie"
+video.frames.name:
+  en: "Extract frames"
+  fr: "Extraire des images"
+video.frames.desc:
+  en: "Stills, thumbnails or a contact sheet."
+  fr: "Des images fixes, des vignettes ou une planche contact."
+video.frames.verb:
+  en: "Extract"
+  fr: "Extraire"
+video.frames.keywords:
+  en: "screenshot still thumbnail snapshot contact sheet storyboard image export frames"
+  fr: "capture image fixe vignette planche contact storyboard exporter images"
+video.frames.opt.mode:
+  en: "Extract"
+  fr: "Extraire"
+video.frames.opt.mode.count:
+  en: "A number of frames"
+  fr: "Un nombre d'images"
+video.frames.opt.mode.every:
+  en: "One every…"
+  fr: "Une toutes les…"
+video.frames.opt.mode.scenes:
+  en: "One per scene"
+  fr: "Une par plan"
+video.frames.opt.mode.sheet:
+  en: "Contact sheet"
+  fr: "Planche contact"
+video.frames.opt.count:
+  en: "Frames"
+  fr: "Images"
+video.frames.opt.count.help:
+  en: "Spread evenly over the video."
+  fr: "Réparties régulièrement sur la vidéo."
+video.frames.opt.every:
+  en: "Every"
+  fr: "Toutes les"
+video.frames.opt.every.help:
+  en: "A time like 10, 0:30 or 1m."
+  fr: "Un temps comme 10, 0:30 ou 1m."
+video.frames.opt.columns:
+  en: "Columns"
+  fr: "Colonnes"
+video.frames.opt.rows:
+  en: "Rows"
+  fr: "Lignes"
+video.frames.opt.timestamps:
+  en: "Show times"
+  fr: "Afficher les temps"
+video.frames.opt.width:
+  en: "Width"
+  fr: "Largeur"
+video.frames.opt.width.help:
+  en: "0 = original size."
+  fr: "0 = taille d'origine."
+video.remove-silences.name:
+  en: "Cut silences"
+  fr: "Couper les silences"
+video.remove-silences.desc:
+  en: "Remove pauses automatically, sound and picture in sync."
+  fr: "Retirer les pauses automatiquement, son et image synchronisés."
+video.remove-silences.verb:
+  en: "Cut silences"
+  fr: "Couper les silences"
+video.remove-silences.keywords:
+  en: "jump cut pauses dead air silence tighten podcast vlog auto cut"
+  fr: "jump cut pauses blancs silence resserrer podcast vlog coupe auto"
+video.remove-silences.opt.noise:
+  en: "Silence threshold"
+  fr: "Seuil de silence"
+video.remove-silences.opt.noise.help:
+  en: "Quieter than this counts as silence. Raise it in noisy rooms."
+  fr: "Plus calme que ce niveau = silence. Montez-le dans une pièce bruyante."
+video.remove-silences.opt.min_silence:
+  en: "Shortest pause to cut"
+  fr: "Pause la plus courte à couper"
+video.remove-silences.opt.padding:
+  en: "Keep around speech"
+  fr: "Marge autour de la parole"
+video.remove-silences.opt.padding.help:
+  en: "So words are not clipped."
+  fr: "Pour ne pas couper les mots."
+video.remove-silences.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.remove-silences.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.remove-silences.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.remove-silences.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+video.remove-silences.done:
+  en: "Less dead air."
+  fr: "Moins de blancs."
+video.stabilize.name:
+  en: "Stabilize video"
+  fr: "Stabiliser une vidéo"
+video.stabilize.desc:
+  en: "Steadier handheld footage."
+  fr: "Des images tournées à la main plus stables."
+video.stabilize.verb:
+  en: "Stabilize"
+  fr: "Stabiliser"
+video.stabilize.keywords:
+  en: "shaky steady stabilise gimbal smooth handheld deshake"
+  fr: "tremblement stable stabiliser fluide main levée"
+video.stabilize.opt.strength:
+  en: "Strength"
+  fr: "Intensité"
+video.stabilize.opt.strength.help:
+  en: "Higher smooths more camera motion."
+  fr: "Plus haut lisse davantage les mouvements de caméra."
+video.stabilize.opt.edges:
+  en: "Edges"
+  fr: "Bords"
+video.stabilize.opt.edges.zoom:
+  en: "Zoom in slightly"
+  fr: "Zoomer légèrement"
+video.stabilize.opt.edges.black:
+  en: "Keep size (moving edges)"
+  fr: "Garder la taille (bords mobiles)"
+video.stabilize.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+video.stabilize.opt.quality.best:
+  en: "Best"
+  fr: "Meilleure"
+video.stabilize.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+video.stabilize.opt.quality.small:
+  en: "Small"
+  fr: "Légère"
+audio.transcribe.name:
+  en: "Transcribe"
+  fr: "Transcrire"
+audio.transcribe.desc:
+  en: "Speech to text, subtitles or documents, offline."
+  fr: "La parole en texte, sous-titres ou documents, hors ligne."
+audio.transcribe.verb:
+  en: "Transcribe"
+  fr: "Transcrire"
+audio.transcribe.keywords:
+  en: "speech to text subtitles whisper dictation captions transcript interview podcast"
+  fr: "parole texte sous-titres whisper dictée transcription entretien podcast"
+audio.transcribe.opt.format:
+  en: "Format"
+  fr: "Format"
+audio.transcribe.opt.format.all:
+  en: "All formats"
+  fr: "Tous les formats"
+audio.transcribe.opt.timestamps:
+  en: "Timestamps"
+  fr: "Horodatage"
+audio.transcribe.opt.timestamps.help:
+  en: "Times at the start of each paragraph (TXT, DOCX, PDF)."
+  fr: "L'heure au début de chaque paragraphe (TXT, DOCX, PDF)."
+audio.transcribe.opt.model:
+  en: "Model"
+  fr: "Modèle"
+audio.transcribe.opt.model.help:
+  en: "Bigger models are more accurate and slower. Each is downloaded once, then works offline."
+  fr: "Les gros modèles sont plus précis et plus lents. Chacun est téléchargé une fois, puis fonctionne hors ligne."
+audio.transcribe.opt.model.tiny:
+  en: "Tiny — fastest"
+  fr: "Tiny — le plus rapide"
+audio.transcribe.opt.model.base:
+  en: "Base"
+  fr: "Base"
+audio.transcribe.opt.model.small:
+  en: "Small — balanced"
+  fr: "Small — équilibré"
+audio.transcribe.opt.model.medium:
+  en: "Medium"
+  fr: "Medium"
+audio.transcribe.opt.model.turbo:
+  en: "Large v3 Turbo — most accurate"
+  fr: "Large v3 Turbo — le plus précis"
+audio.transcribe.opt.detect:
+  en: "Detect the language"
+  fr: "Détecter la langue"
+audio.transcribe.opt.language:
+  en: "Spoken language"
+  fr: "Langue parlée"
+audio.transcribe.opt.translate:
+  en: "Translate to English"
+  fr: "Traduire en anglais"
+audio.transcribe.opt.variant:
+  en: "Model precision"
+  fr: "Précision du modèle"
+audio.transcribe.opt.variant.help:
+  en: "Compact models are smaller and faster with a tiny loss of accuracy."
+  fr: "Les modèles compacts sont plus légers et rapides, pour une perte de précision minime."
+audio.transcribe.opt.variant.q5:
+  en: "Compact (5-bit)"
+  fr: "Compact (5 bits)"
+audio.transcribe.opt.variant.q8:
+  en: "Standard (8-bit)"
+  fr: "Standard (8 bits)"
+audio.transcribe.opt.variant.full:
+  en: "Full"
+  fr: "Complet"
+audio.transcribe.opt.vad:
+  en: "Skip silences (VAD)"
+  fr: "Ignorer les silences (VAD)"
+audio.transcribe.opt.vad.help:
+  en: "Detects speech first: faster on long recordings and avoids invented text in silences. Word timings are less precise."
+  fr: "Détecte d'abord la parole : plus rapide sur les longs enregistrements et évite du texte inventé dans les silences. Le minutage des mots est moins précis."
+audio.transcribe.opt.accurate:
+  en: "Thorough decoding (slower)"
+  fr: "Décodage approfondi (plus lent)"
+audio.transcribe.opt.prompt:
+  en: "Names and words to expect"
+  fr: "Noms et mots attendus"
+audio.transcribe.opt.prompt.help:
+  en: "Helps spelling of names, brands and jargon."
+  fr: "Aide à bien écrire les noms, marques et termes techniques."
+audio.transcribe.done:
+  en: "Every word, caught."
+  fr: "Chaque mot, attrapé."
+audio.merge.name:
+  en: "Merge audio"
+  fr: "Fusionner des audios"
+audio.merge.desc:
+  en: "One after another, or layered."
+  fr: "L'un après l'autre, ou superposés."
+audio.merge.verb:
+  en: "Merge"
+  fr: "Fusionner"
+audio.merge.keywords:
+  en: "join combine concatenate mix layer overlay stitch playlist crossfade"
+  fr: "joindre combiner concaténer mixer superposer assembler fondu enchaîné"
+audio.merge.opt.mode:
+  en: "Mode"
+  fr: "Mode"
+audio.merge.opt.mode.stitch:
+  en: "One after another"
+  fr: "L'un après l'autre"
+audio.merge.opt.mode.layer:
+  en: "On top of each other"
+  fr: "Superposés"
+audio.merge.opt.crossfade:
+  en: "Crossfade"
+  fr: "Fondu enchaîné"
+audio.merge.opt.volumes:
+  en: "Volumes"
+  fr: "Volumes"
+audio.merge.opt.volumes.help:
+  en: "Per file in queue order, in percent: 100, 40."
+  fr: "Par fichier dans l'ordre de la file, en pourcentage : 100, 40."
+audio.merge.opt.format:
+  en: "Format"
+  fr: "Format"
+audio.merge.opt.format.auto:
+  en: "Like the first file"
+  fr: "Comme le premier fichier"
+audio.merge.opt.bitrate:
+  en: "Bitrate"
+  fr: "Débit"
+audio.convert.name:
+  en: "Convert audio"
+  fr: "Convertir un audio"
+audio.convert.desc:
+  en: "MP3, M4A, WAV, FLAC, OGG, Opus, AIFF — bit depth kept."
+  fr: "MP3, M4A, WAV, FLAC, OGG, Opus, AIFF — profondeur gardée."
+audio.convert.verb:
+  en: "Convert"
+  fr: "Convertir"
+audio.convert.keywords:
+  en: "mp3 wav flac m4a aac ogg opus aiff alac format transcode"
+  fr: "mp3 wav flac m4a aac ogg opus aiff alac format transcoder"
+audio.convert.opt.bitrate:
+  en: "Bitrate"
+  fr: "Débit"
+audio.convert.opt.bitrate.help:
+  en: "For MP3, M4A, OGG and Opus."
+  fr: "Pour MP3, M4A, OGG et Opus."
+audio.convert.opt.rate:
+  en: "Sample rate"
+  fr: "Fréquence d'échantillonnage"
+audio.convert.opt.rate.keep:
+  en: "Original"
+  fr: "D'origine"
+audio.convert.opt.channels:
+  en: "Channels"
+  fr: "Canaux"
+audio.convert.opt.channels.keep:
+  en: "Original"
+  fr: "D'origine"
+audio.convert.opt.channels.mono:
+  en: "Mono"
+  fr: "Mono"
+audio.convert.opt.channels.stereo:
+  en: "Stereo"
+  fr: "Stéréo"
+audio.compress.name:
+  en: "Compress audio"
+  fr: "Compresser un audio"
+audio.compress.desc:
+  en: "Smaller audio files, never larger than before."
+  fr: "Des fichiers audio plus légers, jamais plus gros qu'avant."
+audio.compress.verb:
+  en: "Compress"
+  fr: "Compresser"
+audio.compress.keywords:
+  en: "shrink smaller reduce bitrate podcast voice memo email"
+  fr: "réduire alléger débit podcast mémo vocal courriel"
+audio.compress.opt.content:
+  en: "Content"
+  fr: "Contenu"
+audio.compress.opt.content.help:
+  en: "Voice is turned to mono with fewer bits: ideal for speech."
+  fr: "Voix passe en mono avec moins de débit : idéal pour la parole."
+audio.compress.opt.content.voice:
+  en: "Voice"
+  fr: "Voix"
+audio.compress.opt.content.music:
+  en: "Music"
+  fr: "Musique"
+audio.compress.opt.quality:
+  en: "Quality"
+  fr: "Qualité"
+audio.compress.opt.quality.high:
+  en: "High"
+  fr: "Haute"
+audio.compress.opt.quality.balanced:
+  en: "Balanced"
+  fr: "Équilibrée"
+audio.compress.opt.quality.small:
+  en: "Smallest"
+  fr: "La plus légère"
+audio.compress.opt.format:
+  en: "Format"
+  fr: "Format"
+audio.compress.opt.format.keep:
+  en: "Same format"
+  fr: "Même format"
+audio.trim.name:
+  en: "Trim audio"
+  fr: "Couper un audio"
+audio.trim.desc:
+  en: "Keep only the part you need."
+  fr: "Ne garder que le passage utile."
+audio.trim.verb:
+  en: "Trim"
+  fr: "Couper"
+audio.trim.keywords:
+  en: "cut clip shorten start end range ringtone"
+  fr: "couper extrait raccourcir début fin sonnerie"
+audio.trim.opt.start:
+  en: "Start"
+  fr: "Début"
+audio.trim.opt.start.help:
+  en: "A time like 1:23, 83 or 1m23s."
+  fr: "Un temps comme 1:23, 83 ou 1m23s."
+audio.trim.opt.until:
+  en: "Keep until"
+  fr: "Garder jusqu'à"
+audio.trim.opt.until.end:
+  en: "An end time"
+  fr: "Un temps de fin"
+audio.trim.opt.until.duration:
+  en: "A duration"
+  fr: "Une durée"
+audio.trim.opt.end:
+  en: "End"
+  fr: "Fin"
+audio.trim.opt.end.help:
+  en: "Empty = end of the file."
+  fr: "Vide = fin du fichier."
+audio.trim.opt.length:
+  en: "Duration"
+  fr: "Durée"
+audio.trim.opt.cut:
+  en: "Cut"
+  fr: "Coupe"
+audio.trim.opt.cut.help:
+  en: "Exact re-encodes the edges for frame-accurate cuts. Fast copies the streams and cuts at the nearest keyframe (can start up to a few seconds early)."
+  fr: "Exacte ré-encode pour couper à l'image près. Rapide copie les flux et coupe à l'image-clé la plus proche (peut commencer quelques secondes plus tôt)."
+audio.trim.opt.cut.exact:
+  en: "Exact"
+  fr: "Exacte"
+audio.trim.opt.cut.fast:
+  en: "Fast (no re-encoding)"
+  fr: "Rapide (sans ré-encodage)"
+audio.split.name:
+  en: "Split audio"
+  fr: "Découper un audio"
+audio.split.desc:
+  en: "At pauses, by length or in equal parts."
+  fr: "Aux pauses, par durée ou en parts égales."
+audio.split.verb:
+  en: "Split"
+  fr: "Découper"
+audio.split.keywords:
+  en: "cut parts segments chunks pauses silence tracks"
+  fr: "découper parties segments morceaux pauses silence pistes"
+audio.split.opt.by:
+  en: "Split by"
+  fr: "Découper par"
+audio.split.opt.by.parts:
+  en: "Equal parts"
+  fr: "Parts égales"
+audio.split.opt.by.length:
+  en: "Fixed length"
+  fr: "Durée fixe"
+audio.split.opt.by.pauses:
+  en: "Pauses"
+  fr: "Pauses"
+audio.split.opt.parts:
+  en: "Parts"
+  fr: "Parties"
+audio.split.opt.length:
+  en: "Part length"
+  fr: "Durée d'une partie"
+audio.split.opt.length.help:
+  en: "A time like 1:00, 60 or 1m."
+  fr: "Un temps comme 1:00, 60 ou 1m."
+audio.split.opt.noise:
+  en: "Silence threshold"
+  fr: "Seuil de silence"
+audio.split.opt.noise.help:
+  en: "Quieter than this counts as silence."
+  fr: "Plus calme que ce niveau = silence."
+audio.split.opt.pause:
+  en: "Shortest pause"
+  fr: "Pause la plus courte"
+audio.split.opt.min_part:
+  en: "Shortest part"
+  fr: "Partie la plus courte"
+audio.split.opt.min_part.help:
+  en: "Avoids tiny pieces between close pauses."
+  fr: "Évite les petits morceaux entre deux pauses proches."
+audio.normalize.name:
+  en: "Volume & normalize"
+  fr: "Volume et normalisation"
+audio.normalize.desc:
+  en: "Even loudness for podcasts, streaming or broadcast."
+  fr: "Un volume régulier pour podcast, streaming ou diffusion."
+audio.normalize.verb:
+  en: "Normalize"
+  fr: "Normaliser"
+audio.normalize.keywords:
+  en: "volume loudness lufs louder quieter level ebu r128 podcast gain"
+  fr: "volume sonie lufs plus fort moins fort niveau ebu r128 podcast gain"
+audio.normalize.opt.mode:
+  en: "Mode"
+  fr: "Mode"
+audio.normalize.opt.mode.help:
+  en: "Loudness matches how loud it sounds; Peak only raises the highest peak to the limit."
+  fr: "Sonie règle le volume perçu ; Crête monte seulement la crête la plus haute jusqu'à la limite."
+audio.normalize.opt.mode.loudness:
+  en: "Loudness (EBU R128)"
+  fr: "Sonie (EBU R128)"
+audio.normalize.opt.mode.peak:
+  en: "Peak"
+  fr: "Crête"
+audio.normalize.opt.mode.gain:
+  en: "Fixed gain"
+  fr: "Gain fixe"
+audio.normalize.opt.target:
+  en: "Target"
+  fr: "Cible"
+audio.normalize.opt.target.podcast:
+  en: "Podcast (−16 LUFS)"
+  fr: "Podcast (−16 LUFS)"
+audio.normalize.opt.target.streaming:
+  en: "Streaming (−14 LUFS)"
+  fr: "Streaming (−14 LUFS)"
+audio.normalize.opt.target.broadcast:
+  en: "Broadcast (−23 LUFS)"
+  fr: "Diffusion (−23 LUFS)"
+audio.normalize.opt.target.custom:
+  en: "Custom"
+  fr: "Personnalisée"
+audio.normalize.opt.lufs:
+  en: "Loudness"
+  fr: "Sonie"
+audio.normalize.opt.peak:
+  en: "Max peak"
+  fr: "Crête max."
+audio.normalize.opt.gain:
+  en: "Gain"
+  fr: "Gain"
+audio.denoise.name:
+  en: "Denoise"
+  fr: "Réduire le bruit"
+audio.denoise.desc:
+  en: "Less hiss, hum and background noise."
+  fr: "Moins de souffle, de ronflement et de bruit de fond."
+audio.denoise.verb:
+  en: "Denoise"
+  fr: "Débruiter"
+audio.denoise.keywords:
+  en: "noise hiss hum background noise clean rnnoise voice podcast fan"
+  fr: "bruit souffle ronflement bruit de fond nettoyer rnnoise voix podcast ventilateur"
+audio.denoise.opt.method:
+  en: "Method"
+  fr: "Méthode"
+audio.denoise.opt.method.help:
+  en: "Voice uses a small neural network made for speech. General suits steady noise on any sound."
+  fr: "Voix utilise un petit réseau neuronal fait pour la parole. Général convient aux bruits constants sur tout son."
+audio.denoise.opt.method.voice:
+  en: "Voice (RNNoise)"
+  fr: "Voix (RNNoise)"
+audio.denoise.opt.method.general:
+  en: "General"
+  fr: "Général"
+audio.denoise.opt.strength:
+  en: "Strength"
+  fr: "Intensité"
+audio.denoise.opt.highpass:
+  en: "Cut rumble below 70 Hz"
+  fr: "Couper le grondement sous 70 Hz"
+media.err.missing_program:
+  en: "%{program} is missing. Reinstall Castor to restore it."
+  fr: "%{program} est introuvable. Réinstallez Castor pour le rétablir."
+media.err.unreadable:
+  en: "This file could not be read. It may be damaged or not a media file."
+  fr: "Ce fichier n'a pas pu être lu. Il est peut-être abîmé ou n'est pas un fichier média."
+media.err.permission:
+  en: "Castor cannot write to the output folder. Choose another folder."
+  fr: "Castor ne peut pas écrire dans le dossier de sortie. Choisissez-en un autre."
+media.err.disk_full:
+  en: "The disk is full. Free some space and try again."
+  fr: "Le disque est plein. Libérez de la place et réessayez."
+media.err.encoder:
+  en: "The video encoder could not start. Turn off “Fast (hardware encoder)” and try again."
+  fr: "L'encodeur vidéo n'a pas pu démarrer. Désactivez « Rapide (encodeur matériel) » et réessayez."
+media.err.ffmpeg:
+  en: "ffmpeg could not process this file."
+  fr: "ffmpeg n'a pas pu traiter ce fichier."
+media.err.no_streams:
+  en: "This file contains no sound and no picture."
+  fr: "Ce fichier ne contient ni son ni image."
+media.err.no_frame:
+  en: "No picture could be taken at that time."
+  fr: "Aucune image n'a pu être prise à ce moment."
+media.err.no_audio:
+  en: "This file has no sound."
+  fr: "Ce fichier n'a pas de son."
+media.err.no_video:
+  en: "This file has no picture."
+  fr: "Ce fichier n'a pas d'image."
+media.err.loudness:
+  en: "The loudness could not be measured."
+  fr: "Le volume n'a pas pu être mesuré."
+media.err.whisper:
+  en: "Transcription failed."
+  fr: "La transcription a échoué."
+media.err.ytdlp:
+  en: "The download failed. The link may be private, removed or not supported."
+  fr: "Le téléchargement a échoué. Le lien est peut-être privé, supprimé ou non pris en charge."
+media.err.bad_time:
+  en: "“%{value}” is not a time. Use 1:23, 83 or 1m23s."
+  fr: "« %{value} » n'est pas un temps. Utilisez 1:23, 83 ou 1m23s."
+media.err.start_after_end_of_file:
+  en: "The start (%{start}) is after the end of the file (%{duration})."
+  fr: "Le début (%{start}) est après la fin du fichier (%{duration})."
+media.err.empty_range:
+  en: "Nothing to keep: the end must come after the start."
+  fr: "Rien à garder : la fin doit venir après le début."
+media.err.codec_container:
+  en: "This codec does not fit in this format. Choose another codec or format."
+  fr: "Ce codec n'entre pas dans ce format. Choisissez un autre codec ou format."
+media.err.target_too_small:
+  en: "This size is too small for this length. Try at least %{min}."
+  fr: "Cette taille est trop petite pour cette durée. Essayez au moins %{min}."
+media.err.no_duration:
+  en: "The length of this file is unknown."
+  fr: "La durée de ce fichier est inconnue."
+media.err.bad_length:
+  en: "Enter a length greater than zero."
+  fr: "Entrez une durée supérieure à zéro."
+media.err.too_many_parts:
+  en: "That would make more than 2,000 parts. Choose a longer length."
+  fr: "Cela ferait plus de 2 000 parties. Choisissez une durée plus longue."
+media.err.nothing_to_split:
+  en: "Nothing to split: no cut point was found."
+  fr: "Rien à découper : aucun point de coupe trouvé."
+media.err.bad_size:
+  en: "Enter a width and a height of at least 2 pixels."
+  fr: "Entrez une largeur et une hauteur d'au moins 2 pixels."
+media.err.nothing_to_do:
+  en: "These settings change nothing."
+  fr: "Ces réglages ne changent rien."
+media.err.need_two:
+  en: "Add at least two files."
+  fr: "Ajoutez au moins deux fichiers."
+media.err.missing_file:
+  en: "File not found: %{file}"
+  fr: "Fichier introuvable : %{file}"
+media.err.no_clips:
+  en: "Choose an intro, a clip or an outro."
+  fr: "Choisissez une intro, un clip ou une outro."
+media.err.no_text:
+  en: "Type the watermark text."
+  fr: "Tapez le texte du filigrane."
+media.err.no_image:
+  en: "Choose the watermark image."
+  fr: "Choisissez l'image du filigrane."
+media.err.bad_image:
+  en: "The watermark image could not be read."
+  fr: "L'image du filigrane n'a pas pu être lue."
+media.err.no_audio_file:
+  en: "Choose the audio file to add."
+  fr: "Choisissez le fichier audio à ajouter."
+media.err.too_many_frames:
+  en: "That would extract more than 2,000 images. Choose a longer interval."
+  fr: "Cela extrairait plus de 2 000 images. Choisissez un intervalle plus long."
+media.err.no_subtitles:
+  en: "Choose a subtitle file (SRT, VTT or ASS)."
+  fr: "Choisissez un fichier de sous-titres (SRT, VTT ou ASS)."
+media.err.empty_subtitles:
+  en: "No captions were found in this subtitle file."
+  fr: "Aucun sous-titre n'a été trouvé dans ce fichier."
+media.err.no_speech:
+  en: "No speech was found in this file."
+  fr: "Aucune parole n'a été trouvée dans ce fichier."
+media.err.no_libass:
+  en: "This build of ffmpeg cannot draw subtitles."
+  fr: "Cette version de ffmpeg ne sait pas dessiner les sous-titres."
+media.err.silent:
+  en: "This file is silent: there is nothing to adjust."
+  fr: "Ce fichier est silencieux : il n'y a rien à ajuster."
+media.msg.progress:
+  en: "%{pct} % · about %{eta} left"
+  fr: "%{pct} % · environ %{eta} restantes"
+media.msg.preparing_audio:
+  en: "Preparing the audio…"
+  fr: "Préparation de l'audio…"
+media.msg.transcribing:
+  en: "Transcribing…"
+  fr: "Transcription…"
+media.msg.transcribing_part:
+  en: "Transcribing part %{n} of %{total}…"
+  fr: "Transcription de la partie %{n} sur %{total}…"
+media.msg.fetching_model:
+  en: "Fetching the model once (%{size}) — after that it works offline."
+  fr: "Téléchargement unique du modèle (%{size}) — ensuite, tout fonctionne hors ligne."
+media.msg.fetching_ytdlp:
+  en: "Fetching yt-dlp…"
+  fr: "Téléchargement de yt-dlp…"
+media.msg.hw_fallback:
+  en: "Hardware encoder unavailable: switching to software."
+  fr: "Encodeur matériel indisponible : passage au logiciel."
+media.msg.pass1:
+  en: "Pass 1 of 2: analysing…"
+  fr: "Passe 1 sur 2 : analyse…"
+media.msg.pass2:
+  en: "Pass 2 of 2: encoding…"
+  fr: "Passe 2 sur 2 : encodage…"
+media.msg.finding_scenes:
+  en: "Finding scene changes…"
+  fr: "Recherche des changements de plan…"
+media.msg.finding_pauses:
+  en: "Finding pauses…"
+  fr: "Recherche des pauses…"
+media.msg.finding_bars:
+  en: "Looking for black bars…"
+  fr: "Recherche des bandes noires…"
+media.msg.part:
+  en: "Part %{n} of %{total}"
+  fr: "Partie %{n} sur %{total}"
+media.msg.measuring:
+  en: "Measuring loudness…"
+  fr: "Mesure du volume…"
+media.msg.analysing_motion:
+  en: "Analysing camera motion…"
+  fr: "Analyse des mouvements de caméra…"
+media.msg.stabilising:
+  en: "Stabilising…"
+  fr: "Stabilisation…"
+media.note.kept_original:
+  en: "Already well compressed: kept the original (%{size})."
+  fr: "Déjà bien compressé : original conservé (%{size})."
+media.note.already_under_target:
+  en: "Already under the target size: kept the original."
+  fr: "Déjà sous la taille visée : original conservé."
+media.note.trimmed:
+  en: "%{from} → %{to} · %{size}"
+  fr: "%{from} → %{to} · %{size}"
+media.note.remuxed:
+  en: "Remuxed, no quality loss"
+  fr: "Remuxé, sans perte"
+media.note.audio_track:
+  en: "%{codec} · %{size}"
+  fr: "%{codec} · %{size}"
+media.note.gif:
+  en: "%{w} × %{h} · %{fps} fps · %{size}"
+  fr: "%{w} × %{h} · %{fps} im/s · %{size}"
+media.note.size_unchanged:
+  en: "Already %{w} × %{h}: kept the original."
+  fr: "Déjà en %{w} × %{h} : original conservé."
+media.note.no_bars:
+  en: "No black bars found: kept the original."
+  fr: "Aucune bande noire trouvée : original conservé."
+media.note.lossless_rotate:
+  en: "Rotated without re-encoding"
+  fr: "Pivotée sans ré-encodage"
+media.note.had_no_audio:
+  en: "This video had no sound: copied as is."
+  fr: "Cette vidéo n'avait pas de son : copiée telle quelle."
+media.note.joined_copy:
+  en: "%{count} videos joined without re-encoding · %{duration}"
+  fr: "%{count} vidéos assemblées sans ré-encodage · %{duration}"
+media.note.joined_reencode:
+  en: "%{count} videos joined at %{w} × %{h}"
+  fr: "%{count} vidéos assemblées en %{w} × %{h}"
+media.note.silences_removed:
+  en: "%{count} pauses cut, %{removed} removed (%{before} → %{after})"
+  fr: "%{count} pauses coupées, %{removed} retirées (%{before} → %{after})"
+media.note.no_silences:
+  en: "No pause long enough to cut: kept the original."
+  fr: "Aucune pause assez longue à couper : original conservé."
+media.note.inserted_pause:
+  en: "Clip inserted at %{at}, in a pause"
+  fr: "Clip inséré à %{at}, dans une pause"
+media.note.inserted_no_pause:
+  en: "No pause found: clip inserted at %{at}"
+  fr: "Aucune pause trouvée : clip inséré à %{at}"
+media.note.cues:
+  en: "%{count} captions"
+  fr: "%{count} sous-titres"
+media.note.soft_subs:
+  en: "Subtitle track added"
+  fr: "Piste de sous-titres ajoutée"
+media.note.transcribed:
+  en: "%{language} · %{words} words · %{duration} of audio in %{secs}"
+  fr: "%{language} · %{words} mots · %{duration} d'audio en %{secs}"
+media.note.gain:
+  en: "Gain %{gain}"
+  fr: "Gain %{gain}"
+media.note.peak:
+  en: "Peak %{before} dB → %{after} dB"
+  fr: "Crête %{before} dB → %{after} dB"
+media.note.loudness:
+  en: "%{before} LUFS → %{after} LUFS, peaks ≤ %{peak} dBTP"
+  fr: "%{before} LUFS → %{after} LUFS, crêtes ≤ %{peak} dBTP"
+media.note.dynamic:
+  en: "gentle compression was needed to respect the peak limit"
+  fr: "une légère compression a été nécessaire pour respecter la limite de crête"
+media.note.rnnoise:
+  en: "RNNoise"
+  fr: "RNNoise"
+media.note.fft:
+  en: "Spectral denoiser"
+  fr: "Débruiteur spectral"
+media.doc.subtitle:
+  en: "Transcript of %{file} · %{language} · %{duration}"
+  fr: "Transcription de %{file} · %{language} · %{duration}"
+media.ph.time:
+  en: "0:00"
+  fr: "0:00"
+media.ph.time_end:
+  en: "End of file"
+  fr: "Fin du fichier"
+media.ph.time_all:
+  en: "Until the end"
+  fr: "Jusqu'à la fin"
+media.ph.prompt:
+  en: "e.g. Castor, Sorbonne, GPUI"
+  fr: "ex. Castor, Sorbonne, GPUI"
+media.ph.volumes:
+  en: "100, 40"
+  fr: "100, 40"

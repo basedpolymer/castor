@@ -1,0 +1,21 @@
+//! Video tools.
+
+pub mod add_audio;
+pub mod captions;
+pub mod compress;
+pub mod convert;
+pub mod crop;
+pub mod extract_audio;
+pub mod frames;
+pub mod gif;
+pub mod insert;
+pub mod join;
+pub mod mute;
+pub mod resize;
+pub mod rotate;
+pub mod silences;
+pub mod speed;
+pub mod split;
+pub mod stabilize;
+pub mod trim;
+pub mod watermark;

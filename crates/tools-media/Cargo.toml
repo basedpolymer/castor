@@ -8,3 +8,14 @@ license.workspace = true
 anyhow.workspace = true
 castor-core.workspace = true
 engine-media.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+time.workspace = true
+fontdb = "0.23"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+krilla = "0.8"
+ttf-parser = "0.25"
+
+[dev-dependencies]
+tempfile.workspace = true
