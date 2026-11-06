@@ -35,7 +35,7 @@ const BUNDLED: &[&[u8]] = &[
     font!("lmsans10-oblique.otf"),
     font!("lmmono10-regular.otf"),
     font!("texgyrechorus-mediumitalic.otf"),
-    include_bytes!("../../assets/fonts/NewCMMath-Regular.otf").as_slice(),
+    include_bytes!("../../../../assets/fonts/NewCMMath-Regular.otf").as_slice(),
 ];
 
 /// Bundled font bytes, for the other renderers (resvg) too.

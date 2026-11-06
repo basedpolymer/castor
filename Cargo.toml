@@ -13,6 +13,7 @@ members = [
     "crates/castor-tools",
     "crates/castor-cli",
     "crates/castor-mcp",
+    "crates/castor-launcher",
     "crates/castor-app",
 ]
 default-members = ["crates/castor-cli"]
@@ -60,9 +61,12 @@ tempfile = "3"
 
 [profile.dev]
 opt-level = 1
+# Full debug info made each target dir 15-30 GB on Windows (PDBs). Line tables keep backtraces.
+debug = "line-tables-only"
 
 [profile.dev.package."*"]
 opt-level = 2
+debug = false
 
 [profile.release]
 lto = "thin"

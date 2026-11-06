@@ -173,7 +173,7 @@ Hidden when `visible_if` is false. Values persist per tool (`Settings::tool_valu
 - Errors say what happened and what to do, never a stack trace (details in a disclosure).
 - Humour: rare and dry — empty states, the end of a run, About. Examples:
   - Runs, empty: "No runs yet. The beaver is resting."
-  - Done, big saving: "19 MB → 212 KB. Neatly gnawed."
+  - Done, big saving: "48 MB → 9.6 MB. Neatly gnawed."
   - About: "Castor builds things. It does not fly planes." / "No accounts, no cloud, no beaver
     was harmed."
   - Model download: "Fetching the model once — after that it works offline."

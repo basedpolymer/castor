@@ -44,11 +44,17 @@ const EXT: &[(FileKind, &[&str])] = &[
     (FileKind::Svg, &["svg", "svgz"]),
     (
         FileKind::Video,
-        &["mp4", "m4v", "mov", "mkv", "webm", "avi", "wmv", "flv", "mpg", "mpeg", "ts", "mts", "m2ts", "3gp", "ogv"],
+        &[
+            "mp4", "m4v", "mov", "mkv", "webm", "avi", "wmv", "flv", "mpg", "mpeg", "ts", "mts", "m2ts", "3gp", "ogv", "mxf",
+            "vob", "f4v", "rm", "rmvb", "divx", "mjpeg", "y4m",
+        ],
     ),
     (
         FileKind::Audio,
-        &["mp3", "wav", "flac", "aac", "m4a", "ogg", "oga", "opus", "wma", "aiff", "aif", "alac", "caf", "amr"],
+        &[
+            "mp3", "wav", "flac", "aac", "m4a", "ogg", "oga", "opus", "wma", "aiff", "aif", "alac", "caf", "amr", "mka", "weba",
+            "wv", "ape", "mpc", "ac3", "dts",
+        ],
     ),
     (FileKind::Office, &["doc", "docx", "xls", "xlsx", "ppt", "pptx", "odt", "ods", "odp", "rtf", "pages", "key", "numbers"]),
     (FileKind::Ebook, &["epub", "mobi", "azw", "azw3", "fb2", "fbz"]),
@@ -110,11 +116,12 @@ impl FileInfo {
         let md = std::fs::metadata(&path).ok();
         let is_dir = md.as_ref().map(|m| m.is_dir()).unwrap_or(false);
         let size = md.as_ref().map(|m| if m.is_dir() { 0 } else { m.len() }).unwrap_or(0);
-        let mut kind = if is_dir {
-            FileKind::Other
-        } else {
-            FileKind::from_extension(path.extension().and_then(|e| e.to_str()).unwrap_or(""))
-        };
+        let ext = path.extension().and_then(|e| e.to_str()).unwrap_or("");
+        let mut kind = if is_dir { FileKind::Other } else { FileKind::from_extension(ext) };
+        // ".ts" is also TypeScript: keep Video only for real MPEG transport streams.
+        if kind == FileKind::Video && ext.eq_ignore_ascii_case("ts") && !is_mpeg_ts(&path) {
+            kind = FileKind::Text;
+        }
         if kind == FileKind::Other && !is_dir {
             if let Ok(Some(t)) = infer::get_from_path(&path) {
                 kind = FileKind::from_mime(t.mime_type());
@@ -133,6 +140,13 @@ impl FileInfo {
     pub fn extension(&self) -> String {
         self.path.extension().map(|s| s.to_string_lossy().to_ascii_lowercase()).unwrap_or_default()
     }
+}
+
+fn is_mpeg_ts(p: &Path) -> bool {
+    use std::io::Read;
+    let mut buf = [0u8; 377];
+    let Ok(mut f) = std::fs::File::open(p) else { return false };
+    matches!(f.read(&mut buf), Ok(n) if n >= 377) && buf[0] == 0x47 && buf[188] == 0x47 && buf[376] == 0x47
 }
 
 /// Expand folders into the files they contain (recursively), keeping plain files as they are.

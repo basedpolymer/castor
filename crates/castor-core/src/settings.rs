@@ -54,6 +54,14 @@ pub struct Settings {
     pub ai_api_key: Option<String>,
     /// Max jobs in parallel (0 = automatic).
     pub max_parallel: usize,
+    /// Unix seconds of the last update check (checks run at most daily).
+    pub last_update_check: Option<i64>,
+    /// Main window position and size in logical pixels (x, y, width, height), restored at launch.
+    pub window_bounds: Option<[f32; 4]>,
+    /// Workspaces (brand, output folder…), managed by the app. Empty = the default workspace.
+    pub workspaces: Vec<toml::Table>,
+    /// Name of the active workspace ("" = default).
+    pub active_workspace: String,
 }
 
 impl Default for Settings {
@@ -74,6 +82,10 @@ impl Default for Settings {
             tool_values: BTreeMap::new(),
             ai_api_key: None,
             max_parallel: 0,
+            last_update_check: None,
+            window_bounds: None,
+            workspaces: Vec::new(),
+            active_workspace: String::new(),
         }
     }
 }

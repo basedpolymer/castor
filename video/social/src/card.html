@@ -1,0 +1,272 @@
+<!doctype html>
+<!-- Castor launch images (X/Twitter) and the Open Graph image of basedpolymer.eu/castor.
+     One page, many cards: card.html?card=hero|catalogue|hangar|beyond|download|og
+     &size=1600x900|1080x1350|1200x630 &theme=light|dark &lang=en|fr
+     Rendered to PNG by render.py (headless Chrome, served from the repository root). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Castor card</title>
+<style>
+@font-face { font-family: "C Roman"; font-weight: 400; src: url("/assets/fonts/lmroman10-regular.otf"); }
+@font-face { font-family: "C Roman"; font-weight: 700; src: url("/assets/fonts/lmroman10-bold.otf"); }
+@font-face { font-family: "C Slant"; src: url("/assets/fonts/lmromanslant10-regular.otf"); }
+@font-face { font-family: "C Sans"; font-weight: 400; src: url("/assets/fonts/lmsans10-regular.otf"); }
+@font-face { font-family: "C Sans"; font-weight: 700; src: url("/assets/fonts/lmsans10-bold.otf"); }
+@font-face { font-family: "C Mono"; src: url("/assets/fonts/lmmono10-regular.otf"); }
+@font-face { font-family: "C Chorus"; font-style: italic; src: url("/assets/fonts/texgyrechorus-mediumitalic.otf"); }
+
+:root {
+  --paper: #fcfbf9; --surface: #f4f2ee; --raised: #ffffff; --ink: #1b1616; --muted: #5c5a55; --faint: #8c8a84;
+  --rule: #d9d6cf; --strong: #1b1616; --good: #2e7d4f; --ghost: rgb(27 22 22 / .09);
+  --t-pdf: #fbe2ff; --t-image: #ccfaff; --t-video: #ade1ff; --t-audio: #aafaba; --t-create: #ffeca4; --t-files: #ffdcc8;
+  --s-pdf: #c43fd0; --s-image: #16a7b8; --s-video: #2f8fd8; --s-audio: #2fa652; --s-create: #c39a12; --s-files: #dc7340;
+  --roman: "C Roman", serif; --slant: "C Slant", serif; --sans: "C Sans", sans-serif; --mono: "C Mono", monospace;
+  --W: 1600px; --H: 900px; --m: 80px; --u: 1px;
+}
+[data-theme="dark"] {
+  --paper: #161514; --surface: #1e1d1b; --raised: #242321; --ink: #e8e6e1; --muted: #a6a39b; --faint: #75726b;
+  --rule: #3a3833; --strong: #e8e6e1; --good: #6cc28f; --ghost: rgb(232 230 225 / .09);
+  --t-pdf: #3b2840; --t-image: #1d3a3d; --t-video: #1c3046; --t-audio: #1d3b24; --t-create: #3b3417; --t-files: #3e2a1f;
+  --s-pdf: #c58ad0; --s-image: #5fbfc8; --s-video: #6ea6df; --s-audio: #6cbd84; --s-create: #cfae55; --s-files: #d9946c;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { width: var(--W); height: var(--H); overflow: hidden; background: var(--paper); color: var(--ink); font: 400 calc(26 * var(--u))/1.4 var(--roman); }
+.card { position: relative; width: 100%; height: 100%; padding: var(--m); overflow: hidden; }
+
+/* running head: number above a rule that ends in a diamond (like /nutrition) */
+.tete { position: absolute; left: var(--m); right: var(--m); top: calc(var(--m) * .45); height: 44px; display: flex; justify-content: space-between; align-items: baseline;
+  font: 400 22px var(--sans); color: var(--muted); }
+.tete b { color: var(--ink); font-size: 24px; }
+.tete .filet { position: absolute; left: 50%; right: 0; bottom: 0; height: 1.5px; background: linear-gradient(to right, transparent, var(--faint)); }
+.tete .filet::after { content: ""; position: absolute; right: -9px; top: -4px; width: 9px; height: 9px; background: var(--paper); border: 1.5px solid var(--faint); transform: rotate(45deg); }
+
+.titre { position: relative; font-size: 64px; }
+.card > .titre { margin-top: 92px; }
+.titre.grand { font-size: 112px; }
+.lettrine { position: absolute; left: -.04em; top: -.52em; font: italic 400 2.05em/1 "C Chorus", cursive; color: var(--ghost); pointer-events: none; }
+h1, h2 { position: relative; margin: 0; font-family: var(--sans); font-weight: 700; font-size: 1em; line-height: 1.08; letter-spacing: -.005em; }
+h2 .num { margin-right: .45em; }
+.devise { margin: 22px 0 0; font: 400 40px/1.25 var(--sans); }
+.devise span { color: var(--muted); }
+.mention { margin: 18px 0 0; font: 400 24px/1.4 var(--sans); color: var(--muted); }
+.sous { margin: 18px 0 0; font-size: 28px; color: var(--muted); max-width: 30em; }
+.mark { color: var(--ink); }
+.mark .c { fill: var(--paper); }
+
+figure { margin: 0; }
+figcaption { margin-top: 14px; font-size: 21px; color: var(--muted); }
+figcaption b { font-family: var(--sans); color: var(--ink); margin-right: .2em; }
+.fenetre { display: block; width: 100%; height: auto; border: 1.5px solid var(--rule); border-radius: 6px; background: var(--surface); box-shadow: 0 18px 50px rgb(0 0 0 / .10); }
+[data-theme="dark"] .fenetre { box-shadow: 0 18px 50px rgb(0 0 0 / .45); }
+
+.pied { position: absolute; left: var(--m); right: var(--m); bottom: calc(var(--m) * .55); display: flex; justify-content: space-between; align-items: baseline;
+  font: 400 22px var(--sans); color: var(--muted); }
+.pied b { color: var(--ink); }
+.losange { display: inline-block; width: 12px; height: 12px; margin-right: 12px; border: 2px solid var(--sw, var(--ink)); transform: rotate(45deg) translateY(-2px); }
+
+/* ---------- hero ---------- */
+.hero .texte { position: absolute; left: var(--m); top: 150px; width: 640px; }
+.hero .mark { width: 110px; height: 110px; margin-bottom: 96px; }
+.hero figure { position: absolute; left: 790px; top: 140px; width: 1040px; }
+.s-1080x1350 .hero .texte { top: 150px; width: auto; right: var(--m); }
+.s-1080x1350 .hero .mark { position: absolute; right: 0; top: 10px; margin: 0; width: 132px; height: 132px; }
+.s-1080x1350 .hero figure { left: var(--m); top: 470px; width: 1180px; }
+/* portrait: bigger type, the extra height is for reading */
+.s-1080x1350 .card > .titre { margin-top: 120px; font-size: 76px; }
+.s-1080x1350 .gros { font-size: 150px; margin-top: 40px; }
+.s-1080x1350 .gros small { display: block; margin: 18px 0 0; font-size: 38px; }
+.s-1080x1350 .famille { padding: 24px 26px 28px 34px; }
+.s-1080x1350 .famille h3 { font-size: 36px; margin-bottom: 12px; }
+.s-1080x1350 .famille h3 .n { font-size: 46px; }
+.s-1080x1350 .famille p { font-size: 25px; }
+.s-1080x1350 .legende-t { font-size: 30px; margin-top: 50px; }
+.s-1080x1350 thead th { font-size: 30px; padding: 18px 16px 14px; }
+.s-1080x1350 table { table-layout: fixed; }
+.s-1080x1350 thead th:nth-child(1) { width: 27%; } .s-1080x1350 thead th:nth-child(2) { width: 30%; }
+.s-1080x1350 tbody th { font-size: 25px; }
+.s-1080x1350 tbody td { font-size: 29px; }
+.s-1080x1350 tbody th, .s-1080x1350 tbody td { padding-top: 14px; padding-bottom: 14px; }
+.s-1080x1350 .merci { font-size: 32px; margin-top: 34px; }
+.s-1080x1350 .bloc h3 { font-size: 40px; margin-bottom: 14px; }
+.s-1080x1350 .bloc p { font-size: 30px; }
+.s-1080x1350 .grille { gap: 50px; margin-top: 60px; }
+.s-1080x1350 .etapes { font-size: 26px; }
+.s-1080x1350 pre { font-size: 21px; }
+.s-1080x1350 .beyond .panneau { top: 400px; width: 330px; }
+.s-1080x1350 .download .mark { width: 230px; height: 230px; margin-bottom: 50px; }
+.s-1080x1350 .download .plat { font-size: 36px; gap: 20px; margin-top: 44px; }
+.s-1080x1350 .download .plat small { font-size: 22px; }
+.s-1080x1350 .download .mention { font-size: 27px; margin-top: 30px; }
+.s-1080x1350 .download .merci { font-size: 32px; }
+
+/* ---------- catalogue ---------- */
+.familles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 34px; }
+.s-1080x1350 .familles { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px; }
+.famille { position: relative; padding: 18px 24px 20px 30px; border: 1.5px solid var(--rule); border-radius: 4px; background: var(--raised); }
+.famille::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 8px; background: var(--wash); border-radius: 4px 0 0 4px; }
+.famille h3 { display: flex; align-items: baseline; margin: 0 0 8px; font: 700 31px/1.1 var(--sans); }
+.famille h3 .n { margin-left: auto; font: 700 40px/1 var(--sans); font-variant-numeric: tabular-nums; }
+.famille p { margin: 0; font-size: 21px; line-height: 1.36; color: var(--muted); }
+.gros { margin: 26px 0 0; font: 700 120px/1 var(--sans); letter-spacing: -.02em; white-space: nowrap; }
+.gros small { font-size: 34px; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-left: 20px; }
+.f-pdf { --sw: var(--s-pdf); --wash: var(--t-pdf); } .f-image { --sw: var(--s-image); --wash: var(--t-image); }
+.f-video { --sw: var(--s-video); --wash: var(--t-video); } .f-audio { --sw: var(--s-audio); --wash: var(--t-audio); }
+.f-create { --sw: var(--s-create); --wash: var(--t-create); } .f-files { --sw: var(--s-files); --wash: var(--t-files); }
+
+/* ---------- booktabs ---------- */
+.legende-t { margin: 34px 0 12px; font-size: 26px; }
+.legende-t b { font-family: var(--sans); }
+table { width: 100%; border-collapse: collapse; border-top: 2.4px solid var(--strong); border-bottom: 2.4px solid var(--strong); font-size: 25px; line-height: 1.25; }
+thead th { padding: 14px 16px 10px; border-bottom: 1.4px solid var(--strong); font: 700 26px var(--sans); text-align: left; }
+tbody th, tbody td { padding: 9px 16px; text-align: left; vertical-align: top; }
+tbody th { font: 400 23px/1.3 var(--sans); color: var(--muted); white-space: nowrap; }
+tbody tr:first-child > * { padding-top: 16px; }
+tbody tr:last-child > * { padding-bottom: 16px; }
+.nous { background: var(--surface); }
+.merci { margin: 22px 0 0; font-family: var(--slant); font-size: 27px; }
+.s-1080x1350 table { font-size: 24px; }
+.s-1080x1350 tbody th { white-space: normal; width: 190px; }
+
+/* ---------- beyond ---------- */
+.grille { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 44px; margin-top: 40px; }
+.bloc h3 { margin: 0 0 8px; font: 700 31px/1.2 var(--sans); }
+.bloc h3 .num { margin-right: .5em; }
+.bloc p { margin: 0; font-size: 24px; line-height: 1.38; color: var(--muted); }
+.etapes { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 16px; font: 400 23px var(--sans); }
+.etapes > span { padding: 8px 14px; border: 1.5px solid var(--rule); border-radius: 4px; background: var(--raised); }
+.etapes i { font-style: normal; color: var(--muted); }
+pre { margin: 14px 0 0; padding: 14px 18px; border-left: 2px solid var(--faint); background: var(--surface); font: 400 20px/1.55 var(--mono); white-space: pre; overflow: hidden; }
+pre .co, pre .pr { color: var(--muted); }
+.beyond .panneau { position: absolute; right: var(--m); top: 150px; width: 300px; }
+.s-1080x1350 .grille { grid-template-columns: 1fr; gap: 30px; }
+
+/* ---------- download ---------- */
+.download .centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.download .mark { width: 170px; height: 170px; margin-bottom: 34px; }
+.download .url { font: 700 76px/1.1 var(--sans); letter-spacing: -.01em; }
+.download .plat { margin-top: 26px; display: flex; gap: 16px; font: 700 28px var(--sans); }
+.download .plat span { padding: 14px 26px; border-radius: 4px; background: var(--ink); color: var(--paper); }
+.download .plat small { display: block; font-weight: 400; font-size: 18px; opacity: .85; }
+.s-1080x1350 .download .url { font-size: 64px; }
+.s-1080x1350 .download .plat { flex-direction: column; }
+
+/* ---------- og ---------- */
+.og .texte { position: absolute; left: 70px; top: 150px; width: 820px; }
+.og .titre.grand { font-size: 104px; }
+.og .devise { font-size: 33px; }
+.og .devise span { display: block; }
+.og .chips { font-size: 23px; gap: 8px 18px; }
+.og .mention { font-size: 22px; }
+.og .mark { position: absolute; right: 70px; top: 175px; width: 220px; height: 220px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 40px; font: 400 25px var(--sans); }
+.chips span b { margin-left: 6px; }
+</style>
+</head>
+<body>
+<div class="card" id="card"></div>
+<template id="mark"><svg class="mark" viewBox="190 190 644 644"><defs><mask id="bite"><rect width="1024" height="1024" fill="#fff"/><circle cx="684" cy="384" r="40" fill="#000"/><circle cx="730" cy="430" r="33" fill="#000"/><circle cx="767" cy="469" r="23" fill="#000"/></mask></defs><polygon mask="url(#bite)" points="512,212 812,512 512,812 212,512" fill="currentColor"/><g fill="currentColor"><rect x="782" y="356" width="16" height="9" transform="rotate(-28 790 360)"/><rect x="812" y="398" width="11" height="7" transform="rotate(22 817 401)"/><rect x="752" y="326" width="9" height="6" transform="rotate(50 756 329)"/></g><g class="c" transform="translate(335 646) scale(0.47 -0.47)"><path d="M522 33 529 63C437 0 369 -26 299 -26C220 -26 170 34 170 129C170 337 317 544 465 544C525 544 555 507 561 428L635 491C626 560 590 591 518 591C431 591 330 540 242 452C145 355 88 222 88 92C88 -11 145 -73 241 -73C327 -73 436 -32 522 33Z"/></g></svg></template>
+<script>
+(async function () {
+  const P = new URLSearchParams(location.search);
+  const card = P.get("card") || "hero", size = P.get("size") || "1600x900", theme = P.get("theme") || "light", lang = P.get("lang") || "en";
+  const [W, H] = size.split("x").map(Number);
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.lang = lang;
+  document.body.classList.add("s-" + size);
+  document.documentElement.style.setProperty("--W", W + "px");
+  document.documentElement.style.setProperty("--H", H + "px");
+  if (H > W) document.documentElement.style.setProperty("--m", "72px");
+  const tools = await (await fetch("tools.json")).json();
+  const FAM = ["pdf", "image", "video", "audio", "create", "files"];
+  const NAME = { en: { pdf: "PDF", image: "Image", video: "Video", audio: "Audio", create: "Create", files: "Files" },
+                 fr: { pdf: "PDF", image: "Image", video: "Vidéo", audio: "Audio", create: "Créer", files: "Fichiers" } }[lang];
+  const by = Object.fromEntries(FAM.map(f => [f, tools.filter(t => t.family === f)]));
+  const N = tools.length;
+  const mark = () => document.getElementById("mark").innerHTML;
+  const shot = (n) => `shots/shot-${n}-${theme}.png`;
+  const tete = (num, label) => `<div class="tete"><span>${label}</span><b>${num}</b><span class="filet"></span></div>`;
+  const pied = (fig, txt) => `<div class="pied"><span><b>Figure ${fig} /</b> ${txt}</span><span>${L("basedpolymer.eu/castor", "basedpolymer.eu/castor/fr")}</span></div>`;
+  const el = document.getElementById("card");
+  el.classList.add(card);
+  const L = (en, fr) => (lang === "fr" ? fr : en);
+  const NB = " "; // French: narrow no-break space before ; : ! ? and inside « »
+  const picks = L(
+    { pdf: ["Compress", "Merge", "OCR", "Redact", "Sign"], image: ["Remove background", "Upscale", "Convert", "Vectorize"],
+      video: ["Trim", "Compress", "Captions", "To GIF"], audio: ["Transcribe", "Normalize", "Denoise"],
+      create: ["QR code", "Mockup", "Favicon", "Gradients"], files: ["Batch rename", "Archive", "Duplicates", "What is this file?"] },
+    { pdf: ["Compresser", "Fusionner", "OCR", "Caviarder", "Signer"], image: ["Détourer", "Agrandir", "Convertir", "Vectoriser"],
+      video: ["Découper", "Compresser", "Sous-titres", "En GIF"], audio: ["Transcrire", "Normaliser", "Débruiter"],
+      create: ["Code QR", "Maquette", "Favicon", "Dégradés"], files: ["Renommer en lot", "Archiver", "Doublons", `Quel est ce fichier${NB}?`] });
+  const devise = L("Gnaws through your files. <span>Free, offline, yours.</span>",
+                   "Ronge vos fichiers à votre place. <span>Gratuit, hors ligne, à vous.</span>");
+  const homeShot = L(shot("home"), `shots/shot-home-fr-${theme}.png`);
+
+  const T = {
+    hero: () => `${tete(N, "Castor")}
+      <div class="texte"><div>${mark()}</div>
+        <div class="titre grand"><span class="lettrine">C</span><h1>Castor</h1></div>
+        <p class="devise">${devise}</p>
+        <p class="mention">${L(`${N} tools · macOS and Windows · open source, GPL-3.0`, `${N} outils · macOS et Windows · logiciel libre, GPL-3.0`)}</p></div>
+      <figure><img class="fenetre" src="${homeShot}" width="1280" height="800" alt=""></figure>
+      ${pied(1, L("The tools page" + (theme === "dark" ? ", in dark." : "."), "La page des outils" + (theme === "dark" ? ", en sombre." : ".")))}`,
+    catalogue: () => `${tete(N, "Castor")}
+      <div class="titre"><span class="lettrine">${L("E", "T")}</span><h2><span class="num">1.</span>${L("Every file tool", "Tous les outils")}</h2></div>
+      <p class="gros">≈ ${Math.round(N / 10) * 10}<small>${L("tools in six families, all offline", "outils en six familles, tous hors ligne")}</small></p>
+      <div class="familles">${FAM.map(f => `<div class="famille f-${f}"><h3><span class="losange"></span>${NAME[f]}<span class="n">${by[f].length}</span></h3><p>${picks[f].join(" · ")} …</p></div>`).join("")}</div>
+      ${pied(2, L("The catalogue by family, from Castor’s own tool list.", "Le catalogue par famille, tiré de la liste des outils de Castor."))}`,
+    hangar: () => `${tete(N, "Castor")}
+      <div class="titre"><span class="lettrine">C</span><h2><span class="num">3.</span>${L("Castor and Hangar", "Castor et Hangar")}</h2></div>
+      <div class="legende-t"><b>${L("Table", "Tableau")} 1</b> — ${L("Side by side, as published on hangar.tools on 6 November 2026.", "Côte à côte, d’après hangar.tools au 6 novembre 2026.")}</div>
+      <table><thead><tr><th></th><th class="nous">Castor</th><th>Hangar</th></tr></thead><tbody>
+        <tr><th>${L("Price", "Prix")}</th><td class="nous">${L("Free", "Gratuit")}</td><td>${L("One-time licence, $45 to $239 (launch prices)", `Licence unique, de 45${NB}$ à 239${NB}$ (prix de lancement)`)}</td></tr>
+        <tr><th>Licence</th><td class="nous">GPL-3.0</td><td>${L("Proprietary", "Propriétaire")}</td></tr>
+        <tr><th>${L("Platforms", "Plateformes")}</th><td class="nous">macOS, Windows</td><td>macOS, Windows</td></tr>
+        <tr><th>${L("Tools", "Outils")}</th><td class="nous">${N}</td><td>${L("77 shipped + 12 “Soon”", `77 disponibles + 12 «${NB}bientôt${NB}»`)}</td></tr>
+        <tr><th>${L("Offline · menu bar · chains", "Hors ligne · barre des menus · chaînes")}</th><td class="nous">${L("Yes · yes · yes", "Oui · oui · oui")}</td><td>${L("Yes · yes · yes", "Oui · oui · oui")}</td></tr>
+        <tr><th>${L("Command line", "Ligne de commande")}</th><td class="nous">${L("Yes, castor-cli", "Oui, castor-cli")}</td><td>${L("Not advertised", "Non annoncée")}</td></tr>
+        <tr><th>${L("MCP server", "Serveur MCP")}</th><td class="nous">${L("Yes", "Oui")}</td><td>${L("On its roadmap", "Prévu")}</td></tr>
+      </tbody></table>
+      <p class="merci">${L("Hangar showed the way; Castor is the free cousin.", `Hangar a montré la voie${NB}; Castor en est le cousin gratuit.`)}</p>
+      ${pied(3, L("Facts only. Hangar is a trademark of its owner.", "Des faits, rien que des faits. Hangar est une marque de son propriétaire."))}`,
+    beyond: () => `${tete(N, "Castor")}
+      <div class="titre"><span class="lettrine">${L("B", "A")}</span><h2><span class="num">4.</span>${L("Beyond the window", "Au-delà de la fenêtre")}</h2></div>
+      <div class="grille">
+        <div class="bloc"><h3><span class="num">4.1</span>${L("Chains", "Chaînes")}</h3><p>${L("Several tools in a row, saved under one name.", "Plusieurs outils à la suite, enregistrés sous un nom.")}</p>
+          <div class="etapes"><span><span class="losange" style="--sw:var(--s-image)"></span>${L("Resize images", "Redimensionner")}</span><i>→</i><span><span class="losange" style="--sw:var(--s-image)"></span>${L("Compress images", "Compresser")}</span></div></div>
+        <div class="bloc"><h3><span class="num">4.2</span>${L("Runs, with undo", "Historique, avec annulation")}</h3><p>${L("Every run listed by day, with sizes before and after. Run again with the same settings, or undo a rename, a sort or new dates.", "Chaque exécution, jour par jour, avec les tailles avant et après. Relancez avec les mêmes réglages, ou annulez un renommage, un tri ou de nouvelles dates.")}</p></div>
+        <div class="bloc"><h3><span class="num">4.3</span>${L("Menu bar and tray", "Barre des menus")}</h3><p>${L("A quick panel from anywhere: drop files on it, or act on the image in your clipboard. The result goes back to the clipboard.", `Un panneau rapide, de n’importe où${NB}: déposez-y des fichiers, ou traitez l’image du presse-papiers. Le résultat y retourne.`)}</p></div>
+        <div class="bloc"><h3><span class="num">4.4</span>${L("CLI and MCP", "Terminal et MCP")}</h3>
+<pre><span class="pr">$ </span>castor-cli run pdf.compress ${L("report.pdf", "rapport.pdf")}
+<span class="pr">$ </span>claude mcp add castor -- castor mcp</pre></div>
+      </div>
+      ${pied(4, L("Everything the app does, also from the terminal or an AI agent.", "Tout ce que fait l’app, aussi depuis le terminal ou un agent IA."))}`,
+    download: () => `${tete(N, "Castor")}
+      <div class="centre"><div>${mark()}</div>
+        <div class="url">basedpolymer.eu/castor${L("", "/fr")}</div>
+        <div class="plat"><span><small>${L("Download for", "Télécharger pour")}</small>macOS</span><span><small>${L("Download for", "Télécharger pour")}</small>Windows 10 / 11</span></div>
+        <p class="mention">${L("Mac: Apple Silicon (M1 and later) · Intel", "Mac : Apple Silicon (M1 et suivants) · Intel")}</p>
+        <p class="mention">${L("Free · open source (GPL-3.0) · github.com/basedpolymer/castor", "Gratuit · logiciel libre (GPL-3.0) · github.com/basedpolymer/castor")}</p>
+        <p class="merci">${L("No beaver was harmed in the making of this app.", "Aucun castor n’a été maltraité pendant la fabrication de cette app.")}</p></div>`,
+    og: () => `${tete(N, L("Castor · basedpolymer.eu/castor", "Castor · basedpolymer.eu/castor/fr"))}
+      <div class="texte"><div class="titre grand"><span class="lettrine">C</span><h1>Castor</h1></div>
+        <p class="devise">${devise}</p>
+        <div class="chips">${FAM.map(f => `<span class="f-${f}"><span class="losange"></span>${NAME[f]}<b>${by[f].length}</b></span>`).join("")}</div>
+        <p class="mention">${L(`${N} tools · macOS and Windows · open source (GPL-3.0)`, `${N} outils · macOS et Windows · logiciel libre (GPL-3.0)`)}</p></div>
+      ${mark()}`,
+  };
+  el.innerHTML = T[card]();
+  if (card === "beyond") {
+    // the quick panel, a real screenshot: on the right (landscape) or bottom right (portrait)
+    if (W > H) el.querySelector(".grille").style.marginRight = "360px";
+    else el.querySelector(".grille").style.marginRight = "370px";
+    el.insertAdjacentHTML("beforeend", `<figure class="panneau"><img class="fenetre" src="${"shots/shot-panel-" + theme + ".png"}" width="360" height="520" style="width:100%;height:auto" alt=""><figcaption><b>Figure 5 /</b> ${L("The quick panel.", "Le panneau rapide.")}</figcaption></figure>`);
+  }
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
+  document.title = "ready";
+})();
+</script>
+</body>
+</html>

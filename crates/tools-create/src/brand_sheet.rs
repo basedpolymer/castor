@@ -35,7 +35,7 @@ impl Tool for BrandSheetTool {
     fn options(&self) -> Vec<OptionSpec> {
         vec![
             OptionSpec::text("name", "Castor"),
-            OptionSpec::text("tagline", "Every file tool, right on your desk."),
+            OptionSpec::text("tagline", "Gnaws through your files."),
             OptionSpec::file("logo", &["png", "jpg", "jpeg", "svg", "webp"]),
             OptionSpec::file("logo_dark", &["png", "jpg", "jpeg", "svg", "webp"]),
             OptionSpec::multiline("colors", "Ink #1b1616\nPaper #fcfbf9\nCreate #ffeca4\nImage #ccfaff\nPDF #fbe2ff\nLink #2f6db5"),

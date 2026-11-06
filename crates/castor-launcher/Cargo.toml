@@ -1,0 +1,12 @@
+[package]
+name = "castor-launcher"
+description = "Tiny `castor-cli` shim shipped next to the app: runs `castor cli <args>` with the same stdio"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "castor-cli-launcher"
+path = "src/main.rs"
+
+[dependencies]

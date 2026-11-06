@@ -48,7 +48,7 @@ impl Tool for SocialCardTool {
         sizes.push(Choice::key("custom"));
         vec![
             OptionSpec::choice("template", TEMPLATES.iter().map(|t| Choice::key(t)).collect(), "classic"),
-            OptionSpec::multiline("title", "Every file tool, right on your desk"),
+            OptionSpec::multiline("title", "Gnaws through your files"),
             OptionSpec::multiline("subtitle", "Free, offline and open source. Nothing leaves your machine."),
             OptionSpec::text("eyebrow", "Castor"),
             OptionSpec::text("footer", "basedpolymer.eu/castor"),

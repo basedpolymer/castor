@@ -6,8 +6,8 @@ app.name:
   en: Castor
   fr: Castor
 app.tagline:
-  en: Every file tool, right on your desk. Free, offline, yours.
-  fr: Tous les outils de fichiers, à portée de main. Gratuit, hors ligne, à vous.
+  en: Gnaws through your files. Free, offline, yours.
+  fr: Ronge vos fichiers à votre place. Gratuit, hors ligne, à vous.
 
 family.pdf:
   en: PDF
@@ -657,8 +657,8 @@ app.settings.ai_key_forget:
   en: Forget the key
   fr: Oublier la clé
 app.settings.about_line:
-  en: Castor %{version} — every file tool, right on your desk. Made by basedpolymer.
-  fr: Castor %{version} — tous les outils de fichiers, à portée de main. Fait par basedpolymer.
+  en: Castor %{version} — gnaws through your files. Made by basedpolymer.
+  fr: Castor %{version} — ronge vos fichiers à votre place. Fait par basedpolymer.
 app.settings.about_licence:
   en: Free software under the GNU General Public License, version 3 or later.
   fr: Logiciel libre sous licence publique générale GNU, version 3 ou ultérieure.

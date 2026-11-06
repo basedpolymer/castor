@@ -5,7 +5,8 @@ Claude Code, any MCP client) can use every Castor tool on your computer — comp
 make a QR code, rename a folder of photos — without uploading anything. It speaks MCP over
 **stdio** and is built with the official Rust SDK (`rmcp`).
 
-- Binary: `castor-mcp` (installed next to `castor` and `castor-cli`).
+- Command: the Castor app binary with the argument `mcp` (`castor mcp`). The engines live in one
+  binary; `castor-mcp` remains a development build target only.
 - Same tools, options, runner and history as the app and `castor-cli`: a run made by an agent
   appears in the app's **Runs** page, and in-place runs (rename, dates, sort, duplicates moved
   aside, fixed extensions) can be undone there.
@@ -52,7 +53,8 @@ Windows (`%APPDATA%\Claude\claude_desktop_config.json`):
 {
   "mcpServers": {
     "castor": {
-      "command": "C:\\Users\\YOU\\AppData\\Local\\Castor\\current\\castor-mcp.exe",
+      "command": "C:\\Users\\YOU\\AppData\\Local\\Castor\\current\\castor.exe",
+      "args": ["mcp"],
       "env": { "CASTOR_LANG": "en" }
     }
   }
@@ -65,7 +67,8 @@ macOS (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 {
   "mcpServers": {
     "castor": {
-      "command": "/Applications/Castor.app/Contents/MacOS/castor-mcp",
+      "command": "/Applications/Castor.app/Contents/MacOS/castor",
+      "args": ["mcp"],
       "env": { "CASTOR_LANG": "en" }
     }
   }
@@ -78,16 +81,16 @@ Restart Claude Desktop; "castor" appears in the tools menu.
 
 ```sh
 # Windows
-claude mcp add castor -- "C:\Users\YOU\AppData\Local\Castor\current\castor-mcp.exe"
+claude mcp add castor -- "C:\Users\YOU\AppData\Local\Castor\current\castor.exe" mcp
 # macOS
-claude mcp add castor -- /Applications/Castor.app/Contents/MacOS/castor-mcp
+claude mcp add castor -- /Applications/Castor.app/Contents/MacOS/castor mcp
 ```
 
 Add `--scope user` to make it available in every project. Check with `claude mcp list`.
 
 ### Other clients
 
-Any MCP client that can launch a stdio server: command = the `castor-mcp` path, no arguments.
+Any MCP client that can launch a stdio server: command = the `castor` app binary, argument `mcp`.
 
 ### From a development checkout
 

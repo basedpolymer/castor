@@ -3,7 +3,7 @@
 
   <h1>Castor</h1>
 
-  <p><strong>Every file tool, right on your desk. Free, offline, yours.</strong></p>
+  <p><strong>Gnaws through your files. Free, offline, yours.</strong></p>
 
   <p>
     <a href="https://github.com/basedpolymer/castor/releases/latest"><img src="assets/badges/macos.svg" alt="Available on macOS" height="40"></a>

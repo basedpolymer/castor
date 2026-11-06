@@ -13,3 +13,5 @@ tools-media.workspace = true
 tools-create.workspace = true
 tools-files.workspace = true
 image.workspace = true
+engine-pdf.workspace = true
+engine-media.workspace = true

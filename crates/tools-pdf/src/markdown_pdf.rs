@@ -43,7 +43,7 @@ impl FromMarkdown {
 // ------------------------------------------------------------------------------------------
 // Typst world: bundled fonts, in-memory files, no network, no system fonts.
 
-const MATH_FONT: &[u8] = include_bytes!("../data/NewCMMath-Regular.otf");
+const MATH_FONT: &[u8] = include_bytes!("../../../assets/fonts/NewCMMath-Regular.otf");
 
 fn fonts() -> &'static Vec<Font> {
     static F: OnceLock<Vec<Font>> = OnceLock::new();

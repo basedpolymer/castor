@@ -1,20 +1,32 @@
 //! Human formatting of sizes and durations (locale-neutral, short).
 
 /// 1536 → "1.5 KB", 19_000_000 → "19 MB". Decimal units (like Finder and Explorer's "MB" in practice).
+/// Follows the UI language: French writes "1,5 ko", "19 Mo"; other languages use a decimal comma
+/// where that is the norm (de, es, it, pt-BR) and keep KB/MB.
 pub fn bytes(n: u64) -> String {
-    const U: [&str; 5] = ["B", "KB", "MB", "GB", "TB"];
+    let lang = crate::i18n::current_language();
+    let fr = lang.starts_with("fr");
+    let comma = fr || ["de", "es", "it", "pt"].iter().any(|l| lang.starts_with(l));
+    let s = bytes_en(n, fr);
+    if comma { s.replace('.', ",") } else { s }
+}
+
+fn bytes_en(n: u64, fr: bool) -> String {
+    const EN: [&str; 5] = ["B", "KB", "MB", "GB", "TB"];
+    const FR: [&str; 5] = ["o", "ko", "Mo", "Go", "To"];
+    let units = if fr { FR } else { EN };
     let mut v = n as f64;
     let mut i = 0;
-    while v >= 1000.0 && i < U.len() - 1 {
+    while v >= 1000.0 && i < units.len() - 1 {
         v /= 1000.0;
         i += 1;
     }
     if i == 0 {
-        format!("{n} B")
+        format!("{n} {}", units[0])
     } else if v < 10.0 {
-        format!("{v:.1} {}", U[i])
+        format!("{v:.1} {}", units[i])
     } else {
-        format!("{v:.0} {}", U[i])
+        format!("{v:.0} {}", units[i])
     }
 }
 

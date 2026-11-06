@@ -16,7 +16,7 @@ path = "src/main.rs"
 default = ["tools"]
 # The real tool registry (castor-tools → every tool crate and engine). Without it the app builds
 # in minutes with only the demo tools: `--no-default-features --features demo-tools` (UI work).
-tools = ["dep:castor-tools"]
+tools = ["dep:castor-tools", "dep:castor-cli"]
 # Fake tools that exercise every UI path (all option kinds, slow job, preview, failure, no input,
 # downloads consent, unavailable, N→1, in-place + undo). Development only: never ship them.
 demo-tools = []
@@ -28,6 +28,8 @@ shots = ["gpui-kit/test-support"]
 anyhow.workspace = true
 castor-core.workspace = true
 castor-tools = { workspace = true, optional = true }
+# `castor cli …` / `castor mcp`: the CLI and MCP server run inside this binary (engines shipped once).
+castor-cli = { path = "../castor-cli", optional = true }
 serde.workspace = true
 serde_json.workspace = true
 toml.workspace = true
@@ -43,6 +45,9 @@ global-hotkey = "0.7"
 velopack = "1.3.39-g8d2844f"
 interprocess = "2.4"
 auto-launch = "0.6"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_Console", "Win32_Storage_FileSystem"] }
 
 [dev-dependencies]
 gpui-kit = { version = "0.9", features = ["test-support"] }

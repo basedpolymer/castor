@@ -45,7 +45,13 @@ impl Tool for RemoveBackground {
 
     fn options(&self) -> Vec<OptionSpec> {
         vec![
-            OptionSpec::choice("model", vec![Choice::key("best"), Choice::key("fast")], "best"),
+            // Intel Macs run BiRefNet 10-20x slower (73-193 s per 20 MP photo on an 8 GB i5):
+            // the fast ISNet model is their default; "best" stays one click away.
+            OptionSpec::choice(
+                "model",
+                vec![Choice::key("best"), Choice::key("fast")],
+                if cfg!(all(target_os = "macos", target_arch = "x86_64")) { "fast" } else { "best" },
+            ),
             OptionSpec::choice("background", vec![Choice::key("transparent"), Choice::key("color"), Choice::key("blur")], "transparent"),
             OptionSpec::color("color", "#ffffff").when(Cond::Eq("background", "color")),
             OptionSpec::int("blur", 2, 100, 20).slider().when(Cond::Eq("background", "blur")),

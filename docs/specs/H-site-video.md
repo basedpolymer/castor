@@ -33,12 +33,13 @@ No personal names anywhere (author = basedpolymer). Accessible (WCAG AA), Open G
 
 ## Video (Remotion, `video/`)
 
-60–75 s, 1920×1080 (+ a 1080×1920 cut for social), 30 fps, English captions burned in and a
-French subtitle file, no voice-over, music only if royalty-free with a clear licence (or none —
+60–75 s, 1920×1080 (+ a 1080×1920 cut for social), 30 fps, **two full language versions —
+English and French** (every on-screen text, caption and app footage in the matching language:
+record the app with `--lang fr` for the French cut), no voice-over, music only if royalty-free with a clear licence (or none —
 subtle UI sounds made with Remotion/ffmpeg are fine). Storyboard:
 1. (0–6 s) Paper texture, the bitten-diamond mark draws itself (TikZ-like stroke), "Castor".
-2. (6–15 s) "Every file tool, right on your desk." — cards of tools cascade in by family.
-3. (15–40 s) Real app footage: drop a 19 MB PDF → Compress → "212 KB"; remove a background;
+2. (6–15 s) "Gnaws through your files." — cards of tools cascade in by family.
+3. (15–40 s) Real app footage: drop a scanned PDF → Compress → its real before → after sizes; remove a background;
    trim and caption a clip; ⌘K "make this pdf smaller"; menu bar quick panel with clipboard.
    Use real screen recordings of the app (ffmpeg gdigrab on Windows, `screencapture -v` on the
    Mac) driven by `castor --page …` deterministic states — ask the coordinator for help with
@@ -57,7 +58,7 @@ house style (paper, Latin Modern, Chorus ghost initial, numbered titles, "Figure
 booktabs tables, diamond motif, family pastels; light by default, one dark variant). Produced
 from code (HTML/CSS rendered by headless Chrome, or Remotion stills) so they can be regenerated:
 `video/social/*.png` + the source.
-1. **Hero**: the mark, "Castor — every file tool, right on your desk. Free, offline, yours.",
+1. **Hero**: the mark, "Castor — gnaws through your files. Free, offline, yours.",
    a real app screenshot in a window frame.
 2. **The catalogue**: "≈ 110 tools" by family (counts + a few names per family).
 3. **Castor and Hangar** (the inspiration): a factual booktabs table — price (Hangar: one-time

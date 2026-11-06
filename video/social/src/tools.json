@@ -1,0 +1,1762 @@
+[
+ {
+  "id": "create.qr-code",
+  "family": "create",
+  "name": {
+   "en": "QR code",
+   "fr": "Code QR"
+  },
+  "desc": {
+   "en": "Links, Wi-Fi, contacts and events as stylish QR codes and printable cards — always checked to scan.",
+   "fr": "Liens, Wi-Fi, contacts et événements en codes QR soignés et cartes à imprimer — toujours vérifiés au scan."
+  },
+  "keywords": {
+   "en": "qr qrcode code wifi vcard contact link url menu scan card poster",
+   "fr": "qr code wifi contact carte lien adresse menu scanner affiche invitation"
+  }
+ },
+ {
+  "id": "create.barcode",
+  "family": "create",
+  "name": {
+   "en": "Barcode",
+   "fr": "Code-barres"
+  },
+  "desc": {
+   "en": "EAN, UPC, Code 128, Data Matrix, PDF417 and more, print-ready and checked by a scanner.",
+   "fr": "EAN, UPC, Code 128, Data Matrix, PDF417 et d’autres, prêts à imprimer et vérifiés au scanner."
+  },
+  "keywords": {
+   "en": "barcode ean upc isbn code128 code39 datamatrix pdf417 aztec gs1 label shelf",
+   "fr": "code barres ean upc isbn étiquette datamatrix pdf417 aztec gs1 rayon"
+  }
+ },
+ {
+  "id": "create.placeholder",
+  "family": "create",
+  "name": {
+   "en": "Placeholders",
+   "fr": "Images de remplacement"
+  },
+  "desc": {
+   "en": "Placeholder images of any size, or a whole set at once, with the dimensions written on them.",
+   "fr": "Des images de remplacement de toute taille, ou toute une série d’un coup, avec leurs dimensions inscrites."
+  },
+  "keywords": {
+   "en": "placeholder dummy mock image size banner wireframe blank",
+   "fr": "remplacement factice maquette image taille bannière vide"
+  }
+ },
+ {
+  "id": "create.favicon",
+  "family": "create",
+  "name": {
+   "en": "Favicon",
+   "fr": "Favicon"
+  },
+  "desc": {
+   "en": "A complete favicon pack — ICO, SVG, Apple and Android icons, manifest — from a letter, an emoji or a logo.",
+   "fr": "Un jeu de favicons complet — ICO, SVG, icônes Apple et Android, manifeste — à partir d’une lettre, d’un emoji ou d’un logo."
+  },
+  "keywords": {
+   "en": "favicon icon ico website tab pwa apple touch android manifest emoji letter",
+   "fr": "favicon icône ico site onglet pwa apple android manifeste emoji lettre"
+  }
+ },
+ {
+  "id": "create.gradient",
+  "family": "create",
+  "name": {
+   "en": "Gradients",
+   "fr": "Dégradés"
+  },
+  "desc": {
+   "en": "Soft mesh gradients with grain and light, as images of any size or seamless looping videos.",
+   "fr": "Des dégradés maillés tout en douceur, avec grain et lumière, en images de toute taille ou en vidéos en boucle parfaite."
+  },
+  "keywords": {
+   "en": "gradient mesh background wallpaper blur aurora grain loop video",
+   "fr": "dégradé maillage fond écran papier peint flou aurore grain boucle vidéo"
+  }
+ },
+ {
+  "id": "create.social-card",
+  "family": "create",
+  "name": {
+   "en": "Social card",
+   "fr": "Carte de partage"
+  },
+  "desc": {
+   "en": "Open Graph and social images from a title and a logo — or one per row of a CSV.",
+   "fr": "Images Open Graph et réseaux sociaux à partir d’un titre et d’un logo — ou une par ligne d’un CSV."
+  },
+  "keywords": {
+   "en": "og open graph social card twitter x linkedin thumbnail banner share preview image blog",
+   "fr": "og open graph carte partage réseaux sociaux miniature bannière aperçu image blog"
+  }
+ },
+ {
+  "id": "create.data-merge",
+  "family": "create",
+  "name": {
+   "en": "Data merge",
+   "fr": "Publipostage"
+  },
+  "desc": {
+   "en": "A spreadsheet and a layout become certificates, badges, labels or letters — one PDF per row or all in one.",
+   "fr": "Un tableur et une mise en page deviennent certificats, badges, étiquettes ou lettres — un PDF par ligne ou tout en un."
+  },
+  "keywords": {
+   "en": "mail merge csv spreadsheet certificates badges labels letters batch template typst",
+   "fr": "publipostage csv tableur certificats badges étiquettes lettres lot modèle typst"
+  }
+ },
+ {
+  "id": "create.html-to-image",
+  "family": "create",
+  "name": {
+   "en": "HTML to image",
+   "fr": "HTML en image"
+  },
+  "desc": {
+   "en": "Screenshots of web pages, HTML files or pasted HTML — full page, sharp at 2× or 3×.",
+   "fr": "Captures de pages web, de fichiers HTML ou de HTML collé — page entière, nette en 2× ou 3×."
+  },
+  "keywords": {
+   "en": "html screenshot web page url website capture render full page",
+   "fr": "html capture écran page web url site rendu page entière"
+  }
+ },
+ {
+  "id": "create.html-to-pdf",
+  "family": "create",
+  "name": {
+   "en": "HTML to PDF",
+   "fr": "HTML en PDF"
+  },
+  "desc": {
+   "en": "Print web pages, HTML files or pasted HTML to PDF, with your paper size, margins and page numbers.",
+   "fr": "Imprimez pages web, fichiers HTML ou HTML collé en PDF, avec format, marges et numéros de page."
+  },
+  "keywords": {
+   "en": "html pdf print web page url website save as pdf",
+   "fr": "html pdf imprimer page web url site enregistrer en pdf"
+  }
+ },
+ {
+  "id": "create.video-download",
+  "family": "create",
+  "name": {
+   "en": "Video downloader",
+   "fr": "Téléchargeur de vidéos"
+  },
+  "desc": {
+   "en": "Save videos or their audio from the links you paste, in the quality you choose.",
+   "fr": "Enregistrez des vidéos ou leur son à partir des liens collés, dans la qualité choisie."
+  },
+  "keywords": {
+   "en": "download video youtube vimeo yt-dlp save audio mp3 podcast playlist subtitles",
+   "fr": "télécharger vidéo youtube vimeo yt-dlp enregistrer audio mp3 podcast playlist sous-titres"
+  }
+ },
+ {
+  "id": "create.fonts",
+  "family": "create",
+  "name": {
+   "en": "Fonts",
+   "fr": "Polices"
+  },
+  "desc": {
+   "en": "Specimen sheets, glyph grids and font info; convert between TTF, OTF, WOFF and WOFF2.",
+   "fr": "Planches de spécimen, grilles de glyphes et infos ; conversion entre TTF, OTF, WOFF et WOFF2."
+  },
+  "keywords": {
+   "en": "font typeface specimen woff woff2 ttf otf convert glyphs installed google fonts",
+   "fr": "police caractères spécimen woff woff2 ttf otf convertir glyphes installées google fonts"
+  }
+ },
+ {
+  "id": "create.shader",
+  "family": "create",
+  "name": {
+   "en": "Shaders",
+   "fr": "Shaders"
+  },
+  "desc": {
+   "en": "Generative backgrounds — silk, waves, aurora, contour lines — as images or seamless loops.",
+   "fr": "Fonds génératifs — soie, vagues, aurore, courbes de niveau — en images ou en boucles parfaites."
+  },
+  "keywords": {
+   "en": "shader generative background waves silk aurora topography contour noise plasma dunes loop wallpaper",
+   "fr": "shader génératif fond vagues soie aurore topographie courbes niveau bruit plasma dunes boucle fond écran"
+  }
+ },
+ {
+  "id": "create.pattern",
+  "family": "create",
+  "name": {
+   "en": "Pattern & texture",
+   "fr": "Motifs et textures"
+  },
+  "desc": {
+   "en": "Seamless geometric patterns — diamonds, dots, terrazzo, hexagons… — as a tile or a full background.",
+   "fr": "Motifs géométriques sans raccord — losanges, pois, terrazzo, hexagones… — en tuile ou en fond complet."
+  },
+  "keywords": {
+   "en": "pattern texture seamless tile background polka dots stripes terrazzo geometric repeat",
+   "fr": "motif texture sans raccord tuile fond pois rayures terrazzo géométrique répétition"
+  }
+ },
+ {
+  "id": "create.watermark-tile",
+  "family": "create",
+  "name": {
+   "en": "Watermark tile",
+   "fr": "Tuile de filigrane"
+  },
+  "desc": {
+   "en": "A repeating, semi-transparent text watermark (“Confidential”, “Draft”, © name) to lay over anything.",
+   "fr": "Un filigrane de texte répété et semi-transparent (« Confidentiel », « Brouillon », © nom) à superposer à tout."
+  },
+  "keywords": {
+   "en": "watermark tile overlay confidential draft copyright proof repeat transparent",
+   "fr": "filigrane tuile superposition confidentiel brouillon copyright épreuve répétition transparent"
+  }
+ },
+ {
+  "id": "create.formula",
+  "family": "create",
+  "name": {
+   "en": "Formula",
+   "fr": "Formule"
+  },
+  "desc": {
+   "en": "Beautifully typeset maths from LaTeX or Typst, as SVG, PNG or PDF.",
+   "fr": "Des mathématiques joliment composées à partir de LaTeX ou Typst, en SVG, PNG ou PDF."
+  },
+  "keywords": {
+   "en": "formula equation latex math maths typst tex integral fraction matrix",
+   "fr": "formule équation latex maths mathématiques typst tex intégrale fraction matrice"
+  }
+ },
+ {
+  "id": "create.brand-sheet",
+  "family": "create",
+  "name": {
+   "en": "Brand sheet",
+   "fr": "Charte graphique"
+  },
+  "desc": {
+   "en": "A one-page brand sheet from your logo, colours and fonts — values, specimens and contrast checks included.",
+   "fr": "Une charte d’une page à partir de votre logo, de vos couleurs et polices — valeurs, spécimens et contrastes inclus."
+  },
+  "keywords": {
+   "en": "brand style guide identity colours palette logo fonts guidelines one pager wcag",
+   "fr": "marque charte graphique identité couleurs palette logo polices guide une page wcag"
+  }
+ },
+ {
+  "id": "create.carousel",
+  "family": "create",
+  "name": {
+   "en": "Carousel",
+   "fr": "Carrousel"
+  },
+  "desc": {
+   "en": "Multi-slide social carousels from a few text blocks and images, in one consistent template.",
+   "fr": "Des carrousels de plusieurs diapositives à partir de quelques textes et images, dans un modèle cohérent."
+  },
+  "keywords": {
+   "en": "carousel slides instagram linkedin swipe post social thread pdf",
+   "fr": "carrousel diapositives instagram linkedin balayer publication réseaux pdf"
+  }
+ },
+ {
+  "id": "create.mockup",
+  "family": "create",
+  "name": {
+   "en": "Device mockup",
+   "fr": "Maquette d’appareil"
+  },
+  "desc": {
+   "en": "Put a screenshot or a screen recording into a phone, laptop or browser window on a styled scene.",
+   "fr": "Placez une capture ou un enregistrement d’écran dans un téléphone, un portable ou une fenêtre de navigateur, sur une scène soignée."
+  },
+  "keywords": {
+   "en": "mockup device phone laptop tablet monitor browser screenshot frame presentation store portfolio",
+   "fr": "maquette appareil téléphone portable tablette écran navigateur capture cadre présentation portfolio"
+  }
+ },
+ {
+  "id": "create.audiogram",
+  "family": "create",
+  "name": {
+   "en": "Audiogram",
+   "fr": "Audiogramme"
+  },
+  "desc": {
+   "en": "Turn a podcast or voice clip into a video for social media — animated waveform, title, cover and captions.",
+   "fr": "Transformez un extrait de podcast ou de voix en vidéo pour les réseaux — onde animée, titre, couverture et sous-titres."
+  },
+  "keywords": {
+   "en": "audiogram podcast waveform audio to video social captions clip visualizer spectrum",
+   "fr": "audiogramme podcast onde audio en vidéo réseaux sous-titres extrait visualiseur spectre"
+  }
+ },
+ {
+  "id": "create.motion",
+  "family": "create",
+  "name": {
+   "en": "Motion",
+   "fr": "Animation"
+  },
+  "desc": {
+   "en": "Lower thirds, text reveals, logo stings and title cards as short clips with a transparent background.",
+   "fr": "Bandeaux de nom, textes qui apparaissent, animations de logo et cartons de titre, en clips courts sur fond transparent."
+  },
+  "keywords": {
+   "en": "motion lower third title animation logo sting intro alpha overlay text animation prores webm",
+   "fr": "animation bandeau titre logo intro alpha incrustation texte animé prores webm"
+  }
+ },
+ {
+  "id": "files.checksum",
+  "family": "files",
+  "name": {
+   "en": "Checksums",
+   "fr": "Sommes de contrôle"
+  },
+  "desc": {
+   "en": "SHA-256 fingerprints to prove a file arrived intact.",
+   "fr": "Empreintes SHA-256 pour prouver qu’un fichier est arrivé intact."
+  },
+  "keywords": {
+   "en": "hash fingerprint verify integrity",
+   "fr": "empreinte hachage vérifier intégrité somme"
+  }
+ },
+ {
+  "id": "files.rename",
+  "family": "files",
+  "name": {
+   "en": "Batch rename",
+   "fr": "Renommer en lot"
+  },
+  "desc": {
+   "en": "Rename many files at once with patterns, numbers, dates and find & replace — previewed, undoable.",
+   "fr": "Renommez des centaines de fichiers d’un coup avec modèles, numéros, dates et rechercher-remplacer — aperçu et annulation."
+  },
+  "keywords": {
+   "en": "rename batch bulk names numbering sequence regex replace exif date case",
+   "fr": "renommer lot masse noms numérotation séquence regex remplacer exif date casse"
+  }
+ },
+ {
+  "id": "files.archive",
+  "family": "files",
+  "name": {
+   "en": "Create archive",
+   "fr": "Créer une archive"
+  },
+  "desc": {
+   "en": "ZIP, 7z or TAR archives, with an optional AES-256 password, exclusions and split volumes.",
+   "fr": "Archives ZIP, 7z ou TAR, avec mot de passe AES-256 en option, exclusions et découpage en volumes."
+  },
+  "keywords": {
+   "en": "zip compress archive 7z tar gz zstd password encrypt split backup folder",
+   "fr": "zip compresser archive 7z tar gz zstd mot de passe chiffrer découper sauvegarde dossier"
+  }
+ },
+ {
+  "id": "files.extract",
+  "family": "files",
+  "name": {
+   "en": "Extract archive",
+   "fr": "Extraire une archive"
+  },
+  "desc": {
+   "en": "Open ZIP, 7z and TAR archives (also password-protected and split), safely, into a folder.",
+   "fr": "Ouvrez les archives ZIP, 7z et TAR (même protégées ou découpées), en toute sécurité, dans un dossier."
+  },
+  "keywords": {
+   "en": "unzip extract decompress zip 7z tar gz bz2 xz zstd open archive uncompress",
+   "fr": "dézipper extraire décompresser zip 7z tar gz bz2 xz zstd ouvrir archive"
+  }
+ },
+ {
+  "id": "files.dates",
+  "family": "files",
+  "name": {
+   "en": "Change file dates",
+   "fr": "Modifier les dates"
+  },
+  "desc": {
+   "en": "Set created and modified dates to the photo’s capture date, to a date of your choice, or shift them.",
+   "fr": "Réglez les dates de création et de modification sur la prise de vue, sur une date choisie, ou décalez-les."
+  },
+  "keywords": {
+   "en": "date timestamp created modified exif touch time shift timezone photos",
+   "fr": "date horodatage création modification exif heure décaler fuseau photos"
+  }
+ },
+ {
+  "id": "files.sort",
+  "family": "files",
+  "name": {
+   "en": "Sort & route",
+   "fr": "Trier et ranger"
+  },
+  "desc": {
+   "en": "Tidy files into folders by type, year, month, camera, size or your own rules — every move undoable.",
+   "fr": "Rangez les fichiers dans des dossiers par type, année, mois, appareil, taille ou vos règles — chaque déplacement s’annule."
+  },
+  "keywords": {
+   "en": "sort organize folders route tidy downloads photos by date camera rules clean",
+   "fr": "trier ranger organiser dossiers téléchargements photos par date appareil règles nettoyer"
+  }
+ },
+ {
+  "id": "files.duplicates",
+  "family": "files",
+  "name": {
+   "en": "Find duplicates",
+   "fr": "Trouver les doublons"
+  },
+  "desc": {
+   "en": "Find identical files byte for byte, see how much space they waste, set the copies aside — never deleted.",
+   "fr": "Trouvez les fichiers identiques octet par octet, voyez la place perdue, mettez les copies de côté — jamais supprimées."
+  },
+  "keywords": {
+   "en": "duplicates dedupe same files copies clean up free space hash identical",
+   "fr": "doublons dédoublonner copies identiques nettoyer libérer espace empreinte"
+  }
+ },
+ {
+  "id": "files.identify",
+  "family": "files",
+  "name": {
+   "en": "What is this file?",
+   "fr": "Quel est ce fichier ?"
+  },
+  "desc": {
+   "en": "Find the real type of files with no or wrong extensions — 200+ types, with confidence — and fix them.",
+   "fr": "Trouvez le vrai type des fichiers sans extension ou mal nommés — plus de 200 types, avec indice de confiance — et corrigez-les."
+  },
+  "keywords": {
+   "en": "identify file type what is this file unknown extension wrong magic trid mime detect format",
+   "fr": "identifier type fichier inconnu extension erronée magique trid mime détecter format"
+  }
+ },
+ {
+  "id": "files.metadata",
+  "family": "files",
+  "name": {
+   "en": "Metadata",
+   "fr": "Métadonnées"
+  },
+  "desc": {
+   "en": "See, edit or remove the hidden information in PDFs, photos, music and videos.",
+   "fr": "Voyez, modifiez ou supprimez les informations cachées des PDF, photos, musiques et vidéos."
+  },
+  "keywords": {
+   "en": "metadata tags exif id3 properties author title strip privacy gps xmp",
+   "fr": "métadonnées tags exif id3 propriétés auteur titre supprimer vie privée gps xmp"
+  }
+ },
+ {
+  "id": "image.remove-background",
+  "family": "image",
+  "name": {
+   "en": "Remove background",
+   "fr": "Supprimer l’arrière-plan"
+  },
+  "desc": {
+   "en": "Cut out the subject with a local model, hair and small details included.",
+   "fr": "Détoure le sujet avec un modèle local, cheveux et petits détails compris."
+  },
+  "keywords": {
+   "en": "background remove cutout transparent subject isolate product erase",
+   "fr": "arrière-plan fond détourer détourage transparent sujet isoler produit effacer"
+  }
+ },
+ {
+  "id": "image.upscale",
+  "family": "image",
+  "name": {
+   "en": "AI upscale",
+   "fr": "Agrandir avec l’IA"
+  },
+  "desc": {
+   "en": "Enlarge 2×, 3× or 4× with a local super-resolution model: sharp, not blurry.",
+   "fr": "Agrandit ×2, ×3 ou ×4 avec un modèle local de super-résolution : net, pas flou."
+  },
+  "keywords": {
+   "en": "upscale enlarge super resolution enhance bigger sharpen esrgan",
+   "fr": "agrandir agrandissement super résolution améliorer netteté plus grand"
+  }
+ },
+ {
+  "id": "image.convert",
+  "family": "image",
+  "name": {
+   "en": "Convert images",
+   "fr": "Convertir des images"
+  },
+  "desc": {
+   "en": "HEIC, RAW, SVG, AVIF and more to JPG, PNG, WebP, AVIF, GIF…",
+   "fr": "HEIC, RAW, SVG, AVIF et d’autres vers JPG, PNG, WebP, AVIF, GIF…"
+  },
+  "keywords": {
+   "en": "convert format change heic jpg png webp avif raw svg gif tiff ico",
+   "fr": "convertir format changer heic jpg png webp avif raw svg gif tiff ico"
+  }
+ },
+ {
+  "id": "image.vectorize",
+  "family": "image",
+  "name": {
+   "en": "Vectorize image",
+   "fr": "Vectoriser une image"
+  },
+  "desc": {
+   "en": "Trace logos, drawings and photos into scalable SVG.",
+   "fr": "Trace logos, dessins et photos en SVG redimensionnable."
+  },
+  "keywords": {
+   "en": "vectorize svg trace vector logo scalable illustrator",
+   "fr": "vectoriser svg tracer vecteur logo vectoriel illustrator"
+  }
+ },
+ {
+  "id": "image.compress",
+  "family": "image",
+  "name": {
+   "en": "Compress images",
+   "fr": "Compresser des images"
+  },
+  "desc": {
+   "en": "Much smaller files that look the same. Never bigger than the original.",
+   "fr": "Des fichiers bien plus légers qui gardent le même aspect. Jamais plus gros que l’original."
+  },
+  "keywords": {
+   "en": "compress optimize smaller reduce shrink tinypng squoosh size kb web",
+   "fr": "compresser optimiser alléger réduire poids taille ko web"
+  }
+ },
+ {
+  "id": "image.palette",
+  "family": "image",
+  "name": {
+   "en": "Colour palette",
+   "fr": "Palette de couleurs"
+  },
+  "desc": {
+   "en": "The dominant colours of an image, as swatches and palette files.",
+   "fr": "Les couleurs dominantes d’une image, en nuancier et fichiers de palette."
+  },
+  "keywords": {
+   "en": "palette colours colors swatches dominant hex theme extract",
+   "fr": "palette couleurs nuancier dominantes hex thème extraire"
+  }
+ },
+ {
+  "id": "image.resize",
+  "family": "image",
+  "name": {
+   "en": "Resize images",
+   "fr": "Redimensionner des images"
+  },
+  "desc": {
+   "en": "Exact sizes for social networks, shops and screens, sharp and quick.",
+   "fr": "Les bonnes tailles pour réseaux sociaux, boutiques et écrans, nettes et rapides."
+  },
+  "keywords": {
+   "en": "resize scale dimensions smaller bigger instagram thumbnail width height pixels",
+   "fr": "redimensionner taille dimensions réduire agrandir instagram miniature largeur hauteur pixels"
+  }
+ },
+ {
+  "id": "image.crop",
+  "family": "image",
+  "name": {
+   "en": "Crop image",
+   "fr": "Recadrer une image"
+  },
+  "desc": {
+   "en": "Crop to a ratio, cut margins, or trim plain borders automatically.",
+   "fr": "Recadre à un format, coupe des marges ou retire les bordures unies automatiquement."
+  },
+  "keywords": {
+   "en": "crop trim cut aspect ratio square borders margins",
+   "fr": "recadrer rogner couper format ratio carré bordures marges"
+  }
+ },
+ {
+  "id": "image.rotate",
+  "family": "image",
+  "name": {
+   "en": "Rotate & flip",
+   "fr": "Pivoter et retourner"
+  },
+  "desc": {
+   "en": "Turn, mirror or straighten images; fix sideways phone photos.",
+   "fr": "Tourne, retourne ou redresse les images ; remet d’aplomb les photos de téléphone."
+  },
+  "keywords": {
+   "en": "rotate flip mirror turn orientation straighten upright sideways",
+   "fr": "pivoter tourner retourner miroir orientation redresser couché"
+  }
+ },
+ {
+  "id": "image.strip-metadata",
+  "family": "image",
+  "name": {
+   "en": "Strip metadata",
+   "fr": "Supprimer les métadonnées"
+  },
+  "desc": {
+   "en": "Remove location, camera and personal data without touching the pixels.",
+   "fr": "Retire la position, l’appareil et les données personnelles sans toucher aux pixels."
+  },
+  "keywords": {
+   "en": "exif gps location privacy metadata remove clean xmp iptc camera",
+   "fr": "exif gps position localisation vie privée métadonnées supprimer nettoyer appareil"
+  }
+ },
+ {
+  "id": "image.seo",
+  "family": "image",
+  "name": {
+   "en": "SEO image",
+   "fr": "Image SEO"
+  },
+  "desc": {
+   "en": "Search-friendly file names plus title, alt text and keywords written into the image.",
+   "fr": "Des noms de fichiers lisibles par les moteurs, plus titre, texte alternatif et mots-clés inscrits dans l’image."
+  },
+  "keywords": {
+   "en": "seo alt text rename slug keywords metadata xmp iptc copyright google images",
+   "fr": "seo référencement texte alternatif renommer mots-clés métadonnées xmp iptc copyright"
+  }
+ },
+ {
+  "id": "image.redact",
+  "family": "image",
+  "name": {
+   "en": "Redact image",
+   "fr": "Caviarder une image"
+  },
+  "desc": {
+   "en": "Blur faces, text and areas you choose; metadata is removed too.",
+   "fr": "Floute visages, textes et zones choisies ; les métadonnées sont aussi retirées."
+  },
+  "keywords": {
+   "en": "redact blur faces anonymize privacy pixelate hide censor gdpr",
+   "fr": "caviarder flouter visages anonymiser vie privée pixeliser masquer censurer rgpd"
+  }
+ },
+ {
+  "id": "image.watermark",
+  "family": "image",
+  "name": {
+   "en": "Watermark",
+   "fr": "Filigrane"
+  },
+  "desc": {
+   "en": "Add your name or logo, in a corner or tiled across the image.",
+   "fr": "Ajoute votre nom ou votre logo, dans un coin ou en mosaïque sur l’image."
+  },
+  "keywords": {
+   "en": "watermark logo copyright stamp protect brand signature overlay",
+   "fr": "filigrane logo copyright tampon protéger marque signature"
+  }
+ },
+ {
+  "id": "image.beautify",
+  "family": "image",
+  "name": {
+   "en": "Beautify shot",
+   "fr": "Embellir une capture"
+  },
+  "desc": {
+   "en": "Put screenshots on a painted background with shadow, corners and a window frame.",
+   "fr": "Pose vos captures sur un fond peint, avec ombre, coins arrondis et cadre de fenêtre."
+  },
+  "keywords": {
+   "en": "screenshot beautify mockup background shadow frame window pretty social showcase",
+   "fr": "capture d'écran embellir maquette fond ombre cadre fenêtre réseaux présentation"
+  }
+ },
+ {
+  "id": "image.icon-pack",
+  "family": "image",
+  "name": {
+   "en": "Icon pack",
+   "fr": "Pack d’icônes"
+  },
+  "desc": {
+   "en": "Every icon size from one image: favicon, ICO, ICNS, iOS and Android.",
+   "fr": "Toutes les tailles d’icônes depuis une seule image : favicon, ICO, ICNS, iOS et Android."
+  },
+  "keywords": {
+   "en": "icon favicon ico icns app icon pwa manifest android ios apple-touch-icon",
+   "fr": "icône favicon ico icns icône d'application pwa manifeste android ios"
+  }
+ },
+ {
+  "id": "image.contact-sheet",
+  "family": "image",
+  "name": {
+   "en": "Contact sheet",
+   "fr": "Planche contact"
+  },
+  "desc": {
+   "en": "Many images on one page: a grid with captions, as PDF or PNG.",
+   "fr": "Beaucoup d’images sur une page : une grille légendée, en PDF ou PNG."
+  },
+  "keywords": {
+   "en": "contact sheet grid thumbnails overview proof index catalog collage",
+   "fr": "planche contact grille miniatures aperçu épreuve index catalogue collage"
+  }
+ },
+ {
+  "id": "image.compare",
+  "family": "image",
+  "name": {
+   "en": "Image comparison",
+   "fr": "Comparer des images"
+  },
+  "desc": {
+   "en": "Before / after as an interactive slider page, an animated GIF or side by side.",
+   "fr": "Avant / après en page à curseur, en GIF animé ou côte à côte."
+  },
+  "keywords": {
+   "en": "compare before after slider diff side by side versus wipe",
+   "fr": "comparer avant après curseur différence côte à côte"
+  }
+ },
+ {
+  "id": "image.stylize",
+  "family": "image",
+  "name": {
+   "en": "Stylize",
+   "fr": "Styliser"
+  },
+  "desc": {
+   "en": "Film, vintage, noir, duotone, halftone, sketch and more.",
+   "fr": "Pellicule, vintage, noir et blanc, duotone, trame, croquis et plus."
+  },
+  "keywords": {
+   "en": "filter effect look film vintage black and white duotone halftone sketch retro",
+   "fr": "filtre effet style pellicule vintage noir et blanc duotone trame croquis rétro"
+  }
+ },
+ {
+  "id": "image.duplicates",
+  "family": "image",
+  "name": {
+   "en": "Find duplicate images",
+   "fr": "Trouver les images en double"
+  },
+  "desc": {
+   "en": "Spot identical and near-identical pictures, even resized or recompressed.",
+   "fr": "Repère les images identiques ou presque, même redimensionnées ou recompressées."
+  },
+  "keywords": {
+   "en": "duplicates similar same dedupe clean up copies",
+   "fr": "doublons similaires identiques dédoublonner ranger copies"
+  }
+ },
+ {
+  "id": "image.optimize-gif",
+  "family": "image",
+  "name": {
+   "en": "Optimize GIF",
+   "fr": "Optimiser un GIF"
+  },
+  "desc": {
+   "en": "Lighter animated GIFs with smarter colours, smaller size or fewer frames.",
+   "fr": "Des GIF animés plus légers : couleurs plus malignes, taille ou images par seconde réduites."
+  },
+  "keywords": {
+   "en": "gif animated optimize compress smaller gifski meme",
+   "fr": "gif animé optimiser compresser alléger gifski mème"
+  }
+ },
+ {
+  "id": "image.optimize-svg",
+  "family": "image",
+  "name": {
+   "en": "Optimize SVG",
+   "fr": "Optimiser un SVG"
+  },
+  "desc": {
+   "en": "Smaller SVG files: editor data, comments and extra digits removed.",
+   "fr": "Des SVG plus légers : données d’éditeur, commentaires et décimales superflues retirés."
+  },
+  "keywords": {
+   "en": "svg minify optimize svgo clean vector smaller",
+   "fr": "svg minifier optimiser svgo nettoyer vectoriel alléger"
+  }
+ },
+ {
+  "id": "image.colorblind",
+  "family": "image",
+  "name": {
+   "en": "Colour-blind check",
+   "fr": "Test daltonisme"
+  },
+  "desc": {
+   "en": "See your image as people with colour vision deficiencies do, with a contrast report.",
+   "fr": "Voyez votre image comme les personnes daltoniennes, avec un rapport de contraste."
+  },
+  "keywords": {
+   "en": "color blind colorblind daltonism accessibility protanopia deuteranopia tritanopia a11y contrast",
+   "fr": "daltonisme daltonien accessibilité protanopie deutéranopie tritanopie contraste"
+  }
+ },
+ {
+  "id": "video.trim",
+  "family": "video",
+  "name": {
+   "en": "Trim video",
+   "fr": "Couper une vidéo"
+  },
+  "desc": {
+   "en": "Keep only the part you need.",
+   "fr": "Ne garder que le passage utile."
+  },
+  "keywords": {
+   "en": "cut clip shorten start end range",
+   "fr": "couper extrait raccourcir début fin passage"
+  }
+ },
+ {
+  "id": "video.convert",
+  "family": "video",
+  "name": {
+   "en": "Convert video",
+   "fr": "Convertir une vidéo"
+  },
+  "desc": {
+   "en": "MP4, MOV, MKV, WebM, AVI or GIF — without quality loss when possible.",
+   "fr": "MP4, MOV, MKV, WebM, AVI ou GIF — sans perte quand c’est possible."
+  },
+  "keywords": {
+   "en": "format mp4 mov mkv webm avi remux transcode codec",
+   "fr": "format mp4 mov mkv webm avi conteneur transcoder codec"
+  }
+ },
+ {
+  "id": "video.extract-audio",
+  "family": "video",
+  "name": {
+   "en": "Extract audio",
+   "fr": "Extraire l’audio"
+  },
+  "desc": {
+   "en": "The soundtrack as an audio file, untouched when possible.",
+   "fr": "La bande-son en fichier audio, intacte si possible."
+  },
+  "keywords": {
+   "en": "soundtrack mp3 audio rip sound music",
+   "fr": "bande-son mp3 audio son musique"
+  }
+ },
+ {
+  "id": "video.to-gif",
+  "family": "video",
+  "name": {
+   "en": "Video to GIF",
+   "fr": "Vidéo en GIF"
+  },
+  "desc": {
+   "en": "Animated GIFs with clean colours.",
+   "fr": "Des GIF animés aux couleurs propres."
+  },
+  "keywords": {
+   "en": "gif animated animation meme loop",
+   "fr": "gif animé animation mème boucle"
+  }
+ },
+ {
+  "id": "video.compress",
+  "family": "video",
+  "name": {
+   "en": "Compress video",
+   "fr": "Compresser une vidéo"
+  },
+  "desc": {
+   "en": "Smaller videos that still look right.",
+   "fr": "Des vidéos plus légères qui restent belles."
+  },
+  "keywords": {
+   "en": "shrink smaller reduce size email discord whatsapp h264 hevc av1",
+   "fr": "réduire alléger taille poids courriel discord whatsapp h264 hevc av1"
+  }
+ },
+ {
+  "id": "video.split",
+  "family": "video",
+  "name": {
+   "en": "Split video",
+   "fr": "Découper une vidéo"
+  },
+  "desc": {
+   "en": "Equal parts, fixed lengths or scene changes.",
+   "fr": "Parts égales, durée fixe ou changements de plan."
+  },
+  "keywords": {
+   "en": "cut parts segments chunks scenes chapters",
+   "fr": "découper parties segments morceaux plans chapitres"
+  }
+ },
+ {
+  "id": "video.resize",
+  "family": "video",
+  "name": {
+   "en": "Resize video",
+   "fr": "Redimensionner une vidéo"
+  },
+  "desc": {
+   "en": "1080p, 720p, exact size or percentage.",
+   "fr": "1080p, 720p, taille exacte ou pourcentage."
+  },
+  "keywords": {
+   "en": "scale resolution 1080p 720p 4k downscale upscale dimensions",
+   "fr": "échelle résolution 1080p 720p 4k réduire agrandir dimensions"
+  }
+ },
+ {
+  "id": "video.crop",
+  "family": "video",
+  "name": {
+   "en": "Crop video",
+   "fr": "Recadrer une vidéo"
+  },
+  "desc": {
+   "en": "9:16, 1:1, 4:5… or remove black bars.",
+   "fr": "9:16, 1:1, 4:5… ou supprimer les bandes noires."
+  },
+  "keywords": {
+   "en": "aspect ratio vertical square reels tiktok shorts black bars letterbox",
+   "fr": "format ratio vertical carré reels tiktok shorts bandes noires"
+  }
+ },
+ {
+  "id": "video.rotate",
+  "family": "video",
+  "name": {
+   "en": "Rotate video",
+   "fr": "Pivoter une vidéo"
+  },
+  "desc": {
+   "en": "Turn or flip, losslessly when possible.",
+   "fr": "Tourner ou retourner, sans perte si possible."
+  },
+  "keywords": {
+   "en": "turn flip mirror sideways portrait landscape upside down orientation",
+   "fr": "tourner retourner miroir portrait paysage à l'envers orientation"
+  }
+ },
+ {
+  "id": "video.speed",
+  "family": "video",
+  "name": {
+   "en": "Change speed",
+   "fr": "Changer la vitesse"
+  },
+  "desc": {
+   "en": "Faster or slower, from 0.25× to 4×.",
+   "fr": "Plus vite ou plus lent, de 0,25× à 4×."
+  },
+  "keywords": {
+   "en": "fast slow motion timelapse faster slower tempo",
+   "fr": "rapide ralenti accéléré vitesse tempo"
+  }
+ },
+ {
+  "id": "audio.speed",
+  "family": "audio",
+  "name": {
+   "en": "Audio speed",
+   "fr": "Vitesse audio"
+  },
+  "desc": {
+   "en": "Faster or slower, pitch kept or shifted.",
+   "fr": "Plus vite ou plus lent, hauteur gardée ou décalée."
+  },
+  "keywords": {
+   "en": "fast slow tempo pitch nightcore faster slower podcast",
+   "fr": "rapide lent tempo hauteur nightcore accélérer ralentir podcast"
+  }
+ },
+ {
+  "id": "video.mute",
+  "family": "video",
+  "name": {
+   "en": "Mute video",
+   "fr": "Couper le son"
+  },
+  "desc": {
+   "en": "Remove the sound, keep the picture untouched.",
+   "fr": "Retirer le son, l’image reste intacte."
+  },
+  "keywords": {
+   "en": "silent remove audio no sound strip audio",
+   "fr": "muet retirer son sans son supprimer audio"
+  }
+ },
+ {
+  "id": "video.join",
+  "family": "video",
+  "name": {
+   "en": "Join videos",
+   "fr": "Assembler des vidéos"
+  },
+  "desc": {
+   "en": "One video from many, in queue order.",
+   "fr": "Une vidéo à partir de plusieurs, dans l’ordre de la file."
+  },
+  "keywords": {
+   "en": "merge combine concatenate append stitch",
+   "fr": "fusionner combiner concaténer assembler coller"
+  }
+ },
+ {
+  "id": "video.insert-clips",
+  "family": "video",
+  "name": {
+   "en": "Insert clips",
+   "fr": "Insérer des clips"
+  },
+  "desc": {
+   "en": "Intro, a clip at the first pause, outro.",
+   "fr": "Intro, un clip à la première pause, outro."
+  },
+  "keywords": {
+   "en": "intro outro ad sponsor bumper insert splice",
+   "fr": "intro outro pub sponsor jingle insérer"
+  }
+ },
+ {
+  "id": "video.watermark",
+  "family": "video",
+  "name": {
+   "en": "Watermark video",
+   "fr": "Filigraner une vidéo"
+  },
+  "desc": {
+   "en": "A logo or a line of text, where you want it.",
+   "fr": "Un logo ou une ligne de texte, où vous voulez."
+  },
+  "keywords": {
+   "en": "logo brand overlay copyright stamp text",
+   "fr": "logo marque incrustation copyright tampon texte"
+  }
+ },
+ {
+  "id": "video.captions",
+  "family": "video",
+  "name": {
+   "en": "Caption video",
+   "fr": "Sous-titrer une vidéo"
+  },
+  "desc": {
+   "en": "Captions from speech or a subtitle file, in style.",
+   "fr": "Des sous-titres depuis la parole ou un fichier, avec du style."
+  },
+  "keywords": {
+   "en": "subtitles subtitle srt burn karaoke reels tiktok accessibility whisper",
+   "fr": "sous-titres srt incruster karaoké reels tiktok accessibilité whisper"
+  }
+ },
+ {
+  "id": "video.add-audio",
+  "family": "video",
+  "name": {
+   "en": "Add audio",
+   "fr": "Ajouter de l’audio"
+  },
+  "desc": {
+   "en": "Replace the sound or mix in music.",
+   "fr": "Remplacer le son ou ajouter une musique."
+  },
+  "keywords": {
+   "en": "music soundtrack background music voiceover replace audio dub mix",
+   "fr": "musique bande-son fond sonore voix off remplacer audio doublage mixer"
+  }
+ },
+ {
+  "id": "video.frames",
+  "family": "video",
+  "name": {
+   "en": "Extract frames",
+   "fr": "Extraire des images"
+  },
+  "desc": {
+   "en": "Stills, thumbnails or a contact sheet.",
+   "fr": "Des images fixes, des vignettes ou une planche contact."
+  },
+  "keywords": {
+   "en": "screenshot still thumbnail snapshot contact sheet storyboard image export frames",
+   "fr": "capture image fixe vignette planche contact storyboard exporter images"
+  }
+ },
+ {
+  "id": "video.remove-silences",
+  "family": "video",
+  "name": {
+   "en": "Cut silences",
+   "fr": "Couper les silences"
+  },
+  "desc": {
+   "en": "Remove pauses automatically, sound and picture in sync.",
+   "fr": "Retirer les pauses automatiquement, son et image synchronisés."
+  },
+  "keywords": {
+   "en": "jump cut pauses dead air silence tighten podcast vlog auto cut",
+   "fr": "jump cut pauses blancs silence resserrer podcast vlog coupe auto"
+  }
+ },
+ {
+  "id": "video.stabilize",
+  "family": "video",
+  "name": {
+   "en": "Stabilize video",
+   "fr": "Stabiliser une vidéo"
+  },
+  "desc": {
+   "en": "Steadier handheld footage.",
+   "fr": "Des images tournées à la main plus stables."
+  },
+  "keywords": {
+   "en": "shaky steady stabilise gimbal smooth handheld deshake",
+   "fr": "tremblement stable stabiliser fluide main levée"
+  }
+ },
+ {
+  "id": "audio.transcribe",
+  "family": "audio",
+  "name": {
+   "en": "Transcribe",
+   "fr": "Transcrire"
+  },
+  "desc": {
+   "en": "Speech to text, subtitles or documents, offline.",
+   "fr": "La parole en texte, sous-titres ou documents, hors ligne."
+  },
+  "keywords": {
+   "en": "speech to text subtitles whisper dictation captions transcript interview podcast",
+   "fr": "parole texte sous-titres whisper dictée transcription entretien podcast"
+  }
+ },
+ {
+  "id": "audio.merge",
+  "family": "audio",
+  "name": {
+   "en": "Merge audio",
+   "fr": "Fusionner des audios"
+  },
+  "desc": {
+   "en": "One after another, or layered.",
+   "fr": "L’un après l’autre, ou superposés."
+  },
+  "keywords": {
+   "en": "join combine concatenate mix layer overlay stitch playlist crossfade",
+   "fr": "joindre combiner concaténer mixer superposer assembler fondu enchaîné"
+  }
+ },
+ {
+  "id": "audio.convert",
+  "family": "audio",
+  "name": {
+   "en": "Convert audio",
+   "fr": "Convertir un audio"
+  },
+  "desc": {
+   "en": "MP3, M4A, WAV, FLAC, OGG, Opus, AIFF — bit depth kept.",
+   "fr": "MP3, M4A, WAV, FLAC, OGG, Opus, AIFF — profondeur gardée."
+  },
+  "keywords": {
+   "en": "mp3 wav flac m4a aac ogg opus aiff alac format transcode",
+   "fr": "mp3 wav flac m4a aac ogg opus aiff alac format transcoder"
+  }
+ },
+ {
+  "id": "audio.compress",
+  "family": "audio",
+  "name": {
+   "en": "Compress audio",
+   "fr": "Compresser un audio"
+  },
+  "desc": {
+   "en": "Smaller audio files, never larger than before.",
+   "fr": "Des fichiers audio plus légers, jamais plus gros qu’avant."
+  },
+  "keywords": {
+   "en": "shrink smaller reduce bitrate podcast voice memo email",
+   "fr": "réduire alléger débit podcast mémo vocal courriel"
+  }
+ },
+ {
+  "id": "audio.trim",
+  "family": "audio",
+  "name": {
+   "en": "Trim audio",
+   "fr": "Couper un audio"
+  },
+  "desc": {
+   "en": "Keep only the part you need.",
+   "fr": "Ne garder que le passage utile."
+  },
+  "keywords": {
+   "en": "cut clip shorten start end range ringtone",
+   "fr": "couper extrait raccourcir début fin sonnerie"
+  }
+ },
+ {
+  "id": "audio.split",
+  "family": "audio",
+  "name": {
+   "en": "Split audio",
+   "fr": "Découper un audio"
+  },
+  "desc": {
+   "en": "At pauses, by length or in equal parts.",
+   "fr": "Aux pauses, par durée ou en parts égales."
+  },
+  "keywords": {
+   "en": "cut parts segments chunks pauses silence tracks",
+   "fr": "découper parties segments morceaux pauses silence pistes"
+  }
+ },
+ {
+  "id": "audio.normalize",
+  "family": "audio",
+  "name": {
+   "en": "Volume & normalize",
+   "fr": "Volume et normalisation"
+  },
+  "desc": {
+   "en": "Even loudness for podcasts, streaming or broadcast.",
+   "fr": "Un volume régulier pour podcast, streaming ou diffusion."
+  },
+  "keywords": {
+   "en": "volume loudness lufs louder quieter level ebu r128 podcast gain",
+   "fr": "volume sonie lufs plus fort moins fort niveau ebu r128 podcast gain"
+  }
+ },
+ {
+  "id": "audio.denoise",
+  "family": "audio",
+  "name": {
+   "en": "Denoise",
+   "fr": "Réduire le bruit"
+  },
+  "desc": {
+   "en": "Less hiss, hum and background noise.",
+   "fr": "Moins de souffle, de ronflement et de bruit de fond."
+  },
+  "keywords": {
+   "en": "noise hiss hum background noise clean rnnoise voice podcast fan",
+   "fr": "bruit souffle ronflement bruit de fond nettoyer rnnoise voix podcast ventilateur"
+  }
+ },
+ {
+  "id": "pdf.compress",
+  "family": "pdf",
+  "name": {
+   "en": "Compress PDF",
+   "fr": "Compresser un PDF"
+  },
+  "desc": {
+   "en": "Shrink the file while text stays sharp.",
+   "fr": "Alléger le fichier en gardant un texte net."
+  },
+  "keywords": {
+   "en": "shrink smaller reduce size optimize email",
+   "fr": "réduire alléger compresser taille poids optimiser mail"
+  }
+ },
+ {
+  "id": "pdf.merge",
+  "family": "pdf",
+  "name": {
+   "en": "Merge PDF",
+   "fr": "Fusionner des PDF"
+  },
+  "desc": {
+   "en": "Combine files into one PDF, in queue order.",
+   "fr": "Assembler des fichiers en un seul PDF, dans l’ordre de la file."
+  },
+  "keywords": {
+   "en": "combine join append concatenate bind",
+   "fr": "fusionner assembler joindre combiner regrouper"
+  }
+ },
+ {
+  "id": "pdf.split",
+  "family": "pdf",
+  "name": {
+   "en": "Split PDF",
+   "fr": "Diviser un PDF"
+  },
+  "desc": {
+   "en": "Cut a PDF into several files.",
+   "fr": "Découper un PDF en plusieurs fichiers."
+  },
+  "keywords": {
+   "en": "separate divide burst cut pages",
+   "fr": "séparer diviser découper scinder pages"
+  }
+ },
+ {
+  "id": "pdf.ocr",
+  "family": "pdf",
+  "name": {
+   "en": "OCR PDF",
+   "fr": "OCR d’un PDF"
+  },
+  "desc": {
+   "en": "Make scanned PDFs searchable and selectable.",
+   "fr": "Rendre les PDF scannés consultables et sélectionnables."
+  },
+  "keywords": {
+   "en": "searchable scan recognize tesseract text layer copy",
+   "fr": "ocr scan numérisation reconnaissance texte recherche copier"
+  }
+ },
+ {
+  "id": "pdf.redact",
+  "family": "pdf",
+  "name": {
+   "en": "Redact PDF",
+   "fr": "Caviarder un PDF"
+  },
+  "desc": {
+   "en": "Really remove sensitive text, not just hide it.",
+   "fr": "Supprimer vraiment le texte sensible, pas seulement le masquer."
+  },
+  "keywords": {
+   "en": "censor black out anonymize gdpr remove text privacy",
+   "fr": "caviarder masquer anonymiser rgpd supprimer confidentialité"
+  }
+ },
+ {
+  "id": "pdf.sign",
+  "family": "pdf",
+  "name": {
+   "en": "Sign PDF",
+   "fr": "Signer un PDF"
+  },
+  "desc": {
+   "en": "Add your signature: typed in a handwriting font, or from an image.",
+   "fr": "Ajouter votre signature : tapée dans une écriture manuscrite, ou depuis une image."
+  },
+  "keywords": {
+   "en": "signature autograph initials esign contract",
+   "fr": "signature signer parapher contrat initiales"
+  }
+ },
+ {
+  "id": "pdf.encrypt",
+  "family": "pdf",
+  "name": {
+   "en": "Encrypt PDF",
+   "fr": "Protéger un PDF"
+  },
+  "desc": {
+   "en": "Lock a PDF with a password (AES-256).",
+   "fr": "Verrouiller un PDF par mot de passe (AES-256)."
+  },
+  "keywords": {
+   "en": "password protect lock secure aes",
+   "fr": "mot de passe protéger verrouiller chiffrer sécuriser"
+  }
+ },
+ {
+  "id": "pdf.unlock",
+  "family": "pdf",
+  "name": {
+   "en": "Unlock PDF",
+   "fr": "Déverrouiller un PDF"
+  },
+  "desc": {
+   "en": "Remove the password from a PDF you can open.",
+   "fr": "Retirer le mot de passe d’un PDF que vous pouvez ouvrir."
+  },
+  "keywords": {
+   "en": "decrypt remove password unprotect open",
+   "fr": "déverrouiller retirer mot de passe déchiffrer"
+  }
+ },
+ {
+  "id": "pdf.to-images",
+  "family": "pdf",
+  "name": {
+   "en": "PDF to images",
+   "fr": "PDF en images"
+  },
+  "desc": {
+   "en": "Export pages as PNG, JPG, WebP or TIFF.",
+   "fr": "Exporter les pages en PNG, JPG, WebP ou TIFF."
+  },
+  "keywords": {
+   "en": "convert jpg png render rasterize export",
+   "fr": "convertir jpg png image exporter rendu"
+  }
+ },
+ {
+  "id": "pdf.organize",
+  "family": "pdf",
+  "name": {
+   "en": "Organize pages",
+   "fr": "Organiser les pages"
+  },
+  "desc": {
+   "en": "Reorder, delete and rotate pages.",
+   "fr": "Réordonner, supprimer et pivoter des pages."
+  },
+  "keywords": {
+   "en": "reorder arrange delete remove move pages sort",
+   "fr": "réordonner organiser supprimer déplacer trier pages"
+  }
+ },
+ {
+  "id": "pdf.rotate",
+  "family": "pdf",
+  "name": {
+   "en": "Rotate PDF",
+   "fr": "Pivoter un PDF"
+  },
+  "desc": {
+   "en": "Turn all pages, or only some.",
+   "fr": "Faire pivoter toutes les pages, ou quelques-unes."
+  },
+  "keywords": {
+   "en": "turn orientation landscape portrait flip",
+   "fr": "pivoter tourner orientation paysage portrait"
+  }
+ },
+ {
+  "id": "pdf.extract-pages",
+  "family": "pdf",
+  "name": {
+   "en": "Extract pages",
+   "fr": "Extraire des pages"
+  },
+  "desc": {
+   "en": "Copy chosen pages into a new PDF.",
+   "fr": "Copier les pages choisies dans un nouveau PDF."
+  },
+  "keywords": {
+   "en": "select pick subset pages copy",
+   "fr": "extraire sélectionner pages copier"
+  }
+ },
+ {
+  "id": "pdf.crop",
+  "family": "pdf",
+  "name": {
+   "en": "Crop PDF",
+   "fr": "Rogner un PDF"
+  },
+  "desc": {
+   "en": "Trim margins, or cut away the white around the content.",
+   "fr": "Rogner les marges, ou couper le blanc autour du contenu."
+  },
+  "keywords": {
+   "en": "trim margins whitespace cut border",
+   "fr": "rogner marges recadrer blanc bordure"
+  }
+ },
+ {
+  "id": "pdf.attach-to-each",
+  "family": "pdf",
+  "name": {
+   "en": "Attach to each",
+   "fr": "Ajouter à chaque PDF"
+  },
+  "desc": {
+   "en": "Add a cover or terms PDF to every file.",
+   "fr": "Ajouter une couverture ou des conditions à chaque fichier."
+  },
+  "keywords": {
+   "en": "cover prepend append terms insert add pages",
+   "fr": "couverture ajouter insérer conditions pages"
+  }
+ },
+ {
+  "id": "pdf.page-numbers",
+  "family": "pdf",
+  "name": {
+   "en": "Page numbers",
+   "fr": "Numéros de page"
+  },
+  "desc": {
+   "en": "Number the pages, in the style you like.",
+   "fr": "Numéroter les pages, dans le style de votre choix."
+  },
+  "keywords": {
+   "en": "numbering paginate folio bates footer",
+   "fr": "numéroter pagination folio pied de page"
+  }
+ },
+ {
+  "id": "pdf.stamp",
+  "family": "pdf",
+  "name": {
+   "en": "Stamp",
+   "fr": "Tampon"
+  },
+  "desc": {
+   "en": "Add a text or image stamp or watermark.",
+   "fr": "Ajouter un tampon ou un filigrane, texte ou image."
+  },
+  "keywords": {
+   "en": "watermark confidential draft logo overlay brand",
+   "fr": "filigrane tampon confidentiel brouillon logo"
+  }
+ },
+ {
+  "id": "pdf.to-markdown",
+  "family": "pdf",
+  "name": {
+   "en": "PDF to Markdown",
+   "fr": "PDF en Markdown"
+  },
+  "desc": {
+   "en": "Headings, lists, tables and images, as clean Markdown.",
+   "fr": "Titres, listes, tableaux et images, en Markdown propre."
+  },
+  "keywords": {
+   "en": "markdown text convert notes llm obsidian",
+   "fr": "markdown texte convertir notes obsidian"
+  }
+ },
+ {
+  "id": "pdf.to-epub",
+  "family": "pdf",
+  "name": {
+   "en": "PDF to EPUB",
+   "fr": "PDF en EPUB"
+  },
+  "desc": {
+   "en": "A reflowable e-book from a text PDF.",
+   "fr": "Un livre numérique ajustable à partir d’un PDF texte."
+  },
+  "keywords": {
+   "en": "ebook kindle kobo reflow e-reader epub",
+   "fr": "livre numérique liseuse kobo kindle epub"
+  }
+ },
+ {
+  "id": "pdf.from-ebook",
+  "family": "pdf",
+  "name": {
+   "en": "E-book to PDF",
+   "fr": "Livre numérique en PDF"
+  },
+  "desc": {
+   "en": "EPUB, MOBI, FB2, CBZ, HTML or TXT to a printable PDF.",
+   "fr": "EPUB, MOBI, FB2, CBZ, HTML ou TXT en PDF imprimable."
+  },
+  "keywords": {
+   "en": "epub mobi fb2 cbz comic print ebook convert",
+   "fr": "epub mobi fb2 cbz bd imprimer livre convertir"
+  }
+ },
+ {
+  "id": "pdf.from-office",
+  "family": "pdf",
+  "name": {
+   "en": "Office to PDF",
+   "fr": "Office en PDF"
+  },
+  "desc": {
+   "en": "Word, Excel, PowerPoint and OpenDocument to PDF, with LibreOffice.",
+   "fr": "Word, Excel, PowerPoint et OpenDocument en PDF, avec LibreOffice."
+  },
+  "keywords": {
+   "en": "word docx excel xlsx powerpoint pptx libreoffice odt convert",
+   "fr": "word docx excel xlsx powerpoint pptx libreoffice odt convertir"
+  }
+ },
+ {
+  "id": "pdf.flatten",
+  "family": "pdf",
+  "name": {
+   "en": "Flatten PDF",
+   "fr": "Aplatir un PDF"
+  },
+  "desc": {
+   "en": "Bake form fields and comments into the page.",
+   "fr": "Fondre champs de formulaire et commentaires dans la page."
+  },
+  "keywords": {
+   "en": "bake forms annotations fields lock in",
+   "fr": "aplatir formulaire annotations champs figer"
+  }
+ },
+ {
+  "id": "pdf.repair",
+  "family": "pdf",
+  "name": {
+   "en": "Repair PDF",
+   "fr": "Réparer un PDF"
+  },
+  "desc": {
+   "en": "Rebuild a damaged PDF so it opens everywhere.",
+   "fr": "Reconstruire un PDF abîmé pour qu’il s’ouvre partout."
+  },
+  "keywords": {
+   "en": "fix broken corrupt damaged recover xref",
+   "fr": "réparer corrompu abîmé récupérer"
+  }
+ },
+ {
+  "id": "pdf.metadata",
+  "family": "pdf",
+  "name": {
+   "en": "PDF metadata",
+   "fr": "Métadonnées PDF"
+  },
+  "desc": {
+   "en": "Edit title, author, subject and keywords — or remove everything.",
+   "fr": "Modifier titre, auteur, sujet et mots-clés, ou tout retirer."
+  },
+  "keywords": {
+   "en": "title author properties info xmp privacy clean",
+   "fr": "titre auteur propriétés infos xmp confidentialité"
+  }
+ },
+ {
+  "id": "pdf.grayscale",
+  "family": "pdf",
+  "name": {
+   "en": "Grayscale PDF",
+   "fr": "PDF en niveaux de gris"
+  },
+  "desc": {
+   "en": "Turn colours into grays, for cheaper printing.",
+   "fr": "Transformer les couleurs en gris, pour imprimer moins cher."
+  },
+  "keywords": {
+   "en": "black and white gray grey monochrome print ink",
+   "fr": "noir et blanc gris niveaux de gris monochrome impression"
+  }
+ },
+ {
+  "id": "pdf.compare",
+  "family": "pdf",
+  "name": {
+   "en": "Compare PDFs",
+   "fr": "Comparer des PDF"
+  },
+  "desc": {
+   "en": "Highlight what changed between two versions.",
+   "fr": "Surligner ce qui a changé entre deux versions."
+  },
+  "keywords": {
+   "en": "diff difference changes versions redline",
+   "fr": "comparer différences changements versions"
+  }
+ },
+ {
+  "id": "pdf.fill-form",
+  "family": "pdf",
+  "name": {
+   "en": "Fill PDF form",
+   "fr": "Remplir un formulaire PDF"
+  },
+  "desc": {
+   "en": "Fill form fields from a CSV or JSON file, or list them.",
+   "fr": "Remplir les champs depuis un fichier CSV ou JSON, ou les lister."
+  },
+  "keywords": {
+   "en": "form fields acroform mail merge csv fill in",
+   "fr": "formulaire champs remplir publipostage csv"
+  }
+ },
+ {
+  "id": "pdf.from-markdown",
+  "family": "pdf",
+  "name": {
+   "en": "Markdown to PDF",
+   "fr": "Markdown en PDF"
+  },
+  "desc": {
+   "en": "Typeset Markdown in a classic, book-like style — LaTeX formulas included.",
+   "fr": "Composer du Markdown dans un style classique, façon livre — formules LaTeX comprises."
+  },
+  "keywords": {
+   "en": "markdown md notes typeset latex report pretty",
+   "fr": "markdown md notes composer latex rapport"
+  }
+ },
+ {
+  "id": "pdf.extract-images",
+  "family": "pdf",
+  "name": {
+   "en": "Extract images",
+   "fr": "Extraire les images"
+  },
+  "desc": {
+   "en": "Save every picture of a PDF at full resolution.",
+   "fr": "Enregistrer chaque image d’un PDF en pleine résolution."
+  },
+  "keywords": {
+   "en": "pictures photos export images embedded save images",
+   "fr": "images photos extraire exporter enregistrer"
+  }
+ },
+ {
+  "id": "image.images-to-pdf",
+  "family": "image",
+  "name": {
+   "en": "Images to PDF",
+   "fr": "Images en PDF"
+  },
+  "desc": {
+   "en": "Put images into one PDF, one per page.",
+   "fr": "Réunir des images dans un PDF, une par page."
+  },
+  "keywords": {
+   "en": "combine photos scans album jpg to pdf png to pdf",
+   "fr": "images photos scans album jpg en pdf réunir"
+  }
+ },
+ {
+  "id": "image.to-pdf",
+  "family": "image",
+  "name": {
+   "en": "Scan to PDF",
+   "fr": "Scan en PDF"
+  },
+  "desc": {
+   "en": "Turn a photo of a page into a clean, searchable PDF.",
+   "fr": "Transformer la photo d’une page en PDF propre et consultable."
+  },
+  "keywords": {
+   "en": "scan document photo of a page receipt searchable clean up deskew",
+   "fr": "scan document photo page ticket redresser nettoyer consultable"
+  }
+ },
+ {
+  "id": "image.extract-text",
+  "family": "image",
+  "name": {
+   "en": "Extract text",
+   "fr": "Extraire le texte"
+  },
+  "desc": {
+   "en": "Read the text in images (OCR), to TXT or Markdown.",
+   "fr": "Lire le texte des images (OCR), en TXT ou Markdown."
+  },
+  "keywords": {
+   "en": "ocr recognize read text screenshot copy text tesseract",
+   "fr": "ocr reconnaître lire texte capture copier"
+  }
+ }
+]

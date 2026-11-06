@@ -49,7 +49,7 @@ pub fn password(v: &Values) -> &str {
     v.str("password")
 }
 
-/// "19 MB → 212 KB (−98 %)".
+/// "2.2 MB → 1.6 MB (−27 %)".
 pub fn size_change(before: u64, after: u64) -> String {
     format!("{} → {} ({})", units::bytes(before), units::bytes(after), units::change(before, after))
 }

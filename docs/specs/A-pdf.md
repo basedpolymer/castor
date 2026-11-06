@@ -63,7 +63,7 @@ nothing else. The coordinator wires `thumbnail` into the app.
 
 - `pdf.compress`: presets light/balanced/strong/max + custom (image DPI, JPEG quality,
   grayscale, strip metadata/bookmarks/tags/embedded files, subset fonts, object streams).
-  Report "19 MB → 212 KB" via sizes; if the result is not smaller, copy the original and say
+  Report "2.2 MB → 1.6 MB" via sizes; if the result is not smaller, copy the original and say
   so in `Output::note`. Test on scanned, vector-heavy, image-heavy and already-optimised PDFs.
 - `pdf.ocr`: skip pages that already have text (option), deskew/rotate option, output PDF/A-2b
   if feasible, plus optional `.txt` sidecar. Must handle 300-page scans with progress per page.
