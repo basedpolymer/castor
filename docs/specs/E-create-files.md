@@ -73,6 +73,16 @@ implement `Tool::undo`; previews must show the exact result before anything move
   tools-image helpers, audio tags via `lofty`, video tags via ffmpeg), strip.
 - `files.duplicates` ★: size → partial hash → BLAKE3 full hash; report; move duplicates to a
   "Duplicates" folder (undo) — never delete.
+- `files.identify` ★ ("What is this file?", idea from TridUI/TrID): detect the real type of files
+  with no or wrong extensions. Engines, in order: **Magika** (Google, Apache-2.0, `magika` crate,
+  ~1 MB ONNX model, 200+ content types with confidence — reuse agent B's ML backend decision,
+  incl. the Intel-Mac question), **`file-format`** crate (Apache-2.0, ~1 000 signatures), `infer`.
+  Optional long tail: TrID definitions (22 000+ types) downloaded only on explicit consent from
+  mark0.net, never bundled (TrID is "free for personal / non-commercial use" — show that notice;
+  write our own TRD reader, do not port TridUI's AGPL Go code). Output: report (TXT/CSV/JSON)
+  with the top matches and confidence; option "fix extensions" renames mismatched files
+  (preview + undo). Also offer the coordinator a fast `identify(path)` helper so the app can
+  route extension-less files to the right tools.
 
 ## MCP server (`crates/castor-mcp`, binary `castor-mcp`, also `castor-cli mcp`)
 

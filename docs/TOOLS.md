@@ -121,7 +121,9 @@ downloader · `create.carousel` Carousel · `create.fonts` Fonts · `create.moti
 
 `files.rename` Batch rename · `files.archive` Create archive · `files.extract` Extract archive ·
 `files.dates` Change file dates · `files.sort` Sort & route · `files.metadata` Metadata (S) ·
-★ `files.checksum` (done, reference example) · ★ `files.duplicates`
+★ `files.checksum` (done, reference example) · ★ `files.duplicates` ·
+★ `files.identify` (what is this file? content-based type detection, confidence, wrong-extension
+finder and fixer — idea from TridUI)
 
 ## Around the tools (Hangar features → Castor)
 
