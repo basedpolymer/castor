@@ -128,6 +128,28 @@ fn runs_filters() {
     assert!(Filter::All.accepts(RunStatus::Cancelled));
 }
 
+#[test]
+fn update_check_at_most_daily() {
+    use crate::updates::check_due;
+    assert!(check_due(None, 1_000_000));
+    assert!(!check_due(Some(1_000_000 - 3600), 1_000_000));
+    assert!(check_due(Some(1_000_000 - 25 * 3600), 1_000_000));
+    // A clock set back: check rather than wait for days.
+    assert!(check_due(Some(2_000_000), 1_000_000));
+}
+
+/// `Tool::meta().requires` is informational: the app never blocks a tool on it. Captions from
+/// an SRT file need no whisper model; only `downloads()` and `unavailable()` gate a run.
+#[cfg(feature = "tools")]
+#[test]
+fn captions_from_a_file_need_no_whisper() {
+    let reg = castor_tools::registry();
+    let tool = reg.get("video.captions").expect("video.captions");
+    let mut v = castor_core::Values::defaults(&tool.options());
+    v.set("source", Value::Text("file".into()));
+    assert!(tool.downloads(&v).is_empty(), "no model download when captions come from a file");
+}
+
 mod ui {
     use std::sync::Arc;
 

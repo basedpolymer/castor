@@ -127,6 +127,24 @@ pub fn entries(q: &str, cx: &App) -> Vec<Item> {
             });
         }
     }
+    // Studios, findable by name and by what they do ("sign", "redact", "subtitles"…).
+    if !q.trim().is_empty() && cfg!(feature = "tools") {
+        for kind in [crate::studio::StudioKind::Pdf, crate::studio::StudioKind::Media] {
+            let title = kind.title();
+            let words = castor_core::tr(&format!("app.studio.{}.keywords", kind.key()));
+            let score = crate::search::label_score(q, &title).max(crate::search::label_score(q, &words));
+            if score > 0 {
+                out.push(Item {
+                    group: "app.palette.pages",
+                    title,
+                    detail: crate::ui::t(&format!("app.studio.{}.desc", kind.key())),
+                    family: None,
+                    icon: if kind == crate::studio::StudioKind::Pdf { "file-pen-line" } else { "scissors" },
+                    target: Target::Nav(Nav::Studio(kind, None)),
+                });
+            }
+        }
+    }
     for a in Action::ALL {
         let title = castor_core::tr(&format!("app.palette.action.{}", a.key()));
         if crate::search::label_score(q, &title) > 0 {

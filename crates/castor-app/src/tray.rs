@@ -83,6 +83,17 @@ pub fn init(cx: &mut App) {
     start_polling(cx);
 }
 
+/// Tooltip of the tray icon: "Castor — <activity>" (watch folders), or plain "Castor".
+pub fn set_activity(text: Option<String>, cx: &mut App) {
+    if let Some(icon) = cx.try_global::<Tray>().and_then(|t| t.icon.as_ref()) {
+        let tip = match text {
+            Some(t) => format!("Castor — {t}"),
+            None => "Castor".to_string(),
+        };
+        let _ = icon.set_tooltip(Some(tip));
+    }
+}
+
 /// Show or hide the icon to match the settings.
 pub fn sync(cx: &mut App) {
     let want = crate::model::settings(cx).tray_icon;

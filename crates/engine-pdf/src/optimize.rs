@@ -84,6 +84,7 @@ pub fn optimize(input: &Path, output: &Path, password: &str, o: &Optimize) -> Re
     let cout = CString::new(crate::path_str(&tmp)?)?;
     let cpw = CString::new(password)?;
     let mut err = vec![0u8; 1024];
+    ffi::ensure_base();
     let rc = unsafe {
         ffi::castor_optimize(cin.as_ptr(), cout.as_ptr(), cpw.as_ptr(), &opt, err.as_mut_ptr().cast(), err.len() as i32)
     };

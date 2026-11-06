@@ -87,11 +87,14 @@ pub fn run(args: Args) {
         });
         cx.set_global(ModelHandle(m.clone()));
         cx.set_global(MainWindow { size: args.size, ..Default::default() });
+        let settings_page = args.page.as_deref() == Some("settings");
         cx.set_global(crate::home::HomeStart {
             family: args.family.as_deref().and_then(|f| castor_core::Family::ALL.iter().copied().find(|x| x.key() == f)),
-            scroll: args.scroll,
+            scroll: if settings_page { None } else { args.scroll },
         });
+        cx.set_global(crate::settings_page::StartScroll(if settings_page { args.scroll } else { None }));
         cx.set_global(crate::thumbs::Thumbs::default());
+        cx.set_global(crate::studio::Setup { mode: args.mode.clone(), script: args.script.clone() });
 
         cx.on_action(|_: &Quit, cx| quit(cx));
 
@@ -110,6 +113,8 @@ pub fn run(args: Args) {
         if !screenshot {
             crate::tray::init(cx);
             crate::updates::check_at_launch(cx);
+            crate::integration::sync_context_menu(cx);
+            crate::integration::restart_watching(cx);
         }
 
         // Poll the single-instance socket and macOS open-file events.
@@ -130,6 +135,7 @@ pub fn run(args: Args) {
                 }
                 cx.update(|cx| {
                     for a in forwarded {
+                        let a = merge_burst(a, cx);
                         show_main_window(cx);
                         apply_args(&a, cx);
                     }
@@ -138,6 +144,38 @@ pub fn run(args: Args) {
         })
         .detach();
     });
+}
+
+/// Explorer starts one process per selected file ("Castor › Compress PDF" on 5 files): launches
+/// for the same tool within 2 s are gathered into one queue instead of replacing each other.
+#[derive(Default)]
+struct Burst {
+    key: Option<(Option<String>, Option<String>)>,
+    files: Vec<PathBuf>,
+    at: Option<std::time::Instant>,
+}
+impl Global for Burst {}
+
+fn merge_burst(mut a: Args, cx: &mut App) -> Args {
+    if a.files.is_empty() {
+        return a;
+    }
+    let key = (a.tool.clone(), a.page.clone());
+    let b = cx.default_global::<Burst>();
+    let recent = b.at.is_some_and(|t| t.elapsed() < Duration::from_secs(2));
+    if recent && b.key.as_ref() == Some(&key) {
+        for f in std::mem::take(&mut a.files) {
+            if !b.files.contains(&f) {
+                b.files.push(f);
+            }
+        }
+        a.files = b.files.clone();
+    } else {
+        b.key = Some(key);
+        b.files = a.files.clone();
+    }
+    b.at = Some(std::time::Instant::now());
+    a
 }
 
 fn percent_decode(s: &str) -> String {
@@ -189,12 +227,21 @@ pub fn apply_args(a: &Args, cx: &mut App) {
                 "studios" => Some(Nav::Page(PageId::Studios)),
                 "palette" => Some(Nav::Palette(a.query.clone())),
                 p if p.starts_with("chain:") => Some(Nav::Chain(p[6..].to_string())),
+                p if p.starts_with("studio:") => {
+                    let kind = if &p[7..] == "media" { crate::studio::StudioKind::Media } else { crate::studio::StudioKind::Pdf };
+                    Some(Nav::Studio(kind, a.files.first().cloned()))
+                }
                 _ if !a.files.is_empty() => Some(Nav::Files(a.files.clone())),
                 _ => Some(Nav::Page(PageId::Tools)),
             }
         }
     } else if let Some(id) = &a.tool {
-        Some(Nav::Tool { id: id.clone(), files: a.files.clone(), values: None })
+        match id.as_str() {
+            // `castor --tool studio.pdf file.pdf` (Explorer / Finder "Open in PDF Studio").
+            "studio.pdf" => Some(Nav::Studio(crate::studio::StudioKind::Pdf, a.files.first().cloned())),
+            "studio.media" => Some(Nav::Studio(crate::studio::StudioKind::Media, a.files.first().cloned())),
+            _ => Some(Nav::Tool { id: id.clone(), files: a.files.clone(), values: None }),
+        }
     } else if !a.files.is_empty() {
         Some(Nav::Files(a.files.clone()))
     } else {
@@ -223,7 +270,10 @@ pub fn show_main_window(cx: &mut App) {
         return;
     }
     let (w, h) = mw.size.unwrap_or((1180, 760));
-    let bounds = Bounds::centered(None, size(px(w as f32), px(h as f32)), cx);
+    let saved = if mw.size.is_none() { crate::model::settings(cx).window_bounds } else { None };
+    let bounds = saved
+        .and_then(|b| restored_bounds(b, cx))
+        .unwrap_or_else(|| Bounds::centered(None, size(px(w as f32), px(h as f32)), cx));
     let options = WindowOptions {
         window_bounds: Some(WindowBounds::Windowed(bounds)),
         window_min_size: Some(size(px(880.0), px(560.0))),
@@ -258,6 +308,23 @@ pub fn show_main_window(cx: &mut App) {
         }
         Err(e) => tracing::error!("could not open the main window: {e:#}"),
     }
+}
+
+/// The saved window bounds, if they still fit on a connected display (a monitor may have been
+/// unplugged since): at least 120 × 80 px of the window must be visible.
+fn restored_bounds(b: [f32; 4], cx: &App) -> Option<Bounds<Pixels>> {
+    let [x, y, w, h] = b;
+    if !(w.is_finite() && h.is_finite() && x.is_finite() && y.is_finite()) || w < 880.0 || h < 560.0 {
+        return None;
+    }
+    let r = Bounds { origin: point(px(x), px(y)), size: size(px(w), px(h)) };
+    let visible = cx.displays().iter().any(|d| {
+        let db = d.bounds();
+        let ix = (r.origin.x + r.size.width).min(db.origin.x + db.size.width) - r.origin.x.max(db.origin.x);
+        let iy = (r.origin.y + r.size.height).min(db.origin.y + db.size.height) - r.origin.y.max(db.origin.y);
+        ix.as_f32() >= 120.0 && iy.as_f32() >= 80.0
+    });
+    visible.then_some(r)
 }
 
 /// Quit the app (after the in-flight settings save).

@@ -26,13 +26,28 @@ int TessBaseAPIMeanTextConf(void *handle);
 
 static void quiet(void *user, const char *message) { (void)user; (void)message; }
 
+/* A clone of mupdf-rs's base context, set once by Rust (castor_set_base_context). Every shim
+ * context is cloned from it, so it shares mupdf-rs's lock functions and store: MuPDF keeps some
+ * process-wide state (FreeType/HarfBuzz hooks, caches) that is only safe when every context in
+ * the process uses the same locks. Independent unlocked contexts crashed when a page rendered on
+ * one thread while pdf.compress rewrote images on another. */
+static fz_context *g_base = NULL;
+
+void castor_set_base_context(fz_context *thread_ctx)
+{
+	if (!g_base && thread_ctx)
+		g_base = fz_clone_context(thread_ctx);
+}
+
 static fz_context *new_ctx(void)
 {
-	fz_context *ctx = fz_new_context(NULL, NULL, FZ_STORE_DEFAULT);
+	fz_context *ctx = g_base ? fz_clone_context(g_base) : fz_new_context(NULL, NULL, FZ_STORE_DEFAULT);
 	if (!ctx)
 		return NULL;
 	fz_set_warning_callback(ctx, quiet, NULL);
 	fz_set_error_callback(ctx, quiet, NULL);
+	if (g_base)
+		return ctx; /* document handlers are shared with the base context */
 	fz_try(ctx)
 		fz_register_document_handlers(ctx);
 	fz_catch(ctx)

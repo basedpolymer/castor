@@ -31,6 +31,10 @@ pub struct Args {
     pub family: Option<String>,
     /// Scroll the page down by this many pixels before the shot.
     pub scroll: Option<f32>,
+    /// Studios: open in this mode / tab (`--mode annotate`, `--mode captions`).
+    pub mode: Option<String>,
+    /// Studios (screenshots, demos): start from this edit script (JSON of the studio's edit).
+    pub script: Option<PathBuf>,
 }
 
 impl Args {
@@ -49,6 +53,8 @@ impl Args {
                 "--background" => a.background = true,
                 "--query" => a.query = it.next(),
                 "--family" => a.family = it.next(),
+                "--mode" => a.mode = it.next(),
+                "--script" => a.script = it.next().map(PathBuf::from),
                 "--scroll" => a.scroll = it.next().and_then(|v| v.parse().ok()),
                 "--shot" => a.shot = it.next().map(PathBuf::from),
                 "--shot-delay" => a.shot_delay = it.next().and_then(|v| v.parse().ok()),
@@ -74,6 +80,11 @@ impl Args {
         }
         // Make paths absolute: they may be forwarded to another process.
         let cwd = std::env::current_dir().unwrap_or_default();
+        if let Some(sc) = &mut a.script {
+            if sc.is_relative() {
+                *sc = cwd.join(&*sc);
+            }
+        }
         for f in &mut a.files {
             if f.is_relative() {
                 *f = cwd.join(&*f);

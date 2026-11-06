@@ -7,7 +7,7 @@ use std::time::Duration;
 
 use castor_core::history::{RunRecord, RunStatus};
 use castor_core::job::Output;
-use castor_core::runner::{self, OutputPolicy, RunEvent, RunHandle, RunRequest, Step};
+use castor_core::runner::{OutputPolicy, RunEvent, RunHandle, RunRequest, Step};
 use castor_core::{FileInfo, FileKind, Tool, ToolStatus, Values, units};
 use gpui_kit::component::button::{Button, ButtonVariants as _};
 use gpui_kit::component::dialog::{DialogAction, DialogClose, DialogFooter};
@@ -376,7 +376,7 @@ impl ToolScreen {
     fn output_policy(&self, cx: &App) -> OutputPolicy {
         match &self.out_override {
             Some(p) => OutputPolicy::Folder(p.clone()),
-            None => crate::model::settings(cx).output_policy(&self.id),
+            None => model(cx).read(cx).output_policy(&self.id),
         }
     }
 
@@ -416,9 +416,13 @@ impl ToolScreen {
         self.preview_task = Some(cx.spawn(async move |this, cx| {
             // Debounce: a new change within 150 ms replaces this task (and drops it).
             cx.background_executor().timer(Duration::from_millis(150)).await;
+            let ex = cx.background_executor().clone();
             let res = cx
                 .background_executor()
-                .spawn(async move { tool.preview(input.as_ref(), &values, PREVIEW_SIDE).map_err(|e| format!("{e:#}")) })
+                .spawn(async move {
+                    let _g = if crate::pdf_gate::uses_pdf_engine(tool.meta().id) { Some(crate::pdf_gate::enter_view(&ex).await) } else { None };
+                    tool.preview(input.as_ref(), &values, PREVIEW_SIDE).map_err(|e| format!("{e:#}"))
+                })
                 .await;
             let _ = this.update(cx, |s, cx| {
                 if s.preview_gen != generation {
@@ -532,7 +536,7 @@ impl ToolScreen {
             max_parallel: s.max_parallel,
             record: true,
         };
-        let handle = runner::start(req);
+        let handle = crate::pdf_gate::start_run(req);
         let rx = handle.events.clone();
         self.run = Some(RunView::new(handle, usable));
         self.error_open = None;
@@ -943,6 +947,7 @@ impl ToolScreen {
             None
         };
         let first = r.outputs.first().cloned();
+        let studio = first.as_ref().filter(|_| r.status == RunStatus::Complete && cfg!(feature = "tools")).and_then(|p| crate::studio::StudioKind::for_path(p).map(|k| (k, p.clone())));
         let status_text = match r.status {
             RunStatus::Complete => t("app.status.complete"),
             RunStatus::Partial => t("app.status.partial"),
@@ -971,6 +976,10 @@ impl ToolScreen {
                             let _ = castor_core::process::reveal(&p);
                         }),
                 )
+            })
+            .when_some(studio, |d, (kind, p)| {
+                let label = if kind == crate::studio::StudioKind::Pdf { t("app.studio.open_in_pdf") } else { t("app.studio.open_in_media") };
+                d.child(Button::new("open-in-studio").small().label(label).on_click(move |_, _, cx| navigate(Nav::Studio(kind, Some(p.clone())), cx)))
             })
     }
 

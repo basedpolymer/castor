@@ -252,21 +252,442 @@ app.status.queued:
 app.studios.subtitle:
   en: Visual editors for the jobs a form cannot do.
   fr: Des éditeurs visuels pour ce qu’un formulaire ne sait pas faire.
-app.studios.soon_title:
-  en: Coming soon
-  fr: Bientôt
-app.studios.body:
-  en: Studios are full-screen editors for work you want to see while you do it. They arrive in a later version; every batch tool already works from the Tools page.
-  fr: Les studios sont des éditeurs plein écran pour le travail qu’on veut voir en le faisant. Ils arrivent dans une prochaine version ; tous les outils par lots fonctionnent déjà depuis la page Outils.
-app.studios.pdf:
-  en: PDF Studio — reorder, rotate and redact pages by hand.
-  fr: Studio PDF — réordonner, pivoter et caviarder les pages à la main.
-app.studios.trim:
-  en: Trim Studio — cut video and audio on a timeline.
-  fr: Studio de découpe — couper vidéo et audio sur une frise.
-app.studios.image:
-  en: Image Studio — crop, mask and touch up one picture.
-  fr: Studio d’image — recadrer, masquer et retoucher une image.
+
+studio.pdf.name:
+  en: PDF Studio
+  fr: Studio PDF
+
+studio.pdf.desc:
+  en: Pages organized, annotated, signed, redacted or filled in by hand.
+  fr: Pages organisées, annotées, signées, caviardées ou remplies à la main.
+
+studio.media.name:
+  en: Trim & Caption Studio
+  fr: Studio montage et sous-titres
+
+studio.media.desc:
+  en: Video or audio cut on a timeline, with captions.
+  fr: Vidéo ou audio coupés sur une frise, avec sous-titres.
+
+app.studio.open:
+  en: Open…
+  fr: Ouvrir…
+
+app.studio.loading:
+  en: Opening…
+  fr: Ouverture…
+
+app.studio.saved:
+  en: Saved
+  fr: Enregistré
+
+app.studio.unavailable:
+  en: Studios need the engines of the full build; this development build has only demo tools.
+  fr: Les studios ont besoin des moteurs de la version complète ; cette version de développement n’a que des outils de démonstration.
+
+app.studio.footer:
+  en: Studios never touch the original unless you ask, and every save is listed in Runs, where an overwrite can be undone.
+  fr: Les studios ne touchent jamais à l’original sans votre accord, et chaque enregistrement figure dans Historique, d’où un écrasement peut être annulé.
+
+app.studio.err.undo:
+  en: The saved copy of the original is gone, so this cannot be undone.
+  fr: "La copie de l’original a disparu : impossible d’annuler."
+
+app.studio.err.tool_missing:
+  en: this tool is not part of this build
+  fr: cet outil ne fait pas partie de cette version
+
+app.studio.pdf.name:
+  en: PDF Studio
+  fr: Studio PDF
+
+app.studio.pdf.desc:
+  en: Open one PDF and work on its pages directly — reorder, annotate, sign, black out, fill in.
+  fr: Ouvrez un PDF et travaillez directement sur ses pages — réordonner, annoter, signer, caviarder, remplir.
+
+app.studio.pdf.features:
+  en: "Organize: drag pages, rotate, delete, insert from another PDF, extract a selection. Annotate: highlight, underline, pen, boxes, arrows, text, comments. Sign: draw, type or import a signature. Redact: boxes or found text, truly removed on save. Forms: type into the fields."
+  fr: "Organiser : glisser les pages, pivoter, supprimer, insérer depuis un autre PDF, extraire une sélection. Annoter : surligner, souligner, stylo, cadres, flèches, texte, commentaires. Signer : dessiner, taper ou importer une signature. Caviarder : cadres ou texte trouvé, vraiment supprimés à l’enregistrement. Formulaires : saisir dans les champs."
+
+app.studio.pdf.open:
+  en: Open PDF Studio
+  fr: Ouvrir le Studio PDF
+
+app.studio.pdf.drop:
+  en: Drop a PDF here, or open one. The original stays untouched until you choose to overwrite it.
+  fr: Déposez un PDF ici, ou ouvrez-en un. L’original reste intact tant que vous ne choisissez pas de l’écraser.
+
+app.pdf.mode.organize:
+  en: Organize
+  fr: Organiser
+
+app.pdf.mode.annotate:
+  en: Annotate
+  fr: Annoter
+
+app.pdf.mode.sign:
+  en: Sign
+  fr: Signer
+
+app.pdf.mode.redact:
+  en: Redact
+  fr: Caviarder
+
+app.pdf.mode.forms:
+  en: Forms
+  fr: Formulaires
+
+app.pdf.zoom_in:
+  en: Zoom in
+  fr: Zoom avant
+
+app.pdf.zoom_out:
+  en: Zoom out
+  fr: Zoom arrière
+
+app.pdf.fit_width:
+  en: Width
+  fr: Largeur
+
+app.pdf.fit_page:
+  en: Page
+  fr: Page
+
+app.pdf.status:
+  en: "Page %{page} of %{total}"
+  fr: "Page %{page} sur %{total}"
+
+app.pdf.changes:
+  en: "· %{count} changes"
+  fr: "· %{count} modifications"
+
+app.pdf.undo:
+  en: Undo
+  fr: Annuler
+
+app.pdf.save_copy:
+  en: Save a copy
+  fr: Enregistrer une copie
+
+app.pdf.saving:
+  en: Saving…
+  fr: Enregistrement…
+
+app.pdf.overwrite:
+  en: Overwrite original…
+  fr: Écraser l’original…
+
+app.pdf.overwrite.title:
+  en: Overwrite the original?
+  fr: Écraser l’original ?
+
+app.pdf.overwrite.body:
+  en: "%{name} will be replaced by the edited version. A copy of the original is kept: Runs → Undo puts it back."
+  fr: "%{name} sera remplacé par la version modifiée. Une copie de l’original est conservée : Historique → Annuler la remet en place."
+
+app.pdf.overwrite.ok:
+  en: Overwrite
+  fr: Écraser
+
+app.pdf.err.no_pages:
+  en: A PDF needs at least one page.
+  fr: Un PDF doit garder au moins une page.
+
+app.pdf.err.redact_verify:
+  en: "Text is still readable under a redaction box on page %{page}; nothing was saved."
+  fr: "Du texte reste lisible sous un cadre de caviardage, page %{page} ; rien n’a été enregistré."
+
+app.pdf.note.pages:
+  en: "%{count} pages"
+  fr: "%{count} pages"
+
+app.pdf.note.annotations:
+  en: "%{count} annotations"
+  fr: "%{count} annotations"
+
+app.pdf.note.signatures:
+  en: "%{count} signatures"
+  fr: "%{count} signatures"
+
+app.pdf.note.redactions:
+  en: "%{count} areas redacted"
+  fr: "%{count} zones caviardées"
+
+app.pdf.note.fields:
+  en: "%{count} fields filled"
+  fr: "%{count} champs remplis"
+
+app.pdf.inserted:
+  en: "%{count} pages inserted"
+  fr: "%{count} pages insérées"
+
+app.pdf.organize.help:
+  en: Drag pages in the left column to reorder them. Ctrl-click or Shift-click to select several.
+  fr: Glissez les pages dans la colonne de gauche pour les réordonner. Ctrl-clic ou Maj-clic pour en sélectionner plusieurs.
+
+app.pdf.organize.current:
+  en: "Page %{page} of %{total}"
+  fr: "Page %{page} sur %{total}"
+
+app.pdf.organize.selected:
+  en: "%{count} pages selected"
+  fr: "%{count} pages sélectionnées"
+
+app.pdf.rotate_left:
+  en: Left
+  fr: Gauche
+
+app.pdf.rotate_right:
+  en: Right
+  fr: Droite
+
+app.pdf.delete_pages:
+  en: "Delete (%{count})"
+  fr: "Supprimer (%{count})"
+
+app.pdf.insert:
+  en: Insert pages from a PDF…
+  fr: Insérer les pages d’un PDF…
+
+app.pdf.extract:
+  en: "Extract %{count} pages to a new file"
+  fr: "Extraire %{count} pages dans un nouveau fichier"
+
+app.pdf.select_all:
+  en: Select all
+  fr: Tout sélectionner
+
+app.pdf.annotate.tools:
+  en: Tools
+  fr: Outils
+
+app.pdf.colour:
+  en: Colour
+  fr: Couleur
+
+app.pdf.text:
+  en: Text
+  fr: Texte
+
+app.pdf.text_ph:
+  en: Type here…
+  fr: Saisissez ici…
+
+app.pdf.delete_mark:
+  en: Delete
+  fr: Supprimer
+
+app.pdf.reviewer:
+  en: Reviewer
+  fr: Relecteur
+
+app.pdf.reviewer_ph:
+  en: Your name
+  fr: Votre nom
+
+app.pdf.reviewer.help:
+  en: Shown as the author of your annotations and comments in any PDF reader.
+  fr: Affiché comme auteur de vos annotations et commentaires dans tout lecteur PDF.
+
+app.pdf.pen.select:
+  en: Select
+  fr: Sélection
+
+app.pdf.pen.select.help:
+  en: Click an annotation to select it, drag it to move it, Delete to remove it.
+  fr: Cliquez sur une annotation pour la sélectionner, glissez pour la déplacer, Suppr pour l’effacer.
+
+app.pdf.pen.highlight:
+  en: Highlight
+  fr: Surligner
+
+app.pdf.pen.highlight.help:
+  en: Drag across text, as if selecting it. On scans, drag a box.
+  fr: Glissez sur le texte comme pour le sélectionner. Sur un scan, tracez un cadre.
+
+app.pdf.pen.underline:
+  en: Underline
+  fr: Souligner
+
+app.pdf.pen.underline.help:
+  en: Drag across text to underline it.
+  fr: Glissez sur le texte pour le souligner.
+
+app.pdf.pen.pen:
+  en: Pen
+  fr: Stylo
+
+app.pdf.pen.pen.help:
+  en: Draw freely with the mouse or the trackpad.
+  fr: Dessinez librement à la souris ou au pavé tactile.
+
+app.pdf.pen.rect:
+  en: Rectangle
+  fr: Rectangle
+
+app.pdf.pen.rect.help:
+  en: Drag to frame an area.
+  fr: Glissez pour encadrer une zone.
+
+app.pdf.pen.arrow:
+  en: Arrow
+  fr: Flèche
+
+app.pdf.pen.arrow.help:
+  en: Drag from the tail to the point.
+  fr: Glissez de la queue vers la pointe.
+
+app.pdf.pen.text:
+  en: Text
+  fr: Texte
+
+app.pdf.pen.text.help:
+  en: Click or drag a box, then type in the panel.
+  fr: Cliquez ou tracez un cadre, puis saisissez le texte dans le panneau.
+
+app.pdf.pen.note:
+  en: Comment
+  fr: Commentaire
+
+app.pdf.pen.note.help:
+  en: Click where the comment goes, then type it. Readers show it as a sticky note.
+  fr: Cliquez à l’endroit du commentaire, puis saisissez-le. Les lecteurs l’affichent comme une note.
+
+app.pdf.sign.title:
+  en: Signatures
+  fr: Signatures
+
+app.pdf.sign.help:
+  en: Pick a signature, then click on the page. Drag it to move it; drag its corner to resize it.
+  fr: Choisissez une signature, puis cliquez sur la page. Glissez-la pour la déplacer, tirez son coin pour la redimensionner.
+
+app.pdf.sign.empty:
+  en: No signature yet.
+  fr: Aucune signature pour l’instant.
+
+app.pdf.sign.none:
+  en: Create a signature first.
+  fr: Créez d’abord une signature.
+
+app.pdf.sign.new:
+  en: New signature…
+  fr: Nouvelle signature…
+
+app.pdf.sign.keep:
+  en: Keep this signature
+  fr: Garder cette signature
+
+app.pdf.sign.date:
+  en: Add today’s date under it
+  fr: Ajouter la date du jour dessous
+
+app.pdf.sign.resize:
+  en: Drag the blue corner to resize.
+  fr: Tirez le coin bleu pour redimensionner.
+
+app.pdf.sign.draw:
+  en: Draw
+  fr: Dessiner
+
+app.pdf.sign.type:
+  en: Type
+  fr: Taper
+
+app.pdf.sign.import:
+  en: Image
+  fr: Image
+
+app.pdf.sign.draw_help:
+  en: Sign on the line with the mouse or the trackpad.
+  fr: Signez sur la ligne à la souris ou au pavé tactile.
+
+app.pdf.sign.type_ph:
+  en: Your name
+  fr: Votre nom
+
+app.pdf.sign.type_preview:
+  en: Your name, in a calligraphic hand
+  fr: Votre nom, d’une main calligraphique
+
+app.pdf.sign.import_help:
+  en: A photo or scan of your signature; the white paper is removed.
+  fr: Une photo ou un scan de votre signature ; le papier blanc est retiré.
+
+app.pdf.sign.err.empty:
+  en: Draw your signature first.
+  fr: Dessinez d’abord votre signature.
+
+app.pdf.sign.err.name:
+  en: Type your name first.
+  fr: Saisissez d’abord votre nom.
+
+app.pdf.sign.err.image:
+  en: Choose an image first.
+  fr: Choisissez d’abord une image.
+
+app.pdf.redact.help:
+  en: Drag boxes over what must disappear, or find text to mark every occurrence. Nothing is removed until you save.
+  fr: Tracez des cadres sur ce qui doit disparaître, ou cherchez un texte pour en marquer chaque occurrence. Rien n’est supprimé avant l’enregistrement.
+
+app.pdf.redact.search:
+  en: Find text
+  fr: Chercher un texte
+
+app.pdf.redact.search_ph:
+  en: Name, number, address…
+  fr: Nom, numéro, adresse…
+
+app.pdf.redact.mark:
+  en: Mark all
+  fr: Tout marquer
+
+app.pdf.redact.found:
+  en: "%{count} found for “%{text}”"
+  fr: "%{count} trouvés pour « %{text} »"
+
+app.pdf.redact.count:
+  en: "%{count} areas marked"
+  fr: "%{count} zones marquées"
+
+app.pdf.redact.clear:
+  en: Remove all marks
+  fr: Retirer toutes les marques
+
+app.pdf.redact.apply:
+  en: Apply redactions…
+  fr: Appliquer le caviardage…
+
+app.pdf.redact.apply_save:
+  en: Redact and save a copy
+  fr: Caviarder et enregistrer une copie
+
+app.pdf.redact.note:
+  en: Saving removes the text, images and drawings under each box for good, then checks that nothing readable is left.
+  fr: L’enregistrement supprime pour de bon le texte, les images et les tracés sous chaque cadre, puis vérifie que plus rien n’est lisible.
+
+app.pdf.redact.title:
+  en: Remove the marked content for good?
+  fr: Supprimer définitivement le contenu marqué ?
+
+app.pdf.redact.warning:
+  en: "The text, images and drawings under the %{count} black boxes will be deleted from the saved file. They cannot be recovered from it."
+  fr: "Le texte, les images et les tracés sous les %{count} cadres noirs seront supprimés du fichier enregistré. Ils ne pourront pas en être récupérés."
+
+app.pdf.forms.loading:
+  en: Reading the form…
+  fr: Lecture du formulaire…
+
+app.pdf.forms.none:
+  en: This PDF has no fillable fields. Use Annotate → Text to write on it.
+  fr: Ce PDF n’a pas de champs à remplir. Utilisez Annoter → Texte pour écrire dessus.
+
+app.pdf.forms.count:
+  en: "%{count} fields. Tab moves to the next one; click a field on the page to jump to it."
+  fr: "%{count} champs. Tab passe au suivant ; cliquez un champ sur la page pour y aller."
+
+app.pdf.forms.page:
+  en: "p. %{page}"
+  fr: "p. %{page}"
 
 app.form.pages_placeholder:
   en: All pages — e.g. 1-3, 5, 8-
@@ -959,3 +1380,342 @@ demo.soon.name:
 demo.soon.desc:
   en: Not ready yet.
   fr: Pas encore prêt.
+
+app.studio.media.name:
+  en: Trim & Caption Studio
+  fr: Studio montage et sous-titres
+app.studio.media.desc:
+  en: Cut a video or a recording on a timeline, remove the pauses, edit it by its transcript and add captions.
+  fr: Coupez une vidéo ou un enregistrement sur une frise, retirez les blancs, montez-le par sa transcription et ajoutez des sous-titres.
+app.studio.media.features:
+  en: "Trim the start and end, cut out the middle, keyframe-fast or frame-exact. Find the pauses and remove them all at once. Transcribe with Whisper and delete words to cut them. Edit caption text and timing, then burn them in or save SRT."
+  fr: "Rognez le début et la fin, coupez au milieu, rapide sur les images clés ou exact à l’image. Trouvez les blancs et retirez-les d’un coup. Transcrivez avec Whisper et supprimez des mots pour les couper. Corrigez le texte et le minutage des sous-titres, puis incrustez-les ou enregistrez un SRT."
+app.studio.media.open:
+  en: Open Trim & Caption Studio
+  fr: Ouvrir le studio de montage
+app.studio.media.drop:
+  en: Drop a video or an audio file here, or open one. The original is never changed.
+  fr: Déposez une vidéo ou un fichier audio ici, ou ouvrez-en un. L’original n’est jamais modifié.
+app.media.tab.cut:
+  en: Cut
+  fr: Couper
+app.media.tab.transcript:
+  en: Transcript
+  fr: Transcription
+app.media.tab.captions:
+  en: Captions
+  fr: Sous-titres
+app.media.at:
+  en: "%{time} of %{total}"
+  fr: "%{time} sur %{total}"
+app.media.audio_only:
+  en: Audio only — the waveform below is your guide.
+  fr: Audio seul — la forme d’onde ci-dessous vous guide.
+app.media.cut_here:
+  en: Cut out
+  fr: Coupé
+app.media.play:
+  en: Play 10 s
+  fr: Lire 10 s
+app.media.play_sel:
+  en: Play selection
+  fr: Lire la sélection
+app.media.trim:
+  en: Trim and cut
+  fr: Rogner et couper
+app.media.trim.help:
+  en: Click the timeline to move the playhead, drag across it to select a range. I and O set the start and the end, Delete cuts the selection.
+  fr: Cliquez sur la frise pour déplacer la tête de lecture, glissez pour sélectionner une plage. I et O fixent le début et la fin, Suppr coupe la sélection.
+app.media.set_in:
+  en: Start here
+  fr: Début ici
+app.media.set_out:
+  en: End here
+  fr: Fin ici
+app.media.cut_sel:
+  en: Cut selection
+  fr: Couper la sélection
+app.media.restore_sel:
+  en: Restore
+  fr: Rétablir
+app.media.selection:
+  en: "Selection %{from} → %{to} (%{len})"
+  fr: "Sélection %{from} → %{to} (%{len})"
+app.media.kept:
+  en: Parts kept
+  fr: Parties conservées
+app.media.reset:
+  en: Undo every cut
+  fr: Annuler toutes les coupes
+app.media.cut_mode:
+  en: Cutting
+  fr: Découpe
+app.media.exact:
+  en: Exact
+  fr: Exacte
+app.media.fast:
+  en: Fast
+  fr: Rapide
+app.media.exact.help:
+  en: Cuts on the exact frame; the video is re-encoded at high quality.
+  fr: Coupe à l’image près ; la vidéo est réencodée en haute qualité.
+app.media.fast.help:
+  en: No re-encoding, nearly instant; cuts snap to the nearest keyframe.
+  fr: Sans réencodage, presque instantané ; les coupes se calent sur l’image clé la plus proche.
+app.media.pauses:
+  en: Pauses
+  fr: Blancs
+app.media.pauses.help:
+  en: Find the silent passages, shown in amber on the timeline, then remove them all at once.
+  fr: Trouvez les passages silencieux, en ambre sur la frise, puis retirez-les d’un coup.
+app.media.pauses.quiet:
+  en: Quiet room
+  fr: Pièce calme
+app.media.pauses.normal:
+  en: Normal
+  fr: Normal
+app.media.pauses.noisy:
+  en: Noisy
+  fr: Bruyant
+app.media.pauses.find:
+  en: Find pauses
+  fr: Trouver les blancs
+app.media.pauses.finding:
+  en: Listening…
+  fr: Écoute…
+app.media.pauses.remove:
+  en: "Remove all (%{count})"
+  fr: "Tout retirer (%{count})"
+app.media.pauses.found:
+  en: "%{count} pauses, %{total} in all"
+  fr: "%{count} blancs, %{total} au total"
+app.media.transcript.help:
+  en: Words are clickable. Select some (click, then Shift-click) and cut them; the matching sound and picture go too.
+  fr: Les mots sont cliquables. Sélectionnez-en (clic, puis Maj-clic) et coupez-les ; le son et l’image correspondants partent avec.
+app.media.transcribe:
+  en: Transcribe
+  fr: Transcrire
+app.media.transcribing:
+  en: Transcribing…
+  fr: Transcription…
+app.media.transcribed:
+  en: "%{count} words transcribed"
+  fr: "%{count} mots transcrits"
+app.media.cut_words:
+  en: Cut words
+  fr: Couper les mots
+app.media.restore_words:
+  en: Restore
+  fr: Rétablir
+app.media.captions.help:
+  en: Captions follow your cuts. Click one to fix its text or timing.
+  fr: Les sous-titres suivent vos coupes. Cliquez-en un pour corriger son texte ou son minutage.
+app.media.captions.from_transcript:
+  en: From the transcript
+  fr: Depuis la transcription
+app.media.captions.import:
+  en: Import SRT / VTT…
+  fr: Importer SRT / VTT…
+app.media.captions.none:
+  en: No captions yet. Transcribe the file or import a subtitle file.
+  fr: Pas encore de sous-titres. Transcrivez le fichier ou importez un fichier de sous-titres.
+app.media.captions.count:
+  en: "%{count} captions in the exported cut"
+  fr: "%{count} sous-titres dans le montage exporté"
+app.media.cue_ph:
+  en: Caption text
+  fr: Texte du sous-titre
+app.media.style:
+  en: Style
+  fr: Style
+app.media.status:
+  en: "%{total}, uncut"
+  fr: "%{total}, sans coupe"
+app.media.status_cut:
+  en: "%{kept} kept of %{total} · %{count} cuts"
+  fr: "%{kept} conservées sur %{total} · %{count} coupes"
+app.media.exporting:
+  en: Exporting…
+  fr: Export…
+app.media.export_srt:
+  en: Save SRT
+  fr: Enregistrer le SRT
+app.media.export_burn:
+  en: Burn in captions
+  fr: Incruster les sous-titres
+app.media.export_video:
+  en: Export video
+  fr: Exporter la vidéo
+app.media.export_audio:
+  en: Export audio
+  fr: Exporter l’audio
+app.media.note.cut:
+  en: "%{before} → %{after}"
+  fr: "%{before} → %{after}"
+app.media.err.burn_audio:
+  en: Captions can only be burnt into a video.
+  fr: Les sous-titres ne s’incrustent que dans une vidéo.
+app.media.err.no_captions:
+  en: There are no captions in the part that is kept.
+  fr: Il n’y a aucun sous-titre dans la partie conservée.
+app.media.err.no_change:
+  en: Nothing is cut yet.
+  fr: Rien n’est encore coupé.
+app.media.err.nothing_kept:
+  en: Everything is cut out; keep at least one part.
+  fr: Tout est coupé ; gardez au moins une partie.
+app.media.err.unreadable:
+  en: This file has no picture or sound Castor can read.
+  fr: Ce fichier n’a ni image ni son que Castor sache lire.
+app.media.err.no_transcribe:
+  en: Transcription is not part of this build.
+  fr: La transcription ne fait pas partie de cette version.
+
+app.settings.workspaces:
+  en: Workspaces
+  fr: Espaces de travail
+app.settings.integration:
+  en: System integration
+  fr: Intégration au système
+app.ws.label:
+  en: Workspace
+  fr: Espace
+app.ws.default:
+  en: Personal
+  fr: Personnel
+app.ws.switch_aria:
+  en: "Workspace: %{name}. Switch workspace"
+  fr: "Espace : %{name}. Changer d’espace"
+app.ws.manage:
+  en: Manage workspaces…
+  fr: Gérer les espaces…
+app.ws.help:
+  en: A workspace keeps a brand (logo, two colours, a signature), an output folder and its own list of runs. Tools that take a logo, a colour or a signature start with the workspace’s.
+  fr: Un espace de travail garde une identité (logo, deux couleurs, une signature), un dossier de sortie et sa propre liste d’exécutions. Les outils qui prennent un logo, une couleur ou une signature partent de ceux de l’espace.
+app.ws.active:
+  en: Active
+  fr: Actif
+app.ws.use:
+  en: Use
+  fr: Utiliser
+app.ws.edit:
+  en: Edit
+  fr: Modifier
+app.ws.add:
+  en: New workspace
+  fr: Nouvel espace
+app.ws.new_name:
+  en: Workspace
+  fr: Espace
+app.ws.runs:
+  en: "%{count} runs"
+  fr: "%{count} exécutions"
+app.ws.name:
+  en: Name
+  fr: Nom
+app.ws.name_ph:
+  en: Client, project, association…
+  fr: Client, projet, association…
+app.ws.colours:
+  en: Colours
+  fr: Couleurs
+app.ws.logo:
+  en: Logo
+  fr: Logo
+app.ws.signature:
+  en: Signature
+  fr: Signature
+app.ws.output:
+  en: Output folder
+  fr: Dossier de sortie
+app.ws.none:
+  en: None
+  fr: Aucun
+app.ws.prefill_help:
+  en: "Pre-filled by option name: logo, color (first colour), accent (second), colors, signature. Results go to the output folder, in a sub-folder per tool and day."
+  fr: "Pré-rempli selon le nom de l’option : logo, color (première couleur), accent (seconde), colors, signature. Les résultats vont dans le dossier de sortie, dans un sous-dossier par outil et par jour."
+app.integration.open_in:
+  en: Open in Castor
+  fr: Ouvrir dans Castor
+app.integration.explorer:
+  en: Explorer menu
+  fr: Menu de l’Explorateur
+app.integration.explorer_help:
+  en: Right-click files → Castor → Open in Castor or one of your favourite tools. On Windows 11 it is under “Show more options”.
+  fr: Clic droit sur des fichiers → Castor → Ouvrir dans Castor ou l’un de vos outils favoris. Sous Windows 11, il se trouve dans « Afficher plus d’options ».
+app.integration.finder_help:
+  en: In Finder, use Open With → Castor, or drop files on the Castor icon in the Dock.
+  fr: Dans le Finder, utilisez Ouvrir avec → Castor, ou déposez des fichiers sur l’icône de Castor dans le Dock.
+app.watch.title:
+  en: Watch folders
+  fr: Dossiers surveillés
+app.watch.help:
+  en: "New files dropped in a watched folder go through a chain as soon as they finish copying; results land in its “%{dir}” sub-folder. Castor must be running (the tray icon is enough)."
+  fr: "Les nouveaux fichiers déposés dans un dossier surveillé passent par une chaîne dès la fin de leur copie ; les résultats arrivent dans son sous-dossier « %{dir} ». Castor doit être lancé (l’icône de la barre des tâches suffit)."
+app.watch.add:
+  en: Watch a folder…
+  fr: Surveiller un dossier…
+app.watch.pause:
+  en: Pause
+  fr: Suspendre
+app.watch.resume:
+  en: Resume
+  fr: Reprendre
+app.watch.next_chain:
+  en: Click to use the next chain
+  fr: Cliquez pour passer à la chaîne suivante
+app.watch.no_chain:
+  en: Choose a chain
+  fr: Choisir une chaîne
+app.watch.watching:
+  en: "watching %{count} folders"
+  fr: "%{count} dossiers surveillés"
+app.watch.processing:
+  en: "processing %{name}"
+  fr: "traitement de %{name}"
+app.watch.idle:
+  en: "watching %{count} folders · %{done} files done"
+  fr: "%{count} dossiers surveillés · %{done} fichiers traités"
+
+app.runs.all_workspaces:
+  en: All workspaces
+  fr: Tous les espaces
+app.studio.open_in_pdf:
+  en: Open in PDF Studio
+  fr: Ouvrir dans le Studio PDF
+app.studio.open_in_media:
+  en: Open in Trim Studio
+  fr: Ouvrir dans le studio de montage
+app.studio.pdf.keywords:
+  en: pdf studio annotate highlight sign signature redact black out fill form reorder pages comment
+  fr: studio pdf annoter surligner signer signature caviarder noircir remplir formulaire réordonner pages commentaire
+app.studio.media.keywords:
+  en: trim cut video audio timeline subtitles captions transcript silence pauses edit
+  fr: rogner couper vidéo audio frise sous-titres transcription silence blancs montage
+
+app.pdf.page_aria:
+  en: "Page %{page}"
+  fr: "Page %{page}"
+app.pdf.colour_aria:
+  en: "Colour %{n}"
+  fr: "Couleur %{n}"
+app.pdf.sig_aria:
+  en: "Signature %{n}"
+  fr: "Signature %{n}"
+app.media.timeline_aria:
+  en: Timeline — click to move the playhead, drag to select
+  fr: Frise — cliquez pour déplacer la tête de lecture, glissez pour sélectionner
+
+app.pdf.changes.one:
+  en: "· 1 change"
+  fr: "· 1 modification"
+app.pdf.organize.selected.one:
+  en: 1 page selected
+  fr: 1 page sélectionnée
+app.media.status_cut.one:
+  en: "%{kept} kept of %{total} · 1 cut"
+  fr: "%{kept} conservées sur %{total} · 1 coupe"
+
+app.pdf.extract.one:
+  en: Extract this page to a new file
+  fr: Extraire cette page dans un nouveau fichier

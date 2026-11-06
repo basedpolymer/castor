@@ -5,7 +5,6 @@ use std::time::Duration;
 
 use gpui_kit::component::WindowExt as _;
 use gpui_kit::*;
-use velopack::sources::GithubSource;
 use velopack::{UpdateCheck, UpdateInfo, UpdateManager};
 
 use crate::model::{UpdateState, model};
@@ -16,8 +15,17 @@ const REPO: &str = "https://github.com/basedpolymer/castor";
 struct Pending(Option<UpdateInfo>);
 impl Global for Pending {}
 
+/// The update feed: GitHub releases, or `CASTOR_UPDATE_FEED=<local folder or URL>` (dev/test
+/// only: the packaging scripts test updates against a local feed).
+pub fn feed() -> String {
+    std::env::var("CASTOR_UPDATE_FEED").ok().filter(|s| !s.trim().is_empty()).unwrap_or_else(|| REPO.to_string())
+}
+
 fn manager() -> Result<UpdateManager, String> {
-    UpdateManager::new(GithubSource::new(REPO, None, false), None, None).map_err(|e| e.to_string())
+    // `AutoSource::new(REPO)` is `GithubSource::new(REPO, None, false)`; a non-URL string
+    // becomes a `FileSource`.
+    let source = velopack::sources::AutoSource::new(&feed());
+    UpdateManager::new(source, None, None).map_err(|e| e.to_string())
 }
 
 fn set_state(s: UpdateState, cx: &mut App) {
@@ -27,8 +35,16 @@ fn set_state(s: UpdateState, cx: &mut App) {
     });
 }
 
-fn stamp_path() -> std::path::PathBuf {
-    castor_core::paths::data_dir().join("last-update-check")
+fn now_secs() -> i64 {
+    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs() as i64).unwrap_or(0)
+}
+
+/// Is a launch-time check due? At most one a day (`Settings::last_update_check`).
+pub fn check_due(last: Option<i64>, now: i64) -> bool {
+    match last {
+        Some(t) => now.saturating_sub(t) >= 24 * 3600 || t > now,
+        None => true,
+    }
 }
 
 /// At launch: decide whether updates are possible here, then check if it is time.
@@ -41,9 +57,13 @@ pub fn check_at_launch(cx: &mut App) {
     if !crate::model::settings(cx).check_updates {
         return;
     }
-    let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
-    let last: u64 = std::fs::read_to_string(stamp_path()).ok().and_then(|s| s.trim().parse().ok()).unwrap_or(0);
-    if now.saturating_sub(last) < 24 * 3600 {
+    // Wave-1 builds kept the stamp in a file: take it over once.
+    let legacy = castor_core::paths::data_dir().join("last-update-check");
+    if let Some(t) = std::fs::read_to_string(&legacy).ok().and_then(|s| s.trim().parse::<i64>().ok()) {
+        let _ = std::fs::remove_file(&legacy);
+        model(cx).update(cx, |m, cx| m.update_settings(cx, |s| s.last_update_check = s.last_update_check.max(Some(t))));
+    }
+    if !check_due(crate::model::settings(cx).last_update_check, now_secs()) {
         return;
     }
     cx.spawn(async move |cx| {
@@ -60,10 +80,9 @@ pub fn check_now(cx: &mut App) {
         return;
     }
     set_state(UpdateState::Checking, cx);
+    let now = now_secs();
+    model(cx).update(cx, |m, cx| m.update_settings(cx, |s| s.last_update_check = Some(now)));
     let task = cx.background_executor().spawn(async move {
-        let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
-        let _ = std::fs::create_dir_all(castor_core::paths::data_dir());
-        let _ = std::fs::write(stamp_path(), now.to_string());
         manager().and_then(|m| m.check_for_updates().map_err(|e| e.to_string()))
     });
     cx.spawn(async move |cx| {

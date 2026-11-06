@@ -16,14 +16,26 @@ use crate::runs::RunsPage;
 use crate::settings_page::SettingsPage;
 use crate::theme::{fonts, tokens};
 use crate::tool_screen::ToolScreen;
-use crate::ui::{self, t};
+use crate::ui::{self, t, ta};
 
 pub const SIDEBAR_W: f32 = 216.0;
+
+/// A favourite being dragged in the sidebar.
+#[derive(Clone)]
+struct DraggedFav(String, SharedString);
+
+impl Render for DraggedFav {
+    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let k = tokens(cx);
+        div().px(px(8.0)).py(px(3.0)).bg(k.raised).border_1().border_color(k.link).rounded(px(3.0)).child(ui::sans().text_size(px(13.5)).child(self.1.clone()))
+    }
+}
 
 #[derive(Clone, PartialEq)]
 enum Current {
     Page(PageId),
     Tool(String),
+    Studio(crate::studio::StudioKind),
 }
 
 pub struct Shell {
@@ -35,6 +47,12 @@ pub struct Shell {
     chains: Option<Entity<ChainsPage>>,
     settings: Option<Entity<SettingsPage>>,
     palette: Option<Entity<Palette>>,
+    /// The workspace list under the sidebar header is open.
+    ws_open: bool,
+    #[cfg(feature = "tools")]
+    pdf_studio: Option<Entity<crate::studio::pdf_view::PdfStudio>>,
+    #[cfg(feature = "tools")]
+    media_studio: Option<Entity<crate::studio::media_view::MediaStudio>>,
     _subs: Vec<Subscription>,
 }
 
@@ -54,6 +72,19 @@ impl Shell {
                 crate::theme::apply(a, Some(window), cx);
             }
         }));
+        // Remember the window position and size (not in screenshot mode).
+        subs.push(cx.observe_window_bounds(window, |_, window, cx| {
+            if cx.global::<crate::app::MainWindow>().size.is_some() {
+                return;
+            }
+            let r = window.window_bounds().get_bounds();
+            let v = [r.origin.x.as_f32(), r.origin.y.as_f32(), r.size.width.as_f32(), r.size.height.as_f32()];
+            model(cx).update(cx, |m, cx| {
+                if m.settings.window_bounds != Some(v) {
+                    m.update_settings_quiet(cx, |s| s.window_bounds = Some(v));
+                }
+            });
+        }));
         let home = cx.new(|cx| Home::new(window, cx));
         let focus = cx.focus_handle();
         Shell {
@@ -65,6 +96,11 @@ impl Shell {
             chains: None,
             settings: None,
             palette: None,
+            ws_open: false,
+            #[cfg(feature = "tools")]
+            pdf_studio: None,
+            #[cfg(feature = "tools")]
+            media_studio: None,
             _subs: subs,
         }
     }
@@ -101,8 +137,41 @@ impl Shell {
                 }
             }
             Nav::Palette(q) => self.open_palette_with(q, window, cx),
+            Nav::Studio(kind, file) => self.open_studio(kind, file, window, cx),
         }
         cx.notify();
+    }
+
+    #[cfg(feature = "tools")]
+    fn open_studio(&mut self, kind: crate::studio::StudioKind, file: Option<PathBuf>, window: &mut Window, cx: &mut Context<Self>) {
+        use crate::studio::StudioKind;
+        match kind {
+            StudioKind::Pdf => {
+                let s = self.pdf_studio.get_or_insert_with(|| cx.new(|cx| crate::studio::pdf_view::PdfStudio::new(window, cx))).clone();
+                s.update(cx, |s, cx| {
+                    if let Some(f) = file {
+                        s.open(f, window, cx);
+                    }
+                    s.focus(window, cx);
+                });
+            }
+            StudioKind::Media => {
+                let s = self.media_studio.get_or_insert_with(|| cx.new(|cx| crate::studio::media_view::MediaStudio::new(window, cx))).clone();
+                s.update(cx, |s, cx| {
+                    if let Some(f) = file {
+                        s.open(f, window, cx);
+                    }
+                    s.focus(window, cx);
+                });
+            }
+        }
+        self.current = Current::Studio(kind);
+        cx.notify();
+    }
+
+    #[cfg(not(feature = "tools"))]
+    fn open_studio(&mut self, _kind: crate::studio::StudioKind, _file: Option<PathBuf>, window: &mut Window, cx: &mut Context<Self>) {
+        self.show_page(PageId::Studios, window, cx);
     }
 
     fn tool_screen(&mut self, id: &str, window: &mut Window, cx: &mut Context<Self>) -> Entity<ToolScreen> {
@@ -171,6 +240,8 @@ impl Shell {
                     s.update(cx, |s, cx| s.add_files(paths, window, cx));
                 }
             }
+            // Studios take their own drops.
+            Current::Studio(_) => {}
             _ => self.navigate(Nav::Files(paths), window, cx),
         }
     }
@@ -290,7 +361,7 @@ impl Shell {
         let update = m.update.clone();
         let version = m.version;
         let cur = self.current.clone();
-        let is = |p: PageId| cur == Current::Page(p);
+        let is = |p: PageId| cur == Current::Page(p) || (p == PageId::Studios && matches!(cur, Current::Studio(_)));
         let fav_items: Vec<AnyElement> = favorites
             .iter()
             .map(|id| {
@@ -312,6 +383,16 @@ impl Shell {
                     .when(selected, |d| d.bg(k.raised).border_1().border_color(k.rule))
                     .when(!selected, |d| d.hover(|s| s.bg(k.tint(meta.family))))
                     .on_click(cx.listener(move |this, _, window, cx| this.navigate(nav.clone(), window, cx)))
+                    // Drag to reorder (the Explorer menu follows the new order).
+                    .on_drag(DraggedFav(id.clone(), meta.name().into()), |v, _, _, cx| cx.new(|_| v.clone()))
+                    .drag_over::<DraggedFav>(move |s, _, _, _| s.border_t_2().border_color(k.link))
+                    .on_drop({
+                        let target = id.clone();
+                        move |d: &DraggedFav, _, cx| {
+                            let (from, to) = (d.0.clone(), target.clone());
+                            model(cx).update(cx, |m, cx| m.move_favorite(&from, &to, cx));
+                        }
+                    })
                     .child(ui::family_swatch(&k, meta.family, 10.0))
                     .child(ui::sans().text_size(px(13.5)).text_color(k.ink).truncate().child(meta.name()))
                     .into_any_element()
@@ -328,7 +409,8 @@ impl Shell {
             .bg(k.surface)
             .border_r_1()
             .border_color(k.rule)
-            .pt(px(12.0))
+            .pt(px(10.0))
+            .child(self.render_ws_switcher(cx))
             .child(self.nav_item("nav-tools", PageId::Tools.title(), "layout-grid", is(PageId::Tools), Nav::Page(PageId::Tools), cx))
             .child(self.nav_item("nav-studios", PageId::Studios.title(), "pen-tool", is(PageId::Studios), Nav::Page(PageId::Studios), cx))
             .child(self.nav_item("nav-chains", PageId::Chains.title(), "link", is(PageId::Chains), Nav::Page(PageId::Chains), cx))
@@ -388,10 +470,110 @@ impl Shell {
             )
     }
 
+    /// Sidebar header: the active workspace (logo or brand diamond + name); click to switch.
+    fn render_ws_switcher(&self, cx: &mut Context<Self>) -> impl IntoElement {
+        let k = tokens(cx);
+        let s = crate::model::settings(cx);
+        let list = crate::workspaces::all(s);
+        let active = crate::workspaces::active(s);
+        let name: SharedString = active.as_ref().map(|w| SharedString::from(w.name.clone())).unwrap_or_else(|| t("app.ws.default"));
+        let open = self.ws_open;
+        let mut d = div()
+            .flex()
+            .flex_col()
+            .mx(px(8.0))
+            .mb(px(8.0))
+            .child(
+                div()
+                    .id("ws-switch")
+                    .role(Role::Button)
+                    .aria_label(ta("app.ws.switch_aria", &[("name", &name)]))
+                    .tab_index(0)
+                    .h(px(34.0))
+                    .px(px(10.0))
+                    .flex()
+                    .flex_row()
+                    .items_center()
+                    .gap(px(9.0))
+                    .rounded(px(3.0))
+                    .border_1()
+                    .border_color(k.rule)
+                    .bg(k.raised)
+                    .cursor_pointer()
+                    .hover(|s| s.border_color(k.muted))
+                    .focus_visible(|s| s.border_color(k.link))
+                    .on_click(cx.listener(|this, _, _, cx| {
+                        this.ws_open = !this.ws_open;
+                        cx.notify();
+                    }))
+                    .child(crate::workspace_editor::badge(&k, active.as_ref(), 15.0))
+                    .child(div().flex_1().min_w(px(0.0)).flex().flex_col().child(ui::caps().text_size(px(11.5)).text_color(k.muted).child(ui::small_caps(&t("app.ws.label")))).child(ui::sans().text_size(px(13.5)).font_weight(FontWeight::BOLD).text_color(k.ink).truncate().child(name)))
+                    .child(ui::icon(if open { "chevron-up" } else { "chevron-down" }, k.muted).size(px(14.0))),
+            );
+        if open {
+            let cur = s.active_workspace.clone();
+            let mut items: Vec<(String, SharedString, Option<crate::workspaces::Workspace>)> = vec![(String::new(), t("app.ws.default"), None)];
+            items.extend(list.into_iter().map(|w| (w.name.clone(), SharedString::from(w.name.clone()), Some(w))));
+            d = d.child(
+                div()
+                    .mt(px(4.0))
+                    .py(px(4.0))
+                    .rounded(px(3.0))
+                    .border_1()
+                    .border_color(k.rule)
+                    .bg(k.raised)
+                    .children(items.into_iter().enumerate().map(|(i, (key, label, w))| {
+                        let sel = key == cur;
+                        div()
+                            .id(("ws-item", i))
+                            .h(px(28.0))
+                            .px(px(10.0))
+                            .flex()
+                            .flex_row()
+                            .items_center()
+                            .gap(px(9.0))
+                            .cursor_pointer()
+                            .hover(|s| s.bg(k.surface))
+                            .on_click(cx.listener(move |this, _, _, cx| {
+                                let key = key.clone();
+                                this.ws_open = false;
+                                model(cx).update(cx, |m, cx| m.update_settings(cx, move |s| s.active_workspace = key));
+                            }))
+                            .child(crate::workspace_editor::badge(&k, w.as_ref(), 12.0))
+                            .child(ui::sans().flex_1().text_size(px(13.5)).text_color(k.ink).truncate().when(sel, |d| d.font_weight(FontWeight::BOLD)).child(label))
+                            .when(sel, |d| d.child(ui::icon("check", k.ink).size(px(13.0))))
+                    }))
+                    .child(ui::hrule(k.rule, 1.0))
+                    .child(
+                        div()
+                            .id("ws-manage")
+                            .h(px(28.0))
+                            .px(px(10.0))
+                            .flex()
+                            .items_center()
+                            .cursor_pointer()
+                            .hover(|s| s.bg(k.surface))
+                            .on_click(cx.listener(|this, _, window, cx| {
+                                this.ws_open = false;
+                                this.navigate(Nav::Page(PageId::Settings), window, cx);
+                            }))
+                            .child(ui::sans().text_size(px(13.5)).text_color(k.link).child(t("app.ws.manage"))),
+                    ),
+            );
+        }
+        d
+    }
+
     fn render_page(&mut self, window: &mut Window, cx: &mut Context<Self>) -> AnyElement {
         match self.current.clone() {
             Current::Page(PageId::Tools) => self.home.clone().into_any_element(),
-            Current::Page(PageId::Studios) => crate::home::render_studios(window, cx).into_any_element(),
+            Current::Page(PageId::Studios) => crate::studio::render_page(window, cx).into_any_element(),
+            #[cfg(feature = "tools")]
+            Current::Studio(crate::studio::StudioKind::Pdf) => self.pdf_studio.clone().map(|e| e.into_any_element()).unwrap_or_else(|| div().into_any_element()),
+            #[cfg(feature = "tools")]
+            Current::Studio(crate::studio::StudioKind::Media) => self.media_studio.clone().map(|e| e.into_any_element()).unwrap_or_else(|| div().into_any_element()),
+            #[cfg(not(feature = "tools"))]
+            Current::Studio(_) => crate::studio::render_page(window, cx).into_any_element(),
             Current::Page(PageId::Runs) => self.runs.clone().map(|e| e.into_any_element()).unwrap_or_else(|| div().into_any_element()),
             Current::Page(PageId::Chains) => self.chains.clone().map(|e| e.into_any_element()).unwrap_or_else(|| div().into_any_element()),
             Current::Page(PageId::Settings) => {

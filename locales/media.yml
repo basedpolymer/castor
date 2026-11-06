@@ -64,7 +64,7 @@ video.trim.opt.start.help:
   ko: "1:23, 83, 1m23s와 같은 시간 형식입니다."
 video.trim.opt.until:
   en: "Keep until"
-  fr: "Garder jusqu'à"
+  fr: "Garder jusqu’à"
   de: "Behalten bis"
   es: "Conservar hasta"
   it: "Mantieni fino a"
@@ -134,7 +134,7 @@ video.trim.opt.cut:
   ko: "자르기 방식"
 video.trim.opt.cut.help:
   en: "Exact re-encodes the edges for frame-accurate cuts. Fast copies the streams and cuts at the nearest keyframe (can start up to a few seconds early)."
-  fr: "Exacte ré-encode pour couper à l'image près. Rapide copie les flux et coupe à l'image-clé la plus proche (peut commencer quelques secondes plus tôt)."
+  fr: "Exacte ré-encode pour couper à l’image près. Rapide copie les flux et coupe à l’image-clé la plus proche (peut commencer quelques secondes plus tôt)."
   de: "„Exakt“ kodiert die Ränder neu für bildgenaue Schnitte. „Schnell“ kopiert die Datenströme und schneidet am nächsten Keyframe (kann bis zu einigen Sekunden zu früh beginnen)."
   es: "«Exacto» recodifica los extremos para cortes precisos al fotograma. «Rápido» copia los flujos y corta en el fotograma clave más cercano (puede empezar hasta unos segundos antes)."
   it: "«Preciso» ricodifica i bordi per tagli al fotogramma. «Veloce» copia i flussi e taglia sul keyframe più vicino (può iniziare fino a qualche secondo prima)."
@@ -174,7 +174,7 @@ video.convert.name:
   ko: "동영상 변환"
 video.convert.desc:
   en: "MP4, MOV, MKV, WebM, AVI or GIF — without quality loss when possible."
-  fr: "MP4, MOV, MKV, WebM, AVI ou GIF — sans perte quand c'est possible."
+  fr: "MP4, MOV, MKV, WebM, AVI ou GIF — sans perte quand c’est possible."
   de: "MP4, MOV, MKV, WebM, AVI oder GIF – wenn möglich ohne Qualitätsverlust."
   es: "MP4, MOV, MKV, WebM, AVI o GIF, sin pérdida de calidad cuando es posible."
   it: "MP4, MOV, MKV, WebM, AVI o GIF, senza perdita di qualità quando possibile."
@@ -214,7 +214,7 @@ video.convert.opt.codec:
   ko: "비디오 코덱"
 video.convert.opt.codec.help:
   en: "Automatic keeps the current codec when the format accepts it."
-  fr: "Automatique garde le codec actuel si le format l'accepte."
+  fr: "Automatique garde le codec actuel si le format l’accepte."
   de: "„Automatisch“ behält den aktuellen Codec bei, wenn das Format ihn akzeptiert."
   es: "«Automático» conserva el códec actual si el formato lo admite."
   it: "«Automatico» mantiene il codec attuale se il formato lo accetta."
@@ -324,7 +324,7 @@ video.convert.opt.hardware.help:
   ko: "가능하면 그래픽 칩을 사용합니다. 더 빠르지만 파일이 약간 커집니다. 자동으로 소프트웨어 방식으로 전환됩니다."
 video.extract-audio.name:
   en: "Extract audio"
-  fr: "Extraire l'audio"
+  fr: "Extraire l’audio"
   de: "Audio extrahieren"
   es: "Extraer audio"
   it: "Estrai audio"
@@ -654,7 +654,7 @@ video.to-gif.opt.length:
   ko: "길이"
 video.to-gif.opt.length.help:
   en: "Empty = until the end."
-  fr: "Vide = jusqu'à la fin."
+  fr: "Vide = jusqu’à la fin."
   de: "Leer = bis zum Ende."
   es: "Vacío = hasta el final."
   it: "Vuoto = fino alla fine."
@@ -1014,7 +1014,7 @@ video.split.opt.parts:
   ko: "분할 수"
 video.split.opt.length:
   en: "Part length"
-  fr: "Durée d'une partie"
+  fr: "Durée d’une partie"
   de: "Länge pro Teil"
   es: "Duración de cada parte"
   it: "Durata di ogni parte"
@@ -1074,7 +1074,7 @@ video.split.opt.cut:
   ko: "자르기 방식"
 video.split.opt.cut.help:
   en: "Exact re-encodes the edges for frame-accurate cuts. Fast copies the streams and cuts at the nearest keyframe (can start up to a few seconds early)."
-  fr: "Exacte ré-encode pour couper à l'image près. Rapide copie les flux et coupe à l'image-clé la plus proche (peut commencer quelques secondes plus tôt)."
+  fr: "Exacte ré-encode pour couper à l’image près. Rapide copie les flux et coupe à l’image-clé la plus proche (peut commencer quelques secondes plus tôt)."
   de: "„Exakt“ kodiert die Ränder neu für bildgenaue Schnitte. „Schnell“ kopiert die Datenströme und schneidet am nächsten Keyframe (kann bis zu einigen Sekunden zu früh beginnen)."
   es: "«Exacto» recodifica los extremos para cortes precisos al fotograma. «Rápido» copia los flujos y corta en el fotograma clave más cercano (puede empezar hasta unos segundos antes)."
   it: "«Preciso» ricodifica i bordi per tagli al fotogramma. «Veloce» copia i flussi e taglia sul keyframe più vicino (può iniziare fino a qualche secondo prima)."
@@ -1264,7 +1264,7 @@ video.resize.opt.pad_color:
   ko: "띠 색상"
 video.resize.opt.upscale:
   en: "Allow enlarging"
-  fr: "Autoriser l'agrandissement"
+  fr: "Autoriser l’agrandissement"
   de: "Vergrößern erlauben"
   es: "Permitir ampliar"
   it: "Consenti ingrandimento"
@@ -1444,7 +1444,7 @@ video.crop.opt.anchor:
   ko: "유지할 부분"
 video.crop.opt.anchor.help:
   en: "Which part of the picture to keep."
-  fr: "La partie de l'image à garder."
+  fr: "La partie de l’image à garder."
   de: "Welcher Teil des Bildes erhalten bleibt."
   es: "Qué parte de la imagen se conserva."
   it: "Quale parte dell'immagine mantenere."
@@ -1554,7 +1554,7 @@ video.rotate.verb:
   ko: "회전"
 video.rotate.keywords:
   en: "turn flip mirror sideways portrait landscape upside down orientation"
-  fr: "tourner retourner miroir portrait paysage à l'envers orientation"
+  fr: "tourner retourner miroir portrait paysage à l’envers orientation"
   de: "drehen spiegeln kippen Hochformat Querformat Kopfüber Ausrichtung"
   es: "girar voltear espejo de lado vertical horizontal al revés orientación"
   it: "ruotare riflettere specchio di lato verticale orizzontale capovolto orientamento"
@@ -1654,7 +1654,7 @@ video.rotate.opt.flip.vertical:
   ko: "상하 반전"
 video.rotate.opt.lossless:
   en: "Lossless (orientation flag)"
-  fr: "Sans perte (indicateur d'orientation)"
+  fr: "Sans perte (indicateur d’orientation)"
   de: "Verlustfrei (Ausrichtungsmarke)"
   es: "Sin pérdida (marca de orientación)"
   it: "Senza perdita (flag di orientamento)"
@@ -1664,7 +1664,7 @@ video.rotate.opt.lossless:
   ko: "무손실(방향 플래그)"
 video.rotate.opt.lossless.help:
   en: "MP4 and MOV: instant, no re-encoding. A few old players ignore the flag."
-  fr: "MP4 et MOV : instantané, sans ré-encodage. Quelques vieux lecteurs ignorent l'indicateur."
+  fr: "MP4 et MOV : instantané, sans ré-encodage. Quelques vieux lecteurs ignorent l’indicateur."
   de: "MP4 und MOV: sofort fertig, ohne Neukodierung. Einige alte Player ignorieren die Marke."
   es: "MP4 y MOV: instantáneo, sin recodificar. Unos pocos reproductores antiguos ignoran la marca."
   it: "MP4 e MOV: istantaneo, senza ricodifica. Alcuni vecchi lettori ignorano il flag."
@@ -1904,7 +1904,7 @@ video.mute.name:
   ko: "동영상 음소거"
 video.mute.desc:
   en: "Remove the sound, keep the picture untouched."
-  fr: "Retirer le son, l'image reste intacte."
+  fr: "Retirer le son, l’image reste intacte."
   de: "Entfernt den Ton, das Bild bleibt unangetastet."
   es: "Quita el sonido y deja la imagen intacta."
   it: "Rimuove l'audio e lascia intatta l'immagine."
@@ -1944,7 +1944,7 @@ video.join.name:
   ko: "동영상 합치기"
 video.join.desc:
   en: "One video from many, in queue order."
-  fr: "Une vidéo à partir de plusieurs, dans l'ordre de la file."
+  fr: "Une vidéo à partir de plusieurs, dans l’ordre de la file."
   de: "Aus vielen Videos eines machen, in der Reihenfolge der Warteschlange."
   es: "Un solo vídeo a partir de varios, en el orden de la cola."
   it: "Un solo video da tanti, nell'ordine della coda."
@@ -2014,7 +2014,7 @@ video.join.opt.mode.reencode:
   ko: "재인코딩"
 video.join.opt.size:
   en: "Picture size"
-  fr: "Taille de l'image"
+  fr: "Taille de l’image"
   de: "Bildgröße"
   es: "Tamaño de imagen"
   it: "Dimensione immagine"
@@ -2504,7 +2504,7 @@ video.captions.opt.mode:
   ko: "추가 방식"
 video.captions.opt.mode.help:
   en: "A subtitle track can be turned on and off in players, without re-encoding."
-  fr: "Une piste de sous-titres s'active ou se désactive dans les lecteurs, sans ré-encodage."
+  fr: "Une piste de sous-titres s’active ou se désactive dans les lecteurs, sans ré-encodage."
   de: "Eine Untertitelspur lässt sich in Playern ein- und ausschalten, ohne Neukodierung."
   es: "Una pista de subtítulos se puede activar y desactivar en los reproductores, sin recodificar."
   it: "Una traccia di sottotitoli può essere attivata e disattivata nei lettori, senza ricodifica."
@@ -2514,7 +2514,7 @@ video.captions.opt.mode.help:
   ko: "자막 트랙은 재인코딩 없이 플레이어에서 켜고 끌 수 있습니다."
 video.captions.opt.mode.burn:
   en: "Burnt into the picture"
-  fr: "Incrustés dans l'image"
+  fr: "Incrustés dans l’image"
   de: "Ins Bild eingebrannt"
   es: "Incrustados en la imagen"
   it: "Impressi nell'immagine"
@@ -2824,7 +2824,7 @@ video.captions.opt.vad:
   ko: "무음 건너뛰기(VAD)"
 video.captions.opt.vad.help:
   en: "Detects speech first: faster on long recordings and avoids invented text in silences. Word timings are less precise."
-  fr: "Détecte d'abord la parole : plus rapide sur les longs enregistrements et évite du texte inventé dans les silences. Le minutage des mots est moins précis."
+  fr: "Détecte d’abord la parole : plus rapide sur les longs enregistrements et évite du texte inventé dans les silences. Le minutage des mots est moins précis."
   de: "Erkennt zuerst die Sprache: schneller bei langen Aufnahmen und verhindert erfundenen Text in Stille. Wortzeiten sind weniger genau."
   es: "Detecta primero el habla: más rápido en grabaciones largas y evita texto inventado en los silencios. Los tiempos por palabra son menos precisos."
   it: "Rileva prima il parlato: più veloce nelle registrazioni lunghe e evita testo inventato nei silenzi. I tempi delle parole sono meno precisi."
@@ -2904,7 +2904,7 @@ video.captions.opt.quality.small:
   ko: "작게"
 video.add-audio.name:
   en: "Add audio"
-  fr: "Ajouter de l'audio"
+  fr: "Ajouter de l’audio"
   de: "Audio hinzufügen"
   es: "Añadir audio"
   it: "Aggiungi audio"
@@ -2924,7 +2924,7 @@ video.add-audio.desc:
   ko: "소리를 교체하거나 음악을 섞습니다."
 video.add-audio.verb:
   en: "Add audio"
-  fr: "Ajouter l'audio"
+  fr: "Ajouter l’audio"
   de: "Audio hinzufügen"
   es: "Añadir audio"
   it: "Aggiungi audio"
@@ -2994,7 +2994,7 @@ video.add-audio.opt.volume:
   ko: "새 오디오 볼륨"
 video.add-audio.opt.original:
   en: "Original volume"
-  fr: "Volume d'origine"
+  fr: "Volume d’origine"
   de: "Originallautstärke"
   es: "Volumen original"
   it: "Volume originale"
@@ -3004,7 +3004,7 @@ video.add-audio.opt.original:
   ko: "원래 볼륨"
 video.add-audio.opt.loop:
   en: "Loop to the end"
-  fr: "Boucler jusqu'à la fin"
+  fr: "Boucler jusqu’à la fin"
   de: "Bis zum Ende wiederholen"
   es: "Repetir hasta el final"
   it: "Ripeti fino alla fine"
@@ -3014,7 +3014,7 @@ video.add-audio.opt.loop:
   ko: "끝까지 반복"
 video.add-audio.opt.loop.help:
   en: "Repeats a short audio file until the video ends."
-  fr: "Répète un audio court jusqu'à la fin de la vidéo."
+  fr: "Répète un audio court jusqu’à la fin de la vidéo."
   de: "Wiederholt eine kurze Audiodatei, bis das Video endet."
   es: "Repite un archivo de audio corto hasta que termina el vídeo."
   it: "Ripete un file audio breve fino alla fine del video."
@@ -3024,7 +3024,7 @@ video.add-audio.opt.loop.help:
   ko: "짧은 오디오 파일을 동영상이 끝날 때까지 반복합니다."
 video.add-audio.opt.fade:
   en: "Fade in and out"
-  fr: "Fondu d'entrée et de sortie"
+  fr: "Fondu d’entrée et de sortie"
   de: "Ein- und ausblenden"
   es: "Fundido de entrada y salida"
   it: "Dissolvenza in entrata e uscita"
@@ -3084,7 +3084,7 @@ video.frames.opt.mode:
   ko: "추출 방식"
 video.frames.opt.mode.count:
   en: "A number of frames"
-  fr: "Un nombre d'images"
+  fr: "Un nombre d’images"
   de: "Eine Anzahl Einzelbilder"
   es: "Un número de fotogramas"
   it: "Un numero di fotogrammi"
@@ -3204,7 +3204,7 @@ video.frames.opt.width:
   ko: "너비"
 video.frames.opt.width.help:
   en: "0 = original size."
-  fr: "0 = taille d'origine."
+  fr: "0 = taille d’origine."
   de: "0 = Originalgröße."
   es: "0 = tamaño original."
   it: "0 = dimensione originale."
@@ -3554,7 +3554,7 @@ audio.transcribe.opt.timestamps:
   ko: "타임스탬프"
 audio.transcribe.opt.timestamps.help:
   en: "Times at the start of each paragraph (TXT, DOCX, PDF)."
-  fr: "L'heure au début de chaque paragraphe (TXT, DOCX, PDF)."
+  fr: "L’heure au début de chaque paragraphe (TXT, DOCX, PDF)."
   de: "Zeiten am Anfang jedes Absatzes (TXT, DOCX, PDF)."
   es: "Tiempos al inicio de cada párrafo (TXT, DOCX, PDF)."
   it: "Tempi all'inizio di ogni paragrafo (TXT, DOCX, PDF)."
@@ -3724,7 +3724,7 @@ audio.transcribe.opt.vad:
   ko: "무음 건너뛰기(VAD)"
 audio.transcribe.opt.vad.help:
   en: "Detects speech first: faster on long recordings and avoids invented text in silences. Word timings are less precise."
-  fr: "Détecte d'abord la parole : plus rapide sur les longs enregistrements et évite du texte inventé dans les silences. Le minutage des mots est moins précis."
+  fr: "Détecte d’abord la parole : plus rapide sur les longs enregistrements et évite du texte inventé dans les silences. Le minutage des mots est moins précis."
   de: "Erkennt zuerst die Sprache: schneller bei langen Aufnahmen und verhindert erfundenen Text in Stille. Wortzeiten sind weniger genau."
   es: "Detecta primero el habla: más rápido en grabaciones largas y evita texto inventado en los silencios. Los tiempos por palabra son menos precisos."
   it: "Rileva prima il parlato: più veloce nelle registrazioni lunghe e evita testo inventato nei silenzi. I tempi delle parole sono meno precisi."
@@ -3784,7 +3784,7 @@ audio.merge.name:
   ko: "오디오 합치기"
 audio.merge.desc:
   en: "One after another, or layered."
-  fr: "L'un après l'autre, ou superposés."
+  fr: "L’un après l’autre, ou superposés."
   de: "Nacheinander oder übereinandergelegt."
   es: "Una tras otra, o superpuestas."
   it: "Una dopo l'altra, o sovrapposte."
@@ -3824,7 +3824,7 @@ audio.merge.opt.mode:
   ko: "모드"
 audio.merge.opt.mode.stitch:
   en: "One after another"
-  fr: "L'un après l'autre"
+  fr: "L’un après l’autre"
   de: "Nacheinander"
   es: "Una tras otra"
   it: "Una dopo l'altra"
@@ -3864,7 +3864,7 @@ audio.merge.opt.volumes:
   ko: "볼륨"
 audio.merge.opt.volumes.help:
   en: "Per file in queue order, in percent: 100, 40."
-  fr: "Par fichier dans l'ordre de la file, en pourcentage : 100, 40."
+  fr: "Par fichier dans l’ordre de la file, en pourcentage : 100, 40."
   de: "Pro Datei in Reihenfolge der Warteschlange, in Prozent: 100, 40."
   es: "Por archivo en el orden de la cola, en porcentaje: 100, 40."
   it: "Per file nell'ordine della coda, in percentuale: 100, 40."
@@ -3964,7 +3964,7 @@ audio.convert.opt.bitrate.help:
   ko: "MP3, M4A, OGG, Opus에 적용됩니다."
 audio.convert.opt.rate:
   en: "Sample rate"
-  fr: "Fréquence d'échantillonnage"
+  fr: "Fréquence d’échantillonnage"
   de: "Abtastrate"
   es: "Frecuencia de muestreo"
   it: "Frequenza di campionamento"
@@ -3974,7 +3974,7 @@ audio.convert.opt.rate:
   ko: "샘플링 레이트"
 audio.convert.opt.rate.keep:
   en: "Original"
-  fr: "D'origine"
+  fr: "D’origine"
   de: "Original"
   es: "Original"
   it: "Originale"
@@ -3994,7 +3994,7 @@ audio.convert.opt.channels:
   ko: "채널"
 audio.convert.opt.channels.keep:
   en: "Original"
-  fr: "D'origine"
+  fr: "D’origine"
   de: "Original"
   es: "Original"
   it: "Originale"
@@ -4034,7 +4034,7 @@ audio.compress.name:
   ko: "오디오 압축"
 audio.compress.desc:
   en: "Smaller audio files, never larger than before."
-  fr: "Des fichiers audio plus légers, jamais plus gros qu'avant."
+  fr: "Des fichiers audio plus légers, jamais plus gros qu’avant."
   de: "Kleinere Audiodateien, nie größer als zuvor."
   es: "Archivos de audio más pequeños, nunca mayores que antes."
   it: "File audio più piccoli, mai più grandi di prima."
@@ -4224,7 +4224,7 @@ audio.trim.opt.start.help:
   ko: "1:23, 83, 1m23s와 같은 시간 형식입니다."
 audio.trim.opt.until:
   en: "Keep until"
-  fr: "Garder jusqu'à"
+  fr: "Garder jusqu’à"
   de: "Behalten bis"
   es: "Conservar hasta"
   it: "Mantieni fino a"
@@ -4294,7 +4294,7 @@ audio.trim.opt.cut:
   ko: "자르기 방식"
 audio.trim.opt.cut.help:
   en: "Exact re-encodes the edges for frame-accurate cuts. Fast copies the streams and cuts at the nearest keyframe (can start up to a few seconds early)."
-  fr: "Exacte ré-encode pour couper à l'image près. Rapide copie les flux et coupe à l'image-clé la plus proche (peut commencer quelques secondes plus tôt)."
+  fr: "Exacte ré-encode pour couper à l’image près. Rapide copie les flux et coupe à l’image-clé la plus proche (peut commencer quelques secondes plus tôt)."
   de: "„Exakt“ kodiert die Ränder neu für bildgenaue Schnitte. „Schnell“ kopiert die Datenströme und schneidet am nächsten Keyframe (kann bis zu einigen Sekunden zu früh beginnen)."
   es: "«Exacto» recodifica los extremos para cortes precisos al fotograma. «Rápido» copia los flujos y corta en el fotograma clave más cercano (puede empezar hasta unos segundos antes)."
   it: "«Preciso» ricodifica i bordi per tagli al fotogramma. «Veloce» copia i flussi e taglia sul keyframe più vicino (può iniziare fino a qualche secondo prima)."
@@ -4414,7 +4414,7 @@ audio.split.opt.parts:
   ko: "분할 수"
 audio.split.opt.length:
   en: "Part length"
-  fr: "Durée d'une partie"
+  fr: "Durée d’une partie"
   de: "Länge pro Teil"
   es: "Duración de cada parte"
   it: "Durata di ogni parte"
@@ -4534,7 +4534,7 @@ audio.normalize.opt.mode:
   ko: "모드"
 audio.normalize.opt.mode.help:
   en: "Loudness matches how loud it sounds; Peak only raises the highest peak to the limit."
-  fr: "Sonie règle le volume perçu ; Crête monte seulement la crête la plus haute jusqu'à la limite."
+  fr: "Sonie règle le volume perçu ; Crête monte seulement la crête la plus haute jusqu’à la limite."
   de: "„Lautheit“ gleicht an, wie laut es klingt; „Spitze“ hebt nur die höchste Spitze bis zur Grenze an."
   es: "«Sonoridad» iguala lo fuerte que suena; «Pico» solo sube el pico más alto hasta el límite."
   it: "«Loudness» uniforma quanto suona forte; «Picco» alza solo il picco più alto fino al limite."
@@ -4764,7 +4764,7 @@ media.err.missing_program:
   ko: "%{program}이(가) 없습니다. Castor를 다시 설치하여 복원하세요."
 media.err.unreadable:
   en: "This file could not be read. It may be damaged or not a media file."
-  fr: "Ce fichier n'a pas pu être lu. Il est peut-être abîmé ou n'est pas un fichier média."
+  fr: "Ce fichier n’a pas pu être lu. Il est peut-être abîmé ou n’est pas un fichier média."
   de: "Diese Datei konnte nicht gelesen werden. Sie ist möglicherweise beschädigt oder keine Mediendatei."
   es: "No se pudo leer este archivo. Puede estar dañado o no ser un archivo multimedia."
   it: "Impossibile leggere questo file. Potrebbe essere danneggiato o non essere un file multimediale."
@@ -4794,7 +4794,7 @@ media.err.disk_full:
   ko: "디스크가 가득 찼습니다. 공간을 확보한 뒤 다시 시도하세요."
 media.err.encoder:
   en: "The video encoder could not start. Turn off “Fast (hardware encoder)” and try again."
-  fr: "L'encodeur vidéo n'a pas pu démarrer. Désactivez « Rapide (encodeur matériel) » et réessayez."
+  fr: "L’encodeur vidéo n’a pas pu démarrer. Désactivez « Rapide (encodeur matériel) » et réessayez."
   de: "Der Video-Encoder konnte nicht gestartet werden. Schalten Sie „Schnell (Hardware-Encoder)“ aus und versuchen Sie es erneut."
   es: "No se pudo iniciar el codificador de vídeo. Desactiva «Rápido (codificador por hardware)» e inténtalo de nuevo."
   it: "Impossibile avviare l'encoder video. Disattiva «Veloce (encoder hardware)» e riprova."
@@ -4804,7 +4804,7 @@ media.err.encoder:
   ko: "비디오 인코더를 시작할 수 없습니다. '빠름(하드웨어 인코더)'을 끄고 다시 시도하세요."
 media.err.ffmpeg:
   en: "ffmpeg could not process this file."
-  fr: "ffmpeg n'a pas pu traiter ce fichier."
+  fr: "ffmpeg n’a pas pu traiter ce fichier."
   de: "ffmpeg konnte diese Datei nicht verarbeiten."
   es: "ffmpeg no pudo procesar este archivo."
   it: "ffmpeg non è riuscito a elaborare questo file."
@@ -4824,7 +4824,7 @@ media.err.no_streams:
   ko: "이 파일에는 소리도 영상도 없습니다."
 media.err.no_frame:
   en: "No picture could be taken at that time."
-  fr: "Aucune image n'a pu être prise à ce moment."
+  fr: "Aucune image n’a pu être prise à ce moment."
   de: "Zu diesem Zeitpunkt konnte kein Bild aufgenommen werden."
   es: "No se pudo obtener ninguna imagen en ese momento."
   it: "Non è stato possibile estrarre alcuna immagine in quel momento."
@@ -4834,7 +4834,7 @@ media.err.no_frame:
   ko: "해당 시점의 화면을 가져올 수 없습니다."
 media.err.no_audio:
   en: "This file has no sound."
-  fr: "Ce fichier n'a pas de son."
+  fr: "Ce fichier n’a pas de son."
   de: "Diese Datei hat keinen Ton."
   es: "Este archivo no tiene sonido."
   it: "Questo file non ha audio."
@@ -4844,7 +4844,7 @@ media.err.no_audio:
   ko: "이 파일에는 소리가 없습니다."
 media.err.no_video:
   en: "This file has no picture."
-  fr: "Ce fichier n'a pas d'image."
+  fr: "Ce fichier n’a pas d’image."
   de: "Diese Datei hat kein Bild."
   es: "Este archivo no tiene imagen."
   it: "Questo file non ha immagini."
@@ -4854,7 +4854,7 @@ media.err.no_video:
   ko: "이 파일에는 영상이 없습니다."
 media.err.loudness:
   en: "The loudness could not be measured."
-  fr: "Le volume n'a pas pu être mesuré."
+  fr: "Le volume n’a pas pu être mesuré."
   de: "Die Lautheit konnte nicht gemessen werden."
   es: "No se pudo medir la sonoridad."
   it: "Non è stato possibile misurare il loudness."
@@ -4884,7 +4884,7 @@ media.err.ytdlp:
   ko: "다운로드에 실패했습니다. 링크가 비공개이거나 삭제되었거나 지원되지 않을 수 있습니다."
 media.err.bad_time:
   en: "“%{value}” is not a time. Use 1:23, 83 or 1m23s."
-  fr: "« %{value} » n'est pas un temps. Utilisez 1:23, 83 ou 1m23s."
+  fr: "« %{value} » n’est pas un temps. Utilisez 1:23, 83 ou 1m23s."
   de: "„%{value}“ ist keine Zeitangabe. Verwenden Sie 1:23, 83 oder 1m23s."
   es: "«%{value}» no es un tiempo. Usa 1:23, 83 o 1m23s."
   it: "«%{value}» non è un tempo. Usa 1:23, 83 o 1m23s."
@@ -4914,7 +4914,7 @@ media.err.empty_range:
   ko: "남길 구간이 없습니다. 끝은 시작보다 뒤여야 합니다."
 media.err.codec_container:
   en: "This codec does not fit in this format. Choose another codec or format."
-  fr: "Ce codec n'entre pas dans ce format. Choisissez un autre codec ou format."
+  fr: "Ce codec n’entre pas dans ce format. Choisissez un autre codec ou format."
   de: "Dieser Codec passt nicht in dieses Format. Wählen Sie einen anderen Codec oder ein anderes Format."
   es: "Este códec no encaja en este formato. Elige otro códec u otro formato."
   it: "Questo codec non è compatibile con questo formato. Scegli un altro codec o formato."
@@ -4974,7 +4974,7 @@ media.err.nothing_to_split:
   ko: "나눌 것이 없습니다. 자를 지점을 찾지 못했습니다."
 media.err.bad_size:
   en: "Enter a width and a height of at least 2 pixels."
-  fr: "Entrez une largeur et une hauteur d'au moins 2 pixels."
+  fr: "Entrez une largeur et une hauteur d’au moins 2 pixels."
   de: "Geben Sie eine Breite und eine Höhe von mindestens 2 Pixeln ein."
   es: "Introduce un ancho y un alto de al menos 2 píxeles."
   it: "Inserisci una larghezza e un'altezza di almeno 2 pixel."
@@ -5034,7 +5034,7 @@ media.err.no_text:
   ko: "워터마크 텍스트를 입력하세요."
 media.err.no_image:
   en: "Choose the watermark image."
-  fr: "Choisissez l'image du filigrane."
+  fr: "Choisissez l’image du filigrane."
   de: "Wählen Sie das Bild für das Wasserzeichen."
   es: "Elige la imagen de la marca de agua."
   it: "Scegli l'immagine della filigrana."
@@ -5044,7 +5044,7 @@ media.err.no_image:
   ko: "워터마크 이미지를 선택하세요."
 media.err.bad_image:
   en: "The watermark image could not be read."
-  fr: "L'image du filigrane n'a pas pu être lue."
+  fr: "L’image du filigrane n’a pas pu être lue."
   de: "Das Wasserzeichen-Bild konnte nicht gelesen werden."
   es: "No se pudo leer la imagen de la marca de agua."
   it: "Impossibile leggere l'immagine della filigrana."
@@ -5084,7 +5084,7 @@ media.err.no_subtitles:
   ko: "자막 파일(SRT, VTT 또는 ASS)을 선택하세요."
 media.err.empty_subtitles:
   en: "No captions were found in this subtitle file."
-  fr: "Aucun sous-titre n'a été trouvé dans ce fichier."
+  fr: "Aucun sous-titre n’a été trouvé dans ce fichier."
   de: "In dieser Untertiteldatei wurden keine Untertitel gefunden."
   es: "No se encontraron subtítulos en este archivo de subtítulos."
   it: "Nessun sottotitolo trovato in questo file di sottotitoli."
@@ -5094,7 +5094,7 @@ media.err.empty_subtitles:
   ko: "이 자막 파일에서 자막을 찾지 못했습니다."
 media.err.no_speech:
   en: "No speech was found in this file."
-  fr: "Aucune parole n'a été trouvée dans ce fichier."
+  fr: "Aucune parole n’a été trouvée dans ce fichier."
   de: "In dieser Datei wurde keine Sprache gefunden."
   es: "No se encontró habla en este archivo."
   it: "Nessun parlato trovato in questo file."
@@ -5114,7 +5114,7 @@ media.err.no_libass:
   ko: "이 ffmpeg 빌드는 자막을 그릴 수 없습니다."
 media.err.silent:
   en: "This file is silent: there is nothing to adjust."
-  fr: "Ce fichier est silencieux : il n'y a rien à ajuster."
+  fr: "Ce fichier est silencieux : il n’y a rien à ajuster."
   de: "Diese Datei ist stumm: Es gibt nichts anzupassen."
   es: "Este archivo está en silencio: no hay nada que ajustar."
   it: "Questo file è silenzioso: non c'è nulla da regolare."
@@ -5134,7 +5134,7 @@ media.msg.progress:
   ko: "%{pct} % · 약 %{eta} 남음"
 media.msg.preparing_audio:
   en: "Preparing the audio…"
-  fr: "Préparation de l'audio…"
+  fr: "Préparation de l’audio…"
   de: "Audio wird vorbereitet …"
   es: "Preparando el audio…"
   it: "Preparazione dell'audio…"
@@ -5374,7 +5374,7 @@ media.note.lossless_rotate:
   ko: "재인코딩 없이 회전했습니다"
 media.note.had_no_audio:
   en: "This video had no sound: copied as is."
-  fr: "Cette vidéo n'avait pas de son : copiée telle quelle."
+  fr: "Cette vidéo n’avait pas de son : copiée telle quelle."
   de: "Dieses Video hatte keinen Ton: unverändert kopiert."
   es: "Este vídeo no tenía sonido: se copió tal cual."
   it: "Questo video non aveva audio: copiato così com'è."
@@ -5464,7 +5464,7 @@ media.note.soft_subs:
   ko: "자막 트랙을 추가했습니다"
 media.note.transcribed:
   en: "%{language} · %{words} words · %{duration} of audio in %{secs}"
-  fr: "%{language} · %{words} mots · %{duration} d'audio en %{secs}"
+  fr: "%{language} · %{words} mots · %{duration} d’audio en %{secs}"
   de: "%{language} · %{words} Wörter · %{duration} Audio in %{secs}"
   es: "%{language} · %{words} palabras · %{duration} de audio en %{secs}"
   it: "%{language} · %{words} parole · %{duration} di audio in %{secs}"
@@ -5564,7 +5564,7 @@ media.ph.time_end:
   ko: "파일 끝"
 media.ph.time_all:
   en: "Until the end"
-  fr: "Jusqu'à la fin"
+  fr: "Jusqu’à la fin"
   de: "Bis zum Ende"
   es: "Hasta el final"
   it: "Fino alla fine"

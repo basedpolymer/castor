@@ -1,6 +1,8 @@
 //! Castor — the desktop app.
 #![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
 #![recursion_limit = "512"]
+// Without the engines (demo-tools UI builds) the studios are not compiled: their helpers are unused.
+#![cfg_attr(not(feature = "tools"), allow(dead_code))]
 
 mod app;
 mod assets;
@@ -10,20 +12,25 @@ mod cli;
 mod demo;
 mod form;
 mod home;
+mod integration;
 mod ipc;
 mod model;
 mod palette;
+mod pdf_gate;
 mod panel;
 mod runs;
 mod search;
 mod settings_page;
 mod shell;
+mod studio;
 mod theme;
 mod thumbs;
 mod tool_screen;
 mod tray;
 mod ui;
 mod updates;
+mod workspace_editor;
+mod workspaces;
 
 #[cfg(test)]
 mod tests;
@@ -47,7 +54,16 @@ fn main() {
     }
 
     // Velopack must run first: on install/update/uninstall hooks it does its work and exits.
-    velopack::VelopackApp::build().run();
+    // Windows: the hooks also write / remove the Explorer "Castor" menu (per-user, no UI).
+    let mut velo = velopack::VelopackApp::build();
+    #[cfg(windows)]
+    {
+        velo = velo
+            .on_after_install_fast_callback(|_| integration::hook_register())
+            .on_after_update_fast_callback(|_| integration::hook_register())
+            .on_before_uninstall_fast_callback(|_| integration::unregister_context_menu());
+    }
+    velo.run();
 
     let args = cli::Args::parse(std::env::args().skip(1));
     let screenshot = args.page.is_some();

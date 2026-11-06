@@ -1284,10 +1284,13 @@ dependencies = [
  "castor-tools",
  "crossbeam-channel",
  "embed-resource",
+ "engine-media",
+ "engine-pdf",
  "global-hotkey",
  "gpui-kit",
  "image 0.25.8",
  "interprocess",
+ "notify",
  "parking_lot",
  "serde",
  "serde_json",
@@ -1299,6 +1302,7 @@ dependencies = [
  "tray-icon",
  "velopack",
  "windows-sys 0.61.2",
+ "winreg",
 ]
 
 [[package]]

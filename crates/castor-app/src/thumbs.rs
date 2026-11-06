@@ -9,6 +9,7 @@ use castor_core::FileInfo;
 use gpui_kit::*;
 
 pub const THUMB_PX: u32 = 72;
+
 const MAX_IN_FLIGHT: usize = 4;
 
 #[derive(Clone)]
@@ -36,7 +37,7 @@ pub fn get(f: &FileInfo, cx: &mut App) -> Option<Arc<Image>> {
         Some(_) => return None,
         None => {}
     }
-    if !f.kind.is_image_like() && f.kind != castor_core::FileKind::Pdf && f.kind != castor_core::FileKind::Video {
+    if !has_thumbnail(f.kind) {
         t.map.insert(f.path.clone(), Thumb::None);
         return None;
     }
@@ -44,6 +45,13 @@ pub fn get(f: &FileInfo, cx: &mut App) -> Option<Arc<Image>> {
     t.queue.push_back(f.clone());
     pump(cx);
     None
+}
+
+/// Kinds `castor_tools::thumbnail` can draw: every image format, PDF first pages, video frames,
+/// audio covers or waveforms.
+pub fn has_thumbnail(k: castor_core::FileKind) -> bool {
+    use castor_core::FileKind as K;
+    k.is_image_like() || matches!(k, K::Pdf | K::Video | K::Audio)
 }
 
 fn pump(cx: &mut App) {
@@ -54,7 +62,10 @@ fn pump(cx: &mut App) {
         }
         let Some(f) = t.queue.pop_front() else { return };
         t.in_flight += 1;
+        let ex = cx.background_executor().clone();
         let task = cx.background_executor().spawn(async move {
+            // PDF pages wait (without blocking a thread) while a PDF-engine job runs.
+            let _g = if f.kind == castor_core::FileKind::Pdf && cfg!(feature = "tools") { Some(crate::pdf_gate::enter_view(&ex).await) } else { None };
             let png = thumbnail(&f, THUMB_PX);
             (f.path, png)
         });

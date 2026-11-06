@@ -34,11 +34,32 @@ pub fn forward_to_running(args: &Args) -> bool {
     true
 }
 
+/// The name is taken but no instance answers on it.
+fn is_stale(e: &std::io::Error) -> bool {
+    if e.kind() != std::io::ErrorKind::AddrInUse {
+        return false;
+    }
+    let Ok(name) = socket_name().to_ns_name::<GenericNamespaced>() else { return false };
+    Stream::connect(name).is_err()
+}
+
 /// Start listening. Messages arrive on the returned channel (polled by the UI).
 pub fn listen() -> Option<Receiver<Args>> {
     let name = socket_name().to_ns_name::<GenericNamespaced>().ok()?;
-    let listener = match ListenerOptions::new().name(name).create_sync() {
+    let listener = match ListenerOptions::new().name(name.clone()).create_sync() {
         Ok(l) => l,
+        Err(e) if is_stale(&e) => {
+            // A previous Castor was killed and left its socket file behind (macOS/Linux): nobody
+            // answers on it, so take the name over.
+            tracing::info!("replacing a stale single-instance socket");
+            match ListenerOptions::new().name(name).try_overwrite(true).max_spin_time(std::time::Duration::from_secs(2)).create_sync() {
+                Ok(l) => l,
+                Err(e) => {
+                    tracing::warn!("single-instance socket unavailable: {e}");
+                    return None;
+                }
+            }
+        }
         Err(e) => {
             tracing::warn!("single-instance socket unavailable: {e}");
             return None;

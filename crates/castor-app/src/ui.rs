@@ -20,6 +20,12 @@ pub fn ta(key: &str, args: &[(&str, &str)]) -> SharedString {
     castor_core::tr_args(key, args).into()
 }
 
+/// A count with its noun: `{key}.one` for 1 when it exists, else `{key}` with `%{count}`.
+pub fn tn(key: &str, n: usize) -> SharedString {
+    let one = format!("{key}.one");
+    if n == 1 && castor_core::i18n::has(&one) { t(&one) } else { ta(key, &[("count", &n.to_string())]) }
+}
+
 /// Sizes (DESIGN §2).
 pub mod size {
     pub const UI: f32 = 14.0;

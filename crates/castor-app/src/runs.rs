@@ -52,6 +52,8 @@ enum Row {
 
 pub struct RunsPage {
     filter: Filter,
+    /// Only the runs of the active workspace.
+    ws_only: bool,
     selected: Option<String>,
     scroll: UniformListScrollHandle,
     busy: bool,
@@ -111,7 +113,7 @@ impl RunsPage {
     pub fn new(_window: &mut Window, cx: &mut Context<Self>) -> Self {
         let m = model(cx);
         let subs = vec![cx.observe(&m, |_, _, cx| cx.notify())];
-        RunsPage { filter: Filter::All, selected: None, scroll: UniformListScrollHandle::new(), busy: false, _subs: subs }
+        RunsPage { filter: Filter::All, ws_only: true, selected: None, scroll: UniformListScrollHandle::new(), busy: false, _subs: subs }
     }
 
     fn clear_history(&mut self, window: &mut Window, cx: &mut Context<Self>) {
@@ -137,7 +139,9 @@ impl RunsPage {
     fn undo(&mut self, r: RunRecord, window: &mut Window, cx: &mut Context<Self>) {
         self.busy = true;
         cx.notify();
-        let reg = crate::model::registry(cx);
+        // Registry tools and the studios' own tools (an overwrite from PDF Studio).
+        let tools: std::collections::HashMap<String, std::sync::Arc<dyn castor_core::Tool>> =
+            r.undo.iter().filter_map(|(id, _)| crate::studio::find_tool(id, cx).map(|t| (id.clone(), t))).collect();
         cx.spawn_in(window, async move |this, cx| {
             let res = cx
                 .background_executor()
@@ -145,7 +149,7 @@ impl RunsPage {
                     let mut errors = Vec::new();
                     // Undo in reverse order.
                     for (tool_id, journal) in r.undo.iter().rev() {
-                        match reg.get(tool_id) {
+                        match tools.get(tool_id) {
                             Some(tool) => {
                                 if let Err(e) = tool.undo(journal) {
                                     errors.push(format!("{e:#}"));
@@ -188,13 +192,19 @@ impl RunsPage {
             navigate(Nav::Chain(c.clone()), cx);
             return;
         }
+        // A studio save: reopen the studio on the original file.
+        if r.tool_id.starts_with("studio.") {
+            let kind = if r.tool_id == "studio.pdf" { crate::studio::StudioKind::Pdf } else { crate::studio::StudioKind::Media };
+            navigate(Nav::Studio(kind, files.into_iter().next()), cx);
+            return;
+        }
         navigate(Nav::Tool { id: r.tool_id.clone(), files, values: Some(r.values.clone()) }, cx);
     }
 
     fn render_details(&self, k: &Tokens, r: &RunRecord, cx: &mut Context<Self>) -> impl IntoElement {
         let reg = crate::model::registry(cx);
         let can_undo = !r.undo.is_empty() && !r.undone;
-        let can_rerun = r.chain_name.is_some() || reg.get(&r.tool_id).is_some();
+        let can_rerun = r.chain_name.is_some() || reg.get(&r.tool_id).is_some() || r.tool_id.starts_with("studio.");
         let (_, day) = day_of(r.started);
         let r2 = r.clone();
         let r3 = r.clone();
@@ -295,10 +305,13 @@ impl Render for RunsPage {
         let runs: Vec<RunRecord> = m.history.clone();
         let total = runs.len();
         let filter = self.filter;
+        let active_ws = crate::workspaces::active(&m.settings);
+        let ws_runs: Option<std::collections::HashSet<String>> =
+            active_ws.as_ref().filter(|_| self.ws_only).map(|w| w.runs.iter().cloned().collect());
         let mut rows: Vec<Row> = Vec::new();
         let mut last_day = None;
         for (i, r) in runs.iter().enumerate() {
-            if !filter.accepts(r.status) {
+            if !filter.accepts(r.status) || ws_runs.as_ref().is_some_and(|set| !set.contains(&r.id)) {
                 continue;
             }
             let (d, label) = day_of(r.started);
@@ -334,7 +347,10 @@ impl Render for RunsPage {
                         let id = r.id.clone();
                         let this = this.clone();
                         let family = if r.steps.len() == 1 { r.steps.first().and_then(|s| reg.get(s)).map(|t| t.meta().family) } else { None };
-                        let change = if r.bytes_in > 0 && r.bytes_out > 0 { units::change(r.bytes_in, r.bytes_out) } else { String::new() };
+                        // A size change only means something when each file gave one file (a
+                        // checksum list or a merge is not a "−100 %" saving).
+                        let comparable = r.files_out == r.files_in.max(r.inputs.len()) && r.files_out > 0;
+                        let change = if comparable && r.bytes_in > 0 && r.bytes_out > 0 { units::change(r.bytes_in, r.bytes_out) } else { String::new() };
                         div()
                             .id(("runs-row", i))
                             .w_full()
@@ -459,6 +475,22 @@ impl Render for RunsPage {
                     .items_center()
                     .gap(px(12.0))
                     .child(filters)
+                    .when_some(active_ws.clone(), |d, w| {
+                        let this3 = cx.entity().downgrade();
+                        d.child(ui::segmented(
+                            "runs-ws",
+                            &k,
+                            vec![("ws".into(), SharedString::from(w.name.clone())), ("all".into(), t("app.runs.all_workspaces"))],
+                            if self.ws_only { "ws" } else { "all" },
+                            std::rc::Rc::new(move |v, _, cx| {
+                                let only = v == "ws";
+                                let _ = this3.update(cx, |p, cx| {
+                                    p.ws_only = only;
+                                    cx.notify();
+                                });
+                            }),
+                        ))
+                    })
                     .child(div().flex_1())
                     .when(total > 0, |d| {
                         d.child(Button::new("clear-history").small().danger().label(t("app.runs.clear")).on_click(cx.listener(|this, _, window, cx| this.clear_history(window, cx))))

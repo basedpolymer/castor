@@ -13,7 +13,7 @@ files.checksum.name:
   ko: "체크섬"
 files.checksum.desc:
   en: SHA-256 fingerprints to prove a file arrived intact.
-  fr: Empreintes SHA-256 pour prouver qu'un fichier est arrivé intact.
+  fr: Empreintes SHA-256 pour prouver qu’un fichier est arrivé intact.
   de: "SHA-256-Fingerabdrücke, die beweisen, dass eine Datei unversehrt angekommen ist."
   es: "Huellas SHA-256 para comprobar que un archivo llegó intacto."
   it: "Impronte SHA-256 per dimostrare che un file è arrivato intatto."

@@ -7,7 +7,7 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use castor_core::history::RunStatus;
-use castor_core::runner::{self, OutputPolicy, RunEvent, RunRequest, Step};
+use castor_core::runner::{OutputPolicy, RunEvent, RunRequest, Step};
 use castor_core::{FileInfo, FileKind, Tool};
 use gpui_kit::component::button::{Button, ButtonVariants as _};
 use gpui_kit::component::input::{Input, InputEvent, InputState};
@@ -211,9 +211,9 @@ impl QuickPanel {
         let values = m.tool_values(id);
         let policy = match out {
             Some(p) => OutputPolicy::Folder(p),
-            None => m.settings.output_policy(id),
+            None => m.output_policy(id),
         };
-        let handle = runner::start(RunRequest {
+        let handle = crate::pdf_gate::start_run(RunRequest {
             steps: vec![Step { tool: tool.clone(), values }],
             inputs,
             output: policy,

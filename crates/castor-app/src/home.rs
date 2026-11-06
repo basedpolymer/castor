@@ -8,7 +8,7 @@ use castor_core::{Family, FileInfo, FileKind, Tool, ToolStatus};
 use gpui_kit::prelude::FluentBuilder as _;
 use gpui_kit::*;
 
-use crate::model::{Nav, PageId, model, navigate};
+use crate::model::{Nav, model, navigate};
 use crate::shell::SIDEBAR_W;
 use crate::theme::{Tokens, fonts, tokens};
 use crate::ui::{self, t, ta};
@@ -621,35 +621,4 @@ impl Home {
                 })
         }))
     }
-}
-
-/// "Studios" — visual editors arrive in a later version.
-pub fn render_studios(_window: &mut Window, cx: &mut App) -> impl IntoElement {
-    let k = tokens(cx);
-    div().id("studios").size_full().overflow_y_scroll().child(
-        div()
-            .px(px(PAGE_PAD))
-            .pb(px(48.0))
-            .flex()
-            .flex_col()
-            .gap(px(22.0))
-            .child(ui::page_header(cx, PageId::Studios.title(), None, Some(t("app.studios.subtitle").into_any_element())))
-            .child(ui::section_title(&k, 1, t("app.studios.soon_title")))
-            .child(ui::roman().max_w(px(640.0)).text_color(k.ink).child(t("app.studios.body")))
-            .child(
-                div()
-                    .flex()
-                    .flex_col()
-                    .gap(px(8.0))
-                    .children(["pdf", "trim", "image"].iter().map(|s| {
-                        div()
-                            .flex()
-                            .flex_row()
-                            .items_center()
-                            .gap(px(10.0))
-                            .child(ui::diamond(10.0, k.muted))
-                            .child(ui::roman().text_color(k.ink).child(t(&format!("app.studios.{s}"))))
-                    })),
-            ),
-    )
 }

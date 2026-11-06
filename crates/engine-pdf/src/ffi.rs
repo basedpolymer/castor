@@ -37,6 +37,8 @@ pub type CharCb = unsafe extern "C" fn(
 pub type ProgressCb = unsafe extern "C" fn(arg: *mut c_void, percent: c_int) -> c_int;
 
 unsafe extern "C" {
+    /// Give the shim mupdf-rs's (locked) context to clone from. Call through [`ensure_base`].
+    fn castor_set_base_context(ctx: *mut c_void);
     pub fn castor_optimize(
         input: *const c_char,
         output: *const c_char,
@@ -71,4 +73,19 @@ unsafe extern "C" {
 pub fn err_string(buf: &[u8]) -> String {
     let end = buf.iter().position(|b| *b == 0).unwrap_or(buf.len());
     String::from_utf8_lossy(&buf[..end]).into_owned()
+}
+
+/// Make the C shim clone its contexts from mupdf-rs's base context (shared locks and store).
+/// Idempotent and cheap; call before any shim function.
+pub fn ensure_base() {
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {
+        let ctx = mupdf::Context::get();
+        // `mupdf::Context` is a single raw `*mut fz_context` field with no Drop (mupdf 0.8.0,
+        // pinned with `=`); its pointer is this thread's clone of the locked base context. The
+        // shim clones it again immediately and keeps that clone for the life of the process.
+        // `transmute` checks the sizes at compile time.
+        let raw: *mut c_void = unsafe { std::mem::transmute::<mupdf::Context, *mut c_void>(ctx) };
+        unsafe { castor_set_base_context(raw) };
+    });
 }

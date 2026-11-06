@@ -359,6 +359,7 @@ impl Engine {
         let clang = CString::new(langs)?;
         let cdir = CString::new(crate::path_str(&dir)?)?;
         let mut err = vec![0u8; 1024];
+        ffi::ensure_base();
         let h = unsafe { ffi::castor_ocr_new(clang.as_ptr(), cdir.as_ptr(), err.as_mut_ptr().cast(), err.len() as i32) };
         anyhow::ensure!(!h.is_null(), "{}: {}", castor_core::tr("pdf.err.ocr_init"), ffi::err_string(&err));
         Ok(Engine { h, _guard: guard })

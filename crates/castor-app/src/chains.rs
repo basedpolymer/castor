@@ -270,13 +270,13 @@ impl ChainsPage {
         let req = RunRequest {
             steps: steps.into_iter().map(|s: Step| s).collect(),
             inputs,
-            output: s.output_policy(&last_id),
+            output: crate::workspaces::output_policy(s, &last_id),
             chain_name: Some(c.name.clone()),
             max_parallel: s.max_parallel,
             record: true,
         };
         let n = req.steps.len();
-        let handle = runner::start(req);
+        let handle = crate::pdf_gate::start_run(req);
         let rx = handle.events.clone();
         self.run = Some(ChainRun { step: 0, steps: n, jobs: vec![], record: None, handle: Some(handle) });
         cx.notify();

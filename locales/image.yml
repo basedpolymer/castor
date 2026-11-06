@@ -14,7 +14,7 @@ ml.downloading:
   ko: "%{name}(%{size})을(를) 한 번만 다운로드합니다. 이후에는 오프라인으로 작동합니다."
 ml.too_big:
   en: "The result would be %{mp} megapixels, too big to be useful. Pick a smaller factor or resize first."
-  fr: "Le résultat ferait %{mp} mégapixels, trop pour être utile. Choisissez un facteur plus petit ou réduisez l'image d'abord."
+  fr: "Le résultat ferait %{mp} mégapixels, trop pour être utile. Choisissez un facteur plus petit ou réduisez l’image d’abord."
   de: "Das Ergebnis hätte %{mp} Megapixel und wäre damit zu groß, um nützlich zu sein. Wählen Sie einen kleineren Faktor oder verkleinern Sie das Bild zuerst."
   es: "El resultado tendría %{mp} megapíxeles, demasiado grande para ser útil. Elige un factor menor o reduce la imagen antes."
   it: "Il risultato avrebbe %{mp} megapixel, troppi per essere utile. Scegli un fattore più piccolo o ridimensiona prima l'immagine."
@@ -25,7 +25,7 @@ ml.too_big:
 
 image.err.read:
   en: "Cannot read %{file}. Check that it still exists and that you may open it."
-  fr: "Impossible de lire %{file}. Vérifiez qu'il existe toujours et que vous pouvez l'ouvrir."
+  fr: "Impossible de lire %{file}. Vérifiez qu’il existe toujours et que vous pouvez l’ouvrir."
   de: "%{file} kann nicht gelesen werden. Prüfen Sie, ob die Datei noch existiert und ob Sie sie öffnen dürfen."
   es: "No se puede leer %{file}. Comprueba que sigue existiendo y que tienes permiso para abrirlo."
   it: "Impossibile leggere %{file}. Controlla che esista ancora e che tu abbia il permesso di aprirlo."
@@ -45,7 +45,7 @@ image.err.empty:
   ko: "%{file}이(가) 비어 있습니다(0바이트)."
 image.err.unknown_format:
   en: "%{file} is not an image format Castor knows."
-  fr: "%{file} n'est pas un format d'image connu de Castor."
+  fr: "%{file} n’est pas un format d’image connu de Castor."
   de: "%{file} ist kein Bildformat, das Castor kennt."
   es: "%{file} no es un formato de imagen que Castor conozca."
   it: "%{file} non è un formato di immagine noto a Castor."
@@ -55,7 +55,7 @@ image.err.unknown_format:
   ko: "%{file}은(는) Castor가 알지 못하는 이미지 형식입니다."
 image.err.corrupt:
   en: "%{file} could not be decoded (damaged or unsupported variant)"
-  fr: "%{file} n'a pas pu être décodé (fichier abîmé ou variante non prise en charge)"
+  fr: "%{file} n’a pas pu être décodé (fichier abîmé ou variante non prise en charge)"
   de: "%{file} konnte nicht dekodiert werden (beschädigt oder nicht unterstützte Variante)"
   es: "No se pudo decodificar %{file} (dañado o variante no compatible)"
   it: "Impossibile decodificare %{file} (danneggiato o variante non supportata)"
@@ -65,7 +65,7 @@ image.err.corrupt:
   ko: "%{file}을(를) 디코딩할 수 없습니다(손상되었거나 지원하지 않는 변형입니다)"
 image.err.write:
   en: "Cannot write %{file}. Pick another output folder (this one may be read-only or full)."
-  fr: "Impossible d'écrire %{file}. Choisissez un autre dossier de sortie (celui-ci est peut-être en lecture seule ou plein)."
+  fr: "Impossible d’écrire %{file}. Choisissez un autre dossier de sortie (celui-ci est peut-être en lecture seule ou plein)."
   de: "%{file} kann nicht geschrieben werden. Wählen Sie einen anderen Ausgabeordner (dieser ist möglicherweise schreibgeschützt oder voll)."
   es: "No se puede escribir %{file}. Elige otra carpeta de salida (esta quizá es de solo lectura o está llena)."
   it: "Impossibile scrivere %{file}. Scegli un'altra cartella di destinazione (questa potrebbe essere di sola lettura o piena)."
@@ -75,7 +75,7 @@ image.err.write:
   ko: "%{file}을(를) 쓸 수 없습니다. 다른 출력 폴더를 선택하세요(이 폴더는 읽기 전용이거나 가득 찼을 수 있습니다)."
 image.err.heic_write:
   en: "HEIC export uses the macOS image engine and is only available on a Mac. Pick JPG, WebP or AVIF instead."
-  fr: "L'export HEIC passe par le moteur d'images de macOS et n'existe que sur Mac. Choisissez plutôt JPG, WebP ou AVIF."
+  fr: "L’export HEIC passe par le moteur d’images de macOS et n’existe que sur Mac. Choisissez plutôt JPG, WebP ou AVIF."
   de: "Der HEIC-Export nutzt die Bild-Engine von macOS und ist nur auf einem Mac verfügbar. Wählen Sie stattdessen JPG, WebP oder AVIF."
   es: "La exportación a HEIC usa el motor de imágenes de macOS y solo está disponible en un Mac. Elige JPG, WebP o AVIF."
   it: "L'esportazione HEIC usa il motore immagini di macOS ed è disponibile solo su Mac. Scegli invece JPG, WebP o AVIF."
@@ -96,7 +96,7 @@ image.err.too_big:
 
 image.remove-background.name:
   en: "Remove background"
-  fr: "Supprimer l'arrière-plan"
+  fr: "Supprimer l’arrière-plan"
   de: "Hintergrund entfernen"
   es: "Quitar fondo"
   it: "Rimuovi sfondo"
@@ -276,7 +276,7 @@ image.remove-background.opt.decontaminate:
   ko: "가장자리 색상 정리"
 image.remove-background.opt.decontaminate.help:
   en: "Removes the halo of the old background around hair and soft edges."
-  fr: "Retire le halo de l'ancien fond autour des cheveux et des bords doux."
+  fr: "Retire le halo de l’ancien fond autour des cheveux et des bords doux."
   de: "Entfernt den Farbsaum des alten Hintergrunds an Haaren und weichen Kanten."
   es: "Elimina el halo del fondo anterior alrededor del pelo y los bordes suaves."
   it: "Elimina l'alone del vecchio sfondo attorno a capelli e bordi morbidi."
@@ -287,7 +287,7 @@ image.remove-background.opt.decontaminate.help:
 
 image.upscale.name:
   en: "AI upscale"
-  fr: "Agrandir avec l'IA"
+  fr: "Agrandir avec l’IA"
   de: "KI-Hochskalierung"
   es: "Ampliación con IA"
   it: "Upscale con IA"
@@ -347,7 +347,7 @@ image.upscale.opt.model:
   ko: "모델"
 image.upscale.opt.model.help:
   en: "Fast suits most pictures; Photo adds finer texture but is about 15 times slower; Art is for drawings and anime."
-  fr: "« Rapide » convient à la plupart des images ; « Photo » ajoute des textures plus fines mais est environ 15 fois plus lent ; « Illustration » est pour les dessins et l'anime."
+  fr: "« Rapide » convient à la plupart des images ; « Photo » ajoute des textures plus fines mais est environ 15 fois plus lent ; « Illustration » est pour les dessins et l’anime."
   de: "„Schnell“ passt für die meisten Bilder; „Foto“ liefert feinere Texturen, ist aber etwa 15-mal langsamer; „Kunst“ ist für Zeichnungen und Anime."
   es: "«Rápido» sirve para la mayoría de las imágenes; «Foto» añade textura más fina pero es unas 15 veces más lento; «Arte» es para dibujos y anime."
   it: "«Veloce» va bene per la maggior parte delle immagini; «Foto» aggiunge texture più fini ma è circa 15 volte più lento; «Arte» è per disegni e anime."
@@ -397,7 +397,7 @@ image.upscale.opt.format:
   ko: "형식"
 image.upscale.opt.format.keep:
   en: "Same as original"
-  fr: "Comme l'original"
+  fr: "Comme l’original"
   de: "Wie das Original"
   es: "Igual que el original"
   it: "Come l'originale"
@@ -418,7 +418,7 @@ image.convert.name:
   ko: "이미지 변환"
 image.convert.desc:
   en: "HEIC, RAW, SVG, AVIF and more to JPG, PNG, WebP, AVIF, GIF…"
-  fr: "HEIC, RAW, SVG, AVIF et d'autres vers JPG, PNG, WebP, AVIF, GIF…"
+  fr: "HEIC, RAW, SVG, AVIF et d’autres vers JPG, PNG, WebP, AVIF, GIF…"
   de: "HEIC, RAW, SVG, AVIF und mehr in JPG, PNG, WebP, AVIF, GIF …"
   es: "HEIC, RAW, SVG, AVIF y más a JPG, PNG, WebP, AVIF, GIF…"
   it: "HEIC, RAW, SVG, AVIF e altri in JPG, PNG, WebP, AVIF, GIF…"
@@ -528,7 +528,7 @@ image.convert.opt.color.srgb:
   ko: "sRGB로 변환"
 image.convert.opt.color.keep:
   en: "Keep the original profile"
-  fr: "Garder le profil d'origine"
+  fr: "Garder le profil d’origine"
   de: "Originalprofil beibehalten"
   es: "Conservar el perfil original"
   it: "Mantieni il profilo originale"
@@ -538,7 +538,7 @@ image.convert.opt.color.keep:
   ko: "원본 프로필 유지"
 image.convert.opt.color.help:
   en: "sRGB looks the same in every browser and app."
-  fr: "Le sRGB s'affiche pareil dans tous les navigateurs et applications."
+  fr: "Le sRGB s’affiche pareil dans tous les navigateurs et applications."
   de: "sRGB sieht in jedem Browser und jeder App gleich aus."
   es: "sRGB se ve igual en todos los navegadores y aplicaciones."
   it: "sRGB appare uguale in ogni browser e app."
@@ -578,7 +578,7 @@ image.convert.opt.svg_size:
   ko: "SVG 너비"
 image.convert.opt.svg_size.help:
   en: "Long side in pixels when rendering SVG files (0 = their own size)."
-  fr: "Plus grand côté en pixels pour le rendu des SVG (0 = leur taille d'origine)."
+  fr: "Plus grand côté en pixels pour le rendu des SVG (0 = leur taille d’origine)."
   de: "Lange Seite in Pixeln beim Rendern von SVG-Dateien (0 = ihre eigene Größe)."
   es: "Lado largo en píxeles al renderizar archivos SVG (0 = su tamaño propio)."
   it: "Lato lungo in pixel per il rendering dei file SVG (0 = dimensione originale)."
@@ -629,7 +629,7 @@ image.vectorize.keywords:
   ko: "벡터화 svg 트레이스 벡터 로고 확대 일러스트레이터"
 image.vectorize.opt.preset:
   en: "Kind of image"
-  fr: "Type d'image"
+  fr: "Type d’image"
   de: "Art des Bildes"
   es: "Tipo de imagen"
   it: "Tipo di immagine"
@@ -770,7 +770,7 @@ image.compress.name:
   ko: "이미지 압축"
 image.compress.desc:
   en: "Much smaller files that look the same. Never bigger than the original."
-  fr: "Des fichiers bien plus légers qui gardent le même aspect. Jamais plus gros que l'original."
+  fr: "Des fichiers bien plus légers qui gardent le même aspect. Jamais plus gros que l’original."
   de: "Viel kleinere Dateien, die gleich aussehen. Nie größer als das Original."
   es: "Archivos mucho más pequeños que se ven igual. Nunca más grandes que el original."
   it: "File molto più piccoli che sembrano identici. Mai più grandi dell'originale."
@@ -800,7 +800,7 @@ image.compress.keywords:
   ko: "압축 최적화 작게 줄이기 용량 tinypng squoosh 크기 kb 웹"
 image.compress.kept:
   en: "Already optimal: the original was kept."
-  fr: "Déjà optimal : l'original a été conservé."
+  fr: "Déjà optimal : l’original a été conservé."
   de: "Bereits optimal: Das Original wurde beibehalten."
   es: "Ya está optimizado: se conservó el original."
   it: "Già ottimale: è stato mantenuto l'originale."
@@ -850,7 +850,7 @@ image.compress.opt.mode.size:
   ko: "목표 크기"
 image.compress.opt.mode.help:
   en: "Visually identical finds the smallest file you cannot tell apart from the original (slower)."
-  fr: "« Visuellement identique » cherche le plus petit fichier impossible à distinguer de l'original (plus lent)."
+  fr: "« Visuellement identique » cherche le plus petit fichier impossible à distinguer de l’original (plus lent)."
   de: "„Optisch identisch“ sucht die kleinste Datei, die sich vom Original nicht unterscheiden lässt (langsamer)."
   es: "«Visualmente idéntico» busca el archivo más pequeño que no se distingue del original (más lento)."
   it: "«Visivamente identico» cerca il file più piccolo che non si distingue dall'originale (più lento)."
@@ -880,7 +880,7 @@ image.compress.opt.format:
   ko: "형식"
 image.compress.opt.format.keep:
   en: "Same as original"
-  fr: "Comme l'original"
+  fr: "Comme l’original"
   de: "Wie das Original"
   es: "Igual que el original"
   it: "Come l'originale"
@@ -900,7 +900,7 @@ image.compress.opt.png_palette:
   ko: "PNG 스마트 팔레트"
 image.compress.opt.png_palette.help:
   en: "Up to 256 well-chosen colours, like TinyPNG: often 70 % smaller."
-  fr: "Jusqu'à 256 couleurs bien choisies, comme TinyPNG : souvent 70 % plus léger."
+  fr: "Jusqu’à 256 couleurs bien choisies, comme TinyPNG : souvent 70 % plus léger."
   de: "Bis zu 256 gut gewählte Farben wie bei TinyPNG: oft 70 % kleiner."
   es: "Hasta 256 colores bien elegidos, como TinyPNG: a menudo un 70 % más pequeño."
   it: "Fino a 256 colori scelti con cura, come TinyPNG: spesso il 70 % più piccolo."
@@ -920,7 +920,7 @@ image.compress.opt.keep_metadata:
   ko: "메타데이터 유지"
 image.compress.opt.keep_metadata.help:
   en: "Off removes camera data and location; colour profile and orientation always stay."
-  fr: "Désactivé, retire les données d'appareil et la position ; profil de couleur et orientation sont toujours gardés."
+  fr: "Désactivé, retire les données d’appareil et la position ; profil de couleur et orientation sont toujours gardés."
   de: "Aus entfernt Kameradaten und Standort; Farbprofil und Ausrichtung bleiben immer erhalten."
   es: "Desactivado elimina los datos de la cámara y la ubicación; el perfil de color y la orientación siempre se conservan."
   it: "Disattivato rimuove i dati della fotocamera e la posizione; profilo colore e orientamento restano sempre."
@@ -941,7 +941,7 @@ image.palette.name:
   ko: "색상 팔레트"
 image.palette.desc:
   en: "The dominant colours of an image, as swatches and palette files."
-  fr: "Les couleurs dominantes d'une image, en nuancier et fichiers de palette."
+  fr: "Les couleurs dominantes d’une image, en nuancier et fichiers de palette."
   de: "Die dominanten Farben eines Bildes als Farbfelder und Palettendateien."
   es: "Los colores dominantes de una imagen, como muestras y archivos de paleta."
   it: "I colori dominanti di un'immagine, come campioni e file di tavolozza."
@@ -1021,7 +1021,7 @@ image.palette.opt.order:
   ko: "정렬"
 image.palette.opt.order.share:
   en: "Most used first"
-  fr: "Les plus présentes d'abord"
+  fr: "Les plus présentes d’abord"
   de: "Häufigste zuerst"
   es: "Más usados primero"
   it: "Più usati prima"
@@ -1442,7 +1442,7 @@ image.resize.opt.auto_focus:
   ko: "자동 포커스"
 image.resize.opt.auto_focus.help:
   en: "Keeps the most interesting part of the picture when cropping."
-  fr: "Garde la partie la plus intéressante de l'image au recadrage."
+  fr: "Garde la partie la plus intéressante de l’image au recadrage."
   de: "Behält beim Zuschneiden den interessantesten Teil des Bildes."
   es: "Conserva la parte más interesante de la imagen al recortar."
   it: "Mantiene la parte più interessante dell'immagine durante il ritaglio."
@@ -1472,7 +1472,7 @@ image.resize.opt.background:
   ko: "배경 색상"
 image.resize.opt.enlarge:
   en: "Allow enlarging"
-  fr: "Autoriser l'agrandissement"
+  fr: "Autoriser l’agrandissement"
   de: "Vergrößern erlauben"
   es: "Permitir ampliar"
   it: "Consenti ingrandimento"
@@ -1502,7 +1502,7 @@ image.resize.opt.format:
   ko: "형식"
 image.resize.opt.format.keep:
   en: "Same as original"
-  fr: "Comme l'original"
+  fr: "Comme l’original"
   de: "Wie das Original"
   es: "Igual que el original"
   it: "Come l'originale"
@@ -1563,7 +1563,7 @@ image.crop.keywords:
   ko: "자르기 크롭 잘라내기 비율 정사각형 테두리 여백"
 image.crop.too_much:
   en: "The margins are larger than the image."
-  fr: "Les marges sont plus grandes que l'image."
+  fr: "Les marges sont plus grandes que l’image."
   de: "Die Ränder sind größer als das Bild."
   es: "Los márgenes son mayores que la imagen."
   it: "I margini sono più grandi dell'immagine."
@@ -1734,7 +1734,7 @@ image.rotate.name:
   ko: "회전 및 뒤집기"
 image.rotate.desc:
   en: "Turn, mirror or straighten images; fix sideways phone photos."
-  fr: "Tourne, retourne ou redresse les images ; remet d'aplomb les photos de téléphone."
+  fr: "Tourne, retourne ou redresse les images ; remet d’aplomb les photos de téléphone."
   de: "Bilder drehen, spiegeln oder geraderichten; quer liegende Handyfotos korrigieren."
   es: "Gira, voltea o endereza imágenes; corrige fotos de móvil de lado."
   it: "Ruota, rifletti o raddrizza le immagini; correggi le foto del telefono di traverso."
@@ -1794,7 +1794,7 @@ image.rotate.opt.angle.none:
   ko: "없음"
 image.rotate.opt.angle.help:
   en: "Clockwise. \"Upright only\" applies the camera's orientation tag to the pixels."
-  fr: "Sens horaire. « Remettre droit » applique aux pixels l'orientation enregistrée par l'appareil."
+  fr: "Sens horaire. « Remettre droit » applique aux pixels l’orientation enregistrée par l’appareil."
   de: "Im Uhrzeigersinn. „Nur aufrichten“ wendet die Ausrichtungsangabe der Kamera auf die Pixel an."
   es: "En sentido horario. «Solo enderezar» aplica a los píxeles la etiqueta de orientación de la cámara."
   it: "In senso orario. «Solo raddrizza» applica ai pixel il tag di orientamento della fotocamera."
@@ -1905,7 +1905,7 @@ image.strip-metadata.name:
   ko: "메타데이터 제거"
 image.strip-metadata.desc:
   en: "Remove location, camera and personal data without touching the pixels."
-  fr: "Retire la position, l'appareil et les données personnelles sans toucher aux pixels."
+  fr: "Retire la position, l’appareil et les données personnelles sans toucher aux pixels."
   de: "Entfernt Standort, Kamera und persönliche Daten, ohne die Pixel anzutasten."
   es: "Elimina ubicación, cámara y datos personales sin tocar los píxeles."
   it: "Rimuove posizione, fotocamera e dati personali senza toccare i pixel."
@@ -1995,7 +1995,7 @@ image.strip-metadata.reencoded:
   ko: "픽셀을 무손실로 다시 썼으며, 나머지 데이터는 모두 제거되었습니다."
 image.strip-metadata.unsupported:
   en: "%{file}: this format cannot be cleaned without re-encoding. Convert it to JPG, PNG or WebP first."
-  fr: "%{file} : ce format ne peut pas être nettoyé sans réencodage. Convertissez-le d'abord en JPG, PNG ou WebP."
+  fr: "%{file} : ce format ne peut pas être nettoyé sans réencodage. Convertissez-le d’abord en JPG, PNG ou WebP."
   de: "%{file}: Dieses Format lässt sich nicht ohne erneutes Kodieren bereinigen. Konvertieren Sie es zuerst in JPG, PNG oder WebP."
   es: "%{file}: este formato no se puede limpiar sin recodificar. Conviértelo antes a JPG, PNG o WebP."
   it: "%{file}: questo formato non può essere pulito senza ricodifica. Convertilo prima in JPG, PNG o WebP."
@@ -2005,7 +2005,7 @@ image.strip-metadata.unsupported:
   ko: "%{file}: 이 형식은 다시 인코딩하지 않고는 정리할 수 없습니다. 먼저 JPG, PNG 또는 WebP로 변환하세요."
 image.strip-metadata.opt.keep_orientation:
   en: "Keep orientation"
-  fr: "Garder l'orientation"
+  fr: "Garder l’orientation"
   de: "Ausrichtung beibehalten"
   es: "Conservar orientación"
   it: "Mantieni l'orientamento"
@@ -2045,7 +2045,7 @@ image.strip-metadata.opt.keep_icc.help:
   ko: "개인 정보는 들어 있지 않으며, 제거하면 색상이 달라질 수 있습니다."
 image.strip-metadata.opt.keep_copyright:
   en: "Keep author and copyright"
-  fr: "Garder l'auteur et le copyright"
+  fr: "Garder l’auteur et le copyright"
   de: "Autor und Urheberrecht beibehalten"
   es: "Conservar autor y copyright"
   it: "Mantieni autore e copyright"
@@ -2066,7 +2066,7 @@ image.seo.name:
   ko: "SEO 이미지"
 image.seo.desc:
   en: "Search-friendly file names plus title, alt text and keywords written into the image."
-  fr: "Des noms de fichiers lisibles par les moteurs, plus titre, texte alternatif et mots-clés inscrits dans l'image."
+  fr: "Des noms de fichiers lisibles par les moteurs, plus titre, texte alternatif et mots-clés inscrits dans l’image."
   de: "Suchmaschinenfreundliche Dateinamen sowie Titel, Alt-Text und Stichwörter direkt im Bild gespeichert."
   es: "Nombres de archivo aptos para buscadores, más título, texto alternativo y palabras clave escritos en la imagen."
   it: "Nomi di file adatti ai motori di ricerca, più titolo, testo alternativo e parole chiave scritti nell'immagine."
@@ -2106,7 +2106,7 @@ image.seo.empty:
   ko: "이미지를 하나 이상 추가하세요."
 image.seo.no_key:
   en: "\"Write with AI\" needs your Anthropic API key: add it in Settings → AI, or turn the option off."
-  fr: "« Écrire avec l'IA » a besoin de votre clé d'API Anthropic : ajoutez-la dans Réglages → IA, ou désactivez l'option."
+  fr: "« Écrire avec l’IA » a besoin de votre clé d’API Anthropic : ajoutez-la dans Réglages → IA, ou désactivez l’option."
   de: "„Mit KI schreiben“ benötigt Ihren Anthropic-API-Schlüssel: Tragen Sie ihn unter Einstellungen → KI ein oder schalten Sie die Option aus."
   es: "«Escribir con IA» necesita tu clave de API de Anthropic: añádela en Ajustes → IA o desactiva la opción."
   it: "«Scrivi con IA» richiede la tua chiave API di Anthropic: aggiungila in Impostazioni → IA oppure disattiva l'opzione."
@@ -2126,7 +2126,7 @@ image.seo.bad_gps:
   ko: "위치는 '48.8584, 2.2945'(위도, 경도) 형식이어야 합니다."
 image.seo.ai_failed:
   en: "Writing with AI failed. Check your API key and connection, or turn the option off."
-  fr: "L'écriture par l'IA a échoué. Vérifiez votre clé d'API et la connexion, ou désactivez l'option."
+  fr: "L’écriture par l’IA a échoué. Vérifiez votre clé d’API et la connexion, ou désactivez l’option."
   de: "Das Schreiben mit KI ist fehlgeschlagen. Prüfen Sie Ihren API-Schlüssel und die Verbindung oder schalten Sie die Option aus."
   es: "Falló la escritura con IA. Revisa tu clave de API y la conexión, o desactiva la opción."
   it: "La scrittura con IA non è riuscita. Controlla la chiave API e la connessione, oppure disattiva l'opzione."
@@ -2136,7 +2136,7 @@ image.seo.ai_failed:
   ko: "AI 작성에 실패했습니다. API 키와 연결 상태를 확인하거나 옵션을 끄세요."
 image.seo.ai_refused:
   en: "The AI declined to describe this image."
-  fr: "L'IA a refusé de décrire cette image."
+  fr: "L’IA a refusé de décrire cette image."
   de: "Die KI hat es abgelehnt, dieses Bild zu beschreiben."
   es: "La IA se negó a describir esta imagen."
   it: "L'IA ha rifiutato di descrivere questa immagine."
@@ -2176,7 +2176,7 @@ image.seo.opt.pattern:
   ko: "파일 이름"
 image.seo.opt.pattern.help:
   en: "{title} the title, {name} the old name, {n} a number, {date} today."
-  fr: "{title} le titre, {name} l'ancien nom, {n} un numéro, {date} la date du jour."
+  fr: "{title} le titre, {name} l’ancien nom, {n} un numéro, {date} la date du jour."
   de: "{title} der Titel, {name} der alte Name, {n} eine Nummer, {date} das heutige Datum."
   es: "{title} el título, {name} el nombre anterior, {n} un número, {date} la fecha de hoy."
   it: "{title} il titolo, {name} il vecchio nome, {n} un numero, {date} la data di oggi."
@@ -2206,7 +2206,7 @@ image.seo.opt.alt:
   ko: "대체 텍스트"
 image.seo.opt.alt.help:
   en: "One sentence describing the image for screen readers and search engines."
-  fr: "Une phrase qui décrit l'image pour les lecteurs d'écran et les moteurs de recherche."
+  fr: "Une phrase qui décrit l’image pour les lecteurs d’écran et les moteurs de recherche."
   de: "Ein Satz, der das Bild für Screenreader und Suchmaschinen beschreibt."
   es: "Una frase que describe la imagen para lectores de pantalla y buscadores."
   it: "Una frase che descrive l'immagine per lettori di schermo e motori di ricerca."
@@ -2286,7 +2286,7 @@ image.seo.opt.gps.help:
   ko: "위도, 경도(예: 48.8584, 2.2945)."
 image.seo.opt.ai:
   en: "Write with AI"
-  fr: "Écrire avec l'IA"
+  fr: "Écrire avec l’IA"
   de: "Mit KI schreiben"
   es: "Escribir con IA"
   it: "Scrivi con IA"
@@ -2296,7 +2296,7 @@ image.seo.opt.ai:
   ko: "AI로 작성"
 image.seo.opt.ai.help:
   en: "Sends a small copy of each image to Anthropic with your own API key to fill empty fields. Off by default; nothing leaves your computer otherwise."
-  fr: "Envoie une petite copie de chaque image à Anthropic avec votre propre clé d'API pour remplir les champs vides. Désactivé par défaut ; sinon rien ne quitte votre ordinateur."
+  fr: "Envoie une petite copie de chaque image à Anthropic avec votre propre clé d’API pour remplir les champs vides. Désactivé par défaut ; sinon rien ne quitte votre ordinateur."
   de: "Sendet mit Ihrem eigenen API-Schlüssel eine kleine Kopie jedes Bildes an Anthropic, um leere Felder auszufüllen. Standardmäßig aus; sonst verlässt nichts Ihren Computer."
   es: "Envía una copia pequeña de cada imagen a Anthropic con tu propia clave de API para rellenar los campos vacíos. Desactivado por defecto; si no, nada sale de tu equipo."
   it: "Invia una piccola copia di ogni immagine ad Anthropic con la tua chiave API per compilare i campi vuoti. Disattivato di default; altrimenti nulla lascia il tuo computer."
@@ -2316,7 +2316,7 @@ image.seo.opt.ai_language:
   ko: "텍스트 언어"
 image.seo.opt.ai_language.help:
   en: "A language code such as en, fr, de (empty = the app language)."
-  fr: "Un code de langue comme en, fr, de (vide = la langue de l'application)."
+  fr: "Un code de langue comme en, fr, de (vide = la langue de l’application)."
   de: "Ein Sprachcode wie en, fr, de (leer = Sprache der App)."
   es: "Un código de idioma como en, fr, de (vacío = el idioma de la app)."
   it: "Un codice lingua come en, fr, de (vuoto = la lingua dell'app)."
@@ -2417,7 +2417,7 @@ image.redact.opt.terms:
   ko: "숨길 텍스트"
 image.redact.opt.terms.help:
   en: "One word or phrase per line, found by reading the image (OCR)."
-  fr: "Un mot ou une expression par ligne, trouvés en lisant l'image (OCR)."
+  fr: "Un mot ou une expression par ligne, trouvés en lisant l’image (OCR)."
   de: "Ein Wort oder Satz pro Zeile, gefunden durch Lesen des Bildes (OCR)."
   es: "Una palabra o frase por línea, encontradas leyendo la imagen (OCR)."
   it: "Una parola o frase per riga, trovate leggendo l'immagine (OCR)."
@@ -2547,7 +2547,7 @@ image.redact.opt.format:
   ko: "형식"
 image.redact.opt.format.keep:
   en: "Same as original"
-  fr: "Comme l'original"
+  fr: "Comme l’original"
   de: "Wie das Original"
   es: "Igual que el original"
   it: "Come l'originale"
@@ -2568,7 +2568,7 @@ image.watermark.name:
   ko: "워터마크"
 image.watermark.desc:
   en: "Add your name or logo, in a corner or tiled across the image."
-  fr: "Ajoute votre nom ou votre logo, dans un coin ou en mosaïque sur l'image."
+  fr: "Ajoute votre nom ou votre logo, dans un coin ou en mosaïque sur l’image."
   de: "Fügt Ihren Namen oder Ihr Logo hinzu – in einer Ecke oder gekachelt über das ganze Bild."
   es: "Añade tu nombre o logotipo, en una esquina o en mosaico por toda la imagen."
   it: "Aggiunge il tuo nome o logo, in un angolo o a mosaico su tutta l'immagine."
@@ -2738,7 +2738,7 @@ image.watermark.opt.size:
   ko: "크기"
 image.watermark.opt.size.help:
   en: "Width of the watermark relative to the shorter side of the image."
-  fr: "Largeur du filigrane par rapport au petit côté de l'image."
+  fr: "Largeur du filigrane par rapport au petit côté de l’image."
   de: "Breite des Wasserzeichens im Verhältnis zur kürzeren Bildseite."
   es: "Ancho de la marca de agua en relación con el lado más corto de la imagen."
   it: "Larghezza della filigrana rispetto al lato più corto dell'immagine."
@@ -2818,7 +2818,7 @@ image.watermark.opt.format:
   ko: "형식"
 image.watermark.opt.format.keep:
   en: "Same as original"
-  fr: "Comme l'original"
+  fr: "Comme l’original"
   de: "Wie das Original"
   es: "Igual que el original"
   it: "Come l'originale"
@@ -2859,7 +2859,7 @@ image.beautify.verb:
   ko: "꾸미기"
 image.beautify.keywords:
   en: "screenshot beautify mockup background shadow frame window pretty social showcase"
-  fr: "capture d'écran embellir maquette fond ombre cadre fenêtre réseaux présentation"
+  fr: "capture d’écran embellir maquette fond ombre cadre fenêtre réseaux présentation"
   de: "Screenshot verschönern Mockup Hintergrund Schatten Rahmen Fenster hübsch Social Präsentation"
   es: "captura embellecer mockup fondo sombra marco ventana bonito social presentación"
   it: "screenshot abbellire mockup sfondo ombra cornice finestra bello social vetrina"
@@ -3290,7 +3290,7 @@ image.beautify.opt.grain:
 
 image.icon-pack.name:
   en: "Icon pack"
-  fr: "Pack d'icônes"
+  fr: "Pack d’icônes"
   de: "Symbolpaket"
   es: "Paquete de iconos"
   it: "Pacchetto icone"
@@ -3300,7 +3300,7 @@ image.icon-pack.name:
   ko: "아이콘 팩"
 image.icon-pack.desc:
   en: "Every icon size from one image: favicon, ICO, ICNS, iOS and Android."
-  fr: "Toutes les tailles d'icônes depuis une seule image : favicon, ICO, ICNS, iOS et Android."
+  fr: "Toutes les tailles d’icônes depuis une seule image : favicon, ICO, ICNS, iOS et Android."
   de: "Alle Symbolgrößen aus einem Bild: Favicon, ICO, ICNS, iOS und Android."
   es: "Todos los tamaños de icono a partir de una imagen: favicon, ICO, ICNS, iOS y Android."
   it: "Tutte le dimensioni di icona da un'unica immagine: favicon, ICO, ICNS, iOS e Android."
@@ -3320,7 +3320,7 @@ image.icon-pack.verb:
   ko: "아이콘 만들기"
 image.icon-pack.keywords:
   en: "icon favicon ico icns app icon pwa manifest android ios apple-touch-icon"
-  fr: "icône favicon ico icns icône d'application pwa manifeste android ios"
+  fr: "icône favicon ico icns icône d’application pwa manifeste android ios"
   de: "Symbol Icon favicon ico icns App-Symbol pwa manifest android ios apple-touch-icon"
   es: "icono favicon ico icns icono de app pwa manifest android ios apple-touch-icon"
   it: "icona favicon ico icns icona app pwa manifest android ios apple-touch-icon"
@@ -3410,7 +3410,7 @@ image.icon-pack.opt.radius:
   ko: "모서리 반경"
 image.icon-pack.opt.app_name:
   en: "App name"
-  fr: "Nom de l'application"
+  fr: "Nom de l’application"
   de: "App-Name"
   es: "Nombre de la app"
   it: "Nome dell'app"
@@ -3441,7 +3441,7 @@ image.contact-sheet.name:
   ko: "콘택트 시트"
 image.contact-sheet.desc:
   en: "Many images on one page: a grid with captions, as PDF or PNG."
-  fr: "Beaucoup d'images sur une page : une grille légendée, en PDF ou PNG."
+  fr: "Beaucoup d’images sur une page : une grille légendée, en PDF ou PNG."
   de: "Viele Bilder auf einer Seite: ein Raster mit Beschriftungen, als PDF oder PNG."
   es: "Muchas imágenes en una página: una cuadrícula con pies de foto, en PDF o PNG."
   it: "Molte immagini in una pagina: una griglia con didascalie, in PDF o PNG."
@@ -3471,7 +3471,7 @@ image.contact-sheet.keywords:
   ko: "콘택트 시트 격자 썸네일 한눈에 보기 색인 카탈로그 콜라주"
 image.contact-sheet.empty:
   en: "Add some images first."
-  fr: "Ajoutez d'abord des images."
+  fr: "Ajoutez d’abord des images."
   de: "Fügen Sie zuerst einige Bilder hinzu."
   es: "Primero añade algunas imágenes."
   it: "Aggiungi prima alcune immagini."
@@ -3672,7 +3672,7 @@ image.compare.after:
   ko: "이후"
 image.compare.need_two:
   en: "Add two images: the \"before\" first, then the \"after\"."
-  fr: "Ajoutez deux images : d'abord l'« avant », puis l'« après »."
+  fr: "Ajoutez deux images : d’abord l'« avant », puis l'« après »."
   de: "Fügen Sie zwei Bilder hinzu: zuerst das „Vorher“, dann das „Nachher“."
   es: "Añade dos imágenes: primero el «antes» y después el «después»."
   it: "Aggiungi due immagini: prima il «prima», poi il «dopo»."
@@ -3822,7 +3822,7 @@ image.compare.opt.layout.side:
   ko: "나란히"
 image.compare.opt.layout.stack:
   en: "One above the other"
-  fr: "L'une au-dessus de l'autre"
+  fr: "L’une au-dessus de l’autre"
   de: "Untereinander"
   es: "Uno sobre otro"
   it: "Uno sopra l'altro"
@@ -4063,7 +4063,7 @@ image.stylize.opt.format:
   ko: "형식"
 image.stylize.opt.format.keep:
   en: "Same as original"
-  fr: "Comme l'original"
+  fr: "Comme l’original"
   de: "Wie das Original"
   es: "Igual que el original"
   it: "Come l'originale"
@@ -4284,7 +4284,7 @@ image.duplicates.opt.action.move:
   ko: "추가 사본을 따로 옮기기"
 image.duplicates.opt.action.help:
   en: "Copies go into a \"Duplicates\" folder next to them; the run can be undone."
-  fr: "Les copies vont dans un dossier « Doublons » à côté ; l'opération peut être annulée."
+  fr: "Les copies vont dans un dossier « Doublons » à côté ; l’opération peut être annulée."
   de: "Die Kopien kommen in einen Ordner „Duplicates“ neben den Originalen; der Vorgang lässt sich rückgängig machen."
   es: "Las copias van a una carpeta «Duplicates» junto a ellas; la ejecución se puede deshacer."
   it: "Le copie vanno in una cartella «Duplicates» accanto a loro; l'esecuzione può essere annullata."
@@ -4426,7 +4426,7 @@ image.optimize-svg.name:
   ko: "SVG 최적화"
 image.optimize-svg.desc:
   en: "Smaller SVG files: editor data, comments and extra digits removed."
-  fr: "Des SVG plus légers : données d'éditeur, commentaires et décimales superflues retirés."
+  fr: "Des SVG plus légers : données d’éditeur, commentaires et décimales superflues retirés."
   de: "Kleinere SVG-Dateien: Editordaten, Kommentare und überflüssige Nachkommastellen werden entfernt."
   es: "Archivos SVG más pequeños: se eliminan datos del editor, comentarios y dígitos sobrantes."
   it: "File SVG più piccoli: dati dell'editor, commenti e cifre in eccesso vengono rimossi."
@@ -4456,7 +4456,7 @@ image.optimize-svg.keywords:
   ko: "svg 압축 최적화 svgo 정리 벡터 작게"
 image.optimize-svg.broken:
   en: "The optimized SVG did not render; the original was not changed."
-  fr: "Le SVG optimisé ne s'affichait pas ; l'original n'a pas été modifié."
+  fr: "Le SVG optimisé ne s’affichait pas ; l’original n’a pas été modifié."
   de: "Das optimierte SVG ließ sich nicht darstellen; das Original wurde nicht verändert."
   es: "El SVG optimizado no se pudo mostrar; el original no se modificó."
   it: "L'SVG ottimizzato non è stato visualizzato correttamente; l'originale non è stato modificato."
@@ -4476,7 +4476,7 @@ image.optimize-svg.opt.precision:
   ko: "소수 자릿수"
 image.optimize-svg.opt.precision.help:
   en: "Digits kept after the decimal point in coordinates. 2–3 is invisible on screen."
-  fr: "Chiffres gardés après la virgule dans les coordonnées. 2 ou 3 est invisible à l'écran."
+  fr: "Chiffres gardés après la virgule dans les coordonnées. 2 ou 3 est invisible à l’écran."
   de: "Anzahl der Stellen nach dem Komma bei Koordinaten. 2–3 ist auf dem Bildschirm unsichtbar."
   es: "Dígitos que se conservan tras la coma en las coordenadas. 2–3 es invisible en pantalla."
   it: "Cifre mantenute dopo la virgola nelle coordinate. 2–3 sono invisibili a schermo."
@@ -4496,7 +4496,7 @@ image.optimize-svg.opt.keep_title:
   ko: "제목과 설명 유지"
 image.optimize-svg.opt.keep_title.help:
   en: "Used by screen readers."
-  fr: "Utilisés par les lecteurs d'écran."
+  fr: "Utilisés par les lecteurs d’écran."
   de: "Wird von Screenreadern verwendet."
   es: "Lo usan los lectores de pantalla."
   it: "Usati dai lettori di schermo."
@@ -4607,7 +4607,7 @@ image.colorblind.opt.kind:
   ko: "시뮬레이션"
 image.colorblind.opt.kind.all:
   en: "Overview (3 types)"
-  fr: "Vue d'ensemble (3 types)"
+  fr: "Vue d’ensemble (3 types)"
   de: "Überblick (3 Typen)"
   es: "Vista general (3 tipos)"
   it: "Panoramica (3 tipi)"

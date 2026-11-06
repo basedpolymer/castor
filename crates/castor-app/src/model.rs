@@ -23,6 +23,8 @@ pub enum Nav {
     Chain(String),
     /// Open the command palette, optionally with a query typed in.
     Palette(Option<String>),
+    /// Open a studio, optionally on a file.
+    Studio(crate::studio::StudioKind, Option<PathBuf>),
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -135,6 +137,22 @@ impl Model {
         }));
     }
 
+    /// Like `update_settings` without re-rendering the views (window bounds while dragging…).
+    pub fn update_settings_quiet(&mut self, cx: &mut Context<Self>, f: impl FnOnce(&mut Settings)) {
+        f(&mut self.settings);
+        let snapshot = self.settings.clone();
+        self.save_task = Some(cx.spawn(async move |_, cx| {
+            cx.background_executor().timer(Duration::from_millis(500)).await;
+            cx.background_executor()
+                .spawn(async move {
+                    if let Err(e) = snapshot.save() {
+                        tracing::warn!("could not save settings: {e:#}");
+                    }
+                })
+                .await;
+        }));
+    }
+
     /// Load the history off the UI thread.
     pub fn load_history(&mut self, cx: &mut Context<Self>) {
         cx.spawn(async move |this, cx| {
@@ -150,6 +168,10 @@ impl Model {
 
     /// A run just finished: put it on top of the history.
     pub fn push_run(&mut self, r: RunRecord, cx: &mut Context<Self>) {
+        if !self.settings.active_workspace.is_empty() {
+            let id = r.id.clone();
+            self.update_settings_quiet(cx, move |s| crate::workspaces::record_run(s, &id));
+        }
         self.history.retain(|x| x.id != r.id);
         self.history.insert(0, r);
         cx.notify();
@@ -185,6 +207,23 @@ impl Model {
                 s.favorites.push(id);
             }
         });
+        // The Explorer menu lists the favourites.
+        cx.defer(crate::integration::sync_context_menu);
+    }
+
+    /// Move favourite `from` to the place of `to` (drag and drop in the sidebar).
+    pub fn move_favorite(&mut self, from: &str, to: &str, cx: &mut Context<Self>) {
+        if from == to {
+            return;
+        }
+        let (from, to) = (from.to_string(), to.to_string());
+        self.update_settings(cx, move |s| {
+            let Some(i) = s.favorites.iter().position(|f| *f == from) else { return };
+            let item = s.favorites.remove(i);
+            let j = s.favorites.iter().position(|f| *f == to).map(|j| if j >= i { j + 1 } else { j }).unwrap_or(s.favorites.len());
+            s.favorites.insert(j.min(s.favorites.len()), item);
+        });
+        cx.defer(crate::integration::sync_context_menu);
     }
 
     /// Last values used for a tool, merged over its defaults (unknown keys dropped).
@@ -199,6 +238,15 @@ impl Model {
                 }
             }
         }
+        // The active workspace's brand (logo, colours, signature) by option key name.
+        if let Some(ws) = crate::workspaces::active(&self.settings) {
+            crate::workspaces::prefill(&mut v, &specs, &ws);
+        }
         v
+    }
+
+    /// Output policy for a tool: the active workspace's folder, else the Settings one.
+    pub fn output_policy(&self, tool_id: &str) -> castor_core::runner::OutputPolicy {
+        crate::workspaces::output_policy(&self.settings, tool_id)
     }
 }

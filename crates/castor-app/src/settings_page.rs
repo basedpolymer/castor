@@ -19,7 +19,14 @@ use crate::model::{UpdateState, model};
 use crate::theme::{Tokens, tokens};
 use crate::ui::{self, t, ta};
 
+/// `--scroll` for `--page settings` (screenshots).
+pub struct StartScroll(pub Option<f32>);
+impl Global for StartScroll {}
+
 pub struct SettingsPage {
+    scroll: ScrollHandle,
+    workspaces: Entity<crate::workspace_editor::WorkspaceEditor>,
+    integration: Entity<crate::integration::IntegrationSection>,
     language: Entity<SelectState<SearchableVec<Opt>>>,
     ai_key: Entity<InputState>,
     recording: bool,
@@ -103,7 +110,17 @@ impl SettingsPage {
             }),
             cx.observe(&m, |_, _, cx| cx.notify()),
         ];
+        let workspaces = cx.new(|cx| crate::workspace_editor::WorkspaceEditor::new(window, cx));
+        let integration = cx.new(|cx| crate::integration::IntegrationSection::new(window, cx));
+        // `--scroll` (screenshots) applies to the page opened at launch.
+        let scroll = ScrollHandle::new();
+        if let Some(y) = cx.try_global::<StartScroll>().and_then(|h| h.0) {
+            scroll.set_offset(point(px(0.0), px(-y)));
+        }
         SettingsPage {
+            scroll,
+            workspaces,
+            integration,
             language,
             ai_key,
             recording: false,
@@ -539,7 +556,7 @@ impl Render for SettingsPage {
         };
         let _ = window;
 
-        div().id("settings-page").size_full().overflow_y_scroll().child(
+        div().id("settings-page").size_full().overflow_y_scroll().track_scroll(&self.scroll).child(
             div()
                 .px(px(PAGE_PAD))
                 .pb(px(60.0))
@@ -549,11 +566,13 @@ impl Render for SettingsPage {
                 .gap(px(30.0))
                 .child(ui::page_header(cx, t("app.nav.settings"), None, Some(t("app.settings.subtitle").into_any_element())))
                 .child(section(1, t("app.settings.general"), general.into_any_element()))
-                .child(section(2, if mac { t("app.settings.menu_bar") } else { t("app.settings.system_tray") }, tray.into_any_element()))
-                .child(section(3, t("app.settings.models"), div().flex().flex_col().gap(px(8.0)).child(ui::roman().text_color(k.muted).text_size(px(14.0)).child(t("app.settings.models_help"))).child(models).into_any_element()))
-                .child(section(4, t("app.settings.updates"), updates.into_any_element()))
-                .child(section(5, t("app.settings.privacy"), privacy.into_any_element()))
-                .child(section(6, t("app.settings.about"), about.into_any_element())),
+                .child(section(2, t("app.settings.workspaces"), self.workspaces.clone().into_any_element()))
+                .child(section(3, if mac { t("app.settings.menu_bar") } else { t("app.settings.system_tray") }, tray.into_any_element()))
+                .child(section(4, t("app.settings.integration"), self.integration.clone().into_any_element()))
+                .child(section(5, t("app.settings.models"), div().flex().flex_col().gap(px(8.0)).child(ui::roman().text_color(k.muted).text_size(px(14.0)).child(t("app.settings.models_help"))).child(models).into_any_element()))
+                .child(section(6, t("app.settings.updates"), updates.into_any_element()))
+                .child(section(7, t("app.settings.privacy"), privacy.into_any_element()))
+                .child(section(8, t("app.settings.about"), about.into_any_element())),
         )
     }
 }
