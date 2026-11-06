@@ -1,0 +1,75 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/castor-core",
+    "crates/engine-pdf",
+    "crates/engine-ml",
+    "crates/engine-media",
+    "crates/tools-pdf",
+    "crates/tools-image",
+    "crates/tools-media",
+    "crates/tools-create",
+    "crates/tools-files",
+    "crates/castor-tools",
+    "crates/castor-cli",
+    "crates/castor-app",
+]
+default-members = ["crates/castor-cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.90"
+license = "GPL-3.0-or-later"
+authors = ["basedpolymer"]
+repository = "https://github.com/basedpolymer/castor"
+homepage = "https://basedpolymer.eu/castor"
+
+[workspace.dependencies]
+castor-core = { path = "crates/castor-core" }
+engine-pdf = { path = "crates/engine-pdf" }
+engine-ml = { path = "crates/engine-ml" }
+engine-media = { path = "crates/engine-media" }
+tools-pdf = { path = "crates/tools-pdf" }
+tools-image = { path = "crates/tools-image" }
+tools-media = { path = "crates/tools-media" }
+tools-create = { path = "crates/tools-create" }
+tools-files = { path = "crates/tools-files" }
+castor-tools = { path = "crates/castor-tools" }
+
+anyhow = "1"
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "1"
+rust-i18n = "4"
+directories = "6"
+infer = "0.22"
+parking_lot = "0.12"
+crossbeam-channel = "0.5"
+time = { version = "0.3", features = ["formatting", "local-offset", "macros", "serde"] }
+sha2 = "0.10"
+hex = "0.4"
+ureq = "3"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+rayon = "1"
+image = "0.25"
+tempfile = "3"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.release]
+lto = "thin"
+codegen-units = 4
+strip = "debuginfo"
+
+# Shipped builds: `cargo build --profile dist`.
+[profile.dist]
+inherits = "release"
+lto = "fat"
+codegen-units = 1

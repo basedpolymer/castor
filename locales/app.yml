@@ -1,0 +1,88 @@
+_version: 2
+# Owner: app shell (wave 1, agent D) + core. Tool strings live in pdf.yml, image.yml, media.yml,
+# create.yml, files.yml. English first; other languages are added by the translation pass.
+
+app.name:
+  en: Castor
+  fr: Castor
+app.tagline:
+  en: Every file tool, right on your desk. Free, offline, yours.
+  fr: Tous les outils de fichiers, à portée de main. Gratuit, hors ligne, à vous.
+
+family.pdf:
+  en: PDF
+  fr: PDF
+family.image:
+  en: Image
+  fr: Image
+family.video:
+  en: Video
+  fr: Vidéo
+family.audio:
+  en: Audio
+  fr: Audio
+family.create:
+  en: Create
+  fr: Créer
+family.files:
+  en: Files
+  fr: Fichiers
+
+common.n_files:
+  en: "%{count} files"
+  fr: "%{count} fichiers"
+common.run:
+  en: Run
+  fr: Lancer
+common.cancel:
+  en: Cancel
+  fr: Annuler
+common.open:
+  en: Open
+  fr: Ouvrir
+common.reveal:
+  en: Show in folder
+  fr: Afficher dans le dossier
+common.opt.quality:
+  en: Quality
+  fr: Qualité
+common.opt.format:
+  en: Format
+  fr: Format
+common.opt.password:
+  en: Password
+  fr: Mot de passe
+common.opt.pages:
+  en: Pages
+  fr: Pages
+common.opt.pages.help:
+  en: "Ranges like 1-3, 5, 8- (empty = all pages)"
+  fr: "Plages comme 1-3, 5, 8- (vide = toutes les pages)"
+common.opt.position:
+  en: Position
+  fr: Position
+common.opt.opacity:
+  en: Opacity
+  fr: Opacité
+common.opt.color:
+  en: Color
+  fr: Couleur
+common.opt.language:
+  en: Language
+  fr: Langue
+
+chain.template.web_photos:
+  en: Web-ready photos
+  fr: Photos prêtes pour le web
+chain.template.social:
+  en: Social export
+  fr: Export réseaux sociaux
+chain.template.straighten:
+  en: Straighten & shrink
+  fr: Redresser et alléger
+chain.template.scan_to_pdf:
+  en: Scans to searchable PDF
+  fr: Scans en PDF cherchable
+chain.template.podcast:
+  en: Podcast clean-up
+  fr: Nettoyage de podcast

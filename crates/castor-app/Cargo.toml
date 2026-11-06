@@ -1,0 +1,19 @@
+[package]
+name = "castor-app"
+description = "Castor desktop app (GPUI Kit)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "castor"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+castor-core.workspace = true
+castor-tools.workspace = true
+gpui-kit = "0.9"
+tray-icon = "0.21"
+global-hotkey = "0.7"
+image = { workspace = true, default-features = false, features = ["png"] }

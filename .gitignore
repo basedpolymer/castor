@@ -1,0 +1,13 @@
+/target
+/target-*
+**/*.rs.bk
+.DS_Store
+Thumbs.db
+/tests/fixtures/generated/
+/dist/
+/video/node_modules/
+/video/out/
+*.part
+
+# Third-party agent skills (fetched from longbridge/gpui-kit, kept local)
+/.claude/skills/

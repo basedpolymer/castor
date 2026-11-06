@@ -1,0 +1,28 @@
+[package]
+name = "castor-core"
+description = "Castor core: tool contract, option schema, runner, history, chains, settings, i18n"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+rust-i18n.workspace = true
+directories.workspace = true
+infer.workspace = true
+parking_lot.workspace = true
+crossbeam-channel.workspace = true
+time.workspace = true
+sha2.workspace = true
+hex.workspace = true
+ureq.workspace = true
+tracing.workspace = true
+sys-locale = "0.3"
+which = "8"
+
+[dev-dependencies]
+tempfile.workspace = true

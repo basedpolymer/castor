@@ -1,0 +1,11 @@
+[package]
+name = "tools-create"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+castor-core.workspace = true
+engine-media.workspace = true
+engine-pdf.workspace = true

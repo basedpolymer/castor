@@ -1,0 +1,15 @@
+[package]
+name = "castor-tools"
+description = "Every Castor tool in one registry"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+castor-core.workspace = true
+tools-pdf.workspace = true
+tools-image.workspace = true
+tools-media.workspace = true
+tools-create.workspace = true
+tools-files.workspace = true
+image.workspace = true

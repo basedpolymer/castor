@@ -1,0 +1,24 @@
+_version: 2
+# Owner: Files & archive tools (crates/tools-files).
+
+files.checksum.name:
+  en: Checksums
+  fr: Sommes de contrôle
+files.checksum.desc:
+  en: SHA-256 fingerprints to prove a file arrived intact.
+  fr: Empreintes SHA-256 pour prouver qu'un fichier est arrivé intact.
+files.checksum.keywords:
+  en: hash fingerprint verify integrity
+  fr: empreinte hachage vérifier intégrité somme
+files.checksum.opt.algorithm:
+  en: Algorithm
+  fr: Algorithme
+files.checksum.opt.output:
+  en: Result
+  fr: Résultat
+files.checksum.opt.output.list:
+  en: One list for all files
+  fr: Une liste pour tous les fichiers
+files.checksum.opt.output.each:
+  en: One file per file
+  fr: Un fichier par fichier
