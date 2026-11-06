@@ -69,9 +69,10 @@ Bash: `. crates/engine-pdf/env.sh` (sets `BINDGEN_EXTRA_CLANG_ARGS` for `max_ali
     `crates/castor-core/src/tool.rs` and `options.rs` docs. No user-visible string in code.
 11. **Performance.** Batches of hundreds of files must work. Stream, don't load everything; poll
     `cx.check_cancel()?`; report `cx.progress()`; release big buffers early.
-12. Windows shell is Git Bash or PowerShell; a Mac (Intel, macOS 15, Xcode 26) is reachable over SSH as
-    `macmac` (exact command in your brief). Use `~/castor-mac/` there for Mac builds (rsync/scp
-    your crate); do not touch other folders on the Mac.
+12. Windows shell is Git Bash or PowerShell. Develop and test on Windows only. **No builds, runs
+    or tests on the Mac during development**: macOS compilation happens only as the very last
+    step before a release (packaging). Write what must be checked on macOS in your spec's
+    "Packaging notes" instead.
 
 ## Definition of done (per tool)
 
