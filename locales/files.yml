@@ -4,744 +4,2438 @@ _version: 2
 files.checksum.name:
   en: Checksums
   fr: Sommes de contrôle
+  de: "Prüfsummen"
+  es: "Sumas de comprobación"
+  it: "Checksum"
+  pt-BR: "Somas de verificação"
+  ja: "チェックサム"
+  zh-CN: "校验和"
+  ko: "체크섬"
 files.checksum.desc:
   en: SHA-256 fingerprints to prove a file arrived intact.
   fr: Empreintes SHA-256 pour prouver qu'un fichier est arrivé intact.
+  de: "SHA-256-Fingerabdrücke, die beweisen, dass eine Datei unversehrt angekommen ist."
+  es: "Huellas SHA-256 para comprobar que un archivo llegó intacto."
+  it: "Impronte SHA-256 per dimostrare che un file è arrivato intatto."
+  pt-BR: "Impressões digitais SHA-256 para provar que um arquivo chegou intacto."
+  ja: "ファイルが壊れずに届いたことを SHA-256 のフィンガープリントで確認します。"
+  zh-CN: "用 SHA-256 指纹证明文件完整无损地到达。"
+  ko: "SHA-256 지문으로 파일이 손상 없이 도착했는지 확인합니다."
 files.checksum.keywords:
   en: hash fingerprint verify integrity
   fr: empreinte hachage vérifier intégrité somme
+  de: "hash fingerabdruck prüfen integrität prüfsumme"
+  es: "hash huella verificar integridad suma comprobación"
+  it: "hash impronta verificare integrità checksum"
+  pt-BR: "hash impressão digital verificar integridade soma"
+  ja: "ハッシュ フィンガープリント 検証 整合性 チェックサム"
+  zh-CN: "哈希 指纹 校验 完整性 校验和"
+  ko: "해시 지문 검증 무결성 체크섬"
 files.checksum.opt.algorithm:
   en: Algorithm
   fr: Algorithme
+  de: "Algorithmus"
+  es: "Algoritmo"
+  it: "Algoritmo"
+  pt-BR: "Algoritmo"
+  ja: "アルゴリズム"
+  zh-CN: "算法"
+  ko: "알고리즘"
 files.checksum.opt.output:
   en: Result
   fr: Résultat
+  de: "Ergebnis"
+  es: "Resultado"
+  it: "Risultato"
+  pt-BR: "Resultado"
+  ja: "結果"
+  zh-CN: "结果"
+  ko: "결과"
 files.checksum.opt.output.list:
   en: One list for all files
   fr: Une liste pour tous les fichiers
+  de: "Eine Liste für alle Dateien"
+  es: "Una lista para todos los archivos"
+  it: "Un elenco per tutti i file"
+  pt-BR: "Uma lista para todos os arquivos"
+  ja: "すべてのファイルを 1 つのリストに"
+  zh-CN: "所有文件一个列表"
+  ko: "모든 파일을 하나의 목록으로"
 files.checksum.opt.output.each:
   en: One file per file
   fr: Un fichier par fichier
+  de: "Eine Datei pro Datei"
+  es: "Un archivo por archivo"
+  it: "Un file per file"
+  pt-BR: "Um arquivo por arquivo"
+  ja: "ファイルごとに 1 ファイル"
+  zh-CN: "每个文件一个文件"
+  ko: "파일마다 파일 하나씩"
 
 # ------------------------------------------------------------------ shared
 files.err.no_files:
   en: No files to work on.
   fr: Aucun fichier à traiter.
+  de: "Keine Dateien zu bearbeiten."
+  es: "No hay archivos que procesar."
+  it: "Nessun file da elaborare."
+  pt-BR: "Nenhum arquivo para processar."
+  ja: "処理するファイルがありません。"
+  zh-CN: "没有要处理的文件。"
+  ko: "처리할 파일이 없습니다."
 files.err.exists:
   en: "“%{name}” already exists; nothing was overwritten."
   fr: "« %{name} » existe déjà ; rien n’a été écrasé."
+  de: "„%{name}“ existiert bereits; nichts wurde überschrieben."
+  es: "“%{name}” ya existe; no se ha sobrescrito nada."
+  it: "“%{name}” esiste già; non è stato sovrascritto nulla."
+  pt-BR: "“%{name}” já existe; nada foi substituído."
+  ja: "「%{name}」はすでに存在します。何も上書きされていません。"
+  zh-CN: "“%{name}”已存在；未覆盖任何内容。"
+  ko: "“%{name}”은(는) 이미 있습니다. 아무것도 덮어쓰지 않았습니다."
 files.err.duplicate_target:
   en: "Two files would both be named “%{name}”. Add a number ({n}) to the pattern."
   fr: "Deux fichiers s’appelleraient « %{name} ». Ajoutez un numéro ({n}) au modèle."
+  de: "Zwei Dateien würden beide „%{name}“ heißen. Fügen Sie dem Muster eine Nummer ({n}) hinzu."
+  es: "Dos archivos se llamarían “%{name}”. Añade un número ({n}) al patrón."
+  it: "Due file si chiamerebbero entrambi “%{name}”. Aggiungi un numero ({n}) al modello."
+  pt-BR: "Dois arquivos se chamariam “%{name}”. Adicione um número ({n}) ao padrão."
+  ja: "2 つのファイルがどちらも「%{name}」という名前になります。パターンに番号 ({n}) を加えてください。"
+  zh-CN: "两个文件都会命名为“%{name}”。请在模式中加入编号 ({n})。"
+  ko: "두 파일의 이름이 모두 “%{name}”이(가) 됩니다. 패턴에 번호({n})를 추가하세요."
 files.err.gone:
   en: moved or deleted since
   fr: déplacé ou supprimé depuis
+  de: "seitdem verschoben oder gelöscht"
+  es: "movido o eliminado desde entonces"
+  it: "spostato o eliminato nel frattempo"
+  pt-BR: "movido ou excluído desde então"
+  ja: "その後に移動または削除されました"
+  zh-CN: "之后已被移动或删除"
+  ko: "이후에 이동되었거나 삭제됨"
 files.err.occupied:
   en: the old name is taken again
   fr: l’ancien nom est de nouveau pris
+  de: "der alte Name ist wieder vergeben"
+  es: "el nombre antiguo vuelve a estar en uso"
+  it: "il vecchio nome è di nuovo occupato"
+  pt-BR: "o nome antigo foi ocupado novamente"
+  ja: "元の名前がふたたび使われています"
+  zh-CN: "旧名称又被占用了"
+  ko: "이전 이름을 다시 사용 중임"
 files.err.undo_partial:
   en: "Some files could not be put back:"
   fr: "Certains fichiers n’ont pas pu être remis en place :"
+  de: "Einige Dateien konnten nicht zurückgesetzt werden:"
+  es: "No se pudieron restaurar algunos archivos:"
+  it: "Non è stato possibile ripristinare alcuni file:"
+  pt-BR: "Alguns arquivos não puderam ser restaurados:"
+  ja: "元に戻せなかったファイルがあります:"
+  zh-CN: "部分文件无法还原："
+  ko: "일부 파일을 되돌리지 못했습니다:"
 files.preview.more:
   en: "… and %{count} more"
   fr: "… et %{count} de plus"
+  de: "… und %{count} weitere"
+  es: "… y %{count} más"
+  it: "… e altri %{count}"
+  pt-BR: "… e mais %{count}"
+  ja: "…ほか %{count} 件"
+  zh-CN: "…以及另外 %{count} 个"
+  ko: "… 외 %{count}개"
 files.col.file:
   en: File
   fr: Fichier
+  de: "Datei"
+  es: "Archivo"
+  it: "File"
+  pt-BR: "Arquivo"
+  ja: "ファイル"
+  zh-CN: "文件"
+  ko: "파일"
 
 # ------------------------------------------------------------------ Rename
 files.rename.name:
   en: Batch rename
   fr: Renommer en lot
+  de: "Stapelumbenennung"
+  es: "Renombrar en lote"
+  it: "Rinomina in blocco"
+  pt-BR: "Renomear em lote"
+  ja: "一括名前変更"
+  zh-CN: "批量重命名"
+  ko: "일괄 이름 바꾸기"
 files.rename.desc:
   en: Rename many files at once with patterns, numbers, dates and find & replace — previewed, undoable.
   fr: Renommez des centaines de fichiers d’un coup avec modèles, numéros, dates et rechercher-remplacer — aperçu et annulation.
+  de: "Viele Dateien auf einmal umbenennen – mit Mustern, Nummern, Datumsangaben und Suchen & Ersetzen, mit Vorschau und rückgängig machbar."
+  es: "Renombra muchos archivos a la vez con patrones, números, fechas y buscar y reemplazar, con vista previa y reversible."
+  it: "Rinomina molti file in una volta con modelli, numeri, date e trova e sostituisci, con anteprima e annullabile."
+  pt-BR: "Renomeie vários arquivos de uma vez com padrões, números, datas e localizar e substituir, com pré-visualização e reversível."
+  ja: "パターン、連番、日付、検索と置換で多数のファイルを一度に名前変更。プレビュー付きで元に戻せます。"
+  zh-CN: "用模式、编号、日期以及查找替换一次重命名多个文件，可预览，可撤销。"
+  ko: "패턴, 번호, 날짜, 찾아 바꾸기로 많은 파일의 이름을 한 번에 바꿉니다. 미리 보기와 실행 취소를 지원합니다."
 files.rename.verb:
   en: Rename
   fr: Renommer
+  de: "Umbenennen"
+  es: "Renombrar"
+  it: "Rinomina"
+  pt-BR: "Renomear"
+  ja: "名前を変更"
+  zh-CN: "重命名"
+  ko: "이름 바꾸기"
 files.rename.keywords:
   en: rename batch bulk names numbering sequence regex replace exif date case
   fr: renommer lot masse noms numérotation séquence regex remplacer exif date casse
+  de: "umbenennen stapel massen namen nummerierung reihenfolge regex ersetzen exif datum groß-kleinschreibung"
+  es: "renombrar lote masa nombres numeración secuencia regex reemplazar exif fecha mayúsculas"
+  it: "rinominare blocco massa nomi numerazione sequenza regex sostituire exif data maiuscole"
+  pt-BR: "renomear lote massa nomes numeração sequência regex substituir exif data maiúsculas"
+  ja: "名前変更 一括 リネーム 連番 正規表現 置換 exif 日付 大文字小文字"
+  zh-CN: "重命名 批量 名称 编号 序号 正则 替换 exif 日期 大小写"
+  ko: "이름 바꾸기 일괄 리네임 번호 순번 정규식 바꾸기 exif 날짜 대소문자"
 files.rename.caption:
   en: "Table 1 — %{changed} of %{total} names change"
   fr: "Tableau 1 — %{changed} noms sur %{total} changent"
+  de: "Tabelle 1 – %{changed} von %{total} Namen ändern sich"
+  es: "Tabla 1 – cambian %{changed} de %{total} nombres"
+  it: "Tabella 1 – cambiano %{changed} nomi su %{total}"
+  pt-BR: "Tabela 1 – %{changed} de %{total} nomes mudam"
+  ja: "表 1 – %{total} 件中 %{changed} 件の名前が変わります"
+  zh-CN: "表 1 – %{total} 个名称中有 %{changed} 个会改变"
+  ko: "표 1 – 이름 %{total}개 중 %{changed}개가 바뀝니다"
 files.rename.col.before:
   en: Now
   fr: Actuel
+  de: "Jetzt"
+  es: "Ahora"
+  it: "Adesso"
+  pt-BR: "Agora"
+  ja: "現在"
+  zh-CN: "现在"
+  ko: "현재"
 files.rename.col.after:
   en: After
   fr: Après
+  de: "Danach"
+  es: "Después"
+  it: "Dopo"
+  pt-BR: "Depois"
+  ja: "変更後"
+  zh-CN: "之后"
+  ko: "변경 후"
 files.rename.unchanged:
   en: unchanged
   fr: inchangé
+  de: "unverändert"
+  es: "sin cambios"
+  it: "invariato"
+  pt-BR: "sem alteração"
+  ja: "変更なし"
+  zh-CN: "无变化"
+  ko: "변경 없음"
 files.rename.opt.pattern:
   en: New name
   fr: Nouveau nom
+  de: "Neuer Name"
+  es: "Nuevo nombre"
+  it: "Nuovo nome"
+  pt-BR: "Novo nome"
+  ja: "新しい名前"
+  zh-CN: "新名称"
+  ko: "새 이름"
 files.rename.opt.pattern.help:
   en: "Tokens: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. The extension is added for you."
   fr: "Jetons : {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. L’extension est ajoutée automatiquement."
+  de: "Platzhalter: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. Die Erweiterung wird automatisch ergänzt."
+  es: "Marcadores: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. La extensión se añade sola."
+  it: "Segnaposto: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. L’estensione viene aggiunta in automatico."
+  pt-BR: "Marcadores: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. A extensão é adicionada automaticamente."
+  ja: "トークン: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}。拡張子は自動で付きます。"
+  zh-CN: "可用标记：{name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}。扩展名会自动添加。"
+  ko: "토큰: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. 확장자는 자동으로 붙습니다."
 files.rename.opt.find:
   en: Find
   fr: Rechercher
+  de: "Suchen"
+  es: "Buscar"
+  it: "Trova"
+  pt-BR: "Localizar"
+  ja: "検索"
+  zh-CN: "查找"
+  ko: "찾기"
 files.rename.opt.replace:
   en: Replace with
   fr: Remplacer par
+  de: "Ersetzen durch"
+  es: "Reemplazar por"
+  it: "Sostituisci con"
+  pt-BR: "Substituir por"
+  ja: "置換後"
+  zh-CN: "替换为"
+  ko: "바꿀 내용"
 files.rename.opt.replace.help:
   en: "With regular expressions, $1 inserts the first group."
   fr: "Avec les expressions régulières, $1 insère le premier groupe."
+  de: "Bei regulären Ausdrücken fügt $1 die erste Gruppe ein."
+  es: "Con expresiones regulares, $1 inserta el primer grupo."
+  it: "Con le espressioni regolari, $1 inserisce il primo gruppo."
+  pt-BR: "Com expressões regulares, $1 insere o primeiro grupo."
+  ja: "正規表現では $1 で最初のグループが挿入されます。"
+  zh-CN: "使用正则表达式时，$1 会插入第一个分组。"
+  ko: "정규식에서는 $1이 첫 번째 그룹으로 대체됩니다."
 files.rename.opt.regex:
   en: Regular expression
   fr: Expression régulière
+  de: "Regulärer Ausdruck"
+  es: "Expresión regular"
+  it: "Espressione regolare"
+  pt-BR: "Expressão regular"
+  ja: "正規表現"
+  zh-CN: "正则表达式"
+  ko: "정규식"
 files.rename.opt.match_case:
   en: Match case
   fr: Respecter la casse
+  de: "Groß-/Kleinschreibung beachten"
+  es: "Distinguir mayúsculas"
+  it: "Distingui maiuscole"
+  pt-BR: "Diferenciar maiúsculas"
+  ja: "大文字と小文字を区別"
+  zh-CN: "区分大小写"
+  ko: "대소문자 구분"
 files.rename.opt.case:
   en: Case
   fr: Casse
+  de: "Schreibweise"
+  es: "Mayúsculas"
+  it: "Maiuscole/minuscole"
+  pt-BR: "Maiúsculas/minúsculas"
+  ja: "大文字・小文字"
+  zh-CN: "大小写"
+  ko: "대소문자"
 files.rename.opt.case.keep:
   en: Keep
   fr: Inchangée
+  de: "Beibehalten"
+  es: "Mantener"
+  it: "Mantieni"
+  pt-BR: "Manter"
+  ja: "そのまま"
+  zh-CN: "保持"
+  ko: "유지"
 files.rename.opt.case.lower:
   en: lowercase
   fr: minuscules
+  de: "kleinbuchstaben"
+  es: "minúsculas"
+  it: "minuscolo"
+  pt-BR: "minúsculas"
+  ja: "小文字"
+  zh-CN: "小写"
+  ko: "소문자"
 files.rename.opt.case.upper:
   en: UPPERCASE
   fr: MAJUSCULES
+  de: "GROSSBUCHSTABEN"
+  es: "MAYÚSCULAS"
+  it: "MAIUSCOLO"
+  pt-BR: "MAIÚSCULAS"
+  ja: "大文字"
+  zh-CN: "大写"
+  ko: "대문자"
 files.rename.opt.case.title:
   en: Title Case
   fr: Première Lettre En Majuscule
+  de: "Jedes Wort Groß"
+  es: "Cada Palabra En Mayúscula"
+  it: "Iniziali Maiuscole"
+  pt-BR: "Cada Palavra Maiúscula"
+  ja: "各単語を大文字に"
+  zh-CN: "每个单词首字母大写"
+  ko: "단어마다 첫 글자 대문자"
 files.rename.opt.case.sentence:
   en: Sentence case
   fr: Comme une phrase
+  de: "Satzanfang groß"
+  es: "Solo la primera mayúscula"
+  it: "Solo la prima maiuscola"
+  pt-BR: "Só a primeira maiúscula"
+  ja: "文頭のみ大文字"
+  zh-CN: "仅首字母大写"
+  ko: "첫 글자만 대문자"
 files.rename.opt.case.kebab:
   en: kebab-case
   fr: kebab-case
+  de: "kebab-case"
+  es: "kebab-case"
+  it: "kebab-case"
+  pt-BR: "kebab-case"
+  ja: "kebab-case"
+  zh-CN: "kebab-case"
+  ko: "kebab-case"
 files.rename.opt.case.snake:
   en: snake_case
   fr: snake_case
+  de: "snake_case"
+  es: "snake_case"
+  it: "snake_case"
+  pt-BR: "snake_case"
+  ja: "snake_case"
+  zh-CN: "snake_case"
+  ko: "snake_case"
 files.rename.opt.remove:
   en: Remove characters
   fr: Supprimer les caractères
+  de: "Zeichen entfernen"
+  es: "Quitar caracteres"
+  it: "Rimuovi caratteri"
+  pt-BR: "Remover caracteres"
+  ja: "文字を削除"
+  zh-CN: "删除字符"
+  ko: "문자 제거"
 files.rename.opt.remove.help:
   en: "Every character typed here is removed, e.g. #!()"
   fr: "Chaque caractère saisi ici est supprimé, p. ex. #!()"
+  de: "Jedes hier eingegebene Zeichen wird entfernt, z. B. #!()"
+  es: "Se quita cada carácter escrito aquí, p. ej. #!()"
+  it: "Ogni carattere inserito qui viene rimosso, ad es. #!()"
+  pt-BR: "Cada caractere digitado aqui é removido, p. ex. #!()"
+  ja: "ここに入力した文字はすべて削除されます (例: #!())。"
+  zh-CN: "此处输入的每个字符都会被删除，例如 #!()"
+  ko: "여기에 입력한 모든 문자가 제거됩니다. 예: #!()"
 files.rename.opt.ascii:
   en: Replace accents (é → e)
   fr: Remplacer les accents (é → e)
+  de: "Akzente ersetzen (é → e)"
+  es: "Reemplazar acentos (é → e)"
+  it: "Sostituisci gli accenti (é → e)"
+  pt-BR: "Substituir acentos (é → e)"
+  ja: "アクセントを置換 (é → e)"
+  zh-CN: "替换重音符号 (é → e)"
+  ko: "악센트 바꾸기 (é → e)"
 files.rename.opt.extension:
   en: Extension
   fr: Extension
+  de: "Erweiterung"
+  es: "Extensión"
+  it: "Estensione"
+  pt-BR: "Extensão"
+  ja: "拡張子"
+  zh-CN: "扩展名"
+  ko: "확장자"
 files.rename.opt.extension.keep:
   en: Keep
   fr: Inchangée
+  de: "Beibehalten"
+  es: "Mantener"
+  it: "Mantieni"
+  pt-BR: "Manter"
+  ja: "そのまま"
+  zh-CN: "保持"
+  ko: "유지"
 files.rename.opt.extension.lower:
   en: lowercase
   fr: minuscules
+  de: "kleinbuchstaben"
+  es: "minúsculas"
+  it: "minuscolo"
+  pt-BR: "minúsculas"
+  ja: "小文字"
+  zh-CN: "小写"
+  ko: "소문자"
 files.rename.opt.extension.upper:
   en: UPPERCASE
   fr: MAJUSCULES
+  de: "GROSSBUCHSTABEN"
+  es: "MAYÚSCULAS"
+  it: "MAIUSCOLO"
+  pt-BR: "MAIÚSCULAS"
+  ja: "大文字"
+  zh-CN: "大写"
+  ko: "대문자"
 files.rename.opt.extension.change:
   en: Change to…
   fr: Remplacer par…
+  de: "Ändern in …"
+  es: "Cambiar a…"
+  it: "Cambia in…"
+  pt-BR: "Alterar para…"
+  ja: "変更…"
+  zh-CN: "更改为…"
+  ko: "변경…"
 files.rename.opt.extension.remove:
   en: Remove
   fr: Supprimer
+  de: "Entfernen"
+  es: "Quitar"
+  it: "Rimuovi"
+  pt-BR: "Remover"
+  ja: "削除"
+  zh-CN: "删除"
+  ko: "제거"
 files.rename.opt.new_extension:
   en: New extension
   fr: Nouvelle extension
+  de: "Neue Erweiterung"
+  es: "Nueva extensión"
+  it: "Nuova estensione"
+  pt-BR: "Nova extensão"
+  ja: "新しい拡張子"
+  zh-CN: "新扩展名"
+  ko: "새 확장자"
 files.rename.opt.order:
   en: Numbering order
   fr: Ordre de numérotation
+  de: "Reihenfolge der Nummerierung"
+  es: "Orden de numeración"
+  it: "Ordine di numerazione"
+  pt-BR: "Ordem da numeração"
+  ja: "連番の順序"
+  zh-CN: "编号顺序"
+  ko: "번호 순서"
 files.rename.opt.order.natural:
   en: By name (2 before 10)
   fr: Par nom (2 avant 10)
+  de: "Nach Name (2 vor 10)"
+  es: "Por nombre (2 antes de 10)"
+  it: "Per nome (2 prima di 10)"
+  pt-BR: "Por nome (2 antes de 10)"
+  ja: "名前順 (2 が 10 より前)"
+  zh-CN: "按名称（2 在 10 之前）"
+  ko: "이름순 (2가 10보다 앞)"
 files.rename.opt.order.modified:
   en: By date modified
   fr: Par date de modification
+  de: "Nach Änderungsdatum"
+  es: "Por fecha de modificación"
+  it: "Per data di modifica"
+  pt-BR: "Por data de modificação"
+  ja: "更新日時順"
+  zh-CN: "按修改日期"
+  ko: "수정한 날짜순"
 files.rename.opt.order.created:
   en: By date created
   fr: Par date de création
+  de: "Nach Erstellungsdatum"
+  es: "Por fecha de creación"
+  it: "Per data di creazione"
+  pt-BR: "Por data de criação"
+  ja: "作成日時順"
+  zh-CN: "按创建日期"
+  ko: "만든 날짜순"
 files.rename.opt.order.exif:
   en: By date taken
   fr: Par date de prise de vue
+  de: "Nach Aufnahmedatum"
+  es: "Por fecha de captura"
+  it: "Per data di scatto"
+  pt-BR: "Por data da foto"
+  ja: "撮影日時順"
+  zh-CN: "按拍摄日期"
+  ko: "촬영한 날짜순"
 files.rename.opt.order.size:
   en: By size
   fr: Par taille
+  de: "Nach Größe"
+  es: "Por tamaño"
+  it: "Per dimensione"
+  pt-BR: "Por tamanho"
+  ja: "サイズ順"
+  zh-CN: "按大小"
+  ko: "크기순"
 files.rename.opt.start:
   en: First number
   fr: Premier numéro
+  de: "Erste Nummer"
+  es: "Primer número"
+  it: "Primo numero"
+  pt-BR: "Primeiro número"
+  ja: "開始番号"
+  zh-CN: "起始编号"
+  ko: "시작 번호"
 files.rename.opt.step:
   en: Step
   fr: Pas
+  de: "Schrittweite"
+  es: "Incremento"
+  it: "Incremento"
+  pt-BR: "Incremento"
+  ja: "増分"
+  zh-CN: "步长"
+  ko: "증가값"
 files.rename.opt.recursive:
   en: Include subfolders
   fr: Inclure les sous-dossiers
+  de: "Unterordner einbeziehen"
+  es: "Incluir subcarpetas"
+  it: "Includi le sottocartelle"
+  pt-BR: "Incluir subpastas"
+  ja: "サブフォルダを含める"
+  zh-CN: "包含子文件夹"
+  ko: "하위 폴더 포함"
 files.rename.err.regex:
   en: Invalid regular expression
   fr: Expression régulière invalide
+  de: "Ungültiger regulärer Ausdruck"
+  es: "Expresión regular no válida"
+  it: "Espressione regolare non valida"
+  pt-BR: "Expressão regular inválida"
+  ja: "正規表現が正しくありません"
+  zh-CN: "正则表达式无效"
+  ko: "정규식이 올바르지 않습니다"
 files.rename.err.brace:
   en: "A “{” has no matching “}” in the pattern."
   fr: "Une « { » n’a pas de « } » correspondante dans le modèle."
+  de: "Im Muster fehlt zu einem „{“ das passende „}“."
+  es: "Falta el “}” que cierra un “{” en el patrón."
+  it: "Nel modello manca la “}” corrispondente a una “{”."
+  pt-BR: "Falta o “}” correspondente a um “{” no padrão."
+  ja: "パターン内の「{」に対応する「}」がありません。"
+  zh-CN: "模式中的“{”没有匹配的“}”。"
+  ko: "패턴에서 “{”에 맞는 “}”가 없습니다."
 files.rename.err.token:
   en: "Unknown token {%{token}}."
   fr: "Jeton inconnu {%{token}}."
+  de: "Unbekannter Platzhalter {%{token}}."
+  es: "Marcador desconocido {%{token}}."
+  it: "Segnaposto sconosciuto {%{token}}."
+  pt-BR: "Marcador desconhecido {%{token}}."
+  ja: "不明なトークン {%{token}} です。"
+  zh-CN: "未知标记 {%{token}}。"
+  ko: "알 수 없는 토큰 {%{token}}입니다."
 
 # ------------------------------------------------------------------ Archive
 files.archive.name:
   en: Create archive
   fr: Créer une archive
+  de: "Archiv erstellen"
+  es: "Crear archivo comprimido"
+  it: "Crea archivio"
+  pt-BR: "Criar arquivo compactado"
+  ja: "アーカイブを作成"
+  zh-CN: "创建压缩包"
+  ko: "압축 파일 만들기"
 files.archive.desc:
   en: ZIP, 7z or TAR archives, with an optional AES-256 password, exclusions and split volumes.
   fr: Archives ZIP, 7z ou TAR, avec mot de passe AES-256 en option, exclusions et découpage en volumes.
+  de: "ZIP-, 7z- oder TAR-Archive, optional mit AES-256-Passwort, Ausschlüssen und geteilten Teilen."
+  es: "Archivos ZIP, 7z o TAR, con contraseña AES-256 opcional, exclusiones y volúmenes divididos."
+  it: "Archivi ZIP, 7z o TAR, con password AES-256 facoltativa, esclusioni e volumi divisi."
+  pt-BR: "Arquivos ZIP, 7z ou TAR, com senha AES-256 opcional, exclusões e volumes divididos."
+  ja: "ZIP・7z・TAR アーカイブを作成。AES-256 パスワード、除外、分割ボリュームにも対応。"
+  zh-CN: "创建 ZIP、7z 或 TAR 压缩包，可选 AES-256 密码、排除规则和分卷。"
+  ko: "ZIP, 7z, TAR 압축 파일을 만듭니다. AES-256 암호, 제외 항목, 분할 압축을 선택할 수 있습니다."
 files.archive.verb:
   en: Create archive
   fr: Créer l’archive
+  de: "Archiv erstellen"
+  es: "Crear archivo"
+  it: "Crea archivio"
+  pt-BR: "Criar arquivo"
+  ja: "アーカイブを作成"
+  zh-CN: "创建压缩包"
+  ko: "압축하기"
 files.archive.keywords:
   en: zip compress archive 7z tar gz zstd password encrypt split backup folder
   fr: zip compresser archive 7z tar gz zstd mot de passe chiffrer découper sauvegarde dossier
+  de: "zip komprimieren archiv 7z tar gz zstd passwort verschlüsseln teilen backup ordner"
+  es: "zip comprimir archivo 7z tar gz zstd contraseña cifrar dividir copia seguridad carpeta"
+  it: "zip comprimere archivio 7z tar gz zstd password cifrare dividere backup cartella"
+  pt-BR: "zip compactar arquivo 7z tar gz zstd senha criptografar dividir backup pasta"
+  ja: "zip 圧縮 アーカイブ 7z tar gz zstd パスワード 暗号化 分割 バックアップ フォルダ"
+  zh-CN: "zip 压缩 压缩包 归档 7z tar gz zstd 密码 加密 分卷 备份 文件夹"
+  ko: "zip 압축 아카이브 7z tar gz zstd 암호 암호화 분할 백업 폴더"
 files.archive.note:
   en: "%{files} files · %{before} → %{after} (%{change})"
   fr: "%{files} fichiers · %{before} → %{after} (%{change})"
+  de: "%{files} Dateien · %{before} → %{after} (%{change})"
+  es: "%{files} archivos · %{before} → %{after} (%{change})"
+  it: "%{files} file · %{before} → %{after} (%{change})"
+  pt-BR: "%{files} arquivos · %{before} → %{after} (%{change})"
+  ja: "%{files} ファイル · %{before} → %{after} (%{change})"
+  zh-CN: "%{files} 个文件 · %{before} → %{after} (%{change})"
+  ko: "파일 %{files}개 · %{before} → %{after} (%{change})"
 files.archive.default_name:
   en: archive
   fr: archive
+  de: "archiv"
+  es: "archivo"
+  it: "archivio"
+  pt-BR: "arquivo"
+  ja: "アーカイブ"
+  zh-CN: "压缩包"
+  ko: "압축파일"
 files.archive.opt.format:
   en: Format
   fr: Format
+  de: "Format"
+  es: "Formato"
+  it: "Formato"
+  pt-BR: "Formato"
+  ja: "形式"
+  zh-CN: "格式"
+  ko: "형식"
 files.archive.opt.level:
   en: Compression
   fr: Compression
+  de: "Komprimierung"
+  es: "Compresión"
+  it: "Compressione"
+  pt-BR: "Compactação"
+  ja: "圧縮"
+  zh-CN: "压缩"
+  ko: "압축"
 files.archive.opt.level.store:
   en: None
   fr: Aucune
+  de: "Keine"
+  es: "Ninguna"
+  it: "Nessuna"
+  pt-BR: "Nenhuma"
+  ja: "なし"
+  zh-CN: "无"
+  ko: "없음"
 files.archive.opt.level.fast:
   en: Fast
   fr: Rapide
+  de: "Schnell"
+  es: "Rápida"
+  it: "Veloce"
+  pt-BR: "Rápida"
+  ja: "高速"
+  zh-CN: "快速"
+  ko: "빠름"
 files.archive.opt.level.normal:
   en: Normal
   fr: Normale
+  de: "Normal"
+  es: "Normal"
+  it: "Normale"
+  pt-BR: "Normal"
+  ja: "標準"
+  zh-CN: "标准"
+  ko: "보통"
 files.archive.opt.level.max:
   en: Maximum
   fr: Maximale
+  de: "Maximal"
+  es: "Máxima"
+  it: "Massima"
+  pt-BR: "Máxima"
+  ja: "最大"
+  zh-CN: "最高"
+  ko: "최대"
 files.archive.opt.zstd:
   en: Zstandard inside the ZIP
   fr: Zstandard dans le ZIP
+  de: "Zstandard im ZIP"
+  es: "Zstandard dentro del ZIP"
+  it: "Zstandard nello ZIP"
+  pt-BR: "Zstandard dentro do ZIP"
+  ja: "ZIP 内で Zstandard を使用"
+  zh-CN: "ZIP 内使用 Zstandard"
+  ko: "ZIP 안에 Zstandard 사용"
 files.archive.opt.zstd.help:
   en: Faster and smaller, but older unzip tools (and Windows Explorer) cannot open it.
   fr: Plus rapide et plus petit, mais les anciens outils (et l’Explorateur Windows) ne savent pas l’ouvrir.
+  de: "Schneller und kleiner, aber ältere Entpackprogramme (und der Windows-Explorer) können es nicht öffnen."
+  es: "Más rápido y pequeño, pero las herramientas unzip antiguas (y el Explorador de Windows) no pueden abrirlo."
+  it: "Più veloce e più piccolo, ma i vecchi programmi unzip (e Esplora file di Windows) non riescono ad aprirlo."
+  pt-BR: "Mais rápido e menor, mas ferramentas unzip antigas (e o Explorador de Arquivos do Windows) não conseguem abri-lo."
+  ja: "高速で小さくなりますが、古い unzip ツール (および Windows のエクスプローラー) では開けません。"
+  zh-CN: "更快更小，但旧版解压工具（以及 Windows 资源管理器）无法打开。"
+  ko: "더 빠르고 작아지지만, 오래된 unzip 도구와 Windows 탐색기에서는 열 수 없습니다."
 files.archive.opt.password.help:
   en: "AES-256 (ZIP and 7z; 7z also hides the file names). Windows Explorer cannot open AES ZIPs: use 7-Zip or Castor."
   fr: "AES-256 (ZIP et 7z ; le 7z masque aussi les noms). L’Explorateur Windows n’ouvre pas les ZIP AES : utilisez 7-Zip ou Castor."
+  de: "AES-256 (ZIP und 7z; 7z verbirgt auch die Dateinamen). Der Windows-Explorer kann AES-ZIPs nicht öffnen: nutzen Sie 7-Zip oder Castor."
+  es: "AES-256 (ZIP y 7z; 7z también oculta los nombres de archivo). El Explorador de Windows no puede abrir ZIP con AES: usa 7-Zip o Castor."
+  it: "AES-256 (ZIP e 7z; 7z nasconde anche i nomi dei file). Esplora file di Windows non apre gli ZIP con AES: usa 7-Zip o Castor."
+  pt-BR: "AES-256 (ZIP e 7z; o 7z também oculta os nomes dos arquivos). O Explorador de Arquivos do Windows não abre ZIPs com AES: use 7-Zip ou Castor."
+  ja: "AES-256 (ZIP と 7z。7z ではファイル名も隠せます)。Windows のエクスプローラーでは AES の ZIP を開けません。7-Zip か Castor を使ってください。"
+  zh-CN: "AES-256（ZIP 和 7z；7z 还会隐藏文件名）。Windows 资源管理器无法打开 AES 加密的 ZIP，请使用 7-Zip 或 Castor。"
+  ko: "AES-256 (ZIP, 7z. 7z는 파일 이름도 숨깁니다). Windows 탐색기에서는 AES ZIP을 열 수 없으니 7-Zip이나 Castor를 사용하세요."
 files.archive.opt.name:
   en: Archive name
   fr: Nom de l’archive
+  de: "Archivname"
+  es: "Nombre del archivo"
+  it: "Nome dell’archivio"
+  pt-BR: "Nome do arquivo"
+  ja: "アーカイブ名"
+  zh-CN: "压缩包名称"
+  ko: "압축 파일 이름"
 files.archive.opt.name.help:
   en: Empty = the folder’s name.
   fr: Vide = le nom du dossier.
+  de: "Leer = Name des Ordners."
+  es: "Vacío = el nombre de la carpeta."
+  it: "Vuoto = il nome della cartella."
+  pt-BR: "Vazio = o nome da pasta."
+  ja: "空欄の場合はフォルダ名になります。"
+  zh-CN: "留空则使用文件夹名称。"
+  ko: "비워 두면 폴더 이름을 사용합니다."
 files.archive.opt.each:
   en: One archive per item
   fr: Une archive par élément
+  de: "Ein Archiv pro Element"
+  es: "Un archivo por elemento"
+  it: "Un archivio per elemento"
+  pt-BR: "Um arquivo por item"
+  ja: "項目ごとに 1 つのアーカイブ"
+  zh-CN: "每项一个压缩包"
+  ko: "항목마다 압축 파일 하나씩"
 files.archive.opt.exclude:
   en: Leave out
   fr: Exclure
+  de: "Auslassen"
+  es: "Excluir"
+  it: "Escludi"
+  pt-BR: "Excluir"
+  ja: "除外"
+  zh-CN: "排除"
+  ko: "제외"
 files.archive.opt.exclude.help:
   en: "Name patterns separated by commas: *.tmp, node_modules"
   fr: "Motifs de noms séparés par des virgules : *.tmp, node_modules"
+  de: "Namensmuster, durch Kommas getrennt: *.tmp, node_modules"
+  es: "Patrones de nombre separados por comas: *.tmp, node_modules"
+  it: "Modelli di nome separati da virgole: *.tmp, node_modules"
+  pt-BR: "Padrões de nome separados por vírgulas: *.tmp, node_modules"
+  ja: "名前パターンをカンマで区切ります: *.tmp, node_modules"
+  zh-CN: "以逗号分隔的名称模式：*.tmp, node_modules"
+  ko: "쉼표로 구분한 이름 패턴: *.tmp, node_modules"
 files.archive.opt.split_mb:
   en: Split into parts of
   fr: Découper en parties de
+  de: "Teilen in Teile von"
+  es: "Dividir en partes de"
+  it: "Dividi in parti da"
+  pt-BR: "Dividir em partes de"
+  ja: "分割サイズ"
+  zh-CN: "分卷大小"
+  ko: "분할 크기"
 files.archive.opt.split_mb.help:
   en: 0 = one file. Parts are named .001, .002… and open in 7-Zip or Castor.
   fr: 0 = un seul fichier. Les parties s’appellent .001, .002… et s’ouvrent avec 7-Zip ou Castor.
+  de: "0 = eine Datei. Die Teile heißen .001, .002 … und lassen sich mit 7-Zip oder Castor öffnen."
+  es: "0 = un solo archivo. Las partes se llaman .001, .002… y se abren con 7-Zip o Castor."
+  it: "0 = un solo file. Le parti si chiamano .001, .002… e si aprono con 7-Zip o Castor."
+  pt-BR: "0 = um arquivo. As partes se chamam .001, .002… e abrem no 7-Zip ou no Castor."
+  ja: "0 = 分割なし。パートは .001、.002… の名前になり、7-Zip か Castor で開けます。"
+  zh-CN: "0 = 不分卷。分卷命名为 .001、.002…，可用 7-Zip 或 Castor 打开。"
+  ko: "0 = 파일 하나. 분할 파일은 .001, .002… 로 이름 붙으며 7-Zip이나 Castor로 열 수 있습니다."
 files.archive.err.password_format:
   en: Passwords work with ZIP and 7z only.
   fr: Les mots de passe ne fonctionnent qu’avec ZIP et 7z.
+  de: "Passwörter funktionieren nur mit ZIP und 7z."
+  es: "Las contraseñas solo funcionan con ZIP y 7z."
+  it: "Le password funzionano solo con ZIP e 7z."
+  pt-BR: "Senhas só funcionam com ZIP e 7z."
+  ja: "パスワードは ZIP と 7z でのみ使えます。"
+  zh-CN: "密码仅适用于 ZIP 和 7z。"
+  ko: "암호는 ZIP과 7z에서만 사용할 수 있습니다."
 files.archive.err.empty:
   en: Nothing to archive (everything was excluded or the folders are empty).
   fr: Rien à archiver (tout est exclu ou les dossiers sont vides).
+  de: "Nichts zu archivieren (alles wurde ausgeschlossen oder die Ordner sind leer)."
+  es: "No hay nada que archivar (todo se excluyó o las carpetas están vacías)."
+  it: "Niente da archiviare (tutto è stato escluso o le cartelle sono vuote)."
+  pt-BR: "Nada para arquivar (tudo foi excluído ou as pastas estão vazias)."
+  ja: "アーカイブするものがありません (すべて除外されたか、フォルダが空です)。"
+  zh-CN: "没有可压缩的内容（全部被排除，或文件夹为空）。"
+  ko: "압축할 항목이 없습니다(모두 제외되었거나 폴더가 비어 있음)."
 
 # ------------------------------------------------------------------ Extract
 files.extract.name:
   en: Extract archive
   fr: Extraire une archive
+  de: "Archiv entpacken"
+  es: "Extraer archivo comprimido"
+  it: "Estrai archivio"
+  pt-BR: "Extrair arquivo compactado"
+  ja: "アーカイブを展開"
+  zh-CN: "解压压缩包"
+  ko: "압축 풀기"
 files.extract.desc:
   en: Open ZIP, 7z and TAR archives (also password-protected and split), safely, into a folder.
   fr: Ouvrez les archives ZIP, 7z et TAR (même protégées ou découpées), en toute sécurité, dans un dossier.
+  de: "ZIP-, 7z- und TAR-Archive (auch passwortgeschützt und geteilt) sicher in einen Ordner entpacken."
+  es: "Abre archivos ZIP, 7z y TAR (también con contraseña o divididos) de forma segura en una carpeta."
+  it: "Apri in sicurezza archivi ZIP, 7z e TAR (anche protetti da password e divisi) in una cartella."
+  pt-BR: "Abra arquivos ZIP, 7z e TAR (também protegidos por senha e divididos) com segurança em uma pasta."
+  ja: "ZIP・7z・TAR アーカイブ (パスワード付き・分割にも対応) を安全にフォルダへ展開します。"
+  zh-CN: "安全地将 ZIP、7z 和 TAR 压缩包（含加密和分卷）解压到文件夹。"
+  ko: "ZIP, 7z, TAR 압축 파일(암호 보호·분할 포함)을 안전하게 폴더로 풉니다."
 files.extract.verb:
   en: Extract
   fr: Extraire
+  de: "Entpacken"
+  es: "Extraer"
+  it: "Estrai"
+  pt-BR: "Extrair"
+  ja: "展開"
+  zh-CN: "解压"
+  ko: "압축 풀기"
 files.extract.keywords:
   en: unzip extract decompress zip 7z tar gz bz2 xz zstd open archive uncompress
   fr: dézipper extraire décompresser zip 7z tar gz bz2 xz zstd ouvrir archive
+  de: "entpacken extrahieren dekomprimieren zip 7z tar gz bz2 xz zstd öffnen archiv"
+  es: "descomprimir extraer zip 7z tar gz bz2 xz zstd abrir archivo"
+  it: "decomprimere estrarre zip 7z tar gz bz2 xz zstd aprire archivio unzip"
+  pt-BR: "descompactar extrair zip 7z tar gz bz2 xz zstd abrir arquivo unzip"
+  ja: "解凍 展開 抽出 zip 7z tar gz bz2 xz zstd 開く アーカイブ"
+  zh-CN: "解压 提取 解压缩 zip 7z tar gz bz2 xz zstd 打开 压缩包"
+  ko: "압축 풀기 해제 추출 zip 7z tar gz bz2 xz zstd 열기 아카이브"
 files.extract.note:
   en: "%{count} files · %{size}"
   fr: "%{count} fichiers · %{size}"
+  de: "%{count} Dateien · %{size}"
+  es: "%{count} archivos · %{size}"
+  it: "%{count} file · %{size}"
+  pt-BR: "%{count} arquivos · %{size}"
+  ja: "%{count} ファイル · %{size}"
+  zh-CN: "%{count} 个文件 · %{size}"
+  ko: "파일 %{count}개 · %{size}"
 files.extract.opt.password.help:
   en: Only for protected archives. Never kept in history.
   fr: Seulement pour les archives protégées. Jamais conservé dans l’historique.
+  de: "Nur für geschützte Archive. Wird nie im Verlauf gespeichert."
+  es: "Solo para archivos protegidos. Nunca se guarda en el historial."
+  it: "Solo per archivi protetti. Non viene mai conservata nella cronologia."
+  pt-BR: "Apenas para arquivos protegidos. Nunca é guardada no histórico."
+  ja: "保護されたアーカイブ専用です。履歴には保存されません。"
+  zh-CN: "仅用于受保护的压缩包。不会保存到历史记录。"
+  ko: "보호된 압축 파일에만 필요합니다. 기록에 저장되지 않습니다."
 files.extract.opt.smart_folder:
   en: No folder inside a folder
   fr: Pas de dossier dans un dossier
+  de: "Kein Ordner im Ordner"
+  es: "Sin carpeta dentro de carpeta"
+  it: "Niente cartella dentro cartella"
+  pt-BR: "Sem pasta dentro de pasta"
+  ja: "フォルダの二重化を避ける"
+  zh-CN: "避免文件夹套文件夹"
+  ko: "폴더 안의 폴더 방지"
 files.extract.opt.smart_folder.help:
   en: When the archive holds a single folder, use it directly.
   fr: Si l’archive contient un seul dossier, l’utiliser directement.
+  de: "Enthält das Archiv nur einen Ordner, wird dieser direkt verwendet."
+  es: "Si el archivo contiene una sola carpeta, se usa directamente."
+  it: "Se l’archivio contiene una sola cartella, viene usata direttamente."
+  pt-BR: "Quando o arquivo contém uma única pasta, ela é usada diretamente."
+  ja: "アーカイブ内にフォルダが 1 つだけの場合は、それをそのまま使います。"
+  zh-CN: "当压缩包只含一个文件夹时，直接使用该文件夹。"
+  ko: "압축 파일에 폴더가 하나뿐이면 그 폴더를 그대로 사용합니다."
 files.extract.opt.keep_dates:
   en: Keep the files’ dates
   fr: Conserver les dates des fichiers
+  de: "Datumsangaben der Dateien beibehalten"
+  es: "Conservar las fechas de los archivos"
+  it: "Mantieni le date dei file"
+  pt-BR: "Manter as datas dos arquivos"
+  ja: "ファイルの日付を保持"
+  zh-CN: "保留文件日期"
+  ko: "파일 날짜 유지"
 files.extract.err.no_archive:
   en: Drop an archive (ZIP, 7z, TAR…).
   fr: Déposez une archive (ZIP, 7z, TAR…).
+  de: "Ziehen Sie ein Archiv hierher (ZIP, 7z, TAR …)."
+  es: "Suelta un archivo comprimido (ZIP, 7z, TAR…)."
+  it: "Trascina un archivio (ZIP, 7z, TAR…)."
+  pt-BR: "Solte um arquivo compactado (ZIP, 7z, TAR…)."
+  ja: "アーカイブ (ZIP、7z、TAR など) をドロップしてください。"
+  zh-CN: "请拖入压缩包（ZIP、7z、TAR 等）。"
+  ko: "압축 파일(ZIP, 7z, TAR 등)을 끌어다 놓으세요."
 files.extract.err.unknown:
   en: This is not an archive Castor can open (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST).
   fr: Ce n’est pas une archive que Castor sait ouvrir (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST).
+  de: "Dies ist kein Archiv, das Castor öffnen kann (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST)."
+  es: "Este no es un archivo que Castor pueda abrir (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST)."
+  it: "Questo non è un archivio che Castor può aprire (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST)."
+  pt-BR: "Este não é um arquivo que o Castor consiga abrir (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST)."
+  ja: "Castor で開けるアーカイブではありません (ZIP、7z、TAR、GZ、BZ2、XZ、ZST)。"
+  zh-CN: "这不是 Castor 能打开的压缩包（ZIP、7z、TAR、GZ、BZ2、XZ、ZST）。"
+  ko: "Castor에서 열 수 있는 압축 파일이 아닙니다(ZIP, 7z, TAR, GZ, BZ2, XZ, ZST)."
 files.extract.err.rar:
   en: RAR archives are not supported (no free RAR decoder is compatible with Castor’s GPL licence). 7-Zip can open them.
   fr: Les archives RAR ne sont pas prises en charge (aucun décodeur RAR libre n’est compatible avec la licence GPL de Castor). 7-Zip sait les ouvrir.
+  de: "RAR-Archive werden nicht unterstützt (kein freier RAR-Decoder ist mit der GPL-Lizenz von Castor kompatibel). 7-Zip kann sie öffnen."
+  es: "Los archivos RAR no son compatibles (ningún decodificador RAR libre es compatible con la licencia GPL de Castor). 7-Zip puede abrirlos."
+  it: "Gli archivi RAR non sono supportati (nessun decodificatore RAR libero è compatibile con la licenza GPL di Castor). 7-Zip può aprirli."
+  pt-BR: "Arquivos RAR não são compatíveis (nenhum decodificador RAR livre é compatível com a licença GPL do Castor). O 7-Zip consegue abri-los."
+  ja: "RAR アーカイブには対応していません (Castor の GPL ライセンスと両立する無料の RAR デコーダーがないため)。7-Zip で開けます。"
+  zh-CN: "不支持 RAR 压缩包（没有与 Castor 的 GPL 许可证兼容的免费 RAR 解码器）。可使用 7-Zip 打开。"
+  ko: "RAR 압축 파일은 지원하지 않습니다(Castor의 GPL 라이선스와 호환되는 무료 RAR 디코더가 없습니다). 7-Zip으로 열 수 있습니다."
 files.extract.err.corrupt:
   en: The archive is damaged or incomplete
   fr: L’archive est endommagée ou incomplète
+  de: "Das Archiv ist beschädigt oder unvollständig"
+  es: "El archivo está dañado o incompleto"
+  it: "L’archivio è danneggiato o incompleto"
+  pt-BR: "O arquivo está danificado ou incompleto"
+  ja: "アーカイブが破損しているか不完全です"
+  zh-CN: "压缩包已损坏或不完整"
+  ko: "압축 파일이 손상되었거나 불완전합니다"
 files.extract.err.empty:
   en: The archive is empty (0 bytes).
   fr: L’archive est vide (0 octet).
+  de: "Das Archiv ist leer (0 Byte)."
+  es: "El archivo está vacío (0 bytes)."
+  it: "L’archivio è vuoto (0 byte)."
+  pt-BR: "O arquivo está vazio (0 byte)."
+  ja: "アーカイブが空です (0 バイト)。"
+  zh-CN: "压缩包为空（0 字节）。"
+  ko: "압축 파일이 비어 있습니다(0바이트)."
 files.extract.err.password_needed:
   en: This archive is protected — enter its password.
   fr: Cette archive est protégée — saisissez son mot de passe.
+  de: "Dieses Archiv ist geschützt – geben Sie das Passwort ein."
+  es: "Este archivo está protegido: introduce su contraseña."
+  it: "Questo archivio è protetto: inserisci la password."
+  pt-BR: "Este arquivo é protegido: informe a senha."
+  ja: "このアーカイブは保護されています。パスワードを入力してください。"
+  zh-CN: "此压缩包受密码保护，请输入密码。"
+  ko: "보호된 압축 파일입니다. 암호를 입력하세요."
 files.extract.err.password_wrong:
   en: Wrong password.
   fr: Mot de passe incorrect.
+  de: "Falsches Passwort."
+  es: "Contraseña incorrecta."
+  it: "Password errata."
+  pt-BR: "Senha incorreta."
+  ja: "パスワードが違います。"
+  zh-CN: "密码错误。"
+  ko: "암호가 올바르지 않습니다."
 
 # ------------------------------------------------------------------ Dates
 files.dates.name:
   en: Change file dates
   fr: Modifier les dates
+  de: "Dateidaten ändern"
+  es: "Cambiar fechas de archivos"
+  it: "Cambia date dei file"
+  pt-BR: "Alterar datas dos arquivos"
+  ja: "ファイルの日付を変更"
+  zh-CN: "更改文件日期"
+  ko: "파일 날짜 변경"
 files.dates.desc:
   en: Set created and modified dates to the photo’s capture date, to a date of your choice, or shift them.
   fr: Réglez les dates de création et de modification sur la prise de vue, sur une date choisie, ou décalez-les.
+  de: "Erstellungs- und Änderungsdatum auf das Aufnahmedatum des Fotos, ein frei gewähltes Datum setzen oder verschieben."
+  es: "Fija las fechas de creación y modificación a la de captura de la foto, a una fecha a tu elección, o desplázalas."
+  it: "Imposta le date di creazione e modifica sulla data di scatto della foto, su una data a scelta, oppure spostale."
+  pt-BR: "Defina as datas de criação e modificação como a data da foto, uma data à sua escolha, ou desloque-as."
+  ja: "作成日時と更新日時を写真の撮影日時や任意の日時に設定したり、ずらしたりできます。"
+  zh-CN: "将创建和修改日期设为照片的拍摄日期或自选日期，或整体偏移。"
+  ko: "만든 날짜와 수정한 날짜를 사진의 촬영 날짜나 원하는 날짜로 설정하거나 일정 시간만큼 옮깁니다."
 files.dates.verb:
   en: Change dates
   fr: Modifier les dates
+  de: "Datum ändern"
+  es: "Cambiar fechas"
+  it: "Cambia date"
+  pt-BR: "Alterar datas"
+  ja: "日付を変更"
+  zh-CN: "更改日期"
+  ko: "날짜 변경"
 files.dates.keywords:
   en: date timestamp created modified exif touch time shift timezone photos
   fr: date horodatage création modification exif heure décaler fuseau photos
+  de: "datum zeitstempel erstellt geändert exif touch zeit verschieben zeitzone fotos"
+  es: "fecha marca de tiempo creación modificación exif touch hora desplazar zona horaria fotos"
+  it: "data timestamp creazione modifica exif touch ora spostare fuso orario foto"
+  pt-BR: "data carimbo de data criação modificação exif touch hora deslocar fuso horário fotos"
+  ja: "日付 タイムスタンプ 作成 更新 exif touch 時刻 ずらす タイムゾーン 写真"
+  zh-CN: "日期 时间戳 创建 修改 exif touch 时间 偏移 时区 照片"
+  ko: "날짜 타임스탬프 만든 수정 exif touch 시간 이동 시간대 사진"
 files.dates.caption:
   en: "Table 1 — new dates for %{count} files"
   fr: "Tableau 1 — nouvelles dates de %{count} fichiers"
+  de: "Tabelle 1 – neue Datumsangaben für %{count} Dateien"
+  es: "Tabla 1 – nuevas fechas para %{count} archivos"
+  it: "Tabella 1 – nuove date per %{count} file"
+  pt-BR: "Tabela 1 – novas datas para %{count} arquivos"
+  ja: "表 1 – %{count} 件のファイルの新しい日付"
+  zh-CN: "表 1 – %{count} 个文件的新日期"
+  ko: "표 1 – 파일 %{count}개의 새 날짜"
 files.dates.col.modified:
   en: Modified now
   fr: Modifié (actuel)
+  de: "Geändert (jetzt)"
+  es: "Modificado ahora"
+  it: "Modificato ora"
+  pt-BR: "Modificado agora"
+  ja: "現在の更新日時"
+  zh-CN: "当前修改时间"
+  ko: "현재 수정일"
 files.dates.col.new_modified:
   en: Modified after
   fr: Modifié (après)
+  de: "Geändert danach"
+  es: "Modificado después"
+  it: "Modificato dopo"
+  pt-BR: "Modificado depois"
+  ja: "変更後の更新日時"
+  zh-CN: "之后的修改时间"
+  ko: "변경 후 수정일"
 files.dates.col.new_created:
   en: Created after
   fr: Créé (après)
+  de: "Erstellt danach"
+  es: "Creado después"
+  it: "Creato dopo"
+  pt-BR: "Criado depois"
+  ja: "変更後の作成日時"
+  zh-CN: "之后的创建时间"
+  ko: "변경 후 만든 날짜"
 files.dates.no_date:
   en: no capture date
   fr: pas de date de prise de vue
+  de: "kein Aufnahmedatum"
+  es: "sin fecha de captura"
+  it: "nessuna data di scatto"
+  pt-BR: "sem data de captura"
+  ja: "撮影日時なし"
+  zh-CN: "无拍摄日期"
+  ko: "촬영 날짜 없음"
 files.dates.skipped:
   en: "%{count} without a date, left as they were"
   fr: "%{count} sans date, laissés tels quels"
+  de: "%{count} ohne Datum, unverändert gelassen"
+  es: "%{count} sin fecha, se dejaron como estaban"
+  it: "%{count} senza data, lasciati invariati"
+  pt-BR: "%{count} sem data, mantidos como estavam"
+  ja: "日付のない %{count} 件はそのままにしました"
+  zh-CN: "%{count} 个无日期，保持原样"
+  ko: "날짜가 없는 %{count}개는 그대로 두었습니다"
 files.dates.failed:
   en: "%{count} could not be changed"
   fr: "%{count} n’ont pas pu être modifiés"
+  de: "%{count} konnten nicht geändert werden"
+  es: "No se pudieron cambiar %{count}"
+  it: "Impossibile modificare %{count}"
+  pt-BR: "Não foi possível alterar %{count}"
+  ja: "%{count} 件は変更できませんでした"
+  zh-CN: "有 %{count} 个无法更改"
+  ko: "%{count}개를 변경하지 못했습니다"
 files.dates.opt.mode:
   en: New date
   fr: Nouvelle date
+  de: "Neues Datum"
+  es: "Nueva fecha"
+  it: "Nuova data"
+  pt-BR: "Nova data"
+  ja: "新しい日付"
+  zh-CN: "新日期"
+  ko: "새 날짜"
 files.dates.opt.mode.capture:
   en: Date taken (EXIF / video)
   fr: Date de prise de vue (EXIF / vidéo)
+  de: "Aufnahmedatum (EXIF / Video)"
+  es: "Fecha de captura (EXIF / vídeo)"
+  it: "Data di scatto (EXIF / video)"
+  pt-BR: "Data de captura (EXIF / vídeo)"
+  ja: "撮影日時 (EXIF / 動画)"
+  zh-CN: "拍摄日期（EXIF / 视频）"
+  ko: "촬영 날짜 (EXIF / 동영상)"
 files.dates.opt.mode.set:
   en: A date I choose
   fr: Une date choisie
+  de: "Ein Datum meiner Wahl"
+  es: "Una fecha que yo elija"
+  it: "Una data a mia scelta"
+  pt-BR: "Uma data à minha escolha"
+  ja: "指定した日付"
+  zh-CN: "自选日期"
+  ko: "직접 선택한 날짜"
 files.dates.opt.mode.shift:
   en: Shift by…
   fr: Décaler de…
+  de: "Verschieben um …"
+  es: "Desplazar…"
+  it: "Sposta di…"
+  pt-BR: "Deslocar em…"
+  ja: "ずらす…"
+  zh-CN: "偏移…"
+  ko: "이동…"
 files.dates.opt.mode.modified_to_created:
   en: Modified = created
   fr: Modification = création
+  de: "Geändert = erstellt"
+  es: "Modificado = creado"
+  it: "Modificato = creato"
+  pt-BR: "Modificado = criado"
+  ja: "更新日時 = 作成日時"
+  zh-CN: "修改 = 创建"
+  ko: "수정일 = 만든 날짜"
 files.dates.opt.mode.created_to_modified:
   en: Created = modified
   fr: Création = modification
+  de: "Erstellt = geändert"
+  es: "Creado = modificado"
+  it: "Creato = modificato"
+  pt-BR: "Criado = modificado"
+  ja: "作成日時 = 更新日時"
+  zh-CN: "创建 = 修改"
+  ko: "만든 날짜 = 수정일"
 files.dates.opt.date:
   en: Date and time
   fr: Date et heure
+  de: "Datum und Uhrzeit"
+  es: "Fecha y hora"
+  it: "Data e ora"
+  pt-BR: "Data e hora"
+  ja: "日付と時刻"
+  zh-CN: "日期和时间"
+  ko: "날짜 및 시간"
 files.dates.opt.date.help:
   en: "e.g. 2026-11-06 or 2026-11-06 19:30 (local time)"
   fr: "p. ex. 2026-11-06 ou 2026-11-06 19:30 (heure locale)"
+  de: "z. B. 2026-11-06 oder 2026-11-06 19:30 (Ortszeit)"
+  es: "p. ej. 2026-11-06 o 2026-11-06 19:30 (hora local)"
+  it: "ad es. 2026-11-06 o 2026-11-06 19:30 (ora locale)"
+  pt-BR: "p. ex. 2026-11-06 ou 2026-11-06 19:30 (hora local)"
+  ja: "例: 2026-11-06 または 2026-11-06 19:30 (現地時刻)"
+  zh-CN: "例如 2026-11-06 或 2026-11-06 19:30（本地时间）"
+  ko: "예: 2026-11-06 또는 2026-11-06 19:30 (현지 시간)"
 files.dates.opt.shift_days:
   en: Days
   fr: Jours
+  de: "Tage"
+  es: "Días"
+  it: "Giorni"
+  pt-BR: "Dias"
+  ja: "日"
+  zh-CN: "天"
+  ko: "일"
 files.dates.opt.shift_hours:
   en: Hours
   fr: Heures
+  de: "Stunden"
+  es: "Horas"
+  it: "Ore"
+  pt-BR: "Horas"
+  ja: "時間"
+  zh-CN: "小时"
+  ko: "시간"
 files.dates.opt.shift_hours.help:
   en: Handy for a camera left on the wrong time zone.
   fr: Pratique pour un appareil réglé sur le mauvais fuseau horaire.
+  de: "Praktisch für eine Kamera mit falsch eingestellter Zeitzone."
+  es: "Útil para una cámara que se quedó con la zona horaria equivocada."
+  it: "Utile per una fotocamera rimasta sul fuso orario sbagliato."
+  pt-BR: "Útil para uma câmera que ficou no fuso horário errado."
+  ja: "カメラのタイムゾーン設定を間違えたときに便利です。"
+  zh-CN: "适用于相机时区设置错误的情况。"
+  ko: "카메라의 시간대가 잘못 설정되었을 때 유용합니다."
 files.dates.opt.shift_minutes:
   en: Minutes
   fr: Minutes
+  de: "Minuten"
+  es: "Minutos"
+  it: "Minuti"
+  pt-BR: "Minutos"
+  ja: "分"
+  zh-CN: "分钟"
+  ko: "분"
 files.dates.opt.which:
   en: Dates to change
   fr: Dates à modifier
+  de: "Zu ändernde Daten"
+  es: "Fechas a cambiar"
+  it: "Date da cambiare"
+  pt-BR: "Datas a alterar"
+  ja: "変更する日付"
+  zh-CN: "要更改的日期"
+  ko: "변경할 날짜"
 files.dates.opt.which.both:
   en: Created and modified
   fr: Création et modification
+  de: "Erstellt und geändert"
+  es: "Creación y modificación"
+  it: "Creazione e modifica"
+  pt-BR: "Criação e modificação"
+  ja: "作成日時と更新日時"
+  zh-CN: "创建和修改"
+  ko: "만든 날짜와 수정일"
 files.dates.opt.which.modified:
   en: Modified only
   fr: Modification seulement
+  de: "Nur geändert"
+  es: "Solo modificación"
+  it: "Solo modifica"
+  pt-BR: "Somente modificação"
+  ja: "更新日時のみ"
+  zh-CN: "仅修改日期"
+  ko: "수정일만"
 files.dates.opt.which.created:
   en: Created only
   fr: Création seulement
+  de: "Nur erstellt"
+  es: "Solo creación"
+  it: "Solo creazione"
+  pt-BR: "Somente criação"
+  ja: "作成日時のみ"
+  zh-CN: "仅创建日期"
+  ko: "만든 날짜만"
 files.dates.opt.recursive:
   en: Include subfolders
   fr: Inclure les sous-dossiers
+  de: "Unterordner einbeziehen"
+  es: "Incluir subcarpetas"
+  it: "Includi le sottocartelle"
+  pt-BR: "Incluir subpastas"
+  ja: "サブフォルダを含める"
+  zh-CN: "包含子文件夹"
+  ko: "하위 폴더 포함"
 files.dates.err.date:
   en: "“%{value}” is not a date. Use 2026-11-06 or 2026-11-06 19:30."
   fr: "« %{value} » n’est pas une date. Utilisez 2026-11-06 ou 2026-11-06 19:30."
+  de: "„%{value}“ ist kein Datum. Verwenden Sie 2026-11-06 oder 2026-11-06 19:30."
+  es: "“%{value}” no es una fecha. Usa 2026-11-06 o 2026-11-06 19:30."
+  it: "“%{value}” non è una data. Usa 2026-11-06 oppure 2026-11-06 19:30."
+  pt-BR: "“%{value}” não é uma data. Use 2026-11-06 ou 2026-11-06 19:30."
+  ja: "「%{value}」は日付ではありません。2026-11-06 または 2026-11-06 19:30 の形式で入力してください。"
+  zh-CN: "“%{value}”不是有效日期。请使用 2026-11-06 或 2026-11-06 19:30。"
+  ko: "“%{value}”은(는) 날짜가 아닙니다. 2026-11-06 또는 2026-11-06 19:30 형식으로 입력하세요."
 files.dates.err.zero:
   en: Set a shift (days, hours or minutes).
   fr: Indiquez un décalage (jours, heures ou minutes).
+  de: "Geben Sie eine Verschiebung an (Tage, Stunden oder Minuten)."
+  es: "Indica un desplazamiento (días, horas o minutos)."
+  it: "Imposta uno spostamento (giorni, ore o minuti)."
+  pt-BR: "Defina um deslocamento (dias, horas ou minutos)."
+  ja: "ずらす量 (日、時間、分) を指定してください。"
+  zh-CN: "请设置偏移量（天、小时或分钟）。"
+  ko: "이동할 값(일, 시간 또는 분)을 설정하세요."
 files.dates.err.nothing:
   en: None of these files has a date to apply.
   fr: Aucun de ces fichiers n’a de date à appliquer.
+  de: "Keine dieser Dateien hat ein Datum, das übernommen werden könnte."
+  es: "Ninguno de estos archivos tiene una fecha que aplicar."
+  it: "Nessuno di questi file ha una data da applicare."
+  pt-BR: "Nenhum destes arquivos tem uma data para aplicar."
+  ja: "適用できる日付を持つファイルがありません。"
+  zh-CN: "这些文件都没有可应用的日期。"
+  ko: "적용할 날짜가 있는 파일이 없습니다."
 
 # ------------------------------------------------------------------ Sort
 files.sort.name:
   en: Sort & route
   fr: Trier et ranger
+  de: "Sortieren & verteilen"
+  es: "Ordenar y distribuir"
+  it: "Ordina e smista"
+  pt-BR: "Ordenar e distribuir"
+  ja: "仕分けして整理"
+  zh-CN: "分类归档"
+  ko: "정렬 및 분류"
 files.sort.desc:
   en: Tidy files into folders by type, year, month, camera, size or your own rules — every move undoable.
   fr: Rangez les fichiers dans des dossiers par type, année, mois, appareil, taille ou vos règles — chaque déplacement s’annule.
+  de: "Dateien nach Typ, Jahr, Monat, Kamera, Größe oder eigenen Regeln in Ordner einsortieren – jede Verschiebung ist rückgängig zu machen."
+  es: "Ordena archivos en carpetas por tipo, año, mes, cámara, tamaño o tus propias reglas; cada movimiento se puede deshacer."
+  it: "Metti in ordine i file in cartelle per tipo, anno, mese, fotocamera, dimensione o con regole tue; ogni spostamento è annullabile."
+  pt-BR: "Organize arquivos em pastas por tipo, ano, mês, câmera, tamanho ou suas próprias regras; cada movimentação pode ser desfeita."
+  ja: "ファイルを種類、年、月、カメラ、サイズ、独自のルールでフォルダに整理。すべての移動を元に戻せます。"
+  zh-CN: "按类型、年份、月份、相机、大小或自定义规则把文件整理到文件夹，每次移动都可撤销。"
+  ko: "파일을 형식, 연도, 월, 카메라, 크기 또는 직접 만든 규칙에 따라 폴더로 정리합니다. 모든 이동은 되돌릴 수 있습니다."
 files.sort.verb:
   en: Sort
   fr: Ranger
+  de: "Sortieren"
+  es: "Ordenar"
+  it: "Ordina"
+  pt-BR: "Ordenar"
+  ja: "仕分け"
+  zh-CN: "分类"
+  ko: "정렬"
 files.sort.keywords:
   en: sort organize folders route tidy downloads photos by date camera rules clean
   fr: trier ranger organiser dossiers téléchargements photos par date appareil règles nettoyer
+  de: "sortieren ordnen ordner verteilen aufräumen downloads fotos datum kamera regeln"
+  es: "ordenar organizar carpetas distribuir limpiar descargas fotos fecha cámara reglas"
+  it: "ordinare organizzare cartelle smistare pulire download foto data fotocamera regole"
+  pt-BR: "ordenar organizar pastas distribuir limpar downloads fotos data câmera regras"
+  ja: "仕分け 整理 フォルダ 振り分け 片付け ダウンロード 写真 日付 カメラ ルール"
+  zh-CN: "排序 整理 文件夹 分类 归档 清理 下载 照片 日期 相机 规则"
+  ko: "정렬 정리 폴더 분류 청소 다운로드 사진 날짜 카메라 규칙"
 files.sort.caption:
   en: "Table 1 — %{count} files into %{folders} folders"
   fr: "Tableau 1 — %{count} fichiers dans %{folders} dossiers"
+  de: "Tabelle 1 – %{count} Dateien in %{folders} Ordnern"
+  es: "Tabla 1 – %{count} archivos en %{folders} carpetas"
+  it: "Tabella 1 – %{count} file in %{folders} cartelle"
+  pt-BR: "Tabela 1 – %{count} arquivos em %{folders} pastas"
+  ja: "表 1 – %{count} 件のファイルを %{folders} 個のフォルダへ"
+  zh-CN: "表 1 – %{count} 个文件分入 %{folders} 个文件夹"
+  ko: "표 1 – 파일 %{count}개를 폴더 %{folders}개로"
 files.sort.note:
   en: "%{count} files moved"
   fr: "%{count} fichiers déplacés"
+  de: "%{count} Dateien verschoben"
+  es: "%{count} archivos movidos"
+  it: "%{count} file spostati"
+  pt-BR: "%{count} arquivos movidos"
+  ja: "%{count} 件のファイルを移動しました"
+  zh-CN: "已移动 %{count} 个文件"
+  ko: "파일 %{count}개를 이동했습니다"
 files.sort.col.folder:
   en: Folder
   fr: Dossier
+  de: "Ordner"
+  es: "Carpeta"
+  it: "Cartella"
+  pt-BR: "Pasta"
+  ja: "フォルダ"
+  zh-CN: "文件夹"
+  ko: "폴더"
 files.sort.col.files:
   en: Files
   fr: Fichiers
+  de: "Dateien"
+  es: "Archivos"
+  it: "File"
+  pt-BR: "Arquivos"
+  ja: "ファイル数"
+  zh-CN: "文件数"
+  ko: "파일 수"
 files.sort.col.size:
   en: Size
   fr: Taille
+  de: "Größe"
+  es: "Tamaño"
+  it: "Dimensione"
+  pt-BR: "Tamanho"
+  ja: "サイズ"
+  zh-CN: "大小"
+  ko: "크기"
 files.sort.folder.images:
   en: Images
   fr: Images
+  de: "Bilder"
+  es: "Imágenes"
+  it: "Immagini"
+  pt-BR: "Imagens"
+  ja: "画像"
+  zh-CN: "图片"
+  ko: "이미지"
 files.sort.folder.videos:
   en: Videos
   fr: Vidéos
+  de: "Videos"
+  es: "Vídeos"
+  it: "Video"
+  pt-BR: "Vídeos"
+  ja: "動画"
+  zh-CN: "视频"
+  ko: "동영상"
 files.sort.folder.audio:
   en: Audio
   fr: Audio
+  de: "Audio"
+  es: "Audio"
+  it: "Audio"
+  pt-BR: "Áudio"
+  ja: "オーディオ"
+  zh-CN: "音频"
+  ko: "오디오"
 files.sort.folder.documents:
   en: Documents
   fr: Documents
+  de: "Dokumente"
+  es: "Documentos"
+  it: "Documenti"
+  pt-BR: "Documentos"
+  ja: "書類"
+  zh-CN: "文档"
+  ko: "문서"
 files.sort.folder.archives:
   en: Archives
   fr: Archives
+  de: "Archive"
+  es: "Archivos comprimidos"
+  it: "Archivi"
+  pt-BR: "Arquivos compactados"
+  ja: "アーカイブ"
+  zh-CN: "压缩包"
+  ko: "압축 파일"
 files.sort.folder.fonts:
   en: Fonts
   fr: Polices
+  de: "Schriften"
+  es: "Fuentes"
+  it: "Font"
+  pt-BR: "Fontes"
+  ja: "フォント"
+  zh-CN: "字体"
+  ko: "글꼴"
 files.sort.folder.subtitles:
   en: Subtitles
   fr: Sous-titres
+  de: "Untertitel"
+  es: "Subtítulos"
+  it: "Sottotitoli"
+  pt-BR: "Legendas"
+  ja: "字幕"
+  zh-CN: "字幕"
+  ko: "자막"
 files.sort.folder.other:
   en: Other
   fr: Autres
+  de: "Sonstiges"
+  es: "Otros"
+  it: "Altro"
+  pt-BR: "Outros"
+  ja: "その他"
+  zh-CN: "其他"
+  ko: "기타"
 files.sort.folder.no_camera:
   en: Unknown camera
   fr: Appareil inconnu
+  de: "Unbekannte Kamera"
+  es: "Cámara desconocida"
+  it: "Fotocamera sconosciuta"
+  pt-BR: "Câmera desconhecida"
+  ja: "不明なカメラ"
+  zh-CN: "未知相机"
+  ko: "알 수 없는 카메라"
 files.sort.folder.no_extension:
   en: No extension
   fr: Sans extension
+  de: "Ohne Erweiterung"
+  es: "Sin extensión"
+  it: "Senza estensione"
+  pt-BR: "Sem extensão"
+  ja: "拡張子なし"
+  zh-CN: "无扩展名"
+  ko: "확장자 없음"
 files.sort.folder.small:
   en: Small (under 1 MB)
   fr: Petits (moins de 1 Mo)
+  de: "Klein (unter 1 MB)"
+  es: "Pequeños (menos de 1 MB)"
+  it: "Piccoli (meno di 1 MB)"
+  pt-BR: "Pequenos (menos de 1 MB)"
+  ja: "小 (1 MB 未満)"
+  zh-CN: "小（小于 1 MB）"
+  ko: "작음 (1MB 미만)"
 files.sort.folder.medium:
   en: Medium (1–100 MB)
   fr: Moyens (1 à 100 Mo)
+  de: "Mittel (1–100 MB)"
+  es: "Medianos (1–100 MB)"
+  it: "Medi (1–100 MB)"
+  pt-BR: "Médios (1–100 MB)"
+  ja: "中 (1–100 MB)"
+  zh-CN: "中（1–100 MB）"
+  ko: "보통 (1–100MB)"
 files.sort.folder.large:
   en: Large (over 100 MB)
   fr: Gros (plus de 100 Mo)
+  de: "Groß (über 100 MB)"
+  es: "Grandes (más de 100 MB)"
+  it: "Grandi (oltre 100 MB)"
+  pt-BR: "Grandes (mais de 100 MB)"
+  ja: "大 (100 MB 超)"
+  zh-CN: "大（超过 100 MB）"
+  ko: "큼 (100MB 초과)"
 files.sort.opt.by:
   en: Sort by
   fr: Trier par
+  de: "Sortieren nach"
+  es: "Ordenar por"
+  it: "Ordina per"
+  pt-BR: "Ordenar por"
+  ja: "仕分けの基準"
+  zh-CN: "分类依据"
+  ko: "정렬 기준"
 files.sort.opt.by.type:
   en: Type
   fr: Type
+  de: "Typ"
+  es: "Tipo"
+  it: "Tipo"
+  pt-BR: "Tipo"
+  ja: "種類"
+  zh-CN: "类型"
+  ko: "형식"
 files.sort.opt.by.year:
   en: Year
   fr: Année
+  de: "Jahr"
+  es: "Año"
+  it: "Anno"
+  pt-BR: "Ano"
+  ja: "年"
+  zh-CN: "年份"
+  ko: "연도"
 files.sort.opt.by.month:
   en: Month
   fr: Mois
+  de: "Monat"
+  es: "Mes"
+  it: "Mese"
+  pt-BR: "Mês"
+  ja: "月"
+  zh-CN: "月份"
+  ko: "월"
 files.sort.opt.by.day:
   en: Day
   fr: Jour
+  de: "Tag"
+  es: "Día"
+  it: "Giorno"
+  pt-BR: "Dia"
+  ja: "日"
+  zh-CN: "日期"
+  ko: "일"
 files.sort.opt.by.camera:
   en: Camera
   fr: Appareil photo
+  de: "Kamera"
+  es: "Cámara"
+  it: "Fotocamera"
+  pt-BR: "Câmera"
+  ja: "カメラ"
+  zh-CN: "相机"
+  ko: "카메라"
 files.sort.opt.by.extension:
   en: Extension
   fr: Extension
+  de: "Erweiterung"
+  es: "Extensión"
+  it: "Estensione"
+  pt-BR: "Extensão"
+  ja: "拡張子"
+  zh-CN: "扩展名"
+  ko: "확장자"
 files.sort.opt.by.size:
   en: Size
   fr: Taille
+  de: "Größe"
+  es: "Tamaño"
+  it: "Dimensione"
+  pt-BR: "Tamanho"
+  ja: "サイズ"
+  zh-CN: "大小"
+  ko: "크기"
 files.sort.opt.by.rules:
   en: My rules
   fr: Mes règles
+  de: "Meine Regeln"
+  es: "Mis reglas"
+  it: "Le mie regole"
+  pt-BR: "Minhas regras"
+  ja: "独自ルール"
+  zh-CN: "自定义规则"
+  ko: "내 규칙"
 files.sort.opt.date_source:
   en: Date
   fr: Date
+  de: "Datum"
+  es: "Fecha"
+  it: "Data"
+  pt-BR: "Data"
+  ja: "日付"
+  zh-CN: "日期"
+  ko: "날짜"
 files.sort.opt.date_source.capture:
   en: Date taken (else modified)
   fr: Prise de vue (sinon modification)
+  de: "Aufnahmedatum (sonst geändert)"
+  es: "Fecha de captura (si no, modificación)"
+  it: "Data di scatto (altrimenti modifica)"
+  pt-BR: "Data de captura (senão, modificação)"
+  ja: "撮影日時 (なければ更新日時)"
+  zh-CN: "拍摄日期（否则取修改日期）"
+  ko: "촬영 날짜 (없으면 수정일)"
 files.sort.opt.date_source.modified:
   en: Modified
   fr: Modification
+  de: "Änderungsdatum"
+  es: "Modificación"
+  it: "Modifica"
+  pt-BR: "Modificação"
+  ja: "更新日時"
+  zh-CN: "修改日期"
+  ko: "수정일"
 files.sort.opt.date_source.created:
   en: Created
   fr: Création
+  de: "Erstellungsdatum"
+  es: "Creación"
+  it: "Creazione"
+  pt-BR: "Criação"
+  ja: "作成日時"
+  zh-CN: "创建日期"
+  ko: "만든 날짜"
 files.sort.opt.rules:
   en: Rules
   fr: Règles
+  de: "Regeln"
+  es: "Reglas"
+  it: "Regole"
+  pt-BR: "Regras"
+  ja: "ルール"
+  zh-CN: "规则"
+  ko: "규칙"
 files.sort.opt.rules.help:
   en: "One per line: patterns => folder. The first match wins. Tokens in folders: {year} {month} {ext} {type} {camera}."
   fr: "Une par ligne : motifs => dossier. La première qui correspond s’applique. Jetons : {year} {month} {ext} {type} {camera}."
+  de: "Eine pro Zeile: Muster => Ordner. Der erste Treffer gilt. Platzhalter in Ordnern: {year} {month} {ext} {type} {camera}."
+  es: "Una por línea: patrones => carpeta. Gana la primera coincidencia. Marcadores en carpetas: {year} {month} {ext} {type} {camera}."
+  it: "Una per riga: modelli => cartella. Vale la prima corrispondenza. Segnaposto nelle cartelle: {year} {month} {ext} {type} {camera}."
+  pt-BR: "Uma por linha: padrões => pasta. A primeira correspondência vale. Marcadores nas pastas: {year} {month} {ext} {type} {camera}."
+  ja: "1 行に 1 つ: パターン => フォルダ。最初に一致したものが適用されます。フォルダ内のトークン: {year} {month} {ext} {type} {camera}。"
+  zh-CN: "每行一条：模式 => 文件夹。以第一个匹配为准。文件夹中可用标记：{year} {month} {ext} {type} {camera}。"
+  ko: "한 줄에 하나씩: 패턴 => 폴더. 처음 일치한 규칙이 적용됩니다. 폴더에 쓸 수 있는 토큰: {year} {month} {ext} {type} {camera}."
 files.sort.opt.destination:
   en: Into folder
   fr: Dans le dossier
+  de: "In Ordner"
+  es: "En la carpeta"
+  it: "Nella cartella"
+  pt-BR: "Na pasta"
+  ja: "移動先フォルダ"
+  zh-CN: "目标文件夹"
+  ko: "대상 폴더"
 files.sort.opt.destination.help:
   en: Empty = inside the folder you dropped.
   fr: Vide = dans le dossier déposé.
+  de: "Leer = in den abgelegten Ordner."
+  es: "Vacío = dentro de la carpeta que soltaste."
+  it: "Vuoto = dentro della cartella trascinata."
+  pt-BR: "Vazio = dentro da pasta que você soltou."
+  ja: "空欄の場合はドロップしたフォルダの中に作成します。"
+  zh-CN: "留空则放在拖入的文件夹内。"
+  ko: "비워 두면 끌어다 놓은 폴더 안에 만듭니다."
 files.sort.opt.recursive:
   en: Include subfolders
   fr: Inclure les sous-dossiers
+  de: "Unterordner einbeziehen"
+  es: "Incluir subcarpetas"
+  it: "Includi le sottocartelle"
+  pt-BR: "Incluir subpastas"
+  ja: "サブフォルダを含める"
+  zh-CN: "包含子文件夹"
+  ko: "하위 폴더 포함"
 files.sort.err.rule:
   en: "Rule on line %{line} must look like: *.pdf => Documents"
   fr: "La règle de la ligne %{line} doit ressembler à : *.pdf => Documents"
+  de: "Die Regel in Zeile %{line} muss so aussehen: *.pdf => Dokumente"
+  es: "La regla de la línea %{line} debe tener este aspecto: *.pdf => Documentos"
+  it: "La regola alla riga %{line} deve avere questa forma: *.pdf => Documenti"
+  pt-BR: "A regra na linha %{line} deve ter este formato: *.pdf => Documentos"
+  ja: "%{line} 行目のルールは「*.pdf => 書類」の形式にしてください。"
+  zh-CN: "第 %{line} 行的规则格式应为：*.pdf => 文档"
+  ko: "%{line}번째 줄의 규칙은 다음과 같은 형식이어야 합니다: *.pdf => 문서"
 files.sort.err.nothing:
   en: Everything is already in place.
   fr: Tout est déjà rangé.
+  de: "Alles liegt schon am richtigen Platz."
+  es: "Todo está ya en su sitio."
+  it: "È tutto già a posto."
+  pt-BR: "Tudo já está no lugar."
+  ja: "すべて整理済みです。"
+  zh-CN: "一切都已就位。"
+  ko: "모든 파일이 이미 제자리에 있습니다."
 
 # ------------------------------------------------------------------ Duplicates
 files.duplicates.name:
   en: Find duplicates
   fr: Trouver les doublons
+  de: "Duplikate finden"
+  es: "Buscar duplicados"
+  it: "Trova duplicati"
+  pt-BR: "Encontrar duplicados"
+  ja: "重複ファイルを検索"
+  zh-CN: "查找重复文件"
+  ko: "중복 파일 찾기"
 files.duplicates.desc:
   en: Find identical files byte for byte, see how much space they waste, set the copies aside — never deleted.
   fr: Trouvez les fichiers identiques octet par octet, voyez la place perdue, mettez les copies de côté — jamais supprimées.
+  de: "Findet byteidentische Dateien, zeigt den verschwendeten Speicherplatz und legt die Kopien beiseite – nichts wird gelöscht."
+  es: "Encuentra archivos idénticos byte a byte, muestra cuánto espacio desperdician y aparta las copias; nunca se elimina nada."
+  it: "Trova file identici byte per byte, mostra quanto spazio sprecano e mette da parte le copie: non viene mai eliminato nulla."
+  pt-BR: "Encontre arquivos idênticos byte a byte, veja quanto espaço desperdiçam e separe as cópias; nada é excluído."
+  ja: "バイト単位で同一のファイルを探し、無駄な容量を確認して、コピーを別の場所に退避します。削除はしません。"
+  zh-CN: "查找逐字节相同的文件，查看浪费的空间，并把副本单独存放，绝不删除。"
+  ko: "바이트 단위로 동일한 파일을 찾아 낭비되는 공간을 보여 주고 복사본을 따로 옮깁니다. 삭제는 하지 않습니다."
 files.duplicates.verb:
   en: Find duplicates
   fr: Chercher
+  de: "Duplikate finden"
+  es: "Buscar duplicados"
+  it: "Trova duplicati"
+  pt-BR: "Encontrar duplicados"
+  ja: "重複を検索"
+  zh-CN: "查找重复"
+  ko: "중복 찾기"
 files.duplicates.keywords:
   en: duplicates dedupe same files copies clean up free space hash identical
   fr: doublons dédoublonner copies identiques nettoyer libérer espace empreinte
+  de: "duplikate doppelte gleiche dateien kopien aufräumen speicher hash identisch"
+  es: "duplicados repetidos mismos archivos copias limpiar espacio hash idénticos"
+  it: "duplicati doppioni stessi file copie pulire spazio hash identici"
+  pt-BR: "duplicados repetidos mesmos arquivos cópias limpar espaço hash idênticos"
+  ja: "重複 同一 ファイル コピー 整理 空き容量 ハッシュ"
+  zh-CN: "重复 相同 文件 副本 清理 空间 哈希"
+  ko: "중복 동일 파일 복사본 정리 공간 해시"
 files.duplicates.caption:
   en: "Table 1 — %{groups} groups of identical files, %{wasted} in extra copies"
   fr: "Tableau 1 — %{groups} groupes de fichiers identiques, %{wasted} en copies"
+  de: "Tabelle 1 – %{groups} Gruppen identischer Dateien, %{wasted} in überzähligen Kopien"
+  es: "Tabla 1 – %{groups} grupos de archivos idénticos, %{wasted} en copias de más"
+  it: "Tabella 1 – %{groups} gruppi di file identici, %{wasted} in copie extra"
+  pt-BR: "Tabela 1 – %{groups} grupos de arquivos idênticos, %{wasted} em cópias extras"
+  ja: "表 1 – 同一ファイルのグループ %{groups} 件、余分なコピーで %{wasted}"
+  zh-CN: "表 1 – %{groups} 组相同文件，多余副本共占 %{wasted}"
+  ko: "표 1 – 동일 파일 그룹 %{groups}개, 추가 복사본 %{wasted}"
 files.duplicates.note:
   en: "%{groups} groups · %{copies} extra copies · %{wasted}"
   fr: "%{groups} groupes · %{copies} copies en trop · %{wasted}"
+  de: "%{groups} Gruppen · %{copies} überzählige Kopien · %{wasted}"
+  es: "%{groups} grupos · %{copies} copias de más · %{wasted}"
+  it: "%{groups} gruppi · %{copies} copie extra · %{wasted}"
+  pt-BR: "%{groups} grupos · %{copies} cópias extras · %{wasted}"
+  ja: "%{groups} グループ · 余分なコピー %{copies} 件 · %{wasted}"
+  zh-CN: "%{groups} 组 · %{copies} 个多余副本 · %{wasted}"
+  ko: "그룹 %{groups}개 · 추가 복사본 %{copies}개 · %{wasted}"
 files.duplicates.none:
   en: No duplicates. Tidy already.
   fr: Aucun doublon. Déjà bien rangé.
+  de: "Keine Duplikate. Alles schon aufgeräumt."
+  es: "Sin duplicados. Ya está todo ordenado."
+  it: "Nessun duplicato. Già tutto in ordine."
+  pt-BR: "Nenhum duplicado. Já está tudo arrumado."
+  ja: "重複はありません。すでにきれいです。"
+  zh-CN: "没有重复文件。已经很整洁了。"
+  ko: "중복 파일이 없습니다. 이미 깔끔하네요."
 files.duplicates.folder:
   en: Duplicates
   fr: Doublons
+  de: "Duplikate"
+  es: "Duplicados"
+  it: "Duplicati"
+  pt-BR: "Duplicados"
+  ja: "重複"
+  zh-CN: "重复文件"
+  ko: "중복 파일"
 files.duplicates.col.keep:
   en: Kept
   fr: Conservé
+  de: "Behalten"
+  es: "Conservado"
+  it: "Mantenuto"
+  pt-BR: "Mantido"
+  ja: "残す"
+  zh-CN: "保留"
+  ko: "유지"
 files.duplicates.col.copy:
   en: Copy
   fr: Copie
+  de: "Kopie"
+  es: "Copia"
+  it: "Copia"
+  pt-BR: "Cópia"
+  ja: "コピー"
+  zh-CN: "副本"
+  ko: "복사본"
 files.duplicates.msg.candidates:
   en: "%{count} files share a size; comparing contents…"
   fr: "%{count} fichiers ont la même taille ; comparaison du contenu…"
+  de: "%{count} Dateien haben dieselbe Größe; Inhalte werden verglichen …"
+  es: "%{count} archivos tienen el mismo tamaño; comparando contenidos…"
+  it: "%{count} file hanno la stessa dimensione; confronto dei contenuti…"
+  pt-BR: "%{count} arquivos têm o mesmo tamanho; comparando conteúdo…"
+  ja: "%{count} 件のファイルが同じサイズです。内容を比較しています…"
+  zh-CN: "%{count} 个文件大小相同，正在比较内容…"
+  ko: "크기가 같은 파일 %{count}개의 내용을 비교하는 중…"
 files.duplicates.opt.action:
   en: Then
   fr: Ensuite
+  de: "Danach"
+  es: "Después"
+  it: "Poi"
+  pt-BR: "Depois"
+  ja: "実行内容"
+  zh-CN: "之后"
+  ko: "이후 동작"
 files.duplicates.opt.action.report:
   en: Report only
   fr: Rapport seulement
+  de: "Nur Bericht"
+  es: "Solo informe"
+  it: "Solo rapporto"
+  pt-BR: "Somente relatório"
+  ja: "レポートのみ"
+  zh-CN: "仅生成报告"
+  ko: "보고서만"
 files.duplicates.opt.action.move:
   en: Move copies to a “Duplicates” folder
   fr: Déplacer les copies dans « Doublons »
+  de: "Kopien in einen Ordner „Duplikate“ verschieben"
+  es: "Mover copias a una carpeta “Duplicados”"
+  it: "Sposta le copie in una cartella “Duplicati”"
+  pt-BR: "Mover cópias para uma pasta “Duplicados”"
+  ja: "コピーを「重複」フォルダへ移動"
+  zh-CN: "将副本移到“重复文件”文件夹"
+  ko: "복사본을 “중복 파일” 폴더로 이동"
 files.duplicates.opt.keep:
   en: Keep
   fr: Conserver
+  de: "Behalten"
+  es: "Conservar"
+  it: "Mantieni"
+  pt-BR: "Manter"
+  ja: "残すもの"
+  zh-CN: "保留"
+  ko: "남길 파일"
 files.duplicates.opt.keep.oldest:
   en: The oldest
   fr: Le plus ancien
+  de: "Die älteste"
+  es: "La más antigua"
+  it: "La più vecchia"
+  pt-BR: "A mais antiga"
+  ja: "最も古いもの"
+  zh-CN: "最旧的"
+  ko: "가장 오래된 것"
 files.duplicates.opt.keep.newest:
   en: The newest
   fr: Le plus récent
+  de: "Die neueste"
+  es: "La más reciente"
+  it: "La più recente"
+  pt-BR: "A mais recente"
+  ja: "最も新しいもの"
+  zh-CN: "最新的"
+  ko: "가장 최근 것"
 files.duplicates.opt.keep.shortest:
   en: The shortest path
   fr: Le chemin le plus court
+  de: "Den kürzesten Pfad"
+  es: "La ruta más corta"
+  it: "Il percorso più corto"
+  pt-BR: "O caminho mais curto"
+  ja: "最も短いパス"
+  zh-CN: "路径最短的"
+  ko: "경로가 가장 짧은 것"
 files.duplicates.opt.keep.first:
   en: First by name
   fr: Le premier par nom
+  de: "Die erste nach Name"
+  es: "La primera por nombre"
+  it: "La prima per nome"
+  pt-BR: "A primeira por nome"
+  ja: "名前順で最初のもの"
+  zh-CN: "按名称排第一的"
+  ko: "이름순으로 첫 번째"
 files.duplicates.opt.report:
   en: Report
   fr: Rapport
+  de: "Bericht"
+  es: "Informe"
+  it: "Rapporto"
+  pt-BR: "Relatório"
+  ja: "レポート"
+  zh-CN: "报告"
+  ko: "보고서"
 files.duplicates.opt.min_size:
   en: Ignore files under
   fr: Ignorer les fichiers de moins de
+  de: "Dateien unter … ignorieren"
+  es: "Ignorar archivos de menos de"
+  it: "Ignora i file sotto"
+  pt-BR: "Ignorar arquivos abaixo de"
+  ja: "次より小さいファイルを無視"
+  zh-CN: "忽略小于以下大小的文件"
+  ko: "다음보다 작은 파일 무시"
 files.duplicates.opt.skip_empty:
   en: Ignore empty files
   fr: Ignorer les fichiers vides
+  de: "Leere Dateien ignorieren"
+  es: "Ignorar archivos vacíos"
+  it: "Ignora i file vuoti"
+  pt-BR: "Ignorar arquivos vazios"
+  ja: "空のファイルを無視"
+  zh-CN: "忽略空文件"
+  ko: "빈 파일 무시"
 
 # ------------------------------------------------------------------ Identify
 files.identify.name:
   en: What is this file?
   fr: Quel est ce fichier ?
+  de: "Was ist diese Datei?"
+  es: "¿Qué es este archivo?"
+  it: "Che file è questo?"
+  pt-BR: "Que arquivo é este?"
+  ja: "このファイルは何？"
+  zh-CN: "这是什么文件？"
+  ko: "이 파일은 무엇일까요?"
 files.identify.desc:
   en: Find the real type of files with no or wrong extensions — 200+ types, with confidence — and fix them.
   fr: Trouvez le vrai type des fichiers sans extension ou mal nommés — plus de 200 types, avec indice de confiance — et corrigez-les.
+  de: "Erkennt den echten Typ von Dateien ohne oder mit falscher Erweiterung – über 200 Typen, mit Trefferwahrscheinlichkeit – und korrigiert sie."
+  es: "Descubre el tipo real de archivos sin extensión o con una incorrecta (más de 200 tipos, con grado de confianza) y los corrige."
+  it: "Scopri il vero tipo dei file senza estensione o con estensione errata (oltre 200 tipi, con grado di affidabilità) e correggili."
+  pt-BR: "Descubra o tipo real de arquivos sem extensão ou com extensão errada (mais de 200 tipos, com grau de confiança) e corrija-os."
+  ja: "拡張子がない、または間違っているファイルの本当の種類を判定し (200 種類以上、信頼度つき)、修正します。"
+  zh-CN: "识别无扩展名或扩展名有误的文件的真实类型（200 多种，附可信度），并加以修正。"
+  ko: "확장자가 없거나 잘못된 파일의 실제 형식을 신뢰도와 함께 알아내고(200종 이상) 바로잡습니다."
 files.identify.verb:
   en: Identify
   fr: Identifier
+  de: "Erkennen"
+  es: "Identificar"
+  it: "Identifica"
+  pt-BR: "Identificar"
+  ja: "判定"
+  zh-CN: "识别"
+  ko: "확인"
 files.identify.keywords:
   en: identify file type what is this file unknown extension wrong magic trid mime detect format
   fr: identifier type fichier inconnu extension erronée magique trid mime détecter format
+  de: "erkennen dateityp was ist diese datei unbekannt erweiterung falsch magic mime format"
+  es: "identificar tipo de archivo qué es este archivo desconocido extensión incorrecta magic mime formato"
+  it: "identificare tipo di file che file è sconosciuto estensione errata magic mime formato"
+  pt-BR: "identificar tipo de arquivo que arquivo é este desconhecido extensão errada magic mime formato"
+  ja: "判定 ファイル形式 このファイルは何 不明 拡張子 間違い マジックナンバー mime"
+  zh-CN: "识别 文件类型 这是什么文件 未知 扩展名 错误 魔数 mime 格式"
+  ko: "확인 파일 형식 이 파일은 무엇 알 수 없음 확장자 오류 매직 넘버 mime 포맷"
 files.identify.caption:
   en: "Table 1 — %{count} files"
   fr: "Tableau 1 — %{count} fichiers"
+  de: "Tabelle 1 – %{count} Dateien"
+  es: "Tabla 1 – %{count} archivos"
+  it: "Tabella 1 – %{count} file"
+  pt-BR: "Tabela 1 – %{count} arquivos"
+  ja: "表 1 – %{count} 件のファイル"
+  zh-CN: "表 1 – %{count} 个文件"
+  ko: "표 1 – 파일 %{count}개"
 files.identify.col.type:
   en: Really is
   fr: Est en réalité
+  de: "Ist tatsächlich"
+  es: "Es en realidad"
+  it: "In realtà è"
+  pt-BR: "Na verdade é"
+  ja: "実際の種類"
+  zh-CN: "实际类型"
+  ko: "실제 형식"
 files.identify.col.confidence:
   en: Confidence
   fr: Confiance
+  de: "Sicherheit"
+  es: "Confianza"
+  it: "Affidabilità"
+  pt-BR: "Confiança"
+  ja: "信頼度"
+  zh-CN: "可信度"
+  ko: "신뢰도"
 files.identify.col.extension:
   en: Extension
   fr: Extension
+  de: "Erweiterung"
+  es: "Extensión"
+  it: "Estensione"
+  pt-BR: "Extensão"
+  ja: "拡張子"
+  zh-CN: "扩展名"
+  ko: "확장자"
 files.identify.note:
   en: "%{count} files · %{mismatched} with a missing or wrong extension"
   fr: "%{count} fichiers · %{mismatched} sans extension ou avec une mauvaise"
+  de: "%{count} Dateien · %{mismatched} mit fehlender oder falscher Erweiterung"
+  es: "%{count} archivos · %{mismatched} con extensión ausente o incorrecta"
+  it: "%{count} file · %{mismatched} con estensione mancante o errata"
+  pt-BR: "%{count} arquivos · %{mismatched} com extensão ausente ou errada"
+  ja: "%{count} ファイル · %{mismatched} 件は拡張子が欠落または誤り"
+  zh-CN: "%{count} 个文件 · %{mismatched} 个扩展名缺失或有误"
+  ko: "파일 %{count}개 · 확장자가 없거나 잘못된 파일 %{mismatched}개"
 files.identify.opt.report:
   en: Report
   fr: Rapport
+  de: "Bericht"
+  es: "Informe"
+  it: "Rapporto"
+  pt-BR: "Relatório"
+  ja: "レポート"
+  zh-CN: "报告"
+  ko: "보고서"
 files.identify.opt.report.none:
   en: None
   fr: Aucun
+  de: "Keiner"
+  es: "Ninguno"
+  it: "Nessuno"
+  pt-BR: "Nenhum"
+  ja: "なし"
+  zh-CN: "无"
+  ko: "없음"
 files.identify.opt.only_mismatches:
   en: Report only the mismatches
   fr: Ne lister que les incohérences
+  de: "Nur Abweichungen melden"
+  es: "Informar solo de las discrepancias"
+  it: "Segnala solo le discrepanze"
+  pt-BR: "Informar apenas as divergências"
+  ja: "不一致のみ報告"
+  zh-CN: "仅报告不一致项"
+  ko: "불일치 항목만 보고"
 files.identify.opt.fix_extensions:
   en: Fix the extensions
   fr: Corriger les extensions
+  de: "Erweiterungen korrigieren"
+  es: "Corregir las extensiones"
+  it: "Correggi le estensioni"
+  pt-BR: "Corrigir as extensões"
+  ja: "拡張子を修正"
+  zh-CN: "修正扩展名"
+  ko: "확장자 수정"
 files.identify.opt.fix_extensions.help:
   en: Renames binary files whose extension is missing or wrong (undoable). Text files keep theirs.
   fr: Renomme les fichiers binaires sans extension ou avec une mauvaise (annulable). Les fichiers texte gardent la leur.
+  de: "Benennt Binärdateien um, deren Erweiterung fehlt oder falsch ist (rückgängig zu machen). Textdateien behalten ihre."
+  es: "Renombra los archivos binarios cuya extensión falta o es incorrecta (reversible). Los archivos de texto conservan la suya."
+  it: "Rinomina i file binari con estensione mancante o errata (annullabile). I file di testo mantengono la loro."
+  pt-BR: "Renomeia arquivos binários com extensão ausente ou errada (reversível). Arquivos de texto mantêm a deles."
+  ja: "拡張子がない、または誤っているバイナリファイルの名前を変更します (元に戻せます)。テキストファイルはそのままです。"
+  zh-CN: "重命名扩展名缺失或有误的二进制文件（可撤销）。文本文件保持不变。"
+  ko: "확장자가 없거나 잘못된 바이너리 파일의 이름을 바꿉니다(되돌릴 수 있음). 텍스트 파일은 그대로 둡니다."
 files.identify.opt.min_confidence:
   en: Minimum confidence to rename
   fr: Confiance minimale pour renommer
+  de: "Mindestsicherheit zum Umbenennen"
+  es: "Confianza mínima para renombrar"
+  it: "Affidabilità minima per rinominare"
+  pt-BR: "Confiança mínima para renomear"
+  ja: "名前変更に必要な最小信頼度"
+  zh-CN: "重命名所需的最低可信度"
+  ko: "이름을 바꿀 최소 신뢰도"
 files.identify.err.nothing:
   en: Nothing to report; choose a report format or “Fix the extensions”.
   fr: Rien à produire ; choisissez un format de rapport ou « Corriger les extensions ».
+  de: "Nichts zu melden; wählen Sie ein Berichtsformat oder „Erweiterungen korrigieren“."
+  es: "Nada que informar; elige un formato de informe o “Corregir las extensiones”."
+  it: "Niente da segnalare; scegli un formato di rapporto o “Correggi le estensioni”."
+  pt-BR: "Nada a informar; escolha um formato de relatório ou “Corrigir as extensões”."
+  ja: "報告する内容がありません。レポート形式か「拡張子を修正」を選んでください。"
+  zh-CN: "没有可报告的内容；请选择报告格式或“修正扩展名”。"
+  ko: "보고할 내용이 없습니다. 보고서 형식이나 “확장자 수정”을 선택하세요."
 files.archive.opt.password:
   en: Password
   fr: Mot de passe
+  de: "Passwort"
+  es: "Contraseña"
+  it: "Password"
+  pt-BR: "Senha"
+  ja: "パスワード"
+  zh-CN: "密码"
+  ko: "암호"
 files.extract.opt.password:
   en: Password
   fr: Mot de passe
+  de: "Passwort"
+  es: "Contraseña"
+  it: "Password"
+  pt-BR: "Senha"
+  ja: "パスワード"
+  zh-CN: "密码"
+  ko: "암호"
 
 # ------------------------------------------------------------------ Metadata
 files.metadata.name:
   en: Metadata
   fr: Métadonnées
+  de: "Metadaten"
+  es: "Metadatos"
+  it: "Metadati"
+  pt-BR: "Metadados"
+  ja: "メタデータ"
+  zh-CN: "元数据"
+  ko: "메타데이터"
 files.metadata.desc:
   en: See, edit or remove the hidden information in PDFs, photos, music and videos.
   fr: Voyez, modifiez ou supprimez les informations cachées des PDF, photos, musiques et vidéos.
+  de: "Die versteckten Informationen in PDFs, Fotos, Musik und Videos ansehen, bearbeiten oder entfernen."
+  es: "Consulta, edita o elimina la información oculta en PDF, fotos, música y vídeos."
+  it: "Visualizza, modifica o rimuovi le informazioni nascoste in PDF, foto, musica e video."
+  pt-BR: "Veja, edite ou remova as informações ocultas em PDFs, fotos, músicas e vídeos."
+  ja: "PDF、写真、音楽、動画に含まれる隠れた情報を表示・編集・削除します。"
+  zh-CN: "查看、编辑或删除 PDF、照片、音乐和视频中的隐藏信息。"
+  ko: "PDF, 사진, 음악, 동영상에 숨겨진 정보를 보고, 편집하고, 삭제합니다."
 files.metadata.verb:
   en: Go
   fr: Lancer
+  de: "Los"
+  es: "Aplicar"
+  it: "Vai"
+  pt-BR: "Aplicar"
+  ja: "実行"
+  zh-CN: "开始"
+  ko: "실행"
 files.metadata.keywords:
   en: metadata tags exif id3 properties author title strip privacy gps xmp
   fr: métadonnées tags exif id3 propriétés auteur titre supprimer vie privée gps xmp
+  de: "metadaten tags exif id3 eigenschaften autor titel entfernen datenschutz gps xmp"
+  es: "metadatos etiquetas exif id3 propiedades autor título quitar privacidad gps xmp"
+  it: "metadati tag exif id3 proprietà autore titolo rimuovere privacy gps xmp"
+  pt-BR: "metadados tags exif id3 propriedades autor título remover privacidade gps xmp"
+  ja: "メタデータ タグ exif id3 プロパティ 作者 タイトル 削除 プライバシー gps xmp"
+  zh-CN: "元数据 标签 exif id3 属性 作者 标题 删除 隐私 gps xmp"
+  ko: "메타데이터 태그 exif id3 속성 작성자 제목 제거 개인정보 gps xmp"
 files.metadata.caption:
   en: "Table 1 — metadata of %{name}"
   fr: "Tableau 1 — métadonnées de %{name}"
+  de: "Tabelle 1 – Metadaten von %{name}"
+  es: "Tabla 1 – metadatos de %{name}"
+  it: "Tabella 1 – metadati di %{name}"
+  pt-BR: "Tabela 1 – metadados de %{name}"
+  ja: "表 1 – %{name} のメタデータ"
+  zh-CN: "表 1 – %{name} 的元数据"
+  ko: "표 1 – %{name}의 메타데이터"
 files.metadata.col.field:
   en: Field
   fr: Champ
+  de: "Feld"
+  es: "Campo"
+  it: "Campo"
+  pt-BR: "Campo"
+  ja: "項目"
+  zh-CN: "字段"
+  ko: "항목"
 files.metadata.col.value:
   en: Value
   fr: Valeur
+  de: "Wert"
+  es: "Valor"
+  it: "Valore"
+  pt-BR: "Valor"
+  ja: "値"
+  zh-CN: "值"
+  ko: "값"
 files.metadata.fields:
   en: "%{count} fields"
   fr: "%{count} champs"
+  de: "%{count} Felder"
+  es: "%{count} campos"
+  it: "%{count} campi"
+  pt-BR: "%{count} campos"
+  ja: "%{count} 項目"
+  zh-CN: "%{count} 个字段"
+  ko: "항목 %{count}개"
 files.metadata.stripped:
   en: "%{before} fields → %{after}"
   fr: "%{before} champs → %{after}"
+  de: "%{before} Felder → %{after}"
+  es: "%{before} campos → %{after}"
+  it: "%{before} campi → %{after}"
+  pt-BR: "%{before} campos → %{after}"
+  ja: "%{before} 項目 → %{after}"
+  zh-CN: "%{before} 个字段 → %{after}"
+  ko: "항목 %{before}개 → %{after}"
 files.metadata.opt.action:
   en: Action
   fr: Action
+  de: "Aktion"
+  es: "Acción"
+  it: "Azione"
+  pt-BR: "Ação"
+  ja: "操作"
+  zh-CN: "操作"
+  ko: "동작"
 files.metadata.opt.action.view:
   en: View (report)
   fr: Voir (rapport)
+  de: "Ansehen (Bericht)"
+  es: "Ver (informe)"
+  it: "Visualizza (rapporto)"
+  pt-BR: "Ver (relatório)"
+  ja: "表示 (レポート)"
+  zh-CN: "查看（报告）"
+  ko: "보기 (보고서)"
 files.metadata.opt.action.edit:
   en: Edit
   fr: Modifier
+  de: "Bearbeiten"
+  es: "Editar"
+  it: "Modifica"
+  pt-BR: "Editar"
+  ja: "編集"
+  zh-CN: "编辑"
+  ko: "편집"
 files.metadata.opt.action.strip:
   en: Remove all
   fr: Tout supprimer
+  de: "Alle entfernen"
+  es: "Quitar todo"
+  it: "Rimuovi tutto"
+  pt-BR: "Remover tudo"
+  ja: "すべて削除"
+  zh-CN: "全部删除"
+  ko: "모두 제거"
 files.metadata.opt.action.help:
   en: Edits and removals write a copy; the original stays as it is.
   fr: Les modifications et suppressions écrivent une copie ; l’original reste intact.
+  de: "Änderungen und Entfernungen werden in eine Kopie geschrieben; das Original bleibt unverändert."
+  es: "Las ediciones y eliminaciones se escriben en una copia; el original no se toca."
+  it: "Modifiche e rimozioni vengono scritte in una copia; l’originale resta intatto."
+  pt-BR: "Edições e remoções são gravadas em uma cópia; o original permanece como está."
+  ja: "編集と削除はコピーに書き込まれ、元のファイルはそのままです。"
+  zh-CN: "编辑和删除都会写入副本，原文件保持不变。"
+  ko: "편집과 제거 결과는 복사본에 저장되며 원본은 그대로 유지됩니다."
 files.metadata.opt.report:
   en: Report
   fr: Rapport
+  de: "Bericht"
+  es: "Informe"
+  it: "Rapporto"
+  pt-BR: "Relatório"
+  ja: "レポート"
+  zh-CN: "报告"
+  ko: "보고서"
 files.metadata.opt.title:
   en: Title
   fr: Titre
+  de: "Titel"
+  es: "Título"
+  it: "Titolo"
+  pt-BR: "Título"
+  ja: "タイトル"
+  zh-CN: "标题"
+  ko: "제목"
 files.metadata.opt.author:
   en: Author / artist
   fr: Auteur / artiste
+  de: "Autor / Künstler"
+  es: "Autor / artista"
+  it: "Autore / artista"
+  pt-BR: "Autor / artista"
+  ja: "作者 / アーティスト"
+  zh-CN: "作者 / 艺术家"
+  ko: "작성자 / 아티스트"
 files.metadata.opt.subject:
   en: Subject / album
   fr: Sujet / album
+  de: "Thema / Album"
+  es: "Asunto / álbum"
+  it: "Oggetto / album"
+  pt-BR: "Assunto / álbum"
+  ja: "件名 / アルバム"
+  zh-CN: "主题 / 专辑"
+  ko: "주제 / 앨범"
 files.metadata.opt.keywords:
   en: Keywords / genre
   fr: Mots-clés / genre
+  de: "Stichwörter / Genre"
+  es: "Palabras clave / género"
+  it: "Parole chiave / genere"
+  pt-BR: "Palavras-chave / gênero"
+  ja: "キーワード / ジャンル"
+  zh-CN: "关键词 / 流派"
+  ko: "키워드 / 장르"
 files.metadata.opt.year:
   en: Year / date
   fr: Année / date
+  de: "Jahr / Datum"
+  es: "Año / fecha"
+  it: "Anno / data"
+  pt-BR: "Ano / data"
+  ja: "年 / 日付"
+  zh-CN: "年份 / 日期"
+  ko: "연도 / 날짜"
 files.metadata.opt.comment:
   en: Comment
   fr: Commentaire
+  de: "Kommentar"
+  es: "Comentario"
+  it: "Commento"
+  pt-BR: "Comentário"
+  ja: "コメント"
+  zh-CN: "注释"
+  ko: "설명"
 files.metadata.opt.copyright:
   en: Copyright
   fr: Droits d’auteur
+  de: "Urheberrecht"
+  es: "Copyright"
+  it: "Copyright"
+  pt-BR: "Direitos autorais"
+  ja: "著作権"
+  zh-CN: "版权"
+  ko: "저작권"
 files.metadata.opt.title.help:
   en: Empty fields are left as they are.
   fr: Les champs vides restent inchangés.
+  de: "Leere Felder bleiben unverändert."
+  es: "Los campos vacíos se dejan como están."
+  it: "I campi vuoti restano invariati."
+  pt-BR: "Campos vazios são mantidos como estão."
+  ja: "空欄の項目は変更されません。"
+  zh-CN: "留空的字段保持不变。"
+  ko: "비워 둔 항목은 그대로 유지됩니다."
 files.metadata.err.nothing:
   en: Fill in at least one field to change.
   fr: Remplissez au moins un champ à modifier.
+  de: "Füllen Sie mindestens ein zu änderndes Feld aus."
+  es: "Rellena al menos un campo para cambiar."
+  it: "Compila almeno un campo da modificare."
+  pt-BR: "Preencha pelo menos um campo para alterar."
+  ja: "変更する項目を少なくとも 1 つ入力してください。"
+  zh-CN: "请至少填写一个要更改的字段。"
+  ko: "변경할 항목을 하나 이상 입력하세요."
 files.metadata.err.read:
   en: Could not read the metadata
   fr: Impossible de lire les métadonnées
+  de: "Metadaten konnten nicht gelesen werden"
+  es: "No se pudieron leer los metadatos"
+  it: "Impossibile leggere i metadati"
+  pt-BR: "Não foi possível ler os metadados"
+  ja: "メタデータを読み取れませんでした"
+  zh-CN: "无法读取元数据"
+  ko: "메타데이터를 읽을 수 없습니다"
 files.metadata.err.unsupported:
   en: This format cannot hold tags.
   fr: Ce format ne peut pas contenir de tags.
+  de: "Dieses Format kann keine Tags enthalten."
+  es: "Este formato no admite etiquetas."
+  it: "Questo formato non può contenere tag."
+  pt-BR: "Este formato não suporta tags."
+  ja: "この形式にはタグを保存できません。"
+  zh-CN: "此格式不支持标签。"
+  ko: "이 형식은 태그를 저장할 수 없습니다."
 files.metadata.err.image_edit:
   en: To write titles and keywords into photos, use the SEO image tool; here photos can be viewed or stripped.
   fr: Pour écrire titres et mots-clés dans des photos, utilisez l’outil Image SEO ; ici, les photos peuvent être consultées ou nettoyées.
+  de: "Um Titel und Stichwörter in Fotos zu schreiben, nutzen Sie das SEO-Bild-Werkzeug; hier lassen sich Fotos nur ansehen oder bereinigen."
+  es: "Para escribir títulos y palabras clave en fotos, usa la herramienta de imágenes SEO; aquí las fotos solo se pueden ver o limpiar."
+  it: "Per scrivere titoli e parole chiave nelle foto usa lo strumento immagini SEO; qui le foto si possono solo visualizzare o ripulire."
+  pt-BR: "Para gravar títulos e palavras-chave em fotos, use a ferramenta de imagem SEO; aqui as fotos só podem ser vistas ou limpas."
+  ja: "写真にタイトルやキーワードを書き込むには SEO 画像ツールを使ってください。ここでは写真の表示と削除のみ行えます。"
+  zh-CN: "若要向照片写入标题和关键词，请使用 SEO 图片工具；此处只能查看或清除照片的元数据。"
+  ko: "사진에 제목과 키워드를 기록하려면 SEO 이미지 도구를 사용하세요. 여기서는 사진을 보거나 메타데이터를 제거할 수만 있습니다."
 files.metadata.err.image_format:
   en: Lossless removal works for JPEG, PNG and WebP; for other formats use “Strip metadata” in the image tools.
   fr: La suppression sans perte fonctionne pour JPEG, PNG et WebP ; pour les autres formats, utilisez « Supprimer les métadonnées » des outils d’image.
+  de: "Die verlustfreie Entfernung funktioniert bei JPEG, PNG und WebP; für andere Formate nutzen Sie „Metadaten entfernen“ in den Bildwerkzeugen."
+  es: "La eliminación sin pérdida funciona con JPEG, PNG y WebP; para otros formatos usa “Quitar metadatos” en las herramientas de imagen."
+  it: "La rimozione senza perdita funziona con JPEG, PNG e WebP; per gli altri formati usa “Rimuovi metadati” negli strumenti per immagini."
+  pt-BR: "A remoção sem perdas funciona com JPEG, PNG e WebP; para outros formatos use “Remover metadados” nas ferramentas de imagem."
+  ja: "ロスレスでの削除は JPEG、PNG、WebP で行えます。他の形式は画像ツールの「メタデータを削除」を使ってください。"
+  zh-CN: "无损删除适用于 JPEG、PNG 和 WebP；其他格式请使用图片工具中的“删除元数据”。"
+  ko: "무손실 제거는 JPEG, PNG, WebP에서 가능합니다. 다른 형식은 이미지 도구의 “메타데이터 제거”를 사용하세요."
 files.metadata.err.corrupt:
   en: The file is damaged.
   fr: Le fichier est endommagé.
+  de: "Die Datei ist beschädigt."
+  es: "El archivo está dañado."
+  it: "Il file è danneggiato."
+  pt-BR: "O arquivo está danificado."
+  ja: "ファイルが破損しています。"
+  zh-CN: "文件已损坏。"
+  ko: "파일이 손상되었습니다."

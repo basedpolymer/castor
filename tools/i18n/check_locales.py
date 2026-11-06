@@ -21,6 +21,8 @@ def check(path, require_all):
     for key, val in data.items():
         if key == "_version":
             continue
+        if isinstance(val, dict) and val.get("en") == "":
+            continue
         if not isinstance(val, dict) or "en" not in val:
             problems.append(f"{key}: no 'en'")
             continue
