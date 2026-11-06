@@ -50,4 +50,24 @@ Typography and colours from `docs/DESIGN.md`. Render with `npx remotion render`;
 `video/out/castor-promo.mp4` (+ `-vertical.mp4`, poster PNG). Remotion's licence is free for
 individuals — record it.
 
+## Images for X/Twitter (launch thread)
+
+A set of 4–5 images, 1600×900 (16:9, X's in-feed format) + 1080×1350 variants, in the TeXtured
+house style (paper, Latin Modern, Chorus ghost initial, numbered titles, "Figure n /" captions,
+booktabs tables, diamond motif, family pastels; light by default, one dark variant). Produced
+from code (HTML/CSS rendered by headless Chrome, or Remotion stills) so they can be regenerated:
+`video/social/*.png` + the source.
+1. **Hero**: the mark, "Castor — every file tool, right on your desk. Free, offline, yours.",
+   a real app screenshot in a window frame.
+2. **The catalogue**: "≈ 110 tools" by family (counts + a few names per family).
+3. **Castor and Hangar** (the inspiration): a factual booktabs table — price (Hangar: one-time
+   licence from $45 to $239 at launch prices, as published on hangar.tools; Castor: free),
+   licence (proprietary / GPL-3.0), platforms, number of tools (Hangar: 77 shipped + 12 "soon"
+   on 2026-11-06), CLI, MCP server, offline, menu bar, chains — with the date of the comparison
+   and a friendly line crediting Hangar ("Hangar showed the way; Castor is the free cousin").
+   Facts only, no disparagement, **no Hangar logo or screenshots** (name only, nominative use).
+4. **Beyond the window**: chains, runs + undo, menu-bar quick panel, CLI + MCP snippet.
+5. **Download**: basedpolymer.eu/castor, macOS + Windows, GitHub.
+Also write the thread text (EN, ≤ 280 chars per post, + FR version) in `video/social/thread.md`.
+
 ## Report (fill in before finishing)
