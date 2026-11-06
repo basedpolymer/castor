@@ -14,6 +14,9 @@
 - macOS Quick Actions (`.workflow` bundles: "Open in Castor", favourite tools) at packaging time.
 - Windows update test: check that the Explorer "Castor ›" menu is present after install and gone
   after uninstall.
+- Small fixes found while making the video: "1 files" on the home drop zone (singular), durations
+  with a decimal point in French ("2.1 s" → "2,1 s", `units::duration` like `units::bytes`), the
+  OCR step of the "Scans to searchable PDF" chain template should follow the UI language.
 
 ## Later
 
