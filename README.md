@@ -8,16 +8,7 @@
   <p>
     <a href="https://github.com/basedpolymer/castor/releases/latest"><img src="assets/badges/macos.svg" alt="Available on macOS" height="40"></a>
     <a href="https://github.com/basedpolymer/castor/releases/latest"><img src="assets/badges/windows.svg" alt="Available on Windows" height="40"></a>
-    <a href="https://basedpolymer.eu/castor"><img src="assets/badges/website.svg" alt="Visit the website" height="40"></a>
     <a href="https://www.rust-lang.org"><img src="assets/badges/rust.svg" alt="Built with Rust" height="40"></a>
-  </p>
-
-  <p>
-    <a href="https://github.com/basedpolymer/castor/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/basedpolymer/castor?style=for-the-badge&color=ccfaff&label=release"></a>
-    <a href="https://github.com/basedpolymer/castor/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/basedpolymer/castor/total?style=for-the-badge&color=ade1ff"></a>
-    <a href="LICENSE"><img alt="Licence GPL-3.0" src="https://img.shields.io/badge/licence-GPL--3.0-fbe2ff?style=for-the-badge"></a>
-    <a href="docs/TOOLS.md"><img alt="Tools" src="https://img.shields.io/badge/tools-100%2B-aafaba?style=for-the-badge"></a>
-    <a href="https://github.com/basedpolymer/castor/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/basedpolymer/castor?style=for-the-badge&color=ffeca4"></a>
   </p>
 </div>
 
