@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="190 190 644 644" width="644" height="644">
+  <defs><mask id="bite"><rect x="0" y="0" width="1024" height="1024" fill="#fff"/><circle cx="684" cy="384" r="40" fill="#000"/><circle cx="730" cy="430" r="33" fill="#000"/><circle cx="767" cy="469" r="23" fill="#000"/></mask></defs>
+  <polygon mask="url(#bite)" points="512,212 812,512 512,812 212,512" fill="#000"/>
+  <g fill="#000"><rect x="782" y="356" width="16" height="9" transform="rotate(-28 790 360)"/><rect x="812" y="398" width="11" height="7" transform="rotate(22 817 401)"/><rect x="752" y="326" width="9" height="6" transform="rotate(50 756 329)"/></g>
+</svg>

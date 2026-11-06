@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="96 96 832 832" width="832" height="832">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdfcfa"/><stop offset="1" stop-color="#eeeae2"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.28"/></filter>
+    <mask id="bite"><rect width="1024" height="1024" fill="#fff"/><circle cx="684" cy="384" r="40" fill="#000"/><circle cx="730" cy="430" r="33" fill="#000"/><circle cx="767" cy="469" r="23" fill="#000"/></mask>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#paper)"/>
+  <rect x="100.5" y="100.5" width="823" height="823" rx="186" fill="none" stroke="#000" stroke-opacity="0.10"/>
+  <polygon mask="url(#bite)" points="512,212 812,512 512,812 212,512" fill="#1b1616"/>
+  <g fill="#1b1616"><rect x="782" y="356" width="16" height="9" transform="rotate(-28 790 360)"/><rect x="812" y="398" width="11" height="7" transform="rotate(22 817 401)"/><rect x="752" y="326" width="9" height="6" transform="rotate(50 756 329)"/></g>
+  <g transform="translate(335 646) scale(0.47 -0.47)" fill="#fbfaf7"><path d="M522 33 529 63C437 0 369 -26 299 -26C220 -26 170 34 170 129C170 337 317 544 465 544C525 544 555 507 561 428L635 491C626 560 590 591 518 591C431 591 330 540 242 452C145 355 88 222 88 92C88 -11 145 -73 241 -73C327 -73 436 -32 522 33Z"/></g>
+</svg>
