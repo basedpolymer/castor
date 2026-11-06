@@ -1898,18 +1898,6 @@ dependencies = [
 
 [[package]]
 name = "core-text"
-version = "20.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c9d2790b5c08465d49f8dc05c8bcae9fea467855947db39b0f8145c091aaced5"
-dependencies = [
- "core-foundation 0.9.4",
- "core-graphics 0.23.2",
- "foreign-types 0.5.0",
- "libc",
-]
-
-[[package]]
-name = "core-text"
 version = "21.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a593227b66cbd4007b2a050dfdd9e1d1318311409c8d600dc82ba1b15ca9c130"
@@ -2557,6 +2545,7 @@ dependencies = [
  "mupdf-sys",
  "parking_lot",
  "tempfile",
+ "ttf-parser",
 ]
 
 [[package]]
@@ -2922,31 +2911,6 @@ name = "foldhash"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb"
-
-[[package]]
-name = "font-kit"
-version = "0.14.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2c7e611d49285d4c4b2e1727b72cf05353558885cc5252f93707b845dfcaf3d3"
-dependencies = [
- "bitflags 2.13.2",
- "byteorder",
- "core-foundation 0.9.4",
- "core-graphics 0.23.2",
- "core-text 20.1.0",
- "dirs 6.0.0",
- "dwrote",
- "float-ord",
- "freetype-sys",
- "lazy_static",
- "libc",
- "log",
- "pathfinder_geometry",
- "pathfinder_simd",
- "walkdir",
- "winapi",
- "yeslogic-fontconfig-sys",
-]
 
 [[package]]
 name = "font-types"
@@ -3659,7 +3623,7 @@ checksum = "45bbfdba0efa392190f2fd446ec311325302eb047d5ce45dc1bcf189cb18f5eb"
 dependencies = [
  "anyhow",
  "chrono",
- "core-text 21.0.0",
+ "core-text",
  "enum-iterator",
  "gpui-base",
  "gpui-component-macros",
@@ -3795,7 +3759,7 @@ dependencies = [
  "core-foundation 0.10.1",
  "core-foundation-sys",
  "core-graphics 0.24.0",
- "core-text 21.0.0",
+ "core-text",
  "dispatch2",
  "etagere",
  "futures",
@@ -4141,7 +4105,7 @@ dependencies = [
  "core-foundation 0.10.1",
  "core-foundation-sys",
  "core-graphics 0.24.0",
- "core-text 21.0.0",
+ "core-text",
  "dispatch2",
  "etagere",
  "futures",
@@ -6766,7 +6730,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "185fb74927a40c569b7152c01c73f4c0206059b8b3d37c7eb007cc3f63453b64"
 dependencies = [
  "bitflags 2.13.2",
- "font-kit",
  "mupdf-sys",
  "once_cell",
  "percent-encoding",
@@ -11039,6 +11002,7 @@ dependencies = [
  "serde_json",
  "tempfile",
  "time",
+ "tools-files",
  "ttf-parser",
  "ttf2woff2",
  "tungstenite",
@@ -11060,6 +11024,8 @@ dependencies = [
  "bzip2 0.6.1",
  "castor-core",
  "chrono",
+ "engine-media",
+ "engine-pdf",
  "file-format",
  "flate2",
  "hex",
@@ -11157,6 +11123,9 @@ dependencies = [
  "serde_json",
  "tempfile",
  "time",
+ "typst",
+ "typst-layout",
+ "typst-pdf",
  "zip 2.6.1",
 ]
 
@@ -14049,7 +14018,7 @@ dependencies = [
  "byteorder",
  "core-foundation 0.10.1",
  "core-graphics 0.24.0",
- "core-text 21.0.0",
+ "core-text",
  "dirs 5.0.1",
  "dwrote",
  "float-ord",
@@ -14125,7 +14094,6 @@ dependencies = [
  "imgref",
  "linear-srgb",
  "magetypes",
- "rayon",
  "rgb",
  "safe_unaligned_simd",
  "thiserror 2.0.21",

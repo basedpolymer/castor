@@ -1,0 +1,1422 @@
+_version: 2
+# Owner: image tools (crates/tools-image) and the ML engine (crates/engine-ml).
+# Generated layout: one key, en + fr. Keep strings JSON-quoted.
+
+ml.downloading:
+  en: "Fetching %{name} (%{size}) once — after that it works offline."
+  fr: "Téléchargement unique de %{name} (%{size}) — ensuite tout fonctionne hors ligne."
+ml.too_big:
+  en: "The result would be %{mp} megapixels, too big to be useful. Pick a smaller factor or resize first."
+  fr: "Le résultat ferait %{mp} mégapixels, trop pour être utile. Choisissez un facteur plus petit ou réduisez l'image d'abord."
+
+image.err.read:
+  en: "Cannot read %{file}. Check that it still exists and that you may open it."
+  fr: "Impossible de lire %{file}. Vérifiez qu'il existe toujours et que vous pouvez l'ouvrir."
+image.err.empty:
+  en: "%{file} is empty (0 bytes)."
+  fr: "%{file} est vide (0 octet)."
+image.err.unknown_format:
+  en: "%{file} is not an image format Castor knows."
+  fr: "%{file} n'est pas un format d'image connu de Castor."
+image.err.corrupt:
+  en: "%{file} could not be decoded (damaged or unsupported variant)"
+  fr: "%{file} n'a pas pu être décodé (fichier abîmé ou variante non prise en charge)"
+image.err.write:
+  en: "Cannot write %{file}. Pick another output folder (this one may be read-only or full)."
+  fr: "Impossible d'écrire %{file}. Choisissez un autre dossier de sortie (celui-ci est peut-être en lecture seule ou plein)."
+image.err.heic_write:
+  en: "HEIC export uses the macOS image engine and is only available on a Mac. Pick JPG, WebP or AVIF instead."
+  fr: "L'export HEIC passe par le moteur d'images de macOS et n'existe que sur Mac. Choisissez plutôt JPG, WebP ou AVIF."
+image.err.too_big:
+  en: "The result would be larger than 400 megapixels. Use smaller dimensions."
+  fr: "Le résultat dépasserait 400 mégapixels. Utilisez des dimensions plus petites."
+
+image.remove-background.name:
+  en: "Remove background"
+  fr: "Supprimer l'arrière-plan"
+image.remove-background.desc:
+  en: "Cut out the subject with a local model, hair and small details included."
+  fr: "Détoure le sujet avec un modèle local, cheveux et petits détails compris."
+image.remove-background.verb:
+  en: "Remove background"
+  fr: "Détourer"
+image.remove-background.keywords:
+  en: "background remove cutout transparent subject isolate product erase"
+  fr: "arrière-plan fond détourer détourage transparent sujet isoler produit effacer"
+image.remove-background.opt.model:
+  en: "Quality"
+  fr: "Qualité"
+image.remove-background.opt.model.help:
+  en: "Best handles hair, fur and fine edges; Fast is about four times quicker."
+  fr: "« Meilleure » gère cheveux, poils et bords fins ; « Rapide » est environ quatre fois plus vite."
+image.remove-background.opt.model.best:
+  en: "Best"
+  fr: "Meilleure"
+image.remove-background.opt.model.fast:
+  en: "Fast"
+  fr: "Rapide"
+image.remove-background.opt.background:
+  en: "New background"
+  fr: "Nouvel arrière-plan"
+image.remove-background.opt.background.transparent:
+  en: "Transparent"
+  fr: "Transparent"
+image.remove-background.opt.background.color:
+  en: "Colour"
+  fr: "Couleur"
+image.remove-background.opt.background.blur:
+  en: "Blurred original"
+  fr: "Original flouté"
+image.remove-background.opt.color:
+  en: "Background colour"
+  fr: "Couleur de fond"
+image.remove-background.opt.blur:
+  en: "Blur strength"
+  fr: "Intensité du flou"
+image.remove-background.opt.format:
+  en: "Format"
+  fr: "Format"
+image.remove-background.opt.crop:
+  en: "Crop to the subject"
+  fr: "Recadrer sur le sujet"
+image.remove-background.opt.padding:
+  en: "Margin around the subject"
+  fr: "Marge autour du sujet"
+image.remove-background.opt.decontaminate:
+  en: "Clean edge colours"
+  fr: "Nettoyer la couleur des bords"
+image.remove-background.opt.decontaminate.help:
+  en: "Removes the halo of the old background around hair and soft edges."
+  fr: "Retire le halo de l'ancien fond autour des cheveux et des bords doux."
+
+image.upscale.name:
+  en: "AI upscale"
+  fr: "Agrandir avec l'IA"
+image.upscale.desc:
+  en: "Enlarge 2×, 3× or 4× with a local super-resolution model: sharp, not blurry."
+  fr: "Agrandit ×2, ×3 ou ×4 avec un modèle local de super-résolution : net, pas flou."
+image.upscale.verb:
+  en: "Upscale"
+  fr: "Agrandir"
+image.upscale.keywords:
+  en: "upscale enlarge super resolution enhance bigger sharpen esrgan"
+  fr: "agrandir agrandissement super résolution améliorer netteté plus grand"
+image.upscale.opt.scale:
+  en: "Factor"
+  fr: "Facteur"
+image.upscale.opt.model:
+  en: "Model"
+  fr: "Modèle"
+image.upscale.opt.model.help:
+  en: "Fast suits most pictures; Photo adds finer texture but is about 15 times slower; Art is for drawings and anime."
+  fr: "« Rapide » convient à la plupart des images ; « Photo » ajoute des textures plus fines mais est environ 15 fois plus lent ; « Illustration » est pour les dessins et l'anime."
+image.upscale.opt.model.photo:
+  en: "Photo (finest)"
+  fr: "Photo (le plus fin)"
+image.upscale.opt.model.art:
+  en: "Art"
+  fr: "Illustration"
+image.upscale.opt.model.fast:
+  en: "Fast"
+  fr: "Rapide"
+image.upscale.opt.format:
+  en: "Format"
+  fr: "Format"
+image.upscale.opt.format.keep:
+  en: "Same as original"
+  fr: "Comme l'original"
+
+image.convert.name:
+  en: "Convert images"
+  fr: "Convertir des images"
+image.convert.desc:
+  en: "HEIC, RAW, SVG, AVIF and more to JPG, PNG, WebP, AVIF, GIF…"
+  fr: "HEIC, RAW, SVG, AVIF et d'autres vers JPG, PNG, WebP, AVIF, GIF…"
+image.convert.verb:
+  en: "Convert"
+  fr: "Convertir"
+image.convert.keywords:
+  en: "convert format change heic jpg png webp avif raw svg gif tiff ico"
+  fr: "convertir format changer heic jpg png webp avif raw svg gif tiff ico"
+image.convert.opt.format:
+  en: "Convert to"
+  fr: "Convertir en"
+image.convert.opt.lossless:
+  en: "Lossless"
+  fr: "Sans perte"
+image.convert.opt.background:
+  en: "Background for transparency"
+  fr: "Fond sous la transparence"
+image.convert.opt.background.help:
+  en: "Used when the target format (JPG, BMP) cannot keep transparent pixels."
+  fr: "Utilisé quand le format cible (JPG, BMP) ne gère pas la transparence."
+image.convert.opt.keep_metadata:
+  en: "Keep metadata"
+  fr: "Garder les métadonnées"
+image.convert.opt.keep_metadata.help:
+  en: "Camera, date and location (EXIF), keywords and descriptions (XMP)."
+  fr: "Appareil, date et lieu (EXIF), mots-clés et descriptions (XMP)."
+image.convert.opt.color:
+  en: "Colour profile"
+  fr: "Profil de couleur"
+image.convert.opt.color.srgb:
+  en: "Convert to sRGB"
+  fr: "Convertir en sRGB"
+image.convert.opt.color.keep:
+  en: "Keep the original profile"
+  fr: "Garder le profil d'origine"
+image.convert.opt.color.help:
+  en: "sRGB looks the same in every browser and app."
+  fr: "Le sRGB s'affiche pareil dans tous les navigateurs et applications."
+image.convert.opt.animation:
+  en: "Keep animations"
+  fr: "Garder les animations"
+image.convert.opt.animation.help:
+  en: "Animated GIF and WebP stay animated when the target format allows it."
+  fr: "Les GIF et WebP animés le restent si le format cible le permet."
+image.convert.opt.svg_size:
+  en: "SVG width"
+  fr: "Largeur des SVG"
+image.convert.opt.svg_size.help:
+  en: "Long side in pixels when rendering SVG files (0 = their own size)."
+  fr: "Plus grand côté en pixels pour le rendu des SVG (0 = leur taille d'origine)."
+
+image.vectorize.name:
+  en: "Vectorize image"
+  fr: "Vectoriser une image"
+image.vectorize.desc:
+  en: "Trace logos, drawings and photos into scalable SVG."
+  fr: "Trace logos, dessins et photos en SVG redimensionnable."
+image.vectorize.verb:
+  en: "Vectorize"
+  fr: "Vectoriser"
+image.vectorize.keywords:
+  en: "vectorize svg trace vector logo scalable illustrator"
+  fr: "vectoriser svg tracer vecteur logo vectoriel illustrator"
+image.vectorize.opt.preset:
+  en: "Kind of image"
+  fr: "Type d'image"
+image.vectorize.opt.preset.auto:
+  en: "Automatic"
+  fr: "Automatique"
+image.vectorize.opt.preset.logo:
+  en: "Logo"
+  fr: "Logo"
+image.vectorize.opt.preset.bw:
+  en: "Black and white"
+  fr: "Noir et blanc"
+image.vectorize.opt.preset.illustration:
+  en: "Illustration"
+  fr: "Illustration"
+image.vectorize.opt.preset.photo:
+  en: "Photo"
+  fr: "Photo"
+image.vectorize.opt.colors:
+  en: "Colour precision"
+  fr: "Précision des couleurs"
+image.vectorize.opt.colors.help:
+  en: "Higher keeps more shades (bigger file)."
+  fr: "Plus haut garde plus de nuances (fichier plus lourd)."
+image.vectorize.opt.detail:
+  en: "Detail"
+  fr: "Détail"
+image.vectorize.opt.curves:
+  en: "Curves"
+  fr: "Courbes"
+image.vectorize.opt.curves.smooth:
+  en: "Smooth"
+  fr: "Lisses"
+image.vectorize.opt.curves.sharp:
+  en: "Sharp corners"
+  fr: "Angles nets"
+image.vectorize.opt.max_size:
+  en: "Maximum working size"
+  fr: "Taille de travail maximale"
+
+image.compress.name:
+  en: "Compress images"
+  fr: "Compresser des images"
+image.compress.desc:
+  en: "Much smaller files that look the same. Never bigger than the original."
+  fr: "Des fichiers bien plus légers qui gardent le même aspect. Jamais plus gros que l'original."
+image.compress.verb:
+  en: "Compress"
+  fr: "Compresser"
+image.compress.keywords:
+  en: "compress optimize smaller reduce shrink tinypng squoosh size kb web"
+  fr: "compresser optimiser alléger réduire poids taille ko web"
+image.compress.kept:
+  en: "Already optimal: the original was kept."
+  fr: "Déjà optimal : l'original a été conservé."
+image.compress.opt.mode:
+  en: "Method"
+  fr: "Méthode"
+image.compress.opt.mode.quality:
+  en: "Quality"
+  fr: "Qualité"
+image.compress.opt.mode.identical:
+  en: "Visually identical"
+  fr: "Visuellement identique"
+image.compress.opt.mode.size:
+  en: "Target size"
+  fr: "Taille cible"
+image.compress.opt.mode.help:
+  en: "Visually identical finds the smallest file you cannot tell apart from the original (slower)."
+  fr: "« Visuellement identique » cherche le plus petit fichier impossible à distinguer de l'original (plus lent)."
+image.compress.opt.target_kb:
+  en: "Maximum size"
+  fr: "Taille maximale"
+image.compress.opt.format:
+  en: "Format"
+  fr: "Format"
+image.compress.opt.format.keep:
+  en: "Same as original"
+  fr: "Comme l'original"
+image.compress.opt.png_palette:
+  en: "Smart palette for PNG"
+  fr: "Palette intelligente pour les PNG"
+image.compress.opt.png_palette.help:
+  en: "Up to 256 well-chosen colours, like TinyPNG: often 70 % smaller."
+  fr: "Jusqu'à 256 couleurs bien choisies, comme TinyPNG : souvent 70 % plus léger."
+image.compress.opt.keep_metadata:
+  en: "Keep metadata"
+  fr: "Garder les métadonnées"
+image.compress.opt.keep_metadata.help:
+  en: "Off removes camera data and location; colour profile and orientation always stay."
+  fr: "Désactivé, retire les données d'appareil et la position ; profil de couleur et orientation sont toujours gardés."
+
+image.palette.name:
+  en: "Colour palette"
+  fr: "Palette de couleurs"
+image.palette.desc:
+  en: "The dominant colours of an image, as swatches and palette files."
+  fr: "Les couleurs dominantes d'une image, en nuancier et fichiers de palette."
+image.palette.verb:
+  en: "Extract colours"
+  fr: "Extraire les couleurs"
+image.palette.keywords:
+  en: "palette colours colors swatches dominant hex theme extract"
+  fr: "palette couleurs nuancier dominantes hex thème extraire"
+image.palette.opt.count:
+  en: "Number of colours"
+  fr: "Nombre de couleurs"
+image.palette.opt.export:
+  en: "Files"
+  fr: "Fichiers"
+image.palette.opt.export.all:
+  en: "All formats"
+  fr: "Tous les formats"
+image.palette.opt.export.help:
+  en: "ASE for Adobe apps, GPL for GIMP and Inkscape, CSS variables, JSON."
+  fr: "ASE pour les applis Adobe, GPL pour GIMP et Inkscape, variables CSS, JSON."
+image.palette.opt.order:
+  en: "Order"
+  fr: "Ordre"
+image.palette.opt.order.share:
+  en: "Most used first"
+  fr: "Les plus présentes d'abord"
+image.palette.opt.order.hue:
+  en: "By hue"
+  fr: "Par teinte"
+image.palette.opt.order.lightness:
+  en: "Light to dark"
+  fr: "Du clair au foncé"
+
+image.resize.name:
+  en: "Resize images"
+  fr: "Redimensionner des images"
+image.resize.desc:
+  en: "Exact sizes for social networks, shops and screens, sharp and quick."
+  fr: "Les bonnes tailles pour réseaux sociaux, boutiques et écrans, nettes et rapides."
+image.resize.verb:
+  en: "Resize"
+  fr: "Redimensionner"
+image.resize.keywords:
+  en: "resize scale dimensions smaller bigger instagram thumbnail width height pixels"
+  fr: "redimensionner taille dimensions réduire agrandir instagram miniature largeur hauteur pixels"
+image.resize.opt.preset:
+  en: "Preset"
+  fr: "Préréglage"
+image.resize.opt.preset.custom:
+  en: "Custom size"
+  fr: "Taille personnalisée"
+image.resize.opt.preset.instagram-square:
+  en: "Instagram square (1080 × 1080)"
+  fr: "Instagram carré (1080 × 1080)"
+image.resize.opt.preset.instagram-portrait:
+  en: "Instagram portrait (1080 × 1350)"
+  fr: "Instagram portrait (1080 × 1350)"
+image.resize.opt.preset.instagram-story:
+  en: "Instagram story / Reel (1080 × 1920)"
+  fr: "Story / Reel Instagram (1080 × 1920)"
+image.resize.opt.preset.x-post:
+  en: "X post (1600 × 900)"
+  fr: "Publication X (1600 × 900)"
+image.resize.opt.preset.x-header:
+  en: "X header (1500 × 500)"
+  fr: "Bannière X (1500 × 500)"
+image.resize.opt.preset.linkedin-post:
+  en: "LinkedIn post (1200 × 627)"
+  fr: "Publication LinkedIn (1200 × 627)"
+image.resize.opt.preset.linkedin-cover:
+  en: "LinkedIn cover (1584 × 396)"
+  fr: "Bannière LinkedIn (1584 × 396)"
+image.resize.opt.preset.facebook-post:
+  en: "Facebook post (1200 × 630)"
+  fr: "Publication Facebook (1200 × 630)"
+image.resize.opt.preset.facebook-cover:
+  en: "Facebook cover (851 × 315)"
+  fr: "Couverture Facebook (851 × 315)"
+image.resize.opt.preset.youtube-thumbnail:
+  en: "YouTube thumbnail (1280 × 720)"
+  fr: "Miniature YouTube (1280 × 720)"
+image.resize.opt.preset.pinterest-pin:
+  en: "Pinterest pin (1000 × 1500)"
+  fr: "Épingle Pinterest (1000 × 1500)"
+image.resize.opt.preset.open-graph:
+  en: "Link preview / Open Graph (1200 × 630)"
+  fr: "Aperçu de lien / Open Graph (1200 × 630)"
+image.resize.opt.preset.etsy-listing:
+  en: "Etsy listing (2000 × 2000)"
+  fr: "Annonce Etsy (2000 × 2000)"
+image.resize.opt.preset.amazon-product:
+  en: "Amazon product (2000 × 2000)"
+  fr: "Produit Amazon (2000 × 2000)"
+image.resize.opt.preset.shopify-product:
+  en: "Shopify product (2048 × 2048)"
+  fr: "Produit Shopify (2048 × 2048)"
+image.resize.opt.preset.app-store-iphone:
+  en: "App Store iPhone 6.9\" (1290 × 2796)"
+  fr: "App Store iPhone 6,9\" (1290 × 2796)"
+image.resize.opt.preset.app-store-ipad:
+  en: "App Store iPad 13\" (2048 × 2732)"
+  fr: "App Store iPad 13\" (2048 × 2732)"
+image.resize.opt.preset.play-store-phone:
+  en: "Play Store phone (1080 × 1920)"
+  fr: "Play Store téléphone (1080 × 1920)"
+image.resize.opt.preset.hd-1080p:
+  en: "Full HD 1080p (1920 × 1080)"
+  fr: "Full HD 1080p (1920 × 1080)"
+image.resize.opt.preset.uhd-4k:
+  en: "4K UHD (3840 × 2160)"
+  fr: "4K UHD (3840 × 2160)"
+image.resize.opt.preset.a4-300dpi:
+  en: "A4 at 300 dpi (2480 × 3508)"
+  fr: "A4 à 300 dpi (2480 × 3508)"
+image.resize.opt.preset.letter-300dpi:
+  en: "US Letter at 300 dpi (2550 × 3300)"
+  fr: "Lettre US à 300 dpi (2550 × 3300)"
+image.resize.opt.mode:
+  en: "Mode"
+  fr: "Mode"
+image.resize.opt.mode.fit:
+  en: "Fit inside"
+  fr: "Tenir dans le cadre"
+image.resize.opt.mode.fill:
+  en: "Fill and crop"
+  fr: "Remplir et recadrer"
+image.resize.opt.mode.pad:
+  en: "Fit with background"
+  fr: "Tenir avec un fond"
+image.resize.opt.mode.exact:
+  en: "Stretch to size"
+  fr: "Étirer à la taille"
+image.resize.opt.mode.percent:
+  en: "Percentage"
+  fr: "Pourcentage"
+image.resize.opt.mode.help:
+  en: "Fit keeps everything; Fill covers the size and crops what sticks out; Fit with background adds bars."
+  fr: "« Tenir » garde tout ; « Remplir » couvre la taille et coupe ce qui dépasse ; « avec un fond » ajoute des bandes."
+image.resize.opt.size:
+  en: "Size"
+  fr: "Taille"
+image.resize.opt.size.help:
+  en: "Width × height in pixels. In Fit mode, 0 leaves that side free."
+  fr: "Largeur × hauteur en pixels. En mode « Tenir », 0 laisse ce côté libre."
+image.resize.opt.percent:
+  en: "Scale"
+  fr: "Échelle"
+image.resize.opt.auto_focus:
+  en: "Automatic focus"
+  fr: "Mise au point automatique"
+image.resize.opt.auto_focus.help:
+  en: "Keeps the most interesting part of the picture when cropping."
+  fr: "Garde la partie la plus intéressante de l'image au recadrage."
+image.resize.opt.focus:
+  en: "Keep this part"
+  fr: "Garder cette partie"
+image.resize.opt.background:
+  en: "Background colour"
+  fr: "Couleur de fond"
+image.resize.opt.enlarge:
+  en: "Allow enlarging"
+  fr: "Autoriser l'agrandissement"
+image.resize.opt.enlarge.help:
+  en: "Off, small images are left at their size instead of becoming blurry."
+  fr: "Désactivé, les petites images gardent leur taille au lieu de devenir floues."
+image.resize.opt.format:
+  en: "Format"
+  fr: "Format"
+image.resize.opt.format.keep:
+  en: "Same as original"
+  fr: "Comme l'original"
+image.resize.opt.keep_metadata:
+  en: "Keep metadata"
+  fr: "Garder les métadonnées"
+
+image.crop.name:
+  en: "Crop image"
+  fr: "Recadrer une image"
+image.crop.desc:
+  en: "Crop to a ratio, cut margins, or trim plain borders automatically."
+  fr: "Recadre à un format, coupe des marges ou retire les bordures unies automatiquement."
+image.crop.verb:
+  en: "Crop"
+  fr: "Recadrer"
+image.crop.keywords:
+  en: "crop trim cut aspect ratio square borders margins"
+  fr: "recadrer rogner couper format ratio carré bordures marges"
+image.crop.too_much:
+  en: "The margins are larger than the image."
+  fr: "Les marges sont plus grandes que l'image."
+image.crop.opt.mode:
+  en: "Mode"
+  fr: "Mode"
+image.crop.opt.mode.ratio:
+  en: "Aspect ratio"
+  fr: "Format"
+image.crop.opt.mode.margins:
+  en: "Margins"
+  fr: "Marges"
+image.crop.opt.mode.trim:
+  en: "Trim borders"
+  fr: "Retirer les bordures"
+image.crop.opt.ratio:
+  en: "Ratio"
+  fr: "Format"
+image.crop.opt.auto_focus:
+  en: "Automatic focus"
+  fr: "Mise au point automatique"
+image.crop.opt.focus:
+  en: "Keep this part"
+  fr: "Garder cette partie"
+image.crop.opt.unit:
+  en: "Unit"
+  fr: "Unité"
+image.crop.opt.top:
+  en: "Top"
+  fr: "Haut"
+image.crop.opt.right:
+  en: "Right"
+  fr: "Droite"
+image.crop.opt.bottom:
+  en: "Bottom"
+  fr: "Bas"
+image.crop.opt.left:
+  en: "Left"
+  fr: "Gauche"
+image.crop.opt.tolerance:
+  en: "Tolerance"
+  fr: "Tolérance"
+image.crop.opt.tolerance.help:
+  en: "How different from the border colour a pixel must be to count as content."
+  fr: "Écart à la couleur de bordure à partir duquel un pixel compte comme contenu."
+image.crop.opt.padding:
+  en: "Keep a margin"
+  fr: "Garder une marge"
+
+image.rotate.name:
+  en: "Rotate & flip"
+  fr: "Pivoter et retourner"
+image.rotate.desc:
+  en: "Turn, mirror or straighten images; fix sideways phone photos."
+  fr: "Tourne, retourne ou redresse les images ; remet d'aplomb les photos de téléphone."
+image.rotate.verb:
+  en: "Rotate"
+  fr: "Pivoter"
+image.rotate.keywords:
+  en: "rotate flip mirror turn orientation straighten upright sideways"
+  fr: "pivoter tourner retourner miroir orientation redresser couché"
+image.rotate.opt.angle:
+  en: "Rotation"
+  fr: "Rotation"
+image.rotate.opt.angle.auto:
+  en: "Upright only"
+  fr: "Remettre droit seulement"
+image.rotate.opt.angle.none:
+  en: "None"
+  fr: "Aucune"
+image.rotate.opt.angle.help:
+  en: "Clockwise. \"Upright only\" applies the camera's orientation tag to the pixels."
+  fr: "Sens horaire. « Remettre droit » applique aux pixels l'orientation enregistrée par l'appareil."
+image.rotate.opt.flip:
+  en: "Mirror"
+  fr: "Miroir"
+image.rotate.opt.flip.none:
+  en: "None"
+  fr: "Aucun"
+image.rotate.opt.flip.horizontal:
+  en: "Horizontal"
+  fr: "Horizontal"
+image.rotate.opt.flip.vertical:
+  en: "Vertical"
+  fr: "Vertical"
+image.rotate.opt.straighten:
+  en: "Straighten"
+  fr: "Redresser"
+image.rotate.opt.edges:
+  en: "Corners"
+  fr: "Coins"
+image.rotate.opt.edges.crop:
+  en: "Crop to fill"
+  fr: "Recadrer pour remplir"
+image.rotate.opt.edges.expand:
+  en: "Keep everything"
+  fr: "Tout garder"
+image.rotate.opt.background:
+  en: "Corner colour"
+  fr: "Couleur des coins"
+
+image.strip-metadata.name:
+  en: "Strip metadata"
+  fr: "Supprimer les métadonnées"
+image.strip-metadata.desc:
+  en: "Remove location, camera and personal data without touching the pixels."
+  fr: "Retire la position, l'appareil et les données personnelles sans toucher aux pixels."
+image.strip-metadata.verb:
+  en: "Clean"
+  fr: "Nettoyer"
+image.strip-metadata.keywords:
+  en: "exif gps location privacy metadata remove clean xmp iptc camera"
+  fr: "exif gps position localisation vie privée métadonnées supprimer nettoyer appareil"
+image.strip-metadata.removed:
+  en: "Removed: %{list}."
+  fr: "Supprimé : %{list}."
+image.strip-metadata.gps:
+  en: "GPS location"
+  fr: "Position GPS"
+image.strip-metadata.comments:
+  en: "comments"
+  fr: "commentaires"
+image.strip-metadata.other:
+  en: "other data"
+  fr: "autres données"
+image.strip-metadata.nothing:
+  en: "No metadata found."
+  fr: "Aucune métadonnée trouvée."
+image.strip-metadata.reencoded:
+  en: "Pixels rewritten losslessly; every other piece of data is gone."
+  fr: "Pixels réécrits sans perte ; toutes les autres données ont disparu."
+image.strip-metadata.unsupported:
+  en: "%{file}: this format cannot be cleaned without re-encoding. Convert it to JPG, PNG or WebP first."
+  fr: "%{file} : ce format ne peut pas être nettoyé sans réencodage. Convertissez-le d'abord en JPG, PNG ou WebP."
+image.strip-metadata.opt.keep_orientation:
+  en: "Keep orientation"
+  fr: "Garder l'orientation"
+image.strip-metadata.opt.keep_orientation.help:
+  en: "Without it, some photos would appear sideways."
+  fr: "Sans elle, certaines photos apparaîtraient couchées."
+image.strip-metadata.opt.keep_icc:
+  en: "Keep colour profile"
+  fr: "Garder le profil de couleur"
+image.strip-metadata.opt.keep_icc.help:
+  en: "Holds no personal data; removing it can change the colours."
+  fr: "Ne contient aucune donnée personnelle ; le retirer peut changer les couleurs."
+image.strip-metadata.opt.keep_copyright:
+  en: "Keep author and copyright"
+  fr: "Garder l'auteur et le copyright"
+
+image.seo.name:
+  en: "SEO image"
+  fr: "Image SEO"
+image.seo.desc:
+  en: "Search-friendly file names plus title, alt text and keywords written into the image."
+  fr: "Des noms de fichiers lisibles par les moteurs, plus titre, texte alternatif et mots-clés inscrits dans l'image."
+image.seo.verb:
+  en: "Optimize for search"
+  fr: "Optimiser pour le référencement"
+image.seo.keywords:
+  en: "seo alt text rename slug keywords metadata xmp iptc copyright google images"
+  fr: "seo référencement texte alternatif renommer mots-clés métadonnées xmp iptc copyright"
+image.seo.empty:
+  en: "Add at least one image."
+  fr: "Ajoutez au moins une image."
+image.seo.no_key:
+  en: "\"Write with AI\" needs your Anthropic API key: add it in Settings → AI, or turn the option off."
+  fr: "« Écrire avec l'IA » a besoin de votre clé d'API Anthropic : ajoutez-la dans Réglages → IA, ou désactivez l'option."
+image.seo.bad_gps:
+  en: "The location should look like \"48.8584, 2.2945\" (latitude, longitude)."
+  fr: "La position doit ressembler à « 48.8584, 2.2945 » (latitude, longitude)."
+image.seo.ai_failed:
+  en: "Writing with AI failed. Check your API key and connection, or turn the option off."
+  fr: "L'écriture par l'IA a échoué. Vérifiez votre clé d'API et la connexion, ou désactivez l'option."
+image.seo.ai_refused:
+  en: "The AI declined to describe this image."
+  fr: "L'IA a refusé de décrire cette image."
+image.seo.written:
+  en: "Renamed, metadata written"
+  fr: "Renommé, métadonnées inscrites"
+image.seo.renamed_only:
+  en: "Renamed (this format cannot hold the metadata)"
+  fr: "Renommé (ce format ne peut pas contenir les métadonnées)"
+image.seo.opt.pattern:
+  en: "File name"
+  fr: "Nom de fichier"
+image.seo.opt.pattern.help:
+  en: "{title} the title, {name} the old name, {n} a number, {date} today."
+  fr: "{title} le titre, {name} l'ancien nom, {n} un numéro, {date} la date du jour."
+image.seo.opt.title:
+  en: "Title"
+  fr: "Titre"
+image.seo.opt.alt:
+  en: "Alt text"
+  fr: "Texte alternatif"
+image.seo.opt.alt.help:
+  en: "One sentence describing the image for screen readers and search engines."
+  fr: "Une phrase qui décrit l'image pour les lecteurs d'écran et les moteurs de recherche."
+image.seo.opt.description:
+  en: "Description"
+  fr: "Description"
+image.seo.opt.keywords:
+  en: "Keywords"
+  fr: "Mots-clés"
+image.seo.opt.keywords.help:
+  en: "Separated by commas."
+  fr: "Séparés par des virgules."
+image.seo.opt.author:
+  en: "Author"
+  fr: "Auteur"
+image.seo.opt.copyright:
+  en: "Copyright"
+  fr: "Copyright"
+image.seo.opt.gps:
+  en: "Location"
+  fr: "Position"
+image.seo.opt.gps.help:
+  en: "Latitude, longitude, e.g. 48.8584, 2.2945."
+  fr: "Latitude, longitude, par ex. 48.8584, 2.2945."
+image.seo.opt.ai:
+  en: "Write with AI"
+  fr: "Écrire avec l'IA"
+image.seo.opt.ai.help:
+  en: "Sends a small copy of each image to Anthropic with your own API key to fill empty fields. Off by default; nothing leaves your computer otherwise."
+  fr: "Envoie une petite copie de chaque image à Anthropic avec votre propre clé d'API pour remplir les champs vides. Désactivé par défaut ; sinon rien ne quitte votre ordinateur."
+image.seo.opt.ai_language:
+  en: "Language of the text"
+  fr: "Langue du texte"
+image.seo.opt.ai_language.help:
+  en: "A language code such as en, fr, de (empty = the app language)."
+  fr: "Un code de langue comme en, fr, de (vide = la langue de l'application)."
+
+image.redact.name:
+  en: "Redact image"
+  fr: "Caviarder une image"
+image.redact.desc:
+  en: "Blur faces, text and areas you choose; metadata is removed too."
+  fr: "Floute visages, textes et zones choisies ; les métadonnées sont aussi retirées."
+image.redact.verb:
+  en: "Redact"
+  fr: "Caviarder"
+image.redact.keywords:
+  en: "redact blur faces anonymize privacy pixelate hide censor gdpr"
+  fr: "caviarder flouter visages anonymiser vie privée pixeliser masquer censurer rgpd"
+image.redact.finding_faces:
+  en: "Looking for faces…"
+  fr: "Recherche des visages…"
+image.redact.reading_text:
+  en: "Reading the text…"
+  fr: "Lecture du texte…"
+image.redact.note:
+  en: "%{faces} faces, %{text} text areas, %{regions} areas hidden"
+  fr: "%{faces} visages, %{text} zones de texte, %{regions} zones masqués"
+image.redact.opt.faces:
+  en: "Faces"
+  fr: "Visages"
+image.redact.opt.terms:
+  en: "Text to hide"
+  fr: "Texte à masquer"
+image.redact.opt.terms.help:
+  en: "One word or phrase per line, found by reading the image (OCR)."
+  fr: "Un mot ou une expression par ligne, trouvés en lisant l'image (OCR)."
+image.redact.opt.contacts:
+  en: "Emails and phone numbers"
+  fr: "E-mails et numéros de téléphone"
+image.redact.opt.language:
+  en: "Text language"
+  fr: "Langue du texte"
+image.redact.opt.regions:
+  en: "Areas"
+  fr: "Zones"
+image.redact.opt.regions.help:
+  en: "x, y, width, height in pixels or %, separated by \";\" — e.g. 10%,80%,30%,10%"
+  fr: "x, y, largeur, hauteur en pixels ou en %, séparées par « ; » — par ex. 10%,80%,30%,10%"
+image.redact.opt.style:
+  en: "Style"
+  fr: "Style"
+image.redact.opt.style.blur:
+  en: "Blur"
+  fr: "Flou"
+image.redact.opt.style.pixelate:
+  en: "Pixelate"
+  fr: "Pixelisation"
+image.redact.opt.style.box:
+  en: "Solid box"
+  fr: "Bloc opaque"
+image.redact.opt.color:
+  en: "Box colour"
+  fr: "Couleur du bloc"
+image.redact.opt.strength:
+  en: "Strength"
+  fr: "Intensité"
+image.redact.opt.padding:
+  en: "Extra margin around faces"
+  fr: "Marge autour des visages"
+image.redact.opt.format:
+  en: "Format"
+  fr: "Format"
+image.redact.opt.format.keep:
+  en: "Same as original"
+  fr: "Comme l'original"
+
+image.watermark.name:
+  en: "Watermark"
+  fr: "Filigrane"
+image.watermark.desc:
+  en: "Add your name or logo, in a corner or tiled across the image."
+  fr: "Ajoute votre nom ou votre logo, dans un coin ou en mosaïque sur l'image."
+image.watermark.verb:
+  en: "Add watermark"
+  fr: "Ajouter le filigrane"
+image.watermark.keywords:
+  en: "watermark logo copyright stamp protect brand signature overlay"
+  fr: "filigrane logo copyright tampon protéger marque signature"
+image.watermark.no_logo:
+  en: "Choose a logo file (PNG or SVG works best)."
+  fr: "Choisissez un fichier de logo (PNG ou SVG de préférence)."
+image.watermark.no_text:
+  en: "Type the watermark text."
+  fr: "Saisissez le texte du filigrane."
+image.watermark.opt.kind:
+  en: "Watermark"
+  fr: "Filigrane"
+image.watermark.opt.kind.text:
+  en: "Text"
+  fr: "Texte"
+image.watermark.opt.kind.logo:
+  en: "Logo"
+  fr: "Logo"
+image.watermark.opt.text:
+  en: "Text"
+  fr: "Texte"
+image.watermark.opt.font:
+  en: "Font"
+  fr: "Police"
+image.watermark.opt.color:
+  en: "Colour"
+  fr: "Couleur"
+image.watermark.opt.logo:
+  en: "Logo file"
+  fr: "Fichier du logo"
+image.watermark.opt.layout:
+  en: "Layout"
+  fr: "Disposition"
+image.watermark.opt.layout.single:
+  en: "Once"
+  fr: "Une fois"
+image.watermark.opt.layout.tiled:
+  en: "Tiled"
+  fr: "En mosaïque"
+image.watermark.opt.position:
+  en: "Position"
+  fr: "Position"
+image.watermark.opt.size:
+  en: "Size"
+  fr: "Taille"
+image.watermark.opt.size.help:
+  en: "Width of the watermark relative to the shorter side of the image."
+  fr: "Largeur du filigrane par rapport au petit côté de l'image."
+image.watermark.opt.opacity:
+  en: "Opacity"
+  fr: "Opacité"
+image.watermark.opt.angle:
+  en: "Angle"
+  fr: "Angle"
+image.watermark.opt.margin:
+  en: "Margin"
+  fr: "Marge"
+image.watermark.opt.spacing:
+  en: "Spacing"
+  fr: "Espacement"
+image.watermark.opt.shadow:
+  en: "Soft shadow"
+  fr: "Ombre douce"
+image.watermark.opt.shadow.help:
+  en: "Keeps the watermark readable on light and dark areas."
+  fr: "Garde le filigrane lisible sur les zones claires comme sombres."
+image.watermark.opt.format:
+  en: "Format"
+  fr: "Format"
+image.watermark.opt.format.keep:
+  en: "Same as original"
+  fr: "Comme l'original"
+
+image.beautify.name:
+  en: "Beautify shot"
+  fr: "Embellir une capture"
+image.beautify.desc:
+  en: "Put screenshots on a painted background with shadow, corners and a window frame."
+  fr: "Pose vos captures sur un fond peint, avec ombre, coins arrondis et cadre de fenêtre."
+image.beautify.verb:
+  en: "Beautify"
+  fr: "Embellir"
+image.beautify.keywords:
+  en: "screenshot beautify mockup background shadow frame window pretty social showcase"
+  fr: "capture d'écran embellir maquette fond ombre cadre fenêtre réseaux présentation"
+image.beautify.opt.background:
+  en: "Background"
+  fr: "Fond"
+image.beautify.opt.background.aurora:
+  en: "Aurora"
+  fr: "Aurore"
+image.beautify.opt.background.sunset:
+  en: "Sunset"
+  fr: "Coucher de soleil"
+image.beautify.opt.background.ocean:
+  en: "Ocean"
+  fr: "Océan"
+image.beautify.opt.background.peach:
+  en: "Peach"
+  fr: "Pêche"
+image.beautify.opt.background.lavender:
+  en: "Lavender"
+  fr: "Lavande"
+image.beautify.opt.background.mint:
+  en: "Mint"
+  fr: "Menthe"
+image.beautify.opt.background.ember:
+  en: "Ember"
+  fr: "Braise"
+image.beautify.opt.background.dusk:
+  en: "Dusk"
+  fr: "Crépuscule"
+image.beautify.opt.background.sand:
+  en: "Sand"
+  fr: "Sable"
+image.beautify.opt.background.forest:
+  en: "Forest"
+  fr: "Forêt"
+image.beautify.opt.background.candy:
+  en: "Candy"
+  fr: "Bonbon"
+image.beautify.opt.background.slate:
+  en: "Slate"
+  fr: "Ardoise"
+image.beautify.opt.background.midnight:
+  en: "Midnight"
+  fr: "Minuit"
+image.beautify.opt.background.rose:
+  en: "Rose"
+  fr: "Rose"
+image.beautify.opt.background.lagoon:
+  en: "Lagoon"
+  fr: "Lagon"
+image.beautify.opt.background.citrus:
+  en: "Citrus"
+  fr: "Agrumes"
+image.beautify.opt.background.berry:
+  en: "Berry"
+  fr: "Baies"
+image.beautify.opt.background.glacier:
+  en: "Glacier"
+  fr: "Glacier"
+image.beautify.opt.background.mocha:
+  en: "Mocha"
+  fr: "Moka"
+image.beautify.opt.background.neon:
+  en: "Neon"
+  fr: "Néon"
+image.beautify.opt.background.paper:
+  en: "Paper"
+  fr: "Papier"
+image.beautify.opt.background.graphite:
+  en: "Graphite"
+  fr: "Graphite"
+image.beautify.opt.background.solid:
+  en: "Solid colour"
+  fr: "Couleur unie"
+image.beautify.opt.background.transparent:
+  en: "Transparent"
+  fr: "Transparent"
+image.beautify.opt.color:
+  en: "Colour"
+  fr: "Couleur"
+image.beautify.opt.padding:
+  en: "Padding"
+  fr: "Marge"
+image.beautify.opt.radius:
+  en: "Corner radius"
+  fr: "Arrondi des coins"
+image.beautify.opt.shadow:
+  en: "Shadow"
+  fr: "Ombre"
+image.beautify.opt.shadow.none:
+  en: "None"
+  fr: "Aucune"
+image.beautify.opt.shadow.soft:
+  en: "Soft"
+  fr: "Douce"
+image.beautify.opt.shadow.strong:
+  en: "Strong"
+  fr: "Marquée"
+image.beautify.opt.frame:
+  en: "Window frame"
+  fr: "Cadre de fenêtre"
+image.beautify.opt.frame.none:
+  en: "None"
+  fr: "Aucun"
+image.beautify.opt.frame.macos:
+  en: "macOS"
+  fr: "macOS"
+image.beautify.opt.frame.windows:
+  en: "Windows"
+  fr: "Windows"
+image.beautify.opt.frame_theme:
+  en: "Frame style"
+  fr: "Style du cadre"
+image.beautify.opt.frame_theme.light:
+  en: "Light"
+  fr: "Clair"
+image.beautify.opt.frame_theme.dark:
+  en: "Dark"
+  fr: "Sombre"
+image.beautify.opt.ratio:
+  en: "Canvas"
+  fr: "Format du canevas"
+image.beautify.opt.ratio.auto:
+  en: "Automatic"
+  fr: "Automatique"
+image.beautify.opt.grain:
+  en: "Grain"
+  fr: "Grain"
+
+image.icon-pack.name:
+  en: "Icon pack"
+  fr: "Pack d'icônes"
+image.icon-pack.desc:
+  en: "Every icon size from one image: favicon, ICO, ICNS, iOS and Android."
+  fr: "Toutes les tailles d'icônes depuis une seule image : favicon, ICO, ICNS, iOS et Android."
+image.icon-pack.verb:
+  en: "Make icons"
+  fr: "Créer les icônes"
+image.icon-pack.keywords:
+  en: "icon favicon ico icns app icon pwa manifest android ios apple-touch-icon"
+  fr: "icône favicon ico icns icône d'application pwa manifeste android ios"
+image.icon-pack.files:
+  en: "%{count} files in one folder"
+  fr: "%{count} fichiers dans un dossier"
+image.icon-pack.opt.targets:
+  en: "Make"
+  fr: "Créer"
+image.icon-pack.opt.targets.all:
+  en: "Everything"
+  fr: "Tout"
+image.icon-pack.opt.targets.web:
+  en: "Website (favicon + manifest)"
+  fr: "Site web (favicon + manifeste)"
+image.icon-pack.opt.padding:
+  en: "Padding"
+  fr: "Marge"
+image.icon-pack.opt.background:
+  en: "Background"
+  fr: "Fond"
+image.icon-pack.opt.background.help:
+  en: "Transparent by default; iOS and store icons always get an opaque background (white unless you pick one)."
+  fr: "Transparent par défaut ; les icônes iOS et des stores ont toujours un fond opaque (blanc sauf choix contraire)."
+image.icon-pack.opt.radius:
+  en: "Corner radius"
+  fr: "Arrondi des coins"
+image.icon-pack.opt.app_name:
+  en: "App name"
+  fr: "Nom de l'application"
+image.icon-pack.opt.theme_color:
+  en: "Theme colour"
+  fr: "Couleur du thème"
+
+image.contact-sheet.name:
+  en: "Contact sheet"
+  fr: "Planche contact"
+image.contact-sheet.desc:
+  en: "Many images on one page: a grid with captions, as PDF or PNG."
+  fr: "Beaucoup d'images sur une page : une grille légendée, en PDF ou PNG."
+image.contact-sheet.verb:
+  en: "Make sheet"
+  fr: "Créer la planche"
+image.contact-sheet.keywords:
+  en: "contact sheet grid thumbnails overview proof index catalog collage"
+  fr: "planche contact grille miniatures aperçu épreuve index catalogue collage"
+image.contact-sheet.empty:
+  en: "Add some images first."
+  fr: "Ajoutez d'abord des images."
+image.contact-sheet.file:
+  en: "contact-sheet"
+  fr: "planche-contact"
+image.contact-sheet.pages:
+  en: "%{count} pages"
+  fr: "%{count} pages"
+image.contact-sheet.opt.output:
+  en: "Format"
+  fr: "Format"
+image.contact-sheet.opt.page:
+  en: "Page"
+  fr: "Page"
+image.contact-sheet.opt.columns:
+  en: "Columns"
+  fr: "Colonnes"
+image.contact-sheet.opt.title:
+  en: "Title"
+  fr: "Titre"
+image.contact-sheet.opt.date:
+  en: "Show the date"
+  fr: "Afficher la date"
+image.contact-sheet.opt.captions:
+  en: "Captions"
+  fr: "Légendes"
+image.contact-sheet.opt.captions.none:
+  en: "None"
+  fr: "Aucune"
+image.contact-sheet.opt.captions.name:
+  en: "File name"
+  fr: "Nom du fichier"
+image.contact-sheet.opt.captions.details:
+  en: "Name, size and date taken"
+  fr: "Nom, taille et date de prise de vue"
+image.contact-sheet.opt.background:
+  en: "Background"
+  fr: "Fond"
+image.contact-sheet.opt.watermark:
+  en: "Watermark"
+  fr: "Filigrane"
+
+image.compare.name:
+  en: "Image comparison"
+  fr: "Comparer des images"
+image.compare.desc:
+  en: "Before / after as an interactive slider page, an animated GIF or side by side."
+  fr: "Avant / après en page à curseur, en GIF animé ou côte à côte."
+image.compare.verb:
+  en: "Compare"
+  fr: "Comparer"
+image.compare.keywords:
+  en: "compare before after slider diff side by side versus wipe"
+  fr: "comparer avant après curseur différence côte à côte"
+image.compare.before:
+  en: "Before"
+  fr: "Avant"
+image.compare.after:
+  en: "After"
+  fr: "Après"
+image.compare.need_two:
+  en: "Add two images: the \"before\" first, then the \"after\"."
+  fr: "Ajoutez deux images : d'abord l'« avant », puis l'« après »."
+image.compare.opt.output:
+  en: "Result"
+  fr: "Résultat"
+image.compare.opt.output.help:
+  en: "HTML is a single file with a draggable slider, ready to share."
+  fr: "Le HTML est un fichier unique avec un curseur à glisser, prêt à partager."
+image.compare.opt.look:
+  en: "Look"
+  fr: "Style"
+image.compare.opt.look.classic:
+  en: "Classic"
+  fr: "Classique"
+image.compare.opt.look.minimal:
+  en: "Minimal"
+  fr: "Minimal"
+image.compare.opt.look.bold:
+  en: "Bold"
+  fr: "Affirmé"
+image.compare.opt.look.dark:
+  en: "Dark"
+  fr: "Sombre"
+image.compare.opt.look.pill:
+  en: "Pills"
+  fr: "Pastilles"
+image.compare.opt.look.neon:
+  en: "Neon"
+  fr: "Néon"
+image.compare.opt.before:
+  en: "Left label"
+  fr: "Étiquette de gauche"
+image.compare.opt.after:
+  en: "Right label"
+  fr: "Étiquette de droite"
+image.compare.opt.layout:
+  en: "Layout"
+  fr: "Disposition"
+image.compare.opt.layout.wipe:
+  en: "Split"
+  fr: "Partagé"
+image.compare.opt.layout.side:
+  en: "Side by side"
+  fr: "Côte à côte"
+image.compare.opt.layout.stack:
+  en: "One above the other"
+  fr: "L'une au-dessus de l'autre"
+image.compare.opt.max_width:
+  en: "Maximum width"
+  fr: "Largeur maximale"
+
+image.stylize.name:
+  en: "Stylize"
+  fr: "Styliser"
+image.stylize.desc:
+  en: "Film, vintage, noir, duotone, halftone, sketch and more."
+  fr: "Pellicule, vintage, noir et blanc, duotone, trame, croquis et plus."
+image.stylize.verb:
+  en: "Apply look"
+  fr: "Appliquer le style"
+image.stylize.keywords:
+  en: "filter effect look film vintage black and white duotone halftone sketch retro"
+  fr: "filtre effet style pellicule vintage noir et blanc duotone trame croquis rétro"
+image.stylize.opt.look:
+  en: "Look"
+  fr: "Style"
+image.stylize.opt.look.film:
+  en: "Film"
+  fr: "Pellicule"
+image.stylize.opt.look.vintage:
+  en: "Vintage"
+  fr: "Vintage"
+image.stylize.opt.look.noir:
+  en: "Noir"
+  fr: "Noir et blanc"
+image.stylize.opt.look.duotone:
+  en: "Duotone"
+  fr: "Duotone"
+image.stylize.opt.look.halftone:
+  en: "Halftone"
+  fr: "Trame"
+image.stylize.opt.look.sketch:
+  en: "Sketch"
+  fr: "Croquis"
+image.stylize.opt.look.posterize:
+  en: "Posterize"
+  fr: "Postérisation"
+image.stylize.opt.look.cool:
+  en: "Cool"
+  fr: "Froid"
+image.stylize.opt.look.warm:
+  en: "Warm"
+  fr: "Chaud"
+image.stylize.opt.look.fade:
+  en: "Faded"
+  fr: "Délavé"
+image.stylize.opt.look.pixel:
+  en: "Pixel art"
+  fr: "Pixel art"
+image.stylize.opt.intensity:
+  en: "Intensity"
+  fr: "Intensité"
+image.stylize.opt.dark:
+  en: "Shadows colour"
+  fr: "Couleur des ombres"
+image.stylize.opt.light:
+  en: "Highlights colour"
+  fr: "Couleur des hautes lumières"
+image.stylize.opt.levels:
+  en: "Levels"
+  fr: "Niveaux"
+image.stylize.opt.cell:
+  en: "Dot size"
+  fr: "Taille des points"
+image.stylize.opt.format:
+  en: "Format"
+  fr: "Format"
+image.stylize.opt.format.keep:
+  en: "Same as original"
+  fr: "Comme l'original"
+
+image.duplicates.name:
+  en: "Find duplicate images"
+  fr: "Trouver les images en double"
+image.duplicates.desc:
+  en: "Spot identical and near-identical pictures, even resized or recompressed."
+  fr: "Repère les images identiques ou presque, même redimensionnées ou recompressées."
+image.duplicates.verb:
+  en: "Find duplicates"
+  fr: "Chercher les doublons"
+image.duplicates.keywords:
+  en: "duplicates similar same dedupe clean up copies"
+  fr: "doublons similaires identiques dédoublonner ranger copies"
+image.duplicates.need_two:
+  en: "Add at least two images or a folder."
+  fr: "Ajoutez au moins deux images ou un dossier."
+image.duplicates.folder:
+  en: "Duplicates"
+  fr: "Doublons"
+image.duplicates.report:
+  en: "duplicates-report"
+  fr: "rapport-doublons"
+image.duplicates.group:
+  en: "Group"
+  fr: "Groupe"
+image.duplicates.kept:
+  en: "Kept"
+  fr: "Gardée"
+image.duplicates.none:
+  en: "No duplicates found."
+  fr: "Aucun doublon trouvé."
+image.duplicates.found:
+  en: "%{groups} groups, %{extra} extra copies"
+  fr: "%{groups} groupes, %{extra} copies en trop"
+image.duplicates.scanned:
+  en: "%{count} images compared."
+  fr: "%{count} images comparées."
+image.duplicates.undo_exists:
+  en: "Cannot put %{file} back: a file with that name exists again."
+  fr: "Impossible de remettre %{file} : un fichier de ce nom existe de nouveau."
+image.duplicates.opt.sensitivity:
+  en: "Match"
+  fr: "Correspondance"
+image.duplicates.opt.sensitivity.exact:
+  en: "Identical files"
+  fr: "Fichiers identiques"
+image.duplicates.opt.sensitivity.near:
+  en: "Same picture"
+  fr: "Même image"
+image.duplicates.opt.sensitivity.similar:
+  en: "Very similar"
+  fr: "Très similaires"
+image.duplicates.opt.sensitivity.help:
+  en: "\"Same picture\" also finds resized and recompressed copies."
+  fr: "« Même image » trouve aussi les copies redimensionnées ou recompressées."
+image.duplicates.opt.action:
+  en: "Then"
+  fr: "Ensuite"
+image.duplicates.opt.action.report:
+  en: "Only make a report"
+  fr: "Faire seulement un rapport"
+image.duplicates.opt.action.move:
+  en: "Move extra copies aside"
+  fr: "Mettre les copies en trop de côté"
+image.duplicates.opt.action.help:
+  en: "Copies go into a \"Duplicates\" folder next to them; the run can be undone."
+  fr: "Les copies vont dans un dossier « Doublons » à côté ; l'opération peut être annulée."
+image.duplicates.opt.keep:
+  en: "Keep"
+  fr: "Garder"
+image.duplicates.opt.keep.largest:
+  en: "The largest"
+  fr: "La plus grande"
+image.duplicates.opt.keep.oldest:
+  en: "The oldest"
+  fr: "La plus ancienne"
+image.duplicates.opt.keep.first:
+  en: "The first in the list"
+  fr: "La première de la liste"
+
+image.optimize-gif.name:
+  en: "Optimize GIF"
+  fr: "Optimiser un GIF"
+image.optimize-gif.desc:
+  en: "Lighter animated GIFs with smarter colours, smaller size or fewer frames."
+  fr: "Des GIF animés plus légers : couleurs plus malignes, taille ou images par seconde réduites."
+image.optimize-gif.verb:
+  en: "Optimize"
+  fr: "Optimiser"
+image.optimize-gif.keywords:
+  en: "gif animated optimize compress smaller gifski meme"
+  fr: "gif animé optimiser compresser alléger gifski mème"
+image.optimize-gif.opt.max_width:
+  en: "Maximum width"
+  fr: "Largeur maximale"
+image.optimize-gif.opt.max_width.help:
+  en: "0 keeps the size."
+  fr: "0 garde la taille."
+image.optimize-gif.opt.fps:
+  en: "Frames per second"
+  fr: "Images par seconde"
+image.optimize-gif.opt.fps.keep:
+  en: "Keep"
+  fr: "Garder"
+
+image.optimize-svg.name:
+  en: "Optimize SVG"
+  fr: "Optimiser un SVG"
+image.optimize-svg.desc:
+  en: "Smaller SVG files: editor data, comments and extra digits removed."
+  fr: "Des SVG plus légers : données d'éditeur, commentaires et décimales superflues retirés."
+image.optimize-svg.verb:
+  en: "Optimize"
+  fr: "Optimiser"
+image.optimize-svg.keywords:
+  en: "svg minify optimize svgo clean vector smaller"
+  fr: "svg minifier optimiser svgo nettoyer vectoriel alléger"
+image.optimize-svg.broken:
+  en: "The optimized SVG did not render; the original was not changed."
+  fr: "Le SVG optimisé ne s'affichait pas ; l'original n'a pas été modifié."
+image.optimize-svg.opt.precision:
+  en: "Decimals"
+  fr: "Décimales"
+image.optimize-svg.opt.precision.help:
+  en: "Digits kept after the decimal point in coordinates. 2–3 is invisible on screen."
+  fr: "Chiffres gardés après la virgule dans les coordonnées. 2 ou 3 est invisible à l'écran."
+image.optimize-svg.opt.keep_title:
+  en: "Keep title and description"
+  fr: "Garder titre et description"
+image.optimize-svg.opt.keep_title.help:
+  en: "Used by screen readers."
+  fr: "Utilisés par les lecteurs d'écran."
+image.optimize-svg.opt.pretty:
+  en: "Readable layout"
+  fr: "Mise en page lisible"
+
+image.colorblind.name:
+  en: "Colour-blind check"
+  fr: "Test daltonisme"
+image.colorblind.desc:
+  en: "See your image as people with colour vision deficiencies do, with a contrast report."
+  fr: "Voyez votre image comme les personnes daltoniennes, avec un rapport de contraste."
+image.colorblind.verb:
+  en: "Simulate"
+  fr: "Simuler"
+image.colorblind.keywords:
+  en: "color blind colorblind daltonism accessibility protanopia deuteranopia tritanopia a11y contrast"
+  fr: "daltonisme daltonien accessibilité protanopie deutéranopie tritanopie contraste"
+image.colorblind.report_title:
+  en: "Colours that become hard to tell apart"
+  fr: "Couleurs qui deviennent difficiles à distinguer"
+image.colorblind.ok:
+  en: "No problem found."
+  fr: "Aucun problème trouvé."
+image.colorblind.note_ok:
+  en: "Main colours stay distinct for every type."
+  fr: "Les couleurs principales restent distinctes pour tous les types."
+image.colorblind.note_pairs:
+  en: "%{count} colour pairs may be confused — see the report."
+  fr: "%{count} paires de couleurs peuvent être confondues — voir le rapport."
+image.colorblind.opt.kind:
+  en: "Simulation"
+  fr: "Simulation"
+image.colorblind.opt.kind.all:
+  en: "Overview (3 types)"
+  fr: "Vue d'ensemble (3 types)"
+image.colorblind.opt.kind.original:
+  en: "Original"
+  fr: "Original"
+image.colorblind.opt.kind.protanopia:
+  en: "Protanopia (red)"
+  fr: "Protanopie (rouge)"
+image.colorblind.opt.kind.deuteranopia:
+  en: "Deuteranopia (green)"
+  fr: "Deutéranopie (vert)"
+image.colorblind.opt.kind.tritanopia:
+  en: "Tritanopia (blue)"
+  fr: "Tritanopie (bleu)"
+image.colorblind.opt.kind.achromatopsia:
+  en: "Achromatopsia (no colour)"
+  fr: "Achromatopsie (aucune couleur)"
+image.colorblind.opt.severity:
+  en: "Severity"
+  fr: "Sévérité"

@@ -1,9 +1,35 @@
 [package]
 name = "engine-ml"
+description = "Castor ML engine: local ONNX models (background removal, upscaling, face detection)"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 
+[features]
+default = []
+
 [dependencies]
 anyhow.workspace = true
 castor-core.workspace = true
+image.workspace = true
+parking_lot.workspace = true
+rayon.workspace = true
+tracing.workspace = true
+fast_image_resize = { version = "6.1", features = ["image", "rayon"] }
+# Pure-Rust ONNX backend: the only backend on Intel Macs (no ONNX Runtime builds exist for
+# x86_64-apple-darwin), and a fallback everywhere (CASTOR_ML_BACKEND=tract).
+tract-onnx = "0.23"
+tract-linalg = { version = "0.23", features = ["multithread-mm"] }
+
+# ONNX Runtime (statically linked prebuilt from pyke) everywhere it is published.
+[target.'cfg(not(all(target_os = "macos", target_arch = "x86_64")))'.dependencies]
+ort = { version = "=2.0.0-rc.15", default-features = false, features = ["std", "download-binaries", "tls-native", "api-23"] }
+
+# Intel Macs: Microsoft's last x86_64 build is ONNX Runtime 1.23.2 (MIT), loaded at run time
+# from the app bundle (Contents/Frameworks/libonnxruntime.dylib) or CASTOR_ORT_DYLIB; tract
+# takes over when it is absent.
+[target.'cfg(all(target_os = "macos", target_arch = "x86_64"))'.dependencies]
+ort = { version = "=2.0.0-rc.15", default-features = false, features = ["std", "load-dynamic", "api-23"] }
+
+[dev-dependencies]
+tempfile.workspace = true

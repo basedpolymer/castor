@@ -1,5 +1,6 @@
 [package]
 name = "tools-image"
+description = "Castor image tools"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -9,3 +10,49 @@ anyhow.workspace = true
 castor-core.workspace = true
 engine-ml.workspace = true
 engine-pdf.workspace = true
+image.workspace = true
+rayon.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+time.workspace = true
+ureq.workspace = true
+sha2.workspace = true
+hex.workspace = true
+
+# Pixels
+fast_image_resize = { version = "6.1", features = ["image", "rayon"] }
+rgb = "0.8"
+imgref = "1.12"
+
+# Encoders
+# Pure-Rust JPEG encoder (jpegli adaptive quantisation + mozjpeg trellis). Not mozjpeg-sys:
+# its libjpeg symbols clash with the libjpeg inside MuPDF (engine-pdf) at link time.
+zenjpeg = { version = "0.8.4", default-features = false, features = ["yuv", "trellis"] }
+oxipng = { version = "10.2", default-features = false, features = ["parallel", "zopfli"] }
+imagequant = "4.4"
+webp = { version = "0.3", default-features = false }
+ravif = "0.13"
+gif = "0.14"
+gifski = { version = "1.34", default-features = false, features = ["gifsicle"] }
+dssim-core = "3.5"
+
+# Decoders
+heic = { version = "0.1.6", features = ["parallel", "av1"] }
+jxl-oxide = { version = "0.12", features = ["image"] }
+resvg = "0.46"
+rawler = "0.8"
+icns = "0.5"
+
+# Metadata, analysis, vectors, text
+img-parts = "0.4"
+kamadak-exif = "0.6"
+vtracer = { version = "0.6", default-features = false }
+visioncortex = "0.8"
+image_hasher = "3.1"
+base64 = "0.22"
+roxmltree = "0.20"
+moxcms = "0.8"
+
+[dev-dependencies]
+tempfile.workspace = true
