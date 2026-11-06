@@ -5,87 +5,276 @@ _version: 2
 app.name:
   en: Castor
   fr: Castor
+  de: "Castor"
+  es: "Castor"
+  it: "Castor"
+  pt-BR: "Castor"
+  ja: "Castor"
+  zh-CN: "Castor"
+  ko: "Castor"
 app.tagline:
   en: Gnaws through your files. Free, offline, yours.
   fr: Ronge vos fichiers à votre place. Gratuit, hors ligne, à vous.
+  de: "Nagt sich durch Ihre Dateien. Kostenlos, offline, Ihres."
+  es: "Roe tus archivos por ti. Gratis, sin conexión, tuyo."
+  it: "Rosicchia i tuoi file. Gratis, offline, tuo."
+  pt-BR: "Roe seus arquivos por você. Grátis, offline, seu."
+  ja: "ファイルをかじって片づけます。無料、オフライン、あなたのもの。"
+  zh-CN: "替你啃定文件。免费、离线、归你所有。"
+  ko: "파일을 대신 갉아 드립니다. 무료, 오프라인, 온전히 내 것."
 
 family.pdf:
   en: PDF
   fr: PDF
+  de: "PDF"
+  es: "PDF"
+  it: "PDF"
+  pt-BR: "PDF"
+  ja: "PDF"
+  zh-CN: "PDF"
+  ko: "PDF"
 family.image:
   en: Image
   fr: Image
+  de: "Bild"
+  es: "Imagen"
+  it: "Immagine"
+  pt-BR: "Imagem"
+  ja: "画像"
+  zh-CN: "图片"
+  ko: "이미지"
 family.video:
   en: Video
   fr: Vidéo
+  de: "Video"
+  es: "Vídeo"
+  it: "Video"
+  pt-BR: "Vídeo"
+  ja: "動画"
+  zh-CN: "视频"
+  ko: "동영상"
 family.audio:
   en: Audio
   fr: Audio
+  de: "Audio"
+  es: "Audio"
+  it: "Audio"
+  pt-BR: "Áudio"
+  ja: "音声"
+  zh-CN: "音频"
+  ko: "오디오"
 family.create:
   en: Create
   fr: Créer
+  de: "Erstellen"
+  es: "Crear"
+  it: "Crea"
+  pt-BR: "Criar"
+  ja: "作成"
+  zh-CN: "创建"
+  ko: "만들기"
 family.files:
   en: Files
   fr: Fichiers
+  de: "Dateien"
+  es: "Archivos"
+  it: "File"
+  pt-BR: "Arquivos"
+  ja: "ファイル"
+  zh-CN: "文件"
+  ko: "파일"
 
 common.n_files:
   en: "%{count} files"
   fr: "%{count} fichiers"
+  de: "%{count} Dateien"
+  es: "%{count} archivos"
+  it: "%{count} file"
+  pt-BR: "%{count} arquivos"
+  ja: "%{count} 個のファイル"
+  zh-CN: "%{count} 个文件"
+  ko: "파일 %{count}개"
 common.run:
   en: Run
   fr: Lancer
+  de: "Starten"
+  es: "Ejecutar"
+  it: "Avvia"
+  pt-BR: "Executar"
+  ja: "実行"
+  zh-CN: "运行"
+  ko: "실행"
 common.cancel:
   en: Cancel
   fr: Annuler
+  de: "Abbrechen"
+  es: "Cancelar"
+  it: "Annulla"
+  pt-BR: "Cancelar"
+  ja: "キャンセル"
+  zh-CN: "取消"
+  ko: "취소"
 common.open:
   en: Open
   fr: Ouvrir
+  de: "Öffnen"
+  es: "Abrir"
+  it: "Apri"
+  pt-BR: "Abrir"
+  ja: "開く"
+  zh-CN: "打开"
+  ko: "열기"
 common.reveal:
   en: Show in folder
   fr: Afficher dans le dossier
+  de: "Im Ordner anzeigen"
+  es: "Mostrar en la carpeta"
+  it: "Mostra nella cartella"
+  pt-BR: "Mostrar na pasta"
+  ja: "フォルダで表示"
+  zh-CN: "在文件夹中显示"
+  ko: "폴더에서 보기"
 common.opt.quality:
   en: Quality
   fr: Qualité
+  de: "Qualität"
+  es: "Calidad"
+  it: "Qualità"
+  pt-BR: "Qualidade"
+  ja: "品質"
+  zh-CN: "质量"
+  ko: "품질"
 common.opt.format:
   en: Format
   fr: Format
+  de: "Format"
+  es: "Formato"
+  it: "Formato"
+  pt-BR: "Formato"
+  ja: "形式"
+  zh-CN: "格式"
+  ko: "형식"
 common.opt.password:
   en: Password
   fr: Mot de passe
+  de: "Passwort"
+  es: "Contraseña"
+  it: "Password"
+  pt-BR: "Senha"
+  ja: "パスワード"
+  zh-CN: "密码"
+  ko: "암호"
 common.opt.pages:
   en: Pages
   fr: Pages
+  de: "Seiten"
+  es: "Páginas"
+  it: "Pagine"
+  pt-BR: "Páginas"
+  ja: "ページ"
+  zh-CN: "页面"
+  ko: "페이지"
 common.opt.pages.help:
   en: "Ranges like 1-3, 5, 8- (empty = all pages)"
   fr: "Plages comme 1-3, 5, 8- (vide = toutes les pages)"
+  de: "Bereiche wie 1-3, 5, 8- (leer = alle Seiten)"
+  es: "Rangos como 1-3, 5, 8- (vacío = todas las páginas)"
+  it: "Intervalli come 1-3, 5, 8- (vuoto = tutte le pagine)"
+  pt-BR: "Intervalos como 1-3, 5, 8- (vazio = todas as páginas)"
+  ja: "1-3, 5, 8- のような範囲指定(空欄 = 全ページ)"
+  zh-CN: "范围如 1-3, 5, 8-(留空 = 所有页面)"
+  ko: "1-3, 5, 8- 같은 범위 (비워 두면 모든 페이지)"
 common.opt.position:
   en: Position
   fr: Position
+  de: "Position"
+  es: "Posición"
+  it: "Posizione"
+  pt-BR: "Posição"
+  ja: "位置"
+  zh-CN: "位置"
+  ko: "위치"
 common.opt.opacity:
   en: Opacity
   fr: Opacité
+  de: "Deckkraft"
+  es: "Opacidad"
+  it: "Opacità"
+  pt-BR: "Opacidade"
+  ja: "不透明度"
+  zh-CN: "不透明度"
+  ko: "불투명도"
 common.opt.color:
   en: Color
   fr: Couleur
+  de: "Farbe"
+  es: "Color"
+  it: "Colore"
+  pt-BR: "Cor"
+  ja: "色"
+  zh-CN: "颜色"
+  ko: "색상"
 common.opt.language:
   en: Language
   fr: Langue
+  de: "Sprache"
+  es: "Idioma"
+  it: "Lingua"
+  pt-BR: "Idioma"
+  ja: "言語"
+  zh-CN: "语言"
+  ko: "언어"
 
 chain.template.web_photos:
   en: Web-ready photos
   fr: Photos prêtes pour le web
+  de: "Fotos fürs Web"
+  es: "Fotos listas para la web"
+  it: "Foto pronte per il web"
+  pt-BR: "Fotos prontas para a web"
+  ja: "Web用の写真"
+  zh-CN: "网页用照片"
+  ko: "웹용 사진"
 chain.template.social:
   en: Social export
   fr: Export réseaux sociaux
+  de: "Export für Social Media"
+  es: "Exportar para redes sociales"
+  it: "Esporta per i social"
+  pt-BR: "Exportar para redes sociais"
+  ja: "SNS用に書き出し"
+  zh-CN: "社交媒体导出"
+  ko: "SNS용 내보내기"
 chain.template.straighten:
   en: Straighten & shrink
   fr: Redresser et alléger
+  de: "Begradigen & verkleinern"
+  es: "Enderezar y reducir"
+  it: "Raddrizza e riduci"
+  pt-BR: "Endireitar e reduzir"
+  ja: "傾き補正と軽量化"
+  zh-CN: "校正并缩小"
+  ko: "똑바로 맞추고 줄이기"
 chain.template.scan_to_pdf:
   en: Scans to searchable PDF
   fr: Scans en PDF cherchable
+  de: "Scans zu durchsuchbarem PDF"
+  es: "Escaneos a PDF con búsqueda"
+  it: "Scansioni in PDF ricercabile"
+  pt-BR: "Digitalizações em PDF pesquisável"
+  ja: "スキャンから検索可能なPDFへ"
+  zh-CN: "扫描件转可搜索 PDF"
+  ko: "스캔본을 검색 가능한 PDF로"
 chain.template.podcast:
   en: Podcast clean-up
   fr: Nettoyage de podcast
+  de: "Podcast aufräumen"
+  es: "Limpieza de podcast"
+  it: "Pulizia podcast"
+  pt-BR: "Limpeza de podcast"
+  ja: "ポッドキャストの整音"
+  zh-CN: "播客音频清理"
+  ko: "팟캐스트 정리"
 
 # ---------------------------------------------------------------------------------------------
 # App shell (agent D). French typography: U+202F (narrow no-break space) before ; : ! ? and
@@ -94,1628 +283,5114 @@ chain.template.podcast:
 app.nav.tools:
   en: Tools
   fr: Outils
+  de: "Werkzeuge"
+  es: "Herramientas"
+  it: "Strumenti"
+  pt-BR: "Ferramentas"
+  ja: "ツール"
+  zh-CN: "工具"
+  ko: "도구"
 app.nav.studios:
   en: Studios
   fr: Studios
+  de: "Studios"
+  es: "Estudios"
+  it: "Studio"
+  pt-BR: "Estúdios"
+  ja: "スタジオ"
+  zh-CN: "工作室"
+  ko: "스튜디오"
 app.nav.chains:
   en: Chains
   fr: Chaînes
+  de: "Ketten"
+  es: "Cadenas"
+  it: "Catene"
+  pt-BR: "Cadeias"
+  ja: "チェーン"
+  zh-CN: "链"
+  ko: "체인"
 app.nav.runs:
   en: Runs
   fr: Historique
+  de: "Verlauf"
+  es: "Historial"
+  it: "Cronologia"
+  pt-BR: "Histórico"
+  ja: "履歴"
+  zh-CN: "历史记录"
+  ko: "기록"
 app.nav.settings:
   en: Settings
   fr: Réglages
+  de: "Einstellungen"
+  es: "Ajustes"
+  it: "Impostazioni"
+  pt-BR: "Configurações"
+  ja: "設定"
+  zh-CN: "设置"
+  ko: "설정"
 app.nav.favorites:
   en: favorites
   fr: favoris
+  de: "Favoriten"
+  es: "favoritos"
+  it: "preferiti"
+  pt-BR: "favoritos"
+  ja: "お気に入り"
+  zh-CN: "收藏"
+  ko: "즐겨찾기"
 app.nav.favorites_empty:
   en: Star a tool to keep it here.
   fr: Ajoutez une étoile à un outil pour le garder ici.
+  de: "Markieren Sie ein Werkzeug mit einem Stern, um es hier zu behalten."
+  es: "Marca una herramienta con una estrella para tenerla aquí."
+  it: "Metti una stella a uno strumento per tenerlo qui."
+  pt-BR: "Marque uma ferramenta com estrela para mantê-la aqui."
+  ja: "ツールに星を付けると、ここに残ります。"
+  zh-CN: "给工具加星标，就会保留在这里。"
+  ko: "도구에 별표를 하면 여기에 보관됩니다."
 app.search.placeholder:
   en: Search tools, or describe what you want…
   fr: Chercher un outil, ou décrire ce que vous voulez…
+  de: "Werkzeug suchen oder beschreiben, was Sie wollen …"
+  es: "Busca una herramienta o describe lo que quieres…"
+  it: "Cerca uno strumento o descrivi cosa vuoi…"
+  pt-BR: "Busque uma ferramenta ou descreva o que você quer…"
+  ja: "ツールを検索、またはやりたいことを入力…"
+  zh-CN: "搜索工具，或描述你想做什么…"
+  ko: "도구를 검색하거나 원하는 작업을 설명하세요…"
 app.update.ready_short:
   en: update
   fr: mise à jour
+  de: "Update"
+  es: "actualización"
+  it: "aggiornamento"
+  pt-BR: "atualização"
+  ja: "アップデート"
+  zh-CN: "更新"
+  ko: "업데이트"
 
 app.common.clear:
   en: Clear
   fr: Vider
+  de: "Leeren"
+  es: "Borrar"
+  it: "Cancella"
+  pt-BR: "Limpar"
+  ja: "クリア"
+  zh-CN: "清除"
+  ko: "지우기"
 app.common.choose:
   en: Choose…
   fr: Choisir…
+  de: "Auswählen …"
+  es: "Elegir…"
+  it: "Scegli…"
+  pt-BR: "Escolher…"
+  ja: "選択…"
+  zh-CN: "选择…"
+  ko: "선택…"
 app.common.save:
   en: Save
   fr: Enregistrer
+  de: "Speichern"
+  es: "Guardar"
+  it: "Salva"
+  pt-BR: "Salvar"
+  ja: "保存"
+  zh-CN: "保存"
+  ko: "저장"
 app.common.delete:
   en: Delete
   fr: Supprimer
+  de: "Löschen"
+  es: "Eliminar"
+  it: "Elimina"
+  pt-BR: "Excluir"
+  ja: "削除"
+  zh-CN: "删除"
+  ko: "삭제"
 app.common.close:
   en: Close
   fr: Fermer
+  de: "Schließen"
+  es: "Cerrar"
+  it: "Chiudi"
+  pt-BR: "Fechar"
+  ja: "閉じる"
+  zh-CN: "关闭"
+  ko: "닫기"
 
 app.home.choose:
   en: Choose files…
   fr: Choisir des fichiers…
+  de: "Dateien auswählen …"
+  es: "Elegir archivos…"
+  it: "Scegli file…"
+  pt-BR: "Escolher arquivos…"
+  ja: "ファイルを選択…"
+  zh-CN: "选择文件…"
+  ko: "파일 선택…"
 app.home.reading:
   en: Reading the files…
   fr: Lecture des fichiers…
+  de: "Dateien werden gelesen …"
+  es: "Leyendo los archivos…"
+  it: "Lettura dei file…"
+  pt-BR: "Lendo os arquivos…"
+  ja: "ファイルを読み込み中…"
+  zh-CN: "正在读取文件…"
+  ko: "파일을 읽는 중…"
 app.home.drop:
   en: Drop files here, or pick a tool. Nothing leaves this machine.
   fr: Déposez des fichiers ici, ou choisissez un outil. Rien ne quitte cet ordinateur.
+  de: "Dateien hierher ziehen oder ein Werkzeug wählen. Nichts verlässt diesen Rechner."
+  es: "Suelta aquí tus archivos o elige una herramienta. Nada sale de este equipo."
+  it: "Trascina qui i file o scegli uno strumento. Niente lascia questo computer."
+  pt-BR: "Solte os arquivos aqui ou escolha uma ferramenta. Nada sai deste computador."
+  ja: "ここにファイルをドロップするか、ツールを選んでください。データがこのコンピューターの外に出ることはありません。"
+  zh-CN: "将文件拖到这里，或选择一个工具。任何内容都不会离开这台电脑。"
+  ko: "여기에 파일을 끌어다 놓거나 도구를 고르세요. 어떤 데이터도 이 컴퓨터를 벗어나지 않습니다."
 app.home.pick_tool:
   en: Pick a tool below.
   fr: Choisissez un outil ci-dessous.
+  de: "Wählen Sie unten ein Werkzeug."
+  es: "Elige una herramienta abajo."
+  it: "Scegli uno strumento qui sotto."
+  pt-BR: "Escolha uma ferramenta abaixo."
+  ja: "下からツールを選んでください。"
+  zh-CN: "请在下方选择一个工具。"
+  ko: "아래에서 도구를 고르세요."
 app.home.suggested:
   en: Suggested
   fr: Suggestions
+  de: "Vorgeschlagen"
+  es: "Sugeridas"
+  it: "Suggeriti"
+  pt-BR: "Sugeridas"
+  ja: "おすすめ"
+  zh-CN: "推荐"
+  ko: "추천"
 app.home.count:
   en: "%{count} tools"
   fr: "%{count} outils"
+  de: "%{count} Werkzeuge"
+  es: "%{count} herramientas"
+  it: "%{count} strumenti"
+  pt-BR: "%{count} ferramentas"
+  ja: "%{count} 個のツール"
+  zh-CN: "%{count} 个工具"
+  ko: "도구 %{count}개"
 app.home.offline:
   en: works offline
   fr: fonctionne hors ligne
+  de: "funktioniert offline"
+  es: "funciona sin conexión"
+  it: "funziona offline"
+  pt-BR: "funciona offline"
+  ja: "オフラインで動作"
+  zh-CN: "可离线使用"
+  ko: "오프라인 작동"
 app.home.free:
   en: free software (GPL-3.0)
   fr: logiciel libre (GPL-3.0)
+  de: "freie Software (GPL-3.0)"
+  es: "software libre (GPL-3.0)"
+  it: "software libero (GPL-3.0)"
+  pt-BR: "software livre (GPL-3.0)"
+  ja: "フリーソフトウェア (GPL-3.0)"
+  zh-CN: "自由软件 (GPL-3.0)"
+  ko: "자유 소프트웨어 (GPL-3.0)"
 app.home.all:
   en: All
   fr: Tous
+  de: "Alle"
+  es: "Todas"
+  it: "Tutti"
+  pt-BR: "Todas"
+  ja: "すべて"
+  zh-CN: "全部"
+  ko: "전체"
 app.home.not_for_files:
   en: Not for these files
   fr: Pas pour ces fichiers
+  de: "Nicht für diese Dateien"
+  es: "No sirven para estos archivos"
+  it: "Non adatti a questi file"
+  pt-BR: "Não servem para estes arquivos"
+  ja: "これらのファイルには使えません"
+  zh-CN: "不适用于这些文件"
+  ko: "이 파일에는 사용할 수 없음"
 
 app.kind.pdf:
   en: PDF
   fr: PDF
+  de: "PDF"
+  es: "PDF"
+  it: "PDF"
+  pt-BR: "PDF"
+  ja: "PDF"
+  zh-CN: "PDF"
+  ko: "PDF"
 app.kind.image:
   en: Image
   fr: Image
+  de: "Bild"
+  es: "Imagen"
+  it: "Immagine"
+  pt-BR: "Imagem"
+  ja: "画像"
+  zh-CN: "图片"
+  ko: "이미지"
 app.kind.raw:
   en: RAW
   fr: RAW
+  de: "RAW"
+  es: "RAW"
+  it: "RAW"
+  pt-BR: "RAW"
+  ja: "RAW"
+  zh-CN: "RAW"
+  ko: "RAW"
 app.kind.svg:
   en: SVG
   fr: SVG
+  de: "SVG"
+  es: "SVG"
+  it: "SVG"
+  pt-BR: "SVG"
+  ja: "SVG"
+  zh-CN: "SVG"
+  ko: "SVG"
 app.kind.video:
   en: Video
   fr: Vidéo
+  de: "Video"
+  es: "Vídeo"
+  it: "Video"
+  pt-BR: "Vídeo"
+  ja: "動画"
+  zh-CN: "视频"
+  ko: "동영상"
 app.kind.audio:
   en: Audio
   fr: Audio
+  de: "Audio"
+  es: "Audio"
+  it: "Audio"
+  pt-BR: "Áudio"
+  ja: "音声"
+  zh-CN: "音频"
+  ko: "오디오"
 app.kind.office:
   en: Office
   fr: Office
+  de: "Office"
+  es: "Office"
+  it: "Office"
+  pt-BR: "Office"
+  ja: "Office"
+  zh-CN: "Office"
+  ko: "Office"
 app.kind.ebook:
   en: Ebook
   fr: Livre num.
+  de: "E-Book"
+  es: "Libro electrónico"
+  it: "E-book"
+  pt-BR: "E-book"
+  ja: "電子書籍"
+  zh-CN: "电子书"
+  ko: "전자책"
 app.kind.html:
   en: HTML
   fr: HTML
+  de: "HTML"
+  es: "HTML"
+  it: "HTML"
+  pt-BR: "HTML"
+  ja: "HTML"
+  zh-CN: "HTML"
+  ko: "HTML"
 app.kind.markdown:
   en: Markdown
   fr: Markdown
+  de: "Markdown"
+  es: "Markdown"
+  it: "Markdown"
+  pt-BR: "Markdown"
+  ja: "Markdown"
+  zh-CN: "Markdown"
+  ko: "Markdown"
 app.kind.text:
   en: Text
   fr: Texte
+  de: "Text"
+  es: "Texto"
+  it: "Testo"
+  pt-BR: "Texto"
+  ja: "テキスト"
+  zh-CN: "文本"
+  ko: "텍스트"
 app.kind.table:
   en: CSV
   fr: CSV
+  de: "CSV"
+  es: "CSV"
+  it: "CSV"
+  pt-BR: "CSV"
+  ja: "CSV"
+  zh-CN: "CSV"
+  ko: "CSV"
 app.kind.subtitles:
   en: Subtitles
   fr: Sous-titres
+  de: "Untertitel"
+  es: "Subtítulos"
+  it: "Sottotitoli"
+  pt-BR: "Legendas"
+  ja: "字幕"
+  zh-CN: "字幕"
+  ko: "자막"
 app.kind.archive:
   en: Archive
   fr: Archive
+  de: "Archiv"
+  es: "Archivo comprimido"
+  it: "Archivio"
+  pt-BR: "Arquivo compactado"
+  ja: "アーカイブ"
+  zh-CN: "压缩包"
+  ko: "압축 파일"
 app.kind.font:
   en: Font
   fr: Police
+  de: "Schrift"
+  es: "Fuente"
+  it: "Font"
+  pt-BR: "Fonte"
+  ja: "フォント"
+  zh-CN: "字体"
+  ko: "글꼴"
 app.kind.other:
   en: File
   fr: Fichier
+  de: "Datei"
+  es: "Archivo"
+  it: "File"
+  pt-BR: "Arquivo"
+  ja: "ファイル"
+  zh-CN: "文件"
+  ko: "파일"
 app.kind.any:
   en: Any file
   fr: Tout fichier
+  de: "Beliebige Datei"
+  es: "Cualquier archivo"
+  it: "Qualsiasi file"
+  pt-BR: "Qualquer arquivo"
+  ja: "すべてのファイル"
+  zh-CN: "任意文件"
+  ko: "모든 파일"
 app.kind.folder:
   en: Folder
   fr: Dossier
+  de: "Ordner"
+  es: "Carpeta"
+  it: "Cartella"
+  pt-BR: "Pasta"
+  ja: "フォルダ"
+  zh-CN: "文件夹"
+  ko: "폴더"
 
 app.status.soon:
   en: Soon
   fr: Bientôt
+  de: "Bald"
+  es: "Pronto"
+  it: "In arrivo"
+  pt-BR: "Em breve"
+  ja: "近日対応"
+  zh-CN: "即将推出"
+  ko: "곧 제공"
 app.status.beta:
   en: Beta
   fr: Bêta
+  de: "Beta"
+  es: "Beta"
+  it: "Beta"
+  pt-BR: "Beta"
+  ja: "ベータ"
+  zh-CN: "测试版"
+  ko: "베타"
 app.status.complete:
   en: Done
   fr: Terminé
+  de: "Fertig"
+  es: "Hecho"
+  it: "Fatto"
+  pt-BR: "Concluído"
+  ja: "完了"
+  zh-CN: "完成"
+  ko: "완료"
 app.status.partial:
   en: Partly done
   fr: En partie terminé
+  de: "Teilweise fertig"
+  es: "Parcial"
+  it: "Parziale"
+  pt-BR: "Parcial"
+  ja: "一部完了"
+  zh-CN: "部分完成"
+  ko: "일부 완료"
 app.status.failed:
   en: Failed
   fr: Échec
+  de: "Fehlgeschlagen"
+  es: "Fallido"
+  it: "Non riuscito"
+  pt-BR: "Falhou"
+  ja: "失敗"
+  zh-CN: "失败"
+  ko: "실패"
 app.status.cancelled:
   en: Cancelled
   fr: Annulé
+  de: "Abgebrochen"
+  es: "Cancelado"
+  it: "Annullato"
+  pt-BR: "Cancelado"
+  ja: "キャンセル済み"
+  zh-CN: "已取消"
+  ko: "취소됨"
 app.status.running:
   en: Running
   fr: En cours
+  de: "Läuft"
+  es: "En curso"
+  it: "In corso"
+  pt-BR: "Em andamento"
+  ja: "実行中"
+  zh-CN: "运行中"
+  ko: "실행 중"
 app.status.waiting:
   en: Waiting
   fr: En attente
+  de: "Wartet"
+  es: "En espera"
+  it: "In attesa"
+  pt-BR: "Aguardando"
+  ja: "待機中"
+  zh-CN: "等待中"
+  ko: "대기 중"
 app.status.queued:
   en: Ready
   fr: Prêt
+  de: "Bereit"
+  es: "Listo"
+  it: "Pronto"
+  pt-BR: "Pronto"
+  ja: "準備完了"
+  zh-CN: "就绪"
+  ko: "준비됨"
 
 app.studios.subtitle:
   en: Visual editors for the jobs a form cannot do.
   fr: Des éditeurs visuels pour ce qu’un formulaire ne sait pas faire.
+  de: "Visuelle Editoren für Aufgaben, die ein Formular nicht schafft."
+  es: "Editores visuales para lo que un formulario no puede hacer."
+  it: "Editor visuali per i lavori che un modulo non sa fare."
+  pt-BR: "Editores visuais para o que um formulário não consegue fazer."
+  ja: "フォームではできない作業のためのビジュアルエディター。"
+  zh-CN: "用于表单无法完成的任务的可视化编辑器。"
+  ko: "양식으로는 할 수 없는 작업을 위한 시각적 편집기입니다."
 
 studio.pdf.name:
   en: PDF Studio
   fr: Studio PDF
+  de: "PDF Studio"
+  es: "PDF Studio"
+  it: "PDF Studio"
+  pt-BR: "PDF Studio"
+  ja: "PDF Studio"
+  zh-CN: "PDF Studio"
+  ko: "PDF Studio"
 
 studio.pdf.desc:
   en: Pages organized, annotated, signed, redacted or filled in by hand.
   fr: Pages organisées, annotées, signées, caviardées ou remplies à la main.
+  de: "Seiten von Hand ordnen, kommentieren, signieren, schwärzen oder ausfüllen."
+  es: "Páginas organizadas, anotadas, firmadas, censuradas o rellenadas a mano."
+  it: "Pagine organizzate, annotate, firmate, oscurate o compilate a mano."
+  pt-BR: "Páginas organizadas, anotadas, assinadas, tarjadas ou preenchidas à mão."
+  ja: "ページの整理、注釈、署名、墨消し、入力を手作業で。"
+  zh-CN: "手动整理、批注、签名、涂黑或填写页面。"
+  ko: "페이지를 직접 정리하고 주석, 서명, 가림 처리, 작성할 수 있습니다."
 
 studio.media.name:
   en: Trim & Caption Studio
   fr: Studio montage et sous-titres
+  de: "Trim & Caption Studio"
+  es: "Trim & Caption Studio"
+  it: "Trim & Caption Studio"
+  pt-BR: "Trim & Caption Studio"
+  ja: "Trim & Caption Studio"
+  zh-CN: "Trim & Caption Studio"
+  ko: "Trim & Caption Studio"
 
 studio.media.desc:
   en: Video or audio cut on a timeline, with captions.
   fr: Vidéo ou audio coupés sur une frise, avec sous-titres.
+  de: "Video oder Audio auf einer Zeitleiste schneiden, mit Untertiteln."
+  es: "Vídeo o audio cortado en una línea de tiempo, con subtítulos."
+  it: "Video o audio tagliati su una timeline, con sottotitoli."
+  pt-BR: "Vídeo ou áudio cortado em uma linha do tempo, com legendas."
+  ja: "タイムライン上で動画や音声をカットし、字幕を付けられます。"
+  zh-CN: "在时间轴上剪辑视频或音频，并添加字幕。"
+  ko: "타임라인에서 동영상이나 오디오를 자르고 자막을 넣습니다."
 
 app.studio.open:
   en: Open…
   fr: Ouvrir…
+  de: "Öffnen …"
+  es: "Abrir…"
+  it: "Apri…"
+  pt-BR: "Abrir…"
+  ja: "開く…"
+  zh-CN: "打开…"
+  ko: "열기…"
 
 app.studio.loading:
   en: Opening…
   fr: Ouverture…
+  de: "Wird geöffnet …"
+  es: "Abriendo…"
+  it: "Apertura…"
+  pt-BR: "Abrindo…"
+  ja: "開いています…"
+  zh-CN: "正在打开…"
+  ko: "여는 중…"
 
 app.studio.saved:
   en: Saved
   fr: Enregistré
+  de: "Gespeichert"
+  es: "Guardado"
+  it: "Salvato"
+  pt-BR: "Salvo"
+  ja: "保存しました"
+  zh-CN: "已保存"
+  ko: "저장됨"
 
 app.studio.unavailable:
   en: Studios need the engines of the full build; this development build has only demo tools.
   fr: Les studios ont besoin des moteurs de la version complète ; cette version de développement n’a que des outils de démonstration.
+  de: "Studios benötigen die Engines der Vollversion; diese Entwicklungsversion enthält nur Demo-Werkzeuge."
+  es: "Los estudios necesitan los motores de la versión completa; esta versión de desarrollo solo tiene herramientas de demostración."
+  it: "Gli studio richiedono i motori della versione completa; questa build di sviluppo contiene solo strumenti dimostrativi."
+  pt-BR: "Os estúdios precisam dos mecanismos da versão completa; esta versão de desenvolvimento só tem ferramentas de demonstração."
+  ja: "スタジオにはフル版のエンジンが必要です。この開発ビルドにはデモ用ツールしかありません。"
+  zh-CN: "工作室需要完整版的引擎；此开发版本只包含演示工具。"
+  ko: "스튜디오는 정식 빌드의 엔진이 필요합니다. 이 개발 빌드에는 데모 도구만 있습니다."
 
 app.studio.footer:
   en: Studios never touch the original unless you ask, and every save is listed in Runs, where an overwrite can be undone.
   fr: Les studios ne touchent jamais à l’original sans votre accord, et chaque enregistrement figure dans Historique, d’où un écrasement peut être annulé.
+  de: "Studios berühren das Original nie, außer Sie wünschen es. Jede Speicherung steht unter „Läufe“, wo sich ein Überschreiben rückgängig machen lässt."
+  es: "Los estudios nunca tocan el original salvo que lo pidas, y cada guardado aparece en Ejecuciones, donde se puede deshacer una sobrescritura."
+  it: "Gli studio non toccano mai l'originale se non lo chiedi, e ogni salvataggio compare in Esecuzioni, dove una sovrascrittura si può annullare."
+  pt-BR: "Os estúdios nunca mexem no original, a menos que você peça, e cada salvamento aparece em Execuções, onde uma substituição pode ser desfeita."
+  ja: "スタジオは、指示しない限り元のファイルには触れません。保存はすべて「実行履歴」に記録され、上書きは取り消せます。"
+  zh-CN: "除非你要求，工作室绝不会改动原文件；每次保存都会列在“运行记录”中，覆盖操作可以在那里撤销。"
+  ko: "스튜디오는 요청하지 않는 한 원본을 건드리지 않으며, 저장할 때마다 '실행 기록'에 남아 덮어쓰기를 되돌릴 수 있습니다."
 
 app.studio.err.undo:
   en: The saved copy of the original is gone, so this cannot be undone.
   fr: "La copie de l’original a disparu : impossible d’annuler."
+  de: "Die gespeicherte Kopie des Originals ist nicht mehr vorhanden, daher lässt sich das nicht rückgängig machen."
+  es: "La copia guardada del original ya no existe, así que no se puede deshacer."
+  it: "La copia salvata dell'originale non esiste più, quindi non è possibile annullare."
+  pt-BR: "A cópia salva do original não existe mais, então não é possível desfazer."
+  ja: "元のファイルのバックアップコピーがないため、取り消せません。"
+  zh-CN: "原文件的已保存副本已不存在，因此无法撤销。"
+  ko: "원본의 저장된 사본이 없어져서 되돌릴 수 없습니다."
 
 app.studio.err.tool_missing:
   en: this tool is not part of this build
   fr: cet outil ne fait pas partie de cette version
+  de: "dieses Werkzeug ist nicht Teil dieser Version"
+  es: "esta herramienta no forma parte de esta versión"
+  it: "questo strumento non fa parte di questa build"
+  pt-BR: "esta ferramenta não faz parte desta versão"
+  ja: "このツールはこのビルドには含まれていません"
+  zh-CN: "此工具不属于当前版本"
+  ko: "이 도구는 이 빌드에 포함되어 있지 않습니다"
 
 app.studio.pdf.name:
   en: PDF Studio
   fr: Studio PDF
+  de: "PDF Studio"
+  es: "PDF Studio"
+  it: "PDF Studio"
+  pt-BR: "PDF Studio"
+  ja: "PDF Studio"
+  zh-CN: "PDF Studio"
+  ko: "PDF Studio"
 
 app.studio.pdf.desc:
   en: Open one PDF and work on its pages directly — reorder, annotate, sign, black out, fill in.
   fr: Ouvrez un PDF et travaillez directement sur ses pages — réordonner, annoter, signer, caviarder, remplir.
+  de: "Öffnen Sie ein PDF und bearbeiten Sie die Seiten direkt: neu ordnen, kommentieren, signieren, schwärzen, ausfüllen."
+  es: "Abre un PDF y trabaja sus páginas directamente: reordena, anota, firma, censura, rellena."
+  it: "Apri un PDF e lavora direttamente sulle sue pagine: riordina, annota, firma, oscura, compila."
+  pt-BR: "Abra um PDF e trabalhe nas páginas diretamente: reordene, anote, assine, tarje, preencha."
+  ja: "PDFを1つ開き、ページを直接編集できます。並べ替え、注釈、署名、墨消し、入力に対応。"
+  zh-CN: "打开一个 PDF，直接处理其页面：重新排序、批注、签名、涂黑、填写。"
+  ko: "PDF 하나를 열어 페이지를 직접 편집하세요. 순서 변경, 주석, 서명, 가림 처리, 양식 작성이 가능합니다."
 
 app.studio.pdf.features:
   en: "Organize: drag pages, rotate, delete, insert from another PDF, extract a selection. Annotate: highlight, underline, pen, boxes, arrows, text, comments. Sign: draw, type or import a signature. Redact: boxes or found text, truly removed on save. Forms: type into the fields."
   fr: "Organiser : glisser les pages, pivoter, supprimer, insérer depuis un autre PDF, extraire une sélection. Annoter : surligner, souligner, stylo, cadres, flèches, texte, commentaires. Signer : dessiner, taper ou importer une signature. Caviarder : cadres ou texte trouvé, vraiment supprimés à l’enregistrement. Formulaires : saisir dans les champs."
+  de: "Organisieren: Seiten ziehen, drehen, löschen, aus einem anderen PDF einfügen, eine Auswahl extrahieren. Kommentieren: markieren, unterstreichen, Stift, Rahmen, Pfeile, Text, Kommentare. Signieren: Unterschrift zeichnen, tippen oder importieren. Schwärzen: Rahmen oder gefundener Text, beim Speichern wirklich entfernt. Formulare: in die Felder tippen."
+  es: "Organizar: arrastrar páginas, girar, eliminar, insertar desde otro PDF, extraer una selección. Anotar: resaltar, subrayar, lápiz, recuadros, flechas, texto, comentarios. Firmar: dibujar, escribir o importar una firma. Censurar: recuadros o texto encontrado, eliminado de verdad al guardar. Formularios: escribir en los campos."
+  it: "Organizza: trascina le pagine, ruota, elimina, inserisci da un altro PDF, estrai una selezione. Annota: evidenzia, sottolinea, penna, riquadri, frecce, testo, commenti. Firma: disegna, digita o importa una firma. Oscura: riquadri o testo trovato, rimosso davvero al salvataggio. Moduli: scrivi nei campi."
+  pt-BR: "Organizar: arrastar páginas, girar, excluir, inserir de outro PDF, extrair uma seleção. Anotar: realçar, sublinhar, caneta, caixas, setas, texto, comentários. Assinar: desenhar, digitar ou importar uma assinatura. Tarjar: caixas ou texto encontrado, removido de verdade ao salvar. Formulários: digitar nos campos."
+  ja: "整理: ページのドラッグ、回転、削除、別のPDFからの挿入、選択範囲の抽出。注釈: ハイライト、下線、ペン、四角、矢印、テキスト、コメント。署名: 手書き、入力、画像の取り込み。墨消し: 範囲指定または検索したテキストを、保存時に完全に削除。フォーム: 入力欄に直接入力。"
+  zh-CN: "整理：拖动、旋转、删除页面，从其他 PDF 插入，提取所选页面。批注：高亮、下划线、画笔、方框、箭头、文字、评论。签名：手绘、键入或导入签名。涂黑：用方框或查找到的文字，保存时彻底删除。表单：直接在字段中输入。"
+  ko: "정리: 페이지 끌기, 회전, 삭제, 다른 PDF에서 삽입, 선택 영역 추출. 주석: 형광펜, 밑줄, 펜, 상자, 화살표, 텍스트, 코멘트. 서명: 그리기, 입력 또는 가져오기. 가림 처리: 상자 또는 찾은 텍스트를 저장할 때 완전히 삭제. 양식: 필드에 직접 입력."
 
 app.studio.pdf.open:
   en: Open PDF Studio
   fr: Ouvrir le Studio PDF
+  de: "PDF Studio öffnen"
+  es: "Abrir PDF Studio"
+  it: "Apri PDF Studio"
+  pt-BR: "Abrir o PDF Studio"
+  ja: "PDF Studioを開く"
+  zh-CN: "打开 PDF Studio"
+  ko: "PDF Studio 열기"
 
 app.studio.pdf.drop:
   en: Drop a PDF here, or open one. The original stays untouched until you choose to overwrite it.
   fr: Déposez un PDF ici, ou ouvrez-en un. L’original reste intact tant que vous ne choisissez pas de l’écraser.
+  de: "Ziehen Sie ein PDF hierher oder öffnen Sie eines. Das Original bleibt unberührt, bis Sie sich fürs Überschreiben entscheiden."
+  es: "Suelta un PDF aquí o abre uno. El original queda intacto hasta que decidas sobrescribirlo."
+  it: "Trascina qui un PDF o aprine uno. L'originale resta intatto finché non decidi di sovrascriverlo."
+  pt-BR: "Solte um PDF aqui ou abra um. O original fica intacto até você decidir substituí-lo."
+  ja: "ここにPDFをドロップするか、PDFを開いてください。上書きを選ぶまで元のファイルはそのままです。"
+  zh-CN: "将 PDF 拖到这里，或打开一个。在你选择覆盖之前，原文件不会被改动。"
+  ko: "여기에 PDF를 끌어다 놓거나 하나를 여세요. 덮어쓰기를 선택하기 전까지 원본은 그대로 유지됩니다."
 
 app.pdf.mode.organize:
   en: Organize
   fr: Organiser
+  de: "Organisieren"
+  es: "Organizar"
+  it: "Organizza"
+  pt-BR: "Organizar"
+  ja: "整理"
+  zh-CN: "整理"
+  ko: "정리"
 
 app.pdf.mode.annotate:
   en: Annotate
   fr: Annoter
+  de: "Kommentieren"
+  es: "Anotar"
+  it: "Annota"
+  pt-BR: "Anotar"
+  ja: "注釈"
+  zh-CN: "批注"
+  ko: "주석"
 
 app.pdf.mode.sign:
   en: Sign
   fr: Signer
+  de: "Signieren"
+  es: "Firmar"
+  it: "Firma"
+  pt-BR: "Assinar"
+  ja: "署名"
+  zh-CN: "签名"
+  ko: "서명"
 
 app.pdf.mode.redact:
   en: Redact
   fr: Caviarder
+  de: "Schwärzen"
+  es: "Censurar"
+  it: "Oscura"
+  pt-BR: "Tarjar"
+  ja: "墨消し"
+  zh-CN: "涂黑"
+  ko: "가림 처리"
 
 app.pdf.mode.forms:
   en: Forms
   fr: Formulaires
+  de: "Formulare"
+  es: "Formularios"
+  it: "Moduli"
+  pt-BR: "Formulários"
+  ja: "フォーム"
+  zh-CN: "表单"
+  ko: "양식"
 
 app.pdf.zoom_in:
   en: Zoom in
   fr: Zoom avant
+  de: "Vergrößern"
+  es: "Acercar"
+  it: "Ingrandisci"
+  pt-BR: "Ampliar"
+  ja: "拡大"
+  zh-CN: "放大"
+  ko: "확대"
 
 app.pdf.zoom_out:
   en: Zoom out
   fr: Zoom arrière
+  de: "Verkleinern"
+  es: "Alejar"
+  it: "Riduci"
+  pt-BR: "Reduzir"
+  ja: "縮小"
+  zh-CN: "缩小"
+  ko: "축소"
 
 app.pdf.fit_width:
   en: Width
   fr: Largeur
+  de: "Breite"
+  es: "Ancho"
+  it: "Larghezza"
+  pt-BR: "Largura"
+  ja: "幅"
+  zh-CN: "宽度"
+  ko: "너비"
 
 app.pdf.fit_page:
   en: Page
   fr: Page
+  de: "Seite"
+  es: "Página"
+  it: "Pagina"
+  pt-BR: "Página"
+  ja: "ページ"
+  zh-CN: "整页"
+  ko: "페이지"
 
 app.pdf.status:
   en: "Page %{page} of %{total}"
   fr: "Page %{page} sur %{total}"
+  de: "Seite %{page} von %{total}"
+  es: "Página %{page} de %{total}"
+  it: "Pagina %{page} di %{total}"
+  pt-BR: "Página %{page} de %{total}"
+  ja: "%{page} / %{total} ページ"
+  zh-CN: "第 %{page} 页，共 %{total} 页"
+  ko: "%{page} / %{total} 페이지"
 
 app.pdf.changes:
   en: "· %{count} changes"
   fr: "· %{count} modifications"
+  de: "· %{count} Änderungen"
+  es: "· %{count} cambios"
+  it: "· %{count} modifiche"
+  pt-BR: "· %{count} alterações"
+  ja: "· %{count} 件の変更"
+  zh-CN: "· %{count} 处更改"
+  ko: "· 변경 %{count}건"
 
 app.pdf.undo:
   en: Undo
   fr: Annuler
+  de: "Rückgängig"
+  es: "Deshacer"
+  it: "Annulla"
+  pt-BR: "Desfazer"
+  ja: "元に戻す"
+  zh-CN: "撤销"
+  ko: "실행 취소"
 
 app.pdf.save_copy:
   en: Save a copy
   fr: Enregistrer une copie
+  de: "Kopie speichern"
+  es: "Guardar una copia"
+  it: "Salva una copia"
+  pt-BR: "Salvar uma cópia"
+  ja: "コピーを保存"
+  zh-CN: "保存副本"
+  ko: "사본 저장"
 
 app.pdf.saving:
   en: Saving…
   fr: Enregistrement…
+  de: "Wird gespeichert …"
+  es: "Guardando…"
+  it: "Salvataggio…"
+  pt-BR: "Salvando…"
+  ja: "保存中…"
+  zh-CN: "正在保存…"
+  ko: "저장 중…"
 
 app.pdf.overwrite:
   en: Overwrite original…
   fr: Écraser l’original…
+  de: "Original überschreiben …"
+  es: "Sobrescribir el original…"
+  it: "Sovrascrivi l'originale…"
+  pt-BR: "Substituir o original…"
+  ja: "元のファイルを上書き…"
+  zh-CN: "覆盖原文件…"
+  ko: "원본 덮어쓰기…"
 
 app.pdf.overwrite.title:
   en: Overwrite the original?
   fr: Écraser l’original ?
+  de: "Original überschreiben?"
+  es: "¿Sobrescribir el original?"
+  it: "Sovrascrivere l'originale?"
+  pt-BR: "Substituir o original?"
+  ja: "元のファイルを上書きしますか？"
+  zh-CN: "要覆盖原文件吗？"
+  ko: "원본을 덮어쓸까요?"
 
 app.pdf.overwrite.body:
   en: "%{name} will be replaced by the edited version. A copy of the original is kept: Runs → Undo puts it back."
   fr: "%{name} sera remplacé par la version modifiée. Une copie de l’original est conservée : Historique → Annuler la remet en place."
+  de: "%{name} wird durch die bearbeitete Version ersetzt. Eine Kopie des Originals bleibt erhalten: „Läufe“ → „Rückgängig“ stellt sie wieder her."
+  es: "%{name} será reemplazado por la versión editada. Se conserva una copia del original: Ejecuciones → Deshacer lo recupera."
+  it: "%{name} sarà sostituito dalla versione modificata. Una copia dell'originale viene conservata: Esecuzioni → Annulla la ripristina."
+  pt-BR: "%{name} será substituído pela versão editada. Uma cópia do original é mantida: Execuções → Desfazer a restaura."
+  ja: "%{name} は編集後のバージョンに置き換えられます。元のコピーは保持され、「実行履歴」→「元に戻す」で復元できます。"
+  zh-CN: "%{name} 将被编辑后的版本替换。原文件的副本会保留：在“运行记录”中点击“撤销”即可恢复。"
+  ko: "%{name} 파일이 편집된 버전으로 바뀝니다. 원본 사본은 보관되며, 실행 기록 → 실행 취소로 되돌릴 수 있습니다."
 
 app.pdf.overwrite.ok:
   en: Overwrite
   fr: Écraser
+  de: "Überschreiben"
+  es: "Sobrescribir"
+  it: "Sovrascrivi"
+  pt-BR: "Substituir"
+  ja: "上書き"
+  zh-CN: "覆盖"
+  ko: "덮어쓰기"
 
 app.pdf.err.no_pages:
   en: A PDF needs at least one page.
   fr: Un PDF doit garder au moins une page.
+  de: "Ein PDF braucht mindestens eine Seite."
+  es: "Un PDF necesita al menos una página."
+  it: "Un PDF deve avere almeno una pagina."
+  pt-BR: "Um PDF precisa de pelo menos uma página."
+  ja: "PDFには少なくとも1ページ必要です。"
+  zh-CN: "PDF 至少需要一页。"
+  ko: "PDF에는 페이지가 하나 이상 있어야 합니다."
 
 app.pdf.err.redact_verify:
   en: "Text is still readable under a redaction box on page %{page}; nothing was saved."
   fr: "Du texte reste lisible sous un cadre de caviardage, page %{page} ; rien n’a été enregistré."
+  de: "Unter einem Schwärzungsrahmen auf Seite %{page} ist Text noch lesbar; es wurde nichts gespeichert."
+  es: "Aún se puede leer texto bajo un recuadro de censura en la página %{page}; no se guardó nada."
+  it: "Sotto un riquadro di oscuramento a pagina %{page} il testo è ancora leggibile; non è stato salvato nulla."
+  pt-BR: "Ainda é possível ler texto sob uma caixa de tarja na página %{page}; nada foi salvo."
+  ja: "%{page}ページの墨消し範囲の下にまだ読めるテキストがあります。何も保存されませんでした。"
+  zh-CN: "第 %{page} 页的涂黑框下仍可读取文字，未保存任何内容。"
+  ko: "%{page}페이지의 가림 상자 아래에 텍스트가 아직 읽힙니다. 아무것도 저장되지 않았습니다."
 
 app.pdf.note.pages:
   en: "%{count} pages"
   fr: "%{count} pages"
+  de: "%{count} Seiten"
+  es: "%{count} páginas"
+  it: "%{count} pagine"
+  pt-BR: "%{count} páginas"
+  ja: "%{count} ページ"
+  zh-CN: "%{count} 页"
+  ko: "%{count}페이지"
 
 app.pdf.note.annotations:
   en: "%{count} annotations"
   fr: "%{count} annotations"
+  de: "%{count} Kommentare"
+  es: "%{count} anotaciones"
+  it: "%{count} annotazioni"
+  pt-BR: "%{count} anotações"
+  ja: "注釈 %{count} 件"
+  zh-CN: "%{count} 条批注"
+  ko: "주석 %{count}개"
 
 app.pdf.note.signatures:
   en: "%{count} signatures"
   fr: "%{count} signatures"
+  de: "%{count} Signaturen"
+  es: "%{count} firmas"
+  it: "%{count} firme"
+  pt-BR: "%{count} assinaturas"
+  ja: "署名 %{count} 件"
+  zh-CN: "%{count} 个签名"
+  ko: "서명 %{count}개"
 
 app.pdf.note.redactions:
   en: "%{count} areas redacted"
   fr: "%{count} zones caviardées"
+  de: "%{count} Bereiche geschwärzt"
+  es: "%{count} áreas censuradas"
+  it: "%{count} aree oscurate"
+  pt-BR: "%{count} áreas tarjadas"
+  ja: "墨消し %{count} か所"
+  zh-CN: "已涂黑 %{count} 处"
+  ko: "%{count}개 영역 가림 처리됨"
 
 app.pdf.note.fields:
   en: "%{count} fields filled"
   fr: "%{count} champs remplis"
+  de: "%{count} Felder ausgefüllt"
+  es: "%{count} campos rellenados"
+  it: "%{count} campi compilati"
+  pt-BR: "%{count} campos preenchidos"
+  ja: "%{count} 個のフィールドを入力"
+  zh-CN: "已填写 %{count} 个字段"
+  ko: "필드 %{count}개 작성됨"
 
 app.pdf.inserted:
   en: "%{count} pages inserted"
   fr: "%{count} pages insérées"
+  de: "%{count} Seiten eingefügt"
+  es: "%{count} páginas insertadas"
+  it: "%{count} pagine inserite"
+  pt-BR: "%{count} páginas inseridas"
+  ja: "%{count} ページを挿入しました"
+  zh-CN: "已插入 %{count} 页"
+  ko: "%{count}페이지 삽입됨"
 
 app.pdf.organize.help:
   en: Drag pages in the left column to reorder them. Ctrl-click or Shift-click to select several.
   fr: Glissez les pages dans la colonne de gauche pour les réordonner. Ctrl-clic ou Maj-clic pour en sélectionner plusieurs.
+  de: "Ziehen Sie Seiten in der linken Spalte, um sie neu zu ordnen. Mit Strg-Klick oder Umschalt-Klick wählen Sie mehrere aus."
+  es: "Arrastra las páginas de la columna izquierda para reordenarlas. Ctrl+clic o Mayús+clic para seleccionar varias."
+  it: "Trascina le pagine nella colonna a sinistra per riordinarle. Ctrl+clic o Maiusc+clic per selezionarne più di una."
+  pt-BR: "Arraste as páginas na coluna da esquerda para reordená-las. Ctrl+clique ou Shift+clique para selecionar várias."
+  ja: "左の列でページをドラッグして並べ替えます。Ctrl+クリックまたはShift+クリックで複数選択できます。"
+  zh-CN: "在左侧栏中拖动页面即可重新排序。按住 Ctrl 或 Shift 点击可多选。"
+  ko: "왼쪽 열에서 페이지를 끌어 순서를 바꿉니다. Ctrl+클릭 또는 Shift+클릭으로 여러 개를 선택할 수 있습니다."
 
 app.pdf.organize.current:
   en: "Page %{page} of %{total}"
   fr: "Page %{page} sur %{total}"
+  de: "Seite %{page} von %{total}"
+  es: "Página %{page} de %{total}"
+  it: "Pagina %{page} di %{total}"
+  pt-BR: "Página %{page} de %{total}"
+  ja: "%{page} / %{total} ページ"
+  zh-CN: "第 %{page} 页，共 %{total} 页"
+  ko: "%{page} / %{total} 페이지"
 
 app.pdf.organize.selected:
   en: "%{count} pages selected"
   fr: "%{count} pages sélectionnées"
+  de: "%{count} Seiten ausgewählt"
+  es: "%{count} páginas seleccionadas"
+  it: "%{count} pagine selezionate"
+  pt-BR: "%{count} páginas selecionadas"
+  ja: "%{count} ページを選択中"
+  zh-CN: "已选择 %{count} 页"
+  ko: "%{count}페이지 선택됨"
 
 app.pdf.rotate_left:
   en: Left
   fr: Gauche
+  de: "Links"
+  es: "Izquierda"
+  it: "Sinistra"
+  pt-BR: "Esquerda"
+  ja: "左へ"
+  zh-CN: "向左"
+  ko: "왼쪽"
 
 app.pdf.rotate_right:
   en: Right
   fr: Droite
+  de: "Rechts"
+  es: "Derecha"
+  it: "Destra"
+  pt-BR: "Direita"
+  ja: "右へ"
+  zh-CN: "向右"
+  ko: "오른쪽"
 
 app.pdf.delete_pages:
   en: "Delete (%{count})"
   fr: "Supprimer (%{count})"
+  de: "Löschen (%{count})"
+  es: "Eliminar (%{count})"
+  it: "Elimina (%{count})"
+  pt-BR: "Excluir (%{count})"
+  ja: "削除 (%{count})"
+  zh-CN: "删除 (%{count})"
+  ko: "삭제 (%{count})"
 
 app.pdf.insert:
   en: Insert pages from a PDF…
   fr: Insérer les pages d’un PDF…
+  de: "Seiten aus einem PDF einfügen …"
+  es: "Insertar páginas de un PDF…"
+  it: "Inserisci pagine da un PDF…"
+  pt-BR: "Inserir páginas de um PDF…"
+  ja: "PDFからページを挿入…"
+  zh-CN: "从 PDF 插入页面…"
+  ko: "PDF에서 페이지 삽입…"
 
 app.pdf.extract:
   en: "Extract %{count} pages to a new file"
   fr: "Extraire %{count} pages dans un nouveau fichier"
+  de: "%{count} Seiten in neue Datei extrahieren"
+  es: "Extraer %{count} páginas a un archivo nuevo"
+  it: "Estrai %{count} pagine in un nuovo file"
+  pt-BR: "Extrair %{count} páginas para um novo arquivo"
+  ja: "%{count} ページを新しいファイルに抽出"
+  zh-CN: "将 %{count} 页提取到新文件"
+  ko: "%{count}페이지를 새 파일로 추출"
 
 app.pdf.select_all:
   en: Select all
   fr: Tout sélectionner
+  de: "Alle auswählen"
+  es: "Seleccionar todo"
+  it: "Seleziona tutto"
+  pt-BR: "Selecionar tudo"
+  ja: "すべて選択"
+  zh-CN: "全选"
+  ko: "모두 선택"
 
 app.pdf.annotate.tools:
   en: Tools
   fr: Outils
+  de: "Werkzeuge"
+  es: "Herramientas"
+  it: "Strumenti"
+  pt-BR: "Ferramentas"
+  ja: "ツール"
+  zh-CN: "工具"
+  ko: "도구"
 
 app.pdf.colour:
   en: Colour
   fr: Couleur
+  de: "Farbe"
+  es: "Color"
+  it: "Colore"
+  pt-BR: "Cor"
+  ja: "色"
+  zh-CN: "颜色"
+  ko: "색상"
 
 app.pdf.text:
   en: Text
   fr: Texte
+  de: "Text"
+  es: "Texto"
+  it: "Testo"
+  pt-BR: "Texto"
+  ja: "テキスト"
+  zh-CN: "文字"
+  ko: "텍스트"
 
 app.pdf.text_ph:
   en: Type here…
   fr: Saisissez ici…
+  de: "Hier tippen …"
+  es: "Escribe aquí…"
+  it: "Scrivi qui…"
+  pt-BR: "Digite aqui…"
+  ja: "ここに入力…"
+  zh-CN: "在此输入…"
+  ko: "여기에 입력…"
 
 app.pdf.delete_mark:
   en: Delete
   fr: Supprimer
+  de: "Löschen"
+  es: "Eliminar"
+  it: "Elimina"
+  pt-BR: "Excluir"
+  ja: "削除"
+  zh-CN: "删除"
+  ko: "삭제"
 
 app.pdf.reviewer:
   en: Reviewer
   fr: Relecteur
+  de: "Prüfer"
+  es: "Revisor"
+  it: "Revisore"
+  pt-BR: "Revisor"
+  ja: "レビュー担当者"
+  zh-CN: "审阅者"
+  ko: "검토자"
 
 app.pdf.reviewer_ph:
   en: Your name
   fr: Votre nom
+  de: "Ihr Name"
+  es: "Tu nombre"
+  it: "Il tuo nome"
+  pt-BR: "Seu nome"
+  ja: "あなたの名前"
+  zh-CN: "你的名字"
+  ko: "이름"
 
 app.pdf.reviewer.help:
   en: Shown as the author of your annotations and comments in any PDF reader.
   fr: Affiché comme auteur de vos annotations et commentaires dans tout lecteur PDF.
+  de: "Wird in jedem PDF-Reader als Autor Ihrer Kommentare und Notizen angezeigt."
+  es: "Se muestra como autor de tus anotaciones y comentarios en cualquier lector de PDF."
+  it: "Appare come autore delle tue annotazioni e dei tuoi commenti in qualsiasi lettore PDF."
+  pt-BR: "Aparece como autor das suas anotações e comentários em qualquer leitor de PDF."
+  ja: "どのPDFリーダーでも、注釈とコメントの作成者として表示されます。"
+  zh-CN: "在任何 PDF 阅读器中，都会显示为你的批注和评论的作者。"
+  ko: "어떤 PDF 리더에서든 내 주석과 코멘트의 작성자로 표시됩니다."
 
 app.pdf.pen.select:
   en: Select
   fr: Sélection
+  de: "Auswählen"
+  es: "Seleccionar"
+  it: "Seleziona"
+  pt-BR: "Selecionar"
+  ja: "選択"
+  zh-CN: "选择"
+  ko: "선택"
 
 app.pdf.pen.select.help:
   en: Click an annotation to select it, drag it to move it, Delete to remove it.
   fr: Cliquez sur une annotation pour la sélectionner, glissez pour la déplacer, Suppr pour l’effacer.
+  de: "Klicken Sie auf eine Anmerkung, um sie auszuwählen, ziehen Sie sie zum Verschieben, Entf zum Löschen."
+  es: "Haz clic en una anotación para seleccionarla, arrástrala para moverla, Supr para eliminarla."
+  it: "Fai clic su un'annotazione per selezionarla, trascinala per spostarla, Canc per eliminarla."
+  pt-BR: "Clique em uma anotação para selecioná-la, arraste para movê-la, Delete para removê-la."
+  ja: "注釈をクリックして選択し、ドラッグで移動、Deleteキーで削除します。"
+  zh-CN: "点击批注可选中，拖动可移动，按 Delete 键可删除。"
+  ko: "주석을 클릭해 선택하고, 끌어서 옮기고, Delete 키로 지웁니다."
 
 app.pdf.pen.highlight:
   en: Highlight
   fr: Surligner
+  de: "Markieren"
+  es: "Resaltar"
+  it: "Evidenzia"
+  pt-BR: "Realçar"
+  ja: "ハイライト"
+  zh-CN: "高亮"
+  ko: "형광펜"
 
 app.pdf.pen.highlight.help:
   en: Drag across text, as if selecting it. On scans, drag a box.
   fr: Glissez sur le texte comme pour le sélectionner. Sur un scan, tracez un cadre.
+  de: "Ziehen Sie über den Text, als würden Sie ihn auswählen. Bei Scans ziehen Sie einen Rahmen auf."
+  es: "Arrastra sobre el texto, como si lo seleccionaras. En escaneos, arrastra un recuadro."
+  it: "Trascina sul testo, come per selezionarlo. Sulle scansioni, trascina un riquadro."
+  pt-BR: "Arraste sobre o texto, como se o estivesse selecionando. Em digitalizações, arraste uma caixa."
+  ja: "テキストを選択するようにドラッグします。スキャン画像では範囲をドラッグしてください。"
+  zh-CN: "像选择文字一样拖过文字即可。扫描件请拖出一个方框。"
+  ko: "텍스트를 선택하듯이 끌어 주세요. 스캔본에서는 상자를 그리세요."
 
 app.pdf.pen.underline:
   en: Underline
   fr: Souligner
+  de: "Unterstreichen"
+  es: "Subrayar"
+  it: "Sottolinea"
+  pt-BR: "Sublinhar"
+  ja: "下線"
+  zh-CN: "下划线"
+  ko: "밑줄"
 
 app.pdf.pen.underline.help:
   en: Drag across text to underline it.
   fr: Glissez sur le texte pour le souligner.
+  de: "Ziehen Sie über den Text, um ihn zu unterstreichen."
+  es: "Arrastra sobre el texto para subrayarlo."
+  it: "Trascina sul testo per sottolinearlo."
+  pt-BR: "Arraste sobre o texto para sublinhá-lo."
+  ja: "テキストの上をドラッグして下線を引きます。"
+  zh-CN: "拖过文字即可添加下划线。"
+  ko: "텍스트 위로 끌어 밑줄을 긋습니다."
 
 app.pdf.pen.pen:
   en: Pen
   fr: Stylo
+  de: "Stift"
+  es: "Lápiz"
+  it: "Penna"
+  pt-BR: "Caneta"
+  ja: "ペン"
+  zh-CN: "画笔"
+  ko: "펜"
 
 app.pdf.pen.pen.help:
   en: Draw freely with the mouse or the trackpad.
   fr: Dessinez librement à la souris ou au pavé tactile.
+  de: "Frei zeichnen mit Maus oder Trackpad."
+  es: "Dibuja libremente con el ratón o el trackpad."
+  it: "Disegna liberamente con il mouse o il trackpad."
+  pt-BR: "Desenhe livremente com o mouse ou o trackpad."
+  ja: "マウスまたはトラックパッドで自由に描けます。"
+  zh-CN: "用鼠标或触控板自由绘制。"
+  ko: "마우스나 트랙패드로 자유롭게 그립니다."
 
 app.pdf.pen.rect:
   en: Rectangle
   fr: Rectangle
+  de: "Rechteck"
+  es: "Rectángulo"
+  it: "Rettangolo"
+  pt-BR: "Retângulo"
+  ja: "四角形"
+  zh-CN: "矩形"
+  ko: "사각형"
 
 app.pdf.pen.rect.help:
   en: Drag to frame an area.
   fr: Glissez pour encadrer une zone.
+  de: "Ziehen, um einen Bereich einzurahmen."
+  es: "Arrastra para enmarcar un área."
+  it: "Trascina per inquadrare un'area."
+  pt-BR: "Arraste para emoldurar uma área."
+  ja: "ドラッグして範囲を囲みます。"
+  zh-CN: "拖动以框出一块区域。"
+  ko: "끌어서 영역을 둘러쌉니다."
 
 app.pdf.pen.arrow:
   en: Arrow
   fr: Flèche
+  de: "Pfeil"
+  es: "Flecha"
+  it: "Freccia"
+  pt-BR: "Seta"
+  ja: "矢印"
+  zh-CN: "箭头"
+  ko: "화살표"
 
 app.pdf.pen.arrow.help:
   en: Drag from the tail to the point.
   fr: Glissez de la queue vers la pointe.
+  de: "Vom Schaft zur Spitze ziehen."
+  es: "Arrastra desde la cola hasta la punta."
+  it: "Trascina dalla coda alla punta."
+  pt-BR: "Arraste da cauda até a ponta."
+  ja: "矢の根元から先端へドラッグします。"
+  zh-CN: "从箭尾拖到箭头处。"
+  ko: "꼬리에서 끝점까지 끌어 주세요."
 
 app.pdf.pen.text:
   en: Text
   fr: Texte
+  de: "Text"
+  es: "Texto"
+  it: "Testo"
+  pt-BR: "Texto"
+  ja: "テキスト"
+  zh-CN: "文字"
+  ko: "텍스트"
 
 app.pdf.pen.text.help:
   en: Click or drag a box, then type in the panel.
   fr: Cliquez ou tracez un cadre, puis saisissez le texte dans le panneau.
+  de: "Klicken oder einen Rahmen aufziehen und dann im Bereich tippen."
+  es: "Haz clic o arrastra un recuadro y escribe en el panel."
+  it: "Fai clic o trascina un riquadro, poi scrivi nel pannello."
+  pt-BR: "Clique ou arraste uma caixa e digite no painel."
+  ja: "クリックまたは範囲をドラッグし、パネルに入力します。"
+  zh-CN: "点击或拖出一个方框，然后在面板中输入。"
+  ko: "클릭하거나 상자를 끈 다음 패널에 입력하세요."
 
 app.pdf.pen.note:
   en: Comment
   fr: Commentaire
+  de: "Kommentar"
+  es: "Comentario"
+  it: "Commento"
+  pt-BR: "Comentário"
+  ja: "コメント"
+  zh-CN: "评论"
+  ko: "코멘트"
 
 app.pdf.pen.note.help:
   en: Click where the comment goes, then type it. Readers show it as a sticky note.
   fr: Cliquez à l’endroit du commentaire, puis saisissez-le. Les lecteurs l’affichent comme une note.
+  de: "Klicken Sie dorthin, wo der Kommentar hin soll, und tippen Sie ihn ein. Reader zeigen ihn als Haftnotiz an."
+  es: "Haz clic donde quieras el comentario y escríbelo. Los lectores lo muestran como una nota adhesiva."
+  it: "Fai clic dove vuoi il commento e scrivilo. I lettori lo mostrano come nota adesiva."
+  pt-BR: "Clique onde o comentário deve ficar e digite. Os leitores o mostram como uma nota adesiva."
+  ja: "コメントを置く場所をクリックして入力します。リーダーでは付箋として表示されます。"
+  zh-CN: "点击要放置评论的位置并输入内容。阅读器会将其显示为便笺。"
+  ko: "코멘트를 넣을 위치를 클릭하고 입력하세요. 리더에서는 스티커 메모로 표시됩니다."
 
 app.pdf.sign.title:
   en: Signatures
   fr: Signatures
+  de: "Signaturen"
+  es: "Firmas"
+  it: "Firme"
+  pt-BR: "Assinaturas"
+  ja: "署名"
+  zh-CN: "签名"
+  ko: "서명"
 
 app.pdf.sign.help:
   en: Pick a signature, then click on the page. Drag it to move it; drag its corner to resize it.
   fr: Choisissez une signature, puis cliquez sur la page. Glissez-la pour la déplacer, tirez son coin pour la redimensionner.
+  de: "Wählen Sie eine Signatur und klicken Sie auf die Seite. Zum Verschieben ziehen, an der Ecke ziehen für die Größe."
+  es: "Elige una firma y haz clic en la página. Arrástrala para moverla; arrastra su esquina para cambiar el tamaño."
+  it: "Scegli una firma e fai clic sulla pagina. Trascinala per spostarla; trascina l'angolo per ridimensionarla."
+  pt-BR: "Escolha uma assinatura e clique na página. Arraste para movê-la; arraste o canto para redimensioná-la."
+  ja: "署名を選んでページをクリックします。ドラッグで移動、角をドラッグでサイズ変更できます。"
+  zh-CN: "选择一个签名，然后点击页面。拖动可移动，拖动角点可调整大小。"
+  ko: "서명을 고른 다음 페이지를 클릭하세요. 끌어서 옮기고, 모서리를 끌어 크기를 조절합니다."
 
 app.pdf.sign.empty:
   en: No signature yet.
   fr: Aucune signature pour l’instant.
+  de: "Noch keine Signatur."
+  es: "Aún no hay ninguna firma."
+  it: "Nessuna firma per ora."
+  pt-BR: "Nenhuma assinatura ainda."
+  ja: "署名はまだありません。"
+  zh-CN: "还没有签名。"
+  ko: "아직 서명이 없습니다."
 
 app.pdf.sign.none:
   en: Create a signature first.
   fr: Créez d’abord une signature.
+  de: "Erstellen Sie zuerst eine Signatur."
+  es: "Crea una firma primero."
+  it: "Crea prima una firma."
+  pt-BR: "Crie uma assinatura primeiro."
+  ja: "先に署名を作成してください。"
+  zh-CN: "请先创建签名。"
+  ko: "먼저 서명을 만드세요."
 
 app.pdf.sign.new:
   en: New signature…
   fr: Nouvelle signature…
+  de: "Neue Signatur …"
+  es: "Nueva firma…"
+  it: "Nuova firma…"
+  pt-BR: "Nova assinatura…"
+  ja: "新しい署名…"
+  zh-CN: "新建签名…"
+  ko: "새 서명…"
 
 app.pdf.sign.keep:
   en: Keep this signature
   fr: Garder cette signature
+  de: "Diese Signatur behalten"
+  es: "Conservar esta firma"
+  it: "Conserva questa firma"
+  pt-BR: "Manter esta assinatura"
+  ja: "この署名を保存する"
+  zh-CN: "保留此签名"
+  ko: "이 서명 보관"
 
 app.pdf.sign.date:
   en: Add today’s date under it
   fr: Ajouter la date du jour dessous
+  de: "Heutiges Datum darunter hinzufügen"
+  es: "Añadir la fecha de hoy debajo"
+  it: "Aggiungi la data di oggi sotto"
+  pt-BR: "Adicionar a data de hoje abaixo"
+  ja: "下に今日の日付を追加"
+  zh-CN: "在下方添加今天的日期"
+  ko: "아래에 오늘 날짜 추가"
 
 app.pdf.sign.resize:
   en: Drag the blue corner to resize.
   fr: Tirez le coin bleu pour redimensionner.
+  de: "Ziehen Sie die blaue Ecke, um die Größe zu ändern."
+  es: "Arrastra la esquina azul para cambiar el tamaño."
+  it: "Trascina l'angolo blu per ridimensionare."
+  pt-BR: "Arraste o canto azul para redimensionar."
+  ja: "青い角をドラッグしてサイズを変更します。"
+  zh-CN: "拖动蓝色角点可调整大小。"
+  ko: "파란 모서리를 끌어 크기를 조절하세요."
 
 app.pdf.sign.draw:
   en: Draw
   fr: Dessiner
+  de: "Zeichnen"
+  es: "Dibujar"
+  it: "Disegna"
+  pt-BR: "Desenhar"
+  ja: "手書き"
+  zh-CN: "手绘"
+  ko: "그리기"
 
 app.pdf.sign.type:
   en: Type
   fr: Taper
+  de: "Tippen"
+  es: "Escribir"
+  it: "Digita"
+  pt-BR: "Digitar"
+  ja: "入力"
+  zh-CN: "键入"
+  ko: "입력"
 
 app.pdf.sign.import:
   en: Image
   fr: Image
+  de: "Bild"
+  es: "Imagen"
+  it: "Immagine"
+  pt-BR: "Imagem"
+  ja: "画像"
+  zh-CN: "图片"
+  ko: "이미지"
 
 app.pdf.sign.draw_help:
   en: Sign on the line with the mouse or the trackpad.
   fr: Signez sur la ligne à la souris ou au pavé tactile.
+  de: "Unterschreiben Sie mit Maus oder Trackpad auf der Linie."
+  es: "Firma sobre la línea con el ratón o el trackpad."
+  it: "Firma sulla linea con il mouse o il trackpad."
+  pt-BR: "Assine sobre a linha com o mouse ou o trackpad."
+  ja: "マウスまたはトラックパッドで線の上に署名してください。"
+  zh-CN: "用鼠标或触控板在横线上签名。"
+  ko: "마우스나 트랙패드로 선 위에 서명하세요."
 
 app.pdf.sign.type_ph:
   en: Your name
   fr: Votre nom
+  de: "Ihr Name"
+  es: "Tu nombre"
+  it: "Il tuo nome"
+  pt-BR: "Seu nome"
+  ja: "あなたの名前"
+  zh-CN: "你的名字"
+  ko: "이름"
 
 app.pdf.sign.type_preview:
   en: Your name, in a calligraphic hand
   fr: Votre nom, d’une main calligraphique
+  de: "Ihr Name in Schreibschrift"
+  es: "Tu nombre, en letra caligráfica"
+  it: "Il tuo nome, in corsivo calligrafico"
+  pt-BR: "Seu nome, em letra caligráfica"
+  ja: "あなたの名前(筆記体)"
+  zh-CN: "你的名字（手写体）"
+  ko: "필기체로 쓴 이름"
 
 app.pdf.sign.import_help:
   en: A photo or scan of your signature; the white paper is removed.
   fr: Une photo ou un scan de votre signature ; le papier blanc est retiré.
+  de: "Ein Foto oder Scan Ihrer Unterschrift; das weiße Papier wird entfernt."
+  es: "Una foto o escaneo de tu firma; se elimina el papel blanco."
+  it: "Una foto o scansione della tua firma; la carta bianca viene rimossa."
+  pt-BR: "Uma foto ou digitalização da sua assinatura; o papel branco é removido."
+  ja: "署名の写真またはスキャン画像。白い紙の部分は取り除かれます。"
+  zh-CN: "签名的照片或扫描件；白色纸张背景会被去除。"
+  ko: "서명의 사진이나 스캔본입니다. 흰 종이 부분은 제거됩니다."
 
 app.pdf.sign.err.empty:
   en: Draw your signature first.
   fr: Dessinez d’abord votre signature.
+  de: "Zeichnen Sie zuerst Ihre Signatur."
+  es: "Dibuja tu firma primero."
+  it: "Disegna prima la tua firma."
+  pt-BR: "Desenhe sua assinatura primeiro."
+  ja: "先に署名を手書きしてください。"
+  zh-CN: "请先绘制你的签名。"
+  ko: "먼저 서명을 그려 주세요."
 
 app.pdf.sign.err.name:
   en: Type your name first.
   fr: Saisissez d’abord votre nom.
+  de: "Geben Sie zuerst Ihren Namen ein."
+  es: "Escribe tu nombre primero."
+  it: "Digita prima il tuo nome."
+  pt-BR: "Digite seu nome primeiro."
+  ja: "先に名前を入力してください。"
+  zh-CN: "请先输入你的名字。"
+  ko: "먼저 이름을 입력해 주세요."
 
 app.pdf.sign.err.image:
   en: Choose an image first.
   fr: Choisissez d’abord une image.
+  de: "Wählen Sie zuerst ein Bild aus."
+  es: "Elige una imagen primero."
+  it: "Scegli prima un'immagine."
+  pt-BR: "Escolha uma imagem primeiro."
+  ja: "先に画像を選択してください。"
+  zh-CN: "请先选择一张图片。"
+  ko: "먼저 이미지를 선택해 주세요."
 
 app.pdf.redact.help:
   en: Drag boxes over what must disappear, or find text to mark every occurrence. Nothing is removed until you save.
   fr: Tracez des cadres sur ce qui doit disparaître, ou cherchez un texte pour en marquer chaque occurrence. Rien n’est supprimé avant l’enregistrement.
+  de: "Ziehen Sie Rahmen über alles, was verschwinden soll, oder suchen Sie Text, um jedes Vorkommen zu markieren. Erst beim Speichern wird etwas entfernt."
+  es: "Arrastra recuadros sobre lo que debe desaparecer, o busca texto para marcar cada aparición. Nada se elimina hasta que guardes."
+  it: "Trascina riquadri su ciò che deve sparire, oppure cerca un testo per segnare ogni occorrenza. Non viene rimosso nulla finché non salvi."
+  pt-BR: "Arraste caixas sobre o que deve desaparecer ou procure um texto para marcar cada ocorrência. Nada é removido até você salvar."
+  ja: "消したい部分の上をドラッグして範囲を指定するか、テキストを検索してすべての該当箇所に印を付けます。保存するまで何も削除されません。"
+  zh-CN: "在需要消失的内容上拖出方框，或查找文字以标记每一处。保存之前不会删除任何内容。"
+  ko: "지울 내용 위에 상자를 끌거나 텍스트를 찾아 모든 일치 항목을 표시하세요. 저장하기 전에는 아무것도 삭제되지 않습니다."
 
 app.pdf.redact.search:
   en: Find text
   fr: Chercher un texte
+  de: "Text suchen"
+  es: "Buscar texto"
+  it: "Cerca testo"
+  pt-BR: "Procurar texto"
+  ja: "テキストを検索"
+  zh-CN: "查找文字"
+  ko: "텍스트 찾기"
 
 app.pdf.redact.search_ph:
   en: Name, number, address…
   fr: Nom, numéro, adresse…
+  de: "Name, Nummer, Adresse …"
+  es: "Nombre, número, dirección…"
+  it: "Nome, numero, indirizzo…"
+  pt-BR: "Nome, número, endereço…"
+  ja: "名前、番号、住所…"
+  zh-CN: "姓名、号码、地址…"
+  ko: "이름, 번호, 주소…"
 
 app.pdf.redact.mark:
   en: Mark all
   fr: Tout marquer
+  de: "Alle markieren"
+  es: "Marcar todo"
+  it: "Segna tutto"
+  pt-BR: "Marcar tudo"
+  ja: "すべてに印を付ける"
+  zh-CN: "全部标记"
+  ko: "모두 표시"
 
 app.pdf.redact.found:
   en: "%{count} found for “%{text}”"
   fr: "%{count} trouvés pour « %{text} »"
+  de: "%{count} Treffer für „%{text}“"
+  es: "%{count} encontrados para “%{text}”"
+  it: "%{count} trovati per «%{text}»"
+  pt-BR: "%{count} encontrados para “%{text}”"
+  ja: "「%{text}」が %{count} 件見つかりました"
+  zh-CN: "找到 %{count} 处“%{text}”"
+  ko: "“%{text}” %{count}건 찾음"
 
 app.pdf.redact.count:
   en: "%{count} areas marked"
   fr: "%{count} zones marquées"
+  de: "%{count} Bereiche markiert"
+  es: "%{count} áreas marcadas"
+  it: "%{count} aree segnate"
+  pt-BR: "%{count} áreas marcadas"
+  ja: "%{count} か所に印を付けました"
+  zh-CN: "已标记 %{count} 处"
+  ko: "%{count}개 영역 표시됨"
 
 app.pdf.redact.clear:
   en: Remove all marks
   fr: Retirer toutes les marques
+  de: "Alle Markierungen entfernen"
+  es: "Quitar todas las marcas"
+  it: "Rimuovi tutti i segni"
+  pt-BR: "Remover todas as marcas"
+  ja: "印をすべて削除"
+  zh-CN: "移除所有标记"
+  ko: "모든 표시 지우기"
 
 app.pdf.redact.apply:
   en: Apply redactions…
   fr: Appliquer le caviardage…
+  de: "Schwärzungen anwenden …"
+  es: "Aplicar censuras…"
+  it: "Applica oscuramenti…"
+  pt-BR: "Aplicar tarjas…"
+  ja: "墨消しを適用…"
+  zh-CN: "应用涂黑…"
+  ko: "가림 처리 적용…"
 
 app.pdf.redact.apply_save:
   en: Redact and save a copy
   fr: Caviarder et enregistrer une copie
+  de: "Schwärzen und Kopie speichern"
+  es: "Censurar y guardar una copia"
+  it: "Oscura e salva una copia"
+  pt-BR: "Tarjar e salvar uma cópia"
+  ja: "墨消ししてコピーを保存"
+  zh-CN: "涂黑并保存副本"
+  ko: "가림 처리 후 사본 저장"
 
 app.pdf.redact.note:
   en: Saving removes the text, images and drawings under each box for good, then checks that nothing readable is left.
   fr: L’enregistrement supprime pour de bon le texte, les images et les tracés sous chaque cadre, puis vérifie que plus rien n’est lisible.
+  de: "Beim Speichern werden Text, Bilder und Zeichnungen unter jedem Rahmen endgültig entfernt; danach wird geprüft, dass nichts Lesbares übrig bleibt."
+  es: "Al guardar se eliminan para siempre el texto, las imágenes y los dibujos bajo cada recuadro, y se comprueba que no quede nada legible."
+  it: "Il salvataggio rimuove per sempre testo, immagini e disegni sotto ogni riquadro, poi verifica che non resti nulla di leggibile."
+  pt-BR: "Ao salvar, o texto, as imagens e os desenhos sob cada caixa são removidos de vez, e então se verifica que nada legível sobrou."
+  ja: "保存すると、各範囲の下にあるテキスト、画像、図形が完全に削除され、読み取れるものが残っていないか確認されます。"
+  zh-CN: "保存时会彻底删除每个方框下的文字、图片和图形，并检查是否还有可读内容残留。"
+  ko: "저장하면 각 상자 아래의 텍스트, 이미지, 그림이 완전히 삭제되고, 읽을 수 있는 내용이 남아 있지 않은지 확인합니다."
 
 app.pdf.redact.title:
   en: Remove the marked content for good?
   fr: Supprimer définitivement le contenu marqué ?
+  de: "Markierte Inhalte endgültig entfernen?"
+  es: "¿Eliminar para siempre el contenido marcado?"
+  it: "Rimuovere per sempre il contenuto segnato?"
+  pt-BR: "Remover o conteúdo marcado de vez?"
+  ja: "印を付けた内容を完全に削除しますか？"
+  zh-CN: "要彻底删除已标记的内容吗？"
+  ko: "표시한 내용을 완전히 삭제할까요?"
 
 app.pdf.redact.warning:
   en: "The text, images and drawings under the %{count} black boxes will be deleted from the saved file. They cannot be recovered from it."
   fr: "Le texte, les images et les tracés sous les %{count} cadres noirs seront supprimés du fichier enregistré. Ils ne pourront pas en être récupérés."
+  de: "Text, Bilder und Zeichnungen unter den %{count} schwarzen Rahmen werden aus der gespeicherten Datei gelöscht. Sie lassen sich daraus nicht wiederherstellen."
+  es: "El texto, las imágenes y los dibujos bajo los %{count} recuadros negros se eliminarán del archivo guardado. No se podrán recuperar de él."
+  it: "Testo, immagini e disegni sotto i %{count} riquadri neri verranno eliminati dal file salvato. Non sarà possibile recuperarli da esso."
+  pt-BR: "O texto, as imagens e os desenhos sob as %{count} caixas pretas serão excluídos do arquivo salvo. Não será possível recuperá-los dele."
+  ja: "%{count} 個の黒い範囲の下にあるテキスト、画像、図形は、保存したファイルから削除されます。そのファイルからは復元できません。"
+  zh-CN: "%{count} 个黑色方框下的文字、图片和图形将从保存的文件中删除，且无法从该文件中恢复。"
+  ko: "검은 상자 %{count}개 아래의 텍스트, 이미지, 그림이 저장된 파일에서 삭제됩니다. 해당 파일에서는 복구할 수 없습니다."
 
 app.pdf.forms.loading:
   en: Reading the form…
   fr: Lecture du formulaire…
+  de: "Formular wird gelesen …"
+  es: "Leyendo el formulario…"
+  it: "Lettura del modulo…"
+  pt-BR: "Lendo o formulário…"
+  ja: "フォームを読み込み中…"
+  zh-CN: "正在读取表单…"
+  ko: "양식을 읽는 중…"
 
 app.pdf.forms.none:
   en: This PDF has no fillable fields. Use Annotate → Text to write on it.
   fr: Ce PDF n’a pas de champs à remplir. Utilisez Annoter → Texte pour écrire dessus.
+  de: "Dieses PDF hat keine ausfüllbaren Felder. Nutzen Sie „Kommentieren“ → „Text“, um darauf zu schreiben."
+  es: "Este PDF no tiene campos rellenables. Usa Anotar → Texto para escribir encima."
+  it: "Questo PDF non ha campi compilabili. Usa Annota → Testo per scriverci sopra."
+  pt-BR: "Este PDF não tem campos preenchíveis. Use Anotar → Texto para escrever nele."
+  ja: "このPDFには入力できるフィールドがありません。「注釈」→「テキスト」で書き込めます。"
+  zh-CN: "此 PDF 没有可填写的字段。请使用“批注”→“文字”在上面书写。"
+  ko: "이 PDF에는 작성 가능한 필드가 없습니다. 주석 → 텍스트를 사용해 직접 써 넣으세요."
 
 app.pdf.forms.count:
   en: "%{count} fields. Tab moves to the next one; click a field on the page to jump to it."
   fr: "%{count} champs. Tab passe au suivant ; cliquez un champ sur la page pour y aller."
+  de: "%{count} Felder. Mit Tab springen Sie zum nächsten; klicken Sie ein Feld auf der Seite an, um dorthin zu springen."
+  es: "%{count} campos. Tab pasa al siguiente; haz clic en un campo de la página para ir a él."
+  it: "%{count} campi. Tab passa al successivo; fai clic su un campo nella pagina per andarci."
+  pt-BR: "%{count} campos. Tab vai para o próximo; clique em um campo na página para ir até ele."
+  ja: "%{count} 個のフィールド。Tabキーで次へ移動、ページ上のフィールドをクリックするとそこへ移動します。"
+  zh-CN: "共 %{count} 个字段。按 Tab 键跳到下一个；点击页面上的字段可直接跳转。"
+  ko: "필드 %{count}개. Tab 키로 다음 필드로 이동하고, 페이지의 필드를 클릭하면 바로 이동합니다."
 
 app.pdf.forms.page:
   en: "p. %{page}"
   fr: "p. %{page}"
+  de: "S. %{page}"
+  es: "p. %{page}"
+  it: "pag. %{page}"
+  pt-BR: "p. %{page}"
+  ja: "%{page}ページ"
+  zh-CN: "第 %{page} 页"
+  ko: "%{page}쪽"
 
 app.form.pages_placeholder:
   en: All pages — e.g. 1-3, 5, 8-
   fr: Toutes les pages — p. ex. 1-3, 5, 8-
+  de: "Alle Seiten – z. B. 1-3, 5, 8-"
+  es: "Todas las páginas — p. ej. 1-3, 5, 8-"
+  it: "Tutte le pagine — es. 1-3, 5, 8-"
+  pt-BR: "Todas as páginas — ex.: 1-3, 5, 8-"
+  ja: "全ページ — 例: 1-3, 5, 8-"
+  zh-CN: "所有页面 — 例如 1-3, 5, 8-"
+  ko: "모든 페이지 — 예: 1-3, 5, 8-"
 app.form.no_file:
   en: No file chosen
   fr: Aucun fichier choisi
+  de: "Keine Datei ausgewählt"
+  es: "Ningún archivo elegido"
+  it: "Nessun file scelto"
+  pt-BR: "Nenhum arquivo escolhido"
+  ja: "ファイルが選択されていません"
+  zh-CN: "未选择文件"
+  ko: "선택된 파일 없음"
 app.form.add_language:
   en: Add a language…
   fr: Ajouter une langue…
+  de: "Sprache hinzufügen …"
+  es: "Añadir un idioma…"
+  it: "Aggiungi una lingua…"
+  pt-BR: "Adicionar um idioma…"
+  ja: "言語を追加…"
+  zh-CN: "添加语言…"
+  ko: "언어 추가…"
 app.form.lock_ratio:
   en: Keep the ratio
   fr: Garder les proportions
+  de: "Seitenverhältnis beibehalten"
+  es: "Mantener la proporción"
+  it: "Mantieni le proporzioni"
+  pt-BR: "Manter a proporção"
+  ja: "縦横比を維持"
+  zh-CN: "保持比例"
+  ko: "비율 유지"
 app.form.more_options:
   en: More options
   fr: Plus d’options
+  de: "Weitere Optionen"
+  es: "Más opciones"
+  it: "Altre opzioni"
+  pt-BR: "Mais opções"
+  ja: "その他のオプション"
+  zh-CN: "更多选项"
+  ko: "옵션 더 보기"
 app.form.no_options:
   en: "Nothing to set: this tool just works."
   fr: "Rien à régler : cet outil fonctionne tel quel."
+  de: "Nichts einzustellen: Dieses Werkzeug funktioniert einfach."
+  es: "Nada que configurar: esta herramienta simplemente funciona."
+  it: "Niente da impostare: questo strumento funziona e basta."
+  pt-BR: "Nada para configurar: esta ferramenta simplesmente funciona."
+  ja: "設定項目はありません。このツールはそのまま使えます。"
+  zh-CN: "无需设置：这个工具直接就能用。"
+  ko: "설정할 것이 없습니다. 이 도구는 그냥 작동합니다."
 
 app.tool.one_file:
   en: 1 file
   fr: 1 fichier
+  de: "1 Datei"
+  es: "1 archivo"
+  it: "1 file"
+  pt-BR: "1 arquivo"
+  ja: "1 個のファイル"
+  zh-CN: "1 个文件"
+  ko: "파일 1개"
 app.tool.need_one_file:
   en: Add a file first.
   fr: Ajoutez d’abord un fichier.
+  de: "Fügen Sie zuerst eine Datei hinzu."
+  es: "Añade un archivo primero."
+  it: "Aggiungi prima un file."
+  pt-BR: "Adicione um arquivo primeiro."
+  ja: "先にファイルを追加してください。"
+  zh-CN: "请先添加文件。"
+  ko: "먼저 파일을 추가하세요."
 app.tool.need_files:
   en: This tool needs at least %{count} files.
   fr: Cet outil a besoin d’au moins %{count} fichiers.
+  de: "Dieses Werkzeug braucht mindestens %{count} Dateien."
+  es: "Esta herramienta necesita al menos %{count} archivos."
+  it: "Questo strumento richiede almeno %{count} file."
+  pt-BR: "Esta ferramenta precisa de pelo menos %{count} arquivos."
+  ja: "このツールには %{count} 個以上のファイルが必要です。"
+  zh-CN: "此工具至少需要 %{count} 个文件。"
+  ko: "이 도구에는 파일이 최소 %{count}개 필요합니다."
 app.tool.output_choose:
   en: Choose where results go
   fr: Choisir où placer les résultats
+  de: "Speicherort der Ergebnisse wählen"
+  es: "Elige dónde van los resultados"
+  it: "Scegli dove salvare i risultati"
+  pt-BR: "Escolha onde os resultados vão"
+  ja: "結果の保存先を選択"
+  zh-CN: "选择结果的保存位置"
+  ko: "결과를 저장할 위치 선택"
 app.tool.preview:
   en: Live preview
   fr: Aperçu en direct
+  de: "Live-Vorschau"
+  es: "Vista previa en vivo"
+  it: "Anteprima dal vivo"
+  pt-BR: "Pré-visualização ao vivo"
+  ja: "ライブプレビュー"
+  zh-CN: "实时预览"
+  ko: "실시간 미리보기"
 app.tool.preview_loading:
   en: Rendering the preview…
   fr: Calcul de l’aperçu…
+  de: "Vorschau wird erstellt …"
+  es: "Generando la vista previa…"
+  it: "Creazione dell'anteprima…"
+  pt-BR: "Gerando a pré-visualização…"
+  ja: "プレビューを生成中…"
+  zh-CN: "正在生成预览…"
+  ko: "미리보기를 만드는 중…"
 app.tool.preview_none:
   en: The preview appears here.
   fr: L’aperçu s’affiche ici.
+  de: "Hier erscheint die Vorschau."
+  es: "La vista previa aparece aquí."
+  it: "L'anteprima compare qui."
+  pt-BR: "A pré-visualização aparece aqui."
+  ja: "ここにプレビューが表示されます。"
+  zh-CN: "预览将显示在这里。"
+  ko: "미리보기가 여기에 표시됩니다."
 app.tool.drop:
   en: "Drop files here (%{kinds}), or"
   fr: "Déposez des fichiers ici (%{kinds}), ou"
+  de: "Dateien hierher ziehen (%{kinds}) oder"
+  es: "Suelta archivos aquí (%{kinds}) o"
+  it: "Trascina qui i file (%{kinds}) oppure"
+  pt-BR: "Solte arquivos aqui (%{kinds}) ou"
+  ja: "ここにファイルをドロップ (%{kinds})、または"
+  zh-CN: "将文件拖到这里 (%{kinds})，或"
+  ko: "여기에 파일을 끌어다 놓기 (%{kinds}) 또는"
 app.tool.add_files:
   en: Add files…
   fr: Ajouter des fichiers…
+  de: "Dateien hinzufügen …"
+  es: "Añadir archivos…"
+  it: "Aggiungi file…"
+  pt-BR: "Adicionar arquivos…"
+  ja: "ファイルを追加…"
+  zh-CN: "添加文件…"
+  ko: "파일 추가…"
 app.tool.files_caption:
   en: "Files (%{count})"
   fr: "Fichiers (%{count})"
+  de: "Dateien (%{count})"
+  es: "Archivos (%{count})"
+  it: "File (%{count})"
+  pt-BR: "Arquivos (%{count})"
+  ja: "ファイル (%{count})"
+  zh-CN: "文件 (%{count})"
+  ko: "파일 (%{count})"
 app.tool.done_big_saving:
   en: Neatly gnawed.
   fr: Proprement rongé.
+  de: "Sauber abgenagt."
+  es: "Roído con esmero."
+  it: "Rosicchiato a regola d'arte."
+  pt-BR: "Roído com capricho."
+  ja: "きれいにかじりました。"
+  zh-CN: "啃得干净利落。"
+  ko: "깔끔하게 갉아 놨습니다."
 app.tool.options:
   en: Options
   fr: Options
+  de: "Optionen"
+  es: "Opciones"
+  it: "Opzioni"
+  pt-BR: "Opções"
+  ja: "オプション"
+  zh-CN: "选项"
+  ko: "옵션"
 app.tool.output:
   en: Output
   fr: Résultat
+  de: "Ausgabe"
+  es: "Salida"
+  it: "Output"
+  pt-BR: "Saída"
+  ja: "出力"
+  zh-CN: "输出"
+  ko: "출력"
 app.tool.output_next_to:
   en: Next to the originals
   fr: À côté des originaux
+  de: "Neben den Originalen"
+  es: "Junto a los originales"
+  it: "Accanto agli originali"
+  pt-BR: "Ao lado dos originais"
+  ja: "元のファイルと同じ場所"
+  zh-CN: "与原文件放在一起"
+  ko: "원본 옆에"
 app.tool.output_reset:
   en: Reset
   fr: Rétablir
+  de: "Zurücksetzen"
+  es: "Restablecer"
+  it: "Ripristina"
+  pt-BR: "Redefinir"
+  ja: "リセット"
+  zh-CN: "重置"
+  ko: "초기화"
 app.tool.output_change:
   en: Change
   fr: Changer
+  de: "Ändern"
+  es: "Cambiar"
+  it: "Cambia"
+  pt-BR: "Alterar"
+  ja: "変更"
+  zh-CN: "更改"
+  ko: "변경"
 app.tool.favorite:
   en: Add to favorites
   fr: Ajouter aux favoris
+  de: "Zu Favoriten hinzufügen"
+  es: "Añadir a favoritos"
+  it: "Aggiungi ai preferiti"
+  pt-BR: "Adicionar aos favoritos"
+  ja: "お気に入りに追加"
+  zh-CN: "添加到收藏"
+  ko: "즐겨찾기에 추가"
 app.tool.unfavorite:
   en: Remove from favorites
   fr: Retirer des favoris
+  de: "Aus Favoriten entfernen"
+  es: "Quitar de favoritos"
+  it: "Rimuovi dai preferiti"
+  pt-BR: "Remover dos favoritos"
+  ja: "お気に入りから削除"
+  zh-CN: "从收藏中移除"
+  ko: "즐겨찾기에서 제거"
 app.tool.details:
   en: Details
   fr: Détails
+  de: "Details"
+  es: "Detalles"
+  it: "Dettagli"
+  pt-BR: "Detalhes"
+  ja: "詳細"
+  zh-CN: "详情"
+  ko: "자세히"
 app.tool.hide_details:
   en: Hide
   fr: Masquer
+  de: "Ausblenden"
+  es: "Ocultar"
+  it: "Nascondi"
+  pt-BR: "Ocultar"
+  ja: "隠す"
+  zh-CN: "隐藏"
+  ko: "숨기기"
 app.tool.remove:
   en: Remove from the list
   fr: Retirer de la liste
+  de: "Aus der Liste entfernen"
+  es: "Quitar de la lista"
+  it: "Rimuovi dall'elenco"
+  pt-BR: "Remover da lista"
+  ja: "リストから削除"
+  zh-CN: "从列表中移除"
+  ko: "목록에서 제거"
 
 app.consent.title:
   en: One-time download
   fr: Téléchargement unique
+  de: "Einmaliger Download"
+  es: "Descarga única"
+  it: "Download una tantum"
+  pt-BR: "Download único"
+  ja: "初回のみのダウンロード"
+  zh-CN: "一次性下载"
+  ko: "최초 1회 다운로드"
 app.consent.body:
   en: "This tool needs these files the first time. They come from the address pinned in Castor and are checked before use:"
   fr: "Cet outil a besoin de ces fichiers la première fois. Ils viennent de l’adresse inscrite dans Castor et sont vérifiés avant usage :"
+  de: "Dieses Werkzeug braucht beim ersten Mal diese Dateien. Sie stammen von der in Castor festgelegten Adresse und werden vor der Verwendung geprüft:"
+  es: "Esta herramienta necesita estos archivos la primera vez. Provienen de la dirección fijada en Castor y se verifican antes de usarlos:"
+  it: "Questo strumento ha bisogno di questi file la prima volta. Provengono dall'indirizzo fissato in Castor e vengono verificati prima dell'uso:"
+  pt-BR: "Esta ferramenta precisa destes arquivos na primeira vez. Eles vêm do endereço fixado no Castor e são verificados antes do uso:"
+  ja: "このツールは初回のみ次のファイルが必要です。Castorに固定されたアドレスから取得し、使用前に検証します。"
+  zh-CN: "此工具首次使用时需要下载这些文件。它们来自 Castor 中固定的地址，并会在使用前进行校验："
+  ko: "이 도구는 처음 사용할 때 다음 파일이 필요합니다. Castor에 고정된 주소에서 받아 오며 사용하기 전에 검증합니다."
 app.consent.total:
   en: Total
   fr: Total
+  de: "Gesamt"
+  es: "Total"
+  it: "Totale"
+  pt-BR: "Total"
+  ja: "合計"
+  zh-CN: "总计"
+  ko: "합계"
 app.consent.once:
   en: Fetching the model once — after that it works offline.
   fr: Le modèle est récupéré une seule fois — ensuite, tout fonctionne hors ligne.
+  de: "Das Modell wird einmal geladen – danach funktioniert es offline."
+  es: "Se descarga el modelo una sola vez; después funciona sin conexión."
+  it: "Il modello viene scaricato una volta sola; poi funziona offline."
+  pt-BR: "O modelo é baixado uma única vez; depois funciona offline."
+  ja: "モデルは一度だけ取得します。その後はオフラインで動作します。"
+  zh-CN: "模型只会下载一次，之后即可离线使用。"
+  ko: "모델은 한 번만 내려받으며, 이후에는 오프라인으로 작동합니다."
 app.consent.ok:
   en: Download and run
   fr: Télécharger et lancer
+  de: "Herunterladen und ausführen"
+  es: "Descargar y ejecutar"
+  it: "Scarica ed esegui"
+  pt-BR: "Baixar e executar"
+  ja: "ダウンロードして実行"
+  zh-CN: "下载并运行"
+  ko: "다운로드 후 실행"
 
 app.caption.figure:
   en: Figure
   fr: Figure
+  de: "Abbildung"
+  es: "Figura"
+  it: "Figura"
+  pt-BR: "Figura"
+  ja: "図"
+  zh-CN: "图"
+  ko: "그림"
 app.caption.table:
   en: Table
   fr: Tableau
+  de: "Tabelle"
+  es: "Tabla"
+  it: "Tabella"
+  pt-BR: "Tabela"
+  ja: "表"
+  zh-CN: "表"
+  ko: "표"
 app.table.name:
   en: Name
   fr: Nom
+  de: "Name"
+  es: "Nombre"
+  it: "Nome"
+  pt-BR: "Nome"
+  ja: "名前"
+  zh-CN: "名称"
+  ko: "이름"
 app.table.size:
   en: Size
   fr: Taille
+  de: "Größe"
+  es: "Tamaño"
+  it: "Dimensione"
+  pt-BR: "Tamanho"
+  ja: "サイズ"
+  zh-CN: "大小"
+  ko: "크기"
 app.table.status:
   en: Status
   fr: État
+  de: "Status"
+  es: "Estado"
+  it: "Stato"
+  pt-BR: "Status"
+  ja: "状態"
+  zh-CN: "状态"
+  ko: "상태"
 
 app.compare.before:
   en: Before
   fr: Avant
+  de: "Vorher"
+  es: "Antes"
+  it: "Prima"
+  pt-BR: "Antes"
+  ja: "変更前"
+  zh-CN: "处理前"
+  ko: "이전"
 app.compare.after:
   en: After
   fr: Après
+  de: "Nachher"
+  es: "Después"
+  it: "Dopo"
+  pt-BR: "Depois"
+  ja: "変更後"
+  zh-CN: "处理后"
+  ko: "이후"
 app.compare.side:
   en: Side by side
   fr: Côte à côte
+  de: "Nebeneinander"
+  es: "Lado a lado"
+  it: "Affiancati"
+  pt-BR: "Lado a lado"
+  ja: "並べて表示"
+  zh-CN: "并排"
+  ko: "나란히"
 app.compare.swipe:
   en: Swipe
   fr: Volet
+  de: "Wischen"
+  es: "Deslizar"
+  it: "Scorri"
+  pt-BR: "Deslizar"
+  ja: "スライド"
+  zh-CN: "滑动"
+  ko: "밀어서 비교"
 app.compare.fit:
   en: Fit
   fr: Ajuster
+  de: "Einpassen"
+  es: "Ajustar"
+  it: "Adatta"
+  pt-BR: "Ajustar"
+  ja: "全体表示"
+  zh-CN: "适应窗口"
+  ko: "맞춤"
 app.compare.caption:
   en: Before and after, for the selected file.
   fr: Avant et après, pour le fichier sélectionné.
+  de: "Vorher und nachher für die ausgewählte Datei."
+  es: "Antes y después, para el archivo seleccionado."
+  it: "Prima e dopo, per il file selezionato."
+  pt-BR: "Antes e depois, para o arquivo selecionado."
+  ja: "選択したファイルの変更前と変更後です。"
+  zh-CN: "所选文件的处理前后对比。"
+  ko: "선택한 파일의 이전과 이후입니다."
 
 app.runs.subtitle:
   en: Everything Castor did on this machine, newest first.
   fr: Tout ce que Castor a fait sur cet ordinateur, du plus récent au plus ancien.
+  de: "Alles, was Castor auf diesem Rechner getan hat, neueste zuerst."
+  es: "Todo lo que Castor ha hecho en este equipo, lo más reciente primero."
+  it: "Tutto ciò che Castor ha fatto su questo computer, dal più recente."
+  pt-BR: "Tudo o que o Castor fez neste computador, do mais recente ao mais antigo."
+  ja: "このコンピューターでCastorが行った処理を、新しい順に表示します。"
+  zh-CN: "Castor 在这台电脑上完成的所有操作，最新的在前。"
+  ko: "이 컴퓨터에서 Castor가 한 모든 작업을 최신순으로 보여 줍니다."
 app.runs.caption:
   en: Runs, grouped by day
   fr: Exécutions, par jour
+  de: "Läufe, nach Tagen gruppiert"
+  es: "Ejecuciones, agrupadas por día"
+  it: "Esecuzioni, raggruppate per giorno"
+  pt-BR: "Execuções, agrupadas por dia"
+  ja: "実行履歴(日ごと)"
+  zh-CN: "运行记录（按日分组）"
+  ko: "날짜별 실행 기록"
 app.runs.today:
   en: Today
   fr: Aujourd’hui
+  de: "Heute"
+  es: "Hoy"
+  it: "Oggi"
+  pt-BR: "Hoje"
+  ja: "今日"
+  zh-CN: "今天"
+  ko: "오늘"
 app.runs.yesterday:
   en: Yesterday
   fr: Hier
+  de: "Gestern"
+  es: "Ayer"
+  it: "Ieri"
+  pt-BR: "Ontem"
+  ja: "昨日"
+  zh-CN: "昨天"
+  ko: "어제"
 app.runs.filter.all:
   en: All
   fr: Toutes
+  de: "Alle"
+  es: "Todas"
+  it: "Tutte"
+  pt-BR: "Todas"
+  ja: "すべて"
+  zh-CN: "全部"
+  ko: "전체"
 app.runs.filter.complete:
   en: Complete
   fr: Terminées
+  de: "Abgeschlossen"
+  es: "Completadas"
+  it: "Completate"
+  pt-BR: "Concluídas"
+  ja: "完了"
+  zh-CN: "已完成"
+  ko: "완료"
 app.runs.filter.failed:
   en: Failed
   fr: En échec
+  de: "Fehlgeschlagen"
+  es: "Fallidas"
+  it: "Non riuscite"
+  pt-BR: "Com falha"
+  ja: "失敗"
+  zh-CN: "失败"
+  ko: "실패"
 app.runs.filter.cancelled:
   en: Cancelled
   fr: Annulées
+  de: "Abgebrochen"
+  es: "Canceladas"
+  it: "Annullate"
+  pt-BR: "Canceladas"
+  ja: "キャンセル"
+  zh-CN: "已取消"
+  ko: "취소됨"
 app.runs.col.time:
   en: Time
   fr: Heure
+  de: "Zeit"
+  es: "Hora"
+  it: "Ora"
+  pt-BR: "Hora"
+  ja: "時刻"
+  zh-CN: "时间"
+  ko: "시간"
 app.runs.col.tool:
   en: Tool
   fr: Outil
+  de: "Werkzeug"
+  es: "Herramienta"
+  it: "Strumento"
+  pt-BR: "Ferramenta"
+  ja: "ツール"
+  zh-CN: "工具"
+  ko: "도구"
 app.runs.col.files:
   en: Files
   fr: Fichiers
+  de: "Dateien"
+  es: "Archivos"
+  it: "File"
+  pt-BR: "Arquivos"
+  ja: "ファイル"
+  zh-CN: "文件"
+  ko: "파일"
 app.runs.col.size:
   en: Size
   fr: Taille
+  de: "Größe"
+  es: "Tamaño"
+  it: "Dimensione"
+  pt-BR: "Tamanho"
+  ja: "サイズ"
+  zh-CN: "大小"
+  ko: "크기"
 app.runs.col.duration:
   en: Duration
   fr: Durée
+  de: "Dauer"
+  es: "Duración"
+  it: "Durata"
+  pt-BR: "Duração"
+  ja: "所要時間"
+  zh-CN: "耗时"
+  ko: "소요 시간"
 app.runs.empty:
   en: No runs yet. The beaver is resting.
   fr: Aucune exécution pour l’instant. Le castor se repose.
+  de: "Noch keine Läufe. Der Biber ruht sich aus."
+  es: "Aún no hay ejecuciones. El castor descansa."
+  it: "Nessuna esecuzione per ora. Il castoro riposa."
+  pt-BR: "Nenhuma execução ainda. O castor está descansando."
+  ja: "実行履歴はまだありません。ビーバーは休憩中です。"
+  zh-CN: "还没有运行记录。海狸正在休息。"
+  ko: "아직 실행 기록이 없습니다. 비버는 쉬는 중입니다."
 app.runs.loading:
   en: Reading the history…
   fr: Lecture de l’historique…
+  de: "Verlauf wird gelesen …"
+  es: "Leyendo el historial…"
+  it: "Lettura della cronologia…"
+  pt-BR: "Lendo o histórico…"
+  ja: "履歴を読み込み中…"
+  zh-CN: "正在读取记录…"
+  ko: "기록을 읽는 중…"
 app.runs.clear:
   en: Clear history
   fr: Effacer l’historique
+  de: "Verlauf löschen"
+  es: "Borrar historial"
+  it: "Cancella cronologia"
+  pt-BR: "Limpar histórico"
+  ja: "履歴を消去"
+  zh-CN: "清除记录"
+  ko: "기록 지우기"
 app.runs.clear_title:
   en: Clear the history?
   fr: Effacer l’historique ?
+  de: "Verlauf löschen?"
+  es: "¿Borrar el historial?"
+  it: "Cancellare la cronologia?"
+  pt-BR: "Limpar o histórico?"
+  ja: "履歴を消去しますか？"
+  zh-CN: "要清除记录吗？"
+  ko: "기록을 지울까요?"
 app.runs.clear_body:
   en: The list of runs is forgotten. Your files and results stay where they are.
   fr: La liste des exécutions est oubliée. Vos fichiers et résultats restent où ils sont.
+  de: "Die Liste der Läufe wird vergessen. Ihre Dateien und Ergebnisse bleiben, wo sie sind."
+  es: "Se olvida la lista de ejecuciones. Tus archivos y resultados se quedan donde están."
+  it: "L'elenco delle esecuzioni viene dimenticato. I tuoi file e i risultati restano dove sono."
+  pt-BR: "A lista de execuções é esquecida. Seus arquivos e resultados continuam onde estão."
+  ja: "実行履歴の一覧が消えます。ファイルや結果はそのまま残ります。"
+  zh-CN: "运行记录列表将被清除。你的文件和结果仍保留在原处。"
+  ko: "실행 기록 목록이 사라집니다. 파일과 결과는 그대로 남아 있습니다."
 app.runs.clear_ok:
   en: Clear history
   fr: Effacer l’historique
+  de: "Verlauf löschen"
+  es: "Borrar historial"
+  it: "Cancella cronologia"
+  pt-BR: "Limpar histórico"
+  ja: "履歴を消去"
+  zh-CN: "清除记录"
+  ko: "기록 지우기"
 app.runs.run_again:
   en: Run again
   fr: Relancer
+  de: "Erneut starten"
+  es: "Ejecutar de nuevo"
+  it: "Esegui di nuovo"
+  pt-BR: "Executar novamente"
+  ja: "もう一度実行"
+  zh-CN: "重新运行"
+  ko: "다시 실행"
 app.runs.undo:
   en: Undo
   fr: Annuler l’opération
+  de: "Rückgängig"
+  es: "Deshacer"
+  it: "Annulla"
+  pt-BR: "Desfazer"
+  ja: "元に戻す"
+  zh-CN: "撤销"
+  ko: "실행 취소"
 app.runs.undone:
   en: Undone. Everything is back as it was.
   fr: C’est annulé. Tout est revenu comme avant.
+  de: "Rückgängig gemacht. Alles ist wieder wie vorher."
+  es: "Deshecho. Todo ha vuelto a como estaba."
+  it: "Annullato. Tutto è tornato com'era."
+  pt-BR: "Desfeito. Tudo voltou como estava."
+  ja: "元に戻しました。すべて元の状態です。"
+  zh-CN: "已撤销，一切恢复原样。"
+  ko: "되돌렸습니다. 모든 것이 원래대로입니다."
 app.runs.undone_tag:
   en: Undone
   fr: Annulée
+  de: "Rückgängig"
+  es: "Deshecho"
+  it: "Annullato"
+  pt-BR: "Desfeito"
+  ja: "取り消し済み"
+  zh-CN: "已撤销"
+  ko: "되돌림"
 app.runs.undo_failed:
   en: "Undo failed:"
   fr: "L’annulation a échoué :"
+  de: "Rückgängig machen fehlgeschlagen:"
+  es: "No se pudo deshacer:"
+  it: "Annullamento non riuscito:"
+  pt-BR: "Não foi possível desfazer:"
+  ja: "元に戻せませんでした:"
+  zh-CN: "撤销失败："
+  ko: "되돌리지 못했습니다:"
 app.runs.outputs:
   en: "Results (%{count})"
   fr: "Résultats (%{count})"
+  de: "Ergebnisse (%{count})"
+  es: "Resultados (%{count})"
+  it: "Risultati (%{count})"
+  pt-BR: "Resultados (%{count})"
+  ja: "結果 (%{count})"
+  zh-CN: "结果 (%{count})"
+  ko: "결과 (%{count})"
 
 app.palette.tools:
   en: tools
   fr: outils
+  de: "Werkzeuge"
+  es: "herramientas"
+  it: "strumenti"
+  pt-BR: "ferramentas"
+  ja: "ツール"
+  zh-CN: "工具"
+  ko: "도구"
 app.palette.chains:
   en: chains
   fr: chaînes
+  de: "Ketten"
+  es: "cadenas"
+  it: "catene"
+  pt-BR: "cadeias"
+  ja: "チェーン"
+  zh-CN: "链"
+  ko: "체인"
 app.palette.pages:
   en: pages
   fr: pages
+  de: "Seiten"
+  es: "páginas"
+  it: "pagine"
+  pt-BR: "páginas"
+  ja: "ページ"
+  zh-CN: "页面"
+  ko: "페이지"
 app.palette.actions:
   en: actions
   fr: actions
+  de: "Aktionen"
+  es: "acciones"
+  it: "azioni"
+  pt-BR: "ações"
+  ja: "アクション"
+  zh-CN: "操作"
+  ko: "동작"
 app.palette.action.check_updates:
   en: Check for updates
   fr: Rechercher des mises à jour
+  de: "Nach Updates suchen"
+  es: "Buscar actualizaciones"
+  it: "Cerca aggiornamenti"
+  pt-BR: "Verificar atualizações"
+  ja: "アップデートを確認"
+  zh-CN: "检查更新"
+  ko: "업데이트 확인"
 app.palette.action.open_output:
   en: Open the output folder
   fr: Ouvrir le dossier des résultats
+  de: "Ausgabeordner öffnen"
+  es: "Abrir la carpeta de salida"
+  it: "Apri la cartella di output"
+  pt-BR: "Abrir a pasta de saída"
+  ja: "出力フォルダを開く"
+  zh-CN: "打开输出文件夹"
+  ko: "출력 폴더 열기"
 app.palette.action.toggle_theme:
   en: Toggle light / dark
   fr: Basculer clair / sombre
+  de: "Hell / Dunkel umschalten"
+  es: "Alternar claro / oscuro"
+  it: "Passa da chiaro a scuro"
+  pt-BR: "Alternar claro / escuro"
+  ja: "ライト / ダークを切り替え"
+  zh-CN: "切换浅色 / 深色"
+  ko: "라이트 / 다크 전환"
 app.palette.action.quit:
   en: Quit Castor
   fr: Quitter Castor
+  de: "Castor beenden"
+  es: "Salir de Castor"
+  it: "Esci da Castor"
+  pt-BR: "Sair do Castor"
+  ja: "Castorを終了"
+  zh-CN: "退出 Castor"
+  ko: "Castor 종료"
 app.palette.nothing:
   en: Nothing matches. Try other words, like “compress pdf”.
   fr: Rien ne correspond. Essayez d’autres mots, comme « compresser pdf ».
+  de: "Keine Treffer. Versuchen Sie andere Wörter, etwa „PDF komprimieren“."
+  es: "Sin resultados. Prueba con otras palabras, como “comprimir pdf”."
+  it: "Nessun risultato. Prova con altre parole, come «comprimi pdf»."
+  pt-BR: "Nada encontrado. Tente outras palavras, como “comprimir pdf”."
+  ja: "一致するものがありません。「PDF 圧縮」のように別の言葉を試してください。"
+  zh-CN: "没有匹配项。试试其他词，例如“压缩 pdf”。"
+  ko: "일치하는 항목이 없습니다. “pdf 압축”처럼 다른 단어로 시도해 보세요."
 app.palette.hint:
   en: ↑↓ to move · ↵ to open · Esc to close
   fr: ↑↓ pour choisir · ↵ pour ouvrir · Échap pour fermer
+  de: "↑↓ navigieren · ↵ öffnen · Esc schließen"
+  es: "↑↓ para moverte · ↵ para abrir · Esc para cerrar"
+  it: "↑↓ per spostarti · ↵ per aprire · Esc per chiudere"
+  pt-BR: "↑↓ para mover · ↵ para abrir · Esc para fechar"
+  ja: "↑↓ で移動 · ↵ で開く · Esc で閉じる"
+  zh-CN: "↑↓ 移动 · ↵ 打开 · Esc 关闭"
+  ko: "↑↓ 이동 · ↵ 열기 · Esc 닫기"
 
 app.settings.subtitle:
   en: How Castor behaves on this machine. Changes apply at once.
   fr: Le comportement de Castor sur cet ordinateur. Les changements s’appliquent tout de suite.
+  de: "Wie sich Castor auf diesem Rechner verhält. Änderungen gelten sofort."
+  es: "Cómo se comporta Castor en este equipo. Los cambios se aplican al instante."
+  it: "Come si comporta Castor su questo computer. Le modifiche si applicano subito."
+  pt-BR: "Como o Castor se comporta neste computador. As alterações são aplicadas na hora."
+  ja: "このコンピューターでのCastorの動作を設定します。変更はすぐに反映されます。"
+  zh-CN: "设置 Castor 在这台电脑上的行为。更改会立即生效。"
+  ko: "이 컴퓨터에서 Castor가 어떻게 동작할지 설정합니다. 변경 사항은 즉시 적용됩니다."
 app.settings.general:
   en: General
   fr: Général
+  de: "Allgemein"
+  es: "General"
+  it: "Generali"
+  pt-BR: "Geral"
+  ja: "一般"
+  zh-CN: "通用"
+  ko: "일반"
 app.settings.menu_bar:
   en: Menu bar
   fr: Barre des menus
+  de: "Menüleiste"
+  es: "Barra de menús"
+  it: "Barra dei menu"
+  pt-BR: "Barra de menus"
+  ja: "メニューバー"
+  zh-CN: "菜单栏"
+  ko: "메뉴 막대"
 app.settings.system_tray:
   en: System tray
   fr: Zone de notification
+  de: "Infobereich"
+  es: "Bandeja del sistema"
+  it: "Area di notifica"
+  pt-BR: "Bandeja do sistema"
+  ja: "システムトレイ"
+  zh-CN: "系统托盘"
+  ko: "시스템 트레이"
 app.settings.models:
   en: Models & helpers
   fr: Modèles et programmes d’appoint
+  de: "Modelle & Hilfsprogramme"
+  es: "Modelos y programas auxiliares"
+  it: "Modelli e programmi di supporto"
+  pt-BR: "Modelos e programas auxiliares"
+  ja: "モデルと補助プログラム"
+  zh-CN: "模型与辅助程序"
+  ko: "모델 및 보조 프로그램"
 app.settings.updates:
   en: Updates
   fr: Mises à jour
+  de: "Updates"
+  es: "Actualizaciones"
+  it: "Aggiornamenti"
+  pt-BR: "Atualizações"
+  ja: "アップデート"
+  zh-CN: "更新"
+  ko: "업데이트"
 app.settings.privacy:
   en: Privacy
   fr: Confidentialité
+  de: "Datenschutz"
+  es: "Privacidad"
+  it: "Privacy"
+  pt-BR: "Privacidade"
+  ja: "プライバシー"
+  zh-CN: "隐私"
+  ko: "개인정보 보호"
 app.settings.about:
   en: About
   fr: À propos
+  de: "Info"
+  es: "Acerca de"
+  it: "Informazioni"
+  pt-BR: "Sobre"
+  ja: "情報"
+  zh-CN: "关于"
+  ko: "정보"
 app.settings.language:
   en: Language
   fr: Langue
+  de: "Sprache"
+  es: "Idioma"
+  it: "Lingua"
+  pt-BR: "Idioma"
+  ja: "言語"
+  zh-CN: "语言"
+  ko: "언어"
 app.settings.language_system:
   en: Same as the system
   fr: Celle du système
+  de: "Wie das System"
+  es: "Igual que el sistema"
+  it: "Come il sistema"
+  pt-BR: "Igual ao sistema"
+  ja: "システムに合わせる"
+  zh-CN: "跟随系统"
+  ko: "시스템과 동일"
 app.settings.appearance:
   en: Appearance
   fr: Apparence
+  de: "Erscheinungsbild"
+  es: "Apariencia"
+  it: "Aspetto"
+  pt-BR: "Aparência"
+  ja: "外観"
+  zh-CN: "外观"
+  ko: "모양"
 app.settings.appearance_system:
   en: System
   fr: Système
+  de: "System"
+  es: "Sistema"
+  it: "Sistema"
+  pt-BR: "Sistema"
+  ja: "システム"
+  zh-CN: "系统"
+  ko: "시스템"
 app.settings.appearance_light:
   en: Light
   fr: Clair
+  de: "Hell"
+  es: "Claro"
+  it: "Chiaro"
+  pt-BR: "Claro"
+  ja: "ライト"
+  zh-CN: "浅色"
+  ko: "라이트"
 app.settings.appearance_dark:
   en: Dark
   fr: Sombre
+  de: "Dunkel"
+  es: "Oscuro"
+  it: "Scuro"
+  pt-BR: "Escuro"
+  ja: "ダーク"
+  zh-CN: "深色"
+  ko: "다크"
 app.settings.output:
   en: Where results go
   fr: Où vont les résultats
+  de: "Speicherort der Ergebnisse"
+  es: "Dónde van los resultados"
+  it: "Dove vanno i risultati"
+  pt-BR: "Onde os resultados vão"
+  ja: "結果の保存先"
+  zh-CN: "结果保存位置"
+  ko: "결과 저장 위치"
 app.settings.output_help:
   en: "Castor never overwrites a file: results get a new name."
   fr: "Castor n’écrase jamais un fichier : les résultats reçoivent un nouveau nom."
+  de: "Castor überschreibt nie eine Datei: Ergebnisse erhalten einen neuen Namen."
+  es: "Castor nunca sobrescribe un archivo: los resultados reciben un nombre nuevo."
+  it: "Castor non sovrascrive mai un file: i risultati ricevono un nuovo nome."
+  pt-BR: "O Castor nunca substitui um arquivo: os resultados recebem um novo nome."
+  ja: "Castorはファイルを上書きしません。結果には新しい名前が付きます。"
+  zh-CN: "Castor 绝不会覆盖文件：结果会使用新的文件名。"
+  ko: "Castor는 파일을 절대 덮어쓰지 않습니다. 결과에는 새 이름이 붙습니다."
 app.settings.output_folder:
   en: In a folder
   fr: Dans un dossier
+  de: "In einem Ordner"
+  es: "En una carpeta"
+  it: "In una cartella"
+  pt-BR: "Em uma pasta"
+  ja: "指定のフォルダ"
+  zh-CN: "保存到文件夹"
+  ko: "지정한 폴더에"
 app.settings.reveal:
   en: Show the results in the folder when a run ends
   fr: Afficher les résultats dans le dossier à la fin
+  de: "Ergebnisse nach einem Lauf im Ordner anzeigen"
+  es: "Mostrar los resultados en la carpeta al terminar una ejecución"
+  it: "Mostra i risultati nella cartella al termine di un'esecuzione"
+  pt-BR: "Mostrar os resultados na pasta ao fim de uma execução"
+  ja: "実行が終わったら結果をフォルダで表示"
+  zh-CN: "运行结束后在文件夹中显示结果"
+  ko: "실행이 끝나면 결과를 폴더에서 표시"
 app.settings.tray_mac:
   en: Show Castor in the menu bar
   fr: Afficher Castor dans la barre des menus
+  de: "Castor in der Menüleiste anzeigen"
+  es: "Mostrar Castor en la barra de menús"
+  it: "Mostra Castor nella barra dei menu"
+  pt-BR: "Mostrar o Castor na barra de menus"
+  ja: "Castorをメニューバーに表示"
+  zh-CN: "在菜单栏中显示 Castor"
+  ko: "메뉴 막대에 Castor 표시"
 app.settings.tray_win:
   en: Show Castor in the system tray
   fr: Afficher Castor dans la zone de notification
+  de: "Castor im Infobereich anzeigen"
+  es: "Mostrar Castor en la bandeja del sistema"
+  it: "Mostra Castor nell'area di notifica"
+  pt-BR: "Mostrar o Castor na bandeja do sistema"
+  ja: "Castorをシステムトレイに表示"
+  zh-CN: "在系统托盘中显示 Castor"
+  ko: "시스템 트레이에 Castor 표시"
 app.settings.tray_help:
   en: A click on the icon opens the quick panel.
   fr: Un clic sur l’icône ouvre le panneau rapide.
+  de: "Ein Klick auf das Symbol öffnet das Schnellfenster."
+  es: "Un clic en el icono abre el panel rápido."
+  it: "Un clic sull'icona apre il pannello rapido."
+  pt-BR: "Um clique no ícone abre o painel rápido."
+  ja: "アイコンをクリックするとクイックパネルが開きます。"
+  zh-CN: "点击该图标即可打开快捷面板。"
+  ko: "아이콘을 클릭하면 빠른 패널이 열립니다."
 app.settings.keep_running:
   en: Keep running when the window is closed
   fr: Rester actif quand la fenêtre est fermée
+  de: "Nach dem Schließen des Fensters weiterlaufen"
+  es: "Seguir en ejecución al cerrar la ventana"
+  it: "Resta in esecuzione alla chiusura della finestra"
+  pt-BR: "Continuar em execução ao fechar a janela"
+  ja: "ウィンドウを閉じても実行を続ける"
+  zh-CN: "关闭窗口后继续运行"
+  ko: "창을 닫아도 계속 실행"
 app.settings.keep_running_help:
   en: The quick panel and the shortcut stay available.
   fr: Le panneau rapide et le raccourci restent disponibles.
+  de: "Schnellfenster und Tastenkürzel bleiben verfügbar."
+  es: "El panel rápido y el atajo siguen disponibles."
+  it: "Il pannello rapido e la scorciatoia restano disponibili."
+  pt-BR: "O painel rápido e o atalho continuam disponíveis."
+  ja: "クイックパネルとショートカットは引き続き使えます。"
+  zh-CN: "快捷面板和快捷键仍然可用。"
+  ko: "빠른 패널과 단축키를 계속 사용할 수 있습니다."
 app.settings.hotkey:
   en: Quick panel shortcut
   fr: Raccourci du panneau rapide
+  de: "Tastenkürzel für das Schnellfenster"
+  es: "Atajo del panel rápido"
+  it: "Scorciatoia del pannello rapido"
+  pt-BR: "Atalho do painel rápido"
+  ja: "クイックパネルのショートカット"
+  zh-CN: "快捷面板快捷键"
+  ko: "빠른 패널 단축키"
 app.settings.hotkey_help:
   en: Works from any app.
   fr: Fonctionne depuis n’importe quelle application.
+  de: "Funktioniert in jeder App."
+  es: "Funciona desde cualquier aplicación."
+  it: "Funziona da qualsiasi app."
+  pt-BR: "Funciona em qualquer app."
+  ja: "どのアプリからでも使えます。"
+  zh-CN: "在任何应用中都有效。"
+  ko: "모든 앱에서 작동합니다."
 app.settings.hotkey_off:
   en: "Off"
   fr: Désactivé
+  de: "Aus"
+  es: "Desactivado"
+  it: "Disattivato"
+  pt-BR: "Desativado"
+  ja: "オフ"
+  zh-CN: "关闭"
+  ko: "끔"
 app.settings.hotkey_press:
   en: Press the keys…
   fr: Appuyez sur les touches…
+  de: "Tasten drücken …"
+  es: "Pulsa las teclas…"
+  it: "Premi i tasti…"
+  pt-BR: "Pressione as teclas…"
+  ja: "キーを押してください…"
+  zh-CN: "请按下按键…"
+  ko: "키를 누르세요…"
 app.settings.hotkey_record:
   en: Record
   fr: Enregistrer
+  de: "Aufnehmen"
+  es: "Grabar"
+  it: "Registra"
+  pt-BR: "Gravar"
+  ja: "記録"
+  zh-CN: "录制"
+  ko: "입력"
 app.settings.hotkey_clear:
   en: Turn off
   fr: Désactiver
+  de: "Ausschalten"
+  es: "Desactivar"
+  it: "Disattiva"
+  pt-BR: "Desativar"
+  ja: "オフにする"
+  zh-CN: "关闭"
+  ko: "끄기"
 app.settings.login:
   en: Open Castor at login
   fr: Ouvrir Castor à l’ouverture de session
+  de: "Castor bei der Anmeldung öffnen"
+  es: "Abrir Castor al iniciar sesión"
+  it: "Apri Castor all'accesso"
+  pt-BR: "Abrir o Castor ao iniciar a sessão"
+  ja: "ログイン時にCastorを開く"
+  zh-CN: "登录时打开 Castor"
+  ko: "로그인할 때 Castor 열기"
 app.settings.models_help:
   en: Some tools need a model or a helper program. Castor fetches each one once, only after asking, then works offline.
   fr: Certains outils ont besoin d’un modèle ou d’un programme d’appoint. Castor récupère chacun une seule fois, seulement après accord, puis tout fonctionne hors ligne.
+  de: "Manche Werkzeuge brauchen ein Modell oder ein Hilfsprogramm. Castor lädt jedes nur einmal und erst nach Rückfrage; danach läuft alles offline."
+  es: "Algunas herramientas necesitan un modelo o un programa auxiliar. Castor descarga cada uno una sola vez, solo después de preguntar, y luego funciona sin conexión."
+  it: "Alcuni strumenti richiedono un modello o un programma di supporto. Castor scarica ciascuno una volta sola, solo dopo averlo chiesto, poi funziona offline."
+  pt-BR: "Algumas ferramentas precisam de um modelo ou de um programa auxiliar. O Castor baixa cada um uma única vez, só depois de perguntar, e depois funciona offline."
+  ja: "一部のツールにはモデルや補助プログラムが必要です。Castorは確認したうえで、それぞれ一度だけ取得し、その後はオフラインで動作します。"
+  zh-CN: "部分工具需要模型或辅助程序。Castor 会在征得你同意后各下载一次，之后即可离线使用。"
+  ko: "일부 도구는 모델이나 보조 프로그램이 필요합니다. Castor는 먼저 물어본 뒤 각각 한 번만 내려받고, 이후에는 오프라인으로 작동합니다."
 app.settings.models_none:
   en: No tool needs a download yet.
   fr: Aucun outil n’a encore besoin de téléchargement.
+  de: "Noch kein Werkzeug braucht einen Download."
+  es: "Ninguna herramienta necesita descargas por ahora."
+  it: "Nessuno strumento richiede ancora un download."
+  pt-BR: "Nenhuma ferramenta precisa de download por enquanto."
+  ja: "ダウンロードが必要なツールはまだありません。"
+  zh-CN: "目前没有需要下载的工具。"
+  ko: "아직 다운로드가 필요한 도구가 없습니다."
 app.settings.models_caption:
   en: "Downloads (%{size} on disk)"
   fr: "Téléchargements (%{size} sur le disque)"
+  de: "Downloads (%{size} auf dem Datenträger)"
+  es: "Descargas (%{size} en disco)"
+  it: "Download (%{size} su disco)"
+  pt-BR: "Downloads (%{size} em disco)"
+  ja: "ダウンロード(ディスク使用量 %{size})"
+  zh-CN: "下载内容（磁盘占用 %{size}）"
+  ko: "다운로드 (디스크 %{size} 사용)"
 app.settings.licence:
   en: Licence
   fr: Licence
+  de: "Lizenz"
+  es: "Licencia"
+  it: "Licenza"
+  pt-BR: "Licença"
+  ja: "ライセンス"
+  zh-CN: "许可证"
+  ko: "라이선스"
 app.settings.present:
   en: On this machine
   fr: Présent
+  de: "Auf diesem Rechner"
+  es: "En este equipo"
+  it: "Su questo computer"
+  pt-BR: "Neste computador"
+  ja: "このコンピューターにあり"
+  zh-CN: "已在本机"
+  ko: "이 컴퓨터에 있음"
 app.settings.absent:
   en: Not downloaded
   fr: Non téléchargé
+  de: "Nicht heruntergeladen"
+  es: "No descargado"
+  it: "Non scaricato"
+  pt-BR: "Não baixado"
+  ja: "未ダウンロード"
+  zh-CN: "未下载"
+  ko: "다운로드 안 됨"
 app.settings.version:
   en: Version
   fr: Version
+  de: "Version"
+  es: "Versión"
+  it: "Versione"
+  pt-BR: "Versão"
+  ja: "バージョン"
+  zh-CN: "版本"
+  ko: "버전"
 app.settings.check_updates:
   en: Check for updates automatically
   fr: Rechercher les mises à jour automatiquement
+  de: "Automatisch nach Updates suchen"
+  es: "Buscar actualizaciones automáticamente"
+  it: "Cerca aggiornamenti automaticamente"
+  pt-BR: "Verificar atualizações automaticamente"
+  ja: "アップデートを自動的に確認"
+  zh-CN: "自动检查更新"
+  ko: "업데이트 자동 확인"
 app.settings.check_updates_help:
   en: Once a day at most, on GitHub. Nothing about you is sent.
   fr: Une fois par jour au plus, sur GitHub. Rien ne vous concernant n’est envoyé.
+  de: "Höchstens einmal täglich, über GitHub. Es werden keine Daten über Sie gesendet."
+  es: "Como máximo una vez al día, en GitHub. No se envía nada sobre ti."
+  it: "Al massimo una volta al giorno, su GitHub. Non viene inviato nulla su di te."
+  pt-BR: "No máximo uma vez por dia, no GitHub. Nada sobre você é enviado."
+  ja: "確認は1日1回までで、GitHubに対して行います。あなたに関する情報は送信されません。"
+  zh-CN: "每天最多一次，通过 GitHub 检查。不会发送任何关于你的信息。"
+  ko: "하루에 최대 한 번, GitHub에서 확인합니다. 사용자에 관한 정보는 전송되지 않습니다."
 app.settings.auto_install:
   en: Install updates without asking
   fr: Installer les mises à jour sans demander
+  de: "Updates ohne Nachfrage installieren"
+  es: "Instalar actualizaciones sin preguntar"
+  it: "Installa gli aggiornamenti senza chiedere"
+  pt-BR: "Instalar atualizações sem perguntar"
+  ja: "確認せずにアップデートをインストール"
+  zh-CN: "不经询问直接安装更新"
+  ko: "묻지 않고 업데이트 설치"
 app.settings.auto_install_help:
   en: Downloaded in the background, applied when you quit.
   fr: Téléchargées en arrière-plan, appliquées à la fermeture.
+  de: "Wird im Hintergrund geladen und beim Beenden angewendet."
+  es: "Se descargan en segundo plano y se aplican al salir."
+  it: "Vengono scaricati in background e applicati all'uscita."
+  pt-BR: "São baixadas em segundo plano e aplicadas ao sair."
+  ja: "バックグラウンドでダウンロードし、終了時に適用します。"
+  zh-CN: "在后台下载，退出时应用。"
+  ko: "백그라운드에서 내려받아 종료할 때 적용합니다."
 app.settings.update_status:
   en: Status
   fr: État
+  de: "Status"
+  es: "Estado"
+  it: "Stato"
+  pt-BR: "Status"
+  ja: "状態"
+  zh-CN: "状态"
+  ko: "상태"
 app.settings.check_now:
   en: Check now
   fr: Vérifier maintenant
+  de: "Jetzt prüfen"
+  es: "Buscar ahora"
+  it: "Controlla ora"
+  pt-BR: "Verificar agora"
+  ja: "今すぐ確認"
+  zh-CN: "立即检查"
+  ko: "지금 확인"
 app.settings.privacy_body:
   en: Castor works on this machine. Your files are never uploaded, there is no account and no analytics. The only connections are the update check (if on) and the one-time downloads you approve.
   fr: Castor travaille sur cet ordinateur. Vos fichiers ne sont jamais envoyés, il n’y a ni compte ni statistiques. Les seules connexions sont la recherche de mises à jour (si activée) et les téléchargements uniques que vous acceptez.
+  de: "Castor arbeitet auf diesem Rechner. Ihre Dateien werden nie hochgeladen, es gibt kein Konto und keine Analyse-Tools. Verbindungen gibt es nur für die Update-Prüfung (falls aktiv) und die einmaligen Downloads, die Sie freigeben."
+  es: "Castor trabaja en este equipo. Tus archivos nunca se suben, no hay cuenta ni analíticas. Las únicas conexiones son la búsqueda de actualizaciones (si está activada) y las descargas únicas que apruebes."
+  it: "Castor lavora su questo computer. I tuoi file non vengono mai caricati, non c'è nessun account e nessuna analisi. Le uniche connessioni sono il controllo degli aggiornamenti (se attivo) e i download una tantum che approvi."
+  pt-BR: "O Castor trabalha neste computador. Seus arquivos nunca são enviados, não há conta nem análises de uso. As únicas conexões são a verificação de atualizações (se ativada) e os downloads únicos que você aprovar."
+  ja: "Castorはこのコンピューター上で動作します。ファイルがアップロードされることはなく、アカウントも利用状況の収集もありません。通信は、アップデートの確認(オンの場合)と、あなたが許可した初回のみのダウンロードだけです。"
+  zh-CN: "Castor 在这台电脑上运行。你的文件绝不会被上传，没有账号，也没有数据统计。仅有的网络连接是检查更新（若已开启）和你批准的一次性下载。"
+  ko: "Castor는 이 컴퓨터에서 작동합니다. 파일은 절대 업로드되지 않고, 계정도 분석 도구도 없습니다. 연결은 업데이트 확인(켜 둔 경우)과 직접 승인한 1회성 다운로드뿐입니다."
 app.settings.ai_key:
   en: AI key (optional)
   fr: Clé d’IA (facultative)
+  de: "KI-Schlüssel (optional)"
+  es: "Clave de IA (opcional)"
+  it: "Chiave IA (facoltativa)"
+  pt-BR: "Chave de IA (opcional)"
+  ja: "AIキー(任意)"
+  zh-CN: "AI 密钥（可选）"
+  ko: "AI 키 (선택)"
 app.settings.ai_key_help:
   en: Only for the “Write with AI” buttons, which send that text to the provider. Stored on this machine only.
   fr: Seulement pour les boutons « Écrire avec l’IA », qui envoient ce texte au fournisseur. Gardée sur cet ordinateur uniquement.
+  de: "Nur für die Schaltflächen „Mit KI schreiben“, die diesen Text an den Anbieter senden. Wird nur auf diesem Rechner gespeichert."
+  es: "Solo para los botones “Escribir con IA”, que envían ese texto al proveedor. Se guarda solo en este equipo."
+  it: "Solo per i pulsanti «Scrivi con l'IA», che inviano quel testo al fornitore. Salvata solo su questo computer."
+  pt-BR: "Somente para os botões “Escrever com IA”, que enviam esse texto ao provedor. Armazenada apenas neste computador."
+  ja: "「AIで書く」ボタン専用で、そのテキストがプロバイダーに送信されます。キーはこのコンピューターにのみ保存されます。"
+  zh-CN: "仅用于“用 AI 撰写”按钮，这些按钮会把相应文本发送给服务商。密钥只保存在这台电脑上。"
+  ko: "해당 텍스트를 제공업체로 보내는 “AI로 작성” 버튼에만 사용됩니다. 이 컴퓨터에만 저장됩니다."
 app.settings.ai_key_placeholder:
   en: Paste a key to enable
   fr: Collez une clé pour activer
+  de: "Schlüssel einfügen zum Aktivieren"
+  es: "Pega una clave para activarlo"
+  it: "Incolla una chiave per attivare"
+  pt-BR: "Cole uma chave para ativar"
+  ja: "キーを貼り付けて有効化"
+  zh-CN: "粘贴密钥以启用"
+  ko: "키를 붙여넣어 활성화"
 app.settings.ai_key_saved:
   en: Key saved on this machine.
   fr: Clé enregistrée sur cet ordinateur.
+  de: "Schlüssel auf diesem Rechner gespeichert."
+  es: "Clave guardada en este equipo."
+  it: "Chiave salvata su questo computer."
+  pt-BR: "Chave salva neste computador."
+  ja: "キーをこのコンピューターに保存しました。"
+  zh-CN: "密钥已保存在这台电脑上。"
+  ko: "키가 이 컴퓨터에 저장되었습니다."
 app.settings.ai_key_forget:
   en: Forget the key
   fr: Oublier la clé
+  de: "Schlüssel vergessen"
+  es: "Olvidar la clave"
+  it: "Dimentica la chiave"
+  pt-BR: "Esquecer a chave"
+  ja: "キーを削除"
+  zh-CN: "清除密钥"
+  ko: "키 삭제"
 app.settings.about_line:
   en: Castor %{version} — gnaws through your files. Made by basedpolymer.
   fr: Castor %{version} — ronge vos fichiers à votre place. Fait par basedpolymer.
+  de: "Castor %{version} – nagt sich durch Ihre Dateien. Gemacht von basedpolymer."
+  es: "Castor %{version}: roe tus archivos. Hecho por basedpolymer."
+  it: "Castor %{version}: rosicchia i tuoi file. Creato da basedpolymer."
+  pt-BR: "Castor %{version}: roe seus arquivos. Feito por basedpolymer."
+  ja: "Castor %{version} — ファイルをかじって片づけます。制作: basedpolymer"
+  zh-CN: "Castor %{version} — 替你啃定文件。作者：basedpolymer"
+  ko: "Castor %{version} — 파일을 대신 갉아 드립니다. 제작: basedpolymer"
 app.settings.about_licence:
   en: Free software under the GNU General Public License, version 3 or later.
   fr: Logiciel libre sous licence publique générale GNU, version 3 ou ultérieure.
+  de: "Freie Software unter der GNU General Public License, Version 3 oder neuer."
+  es: "Software libre bajo la Licencia Pública General de GNU, versión 3 o posterior."
+  it: "Software libero con licenza GNU General Public License, versione 3 o successiva."
+  pt-BR: "Software livre sob a Licença Pública Geral GNU, versão 3 ou posterior."
+  ja: "GNU General Public License バージョン3以降に基づくフリーソフトウェアです。"
+  zh-CN: "基于 GNU 通用公共许可证第 3 版或更高版本的自由软件。"
+  ko: "GNU 일반 공중 사용 허가서 3판 이상에 따른 자유 소프트웨어입니다."
 app.settings.about_joke:
   en: Castor builds things. It does not fly planes. No accounts, no cloud, no beaver was harmed.
   fr: Castor construit des choses. Il ne pilote pas d’avions. Ni compte, ni nuage, et aucun castor n’a été maltraité.
+  de: "Castor baut Dinge. Er fliegt keine Flugzeuge. Keine Konten, keine Cloud, kein Biber wurde verletzt."
+  es: "Castor construye cosas. No pilota aviones. Sin cuentas, sin nube, ningún castor resultó herido."
+  it: "Castor costruisce cose. Non pilota aerei. Niente account, niente cloud, nessun castoro è stato maltrattato."
+  pt-BR: "O Castor constrói coisas. Não pilota aviões. Sem contas, sem nuvem, nenhum castor foi ferido."
+  ja: "Castorが作るのはモノであって、飛行機は操縦しません。アカウントもクラウドもなし。ビーバーは傷つけていません。"
+  zh-CN: "Castor 只负责搭建东西，不会开飞机。没有账号，没有云端，也没有海狸受到伤害。"
+  ko: "Castor는 무언가를 만들 뿐, 비행기는 몰지 않습니다. 계정도, 클라우드도 없고, 다친 비버도 없습니다."
 app.settings.notices:
   en: Third-party notices
   fr: Mentions des tiers
+  de: "Hinweise zu Drittanbieter-Software"
+  es: "Avisos de terceros"
+  it: "Avvisi di terze parti"
+  pt-BR: "Avisos de terceiros"
+  ja: "サードパーティの通知"
+  zh-CN: "第三方声明"
+  ko: "서드파티 고지"
 app.settings.logs:
   en: Logs
   fr: Journaux
+  de: "Protokolle"
+  es: "Registros"
+  it: "Log"
+  pt-BR: "Logs"
+  ja: "ログ"
+  zh-CN: "日志"
+  ko: "로그"
 
 app.update.disabled:
   en: Updates are disabled in development builds.
   fr: Les mises à jour sont désactivées dans les versions de développement.
+  de: "In Entwicklungsversionen sind Updates deaktiviert."
+  es: "Las actualizaciones están desactivadas en las versiones de desarrollo."
+  it: "Gli aggiornamenti sono disattivati nelle build di sviluppo."
+  pt-BR: "As atualizações estão desativadas nas versões de desenvolvimento."
+  ja: "開発ビルドではアップデートは無効です。"
+  zh-CN: "开发版本中已禁用更新。"
+  ko: "개발 빌드에서는 업데이트가 비활성화되어 있습니다."
 app.update.idle:
   en: Not checked yet.
   fr: Pas encore vérifié.
+  de: "Noch nicht geprüft."
+  es: "Aún no se ha comprobado."
+  it: "Non ancora controllato."
+  pt-BR: "Ainda não verificado."
+  ja: "まだ確認していません。"
+  zh-CN: "尚未检查。"
+  ko: "아직 확인하지 않았습니다."
 app.update.checking:
   en: Checking…
   fr: Vérification…
+  de: "Wird geprüft …"
+  es: "Comprobando…"
+  it: "Controllo in corso…"
+  pt-BR: "Verificando…"
+  ja: "確認中…"
+  zh-CN: "正在检查…"
+  ko: "확인 중…"
 app.update.up_to_date:
   en: Castor is up to date.
   fr: Castor est à jour.
+  de: "Castor ist auf dem neuesten Stand."
+  es: "Castor está al día."
+  it: "Castor è aggiornato."
+  pt-BR: "O Castor está atualizado."
+  ja: "Castorは最新です。"
+  zh-CN: "Castor 已是最新版本。"
+  ko: "Castor가 최신 버전입니다."
 app.update.available:
   en: Castor %{version} is available.
   fr: Castor %{version} est disponible.
+  de: "Castor %{version} ist verfügbar."
+  es: "Castor %{version} está disponible."
+  it: "Castor %{version} è disponibile."
+  pt-BR: "O Castor %{version} está disponível."
+  ja: "Castor %{version} が利用できます。"
+  zh-CN: "Castor %{version} 现已可用。"
+  ko: "Castor %{version}을(를) 사용할 수 있습니다."
 app.update.downloading:
   en: Downloading Castor %{version}… %{pct} %
   fr: Téléchargement de Castor %{version}… %{pct} %
+  de: "Castor %{version} wird heruntergeladen … %{pct} %"
+  es: "Descargando Castor %{version}… %{pct} %"
+  it: "Download di Castor %{version}… %{pct} %"
+  pt-BR: "Baixando o Castor %{version}… %{pct} %"
+  ja: "Castor %{version} をダウンロード中… %{pct} %"
+  zh-CN: "正在下载 Castor %{version}… %{pct} %"
+  ko: "Castor %{version} 내려받는 중… %{pct} %"
 app.update.ready:
   en: Castor %{version} is ready.
   fr: Castor %{version} est prêt.
+  de: "Castor %{version} ist bereit."
+  es: "Castor %{version} está listo."
+  it: "Castor %{version} è pronto."
+  pt-BR: "O Castor %{version} está pronto."
+  ja: "Castor %{version} の準備ができました。"
+  zh-CN: "Castor %{version} 已准备就绪。"
+  ko: "Castor %{version} 준비가 완료되었습니다."
 app.update.failed:
   en: "The check failed: %{error}"
   fr: "La vérification a échoué : %{error}"
+  de: "Die Prüfung ist fehlgeschlagen: %{error}"
+  es: "La comprobación falló: %{error}"
+  it: "Il controllo non è riuscito: %{error}"
+  pt-BR: "A verificação falhou: %{error}"
+  ja: "確認に失敗しました: %{error}"
+  zh-CN: "检查失败：%{error}"
+  ko: "확인에 실패했습니다: %{error}"
 app.update.download:
   en: Download
   fr: Télécharger
+  de: "Herunterladen"
+  es: "Descargar"
+  it: "Scarica"
+  pt-BR: "Baixar"
+  ja: "ダウンロード"
+  zh-CN: "下载"
+  ko: "다운로드"
 app.update.restart:
   en: Restart to update
   fr: Redémarrer pour mettre à jour
+  de: "Neu starten und aktualisieren"
+  es: "Reiniciar para actualizar"
+  it: "Riavvia per aggiornare"
+  pt-BR: "Reiniciar para atualizar"
+  ja: "再起動してアップデート"
+  zh-CN: "重启以更新"
+  ko: "다시 시작하여 업데이트"
 app.update.whats_new:
   en: What’s new
   fr: Nouveautés
+  de: "Neuigkeiten"
+  es: "Novedades"
+  it: "Novità"
+  pt-BR: "Novidades"
+  ja: "新機能"
+  zh-CN: "更新内容"
+  ko: "새로운 기능"
 
 
 app.tray.open:
   en: Open Castor
   fr: Ouvrir Castor
+  de: "Castor öffnen"
+  es: "Abrir Castor"
+  it: "Apri Castor"
+  pt-BR: "Abrir o Castor"
+  ja: "Castorを開く"
+  zh-CN: "打开 Castor"
+  ko: "Castor 열기"
 app.tray.quit:
   en: Quit
   fr: Quitter
+  de: "Beenden"
+  es: "Salir"
+  it: "Esci"
+  pt-BR: "Sair"
+  ja: "終了"
+  zh-CN: "退出"
+  ko: "종료"
 app.panel.search:
   en: Search tools…
   fr: Chercher un outil…
+  de: "Werkzeuge suchen …"
+  es: "Buscar herramientas…"
+  it: "Cerca strumenti…"
+  pt-BR: "Buscar ferramentas…"
+  ja: "ツールを検索…"
+  zh-CN: "搜索工具…"
+  ko: "도구 검색…"
 app.panel.drop:
   en: Drop files on me
   fr: Déposez des fichiers ici
+  de: "Dateien auf mich ziehen"
+  es: "Suelta archivos sobre mí"
+  it: "Trascina i file su di me"
+  pt-BR: "Solte arquivos em mim"
+  ja: "ファイルをここにドロップ"
+  zh-CN: "把文件拖给我"
+  ko: "파일을 여기에 놓아 주세요"
 app.panel.for_files:
   en: "Best tools for %{files}:"
   fr: "Les meilleurs outils pour %{files} :"
+  de: "Beste Werkzeuge für %{files}:"
+  es: "Las mejores herramientas para %{files}:"
+  it: "Gli strumenti migliori per %{files}:"
+  pt-BR: "Melhores ferramentas para %{files}:"
+  ja: "%{files} に最適なツール:"
+  zh-CN: "适合 %{files} 的最佳工具："
+  ko: "%{files}에 가장 알맞은 도구:"
 app.panel.show:
   en: Show
   fr: Afficher
+  de: "Anzeigen"
+  es: "Mostrar"
+  it: "Mostra"
+  pt-BR: "Mostrar"
+  ja: "表示"
+  zh-CN: "显示"
+  ko: "보기"
 app.panel.copy:
   en: Copy
   fr: Copier
+  de: "Kopieren"
+  es: "Copiar"
+  it: "Copia"
+  pt-BR: "Copiar"
+  ja: "コピー"
+  zh-CN: "复制"
+  ko: "복사"
 app.panel.copied:
   en: Copied
   fr: Copié
+  de: "Kopiert"
+  es: "Copiado"
+  it: "Copiato"
+  pt-BR: "Copiado"
+  ja: "コピーしました"
+  zh-CN: "已复制"
+  ko: "복사됨"
 app.panel.clipboard:
   en: "Clipboard: %{what}"
   fr: "Presse-papiers : %{what}"
+  de: "Zwischenablage: %{what}"
+  es: "Portapapeles: %{what}"
+  it: "Appunti: %{what}"
+  pt-BR: "Área de transferência: %{what}"
+  ja: "クリップボード: %{what}"
+  zh-CN: "剪贴板：%{what}"
+  ko: "클립보드: %{what}"
 app.panel.last_runs:
   en: last runs
   fr: dernières exécutions
+  de: "letzte Läufe"
+  es: "últimas ejecuciones"
+  it: "ultime esecuzioni"
+  pt-BR: "últimas execuções"
+  ja: "最近の実行"
+  zh-CN: "最近运行"
+  ko: "최근 실행"
 
 app.chains.subtitle:
   en: Several tools in a row, saved under one name. The results of each step feed the next.
   fr: Plusieurs outils à la suite, enregistrés sous un nom. Les résultats d’une étape alimentent la suivante.
+  de: "Mehrere Werkzeuge hintereinander, unter einem Namen gespeichert. Die Ergebnisse jedes Schritts speisen den nächsten."
+  es: "Varias herramientas seguidas, guardadas con un nombre. El resultado de cada paso alimenta el siguiente."
+  it: "Più strumenti di fila, salvati con un nome. I risultati di ogni passaggio alimentano il successivo."
+  pt-BR: "Várias ferramentas em sequência, salvas com um nome. Os resultados de cada etapa alimentam a próxima."
+  ja: "複数のツールを順に実行する手順に名前を付けて保存します。各ステップの結果が次のステップに渡されます。"
+  zh-CN: "将多个工具依次串联，并以一个名称保存。每一步的结果会交给下一步。"
+  ko: "여러 도구를 차례로 실행하는 과정을 하나의 이름으로 저장합니다. 각 단계의 결과가 다음 단계로 넘어갑니다."
 app.chains.new:
   en: New chain
   fr: Nouvelle chaîne
+  de: "Neue Kette"
+  es: "Nueva cadena"
+  it: "Nuova catena"
+  pt-BR: "Nova cadeia"
+  ja: "新しいチェーン"
+  zh-CN: "新建链"
+  ko: "새 체인"
 app.chains.import:
   en: Import…
   fr: Importer…
+  de: "Importieren …"
+  es: "Importar…"
+  it: "Importa…"
+  pt-BR: "Importar…"
+  ja: "インポート…"
+  zh-CN: "导入…"
+  ko: "가져오기…"
 app.chains.export:
   en: Export…
   fr: Exporter…
+  de: "Exportieren …"
+  es: "Exportar…"
+  it: "Esporta…"
+  pt-BR: "Exportar…"
+  ja: "エクスポート…"
+  zh-CN: "导出…"
+  ko: "내보내기…"
 app.chains.mine:
   en: my chains
   fr: mes chaînes
+  de: "meine Ketten"
+  es: "mis cadenas"
+  it: "le mie catene"
+  pt-BR: "minhas cadeias"
+  ja: "マイチェーン"
+  zh-CN: "我的链"
+  ko: "내 체인"
 app.chains.mine_empty:
   en: None yet — start from a template.
   fr: Aucune pour l’instant — partez d’un modèle.
+  de: "Noch keine – beginnen Sie mit einer Vorlage."
+  es: "Ninguna todavía: empieza con una plantilla."
+  it: "Ancora nessuna: parti da un modello."
+  pt-BR: "Nenhuma ainda: comece por um modelo."
+  ja: "まだありません。テンプレートから始めましょう。"
+  zh-CN: "还没有，可以从模板开始。"
+  ko: "아직 없습니다. 템플릿으로 시작해 보세요."
 app.chains.templates:
   en: templates
   fr: modèles
+  de: "Vorlagen"
+  es: "plantillas"
+  it: "modelli"
+  pt-BR: "modelos"
+  ja: "テンプレート"
+  zh-CN: "模板"
+  ko: "템플릿"
 app.chains.no_steps:
   en: No step yet
   fr: Aucune étape
+  de: "Noch kein Schritt"
+  es: "Aún no hay pasos"
+  it: "Nessun passaggio per ora"
+  pt-BR: "Nenhuma etapa ainda"
+  ja: "ステップはまだありません"
+  zh-CN: "还没有步骤"
+  ko: "아직 단계가 없습니다"
 app.chains.missing:
   en: "%{count} step(s) need tools not installed yet"
   fr: "%{count} étape(s) demandent des outils pas encore installés"
+  de: "%{count} Schritt(e) brauchen noch nicht installierte Werkzeuge"
+  es: "%{count} paso(s) necesitan herramientas que aún no están instaladas"
+  it: "%{count} passaggio/i richiedono strumenti non ancora installati"
+  pt-BR: "%{count} etapa(s) precisam de ferramentas ainda não instaladas"
+  ja: "%{count} 個のステップに、まだインストールされていないツールが必要です"
+  zh-CN: "有 %{count} 个步骤需要尚未安装的工具"
+  ko: "%{count}개 단계에 아직 설치되지 않은 도구가 필요합니다"
 app.chains.skipped:
   en: "Skipped, not available yet: %{tools}"
   fr: "Ignorées, pas encore disponibles : %{tools}"
+  de: "Übersprungen, noch nicht verfügbar: %{tools}"
+  es: "Omitido, aún no disponible: %{tools}"
+  it: "Saltato, non ancora disponibile: %{tools}"
+  pt-BR: "Ignorado, ainda não disponível: %{tools}"
+  ja: "スキップしました(まだ利用できません): %{tools}"
+  zh-CN: "已跳过，尚不可用：%{tools}"
+  ko: "건너뜀, 아직 사용할 수 없음: %{tools}"
 app.chains.pick:
   en: Pick a chain on the left, or start a new one.
   fr: Choisissez une chaîne à gauche, ou créez-en une.
+  de: "Wählen Sie links eine Kette oder beginnen Sie eine neue."
+  es: "Elige una cadena a la izquierda o empieza una nueva."
+  it: "Scegli una catena a sinistra o creane una nuova."
+  pt-BR: "Escolha uma cadeia à esquerda ou comece uma nova."
+  ja: "左からチェーンを選ぶか、新しく作成してください。"
+  zh-CN: "请在左侧选择一条链，或新建一条。"
+  ko: "왼쪽에서 체인을 고르거나 새로 만드세요."
 app.chains.untitled:
   en: Untitled chain
   fr: Chaîne sans titre
+  de: "Unbenannte Kette"
+  es: "Cadena sin título"
+  it: "Catena senza titolo"
+  pt-BR: "Cadeia sem título"
+  ja: "名称未設定のチェーン"
+  zh-CN: "未命名的链"
+  ko: "이름 없는 체인"
 app.chains.name_placeholder:
   en: Chain name
   fr: Nom de la chaîne
+  de: "Name der Kette"
+  es: "Nombre de la cadena"
+  it: "Nome della catena"
+  pt-BR: "Nome da cadeia"
+  ja: "チェーン名"
+  zh-CN: "链名称"
+  ko: "체인 이름"
 app.chains.step:
   en: Step %{n}
   fr: Étape %{n}
+  de: "Schritt %{n}"
+  es: "Paso %{n}"
+  it: "Passaggio %{n}"
+  pt-BR: "Etapa %{n}"
+  ja: "ステップ %{n}"
+  zh-CN: "步骤 %{n}"
+  ko: "%{n}단계"
 app.chains.up:
   en: Move up
   fr: Monter
+  de: "Nach oben"
+  es: "Subir"
+  it: "Sposta su"
+  pt-BR: "Mover para cima"
+  ja: "上へ"
+  zh-CN: "上移"
+  ko: "위로"
 app.chains.down:
   en: Move down
   fr: Descendre
+  de: "Nach unten"
+  es: "Bajar"
+  it: "Sposta giù"
+  pt-BR: "Mover para baixo"
+  ja: "下へ"
+  zh-CN: "下移"
+  ko: "아래로"
 app.chains.remove:
   en: Remove the step
   fr: Retirer l’étape
+  de: "Schritt entfernen"
+  es: "Quitar el paso"
+  it: "Rimuovi il passaggio"
+  pt-BR: "Remover a etapa"
+  ja: "ステップを削除"
+  zh-CN: "移除步骤"
+  ko: "단계 제거"
 app.chains.add_step:
   en: Add a step
   fr: Ajouter une étape
+  de: "Schritt hinzufügen"
+  es: "Añadir un paso"
+  it: "Aggiungi un passaggio"
+  pt-BR: "Adicionar uma etapa"
+  ja: "ステップを追加"
+  zh-CN: "添加步骤"
+  ko: "단계 추가"
 app.chains.pick_tool:
   en: Choose a tool…
   fr: Choisir un outil…
+  de: "Werkzeug wählen …"
+  es: "Elige una herramienta…"
+  it: "Scegli uno strumento…"
+  pt-BR: "Escolha uma ferramenta…"
+  ja: "ツールを選択…"
+  zh-CN: "选择工具…"
+  ko: "도구 선택…"
 app.chains.save_copy:
   en: Save a copy
   fr: Enregistrer une copie
+  de: "Kopie speichern"
+  es: "Guardar una copia"
+  it: "Salva una copia"
+  pt-BR: "Salvar uma cópia"
+  ja: "コピーを保存"
+  zh-CN: "保存副本"
+  ko: "사본 저장"
 app.chains.saved:
   en: Chain saved.
   fr: Chaîne enregistrée.
+  de: "Kette gespeichert."
+  es: "Cadena guardada."
+  it: "Catena salvata."
+  pt-BR: "Cadeia salva."
+  ja: "チェーンを保存しました。"
+  zh-CN: "链已保存。"
+  ko: "체인을 저장했습니다."
 app.chains.exported:
   en: Chain exported.
   fr: Chaîne exportée.
+  de: "Kette exportiert."
+  es: "Cadena exportada."
+  it: "Catena esportata."
+  pt-BR: "Cadeia exportada."
+  ja: "チェーンをエクスポートしました。"
+  zh-CN: "链已导出。"
+  ko: "체인을 내보냈습니다."
 app.chains.imported:
   en: Chain imported.
   fr: Chaîne importée.
+  de: "Kette importiert."
+  es: "Cadena importada."
+  it: "Catena importata."
+  pt-BR: "Cadeia importada."
+  ja: "チェーンをインポートしました。"
+  zh-CN: "链已导入。"
+  ko: "체인을 가져왔습니다."
 app.chains.delete_title:
   en: Delete this chain?
   fr: Supprimer cette chaîne ?
+  de: "Diese Kette löschen?"
+  es: "¿Eliminar esta cadena?"
+  it: "Eliminare questa catena?"
+  pt-BR: "Excluir esta cadeia?"
+  ja: "このチェーンを削除しますか？"
+  zh-CN: "要删除这条链吗？"
+  ko: "이 체인을 삭제할까요?"
 app.chains.delete_body:
   en: Only the saved steps are deleted. Files made by earlier runs stay.
   fr: Seules les étapes enregistrées sont supprimées. Les fichiers déjà produits restent.
+  de: "Nur die gespeicherten Schritte werden gelöscht. Dateien aus früheren Läufen bleiben erhalten."
+  es: "Solo se eliminan los pasos guardados. Los archivos de ejecuciones anteriores se conservan."
+  it: "Vengono eliminati solo i passaggi salvati. I file creati dalle esecuzioni precedenti restano."
+  pt-BR: "Apenas as etapas salvas são excluídas. Os arquivos de execuções anteriores permanecem."
+  ja: "保存されたステップだけが削除されます。以前の実行で作られたファイルは残ります。"
+  zh-CN: "只会删除已保存的步骤，之前运行生成的文件会保留。"
+  ko: "저장된 단계만 삭제됩니다. 이전 실행으로 만들어진 파일은 그대로 남습니다."
 app.chains.run_files:
   en: Run on files…
   fr: Lancer sur des fichiers…
+  de: "Auf Dateien anwenden …"
+  es: "Ejecutar sobre archivos…"
+  it: "Esegui sui file…"
+  pt-BR: "Executar em arquivos…"
+  ja: "ファイルに対して実行…"
+  zh-CN: "对文件运行…"
+  ko: "파일에 실행…"
 app.chains.run_folder:
   en: Run on a folder…
   fr: Lancer sur un dossier…
+  de: "Auf einen Ordner anwenden …"
+  es: "Ejecutar sobre una carpeta…"
+  it: "Esegui su una cartella…"
+  pt-BR: "Executar em uma pasta…"
+  ja: "フォルダに対して実行…"
+  zh-CN: "对文件夹运行…"
+  ko: "폴더에 실행…"
 app.chains.running:
   en: Step %{n} of %{of}…
   fr: Étape %{n} sur %{of}…
+  de: "Schritt %{n} von %{of} …"
+  es: "Paso %{n} de %{of}…"
+  it: "Passaggio %{n} di %{of}…"
+  pt-BR: "Etapa %{n} de %{of}…"
+  ja: "ステップ %{n} / %{of}…"
+  zh-CN: "第 %{n} 步，共 %{of} 步…"
+  ko: "%{n} / %{of}단계…"
 
 # Demo tools (castor-app `demo-tools` feature, development only — never shipped).
 demo.all-options.name:
   en: Every option
   fr: Toutes les options
+  de: "Jede Option"
+  es: "Todas las opciones"
+  it: "Ogni opzione"
+  pt-BR: "Todas as opções"
+  ja: "すべてのオプション"
+  zh-CN: "全部选项"
+  ko: "모든 옵션"
 demo.all-options.desc:
   en: One control of each kind, to check the generated form.
   fr: Un contrôle de chaque sorte, pour vérifier le formulaire généré.
+  de: "Je ein Steuerelement jeder Art, um das generierte Formular zu prüfen."
+  es: "Un control de cada tipo, para comprobar el formulario generado."
+  it: "Un controllo per ogni tipo, per verificare il modulo generato."
+  pt-BR: "Um controle de cada tipo, para verificar o formulário gerado."
+  ja: "生成されるフォームを確認するための、あらゆる種類のコントロールが1つずつ。"
+  zh-CN: "每种类型各有一个控件，用于检查自动生成的表单。"
+  ko: "생성된 양식을 확인하기 위해 종류별로 컨트롤을 하나씩 모았습니다."
 demo.all-options.verb:
   en: Process
   fr: Traiter
+  de: "Verarbeiten"
+  es: "Procesar"
+  it: "Elabora"
+  pt-BR: "Processar"
+  ja: "処理"
+  zh-CN: "处理"
+  ko: "처리"
 demo.all-options.opt.preset:
   en: Preset
   fr: Préréglage
+  de: "Voreinstellung"
+  es: "Preajuste"
+  it: "Preset"
+  pt-BR: "Predefinição"
+  ja: "プリセット"
+  zh-CN: "预设"
+  ko: "프리셋"
 demo.all-options.opt.preset.light:
   en: Light
   fr: Léger
+  de: "Leicht"
+  es: "Ligero"
+  it: "Leggero"
+  pt-BR: "Leve"
+  ja: "軽め"
+  zh-CN: "轻度"
+  ko: "약하게"
 demo.all-options.opt.preset.balanced:
   en: Balanced
   fr: Équilibré
+  de: "Ausgewogen"
+  es: "Equilibrado"
+  it: "Bilanciato"
+  pt-BR: "Equilibrado"
+  ja: "バランス"
+  zh-CN: "均衡"
+  ko: "균형"
 demo.all-options.opt.preset.strong:
   en: Strong
   fr: Fort
+  de: "Stark"
+  es: "Fuerte"
+  it: "Intenso"
+  pt-BR: "Forte"
+  ja: "強め"
+  zh-CN: "强力"
+  ko: "강하게"
 demo.all-options.opt.preset.help:
   en: Balanced keeps text sharp and photos clean.
   fr: Équilibré garde le texte net et les photos propres.
+  de: "„Ausgewogen“ hält Text scharf und Fotos sauber."
+  es: "“Equilibrado” mantiene el texto nítido y las fotos limpias."
+  it: "«Bilanciato» mantiene il testo nitido e le foto pulite."
+  pt-BR: "“Equilibrado” mantém o texto nítido e as fotos limpas."
+  ja: "「バランス」は文字をくっきりと、写真をきれいに保ちます。"
+  zh-CN: "“均衡”可保持文字清晰、照片干净。"
+  ko: "‘균형’은 텍스트를 선명하게, 사진을 깔끔하게 유지합니다."
 demo.all-options.opt.scale:
   en: Scale
   fr: Échelle
+  de: "Skalierung"
+  es: "Escala"
+  it: "Scala"
+  pt-BR: "Escala"
+  ja: "拡大率"
+  zh-CN: "缩放"
+  ko: "배율"
 demo.all-options.opt.strip:
   en: Remove metadata (location, camera)
   fr: Retirer les métadonnées (lieu, appareil)
+  de: "Metadaten entfernen (Standort, Kamera)"
+  es: "Quitar metadatos (ubicación, cámara)"
+  it: "Rimuovi i metadati (posizione, fotocamera)"
+  pt-BR: "Remover metadados (localização, câmera)"
+  ja: "メタデータを削除(位置情報、カメラ)"
+  zh-CN: "移除元数据（位置、相机）"
+  ko: "메타데이터 제거 (위치, 카메라)"
 demo.all-options.opt.title:
   en: Title
   fr: Titre
+  de: "Titel"
+  es: "Título"
+  it: "Titolo"
+  pt-BR: "Título"
+  ja: "タイトル"
+  zh-CN: "标题"
+  ko: "제목"
 demo.all-options.opt.title.placeholder:
   en: Optional title
   fr: Titre facultatif
+  de: "Optionaler Titel"
+  es: "Título opcional"
+  it: "Titolo facoltativo"
+  pt-BR: "Título opcional"
+  ja: "タイトル(任意)"
+  zh-CN: "可选标题"
+  ko: "제목(선택)"
 demo.all-options.opt.size:
   en: Size
   fr: Taille
+  de: "Größe"
+  es: "Tamaño"
+  it: "Dimensione"
+  pt-BR: "Tamanho"
+  ja: "サイズ"
+  zh-CN: "大小"
+  ko: "크기"
 demo.all-options.opt.notes:
   en: Notes
   fr: Notes
+  de: "Notizen"
+  es: "Notas"
+  it: "Note"
+  pt-BR: "Notas"
+  ja: "メモ"
+  zh-CN: "备注"
+  ko: "메모"
 demo.all-options.opt.logo:
   en: Logo
   fr: Logo
+  de: "Logo"
+  es: "Logotipo"
+  it: "Logo"
+  pt-BR: "Logotipo"
+  ja: "ロゴ"
+  zh-CN: "标志"
+  ko: "로고"
 demo.all-options.opt.font:
   en: Font
   fr: Police
+  de: "Schrift"
+  es: "Fuente"
+  it: "Font"
+  pt-BR: "Fonte"
+  ja: "フォント"
+  zh-CN: "字体"
+  ko: "글꼴"
 demo.slow.name:
   en: Slow job
   fr: Tâche lente
+  de: "Langsamer Auftrag"
+  es: "Tarea lenta"
+  it: "Lavoro lento"
+  pt-BR: "Tarefa lenta"
+  ja: "時間のかかる処理"
+  zh-CN: "慢速任务"
+  ko: "느린 작업"
 demo.slow.desc:
   en: Takes its time and reports progress, to check runs and cancel.
   fr: Prend son temps et indique sa progression, pour vérifier l’exécution et l’annulation.
+  de: "Nimmt sich Zeit und meldet den Fortschritt, um Läufe und Abbrechen zu prüfen."
+  es: "Se toma su tiempo e informa del progreso, para probar las ejecuciones y la cancelación."
+  it: "Si prende il suo tempo e segnala l'avanzamento, per verificare le esecuzioni e l'annullamento."
+  pt-BR: "Leva o seu tempo e informa o progresso, para testar execuções e cancelamento."
+  ja: "時間をかけて進捗を報告します。実行履歴とキャンセルの確認用です。"
+  zh-CN: "会慢慢运行并报告进度，用于测试运行记录和取消功能。"
+  ko: "일부러 시간을 들이며 진행률을 보고합니다. 실행 기록과 취소를 확인하는 용도입니다."
 demo.slow.opt.seconds:
   en: Duration
   fr: Durée
+  de: "Dauer"
+  es: "Duración"
+  it: "Durata"
+  pt-BR: "Duração"
+  ja: "所要時間"
+  zh-CN: "时长"
+  ko: "소요 시간"
 demo.gradient.name:
   en: Gradient card
   fr: Carte en dégradé
+  de: "Verlaufskarte"
+  es: "Tarjeta con degradado"
+  it: "Scheda sfumata"
+  pt-BR: "Cartão degradê"
+  ja: "グラデーションカード"
+  zh-CN: "渐变卡片"
+  ko: "그라데이션 카드"
 demo.gradient.desc:
   en: A pastel gradient, with a live preview and no input file.
   fr: Un dégradé pastel, avec aperçu en direct et sans fichier d’entrée.
+  de: "Ein Pastellverlauf mit Live-Vorschau und ohne Eingabedatei."
+  es: "Un degradado pastel, con vista previa en vivo y sin archivo de entrada."
+  it: "Una sfumatura pastello, con anteprima dal vivo e senza file di input."
+  pt-BR: "Um degradê pastel, com pré-visualização ao vivo e sem arquivo de entrada."
+  ja: "パステル調のグラデーションをライブプレビュー付きで作成します。入力ファイルは不要です。"
+  zh-CN: "生成柔和的渐变，带实时预览，无需输入文件。"
+  ko: "입력 파일 없이 실시간 미리보기와 함께 파스텔 그라데이션을 만듭니다."
 demo.gradient.verb:
   en: Create
   fr: Créer
+  de: "Erstellen"
+  es: "Crear"
+  it: "Crea"
+  pt-BR: "Criar"
+  ja: "作成"
+  zh-CN: "创建"
+  ko: "만들기"
 demo.gradient.opt.from:
   en: From
   fr: De
+  de: "Von"
+  es: "Desde"
+  it: "Da"
+  pt-BR: "De"
+  ja: "開始色"
+  zh-CN: "起始"
+  ko: "시작"
 demo.gradient.opt.to:
   en: To
   fr: À
+  de: "Bis"
+  es: "Hasta"
+  it: "A"
+  pt-BR: "Até"
+  ja: "終了色"
+  zh-CN: "结束"
+  ko: "끝"
 demo.gradient.opt.direction:
   en: Direction
   fr: Direction
+  de: "Richtung"
+  es: "Dirección"
+  it: "Direzione"
+  pt-BR: "Direção"
+  ja: "方向"
+  zh-CN: "方向"
+  ko: "방향"
 demo.gradient.opt.direction.vertical:
   en: Vertical
   fr: Verticale
+  de: "Vertikal"
+  es: "Vertical"
+  it: "Verticale"
+  pt-BR: "Vertical"
+  ja: "縦"
+  zh-CN: "垂直"
+  ko: "세로"
 demo.gradient.opt.direction.diagonal:
   en: Diagonal
   fr: Diagonale
+  de: "Diagonal"
+  es: "Diagonal"
+  it: "Diagonale"
+  pt-BR: "Diagonal"
+  ja: "斜め"
+  zh-CN: "对角"
+  ko: "대각선"
 demo.gradient.opt.size:
   en: Size
   fr: Taille
+  de: "Größe"
+  es: "Tamaño"
+  it: "Dimensione"
+  pt-BR: "Tamanho"
+  ja: "サイズ"
+  zh-CN: "大小"
+  ko: "크기"
 demo.fail.name:
   en: Always fails
   fr: Échoue toujours
+  de: "Schlägt immer fehl"
+  es: "Siempre falla"
+  it: "Fallisce sempre"
+  pt-BR: "Sempre falha"
+  ja: "必ず失敗"
+  zh-CN: "总会失败"
+  ko: "항상 실패"
 demo.fail.desc:
   en: Fails on purpose, to check how errors look.
   fr: Échoue exprès, pour vérifier l’affichage des erreurs.
+  de: "Schlägt absichtlich fehl, um die Darstellung von Fehlern zu prüfen."
+  es: "Falla a propósito, para comprobar cómo se ven los errores."
+  it: "Fallisce di proposito, per verificare come appaiono gli errori."
+  pt-BR: "Falha de propósito, para verificar como os erros aparecem."
+  ja: "意図的に失敗します。エラーの見え方を確認するためのものです。"
+  zh-CN: "故意失败，用于检查错误的显示效果。"
+  ko: "오류가 어떻게 보이는지 확인하려고 일부러 실패합니다."
 demo.model.name:
   en: Needs a model
   fr: Demande un modèle
+  de: "Braucht ein Modell"
+  es: "Necesita un modelo"
+  it: "Richiede un modello"
+  pt-BR: "Precisa de um modelo"
+  ja: "モデルが必要"
+  zh-CN: "需要模型"
+  ko: "모델 필요"
 demo.model.desc:
   en: Asks before a one-time download (nothing is fetched in the demo).
   fr: Demande avant un téléchargement unique (rien n’est récupéré dans la démo).
+  de: "Fragt vor einem einmaligen Download nach (in der Demo wird nichts geladen)."
+  es: "Pregunta antes de una descarga única (en la demo no se descarga nada)."
+  it: "Chiede prima di un download una tantum (nella demo non viene scaricato nulla)."
+  pt-BR: "Pergunta antes de um download único (na demo nada é baixado)."
+  ja: "初回のみのダウンロードの前に確認します(デモでは何も取得しません)。"
+  zh-CN: "一次性下载前会先询问（演示中不会下载任何内容）。"
+  ko: "1회성 다운로드 전에 먼저 물어봅니다 (데모에서는 아무것도 내려받지 않습니다)."
 demo.model.opt.model:
   en: Model
   fr: Modèle
+  de: "Modell"
+  es: "Modelo"
+  it: "Modello"
+  pt-BR: "Modelo"
+  ja: "モデル"
+  zh-CN: "模型"
+  ko: "모델"
 demo.model.opt.model.small:
   en: Small
   fr: Petit
+  de: "Klein"
+  es: "Pequeño"
+  it: "Piccolo"
+  pt-BR: "Pequeno"
+  ja: "小"
+  zh-CN: "小"
+  ko: "소형"
 demo.model.opt.model.large:
   en: Large
   fr: Grand
+  de: "Groß"
+  es: "Grande"
+  it: "Grande"
+  pt-BR: "Grande"
+  ja: "大"
+  zh-CN: "大"
+  ko: "대형"
 demo.unavailable.name:
   en: Office to PDF (demo)
   fr: Office vers PDF (démo)
+  de: "Office zu PDF (Demo)"
+  es: "Office a PDF (demo)"
+  it: "Office in PDF (demo)"
+  pt-BR: "Office para PDF (demo)"
+  ja: "OfficeからPDFへ(デモ)"
+  zh-CN: "Office 转 PDF（演示）"
+  ko: "Office를 PDF로 (데모)"
 demo.unavailable.desc:
   en: Needs a program that is not installed.
   fr: A besoin d’un programme qui n’est pas installé.
+  de: "Braucht ein Programm, das nicht installiert ist."
+  es: "Necesita un programa que no está instalado."
+  it: "Richiede un programma che non è installato."
+  pt-BR: "Precisa de um programa que não está instalado."
+  ja: "インストールされていないプログラムが必要です。"
+  zh-CN: "需要一个尚未安装的程序。"
+  ko: "설치되지 않은 프로그램이 필요합니다."
 demo.unavailable.why:
   en: LibreOffice is not installed. Install it, then reopen Castor.
   fr: LibreOffice n’est pas installé. Installez-le, puis rouvrez Castor.
+  de: "LibreOffice ist nicht installiert. Installieren Sie es und öffnen Sie Castor dann erneut."
+  es: "LibreOffice no está instalado. Instálalo y vuelve a abrir Castor."
+  it: "LibreOffice non è installato. Installalo, poi riapri Castor."
+  pt-BR: "O LibreOffice não está instalado. Instale-o e reabra o Castor."
+  ja: "LibreOfficeがインストールされていません。インストールしてから、Castorを開き直してください。"
+  zh-CN: "未安装 LibreOffice。请安装后重新打开 Castor。"
+  ko: "LibreOffice가 설치되어 있지 않습니다. 설치한 후 Castor를 다시 여세요."
 demo.merge.name:
   en: List files
   fr: Lister les fichiers
+  de: "Dateien auflisten"
+  es: "Listar archivos"
+  it: "Elenca i file"
+  pt-BR: "Listar arquivos"
+  ja: "ファイル一覧"
+  zh-CN: "列出文件"
+  ko: "파일 목록"
 demo.merge.desc:
   en: Many files in, one report out.
   fr: Plusieurs fichiers en entrée, un seul rapport en sortie.
+  de: "Viele Dateien rein, ein Bericht raus."
+  es: "Muchos archivos entran, un informe sale."
+  it: "Tanti file in ingresso, un solo rapporto in uscita."
+  pt-BR: "Muitos arquivos entram, um relatório sai."
+  ja: "たくさんのファイルから、1つのレポートを作成します。"
+  zh-CN: "输入多个文件，输出一份报告。"
+  ko: "여러 파일을 넣으면 보고서 하나가 나옵니다."
 demo.rename.name:
   en: Prefix names
   fr: Préfixer les noms
+  de: "Namen mit Präfix versehen"
+  es: "Añadir prefijo a los nombres"
+  it: "Aggiungi prefisso ai nomi"
+  pt-BR: "Adicionar prefixo aos nomes"
+  ja: "名前に接頭辞を追加"
+  zh-CN: "为名称添加前缀"
+  ko: "이름에 접두사 붙이기"
 demo.rename.desc:
   en: Renames in place, and can be undone from Runs.
   fr: Renomme sur place, et s’annule depuis l’historique.
+  de: "Benennt direkt um und lässt sich unter „Läufe“ rückgängig machen."
+  es: "Renombra en el sitio y se puede deshacer desde Ejecuciones."
+  it: "Rinomina sul posto e si può annullare da Esecuzioni."
+  pt-BR: "Renomeia no local e pode ser desfeito em Execuções."
+  ja: "その場で名前を変更します。「実行履歴」から元に戻せます。"
+  zh-CN: "原地重命名，可在“运行记录”中撤销。"
+  ko: "제자리에서 이름을 바꾸며, 실행 기록에서 되돌릴 수 있습니다."
 demo.rename.opt.prefix:
   en: Prefix
   fr: Préfixe
+  de: "Präfix"
+  es: "Prefijo"
+  it: "Prefisso"
+  pt-BR: "Prefixo"
+  ja: "接頭辞"
+  zh-CN: "前缀"
+  ko: "접두사"
 demo.soon.name:
   en: Audio thing
   fr: Truc audio
+  de: "Audio-Dingsbums"
+  es: "Cosa de audio"
+  it: "Coso audio"
+  pt-BR: "Coisa de áudio"
+  ja: "音声のなにか"
+  zh-CN: "音频小玩意"
+  ko: "오디오 뭔가"
 demo.soon.desc:
   en: Not ready yet.
   fr: Pas encore prêt.
+  de: "Noch nicht fertig."
+  es: "Aún no está listo."
+  it: "Non ancora pronto."
+  pt-BR: "Ainda não está pronto."
+  ja: "まだ準備中です。"
+  zh-CN: "尚未就绪。"
+  ko: "아직 준비되지 않았습니다."
 
 app.studio.media.name:
   en: Trim & Caption Studio
   fr: Studio montage et sous-titres
+  de: "Trim & Caption Studio"
+  es: "Trim & Caption Studio"
+  it: "Trim & Caption Studio"
+  pt-BR: "Trim & Caption Studio"
+  ja: "Trim & Caption Studio"
+  zh-CN: "Trim & Caption Studio"
+  ko: "Trim & Caption Studio"
 app.studio.media.desc:
   en: Cut a video or a recording on a timeline, remove the pauses, edit it by its transcript and add captions.
   fr: Coupez une vidéo ou un enregistrement sur une frise, retirez les blancs, montez-le par sa transcription et ajoutez des sous-titres.
+  de: "Schneiden Sie ein Video oder eine Aufnahme auf einer Zeitleiste, entfernen Sie die Pausen, bearbeiten Sie per Transkript und fügen Sie Untertitel hinzu."
+  es: "Corta un vídeo o una grabación en una línea de tiempo, elimina las pausas, edítalo con su transcripción y añade subtítulos."
+  it: "Taglia un video o una registrazione su una timeline, rimuovi le pause, modificalo dalla trascrizione e aggiungi i sottotitoli."
+  pt-BR: "Corte um vídeo ou uma gravação em uma linha do tempo, remova as pausas, edite pela transcrição e adicione legendas."
+  ja: "タイムライン上で動画や録音をカットし、無音部分を取り除き、文字起こしから編集して、字幕を追加できます。"
+  zh-CN: "在时间轴上剪辑视频或录音，去除停顿，通过文字稿编辑，并添加字幕。"
+  ko: "타임라인에서 동영상이나 녹음을 자르고, 말 사이 공백을 없애고, 대본으로 편집하고, 자막을 넣습니다."
 app.studio.media.features:
   en: "Trim the start and end, cut out the middle, keyframe-fast or frame-exact. Find the pauses and remove them all at once. Transcribe with Whisper and delete words to cut them. Edit caption text and timing, then burn them in or save SRT."
   fr: "Rognez le début et la fin, coupez au milieu, rapide sur les images clés ou exact à l’image. Trouvez les blancs et retirez-les d’un coup. Transcrivez avec Whisper et supprimez des mots pour les couper. Corrigez le texte et le minutage des sous-titres, puis incrustez-les ou enregistrez un SRT."
+  de: "Anfang und Ende kürzen, die Mitte herausschneiden, keyframe-schnell oder bildgenau. Pausen finden und alle auf einmal entfernen. Mit Whisper transkribieren und Wörter löschen, um sie zu schneiden. Untertiteltext und Timing bearbeiten, dann einbrennen oder als SRT speichern."
+  es: "Recorta el inicio y el final, corta el centro, rápido por fotogramas clave o exacto al fotograma. Encuentra las pausas y elimínalas todas a la vez. Transcribe con Whisper y borra palabras para cortarlas. Edita el texto y los tiempos de los subtítulos, y luego incrústalos o guarda un SRT."
+  it: "Taglia inizio e fine, ritaglia la parte centrale, veloce sui keyframe o preciso al fotogramma. Trova le pause e rimuovile tutte insieme. Trascrivi con Whisper e cancella le parole per tagliarle. Modifica testo e tempi dei sottotitoli, poi incorporali o salva un SRT."
+  pt-BR: "Corte o início e o fim, recorte o meio, rápido por quadros-chave ou exato ao quadro. Encontre as pausas e remova todas de uma vez. Transcreva com o Whisper e apague palavras para cortá-las. Edite o texto e o tempo das legendas e depois grave-as no vídeo ou salve um SRT."
+  ja: "先頭と末尾のトリミング、中間部分のカットを、キーフレーム単位の高速モードまたはフレーム単位の正確モードで。無音部分をまとめて検出して削除。Whisperで文字起こしし、単語を削除してカット。字幕のテキストとタイミングを編集し、焼き込みまたはSRTで保存。"
+  zh-CN: "裁剪开头和结尾，剪掉中间部分，可选关键帧级快速模式或逐帧精确模式。查找停顿并一次性全部删除。用 Whisper 转写，删除文字即可剪掉对应片段。编辑字幕文本和时间，然后烧录进视频或保存为 SRT。"
+  ko: "시작과 끝을 다듬고 중간을 잘라 냅니다. 키프레임 단위의 빠른 모드나 프레임 단위의 정확한 모드를 쓸 수 있습니다. 공백을 찾아 한꺼번에 제거하고, Whisper로 받아쓴 뒤 단어를 지워 잘라 냅니다. 자막 텍스트와 타이밍을 편집한 다음 영상에 입히거나 SRT로 저장합니다."
 app.studio.media.open:
   en: Open Trim & Caption Studio
   fr: Ouvrir le studio de montage
+  de: "Trim & Caption Studio öffnen"
+  es: "Abrir Trim & Caption Studio"
+  it: "Apri Trim & Caption Studio"
+  pt-BR: "Abrir o Trim & Caption Studio"
+  ja: "Trim & Caption Studioを開く"
+  zh-CN: "打开 Trim & Caption Studio"
+  ko: "Trim & Caption Studio 열기"
 app.studio.media.drop:
   en: Drop a video or an audio file here, or open one. The original is never changed.
   fr: Déposez une vidéo ou un fichier audio ici, ou ouvrez-en un. L’original n’est jamais modifié.
+  de: "Ziehen Sie ein Video oder eine Audiodatei hierher oder öffnen Sie eine. Das Original wird nie verändert."
+  es: "Suelta aquí un vídeo o un audio, o abre uno. El original nunca se modifica."
+  it: "Trascina qui un video o un file audio, oppure aprine uno. L'originale non viene mai modificato."
+  pt-BR: "Solte aqui um vídeo ou um áudio, ou abra um. O original nunca é alterado."
+  ja: "ここに動画または音声ファイルをドロップするか、ファイルを開いてください。元のファイルは変更されません。"
+  zh-CN: "将视频或音频文件拖到这里，或打开一个。原文件绝不会被修改。"
+  ko: "여기에 동영상이나 오디오 파일을 끌어다 놓거나 하나를 여세요. 원본은 절대 변경되지 않습니다."
 app.media.tab.cut:
   en: Cut
   fr: Couper
+  de: "Schnitt"
+  es: "Corte"
+  it: "Taglio"
+  pt-BR: "Corte"
+  ja: "カット"
+  zh-CN: "剪辑"
+  ko: "자르기"
 app.media.tab.transcript:
   en: Transcript
   fr: Transcription
+  de: "Transkript"
+  es: "Transcripción"
+  it: "Trascrizione"
+  pt-BR: "Transcrição"
+  ja: "文字起こし"
+  zh-CN: "文字稿"
+  ko: "대본"
 app.media.tab.captions:
   en: Captions
   fr: Sous-titres
+  de: "Untertitel"
+  es: "Subtítulos"
+  it: "Sottotitoli"
+  pt-BR: "Legendas"
+  ja: "字幕"
+  zh-CN: "字幕"
+  ko: "자막"
 app.media.at:
   en: "%{time} of %{total}"
   fr: "%{time} sur %{total}"
+  de: "%{time} von %{total}"
+  es: "%{time} de %{total}"
+  it: "%{time} di %{total}"
+  pt-BR: "%{time} de %{total}"
+  ja: "%{time} / %{total}"
+  zh-CN: "%{time} / %{total}"
+  ko: "%{time} / %{total}"
 app.media.audio_only:
   en: Audio only — the waveform below is your guide.
   fr: Audio seul — la forme d’onde ci-dessous vous guide.
+  de: "Nur Audio – die Wellenform unten dient als Orientierung."
+  es: "Solo audio: la forma de onda de abajo te sirve de guía."
+  it: "Solo audio: la forma d'onda qui sotto ti fa da guida."
+  pt-BR: "Somente áudio: a forma de onda abaixo é o seu guia."
+  ja: "音声のみ — 下の波形を目安にしてください。"
+  zh-CN: "仅音频：请以下方的波形为参考。"
+  ko: "오디오만 있음 — 아래 파형을 참고하세요."
 app.media.cut_here:
   en: Cut out
   fr: Coupé
+  de: "Herausschneiden"
+  es: "Cortar"
+  it: "Taglia via"
+  pt-BR: "Cortar fora"
+  ja: "切り取る"
+  zh-CN: "剪掉"
+  ko: "잘라 내기"
 app.media.play:
   en: Play 10 s
   fr: Lire 10 s
+  de: "10 s abspielen"
+  es: "Reproducir 10 s"
+  it: "Riproduci 10 s"
+  pt-BR: "Reproduzir 10 s"
+  ja: "10秒再生"
+  zh-CN: "播放 10 秒"
+  ko: "10초 재생"
 app.media.play_sel:
   en: Play selection
   fr: Lire la sélection
+  de: "Auswahl abspielen"
+  es: "Reproducir la selección"
+  it: "Riproduci la selezione"
+  pt-BR: "Reproduzir a seleção"
+  ja: "選択範囲を再生"
+  zh-CN: "播放所选部分"
+  ko: "선택 구간 재생"
 app.media.trim:
   en: Trim and cut
   fr: Rogner et couper
+  de: "Kürzen und schneiden"
+  es: "Recortar y cortar"
+  it: "Rifila e taglia"
+  pt-BR: "Aparar e cortar"
+  ja: "トリミングとカット"
+  zh-CN: "裁剪与剪切"
+  ko: "다듬기와 자르기"
 app.media.trim.help:
   en: Click the timeline to move the playhead, drag across it to select a range. I and O set the start and the end, Delete cuts the selection.
   fr: Cliquez sur la frise pour déplacer la tête de lecture, glissez pour sélectionner une plage. I et O fixent le début et la fin, Suppr coupe la sélection.
+  de: "Klicken Sie auf die Zeitleiste, um den Abspielkopf zu setzen, und ziehen Sie darüber, um einen Bereich zu wählen. I und O setzen Anfang und Ende, Entf schneidet die Auswahl heraus."
+  es: "Haz clic en la línea de tiempo para mover el cabezal y arrastra para seleccionar un rango. I y O fijan el inicio y el final; Supr corta la selección."
+  it: "Fai clic sulla timeline per spostare la testina e trascina per selezionare un intervallo. I e O impostano inizio e fine, Canc taglia la selezione."
+  pt-BR: "Clique na linha do tempo para mover o cursor e arraste para selecionar um intervalo. I e O definem o início e o fim; Delete corta a seleção."
+  ja: "タイムラインをクリックして再生位置を動かし、ドラッグして範囲を選択します。Iで開始、Oで終了を設定し、Deleteで選択範囲をカットします。"
+  zh-CN: "点击时间轴可移动播放头，拖动可选择一段范围。按 I 和 O 设置起点和终点，按 Delete 剪掉所选部分。"
+  ko: "타임라인을 클릭해 재생 헤드를 옮기고, 끌어서 구간을 선택하세요. I와 O로 시작과 끝을 정하고, Delete로 선택 구간을 잘라 냅니다."
 app.media.set_in:
   en: Start here
   fr: Début ici
+  de: "Hier beginnen"
+  es: "Empezar aquí"
+  it: "Inizia qui"
+  pt-BR: "Começar aqui"
+  ja: "ここから開始"
+  zh-CN: "从此处开始"
+  ko: "여기서 시작"
 app.media.set_out:
   en: End here
   fr: Fin ici
+  de: "Hier enden"
+  es: "Terminar aquí"
+  it: "Finisci qui"
+  pt-BR: "Terminar aqui"
+  ja: "ここで終了"
+  zh-CN: "到此处结束"
+  ko: "여기서 끝"
 app.media.cut_sel:
   en: Cut selection
   fr: Couper la sélection
+  de: "Auswahl schneiden"
+  es: "Cortar la selección"
+  it: "Taglia la selezione"
+  pt-BR: "Cortar a seleção"
+  ja: "選択範囲をカット"
+  zh-CN: "剪切所选部分"
+  ko: "선택 구간 자르기"
 app.media.restore_sel:
   en: Restore
   fr: Rétablir
+  de: "Wiederherstellen"
+  es: "Restaurar"
+  it: "Ripristina"
+  pt-BR: "Restaurar"
+  ja: "元に戻す"
+  zh-CN: "恢复"
+  ko: "복원"
 app.media.selection:
   en: "Selection %{from} → %{to} (%{len})"
   fr: "Sélection %{from} → %{to} (%{len})"
+  de: "Auswahl %{from} → %{to} (%{len})"
+  es: "Selección %{from} → %{to} (%{len})"
+  it: "Selezione %{from} → %{to} (%{len})"
+  pt-BR: "Seleção %{from} → %{to} (%{len})"
+  ja: "選択範囲 %{from} → %{to} (%{len})"
+  zh-CN: "选区 %{from} → %{to} (%{len})"
+  ko: "선택 구간 %{from} → %{to} (%{len})"
 app.media.kept:
   en: Parts kept
   fr: Parties conservées
+  de: "Behaltene Teile"
+  es: "Partes conservadas"
+  it: "Parti mantenute"
+  pt-BR: "Partes mantidas"
+  ja: "残す部分"
+  zh-CN: "保留的部分"
+  ko: "남기는 구간"
 app.media.reset:
   en: Undo every cut
   fr: Annuler toutes les coupes
+  de: "Alle Schnitte rückgängig machen"
+  es: "Deshacer todos los cortes"
+  it: "Annulla tutti i tagli"
+  pt-BR: "Desfazer todos os cortes"
+  ja: "すべてのカットを取り消す"
+  zh-CN: "撤销所有剪切"
+  ko: "모든 자르기 취소"
 app.media.cut_mode:
   en: Cutting
   fr: Découpe
+  de: "Schnittart"
+  es: "Modo de corte"
+  it: "Modalità di taglio"
+  pt-BR: "Modo de corte"
+  ja: "カット方式"
+  zh-CN: "剪切模式"
+  ko: "자르기 방식"
 app.media.exact:
   en: Exact
   fr: Exacte
+  de: "Exakt"
+  es: "Exacto"
+  it: "Preciso"
+  pt-BR: "Exato"
+  ja: "正確"
+  zh-CN: "精确"
+  ko: "정확"
 app.media.fast:
   en: Fast
   fr: Rapide
+  de: "Schnell"
+  es: "Rápido"
+  it: "Veloce"
+  pt-BR: "Rápido"
+  ja: "高速"
+  zh-CN: "快速"
+  ko: "빠름"
 app.media.exact.help:
   en: Cuts on the exact frame; the video is re-encoded at high quality.
   fr: Coupe à l’image près ; la vidéo est réencodée en haute qualité.
+  de: "Schneidet auf das exakte Bild; das Video wird in hoher Qualität neu kodiert."
+  es: "Corta en el fotograma exacto; el vídeo se recodifica en alta calidad."
+  it: "Taglia sul fotogramma esatto; il video viene ricodificato ad alta qualità."
+  pt-BR: "Corta no quadro exato; o vídeo é recodificado em alta qualidade."
+  ja: "フレーム単位で正確にカットします。動画は高画質で再エンコードされます。"
+  zh-CN: "精确剪切到具体帧；视频会以高质量重新编码。"
+  ko: "정확한 프레임에서 자르며, 동영상은 고화질로 다시 인코딩됩니다."
 app.media.fast.help:
   en: No re-encoding, nearly instant; cuts snap to the nearest keyframe.
   fr: Sans réencodage, presque instantané ; les coupes se calent sur l’image clé la plus proche.
+  de: "Keine Neukodierung, fast sofort; Schnitte rasten am nächsten Keyframe ein."
+  es: "Sin recodificar, casi instantáneo; los cortes se ajustan al fotograma clave más cercano."
+  it: "Nessuna ricodifica, quasi istantaneo; i tagli si agganciano al keyframe più vicino."
+  pt-BR: "Sem recodificação, quase instantâneo; os cortes se ajustam ao quadro-chave mais próximo."
+  ja: "再エンコードなしでほぼ一瞬。カット位置は最も近いキーフレームに合わせられます。"
+  zh-CN: "无需重新编码，几乎瞬间完成；剪切点会对齐到最近的关键帧。"
+  ko: "다시 인코딩하지 않아 거의 즉시 끝나며, 자르는 위치는 가장 가까운 키프레임에 맞춰집니다."
 app.media.pauses:
   en: Pauses
   fr: Blancs
+  de: "Pausen"
+  es: "Pausas"
+  it: "Pause"
+  pt-BR: "Pausas"
+  ja: "無音部分"
+  zh-CN: "停顿"
+  ko: "공백 구간"
 app.media.pauses.help:
   en: Find the silent passages, shown in amber on the timeline, then remove them all at once.
   fr: Trouvez les passages silencieux, en ambre sur la frise, puis retirez-les d’un coup.
+  de: "Findet die stillen Passagen, die auf der Zeitleiste bernsteinfarben erscheinen, und entfernt sie alle auf einmal."
+  es: "Encuentra los pasajes en silencio, en ámbar en la línea de tiempo, y elimínalos todos a la vez."
+  it: "Trova i passaggi silenziosi, in ambra sulla timeline, e rimuovili tutti insieme."
+  pt-BR: "Encontre as passagens em silêncio, em âmbar na linha do tempo, e remova todas de uma vez."
+  ja: "無音の区間を検出してタイムライン上にアンバー色で表示し、まとめて削除できます。"
+  zh-CN: "查找静音片段（在时间轴上显示为琥珀色），然后一次性全部删除。"
+  ko: "조용한 구간을 찾아 타임라인에 주황색으로 표시하고, 한꺼번에 제거합니다."
 app.media.pauses.quiet:
   en: Quiet room
   fr: Pièce calme
+  de: "Ruhiger Raum"
+  es: "Sala silenciosa"
+  it: "Stanza silenziosa"
+  pt-BR: "Sala silenciosa"
+  ja: "静かな部屋"
+  zh-CN: "安静环境"
+  ko: "조용한 방"
 app.media.pauses.normal:
   en: Normal
   fr: Normal
+  de: "Normal"
+  es: "Normal"
+  it: "Normale"
+  pt-BR: "Normal"
+  ja: "標準"
+  zh-CN: "普通"
+  ko: "보통"
 app.media.pauses.noisy:
   en: Noisy
   fr: Bruyant
+  de: "Laut"
+  es: "Ruidosa"
+  it: "Rumorosa"
+  pt-BR: "Barulhenta"
+  ja: "騒がしい"
+  zh-CN: "嘈杂环境"
+  ko: "시끄러운 곳"
 app.media.pauses.find:
   en: Find pauses
   fr: Trouver les blancs
+  de: "Pausen suchen"
+  es: "Buscar pausas"
+  it: "Trova le pause"
+  pt-BR: "Procurar pausas"
+  ja: "無音を検出"
+  zh-CN: "查找停顿"
+  ko: "공백 찾기"
 app.media.pauses.finding:
   en: Listening…
   fr: Écoute…
+  de: "Hört zu …"
+  es: "Escuchando…"
+  it: "In ascolto…"
+  pt-BR: "Ouvindo…"
+  ja: "解析中…"
+  zh-CN: "正在聆听…"
+  ko: "듣는 중…"
 app.media.pauses.remove:
   en: "Remove all (%{count})"
   fr: "Tout retirer (%{count})"
+  de: "Alle entfernen (%{count})"
+  es: "Quitar todas (%{count})"
+  it: "Rimuovi tutte (%{count})"
+  pt-BR: "Remover todas (%{count})"
+  ja: "すべて削除 (%{count})"
+  zh-CN: "全部删除 (%{count})"
+  ko: "모두 제거 (%{count})"
 app.media.pauses.found:
   en: "%{count} pauses, %{total} in all"
   fr: "%{count} blancs, %{total} au total"
+  de: "%{count} Pausen, insgesamt %{total}"
+  es: "%{count} pausas, %{total} en total"
+  it: "%{count} pause, %{total} in tutto"
+  pt-BR: "%{count} pausas, %{total} no total"
+  ja: "無音 %{count} か所、合計 %{total}"
+  zh-CN: "共 %{count} 处停顿，合计 %{total}"
+  ko: "공백 %{count}개, 총 %{total}"
 app.media.transcript.help:
   en: Words are clickable. Select some (click, then Shift-click) and cut them; the matching sound and picture go too.
   fr: Les mots sont cliquables. Sélectionnez-en (clic, puis Maj-clic) et coupez-les ; le son et l’image correspondants partent avec.
+  de: "Wörter sind anklickbar. Wählen Sie welche aus (Klick, dann Umschalt-Klick) und schneiden Sie sie heraus; Ton und Bild verschwinden mit."
+  es: "Las palabras se pueden pulsar. Selecciona algunas (clic y luego Mayús+clic) y córtalas; el sonido y la imagen correspondientes se van con ellas."
+  it: "Le parole sono cliccabili. Selezionane alcune (clic, poi Maiusc+clic) e tagliale; spariscono anche l'audio e l'immagine corrispondenti."
+  pt-BR: "As palavras são clicáveis. Selecione algumas (clique e depois Shift+clique) e corte-as; o som e a imagem correspondentes também saem."
+  ja: "単語はクリックできます。クリックしてからShift+クリックで複数選択し、カットすると、対応する音声と映像も取り除かれます。"
+  zh-CN: "文字可以点击。选中若干词（点击后按 Shift 点击）并剪掉，对应的声音和画面也会一并删除。"
+  ko: "단어를 클릭할 수 있습니다. 클릭한 뒤 Shift+클릭으로 여러 개를 선택해 자르면 해당하는 소리와 화면도 함께 사라집니다."
 app.media.transcribe:
   en: Transcribe
   fr: Transcrire
+  de: "Transkribieren"
+  es: "Transcribir"
+  it: "Trascrivi"
+  pt-BR: "Transcrever"
+  ja: "文字起こし"
+  zh-CN: "转写"
+  ko: "받아쓰기"
 app.media.transcribing:
   en: Transcribing…
   fr: Transcription…
+  de: "Wird transkribiert …"
+  es: "Transcribiendo…"
+  it: "Trascrizione in corso…"
+  pt-BR: "Transcrevendo…"
+  ja: "文字起こし中…"
+  zh-CN: "正在转写…"
+  ko: "받아쓰는 중…"
 app.media.transcribed:
   en: "%{count} words transcribed"
   fr: "%{count} mots transcrits"
+  de: "%{count} Wörter transkribiert"
+  es: "%{count} palabras transcritas"
+  it: "%{count} parole trascritte"
+  pt-BR: "%{count} palavras transcritas"
+  ja: "%{count} 語を文字起こししました"
+  zh-CN: "已转写 %{count} 个词"
+  ko: "%{count}단어 받아씀"
 app.media.cut_words:
   en: Cut words
   fr: Couper les mots
+  de: "Wörter schneiden"
+  es: "Cortar palabras"
+  it: "Taglia le parole"
+  pt-BR: "Cortar palavras"
+  ja: "単語をカット"
+  zh-CN: "剪掉文字"
+  ko: "단어 자르기"
 app.media.restore_words:
   en: Restore
   fr: Rétablir
+  de: "Wiederherstellen"
+  es: "Restaurar"
+  it: "Ripristina"
+  pt-BR: "Restaurar"
+  ja: "元に戻す"
+  zh-CN: "恢复"
+  ko: "복원"
 app.media.captions.help:
   en: Captions follow your cuts. Click one to fix its text or timing.
   fr: Les sous-titres suivent vos coupes. Cliquez-en un pour corriger son texte ou son minutage.
+  de: "Untertitel folgen Ihren Schnitten. Klicken Sie einen an, um Text oder Timing zu korrigieren."
+  es: "Los subtítulos siguen tus cortes. Haz clic en uno para corregir su texto o sus tiempos."
+  it: "I sottotitoli seguono i tuoi tagli. Fai clic su uno per correggerne testo o tempi."
+  pt-BR: "As legendas acompanham os seus cortes. Clique em uma para corrigir o texto ou o tempo."
+  ja: "字幕はカットに合わせて調整されます。クリックするとテキストやタイミングを修正できます。"
+  zh-CN: "字幕会跟随你的剪切自动调整。点击某条字幕即可修改文字或时间。"
+  ko: "자막은 자르기에 맞춰 따라갑니다. 자막을 클릭해 텍스트나 타이밍을 고치세요."
 app.media.captions.from_transcript:
   en: From the transcript
   fr: Depuis la transcription
+  de: "Aus dem Transkript"
+  es: "Desde la transcripción"
+  it: "Dalla trascrizione"
+  pt-BR: "A partir da transcrição"
+  ja: "文字起こしから作成"
+  zh-CN: "从文字稿生成"
+  ko: "대본에서 만들기"
 app.media.captions.import:
   en: Import SRT / VTT…
   fr: Importer SRT / VTT…
+  de: "SRT / VTT importieren …"
+  es: "Importar SRT / VTT…"
+  it: "Importa SRT / VTT…"
+  pt-BR: "Importar SRT / VTT…"
+  ja: "SRT / VTTをインポート…"
+  zh-CN: "导入 SRT / VTT…"
+  ko: "SRT / VTT 가져오기…"
 app.media.captions.none:
   en: No captions yet. Transcribe the file or import a subtitle file.
   fr: Pas encore de sous-titres. Transcrivez le fichier ou importez un fichier de sous-titres.
+  de: "Noch keine Untertitel. Transkribieren Sie die Datei oder importieren Sie eine Untertiteldatei."
+  es: "Aún no hay subtítulos. Transcribe el archivo o importa un archivo de subtítulos."
+  it: "Nessun sottotitolo per ora. Trascrivi il file o importa un file di sottotitoli."
+  pt-BR: "Nenhuma legenda ainda. Transcreva o arquivo ou importe um arquivo de legendas."
+  ja: "字幕はまだありません。ファイルを文字起こしするか、字幕ファイルをインポートしてください。"
+  zh-CN: "还没有字幕。请转写该文件，或导入字幕文件。"
+  ko: "아직 자막이 없습니다. 파일을 받아쓰거나 자막 파일을 가져오세요."
 app.media.captions.count:
   en: "%{count} captions in the exported cut"
   fr: "%{count} sous-titres dans le montage exporté"
+  de: "%{count} Untertitel im exportierten Schnitt"
+  es: "%{count} subtítulos en el corte exportado"
+  it: "%{count} sottotitoli nel taglio esportato"
+  pt-BR: "%{count} legendas no corte exportado"
+  ja: "書き出すカットに字幕 %{count} 件"
+  zh-CN: "导出的剪辑中有 %{count} 条字幕"
+  ko: "내보낼 결과물에 자막 %{count}개"
 app.media.cue_ph:
   en: Caption text
   fr: Texte du sous-titre
+  de: "Untertiteltext"
+  es: "Texto del subtítulo"
+  it: "Testo del sottotitolo"
+  pt-BR: "Texto da legenda"
+  ja: "字幕テキスト"
+  zh-CN: "字幕文本"
+  ko: "자막 텍스트"
 app.media.style:
   en: Style
   fr: Style
+  de: "Stil"
+  es: "Estilo"
+  it: "Stile"
+  pt-BR: "Estilo"
+  ja: "スタイル"
+  zh-CN: "样式"
+  ko: "스타일"
 app.media.status:
   en: "%{total}, uncut"
   fr: "%{total}, sans coupe"
+  de: "%{total}, ungeschnitten"
+  es: "%{total}, sin cortar"
+  it: "%{total}, non tagliato"
+  pt-BR: "%{total}, sem cortes"
+  ja: "%{total}(カットなし)"
+  zh-CN: "%{total}，未剪切"
+  ko: "%{total}, 자르지 않음"
 app.media.status_cut:
   en: "%{kept} kept of %{total} · %{count} cuts"
   fr: "%{kept} conservées sur %{total} · %{count} coupes"
+  de: "%{kept} von %{total} behalten · %{count} Schnitte"
+  es: "%{kept} conservados de %{total} · %{count} cortes"
+  it: "%{kept} mantenuti su %{total} · %{count} tagli"
+  pt-BR: "%{kept} mantidos de %{total} · %{count} cortes"
+  ja: "%{total} のうち %{kept} を残す · カット %{count} か所"
+  zh-CN: "保留 %{kept} / 共 %{total} · %{count} 处剪切"
+  ko: "전체 %{total} 중 %{kept} 유지 · 자르기 %{count}회"
 app.media.exporting:
   en: Exporting…
   fr: Export…
+  de: "Wird exportiert …"
+  es: "Exportando…"
+  it: "Esportazione…"
+  pt-BR: "Exportando…"
+  ja: "書き出し中…"
+  zh-CN: "正在导出…"
+  ko: "내보내는 중…"
 app.media.export_srt:
   en: Save SRT
   fr: Enregistrer le SRT
+  de: "SRT speichern"
+  es: "Guardar SRT"
+  it: "Salva SRT"
+  pt-BR: "Salvar SRT"
+  ja: "SRTを保存"
+  zh-CN: "保存 SRT"
+  ko: "SRT 저장"
 app.media.export_burn:
   en: Burn in captions
   fr: Incruster les sous-titres
+  de: "Untertitel einbrennen"
+  es: "Incrustar subtítulos"
+  it: "Incorpora i sottotitoli"
+  pt-BR: "Gravar legendas no vídeo"
+  ja: "字幕を焼き込む"
+  zh-CN: "烧录字幕"
+  ko: "자막 입히기"
 app.media.export_video:
   en: Export video
   fr: Exporter la vidéo
+  de: "Video exportieren"
+  es: "Exportar vídeo"
+  it: "Esporta video"
+  pt-BR: "Exportar vídeo"
+  ja: "動画を書き出す"
+  zh-CN: "导出视频"
+  ko: "동영상 내보내기"
 app.media.export_audio:
   en: Export audio
   fr: Exporter l’audio
+  de: "Audio exportieren"
+  es: "Exportar audio"
+  it: "Esporta audio"
+  pt-BR: "Exportar áudio"
+  ja: "音声を書き出す"
+  zh-CN: "导出音频"
+  ko: "오디오 내보내기"
 app.media.note.cut:
   en: "%{before} → %{after}"
   fr: "%{before} → %{after}"
+  de: "%{before} → %{after}"
+  es: "%{before} → %{after}"
+  it: "%{before} → %{after}"
+  pt-BR: "%{before} → %{after}"
+  ja: "%{before} → %{after}"
+  zh-CN: "%{before} → %{after}"
+  ko: "%{before} → %{after}"
 app.media.err.burn_audio:
   en: Captions can only be burnt into a video.
   fr: Les sous-titres ne s’incrustent que dans une vidéo.
+  de: "Untertitel lassen sich nur in ein Video einbrennen."
+  es: "Los subtítulos solo se pueden incrustar en un vídeo."
+  it: "I sottotitoli si possono incorporare solo in un video."
+  pt-BR: "As legendas só podem ser gravadas em um vídeo."
+  ja: "字幕を焼き込めるのは動画のみです。"
+  zh-CN: "字幕只能烧录到视频中。"
+  ko: "자막은 동영상에만 입힐 수 있습니다."
 app.media.err.no_captions:
   en: There are no captions in the part that is kept.
   fr: Il n’y a aucun sous-titre dans la partie conservée.
+  de: "Im behaltenen Teil gibt es keine Untertitel."
+  es: "No hay subtítulos en la parte que se conserva."
+  it: "Non ci sono sottotitoli nella parte mantenuta."
+  pt-BR: "Não há legendas na parte mantida."
+  ja: "残す部分に字幕がありません。"
+  zh-CN: "保留的部分中没有字幕。"
+  ko: "유지하는 구간에 자막이 없습니다."
 app.media.err.no_change:
   en: Nothing is cut yet.
   fr: Rien n’est encore coupé.
+  de: "Es wurde noch nichts geschnitten."
+  es: "Aún no se ha cortado nada."
+  it: "Non è stato ancora tagliato nulla."
+  pt-BR: "Nada foi cortado ainda."
+  ja: "まだカットされていません。"
+  zh-CN: "尚未进行任何剪切。"
+  ko: "아직 자른 부분이 없습니다."
 app.media.err.nothing_kept:
   en: Everything is cut out; keep at least one part.
   fr: Tout est coupé ; gardez au moins une partie.
+  de: "Alles ist herausgeschnitten; behalten Sie mindestens einen Teil."
+  es: "Todo está cortado; conserva al menos una parte."
+  it: "Tutto è stato tagliato; mantieni almeno una parte."
+  pt-BR: "Tudo foi cortado; mantenha pelo menos uma parte."
+  ja: "すべてカットされています。少なくとも1つの部分を残してください。"
+  zh-CN: "内容已被全部剪掉，请至少保留一部分。"
+  ko: "전부 잘려 나갔습니다. 최소 한 구간은 남겨 두세요."
 app.media.err.unreadable:
   en: This file has no picture or sound Castor can read.
   fr: Ce fichier n’a ni image ni son que Castor sache lire.
+  de: "Diese Datei enthält kein Bild und keinen Ton, die Castor lesen kann."
+  es: "Este archivo no tiene imagen ni sonido que Castor pueda leer."
+  it: "Questo file non ha immagini né audio che Castor possa leggere."
+  pt-BR: "Este arquivo não tem imagem nem som que o Castor consiga ler."
+  ja: "このファイルには、Castorが読み取れる映像も音声もありません。"
+  zh-CN: "此文件没有 Castor 能读取的画面或声音。"
+  ko: "이 파일에는 Castor가 읽을 수 있는 영상이나 소리가 없습니다."
 app.media.err.no_transcribe:
   en: Transcription is not part of this build.
   fr: La transcription ne fait pas partie de cette version.
+  de: "Die Transkription ist nicht Teil dieser Version."
+  es: "La transcripción no forma parte de esta versión."
+  it: "La trascrizione non fa parte di questa build."
+  pt-BR: "A transcrição não faz parte desta versão."
+  ja: "文字起こしはこのビルドには含まれていません。"
+  zh-CN: "此版本不包含转写功能。"
+  ko: "이 빌드에는 받아쓰기 기능이 포함되어 있지 않습니다."
 
 app.settings.workspaces:
   en: Workspaces
   fr: Espaces de travail
+  de: "Arbeitsbereiche"
+  es: "Espacios de trabajo"
+  it: "Spazi di lavoro"
+  pt-BR: "Espaços de trabalho"
+  ja: "ワークスペース"
+  zh-CN: "工作区"
+  ko: "워크스페이스"
 app.settings.integration:
   en: System integration
   fr: Intégration au système
+  de: "Systemintegration"
+  es: "Integración con el sistema"
+  it: "Integrazione con il sistema"
+  pt-BR: "Integração com o sistema"
+  ja: "システム連携"
+  zh-CN: "系统集成"
+  ko: "시스템 통합"
 app.ws.label:
   en: Workspace
   fr: Espace
+  de: "Arbeitsbereich"
+  es: "Espacio de trabajo"
+  it: "Spazio di lavoro"
+  pt-BR: "Espaço de trabalho"
+  ja: "ワークスペース"
+  zh-CN: "工作区"
+  ko: "워크스페이스"
 app.ws.default:
   en: Personal
   fr: Personnel
+  de: "Persönlich"
+  es: "Personal"
+  it: "Personale"
+  pt-BR: "Pessoal"
+  ja: "個人用"
+  zh-CN: "个人"
+  ko: "개인"
 app.ws.switch_aria:
   en: "Workspace: %{name}. Switch workspace"
   fr: "Espace : %{name}. Changer d’espace"
+  de: "Arbeitsbereich: %{name}. Arbeitsbereich wechseln"
+  es: "Espacio de trabajo: %{name}. Cambiar de espacio de trabajo"
+  it: "Spazio di lavoro: %{name}. Cambia spazio di lavoro"
+  pt-BR: "Espaço de trabalho: %{name}. Alternar espaço de trabalho"
+  ja: "ワークスペース: %{name}。ワークスペースを切り替え"
+  zh-CN: "工作区：%{name}。切换工作区"
+  ko: "워크스페이스: %{name}. 워크스페이스 전환"
 app.ws.manage:
   en: Manage workspaces…
   fr: Gérer les espaces…
+  de: "Arbeitsbereiche verwalten …"
+  es: "Gestionar espacios de trabajo…"
+  it: "Gestisci spazi di lavoro…"
+  pt-BR: "Gerenciar espaços de trabalho…"
+  ja: "ワークスペースを管理…"
+  zh-CN: "管理工作区…"
+  ko: "워크스페이스 관리…"
 app.ws.help:
   en: A workspace keeps a brand (logo, two colours, a signature), an output folder and its own list of runs. Tools that take a logo, a colour or a signature start with the workspace’s.
   fr: Un espace de travail garde une identité (logo, deux couleurs, une signature), un dossier de sortie et sa propre liste d’exécutions. Les outils qui prennent un logo, une couleur ou une signature partent de ceux de l’espace.
+  de: "Ein Arbeitsbereich bewahrt eine Marke (Logo, zwei Farben, eine Signatur), einen Ausgabeordner und eine eigene Liste von Läufen. Werkzeuge mit Logo, Farbe oder Signatur starten mit den Werten des Arbeitsbereichs."
+  es: "Un espacio de trabajo guarda una marca (logotipo, dos colores, una firma), una carpeta de salida y su propia lista de ejecuciones. Las herramientas que usan logotipo, color o firma empiezan con los del espacio de trabajo."
+  it: "Uno spazio di lavoro conserva un marchio (logo, due colori, una firma), una cartella di output e un proprio elenco di esecuzioni. Gli strumenti che usano un logo, un colore o una firma partono con quelli dello spazio di lavoro."
+  pt-BR: "Um espaço de trabalho guarda uma marca (logotipo, duas cores, uma assinatura), uma pasta de saída e a sua própria lista de execuções. As ferramentas que usam logotipo, cor ou assinatura começam com os do espaço de trabalho."
+  ja: "ワークスペースには、ブランド(ロゴ、2色、署名)、出力フォルダ、専用の実行履歴が保存されます。ロゴ、色、署名を使うツールは、ワークスペースの設定を初期値にして始まります。"
+  zh-CN: "工作区会保存一套品牌信息（标志、两种颜色、一个签名）、一个输出文件夹，以及独立的运行记录。需要标志、颜色或签名的工具会默认使用当前工作区的设置。"
+  ko: "워크스페이스에는 브랜드(로고, 색상 두 가지, 서명), 출력 폴더, 별도의 실행 기록이 저장됩니다. 로고, 색상, 서명을 쓰는 도구는 워크스페이스의 값으로 시작합니다."
 app.ws.active:
   en: Active
   fr: Actif
+  de: "Aktiv"
+  es: "Activo"
+  it: "Attivo"
+  pt-BR: "Ativo"
+  ja: "使用中"
+  zh-CN: "当前"
+  ko: "사용 중"
 app.ws.use:
   en: Use
   fr: Utiliser
+  de: "Verwenden"
+  es: "Usar"
+  it: "Usa"
+  pt-BR: "Usar"
+  ja: "使用"
+  zh-CN: "使用"
+  ko: "사용"
 app.ws.edit:
   en: Edit
   fr: Modifier
+  de: "Bearbeiten"
+  es: "Editar"
+  it: "Modifica"
+  pt-BR: "Editar"
+  ja: "編集"
+  zh-CN: "编辑"
+  ko: "편집"
 app.ws.add:
   en: New workspace
   fr: Nouvel espace
+  de: "Neuer Arbeitsbereich"
+  es: "Nuevo espacio de trabajo"
+  it: "Nuovo spazio di lavoro"
+  pt-BR: "Novo espaço de trabalho"
+  ja: "新しいワークスペース"
+  zh-CN: "新建工作区"
+  ko: "새 워크스페이스"
 app.ws.new_name:
   en: Workspace
   fr: Espace
+  de: "Arbeitsbereich"
+  es: "Espacio de trabajo"
+  it: "Spazio di lavoro"
+  pt-BR: "Espaço de trabalho"
+  ja: "ワークスペース"
+  zh-CN: "工作区"
+  ko: "워크스페이스"
 app.ws.runs:
   en: "%{count} runs"
   fr: "%{count} exécutions"
+  de: "%{count} Läufe"
+  es: "%{count} ejecuciones"
+  it: "%{count} esecuzioni"
+  pt-BR: "%{count} execuções"
+  ja: "実行 %{count} 件"
+  zh-CN: "%{count} 条运行记录"
+  ko: "실행 %{count}건"
 app.ws.name:
   en: Name
   fr: Nom
+  de: "Name"
+  es: "Nombre"
+  it: "Nome"
+  pt-BR: "Nome"
+  ja: "名前"
+  zh-CN: "名称"
+  ko: "이름"
 app.ws.name_ph:
   en: Client, project, association…
   fr: Client, projet, association…
+  de: "Kunde, Projekt, Verein …"
+  es: "Cliente, proyecto, asociación…"
+  it: "Cliente, progetto, associazione…"
+  pt-BR: "Cliente, projeto, associação…"
+  ja: "クライアント、プロジェクト、団体…"
+  zh-CN: "客户、项目、社团…"
+  ko: "고객, 프로젝트, 단체…"
 app.ws.colours:
   en: Colours
   fr: Couleurs
+  de: "Farben"
+  es: "Colores"
+  it: "Colori"
+  pt-BR: "Cores"
+  ja: "色"
+  zh-CN: "颜色"
+  ko: "색상"
 app.ws.logo:
   en: Logo
   fr: Logo
+  de: "Logo"
+  es: "Logotipo"
+  it: "Logo"
+  pt-BR: "Logotipo"
+  ja: "ロゴ"
+  zh-CN: "标志"
+  ko: "로고"
 app.ws.signature:
   en: Signature
   fr: Signature
+  de: "Signatur"
+  es: "Firma"
+  it: "Firma"
+  pt-BR: "Assinatura"
+  ja: "署名"
+  zh-CN: "签名"
+  ko: "서명"
 app.ws.output:
   en: Output folder
   fr: Dossier de sortie
+  de: "Ausgabeordner"
+  es: "Carpeta de salida"
+  it: "Cartella di output"
+  pt-BR: "Pasta de saída"
+  ja: "出力フォルダ"
+  zh-CN: "输出文件夹"
+  ko: "출력 폴더"
 app.ws.none:
   en: None
   fr: Aucun
+  de: "Keine"
+  es: "Ninguno"
+  it: "Nessuno"
+  pt-BR: "Nenhum"
+  ja: "なし"
+  zh-CN: "无"
+  ko: "없음"
 app.ws.prefill_help:
   en: "Pre-filled by option name: logo, color (first colour), accent (second), colors, signature. Results go to the output folder, in a sub-folder per tool and day."
   fr: "Pré-rempli selon le nom de l’option : logo, color (première couleur), accent (seconde), colors, signature. Les résultats vont dans le dossier de sortie, dans un sous-dossier par outil et par jour."
+  de: "Vorbelegt nach Optionsname: logo, color (erste Farbe), accent (zweite), colors, signature. Ergebnisse landen im Ausgabeordner, in einem Unterordner pro Werkzeug und Tag."
+  es: "Se rellena según el nombre de la opción: logo, color (primer color), accent (segundo), colors, signature. Los resultados van a la carpeta de salida, en una subcarpeta por herramienta y día."
+  it: "Precompilato in base al nome dell'opzione: logo, color (primo colore), accent (secondo), colors, signature. I risultati vanno nella cartella di output, in una sottocartella per strumento e giorno."
+  pt-BR: "Preenchido pelo nome da opção: logo, color (primeira cor), accent (segunda), colors, signature. Os resultados vão para a pasta de saída, em uma subpasta por ferramenta e dia."
+  ja: "オプション名に応じて自動入力されます: logo、color(1色目)、accent(2色目)、colors、signature。結果は出力フォルダ内の、ツールと日付ごとのサブフォルダに保存されます。"
+  zh-CN: "按选项名称预填：logo、color（第一种颜色）、accent（第二种）、colors、signature。结果保存在输出文件夹中，每个工具每天一个子文件夹。"
+  ko: "옵션 이름에 따라 미리 채워집니다: logo, color(첫 번째 색), accent(두 번째), colors, signature. 결과는 출력 폴더 안의 도구별, 날짜별 하위 폴더에 저장됩니다."
 app.integration.open_in:
   en: Open in Castor
   fr: Ouvrir dans Castor
+  de: "In Castor öffnen"
+  es: "Abrir en Castor"
+  it: "Apri in Castor"
+  pt-BR: "Abrir no Castor"
+  ja: "Castorで開く"
+  zh-CN: "在 Castor 中打开"
+  ko: "Castor에서 열기"
 app.integration.explorer:
   en: Explorer menu
   fr: Menu de l’Explorateur
+  de: "Explorer-Menü"
+  es: "Menú del Explorador"
+  it: "Menu di Esplora file"
+  pt-BR: "Menu do Explorador"
+  ja: "エクスプローラーのメニュー"
+  zh-CN: "资源管理器菜单"
+  ko: "탐색기 메뉴"
 app.integration.explorer_help:
   en: Right-click files → Castor → Open in Castor or one of your favourite tools. On Windows 11 it is under “Show more options”.
   fr: Clic droit sur des fichiers → Castor → Ouvrir dans Castor ou l’un de vos outils favoris. Sous Windows 11, il se trouve dans « Afficher plus d’options ».
+  de: "Rechtsklick auf Dateien → Castor → „In Castor öffnen“ oder eines Ihrer Lieblingswerkzeuge. Unter Windows 11 finden Sie es unter „Weitere Optionen anzeigen“."
+  es: "Clic derecho en los archivos → Castor → Abrir en Castor o una de tus herramientas favoritas. En Windows 11 está en “Mostrar más opciones”."
+  it: "Clic destro sui file → Castor → Apri in Castor o uno dei tuoi strumenti preferiti. In Windows 11 si trova sotto «Mostra altre opzioni»."
+  pt-BR: "Clique com o botão direito nos arquivos → Castor → Abrir no Castor ou uma de suas ferramentas favoritas. No Windows 11, fica em “Mostrar mais opções”."
+  ja: "ファイルを右クリック → Castor → 「Castorで開く」またはお気に入りのツール。Windows 11では「その他のオプションを確認」の中にあります。"
+  zh-CN: "右键单击文件 → Castor → “在 Castor 中打开”或你收藏的某个工具。在 Windows 11 中，它位于“显示更多选项”下。"
+  ko: "파일을 마우스 오른쪽 버튼으로 클릭 → Castor → ‘Castor에서 열기’ 또는 즐겨찾는 도구를 선택하세요. Windows 11에서는 ‘더 많은 옵션 표시’ 안에 있습니다."
 app.integration.finder_help:
   en: In Finder, use Open With → Castor, or drop files on the Castor icon in the Dock.
   fr: Dans le Finder, utilisez Ouvrir avec → Castor, ou déposez des fichiers sur l’icône de Castor dans le Dock.
+  de: "Verwenden Sie im Finder „Öffnen mit“ → Castor oder ziehen Sie Dateien auf das Castor-Symbol im Dock."
+  es: "En el Finder, usa Abrir con → Castor, o suelta archivos sobre el icono de Castor en el Dock."
+  it: "Nel Finder usa Apri con → Castor, oppure trascina i file sull'icona di Castor nel Dock."
+  pt-BR: "No Finder, use Abrir com → Castor, ou solte arquivos no ícone do Castor no Dock."
+  ja: "Finderでは「このアプリケーションで開く」→ Castor を選ぶか、ファイルをDockのCastorアイコンにドロップしてください。"
+  zh-CN: "在访达中使用“打开方式”→ Castor，或将文件拖到程序坞中的 Castor 图标上。"
+  ko: "Finder에서 ‘다음으로 열기’ → Castor를 사용하거나 파일을 Dock의 Castor 아이콘에 끌어다 놓으세요."
 app.watch.title:
   en: Watch folders
   fr: Dossiers surveillés
+  de: "Überwachte Ordner"
+  es: "Carpetas vigiladas"
+  it: "Cartelle monitorate"
+  pt-BR: "Pastas monitoradas"
+  ja: "監視フォルダ"
+  zh-CN: "监视文件夹"
+  ko: "감시 폴더"
 app.watch.help:
   en: "New files dropped in a watched folder go through a chain as soon as they finish copying; results land in its “%{dir}” sub-folder. Castor must be running (the tray icon is enough)."
   fr: "Les nouveaux fichiers déposés dans un dossier surveillé passent par une chaîne dès la fin de leur copie ; les résultats arrivent dans son sous-dossier « %{dir} ». Castor doit être lancé (l’icône de la barre des tâches suffit)."
+  de: "Neue Dateien in einem überwachten Ordner durchlaufen eine Kette, sobald sie fertig kopiert sind; die Ergebnisse landen im Unterordner „%{dir}“. Castor muss laufen (das Symbol im Infobereich genügt)."
+  es: "Los archivos nuevos que lleguen a una carpeta vigilada pasan por una cadena en cuanto terminan de copiarse; los resultados van a su subcarpeta “%{dir}”. Castor debe estar en ejecución (basta con el icono de la bandeja)."
+  it: "I nuovi file che finiscono in una cartella monitorata passano per una catena appena finiscono di essere copiati; i risultati vanno nella sua sottocartella «%{dir}». Castor deve essere in esecuzione (basta l'icona nell'area di notifica)."
+  pt-BR: "Os novos arquivos colocados em uma pasta monitorada passam por uma cadeia assim que terminam de ser copiados; os resultados vão para a subpasta “%{dir}”. O Castor precisa estar em execução (o ícone na bandeja basta)."
+  ja: "監視フォルダに追加された新しいファイルは、コピーが完了すると同時にチェーンで処理され、結果はサブフォルダ「%{dir}」に保存されます。Castorを起動しておく必要があります(トレイアイコンだけでも構いません)。"
+  zh-CN: "放入监视文件夹的新文件在复制完成后会立即经过一条链处理，结果保存到其“%{dir}”子文件夹。Castor 必须保持运行（仅保留托盘图标即可）。"
+  ko: "감시 폴더에 새로 들어온 파일은 복사가 끝나는 즉시 체인으로 처리되며, 결과는 하위 폴더 “%{dir}”에 저장됩니다. Castor가 실행 중이어야 합니다(트레이 아이콘만 있어도 됩니다)."
 app.watch.add:
   en: Watch a folder…
   fr: Surveiller un dossier…
+  de: "Ordner überwachen …"
+  es: "Vigilar una carpeta…"
+  it: "Monitora una cartella…"
+  pt-BR: "Monitorar uma pasta…"
+  ja: "フォルダを監視…"
+  zh-CN: "监视文件夹…"
+  ko: "폴더 감시…"
 app.watch.pause:
   en: Pause
   fr: Suspendre
+  de: "Pausieren"
+  es: "Pausar"
+  it: "Pausa"
+  pt-BR: "Pausar"
+  ja: "一時停止"
+  zh-CN: "暂停"
+  ko: "일시 중지"
 app.watch.resume:
   en: Resume
   fr: Reprendre
+  de: "Fortsetzen"
+  es: "Reanudar"
+  it: "Riprendi"
+  pt-BR: "Retomar"
+  ja: "再開"
+  zh-CN: "继续"
+  ko: "다시 시작"
 app.watch.next_chain:
   en: Click to use the next chain
   fr: Cliquez pour passer à la chaîne suivante
+  de: "Klicken, um die nächste Kette zu verwenden"
+  es: "Haz clic para usar la siguiente cadena"
+  it: "Fai clic per usare la catena successiva"
+  pt-BR: "Clique para usar a próxima cadeia"
+  ja: "クリックして次のチェーンに切り替え"
+  zh-CN: "点击使用下一条链"
+  ko: "클릭하여 다음 체인 사용"
 app.watch.no_chain:
   en: Choose a chain
   fr: Choisir une chaîne
+  de: "Kette wählen"
+  es: "Elige una cadena"
+  it: "Scegli una catena"
+  pt-BR: "Escolha uma cadeia"
+  ja: "チェーンを選択"
+  zh-CN: "选择一条链"
+  ko: "체인 선택"
 app.watch.watching:
   en: "watching %{count} folders"
   fr: "%{count} dossiers surveillés"
+  de: "%{count} Ordner werden überwacht"
+  es: "vigilando %{count} carpetas"
+  it: "monitoraggio di %{count} cartelle"
+  pt-BR: "monitorando %{count} pastas"
+  ja: "%{count} 個のフォルダを監視中"
+  zh-CN: "正在监视 %{count} 个文件夹"
+  ko: "폴더 %{count}개 감시 중"
 app.watch.processing:
   en: "processing %{name}"
   fr: "traitement de %{name}"
+  de: "%{name} wird verarbeitet"
+  es: "procesando %{name}"
+  it: "elaborazione di %{name}"
+  pt-BR: "processando %{name}"
+  ja: "%{name} を処理中"
+  zh-CN: "正在处理 %{name}"
+  ko: "%{name} 처리 중"
 app.watch.idle:
   en: "watching %{count} folders · %{done} files done"
   fr: "%{count} dossiers surveillés · %{done} fichiers traités"
+  de: "%{count} Ordner werden überwacht · %{done} Dateien erledigt"
+  es: "vigilando %{count} carpetas · %{done} archivos hechos"
+  it: "monitoraggio di %{count} cartelle · %{done} file elaborati"
+  pt-BR: "monitorando %{count} pastas · %{done} arquivos concluídos"
+  ja: "%{count} 個のフォルダを監視中 · %{done} 個のファイルを処理済み"
+  zh-CN: "正在监视 %{count} 个文件夹 · 已处理 %{done} 个文件"
+  ko: "폴더 %{count}개 감시 중 · 파일 %{done}개 처리됨"
 
 app.runs.all_workspaces:
   en: All workspaces
   fr: Tous les espaces
+  de: "Alle Arbeitsbereiche"
+  es: "Todos los espacios de trabajo"
+  it: "Tutti gli spazi di lavoro"
+  pt-BR: "Todos os espaços de trabalho"
+  ja: "すべてのワークスペース"
+  zh-CN: "所有工作区"
+  ko: "모든 워크스페이스"
 app.studio.open_in_pdf:
   en: Open in PDF Studio
   fr: Ouvrir dans le Studio PDF
+  de: "In PDF Studio öffnen"
+  es: "Abrir en PDF Studio"
+  it: "Apri in PDF Studio"
+  pt-BR: "Abrir no PDF Studio"
+  ja: "PDF Studioで開く"
+  zh-CN: "在 PDF Studio 中打开"
+  ko: "PDF Studio에서 열기"
 app.studio.open_in_media:
   en: Open in Trim Studio
   fr: Ouvrir dans le studio de montage
+  de: "In Trim Studio öffnen"
+  es: "Abrir en Trim Studio"
+  it: "Apri in Trim Studio"
+  pt-BR: "Abrir no Trim Studio"
+  ja: "Trim Studioで開く"
+  zh-CN: "在 Trim Studio 中打开"
+  ko: "Trim Studio에서 열기"
 app.studio.pdf.keywords:
   en: pdf studio annotate highlight sign signature redact black out fill form reorder pages comment
   fr: studio pdf annoter surligner signer signature caviarder noircir remplir formulaire réordonner pages commentaire
+  de: "pdf studio kommentieren markieren signieren unterschrift schwärzen ausfüllen formular seiten ordnen kommentar"
+  es: "pdf studio anotar resaltar firmar firma censurar tachar rellenar formulario reordenar páginas comentario"
+  it: "pdf studio annotare evidenziare firmare firma oscurare compilare modulo riordinare pagine commento"
+  pt-BR: "pdf studio anotar realçar assinar assinatura tarjar preencher formulário reordenar páginas comentário"
+  ja: "pdf studio 注釈 ハイライト 署名 サイン 墨消し 黒塗り 入力 フォーム 並べ替え ページ コメント"
+  zh-CN: "pdf studio 批注 高亮 签名 涂黑 脱敏 填写 表单 重新排序 页面 评论"
+  ko: "pdf studio 주석 형광펜 서명 가림 처리 마스킹 양식 작성 페이지 순서 코멘트"
 app.studio.media.keywords:
   en: trim cut video audio timeline subtitles captions transcript silence pauses edit
   fr: rogner couper vidéo audio frise sous-titres transcription silence blancs montage
+  de: "trim schneiden video audio zeitleiste untertitel transkript stille pausen bearbeiten"
+  es: "recortar cortar vídeo audio línea de tiempo subtítulos transcripción silencio pausas editar"
+  it: "rifilare tagliare video audio timeline sottotitoli trascrizione silenzio pause modificare"
+  pt-BR: "aparar cortar vídeo áudio linha do tempo legendas transcrição silêncio pausas editar"
+  ja: "トリミング カット 動画 音声 タイムライン 字幕 文字起こし 無音 編集"
+  zh-CN: "裁剪 剪辑 视频 音频 时间轴 字幕 文字稿 静音 停顿 编辑"
+  ko: "자르기 컷 동영상 오디오 타임라인 자막 대본 받아쓰기 무음 공백 편집"
 
 app.pdf.page_aria:
   en: "Page %{page}"
   fr: "Page %{page}"
+  de: "Seite %{page}"
+  es: "Página %{page}"
+  it: "Pagina %{page}"
+  pt-BR: "Página %{page}"
+  ja: "%{page}ページ"
+  zh-CN: "第 %{page} 页"
+  ko: "%{page}페이지"
 app.pdf.colour_aria:
   en: "Colour %{n}"
   fr: "Couleur %{n}"
+  de: "Farbe %{n}"
+  es: "Color %{n}"
+  it: "Colore %{n}"
+  pt-BR: "Cor %{n}"
+  ja: "色 %{n}"
+  zh-CN: "颜色 %{n}"
+  ko: "색상 %{n}"
 app.pdf.sig_aria:
   en: "Signature %{n}"
   fr: "Signature %{n}"
+  de: "Signatur %{n}"
+  es: "Firma %{n}"
+  it: "Firma %{n}"
+  pt-BR: "Assinatura %{n}"
+  ja: "署名 %{n}"
+  zh-CN: "签名 %{n}"
+  ko: "서명 %{n}"
 app.media.timeline_aria:
   en: Timeline — click to move the playhead, drag to select
   fr: Frise — cliquez pour déplacer la tête de lecture, glissez pour sélectionner
+  de: "Zeitleiste – klicken, um den Abspielkopf zu bewegen, ziehen zum Auswählen"
+  es: "Línea de tiempo: haz clic para mover el cabezal, arrastra para seleccionar"
+  it: "Timeline: fai clic per spostare la testina, trascina per selezionare"
+  pt-BR: "Linha do tempo: clique para mover o cursor, arraste para selecionar"
+  ja: "タイムライン — クリックで再生位置を移動、ドラッグで範囲選択"
+  zh-CN: "时间轴：点击可移动播放头，拖动可选择范围"
+  ko: "타임라인 — 클릭하면 재생 헤드 이동, 끌면 구간 선택"
 
 app.pdf.changes.one:
   en: "· 1 change"
   fr: "· 1 modification"
+  de: "· 1 Änderung"
+  es: "· 1 cambio"
+  it: "· 1 modifica"
+  pt-BR: "· 1 alteração"
+  ja: "· 1 件の変更"
+  zh-CN: "· 1 处更改"
+  ko: "· 변경 1건"
 app.pdf.organize.selected.one:
   en: 1 page selected
   fr: 1 page sélectionnée
+  de: "1 Seite ausgewählt"
+  es: "1 página seleccionada"
+  it: "1 pagina selezionata"
+  pt-BR: "1 página selecionada"
+  ja: "1 ページを選択中"
+  zh-CN: "已选择 1 页"
+  ko: "1페이지 선택됨"
 app.media.status_cut.one:
   en: "%{kept} kept of %{total} · 1 cut"
   fr: "%{kept} conservées sur %{total} · 1 coupe"
+  de: "%{kept} von %{total} behalten · 1 Schnitt"
+  es: "%{kept} conservados de %{total} · 1 corte"
+  it: "%{kept} mantenuti su %{total} · 1 taglio"
+  pt-BR: "%{kept} mantidos de %{total} · 1 corte"
+  ja: "%{total} のうち %{kept} を残す · カット 1 か所"
+  zh-CN: "保留 %{kept} / 共 %{total} · 1 处剪切"
+  ko: "전체 %{total} 중 %{kept} 유지 · 자르기 1회"
 
 app.pdf.extract.one:
   en: Extract this page to a new file
   fr: Extraire cette page dans un nouveau fichier
+  de: "Diese Seite in neue Datei extrahieren"
+  es: "Extraer esta página a un archivo nuevo"
+  it: "Estrai questa pagina in un nuovo file"
+  pt-BR: "Extrair esta página para um novo arquivo"
+  ja: "このページを新しいファイルに抽出"
+  zh-CN: "将此页提取到新文件"
+  ko: "이 페이지를 새 파일로 추출"
