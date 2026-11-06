@@ -42,7 +42,7 @@ while [ $# -gt 0 ]; do
 done
 case "$ARCH_ARG" in all) ARCHS="x64 arm64" ;; x64|arm64) ARCHS="$ARCH_ARG" ;; *) die "--arch x64|arm64|all" ;; esac
 VERSION="${VERSION:-$(workspace_version)}"
-ENT="$HERE/entitlements.plist"
+ENT="$HERE/castor.entitlements"
 
 step "preflight"
 for a in $ARCHS; do [ -d "$(app_path "$a")" ] || die "$(app_path "$a") not found: run packaging/macos/build.sh first"; done
