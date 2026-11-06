@@ -1,0 +1,15 @@
+[package]
+name = "castor-mcp"
+description = "Castor as an MCP server: every tool available to AI agents over stdio"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "castor-mcp"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+castor-core.workspace = true
+castor-tools.workspace = true

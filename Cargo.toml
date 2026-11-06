@@ -12,6 +12,7 @@ members = [
     "crates/tools-files",
     "crates/castor-tools",
     "crates/castor-cli",
+    "crates/castor-mcp",
     "crates/castor-app",
 ]
 default-members = ["crates/castor-cli"]
