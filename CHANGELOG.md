@@ -1,0 +1,32 @@
+# Changelog
+
+## 0.9.0 — public beta — 2026-11-06
+
+The first public release of **Castor**: 110 file tools in one calm app for macOS and Windows.
+Free, offline, open source (GPL-3.0). *Gnaws through your files.*
+
+- **PDF (28)**: compress, merge, split, OCR in 83 languages, redact (really removed), sign,
+  encrypt and unlock, organize pages, page numbers, stamps, PDF ↔ images, Markdown and ebooks,
+  Office to PDF (with LibreOffice), compare, fill forms…
+- **Image (25)**: remove backgrounds and upscale with local models, convert (HEIC, AVIF, JPEG XL,
+  RAW, SVG…), compress without ever making a file bigger, resize, watermark, beautify screenshots,
+  blur faces, icon packs, contact sheets…
+- **Video and audio (28)**: trim, compress, convert, GIF, captions, transcription with Whisper,
+  loudness, denoise, cut silences, stabilize…
+- **Create (20)** and **Files (9)**: QR codes that are checked to scan, barcodes, mockups,
+  gradients, social cards, brand sheets, data merge, batch rename, archives, duplicates,
+  “what is this file?”…
+- **Studios**: a PDF studio (organize, annotate, sign, redact, fill forms) and a Trim & Caption
+  studio (timeline, cut by transcript, captions that follow the cuts).
+- Chains, run history with undo, workspaces, a ⌘K/Ctrl K palette that understands plain words,
+  a menu-bar / tray quick panel, watch folders, the Explorer “Castor ›” menu, `castor-cli` and an
+  MCP server for AI agents. In 9 languages.
+
+This is a beta: please report anything odd at https://github.com/basedpolymer/castor/issues.
+Windows builds are not code-signed yet (SmartScreen: “More info → Run anyway”).
+
+---
+
+**Première version publique de Castor** : 110 outils de fichiers dans une app calme pour macOS et
+Windows. Gratuit, hors ligne, libre (GPL-3.0). *Ronge vos fichiers à votre place.*
+C'est une bêta : signalez tout ce qui cloche sur la page GitHub du projet.

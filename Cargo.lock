@@ -1275,7 +1275,7 @@ checksum = "37b2a672a2cb129a2e41c10b1224bb368f9f37a2b16b612598138befd7b37eb5"
 
 [[package]]
 name = "castor-app"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "auto-launch",
@@ -1307,7 +1307,7 @@ dependencies = [
 
 [[package]]
 name = "castor-cli"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
@@ -1321,7 +1321,7 @@ dependencies = [
 
 [[package]]
 name = "castor-core"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "crossbeam-channel",
@@ -1345,11 +1345,11 @@ dependencies = [
 
 [[package]]
 name = "castor-launcher"
-version = "0.1.0"
+version = "0.9.0"
 
 [[package]]
 name = "castor-mcp"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
@@ -1364,7 +1364,7 @@ dependencies = [
 
 [[package]]
 name = "castor-tools"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "castor-core",
  "engine-media",
@@ -2531,7 +2531,7 @@ checksum = "66b7e2430c6dff6a955451e2cfc438f09cea1965a9d6f87f7e3b90decc014099"
 
 [[package]]
 name = "engine-media"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
@@ -2544,7 +2544,7 @@ dependencies = [
 
 [[package]]
 name = "engine-ml"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
@@ -2561,7 +2561,7 @@ dependencies = [
 
 [[package]]
 name = "engine-pdf"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
@@ -11010,7 +11010,7 @@ checksum = "009dbb7700f11c55ef83aebbe4c0e9cf1f1ac0844bd8d6f00dc38f302026e13a"
 
 [[package]]
 name = "tools-create"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
@@ -11042,7 +11042,7 @@ dependencies = [
 
 [[package]]
 name = "tools-files"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "ab_glyph",
  "anyhow",
@@ -11076,7 +11076,7 @@ dependencies = [
 
 [[package]]
 name = "tools-image"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "base64 0.22.1",
@@ -11120,7 +11120,7 @@ dependencies = [
 
 [[package]]
 name = "tools-media"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
@@ -11138,7 +11138,7 @@ dependencies = [
 
 [[package]]
 name = "tools-pdf"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "anyhow",
  "castor-core",
