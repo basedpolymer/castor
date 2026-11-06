@@ -15,15 +15,22 @@
 ## Crate graph
 
 ```
-castor-app ─┐
-castor-cli ─┼─> castor-tools ─> tools-pdf ───> engine-pdf ──┐
-            │                   tools-image ─> engine-ml ───┤
-            │                               └> engine-pdf   ├─> castor-core
-            │                   tools-media ─> engine-media ┤
-            │                   tools-create ─> (engines)   │
-            │                   tools-files ────────────────┘
-            └─> castor-core
+castor-app (binary `castor`: GUI, `castor cli …`, `castor mcp`) ─┐
+castor-cli (library + dev binary) ── castor-mcp (library + dev binary) ─┤
+                                                                 └─> castor-tools ─> tools-pdf ───> engine-pdf ──┐
+                                                                                     tools-image ─> engine-ml ───┤
+                                                                                                 └> engine-pdf   ├─> castor-core
+                                                                                     tools-media ─> engine-media ┤
+                                                                                     tools-create ─> engines     │
+                                                                                     tools-files ────────────────┘
+castor-launcher (binary `castor-cli`, 0.2 MB, no dependency): runs `castor cli <args>` next to it.
 ```
+
+**One binary ships.** The engines (MuPDF, ONNX Runtime, Typst, codecs) are linked once, into
+`castor`. `castor cli <args>` and `castor mcp` are dispatched in `crates/castor-app/src/main.rs`
+before anything graphical (on Windows the GUI-subsystem binary attaches to the parent console when
+started from a terminal). The `castor-cli` users type is the tiny launcher, which resolves its own
+path (Homebrew symlinks it) and execs `castor cli` with the same stdio and exit code.
 
 ## castor-core (frozen contract — coordinator only)
 
@@ -67,9 +74,35 @@ Strings in `locales/<owner>.yml`: `{id}.name`, `{id}.desc`, `{id}.verb` (button 
 `{id}.keywords` (space-separated search words), `{id}.opt.{key}`, `{id}.opt.{key}.help`,
 `{id}.opt.{key}.{choice}`, `{id}.done` (optional dry one-liner).
 
+## The app (`crates/castor-app`)
+
+- `app.rs`, `shell.rs`, `home.rs`, `tool_screen.rs`, `form.rs` — window, sidebar, tools home,
+  the tool screen generated from `Tool::options()`; `palette.rs` (⌘K), `runs.rs`, `chains.rs`,
+  `settings_page.rs`, `panel.rs` + `tray.rs` (menu bar / tray quick panel, global shortcut),
+  `workspaces.rs` / `workspace_editor.rs`, `integration.rs` (Explorer menu via Velopack hooks,
+  watch folders), `ipc.rs` (single instance, file hand-off), `updates.rs` (Velopack;
+  `CASTOR_UPDATE_FEED` overrides the feed for tests), `thumbs.rs` (`castor_tools::thumbnail`).
+- `studio/` — PDF Studio and Trim & Caption Studio. They save through the runner as app-side
+  tools `studio.pdf` / `studio.media` (history, undo), calling engine-pdf / engine-media and the
+  registry's own tools.
+- `--page … --shot out.png` (feature `shots`) renders a window offscreen to a PNG: screenshots
+  without a desktop. `demo-tools` adds fake tools for UI work; never shipped.
+
+## Engines worth knowing
+
+- **engine-pdf**: MuPDF 1.27 (mupdf-rs) + a C shim (`csrc/castor_mupdf.c`) for image rewriting,
+  font subsetting, recolouring and Tesseract OCR. Shim contexts are clones of mupdf-rs's locked
+  base context (`ffi::ensure_base`): independent unlocked contexts crashed under concurrency
+  (`tests/concurrency.rs`). Typst renders Markdown → PDF.
+- **engine-ml**: ONNX Runtime (built in; loaded at run time from the bundle on Intel Macs) with a
+  pure-Rust `tract` fallback; tiled inference; models downloaded on demand with pinned SHA-256.
+- **engine-media**: ffmpeg/ffprobe and `whisper-cli` as bundled sidecars; yt-dlp fetched and
+  checksum-verified on first use.
+
 ## Runtime layout
 
-- macOS: `Castor.app/Contents/MacOS/castor` (+ `castor-cli`), helpers in `Contents/Resources/bin`
+- macOS (one app per architecture): `Castor.app/Contents/MacOS/castor` + `castor-cli` (launcher),
+  helpers in `Contents/Resources/bin`
   (ffmpeg, ffprobe, gs…), libraries in `Contents/Frameworks`.
 - Windows: Velopack install in `%LOCALAPPDATA%\Castor\current\` with `castor.exe`,
   `castor-cli.exe`, `bin\` helpers.
@@ -77,7 +110,7 @@ Strings in `locales/<owner>.yml`: `{id}.name`, `{id}.desc`, `{id}.verb` (button 
 
 ## Updates
 
-Velopack: `VelopackApp::build().run()` first thing in `main`; `UpdateManager` with a
-`GithubSource` on github.com/basedpolymer/castor releases; check at launch (setting), show notes,
-download with progress, "Restart to update" (or automatic if the user opted in). Packaging
-(`vpk pack`, macOS signing + notarisation, Windows Setup.exe) is wave 2.
+Velopack: `VelopackApp::build().run()` first thing in `main`; `UpdateManager` on the GitHub
+releases of basedpolymer/castor (channels `win`, `osx-x64`, `osx-arm64`); checked at most daily,
+notes shown, download with progress, applied on restart or on quit. Packaging and releases:
+`packaging/`, `docs/RELEASING.md`.

@@ -16,20 +16,25 @@ UX rules, wording), `docs/TOOLS.md` (the catalogue), and your own spec in `docs/
 ## Workspace
 
 ```
-crates/castor-core    Tool trait, option schema, runner, history, chains, settings, i18n, downloads, processes
-crates/engine-pdf     MuPDF (+ Tesseract OCR, Ghostscript sidecar if used)       owner: agent A
-crates/engine-ml      ONNX models: background removal, upscale, faces…            owner: agent B
-crates/engine-media   ffmpeg/ffprobe sidecars, whisper, yt-dlp                    owner: agent C
-crates/tools-pdf      PDF tools                                                   owner: agent A
-crates/tools-image    image tools                                                 owner: agent B
-crates/tools-media    video + audio tools                                         owner: agent C
-crates/tools-create   create tools                                                owner: wave 2
-crates/tools-files    files & archive tools (files.checksum = reference example)  owner: wave 2
-crates/castor-tools   registry of all tools
-crates/castor-cli     `castor-cli` binary (list / info / run / chain / search / history)
-crates/castor-app     `castor` GUI binary (GPUI Kit)                              owner: agent D
-locales/*.yml         translations, one file per owner (app, pdf, image, media, create, files)
-assets/fonts          Latin Modern (GUST licence), TeX Gyre Chorus
+crates/castor-core      Tool trait, option schema, runner, history, chains, settings, i18n, downloads, processes
+crates/engine-pdf       MuPDF + Tesseract OCR (C shim in csrc/), Typst
+crates/engine-ml        ONNX Runtime / tract: background removal, upscale, faces
+crates/engine-media     ffmpeg/ffprobe and whisper-cli sidecars, yt-dlp
+crates/tools-pdf        PDF tools (+ image.to-pdf, image.images-to-pdf, image.extract-text)
+crates/tools-image      image tools
+crates/tools-media      video + audio tools
+crates/tools-create     create tools (Typst, QR, mockups, Chromium-based HTML tools…)
+crates/tools-files      files & archive tools (files.checksum = reference example)
+crates/castor-tools     registry of all tools + thumbnails
+crates/castor-cli       the CLI as a library (+ dev binary); `castor cli …` in shipped builds
+crates/castor-mcp       the MCP server as a library (+ dev binary); `castor mcp` in shipped builds
+crates/castor-launcher  the 0.2 MB `castor-cli` shipped next to the app
+crates/castor-app       the `castor` binary: GUI (GPUI Kit), studios, CLI/MCP dispatch
+locales/*.yml           translations (9 languages); tools/i18n/ has the guide and checkers
+assets/fonts, brand     Latin Modern, TeX Gyre Chorus, NewCM Math (GUST); icons and mark
+packaging/              Windows (Velopack) and macOS (per-arch app, DMG, signing) scripts
+video/                  X images, site catalogue generator, Remotion promo video
+docs/specs/             the briefs and reports of every agent wave (history, open requests)
 ```
 
 ## Building on Windows
@@ -40,7 +45,7 @@ Bash: `. crates/engine-pdf/env.sh` (sets `BINDGEN_EXTRA_CLANG_ARGS` for `max_ali
 
 ## Hard rules
 
-1. **Stay in your lane.** Edit only the crates, locale file and spec you own. `castor-core`,
+1. **Stay in your lane.** Edit only the crates, locale file and spec your brief gives you. `castor-core`,
    the root `Cargo.toml`, `CLAUDE.md` and other owners' files belong to the coordinator: if you
    need a change there, write it under "Requests to the coordinator" in your spec file and work
    around it locally meanwhile. Never revert or reformat someone else's file.

@@ -1,7 +1,8 @@
 # Tool catalogue
 
 Reference: hangar.tools catalogue as of 2026-11-06 (v0.12.3): **89 entries** — 77 shipped and
-12 marked "Soon". Castor implements all of them, plus the ★ extras. Ids are stable (chains,
+12 marked "Soon". Castor 0.9 ships all of them (107 ready, 3 in beta: `pdf.to-epub`, `image.to-pdf`,
+`create.motion`), plus the ★ extras. Ids are stable (chains,
 favorites, history, CLI): never rename one.
 
 Legend: ★ not in Hangar · (S) "Soon" at Hangar · owner letter = spec in `docs/specs/`.
@@ -127,14 +128,16 @@ finder and fixer — idea from TridUI)
 
 ## Around the tools (Hangar features → Castor)
 
-| Hangar | Castor |
+| Hangar | Castor 0.9 |
 |---|---|
-| Studios: PDF, Trim, Caption, Sign | wave 2 |
-| Chains (templates, folders) | ✓ core; UI wave 1 (D); watch folders ★ wave 2 |
-| Runs history | ✓ core; UI wave 1 (D); undo for in-place tools |
-| Workspaces (brand, output, history) | wave 2 |
-| ⌘K smart search (127 MB model) | wave 1 keyword search in 9 languages; optional small embedding model ★ later |
-| Menu bar / tray quick panel | wave 1 (D) + clipboard actions ★ + global shortcut ★ |
-| In-app updates | Velopack (D: in-app flow; packaging in wave 2) |
+| Studios: PDF, Trim, Caption, Sign | ✓ PDF Studio (organize, annotate, sign, redact, forms) and Trim & Caption Studio (timeline, cut by transcript, captions) |
+| Chains (templates, folders) | ✓ templates, editor, TOML import/export, ★ watch folders |
+| Runs history | ✓ with undo for in-place tools, run again with the same settings |
+| Workspaces (brand, output, history) | ✓ logo, colours, signature, output folder, runs filter |
+| ⌘K smart search (127 MB model) | ✓ plain-words search in 9 languages, no model download |
+| Menu bar / tray quick panel | ✓ + ★ clipboard actions + ★ global shortcut |
+| In-app updates | ✓ Velopack, GitHub Releases feed, delta updates |
 | Licence key, 3-day trial | none: free, GPL-3.0 |
-| — | ★ CLI `castor-cli`, ★ MCP server, ★ Finder/Explorer context menu (wave 2) |
+| — | ★ `castor-cli` / `castor cli`, ★ MCP server (`castor mcp`), ★ Explorer “Castor ›” menu |
+
+Counts in 0.9.0: PDF 28 · Image 25 · Video 19 · Audio 9 · Create 20 · Files 9 = **110 tools**.
