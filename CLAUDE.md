@@ -32,6 +32,12 @@ locales/*.yml         translations, one file per owner (app, pdf, image, media, 
 assets/fonts          Latin Modern (GUST licence), TeX Gyre Chorus
 ```
 
+## Building on Windows
+
+Anything that depends on `engine-pdf` (MuPDF via bindgen) needs its environment first, in Git
+Bash: `. crates/engine-pdf/env.sh` (sets `BINDGEN_EXTRA_CLANG_ARGS` for `max_align_t` and
+`LIBCLANG_PATH`). Without it the `mupdf` build fails with a `max_align_t` bindgen error.
+
 ## Hard rules
 
 1. **Stay in your lane.** Edit only the crates, locale file and spec you own. `castor-core`,
