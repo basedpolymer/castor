@@ -4,16 +4,49 @@ description = "Castor desktop app (GPUI Kit)"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
 
 [[bin]]
 name = "castor"
 path = "src/main.rs"
 
+[features]
+default = ["tools"]
+# The real tool registry (castor-tools → every tool crate and engine). Without it the app builds
+# in minutes with only the demo tools: `--no-default-features --features demo-tools` (UI work).
+tools = ["dep:castor-tools"]
+# Fake tools that exercise every UI path (all option kinds, slow job, preview, failure, no input,
+# downloads consent, unavailable, N→1, in-place + undo). Development only: never ship them.
+demo-tools = []
+# `--shot out.png`: render the window offscreen to a PNG and quit (deterministic screenshots,
+# works without a visible desktop). Pulls GPUI's test-support renderer: not for release builds.
+shots = ["gpui-kit/test-support"]
+
 [dependencies]
 anyhow.workspace = true
 castor-core.workspace = true
-castor-tools.workspace = true
+castor-tools = { workspace = true, optional = true }
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+time.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+parking_lot.workspace = true
+crossbeam-channel.workspace = true
+image = { workspace = true, default-features = false, features = ["png", "jpeg", "webp", "gif", "bmp", "tiff"] }
 gpui-kit = "0.9"
 tray-icon = "0.21"
 global-hotkey = "0.7"
-image = { workspace = true, default-features = false, features = ["png"] }
+velopack = "1.3.39-g8d2844f"
+interprocess = "2.4"
+auto-launch = "0.6"
+
+[dev-dependencies]
+gpui-kit = { version = "0.9", features = ["test-support"] }
+tempfile.workspace = true
+
+[build-dependencies]
+embed-resource = "3"

@@ -86,3 +86,876 @@ chain.template.scan_to_pdf:
 chain.template.podcast:
   en: Podcast clean-up
   fr: Nettoyage de podcast
+
+# ---------------------------------------------------------------------------------------------
+# App shell (agent D). French typography: U+202F (narrow no-break space) before ; : ! ? and
+# inside « ».
+
+app.nav.tools:
+  en: Tools
+  fr: Outils
+app.nav.studios:
+  en: Studios
+  fr: Studios
+app.nav.chains:
+  en: Chains
+  fr: Chaînes
+app.nav.runs:
+  en: Runs
+  fr: Historique
+app.nav.settings:
+  en: Settings
+  fr: Réglages
+app.nav.favorites:
+  en: favorites
+  fr: favoris
+app.nav.favorites_empty:
+  en: Star a tool to keep it here.
+  fr: Ajoutez une étoile à un outil pour le garder ici.
+app.search.placeholder:
+  en: Search tools, or describe what you want…
+  fr: Chercher un outil, ou décrire ce que vous voulez…
+app.update.ready_short:
+  en: update
+  fr: mise à jour
+
+app.common.clear:
+  en: Clear
+  fr: Vider
+app.common.choose:
+  en: Choose…
+  fr: Choisir…
+app.common.save:
+  en: Save
+  fr: Enregistrer
+app.common.delete:
+  en: Delete
+  fr: Supprimer
+app.common.close:
+  en: Close
+  fr: Fermer
+
+app.home.choose:
+  en: Choose files…
+  fr: Choisir des fichiers…
+app.home.reading:
+  en: Reading the files…
+  fr: Lecture des fichiers…
+app.home.drop:
+  en: Drop files here, or pick a tool. Nothing leaves this machine.
+  fr: Déposez des fichiers ici, ou choisissez un outil. Rien ne quitte cet ordinateur.
+app.home.pick_tool:
+  en: Pick a tool below.
+  fr: Choisissez un outil ci-dessous.
+app.home.suggested:
+  en: Suggested
+  fr: Suggestions
+app.home.count:
+  en: "%{count} tools"
+  fr: "%{count} outils"
+app.home.offline:
+  en: works offline
+  fr: fonctionne hors ligne
+app.home.free:
+  en: free software (GPL-3.0)
+  fr: logiciel libre (GPL-3.0)
+app.home.all:
+  en: All
+  fr: Tous
+app.home.not_for_files:
+  en: Not for these files
+  fr: Pas pour ces fichiers
+
+app.kind.pdf:
+  en: PDF
+  fr: PDF
+app.kind.image:
+  en: Image
+  fr: Image
+app.kind.raw:
+  en: RAW
+  fr: RAW
+app.kind.svg:
+  en: SVG
+  fr: SVG
+app.kind.video:
+  en: Video
+  fr: Vidéo
+app.kind.audio:
+  en: Audio
+  fr: Audio
+app.kind.office:
+  en: Office
+  fr: Office
+app.kind.ebook:
+  en: Ebook
+  fr: Livre num.
+app.kind.html:
+  en: HTML
+  fr: HTML
+app.kind.markdown:
+  en: Markdown
+  fr: Markdown
+app.kind.text:
+  en: Text
+  fr: Texte
+app.kind.table:
+  en: CSV
+  fr: CSV
+app.kind.subtitles:
+  en: Subtitles
+  fr: Sous-titres
+app.kind.archive:
+  en: Archive
+  fr: Archive
+app.kind.font:
+  en: Font
+  fr: Police
+app.kind.other:
+  en: File
+  fr: Fichier
+app.kind.any:
+  en: Any file
+  fr: Tout fichier
+app.kind.folder:
+  en: Folder
+  fr: Dossier
+
+app.status.soon:
+  en: Soon
+  fr: Bientôt
+app.status.beta:
+  en: Beta
+  fr: Bêta
+app.status.complete:
+  en: Done
+  fr: Terminé
+app.status.partial:
+  en: Partly done
+  fr: En partie terminé
+app.status.failed:
+  en: Failed
+  fr: Échec
+app.status.cancelled:
+  en: Cancelled
+  fr: Annulé
+app.status.running:
+  en: Running
+  fr: En cours
+app.status.waiting:
+  en: Waiting
+  fr: En attente
+app.status.queued:
+  en: Ready
+  fr: Prêt
+
+app.studios.subtitle:
+  en: Visual editors for the jobs a form cannot do.
+  fr: Des éditeurs visuels pour ce qu’un formulaire ne sait pas faire.
+app.studios.soon_title:
+  en: Coming soon
+  fr: Bientôt
+app.studios.body:
+  en: Studios are full-screen editors for work you want to see while you do it. They arrive in a later version; every batch tool already works from the Tools page.
+  fr: Les studios sont des éditeurs plein écran pour le travail qu’on veut voir en le faisant. Ils arrivent dans une prochaine version ; tous les outils par lots fonctionnent déjà depuis la page Outils.
+app.studios.pdf:
+  en: PDF Studio — reorder, rotate and redact pages by hand.
+  fr: Studio PDF — réordonner, pivoter et caviarder les pages à la main.
+app.studios.trim:
+  en: Trim Studio — cut video and audio on a timeline.
+  fr: Studio de découpe — couper vidéo et audio sur une frise.
+app.studios.image:
+  en: Image Studio — crop, mask and touch up one picture.
+  fr: Studio d’image — recadrer, masquer et retoucher une image.
+
+app.form.pages_placeholder:
+  en: All pages — e.g. 1-3, 5, 8-
+  fr: Toutes les pages — p. ex. 1-3, 5, 8-
+app.form.no_file:
+  en: No file chosen
+  fr: Aucun fichier choisi
+app.form.add_language:
+  en: Add a language…
+  fr: Ajouter une langue…
+app.form.lock_ratio:
+  en: Keep the ratio
+  fr: Garder les proportions
+app.form.more_options:
+  en: More options
+  fr: Plus d’options
+app.form.no_options:
+  en: "Nothing to set: this tool just works."
+  fr: "Rien à régler : cet outil fonctionne tel quel."
+
+app.tool.one_file:
+  en: 1 file
+  fr: 1 fichier
+app.tool.need_one_file:
+  en: Add a file first.
+  fr: Ajoutez d’abord un fichier.
+app.tool.need_files:
+  en: This tool needs at least %{count} files.
+  fr: Cet outil a besoin d’au moins %{count} fichiers.
+app.tool.output_choose:
+  en: Choose where results go
+  fr: Choisir où placer les résultats
+app.tool.preview:
+  en: Live preview
+  fr: Aperçu en direct
+app.tool.preview_loading:
+  en: Rendering the preview…
+  fr: Calcul de l’aperçu…
+app.tool.preview_none:
+  en: The preview appears here.
+  fr: L’aperçu s’affiche ici.
+app.tool.drop:
+  en: "Drop files here (%{kinds}), or"
+  fr: "Déposez des fichiers ici (%{kinds}), ou"
+app.tool.add_files:
+  en: Add files…
+  fr: Ajouter des fichiers…
+app.tool.files_caption:
+  en: "Files (%{count})"
+  fr: "Fichiers (%{count})"
+app.tool.done_big_saving:
+  en: Neatly gnawed.
+  fr: Proprement rongé.
+app.tool.options:
+  en: Options
+  fr: Options
+app.tool.output:
+  en: Output
+  fr: Résultat
+app.tool.output_next_to:
+  en: Next to the originals
+  fr: À côté des originaux
+app.tool.output_reset:
+  en: Reset
+  fr: Rétablir
+app.tool.output_change:
+  en: Change
+  fr: Changer
+app.tool.favorite:
+  en: Add to favorites
+  fr: Ajouter aux favoris
+app.tool.unfavorite:
+  en: Remove from favorites
+  fr: Retirer des favoris
+app.tool.details:
+  en: Details
+  fr: Détails
+app.tool.hide_details:
+  en: Hide
+  fr: Masquer
+app.tool.remove:
+  en: Remove from the list
+  fr: Retirer de la liste
+
+app.consent.title:
+  en: One-time download
+  fr: Téléchargement unique
+app.consent.body:
+  en: "This tool needs these files the first time. They come from the address pinned in Castor and are checked before use:"
+  fr: "Cet outil a besoin de ces fichiers la première fois. Ils viennent de l’adresse inscrite dans Castor et sont vérifiés avant usage :"
+app.consent.total:
+  en: Total
+  fr: Total
+app.consent.once:
+  en: Fetching the model once — after that it works offline.
+  fr: Le modèle est récupéré une seule fois — ensuite, tout fonctionne hors ligne.
+app.consent.ok:
+  en: Download and run
+  fr: Télécharger et lancer
+
+app.caption.figure:
+  en: Figure
+  fr: Figure
+app.caption.table:
+  en: Table
+  fr: Tableau
+app.table.name:
+  en: Name
+  fr: Nom
+app.table.size:
+  en: Size
+  fr: Taille
+app.table.status:
+  en: Status
+  fr: État
+
+app.compare.before:
+  en: Before
+  fr: Avant
+app.compare.after:
+  en: After
+  fr: Après
+app.compare.side:
+  en: Side by side
+  fr: Côte à côte
+app.compare.swipe:
+  en: Swipe
+  fr: Volet
+app.compare.fit:
+  en: Fit
+  fr: Ajuster
+app.compare.caption:
+  en: Before and after, for the selected file.
+  fr: Avant et après, pour le fichier sélectionné.
+
+app.runs.subtitle:
+  en: Everything Castor did on this machine, newest first.
+  fr: Tout ce que Castor a fait sur cet ordinateur, du plus récent au plus ancien.
+app.runs.caption:
+  en: Runs, grouped by day
+  fr: Exécutions, par jour
+app.runs.today:
+  en: Today
+  fr: Aujourd’hui
+app.runs.yesterday:
+  en: Yesterday
+  fr: Hier
+app.runs.filter.all:
+  en: All
+  fr: Toutes
+app.runs.filter.complete:
+  en: Complete
+  fr: Terminées
+app.runs.filter.failed:
+  en: Failed
+  fr: En échec
+app.runs.filter.cancelled:
+  en: Cancelled
+  fr: Annulées
+app.runs.col.time:
+  en: Time
+  fr: Heure
+app.runs.col.tool:
+  en: Tool
+  fr: Outil
+app.runs.col.files:
+  en: Files
+  fr: Fichiers
+app.runs.col.size:
+  en: Size
+  fr: Taille
+app.runs.col.duration:
+  en: Duration
+  fr: Durée
+app.runs.empty:
+  en: No runs yet. The beaver is resting.
+  fr: Aucune exécution pour l’instant. Le castor se repose.
+app.runs.loading:
+  en: Reading the history…
+  fr: Lecture de l’historique…
+app.runs.clear:
+  en: Clear history
+  fr: Effacer l’historique
+app.runs.clear_title:
+  en: Clear the history?
+  fr: Effacer l’historique ?
+app.runs.clear_body:
+  en: The list of runs is forgotten. Your files and results stay where they are.
+  fr: La liste des exécutions est oubliée. Vos fichiers et résultats restent où ils sont.
+app.runs.clear_ok:
+  en: Clear history
+  fr: Effacer l’historique
+app.runs.run_again:
+  en: Run again
+  fr: Relancer
+app.runs.undo:
+  en: Undo
+  fr: Annuler l’opération
+app.runs.undone:
+  en: Undone. Everything is back as it was.
+  fr: C’est annulé. Tout est revenu comme avant.
+app.runs.undone_tag:
+  en: Undone
+  fr: Annulée
+app.runs.undo_failed:
+  en: "Undo failed:"
+  fr: "L’annulation a échoué :"
+app.runs.outputs:
+  en: "Results (%{count})"
+  fr: "Résultats (%{count})"
+
+app.palette.tools:
+  en: tools
+  fr: outils
+app.palette.chains:
+  en: chains
+  fr: chaînes
+app.palette.pages:
+  en: pages
+  fr: pages
+app.palette.actions:
+  en: actions
+  fr: actions
+app.palette.action.check_updates:
+  en: Check for updates
+  fr: Rechercher des mises à jour
+app.palette.action.open_output:
+  en: Open the output folder
+  fr: Ouvrir le dossier des résultats
+app.palette.action.toggle_theme:
+  en: Toggle light / dark
+  fr: Basculer clair / sombre
+app.palette.action.quit:
+  en: Quit Castor
+  fr: Quitter Castor
+app.palette.nothing:
+  en: Nothing matches. Try other words, like “compress pdf”.
+  fr: Rien ne correspond. Essayez d’autres mots, comme « compresser pdf ».
+app.palette.hint:
+  en: ↑↓ to move · ↵ to open · Esc to close
+  fr: ↑↓ pour choisir · ↵ pour ouvrir · Échap pour fermer
+
+app.settings.subtitle:
+  en: How Castor behaves on this machine. Changes apply at once.
+  fr: Le comportement de Castor sur cet ordinateur. Les changements s’appliquent tout de suite.
+app.settings.general:
+  en: General
+  fr: Général
+app.settings.menu_bar:
+  en: Menu bar
+  fr: Barre des menus
+app.settings.system_tray:
+  en: System tray
+  fr: Zone de notification
+app.settings.models:
+  en: Models & helpers
+  fr: Modèles et programmes d’appoint
+app.settings.updates:
+  en: Updates
+  fr: Mises à jour
+app.settings.privacy:
+  en: Privacy
+  fr: Confidentialité
+app.settings.about:
+  en: About
+  fr: À propos
+app.settings.language:
+  en: Language
+  fr: Langue
+app.settings.language_system:
+  en: Same as the system
+  fr: Celle du système
+app.settings.appearance:
+  en: Appearance
+  fr: Apparence
+app.settings.appearance_system:
+  en: System
+  fr: Système
+app.settings.appearance_light:
+  en: Light
+  fr: Clair
+app.settings.appearance_dark:
+  en: Dark
+  fr: Sombre
+app.settings.output:
+  en: Where results go
+  fr: Où vont les résultats
+app.settings.output_help:
+  en: "Castor never overwrites a file: results get a new name."
+  fr: "Castor n’écrase jamais un fichier : les résultats reçoivent un nouveau nom."
+app.settings.output_folder:
+  en: In a folder
+  fr: Dans un dossier
+app.settings.reveal:
+  en: Show the results in the folder when a run ends
+  fr: Afficher les résultats dans le dossier à la fin
+app.settings.tray_mac:
+  en: Show Castor in the menu bar
+  fr: Afficher Castor dans la barre des menus
+app.settings.tray_win:
+  en: Show Castor in the system tray
+  fr: Afficher Castor dans la zone de notification
+app.settings.tray_help:
+  en: A click on the icon opens the quick panel.
+  fr: Un clic sur l’icône ouvre le panneau rapide.
+app.settings.keep_running:
+  en: Keep running when the window is closed
+  fr: Rester actif quand la fenêtre est fermée
+app.settings.keep_running_help:
+  en: The quick panel and the shortcut stay available.
+  fr: Le panneau rapide et le raccourci restent disponibles.
+app.settings.hotkey:
+  en: Quick panel shortcut
+  fr: Raccourci du panneau rapide
+app.settings.hotkey_help:
+  en: Works from any app.
+  fr: Fonctionne depuis n’importe quelle application.
+app.settings.hotkey_off:
+  en: "Off"
+  fr: Désactivé
+app.settings.hotkey_press:
+  en: Press the keys…
+  fr: Appuyez sur les touches…
+app.settings.hotkey_record:
+  en: Record
+  fr: Enregistrer
+app.settings.hotkey_clear:
+  en: Turn off
+  fr: Désactiver
+app.settings.login:
+  en: Open Castor at login
+  fr: Ouvrir Castor à l’ouverture de session
+app.settings.models_help:
+  en: Some tools need a model or a helper program. Castor fetches each one once, only after asking, then works offline.
+  fr: Certains outils ont besoin d’un modèle ou d’un programme d’appoint. Castor récupère chacun une seule fois, seulement après accord, puis tout fonctionne hors ligne.
+app.settings.models_none:
+  en: No tool needs a download yet.
+  fr: Aucun outil n’a encore besoin de téléchargement.
+app.settings.models_caption:
+  en: "Downloads (%{size} on disk)"
+  fr: "Téléchargements (%{size} sur le disque)"
+app.settings.licence:
+  en: Licence
+  fr: Licence
+app.settings.present:
+  en: On this machine
+  fr: Présent
+app.settings.absent:
+  en: Not downloaded
+  fr: Non téléchargé
+app.settings.version:
+  en: Version
+  fr: Version
+app.settings.check_updates:
+  en: Check for updates automatically
+  fr: Rechercher les mises à jour automatiquement
+app.settings.check_updates_help:
+  en: Once a day at most, on GitHub. Nothing about you is sent.
+  fr: Une fois par jour au plus, sur GitHub. Rien ne vous concernant n’est envoyé.
+app.settings.auto_install:
+  en: Install updates without asking
+  fr: Installer les mises à jour sans demander
+app.settings.auto_install_help:
+  en: Downloaded in the background, applied when you quit.
+  fr: Téléchargées en arrière-plan, appliquées à la fermeture.
+app.settings.update_status:
+  en: Status
+  fr: État
+app.settings.check_now:
+  en: Check now
+  fr: Vérifier maintenant
+app.settings.privacy_body:
+  en: Castor works on this machine. Your files are never uploaded, there is no account and no analytics. The only connections are the update check (if on) and the one-time downloads you approve.
+  fr: Castor travaille sur cet ordinateur. Vos fichiers ne sont jamais envoyés, il n’y a ni compte ni statistiques. Les seules connexions sont la recherche de mises à jour (si activée) et les téléchargements uniques que vous acceptez.
+app.settings.ai_key:
+  en: AI key (optional)
+  fr: Clé d’IA (facultative)
+app.settings.ai_key_help:
+  en: Only for the “Write with AI” buttons, which send that text to the provider. Stored on this machine only.
+  fr: Seulement pour les boutons « Écrire avec l’IA », qui envoient ce texte au fournisseur. Gardée sur cet ordinateur uniquement.
+app.settings.ai_key_placeholder:
+  en: Paste a key to enable
+  fr: Collez une clé pour activer
+app.settings.ai_key_saved:
+  en: Key saved on this machine.
+  fr: Clé enregistrée sur cet ordinateur.
+app.settings.ai_key_forget:
+  en: Forget the key
+  fr: Oublier la clé
+app.settings.about_line:
+  en: Castor %{version} — every file tool, right on your desk. Made by basedpolymer.
+  fr: Castor %{version} — tous les outils de fichiers, à portée de main. Fait par basedpolymer.
+app.settings.about_licence:
+  en: Free software under the GNU General Public License, version 3 or later.
+  fr: Logiciel libre sous licence publique générale GNU, version 3 ou ultérieure.
+app.settings.about_joke:
+  en: Castor builds things. It does not fly planes. No accounts, no cloud, no beaver was harmed.
+  fr: Castor construit des choses. Il ne pilote pas d’avions. Ni compte, ni nuage, et aucun castor n’a été maltraité.
+app.settings.notices:
+  en: Third-party notices
+  fr: Mentions des tiers
+app.settings.logs:
+  en: Logs
+  fr: Journaux
+
+app.update.disabled:
+  en: Updates are disabled in development builds.
+  fr: Les mises à jour sont désactivées dans les versions de développement.
+app.update.idle:
+  en: Not checked yet.
+  fr: Pas encore vérifié.
+app.update.checking:
+  en: Checking…
+  fr: Vérification…
+app.update.up_to_date:
+  en: Castor is up to date.
+  fr: Castor est à jour.
+app.update.available:
+  en: Castor %{version} is available.
+  fr: Castor %{version} est disponible.
+app.update.downloading:
+  en: Downloading Castor %{version}… %{pct} %
+  fr: Téléchargement de Castor %{version}… %{pct} %
+app.update.ready:
+  en: Castor %{version} is ready.
+  fr: Castor %{version} est prêt.
+app.update.failed:
+  en: "The check failed: %{error}"
+  fr: "La vérification a échoué : %{error}"
+app.update.download:
+  en: Download
+  fr: Télécharger
+app.update.restart:
+  en: Restart to update
+  fr: Redémarrer pour mettre à jour
+app.update.whats_new:
+  en: What’s new
+  fr: Nouveautés
+
+
+app.tray.open:
+  en: Open Castor
+  fr: Ouvrir Castor
+app.tray.quit:
+  en: Quit
+  fr: Quitter
+app.panel.search:
+  en: Search tools…
+  fr: Chercher un outil…
+app.panel.drop:
+  en: Drop files on me
+  fr: Déposez des fichiers ici
+app.panel.for_files:
+  en: "Best tools for %{files}:"
+  fr: "Les meilleurs outils pour %{files} :"
+app.panel.show:
+  en: Show
+  fr: Afficher
+app.panel.copy:
+  en: Copy
+  fr: Copier
+app.panel.copied:
+  en: Copied
+  fr: Copié
+app.panel.clipboard:
+  en: "Clipboard: %{what}"
+  fr: "Presse-papiers : %{what}"
+app.panel.last_runs:
+  en: last runs
+  fr: dernières exécutions
+
+app.chains.subtitle:
+  en: Several tools in a row, saved under one name. The results of each step feed the next.
+  fr: Plusieurs outils à la suite, enregistrés sous un nom. Les résultats d’une étape alimentent la suivante.
+app.chains.new:
+  en: New chain
+  fr: Nouvelle chaîne
+app.chains.import:
+  en: Import…
+  fr: Importer…
+app.chains.export:
+  en: Export…
+  fr: Exporter…
+app.chains.mine:
+  en: my chains
+  fr: mes chaînes
+app.chains.mine_empty:
+  en: None yet — start from a template.
+  fr: Aucune pour l’instant — partez d’un modèle.
+app.chains.templates:
+  en: templates
+  fr: modèles
+app.chains.no_steps:
+  en: No step yet
+  fr: Aucune étape
+app.chains.missing:
+  en: "%{count} step(s) need tools not installed yet"
+  fr: "%{count} étape(s) demandent des outils pas encore installés"
+app.chains.skipped:
+  en: "Skipped, not available yet: %{tools}"
+  fr: "Ignorées, pas encore disponibles : %{tools}"
+app.chains.pick:
+  en: Pick a chain on the left, or start a new one.
+  fr: Choisissez une chaîne à gauche, ou créez-en une.
+app.chains.untitled:
+  en: Untitled chain
+  fr: Chaîne sans titre
+app.chains.name_placeholder:
+  en: Chain name
+  fr: Nom de la chaîne
+app.chains.step:
+  en: Step %{n}
+  fr: Étape %{n}
+app.chains.up:
+  en: Move up
+  fr: Monter
+app.chains.down:
+  en: Move down
+  fr: Descendre
+app.chains.remove:
+  en: Remove the step
+  fr: Retirer l’étape
+app.chains.add_step:
+  en: Add a step
+  fr: Ajouter une étape
+app.chains.pick_tool:
+  en: Choose a tool…
+  fr: Choisir un outil…
+app.chains.save_copy:
+  en: Save a copy
+  fr: Enregistrer une copie
+app.chains.saved:
+  en: Chain saved.
+  fr: Chaîne enregistrée.
+app.chains.exported:
+  en: Chain exported.
+  fr: Chaîne exportée.
+app.chains.imported:
+  en: Chain imported.
+  fr: Chaîne importée.
+app.chains.delete_title:
+  en: Delete this chain?
+  fr: Supprimer cette chaîne ?
+app.chains.delete_body:
+  en: Only the saved steps are deleted. Files made by earlier runs stay.
+  fr: Seules les étapes enregistrées sont supprimées. Les fichiers déjà produits restent.
+app.chains.run_files:
+  en: Run on files…
+  fr: Lancer sur des fichiers…
+app.chains.run_folder:
+  en: Run on a folder…
+  fr: Lancer sur un dossier…
+app.chains.running:
+  en: Step %{n} of %{of}…
+  fr: Étape %{n} sur %{of}…
+
+# Demo tools (castor-app `demo-tools` feature, development only — never shipped).
+demo.all-options.name:
+  en: Every option
+  fr: Toutes les options
+demo.all-options.desc:
+  en: One control of each kind, to check the generated form.
+  fr: Un contrôle de chaque sorte, pour vérifier le formulaire généré.
+demo.all-options.verb:
+  en: Process
+  fr: Traiter
+demo.all-options.opt.preset:
+  en: Preset
+  fr: Préréglage
+demo.all-options.opt.preset.light:
+  en: Light
+  fr: Léger
+demo.all-options.opt.preset.balanced:
+  en: Balanced
+  fr: Équilibré
+demo.all-options.opt.preset.strong:
+  en: Strong
+  fr: Fort
+demo.all-options.opt.preset.help:
+  en: Balanced keeps text sharp and photos clean.
+  fr: Équilibré garde le texte net et les photos propres.
+demo.all-options.opt.scale:
+  en: Scale
+  fr: Échelle
+demo.all-options.opt.strip:
+  en: Remove metadata (location, camera)
+  fr: Retirer les métadonnées (lieu, appareil)
+demo.all-options.opt.title:
+  en: Title
+  fr: Titre
+demo.all-options.opt.title.placeholder:
+  en: Optional title
+  fr: Titre facultatif
+demo.all-options.opt.size:
+  en: Size
+  fr: Taille
+demo.all-options.opt.notes:
+  en: Notes
+  fr: Notes
+demo.all-options.opt.logo:
+  en: Logo
+  fr: Logo
+demo.all-options.opt.font:
+  en: Font
+  fr: Police
+demo.slow.name:
+  en: Slow job
+  fr: Tâche lente
+demo.slow.desc:
+  en: Takes its time and reports progress, to check runs and cancel.
+  fr: Prend son temps et indique sa progression, pour vérifier l’exécution et l’annulation.
+demo.slow.opt.seconds:
+  en: Duration
+  fr: Durée
+demo.gradient.name:
+  en: Gradient card
+  fr: Carte en dégradé
+demo.gradient.desc:
+  en: A pastel gradient, with a live preview and no input file.
+  fr: Un dégradé pastel, avec aperçu en direct et sans fichier d’entrée.
+demo.gradient.verb:
+  en: Create
+  fr: Créer
+demo.gradient.opt.from:
+  en: From
+  fr: De
+demo.gradient.opt.to:
+  en: To
+  fr: À
+demo.gradient.opt.direction:
+  en: Direction
+  fr: Direction
+demo.gradient.opt.direction.vertical:
+  en: Vertical
+  fr: Verticale
+demo.gradient.opt.direction.diagonal:
+  en: Diagonal
+  fr: Diagonale
+demo.gradient.opt.size:
+  en: Size
+  fr: Taille
+demo.fail.name:
+  en: Always fails
+  fr: Échoue toujours
+demo.fail.desc:
+  en: Fails on purpose, to check how errors look.
+  fr: Échoue exprès, pour vérifier l’affichage des erreurs.
+demo.model.name:
+  en: Needs a model
+  fr: Demande un modèle
+demo.model.desc:
+  en: Asks before a one-time download (nothing is fetched in the demo).
+  fr: Demande avant un téléchargement unique (rien n’est récupéré dans la démo).
+demo.model.opt.model:
+  en: Model
+  fr: Modèle
+demo.model.opt.model.small:
+  en: Small
+  fr: Petit
+demo.model.opt.model.large:
+  en: Large
+  fr: Grand
+demo.unavailable.name:
+  en: Office to PDF (demo)
+  fr: Office vers PDF (démo)
+demo.unavailable.desc:
+  en: Needs a program that is not installed.
+  fr: A besoin d’un programme qui n’est pas installé.
+demo.unavailable.why:
+  en: LibreOffice is not installed. Install it, then reopen Castor.
+  fr: LibreOffice n’est pas installé. Installez-le, puis rouvrez Castor.
+demo.merge.name:
+  en: List files
+  fr: Lister les fichiers
+demo.merge.desc:
+  en: Many files in, one report out.
+  fr: Plusieurs fichiers en entrée, un seul rapport en sortie.
+demo.rename.name:
+  en: Prefix names
+  fr: Préfixer les noms
+demo.rename.desc:
+  en: Renames in place, and can be undone from Runs.
+  fr: Renomme sur place, et s’annule depuis l’historique.
+demo.rename.opt.prefix:
+  en: Prefix
+  fr: Préfixe
+demo.soon.name:
+  en: Audio thing
+  fr: Truc audio
+demo.soon.desc:
+  en: Not ready yet.
+  fr: Pas encore prêt.

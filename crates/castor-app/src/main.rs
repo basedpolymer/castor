@@ -1,41 +1,71 @@
-use gpui_kit::component::button::*;
-use gpui_kit::component::*;
-use gpui_kit::*;
-use std::time::Duration;
+//! Castor — the desktop app.
+#![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
+#![recursion_limit = "512"]
 
-pub struct Example { clicks: usize, tray_events: usize }
-impl Render for Example {
-    fn render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-        div().v_flex().gap_2().size_full().items_center().justify_center()
-            .child(format!("Hello from spike — clicks {} — tray events {}", self.clicks, self.tray_events))
-            .child(Button::new("ok").primary().label("Click").on_click(cx.listener(|this, _, _, cx| { this.clicks += 1; cx.notify(); })))
-    }
-}
+mod app;
+mod assets;
+mod chains;
+mod cli;
+#[cfg(feature = "demo-tools")]
+mod demo;
+mod form;
+mod home;
+mod ipc;
+mod model;
+mod palette;
+mod panel;
+mod runs;
+mod search;
+mod settings_page;
+mod shell;
+mod theme;
+mod thumbs;
+mod tool_screen;
+mod tray;
+mod ui;
+mod updates;
 
-fn icon() -> tray_icon::Icon {
-    let (w, h) = (32u32, 32u32);
-    let mut rgba = vec![0u8; (w * h * 4) as usize];
-    for y in 0..h { for x in 0..w {
-        let (dx, dy) = ((x as i32 - 16).abs(), (y as i32 - 16).abs());
-        if dx + dy <= 14 && dx + dy >= 10 { let i = ((y * w + x) * 4) as usize; rgba[i] = 30; rgba[i+1]=30; rgba[i+2]=30; rgba[i+3]=255; }
-    }}
-    tray_icon::Icon::from_rgba(rgba, w, h).unwrap()
-}
+#[cfg(test)]
+mod tests;
 
 fn main() {
-    gpui_kit::application().run(move |cx| {
-        gpui_kit::init(cx);
-        let tray = tray_icon::TrayIconBuilder::new().with_tooltip("spike").with_icon(icon()).build().expect("tray");
-        std::mem::forget(tray);
-        let view = gpui_kit::open_window(WindowOptions::default(), cx, |_, cx| cx.new(|_| Example { clicks: 0, tray_events: 0 })).expect("window");
-        let _ = view;
-        cx.spawn(async move |cx| {
-            loop {
-                cx.background_executor().timer(Duration::from_millis(100)).await;
-                while let Ok(ev) = tray_icon::TrayIconEvent::receiver().try_recv() {
-                    println!("tray event: {:?}", ev);
-                }
-            }
-        }).detach();
+    // Velopack must run first: on install/update/uninstall hooks it does its work and exits.
+    velopack::VelopackApp::build().run();
+
+    let args = cli::Args::parse(std::env::args().skip(1));
+    let screenshot = args.page.is_some();
+
+    // Single instance: a second launch forwards its files to the first one and leaves.
+    if !screenshot && ipc::forward_to_running(&args) {
+        return;
+    }
+
+    init_logging();
+    tracing::info!(version = env!("CARGO_PKG_VERSION"), "Castor starting");
+    app::run(args);
+}
+
+/// Log to `{data_dir}/logs/castor.log` (truncated when it grows past 5 MB) and to stderr.
+fn init_logging() {
+    use tracing_subscriber::prelude::*;
+    let dir = castor_core::paths::data_dir().join("logs");
+    let _ = std::fs::create_dir_all(&dir);
+    let path = dir.join("castor.log");
+    if std::fs::metadata(&path).map(|m| m.len() > 5_000_000).unwrap_or(false) {
+        let _ = std::fs::rename(&path, dir.join("castor.old.log"));
+    }
+    let filter = tracing_subscriber::EnvFilter::try_from_env("CASTOR_LOG")
+        .unwrap_or_else(|_| tracing_subscriber::EnvFilter::new("info,naga=warn,wgpu=warn"));
+    let file = std::fs::OpenOptions::new().create(true).append(true).open(&path).ok();
+    let file_layer = file.map(|f| {
+        tracing_subscriber::fmt::layer().with_ansi(false).with_writer(std::sync::Mutex::new(f))
     });
+    let _ = tracing_subscriber::registry()
+        .with(filter)
+        .with(file_layer)
+        .with(tracing_subscriber::fmt::layer().with_writer(std::io::stderr))
+        .try_init();
+    std::panic::set_hook(Box::new(|info| {
+        tracing::error!("panic: {info}");
+    }));
 }

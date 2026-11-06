@@ -1,0 +1,2 @@
+// Windows resources of castor.exe. GPUI loads the window icon from resource id 1.
+1 ICON "../../../assets/brand/castor.ico"
