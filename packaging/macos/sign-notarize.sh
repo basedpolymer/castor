@@ -70,7 +70,7 @@ for a in $ARCHS; do
   step "[$a] sign nested code (hardened runtime, timestamp)"
   # Inside out. `vpk pack` signs again (deep) after adding its updater; pre-signing keeps the
   # --no-vpk path working and makes failures show up per file.
-  for f in "$C/Frameworks/"*.dylib "$C/Resources/bin/"* "$C/MacOS/castor-cli" "$C/MacOS/castor-mcp"; do
+  for f in "$C/Frameworks/"*.dylib "$C/Resources/bin/"* "$C/MacOS/castor-cli"; do
     [ -e "$f" ] || continue
     run codesign --force --sign "$ID" --timestamp --options runtime --entitlements "$ENT" "$f"
   done

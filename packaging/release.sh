@@ -97,5 +97,17 @@ vpk upload github --repoUrl $REPO --token "\$(gh auth token)" --tag $TAG --relea
 vpk upload github --repoUrl $REPO --token "\$(gh auth token)" --tag $TAG --releaseName "Castor $NEW" --channel osx-arm64 -o \$MAC_REL/osx-arm64 --merge
 gh release upload $TAG \$MAC_REL/Castor-$NEW-macos-x64.dmg \$MAC_REL/Castor-$NEW-macos-arm64.dmg
 gh release upload $TAG target-g/release-sources/*.tar.gz target-g/release-sources/SHA256SUMS-sources.txt
+#    Stable-named copies: the site's buttons link to
+#    $REPO/releases/latest/download/<name>, which always serves the newest published release.
+rm -rf target-g/release-stable && mkdir -p target-g/release-stable
+cp target-g/releases/win/Castor-win-Setup.exe        target-g/release-stable/Castor-windows-setup.exe
+cp \$MAC_REL/Castor-$NEW-macos-x64.dmg   target-g/release-stable/Castor-macos-x64.dmg
+cp \$MAC_REL/Castor-$NEW-macos-arm64.dmg target-g/release-stable/Castor-macos-arm64.dmg
+gh release upload $TAG target-g/release-stable/Castor-windows-setup.exe target-g/release-stable/Castor-macos-x64.dmg target-g/release-stable/Castor-macos-arm64.dmg
 gh release edit $TAG --notes-file $NOTES          # then publish: gh release edit $TAG --draft=false
+
+# 6. After publishing: the site's download links must answer 302 -> the new assets.
+for n in Castor-windows-setup.exe Castor-macos-x64.dmg Castor-macos-arm64.dmg; do
+  curl -sI "$REPO/releases/latest/download/\$n" | grep -i -m1 '^location:' | grep -q "/download/$TAG/\$n" && echo "ok \$n" || echo "NOT OK \$n"
+done
 EOF

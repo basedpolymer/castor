@@ -32,6 +32,10 @@ run() {
 # Architectures: Castor ships one app per arch ("x64" Intel, "arm64" Apple Silicon).
 rust_target() { case "$1" in x64) echo x86_64-apple-darwin ;; arm64) echo aarch64-apple-darwin ;; *) die "bad arch $1" ;; esac; }
 app_path() { echo "$PKG/$1/Castor.app"; }
+# Oldest macOS each app runs on (Info.plist LSMinimumSystemVersion). Intel: 11.0 (the binaries
+# are built for it). Apple Silicon: 13.4, because the static ONNX Runtime linked on arm64 (ort's
+# prebuilt 1.31) is compiled for macOS 13.4; every Apple Silicon Mac can run macOS 14 or later.
+min_macos() { case "$1" in x64) echo 11.0 ;; arm64) echo 13.4 ;; *) die "bad arch $1" ;; esac; }
 
 # Workspace version from the root Cargo.toml ([workspace.package] version).
 workspace_version() {

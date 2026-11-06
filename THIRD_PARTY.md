@@ -34,8 +34,29 @@ is missing, open an issue on the repository and we will provide it.
 | MuPDF's bundled libraries: FreeType, HarfBuzz, libjpeg, OpenJPEG, jbig2dec, lcms2 (mt), zlib, Brotli, Gumbo, extract | as shipped in MuPDF 1.27.2 | FreeType License (FTL), MIT, IJG, BSD-2-Clause, AGPL-3.0, MIT, Zlib, MIT, Apache-2.0, AGPL-3.0 | statically linked | https://github.com/ArtifexSoftware/mupdf/tree/1.27.2/thirdparty |
 | Tesseract OCR + Leptonica (inside MuPDF) | as shipped in MuPDF 1.27.2 | Apache-2.0 / BSD-2-Clause | statically linked | https://github.com/tesseract-ocr/tesseract · https://github.com/DanBloomberg/leptonica |
 | Tesseract "GlyphLessFont" | from Tesseract 5 | Apache-2.0 | compiled in | https://github.com/tesseract-ocr/tesseract |
-| Magika content-type model | from the `magika` crate 1.1.0 | Apache-2.0 | compiled in | https://github.com/google/magika |
+| Magika content-type model `standard_v3_3` + type table (© Google LLC) | from the `magika` crate 1.1.0 | Apache-2.0 | compiled in (3.1 MB) | https://github.com/google/magika |
 | Velopack updater (`Update.exe`, `UpdateMac`, setup stub) | 1.3.39 | MIT | next to the application | https://github.com/velopack/velopack |
+
+### Main libraries compiled into Castor
+
+Every Rust crate is listed with its licence at the end of this file; these are the large ones,
+and the ones that compile C/C++ code into Castor.
+
+| component | version | licence | source |
+|---|---|---|---|
+| Typst (typst, typst-layout, typst-pdf, typst-render, typst-svg) + krilla | 0.15.1 / krilla 0.8.2 | Apache-2.0 / MIT OR Apache-2.0 | https://github.com/typst/typst · https://github.com/LaurenzV/krilla |
+| GPUI Kit (gpui-kit, gpui-component, gpui-pre) | 0.9.0 / 0.9.0 / 0.3.11 | Apache-2.0 | https://github.com/longbridge/gpui-kit |
+| tract (tract-onnx, tract-linalg) | 0.23.10 | MIT OR Apache-2.0 | https://github.com/sonos/tract |
+| rxing (barcodes: 1D, Data Matrix, PDF417, QR, Aztec) | 0.9.3 | Apache-2.0 | https://github.com/rxing-core/rxing |
+| qrcode, rqrr | 0.14.1, 0.11.0 | MIT OR Apache-2.0; (MIT OR Apache-2.0) AND ISC | https://github.com/kennytm/qrcode-rust · https://github.com/WanzenBug/rqrr |
+| resvg / usvg / tiny-skia | 0.45–0.47 / 0.12 | Apache-2.0 OR MIT / BSD-3-Clause | https://github.com/linebender/resvg |
+| libimagequant (imagequant) | 4.4.1 | GPL-3.0-or-later | https://github.com/ImageOptim/libimagequant |
+| gifski, dssim-core | 1.34.0, 3.5.1 | AGPL-3.0-or-later, AGPL-3.0 | https://github.com/ImageOptim/gifski · https://github.com/kornelski/dssim |
+| zenjpeg, heic (+ rav1d-safe) | 0.8.4, 0.1.6 | AGPL-3.0-only (dual-licensed; used under the AGPL) | https://crates.io/crates/zenjpeg · https://crates.io/crates/heic |
+| rawler (camera RAW) | 0.8.0 | LGPL-2.1 | https://github.com/dnglab/dnglab |
+| libwebp (libwebp-sys), rav1e, libzstd (zstd-sys), libdeflate (libdeflate-sys) | 0.9.6, 0.7/0.8, 1.5.7, 1.26 | BSD-3-Clause, BSD-2-Clause, BSD-3-Clause, MIT (C library; the crate: Apache-2.0) | https://chromium.googlesource.com/webm/libwebp · https://github.com/xiph/rav1e · https://github.com/facebook/zstd · https://github.com/ebiggers/libdeflate |
+| 7-Zip, ZIP, tar, xz, bzip2 (sevenz-rust2, zip, tar, lzma-rust2, bzip2 with libbz2-rs-sys and the C libbzip2 of bzip2-sys) | 0.24.2, 2.6.1, 0.4.46, 0.23.0, 0.6.1 / 0.5.2 | Apache-2.0, MIT, MIT OR Apache-2.0, Apache-2.0, MIT OR Apache-2.0 (bzip2 crate) + bzip2-1.0.6 (libbzip2) | crates.io · https://sourceware.org/bzip2/ |
+| rmcp (MCP server, `castor mcp`) + tokio | 3.9.0 / 1.54.1 | Apache-2.0 / MIT | https://github.com/modelcontextprotocol/rust-sdk |
 
 The Windows installer installs the Microsoft Visual C++ 2015–2022 Redistributable (x64) from
 Microsoft if it is missing; it is not part of the Castor package.
@@ -46,7 +67,7 @@ Microsoft if it is missing; it is not part of the Castor package.
 |---|---|---|---|
 | Latin Modern (Sans, Roman, Roman Caps, Slanted, Mono) | 2.004 | GUST Font License (`assets/fonts/GUST-FONT-LICENSE.txt`) | https://www.gust.org.pl/projects/e-foundry/latin-modern |
 | TeX Gyre Chorus | 2.003 | GUST Font License | https://www.gust.org.pl/projects/e-foundry/tex-gyre |
-| New Computer Modern Math | as in `crates/tools-create/assets/fonts` | GUST Font License | https://ctan.org/pkg/newcomputermodern |
+| New Computer Modern Math (`NewCMMath-Regular.otf`, math in Markdown → PDF and in Typst documents) | 7.x, as shipped in typst-assets 0.15.1 | GUST Font License | https://ctan.org/pkg/newcomputermodern · https://github.com/typst/typst-assets |
 | Lucide icons (through gpui-kit-assets) | as in gpui-kit-assets 0.9.0 | ISC | https://lucide.dev |
 | Platform badges (`assets/badges`, repository and website only) | — | MIT (`assets/badges/LICENSE`) | — |
 | Castor brand icons (`assets/brand`) | — | part of Castor (GPL-3.0-or-later) | this repository |
@@ -74,7 +95,7 @@ LibreOffice (MPL-2.0) for Office → PDF; Chrome / Edge / Brave / Chromium for H
 Castor's executables are built from the Rust crates below (generated with `cargo-about` from
 `Cargo.lock`; build-only and test-only crates are left out). Licences by number of crates
 (Castor's own crates included):
-MIT License (753), Apache License 2.0 (71), Unicode License v3 (29), BSD 3-Clause "New" or "Revised" License (26), ISC License (25), BSD 2-Clause "Simplified" License (14), GNU General Public License v3.0 or later (14), BSD Zero Clause License (5), MIT No Attribution (4), zlib License (4), GNU Affero General Public License v3.0 (3), GNU Affero General Public License v3.0 only (3), Creative Commons Zero v1.0 Universal (2), Mozilla Public License 2.0 (2), GNU Affero General Public License v3.0 or later (1), Community Data License Agreement Permissive 2.0 (1), GNU Lesser General Public License v2.1 only (1), bzip2 and libbzip2 License v1.0.6 (1).
+MIT License (755), Apache License 2.0 (71), Unicode License v3 (29), BSD 3-Clause "New" or "Revised" License (26), ISC License (25), GNU General Public License v3.0 or later (15), BSD 2-Clause "Simplified" License (14), BSD Zero Clause License (5), MIT No Attribution (4), zlib License (4), GNU Affero General Public License v3.0 (3), GNU Affero General Public License v3.0 only (3), Creative Commons Zero v1.0 Universal (2), Mozilla Public License 2.0 (2), GNU Affero General Public License v3.0 or later (1), Community Data License Agreement Permissive 2.0 (1), GNU Lesser General Public License v2.1 only (1), bzip2 and libbzip2 License v1.0.6 (1).
 
 | crate | version | licence |
 |---|---|---|
@@ -225,6 +246,7 @@ MIT License (753), Apache License 2.0 (71), Unicode License v3 (29), BSD 3-Claus
 | [csv](https://github.com/BurntSushi/rust-csv) | 1.4.0 | Unlicense OR MIT |
 | [csv-core](https://github.com/BurntSushi/rust-csv) | 0.1.13 | Unlicense OR MIT |
 | [ctor](https://github.com/mmastrac/linktime) | 1.0.13 | Apache-2.0 OR MIT |
+| [ctrlc](https://github.com/Detegr/rust-ctrlc.git) | 3.5.2 | MIT OR Apache-2.0 |
 | [darling](https://github.com/TedDriggs/darling) | 0.24.1 | MIT |
 | [darling_core](https://github.com/TedDriggs/darling) | 0.24.1 | MIT |
 | [darling_macro](https://github.com/TedDriggs/darling) | 0.24.1 | MIT |
@@ -931,6 +953,7 @@ MIT License (753), Apache License 2.0 (71), Unicode License v3 (29), BSD 3-Claus
 | [windows_x86_64_msvc](https://github.com/microsoft/windows-rs) | 0.53.1 | MIT OR Apache-2.0 |
 | [winnow](https://github.com/winnow-rs/winnow) | 0.7.15 | MIT |
 | [winnow](https://github.com/winnow-rs/winnow) | 1.0.5 | MIT |
+| [winreg](https://github.com/gentoo90/winreg-rs) | 0.56.0 | MIT |
 | [wio](https://github.com/retep998/wio-rs) | 0.2.2 | MIT OR Apache-2.0 |
 | [write-fonts](https://github.com/googlefonts/fontations) | 0.48.1 | MIT OR Apache-2.0 |
 | [write16](https://github.com/hsivonen/write16) | 1.0.0 | Apache-2.0 OR MIT |
@@ -6071,7 +6094,7 @@ implied warranty.
 ```
 ### GNU General Public License v3.0 or later
 
-Used by: castor-app 0.1.0, castor-cli 0.1.0, castor-core 0.1.0, castor-mcp 0.1.0, castor-tools 0.1.0, engine-media 0.1.0, engine-ml 0.1.0, engine-pdf 0.1.0, tools-create 0.1.0, tools-files 0.1.0, tools-image 0.1.0, tools-media 0.1.0, tools-pdf 0.1.0
+Used by: castor-app 0.1.0, castor-cli 0.1.0, castor-core 0.1.0, castor-launcher 0.1.0, castor-mcp 0.1.0, castor-tools 0.1.0, engine-media 0.1.0, engine-ml 0.1.0, engine-pdf 0.1.0, tools-create 0.1.0, tools-files 0.1.0, tools-image 0.1.0, tools-media 0.1.0, tools-pdf 0.1.0
 
 ```text
 GNU GENERAL PUBLIC LICENSE
@@ -8258,6 +8281,32 @@ Used by: base62 2.2.6
 
 ```text
 Copyright (c) 2015 François Bernier
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+```
+### MIT License
+
+Used by: winreg 0.56.0
+
+```text
+Copyright (c) 2015 Igor Shaula
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14241,7 +14290,7 @@ DEALINGS IN THE SOFTWARE.
 ```
 ### MIT License
 
-Used by: adler2 2.0.1, adler 1.0.2, anyhow 1.0.104, async-channel 2.5.0, async-executor 1.14.1, async-fs 2.2.0, async-io 2.6.0, async-lock 3.5.0, async-net 2.0.0, async-process 2.5.0, async-signal 0.2.14, async-task 4.7.1, atomic-waker 1.1.2, biblatex 0.12.0, blocking 1.7.0, citationberg 0.7.0, concurrent-queue 2.5.0, dary_heap 0.3.9, displaydoc 0.2.7, dyn-clone 1.0.20, dyn-hash 1.0.0, enumn 0.1.14, erased-serde 0.4.11, event-listener-strategy 0.5.4, event-listener 5.4.2, fastrand 2.5.0, file-format 0.29.0, futures-lite 2.6.1, hayagriva 0.10.1, inventory 0.3.25, itoa 1.0.18, jxl-bitstream 1.1.0, jxl-coding 1.0.1, jxl-color 0.11.0, jxl-frame 0.13.3, jxl-grid 0.6.2, jxl-image 0.13.0, jxl-jbr 0.2.1, jxl-modular 0.11.3, jxl-oxide-common 1.0.0, jxl-oxide 0.12.6, jxl-render 0.12.4, jxl-threadpool 1.0.0, jxl-vardct 0.11.1, lazy_static 1.5.1, num_enum 0.7.6, num_enum_derive 0.7.6, once_cell 1.21.4, parking 2.2.1, paste 1.0.15, pastey 0.1.1, pastey 0.2.3, pin-project-internal 1.1.13, pin-project-lite 0.2.17, pin-project 1.1.13, piper 0.2.5, polling 3.11.0, portable-atomic 1.15.0, proc-macro-crate 3.5.0, proc-macro2 1.0.107, quote 1.0.47, ref-cast-impl 1.0.27, ref-cast 1.0.27, rustix 1.1.6, rustversion 1.0.23, semver 1.0.28, serde-saphyr 1.3.0, serde 1.0.229, serde_core 1.0.229, serde_derive 1.0.229, serde_derive_internals 0.30.0, serde_json 1.0.154, serde_path_to_error 0.1.20, serde_repr 0.1.21, serde_yaml 0.9.34+deprecated, smol 2.0.2, smol_str 0.3.7, syn 2.0.119, syn 3.0.9, thin-vec 0.2.21, thiserror-impl 1.0.69, thiserror-impl 2.0.21, thiserror 1.0.69, thiserror 2.0.21, tract-core 0.23.10, tract-data 0.23.10, tract-extra 0.23.10, tract-hir 0.23.10, tract-linalg 0.23.10, tract-nnef 0.23.10, tract-onnx-opl 0.23.10, tract-onnx 0.23.10, tract-transformers 0.23.10, typed-path 0.13.0, typeid 1.0.3, unic-langid-impl 0.9.6, unic-langid-macros-impl 0.9.6, unic-langid-macros 0.9.6, unic-langid 0.9.6, unicode-ident 1.0.27, unsafe-libyaml 0.2.11, utf-8 0.7.6, utf8-zero 0.8.1, waker-fn 1.2.0, zed-font-kit 0.14.1-zed, zmij 1.0.23
+Used by: adler2 2.0.1, adler 1.0.2, anyhow 1.0.104, async-channel 2.5.0, async-executor 1.14.1, async-fs 2.2.0, async-io 2.6.0, async-lock 3.5.0, async-net 2.0.0, async-process 2.5.0, async-signal 0.2.14, async-task 4.7.1, atomic-waker 1.1.2, biblatex 0.12.0, blocking 1.7.0, citationberg 0.7.0, concurrent-queue 2.5.0, ctrlc 3.5.2, dary_heap 0.3.9, displaydoc 0.2.7, dyn-clone 1.0.20, dyn-hash 1.0.0, enumn 0.1.14, erased-serde 0.4.11, event-listener-strategy 0.5.4, event-listener 5.4.2, fastrand 2.5.0, file-format 0.29.0, futures-lite 2.6.1, hayagriva 0.10.1, inventory 0.3.25, itoa 1.0.18, jxl-bitstream 1.1.0, jxl-coding 1.0.1, jxl-color 0.11.0, jxl-frame 0.13.3, jxl-grid 0.6.2, jxl-image 0.13.0, jxl-jbr 0.2.1, jxl-modular 0.11.3, jxl-oxide-common 1.0.0, jxl-oxide 0.12.6, jxl-render 0.12.4, jxl-threadpool 1.0.0, jxl-vardct 0.11.1, lazy_static 1.5.1, num_enum 0.7.6, num_enum_derive 0.7.6, once_cell 1.21.4, parking 2.2.1, paste 1.0.15, pastey 0.1.1, pastey 0.2.3, pin-project-internal 1.1.13, pin-project-lite 0.2.17, pin-project 1.1.13, piper 0.2.5, polling 3.11.0, portable-atomic 1.15.0, proc-macro-crate 3.5.0, proc-macro2 1.0.107, quote 1.0.47, ref-cast-impl 1.0.27, ref-cast 1.0.27, rustix 1.1.6, rustversion 1.0.23, semver 1.0.28, serde-saphyr 1.3.0, serde 1.0.229, serde_core 1.0.229, serde_derive 1.0.229, serde_derive_internals 0.30.0, serde_json 1.0.154, serde_path_to_error 0.1.20, serde_repr 0.1.21, serde_yaml 0.9.34+deprecated, smol 2.0.2, smol_str 0.3.7, syn 2.0.119, syn 3.0.9, thin-vec 0.2.21, thiserror-impl 1.0.69, thiserror-impl 2.0.21, thiserror 1.0.69, thiserror 2.0.21, tract-core 0.23.10, tract-data 0.23.10, tract-extra 0.23.10, tract-hir 0.23.10, tract-linalg 0.23.10, tract-nnef 0.23.10, tract-onnx-opl 0.23.10, tract-onnx 0.23.10, tract-transformers 0.23.10, typed-path 0.13.0, typeid 1.0.3, unic-langid-impl 0.9.6, unic-langid-macros-impl 0.9.6, unic-langid-macros 0.9.6, unic-langid 0.9.6, unicode-ident 1.0.27, unsafe-libyaml 0.2.11, utf-8 0.7.6, utf8-zero 0.8.1, waker-fn 1.2.0, zed-font-kit 0.14.1-zed, zmij 1.0.23
 
 ```text
 Permission is hereby granted, free of charge, to any

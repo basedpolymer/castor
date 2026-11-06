@@ -27,8 +27,29 @@ is missing, open an issue on the repository and we will provide it.
 | MuPDF's bundled libraries: FreeType, HarfBuzz, libjpeg, OpenJPEG, jbig2dec, lcms2 (mt), zlib, Brotli, Gumbo, extract | as shipped in MuPDF 1.27.2 | FreeType License (FTL), MIT, IJG, BSD-2-Clause, AGPL-3.0, MIT, Zlib, MIT, Apache-2.0, AGPL-3.0 | statically linked | https://github.com/ArtifexSoftware/mupdf/tree/1.27.2/thirdparty |
 | Tesseract OCR + Leptonica (inside MuPDF) | as shipped in MuPDF 1.27.2 | Apache-2.0 / BSD-2-Clause | statically linked | https://github.com/tesseract-ocr/tesseract · https://github.com/DanBloomberg/leptonica |
 | Tesseract "GlyphLessFont" | from Tesseract 5 | Apache-2.0 | compiled in | https://github.com/tesseract-ocr/tesseract |
-| Magika content-type model | from the `magika` crate 1.1.0 | Apache-2.0 | compiled in | https://github.com/google/magika |
+| Magika content-type model `standard_v3_3` + type table (© Google LLC) | from the `magika` crate 1.1.0 | Apache-2.0 | compiled in (3.1 MB) | https://github.com/google/magika |
 | Velopack updater (`Update.exe`, `UpdateMac`, setup stub) | 1.3.39 | MIT | next to the application | https://github.com/velopack/velopack |
+
+### Main libraries compiled into Castor
+
+Every Rust crate is listed with its licence at the end of this file; these are the large ones,
+and the ones that compile C/C++ code into Castor.
+
+| component | version | licence | source |
+|---|---|---|---|
+| Typst (typst, typst-layout, typst-pdf, typst-render, typst-svg) + krilla | 0.15.1 / krilla 0.8.2 | Apache-2.0 / MIT OR Apache-2.0 | https://github.com/typst/typst · https://github.com/LaurenzV/krilla |
+| GPUI Kit (gpui-kit, gpui-component, gpui-pre) | 0.9.0 / 0.9.0 / 0.3.11 | Apache-2.0 | https://github.com/longbridge/gpui-kit |
+| tract (tract-onnx, tract-linalg) | 0.23.10 | MIT OR Apache-2.0 | https://github.com/sonos/tract |
+| rxing (barcodes: 1D, Data Matrix, PDF417, QR, Aztec) | 0.9.3 | Apache-2.0 | https://github.com/rxing-core/rxing |
+| qrcode, rqrr | 0.14.1, 0.11.0 | MIT OR Apache-2.0; (MIT OR Apache-2.0) AND ISC | https://github.com/kennytm/qrcode-rust · https://github.com/WanzenBug/rqrr |
+| resvg / usvg / tiny-skia | 0.45–0.47 / 0.12 | Apache-2.0 OR MIT / BSD-3-Clause | https://github.com/linebender/resvg |
+| libimagequant (imagequant) | 4.4.1 | GPL-3.0-or-later | https://github.com/ImageOptim/libimagequant |
+| gifski, dssim-core | 1.34.0, 3.5.1 | AGPL-3.0-or-later, AGPL-3.0 | https://github.com/ImageOptim/gifski · https://github.com/kornelski/dssim |
+| zenjpeg, heic (+ rav1d-safe) | 0.8.4, 0.1.6 | AGPL-3.0-only (dual-licensed; used under the AGPL) | https://crates.io/crates/zenjpeg · https://crates.io/crates/heic |
+| rawler (camera RAW) | 0.8.0 | LGPL-2.1 | https://github.com/dnglab/dnglab |
+| libwebp (libwebp-sys), rav1e, libzstd (zstd-sys), libdeflate (libdeflate-sys) | 0.9.6, 0.7/0.8, 1.5.7, 1.26 | BSD-3-Clause, BSD-2-Clause, BSD-3-Clause, MIT (C library; the crate: Apache-2.0) | https://chromium.googlesource.com/webm/libwebp · https://github.com/xiph/rav1e · https://github.com/facebook/zstd · https://github.com/ebiggers/libdeflate |
+| 7-Zip, ZIP, tar, xz, bzip2 (sevenz-rust2, zip, tar, lzma-rust2, bzip2 with libbz2-rs-sys and the C libbzip2 of bzip2-sys) | 0.24.2, 2.6.1, 0.4.46, 0.23.0, 0.6.1 / 0.5.2 | Apache-2.0, MIT, MIT OR Apache-2.0, Apache-2.0, MIT OR Apache-2.0 (bzip2 crate) + bzip2-1.0.6 (libbzip2) | crates.io · https://sourceware.org/bzip2/ |
+| rmcp (MCP server, `castor mcp`) + tokio | 3.9.0 / 1.54.1 | Apache-2.0 / MIT | https://github.com/modelcontextprotocol/rust-sdk |
 
 The Windows installer installs the Microsoft Visual C++ 2015–2022 Redistributable (x64) from
 Microsoft if it is missing; it is not part of the Castor package.
@@ -39,7 +60,7 @@ Microsoft if it is missing; it is not part of the Castor package.
 |---|---|---|---|
 | Latin Modern (Sans, Roman, Roman Caps, Slanted, Mono) | 2.004 | GUST Font License (`assets/fonts/GUST-FONT-LICENSE.txt`) | https://www.gust.org.pl/projects/e-foundry/latin-modern |
 | TeX Gyre Chorus | 2.003 | GUST Font License | https://www.gust.org.pl/projects/e-foundry/tex-gyre |
-| New Computer Modern Math | as in `crates/tools-create/assets/fonts` | GUST Font License | https://ctan.org/pkg/newcomputermodern |
+| New Computer Modern Math (`NewCMMath-Regular.otf`, math in Markdown → PDF and in Typst documents) | 7.x, as shipped in typst-assets 0.15.1 | GUST Font License | https://ctan.org/pkg/newcomputermodern · https://github.com/typst/typst-assets |
 | Lucide icons (through gpui-kit-assets) | as in gpui-kit-assets 0.9.0 | ISC | https://lucide.dev |
 | Platform badges (`assets/badges`, repository and website only) | — | MIT (`assets/badges/LICENSE`) | — |
 | Castor brand icons (`assets/brand`) | — | part of Castor (GPL-3.0-or-later) | this repository |

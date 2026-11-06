@@ -170,3 +170,122 @@ Tools installed: `vpk 1.3.39-g8d2844f` (= the velopack crate version) on the PC 
    `windows` subsystem; (c) `strip = true` (symbols) in `[profile.release]`/`dist` — the
    packaging already does `strip -x` on macOS; (d) measure `dist` (fat LTO, cg 1) and
    `opt-level = "s"` for the heaviest non-hot crates (typst, tract, gpui).
+
+## Update — 2026-11-06 (evening): single binary, Windows packages, update flow, both Mac arches
+
+Picked up from the interim report above (history kept). Tree: commit `1aec8ec` (single binary)
+plus the app agent's work in progress at ~20:25 (it already includes the `CASTOR_UPDATE_FEED`
+override, so no patched build was needed). Request 7 (a) is done by the coordinator's single
+binary.
+
+### Changed in `packaging/` and around
+- **Single-binary layout everywhere.** Builds are `-p castor-app -p castor-launcher` (`--locked`);
+  shipped: `castor(.exe)` (app + `castor cli` + `castor mcp`) and the launcher
+  `castor-cli-launcher` renamed to `castor-cli(.exe)` next to it. No `castor-mcp`, no full
+  `castor-cli` any more: `windows/build.ps1`, `windows/update-test.ps1`, `macos/build.sh`,
+  `macos/sign-notarize.sh` (nested code = dylibs, helpers, `castor-cli`), CI, cask, winget
+  draft, RELEASING.
+- **Checks** (Windows and Mac, bare PATH + isolated `CASTOR_HOME`): `castor-cli list` through
+  the launcher = `castor cli list` direct (110 lines each); `castor mcp` gets `initialize` +
+  `tools/list` over stdio (Windows: started with redirected pipes like an MCP client —
+  PowerShell does not pipe stdin into GUI-subsystem programs); Windows also times the main
+  window (3 launches); Mac also tries the launcher through a symlink (Homebrew).
+- `build.ps1`: `-Steps a,b` works with `pwsh -File`; no positional binding (an empty splat
+  bound `$null` to `-CargoProfile`); `_CL_=-GL-` like `env.sh`; `vpk pack --runtime win-x64`
+  (vpk defaulted to x86); the DLL check knows the system DLLs FFmpeg/castor import (USP10,
+  AVICAP32, UIAutomationCore, icuuc, gdiplus, DirectML) and `MSVCP140_1` (VC++ redist).
+- `update-test.ps1`: waits for Setup/Update (`Start-Process -Wait`: GUI programs), waits for the
+  **full** `*-<B>-full.nupkg` (the delta is first rebuilt as `.partial`; quitting earlier
+  abandons the download), waits for `Update.exe` to finish before relaunching, fails if the
+  relaunched app exits; the test profile turns off keep-in-tray and the global hotkey.
+- **macOS arm64 link fix**: pyke's static ONNX Runtime (arm64) references
+  `___isPlatformVersionAtLeast` (Objective-C `@available`, clang runtime); rustc links with
+  `-nodefaultlibs`, so `castor` is linked with `cargo rustc … -p castor-app --bin castor --
+  -C link-arg=<clang resource dir>/lib/darwin/libclang_rt.osx.a` (final link only, no
+  dependency rebuild). Those ORT objects are built for macOS 13.4, so the Apple Silicon app
+  declares `LSMinimumSystemVersion` 13.4 (Intel stays 11.0): `min_macos()` in
+  `macos/common.sh`, `@MINOS@` in `Info.plist.in`.
+- `release.sh` uploads **stable-named copies** `Castor-windows-setup.exe`,
+  `Castor-macos-x64.dmg`, `Castor-macos-arm64.dmg` (the site links to
+  `…/releases/latest/download/<name>`) and prints a `curl -I` loop checking the three redirects
+  after publishing; RELEASING steps 9–10 say so (dry run checked).
+- `THIRD_PARTY.md` regenerated (898 crates; picks up `winreg`, just added by the app agent);
+  `bundled.md` gained "Main libraries compiled into Castor" (Typst + krilla, GPUI Kit, tract,
+  rxing, qrcode/rqrr, resvg/tiny-skia, libimagequant, gifski/dssim, zenjpeg/heic, rawler,
+  libwebp/rav1e/libzstd/libdeflate, archive crates incl. libbzip2's own licence, rmcp/tokio),
+  the Magika model row (`standard_v3_3`, © Google) and New Computer Modern Math from
+  typst-assets 0.15.1 (now in `assets/fonts`). `generate.sh --check` is green against the
+  current `Cargo.lock`; re-run `generate.sh` whenever the lock changes (RELEASING step 2).
+
+### Results — Windows x64 (release profile, `target-g`)
+| | |
+|---|---|
+| cargo build (castor-app + launcher, 4 jobs, MuPDF rebuilt) | 26 min 35 s |
+| `castor.exe` / `castor-cli.exe` | 190.1 MB / 0.22 MB |
+| staged app folder (= installed `current\`) | 386.6 MB |
+| `target-g\releases\win\Castor-win-Setup.exe` | **163.2 MB** |
+| `Castor-win-Portable.zip` / `Castor-0.1.0-full.nupkg` | 155.1 MB / 155.2 MB |
+| installed on disk (`%LOCALAPPDATA%\Castor`: `current` + Velopack's package cache + Update.exe) | 548 MB |
+| main window after launch (staged app, bare PATH, fresh profile) | **0.84 s** first launch after staging, then 0.60 / 0.63 s |
+| checks | 110 tools via launcher and direct; `castor mcp`: server "castor" 0.1.0, protocol 2025-06-18, 5 MCP tools; ffmpeg/ffprobe/whisper-cli run; audio.convert, files.checksum, pdf.compress OK; no missing DLL |
+
+`castor.exe` hard-imports `DirectML.dll` (ordinal 2) and `icuuc.dll` from System32 (pyke's ORT
+is the DirectML build): present on Windows 10 2004+ and 11, the effective minimum. Installed
+app: `castor-cli.exe list` → 110 lines; Start-menu shortcut created, removed by the uninstall.
+A truly cold start (empty file cache) was not measured (flushing the standby list needs admin).
+
+**Update flow (local feed, nothing published): PASS.** Silent Setup of 0.9.0-test (9–18 s) →
+0.9.1-test packed into the same folder (full + 37 KB delta) → installed app started with
+`CASTOR_UPDATE_FEED=<folder>` and auto-install on → finds 0.9.1-test, downloads the delta,
+rebuilds the full package → window closed → `Update.exe apply --waitPid … --silent --norestart`
+→ `sq.version` = 0.9.1-test → the relaunched app runs from `current\` → uninstall clean.
+Not tested: the "Restart to update" button (needs a click: `-Mode restart`, then `-Verify`).
+Seen: a launch while `Update.exe` is still finishing exits at once (the user clicks again).
+
+### Results — macOS (Intel Mac, `~/castor-mac-g`, `-j 2`, Mac in use)
+| | x64 (Intel) | arm64 (Apple Silicon) |
+|---|---|---|
+| cargo build (workspace crates + final link) | 37 min 43 s | 31 min 46 s |
+| `castor` (after `strip -x`) / `castor-cli` | 156 MB / 400 KB | 156 MB / 416 KB |
+| `Castor.app` | **382 MB** (was 641 MB) | **294 MB** |
+| `Castor-0.1.0-macos-<arch>-unsigned.dmg` | **138 MB** (was 240 MB) | **120 MB** |
+| Velopack (unsigned) portable zip = full nupkg | 145 MB | 125 MB |
+| minimum macOS | 11.0 | 13.4 |
+
+Paths: `~/castor-mac-g/target/package/macos/{x64,arm64}/Castor.app`, the DMGs in
+`~/castor-mac-g/target/package/macos/`, unsigned Velopack sets in `…/releases-unsigned/`. Both
+apps ad-hoc signed (`codesign --verify --strict` OK); otool: only system libraries (+ the
+bundled ORT dylib on x64). x64 run checks with `env -i PATH=/usr/bin:/bin…`: 110 tools via the
+launcher and direct, `castor mcp` initialize + 5 tools, ffmpeg, whisper-cli, audio.convert,
+files.checksum, pdf.compress (IRS W-9 −13 %) OK. **`castor-cli` through a symlink fails** ("the
+Castor app binary was not found next to this program": macOS `current_exe()` returns the
+link's path) → request 9. GUI: `open -n` starts the Intel app (log clean, Latin Modern fonts
+registered ~1 s after "Castor starting"); the window time could not be measured this time —
+the display was asleep/locked, CGWindowList lists no on-screen window (earlier today:
+1.40–1.56 s). arm64 run checks need an Apple Silicon Mac. `sign-notarize.sh --dry-run` over
+SSH: both arches, single-binary nested list, `vpk pack --signAppIdentity … --notaryProfile
+fouine`, DMGs made from the signed portable app.
+
+**For the user, at release time, in Terminal.app on the Mac (keychain unlocked):**
+`cd ~/castor-mac-g && packaging/macos/sign-notarize.sh`
+(both arches, version from `Cargo.toml`; `--version X.Y.Z` to override). Output:
+`~/castor-mac-g/target/package/macos/release/` (two signed, notarised, stapled DMGs + the
+`osx-x64` / `osx-arm64` Velopack folders).
+
+### Requests to the coordinator (new)
+8. **(app agent) Explorer "Open with Castor"** (request 2) was not in the tested build: no
+   `HKCU\Software\Classes\*\shell\Castor` after install (`winreg` just appeared in
+   `Cargo.lock`, so it may be in progress).
+9. **(castor-launcher) Resolve symlinks**: in `app_binary()`, take
+   `std::fs::canonicalize(std::env::current_exe()?)` before `.parent()`. Homebrew's
+   `binary "…/Contents/MacOS/castor-cli"` (and any `ln -s` into PATH) installs a symlink, and
+   macOS `current_exe()` returns the link's path. `build.sh` prints a WARNING until fixed.
+10. **(agent E / docs)** `docs/specs/E-create-files.md` packaging note 7 still says
+    `Contents/MacOS/castor-mcp`; `docs/MCP.md` is right (`castor mcp`).
+11. **(app agent, minor)** macOS: after the app is killed (SIGTERM/crash) its single-instance
+    socket stays; the next launch logs "single-instance socket unavailable: Address already in
+    use" and runs without forwarding. Remove a stale socket when connecting to it fails.
+12. **Decide**: Apple Silicon minimum macOS 13.4 (forced by the static ORT objects; every Apple
+    Silicon Mac can run 14+) and Windows 10 version 2004 minimum — say so on the download page.
+13. **Before publishing**: rebuild both OSes from the final committed tree (these packages are a
+    snapshot of a tree the app agent was still editing), then RELEASING steps 1–10.

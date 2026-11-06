@@ -52,7 +52,8 @@ function Castor-Processes { Get-Process castor -ErrorAction SilentlyContinue | W
 if ($Uninstall) {
   Castor-Processes | Stop-Process -Force
   $upd = Join-Path $Install 'Update.exe'
-  if (Test-Path $upd) { & $upd --uninstall --silent; Start-Sleep 3 }
+  # Setup.exe / Update.exe are GUI programs: PowerShell would not wait for them with `&`.
+  if (Test-Path $upd) { Start-Process $upd -ArgumentList '--uninstall', '--silent' -Wait }
   Write-Host "installed version now: $(Installed-Version)"
   return
 }
@@ -93,10 +94,11 @@ if ($PatchedBuild) {
   $BinDir = Join-Path $Work 'bin'
   New-Item -ItemType Directory -Force $BinDir | Out-Null
   Copy-Item (Join-Path $TargetDir 'release\castor.exe') $BinDir
-  # castor-cli / castor-mcp are unchanged: take them from the regular build (rebuilt if needed).
-  Copy-Item (Join-Path $TargetDir 'release\castor-cli.exe'), (Join-Path $TargetDir 'release\castor-mcp.exe') $BinDir
+  # The castor-cli launcher is unchanged: take it from the regular build.
+  Copy-Item (Join-Path $TargetDir 'release\castor-cli-launcher.exe') $BinDir
 }
-$binArgs = if ($BinDir) { @('-BinDir', $BinDir) } else { @() }
+$binArgs = @{}
+if ($BinDir) { $binArgs['BinDir'] = $BinDir }
 
 # ------------------------------------------------------------------ A: pack + install
 Write-Host "=== pack $VersionA and install it"
@@ -105,8 +107,8 @@ Remove-Item -Recurse -Force $Feed, $TestHome -ErrorAction SilentlyContinue
 & $Build -Steps stage, pack -Version $VersionA -Releases $Feed -TargetDir $TargetDir @binArgs
 $setup = Get-ChildItem $Feed -Filter '*-Setup.exe' | Select-Object -First 1
 $sw = [Diagnostics.Stopwatch]::StartNew()
-& $setup.FullName --silent
-Write-Host ("setup exit {0} after {1:n1} s; installed version: {2}" -f $LASTEXITCODE, $sw.Elapsed.TotalSeconds, (Installed-Version))
+$sp = Start-Process $setup.FullName -ArgumentList '--silent' -Wait -PassThru
+Write-Host ("setup exit {0} after {1:n1} s; installed version: {2}" -f $sp.ExitCode, $sw.Elapsed.TotalSeconds, (Installed-Version))
 Castor-Processes | Stop-Process -Force   # Setup starts the app after installing
 if ((Installed-Version) -ne $VersionA) { throw "install of $VersionA failed" }
 
@@ -120,15 +122,18 @@ Get-ChildItem $Feed | ForEach-Object { '  {0,-40} {1,8:n1} MB' -f $_.Name, ($_.L
 # ------------------------------------------------------------------ run A against the local feed
 Write-Host "=== start $VersionA with CASTOR_UPDATE_FEED=$Feed"
 New-Item -ItemType Directory -Force (Join-Path $TestHome 'config') | Out-Null
-"check_updates = true`nauto_install_updates = true`n" | Set-Content (Join-Path $TestHome 'config\settings.toml')
+"check_updates = true`nauto_install_updates = true`nkeep_running_in_tray = false`nglobal_hotkey = `"`"`n" | Set-Content (Join-Path $TestHome 'config\settings.toml')
 $env:CASTOR_HOME = $TestHome
 $env:CASTOR_UPDATE_FEED = $Feed
 $env:CASTOR_LOG = 'info,velopack=debug'
 $app = Start-Process (Join-Path $Install 'current\castor.exe') -PassThru
 $pkgs = Join-Path $Install 'packages'
 $deadline = (Get-Date).AddSeconds($TimeoutSec)
-while (-not (Get-ChildItem $pkgs -Filter "*$VersionB*.nupkg" -ErrorAction SilentlyContinue) -and (Get-Date) -lt $deadline) { Start-Sleep 1 }
-$got = Get-ChildItem $pkgs -Filter "*$VersionB*.nupkg" -ErrorAction SilentlyContinue
+# Velopack downloads the delta, rebuilds the full package as *.partial, then renames it: only
+# the full .nupkg means "downloaded" (quitting earlier just abandons the download).
+$full = "*-$VersionB-full.nupkg"
+while (-not (Get-ChildItem $pkgs -Filter $full -ErrorAction SilentlyContinue) -and (Get-Date) -lt $deadline) { Start-Sleep 1 }
+$got = Get-ChildItem $pkgs -Filter $full -ErrorAction SilentlyContinue
 if (-not $got) { throw "no $VersionB package downloaded within $TimeoutSec s (see $TestHome\data\logs\castor.log)" }
 Write-Host "downloaded: $($got.Name -join ', ')"
 Start-Sleep 3
@@ -146,8 +151,13 @@ $app.WaitForExit(30000) | Out-Null
 $deadline = (Get-Date).AddSeconds(60)
 while ((Installed-Version) -ne $VersionB -and (Get-Date) -lt $deadline) { Start-Sleep 1 }
 Write-Host "installed version after quit: $(Installed-Version)"
+# Update.exe is still finishing (hooks, clean-up) right after the version flips; a launch during
+# that window exits at once. Wait for it like a user would.
+$deadline = (Get-Date).AddSeconds(60)
+while ((Get-Process Update -ErrorAction SilentlyContinue | Where-Object { $_.Path -like "$Install\*" }) -and (Get-Date) -lt $deadline) { Start-Sleep 1 }
 $app2 = Start-Process (Join-Path $Install 'current\castor.exe') -PassThru
 Start-Sleep 5
 Write-Host "relaunched: PID $($app2.Id), alive=$(-not $app2.HasExited)"
+if ($app2.HasExited) { throw "the updated app exited at launch (code $($app2.ExitCode))" }
 & $PSCommandPath -Verify -VersionB $VersionB -TargetDir $TargetDir
 $null = $app2.CloseMainWindow()

@@ -66,11 +66,19 @@ if has build; then
   if [ -z "${LIBCLANG_PATH:-}" ] && [ -f /Library/Developer/CommandLineTools/usr/lib/libclang.dylib ]; then
     export LIBCLANG_PATH=/Library/Developer/CommandLineTools/usr/lib
   fi
+  CLANG_RT="$(xcrun clang -print-resource-dir)/lib/darwin/libclang_rt.osx.a"
+  [ -f "$CLANG_RT" ] || die "clang runtime not found: $CLANG_RT"
   for a in $ARCHS; do
     t="$(rust_target "$a")"
     step "build (release, $t)"
     run rustup target add "$t"
-    run cargo build --release --target "$t" -p castor-app -p castor-cli -p castor-mcp
+    # One binary carries everything (`castor`, `castor cli …`, `castor mcp`) + the tiny launcher
+    # shipped as Contents/MacOS/castor-cli.
+    run cargo build --locked --release --target "$t" -p castor-launcher
+    # The prebuilt static ONNX Runtime (arm64) calls `__isPlatformVersionAtLeast` (Objective-C
+    # `@available`), which lives in clang's runtime library; rustc links with -nodefaultlibs, so
+    # add it to the final link only (no rebuild of the dependencies).
+    run cargo rustc --locked --release --target "$t" -p castor-app --bin castor -- -C "link-arg=$CLANG_RT"
   done
 fi
 
@@ -140,13 +148,16 @@ if has bundle; then
     step "bundle ($a) -> $APP"
     run rm -rf "$APP"
     run mkdir -p "$C/MacOS" "$C/Resources/bin" "$C/Resources/assets/fonts" "$C/Resources/licenses"
-    for b in castor castor-cli castor-mcp; do
-      run cp "$TARGET/$t/release/$b" "$C/MacOS/$b"
-      # Drop local symbols (~40 MB per executable; panics still name public functions).
+    # castor = app + CLI + MCP server; castor-cli = the launcher (runs `castor cli <args>`).
+    run cp "$TARGET/$t/release/castor" "$C/MacOS/castor"
+    run cp "$TARGET/$t/release/castor-cli-launcher" "$C/MacOS/castor-cli"
+    for b in castor castor-cli; do
+      # Drop local symbols (~40 MB on castor; panics still name public functions).
       run strip -x "$C/MacOS/$b"
     done
     if [ "$DRY_RUN" != 1 ]; then
-      sed -e "s/@VERSION@/$SHORT_VERSION/" -e "s/@BUILD@/$SHORT_VERSION/" "$HERE/Info.plist.in" > "$C/Info.plist"
+      sed -e "s/@VERSION@/$SHORT_VERSION/" -e "s/@BUILD@/$SHORT_VERSION/" -e "s/@MINOS@/$(min_macos "$a")/" \
+        "$HERE/Info.plist.in" > "$C/Info.plist"
       plutil -lint "$C/Info.plist" >/dev/null
       printf 'APPL????' > "$C/PkgInfo"
     fi
@@ -186,7 +197,7 @@ if has sign; then
     APP="$(app_path "$a")"; C="$APP/Contents"
     step "sign ($a, ad-hoc, local runs only)"
     # Inside out: nested code first, the bundle last.
-    for f in "$C/Frameworks/"*.dylib "$C/Resources/bin/"* "$C/MacOS/castor-cli" "$C/MacOS/castor-mcp"; do
+    for f in "$C/Frameworks/"*.dylib "$C/Resources/bin/"* "$C/MacOS/castor-cli"; do
       [ -e "$f" ] || continue
       run codesign --force --sign - --timestamp=none "$f"
     done
@@ -213,7 +224,25 @@ if has check; then
     work="$PKG/check-$a"; rm -rf "$work"; mkdir -p "$work"
     # Minimal environment: only the OS on PATH, isolated profile.
     E=(env -i HOME="$HOME" PATH=/usr/bin:/bin:/usr/sbin:/sbin CASTOR_HOME="$work/home" TMPDIR="${TMPDIR:-/tmp}")
-    "${E[@]}" "$C/MacOS/castor-cli" list | wc -l | sed 's/^ */castor-cli list: /;s/$/ lines/'
+    n="$("${E[@]}" "$C/MacOS/castor-cli" list | wc -l | tr -d ' ')"
+    note "castor-cli list (launcher): $n lines"
+    [ "$n" -ge 100 ] || die "castor-cli list printed only $n lines"
+    n2="$("${E[@]}" "$C/MacOS/castor" cli list | wc -l | tr -d ' ')"
+    note "castor cli list (direct): $n2 lines"
+    [ "$n2" = "$n" ] || die "castor cli list: $n2 lines, the launcher printed $n"
+    # Through a symlink, as Homebrew's `binary` stanza installs it.
+    ln -sf "$C/MacOS/castor-cli" "$work/castor-cli-link"
+    n3="$("${E[@]}" "$work/castor-cli-link" list | wc -l | tr -d ' ')" || true
+    if [ "$n3" = "$n" ]; then note "castor-cli list (through a symlink): $n3 lines"
+    else note "WARNING: castor-cli does not work through a symlink (Homebrew's \`binary\` stanza): the launcher must resolve its own path"; fi
+    # MCP server over stdio: initialize + tools/list, then EOF ends the server.
+    mcp_out="$(printf '%s\n' \
+      '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"castor-package-check","version":"1"}}}' \
+      '{"jsonrpc":"2.0","method":"notifications/initialized"}' \
+      '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' \
+      | "${E[@]}" "$C/MacOS/castor" mcp 2>/dev/null)"
+    printf '%s\n' "$mcp_out" | grep -q '"serverInfo"' || die "castor mcp: no initialize result: $mcp_out"
+    note "castor mcp: initialize OK, tools/list: $(printf '%s' "$mcp_out" | grep -o '"inputSchema"' | wc -l | tr -d ' ') MCP tools"
     "${E[@]}" "$C/Resources/bin/ffmpeg" -hide_banner -loglevel error -f lavfi -i sine=frequency=440:duration=2 -y "$work/tone.wav"
     "${E[@]}" "$C/Resources/bin/whisper-cli" --help > "$work/whisper-help.txt" 2>&1 || true
     note "whisper-cli --help: $(wc -l < "$work/whisper-help.txt") lines"

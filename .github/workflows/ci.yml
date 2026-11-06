@@ -42,16 +42,20 @@ jobs:
         run: |
           $h = "$env:GITHUB_WORKSPACE/crates/engine-pdf/bindgen/max_align_t.h" -replace '\\','/'
           "BINDGEN_EXTRA_CLANG_ARGS=-D__CLANG_MAX_ALIGN_T_DEFINED -include $h" >> $env:GITHUB_ENV
-      - name: Build all binaries
-        run: cargo build --locked -p castor-app -p castor-cli -p castor-mcp
+      - name: Build the shipped binaries (castor = app + CLI + MCP, castor-cli launcher)
+        run: cargo build --locked -p castor-app -p castor-launcher
       - name: Tests (no network, no helpers)
         run: cargo test --locked -p castor-core -p engine-pdf -p tools-pdf -p tools-files
-      - name: castor-cli smoke
+      - name: CLI and MCP smoke (through the launcher, as shipped)
         shell: pwsh
         run: |
           $env:CASTOR_HOME = "$env:RUNNER_TEMP/castor-home"
-          ./target/debug/castor-cli.exe list | Select-Object -First 5
-          ./target/debug/castor-cli.exe run files.checksum Cargo.toml --out "$env:RUNNER_TEMP/out"
+          $cli = "./target/debug/castor-cli-launcher.exe"   # shipped renamed to castor-cli.exe
+          & $cli list | Select-Object -First 5
+          & $cli run files.checksum Cargo.toml --out "$env:RUNNER_TEMP/out"
+          $init = '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}'
+          $out = $init | ./target/debug/castor.exe mcp
+          if (-not ($out -match '"serverInfo"')) { throw "castor mcp did not answer initialize: $out" }
 
   package:
     if: github.event_name == 'workflow_dispatch' && inputs.package

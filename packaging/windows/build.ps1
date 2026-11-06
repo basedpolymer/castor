@@ -11,6 +11,11 @@
   Everything downloaded is pinned in packaging/pins.env and SHA-256-checked; downloads and
   builds of helpers are cached in <TargetDir>\deps. Nothing is published.
 
+  Installed layout (%LOCALAPPDATA%\Castor\current): castor.exe (the app, which also runs
+  `castor cli <args>` and the MCP server `castor mcp`), castor-cli.exe (a ~250 KB console
+  launcher for `castor cli`, built from crates/castor-launcher), bin\ (ffmpeg, ffprobe,
+  whisper-cli + DLLs), assets\fonts\, LICENSE.txt, THIRD_PARTY.md, licenses\.
+
   Needs: PowerShell 7, Rust (MSVC), Visual Studio 2022 C++ + Windows SDK, LLVM (libclang for the
   MuPDF bindgen step), CMake + git (whisper.cpp), .NET SDK 8+ with `vpk` (same version as the
   velopack crate: `dotnet tool install -g vpk --version <VPK_VERSION from pins.env>`).
@@ -20,12 +25,12 @@
   pwsh packaging/windows/build.ps1 -Steps deps,stage,check  # only some steps
   pwsh packaging/windows/build.ps1 -Version 0.9.1-test -Releases D:\feed -SkipCargo
 #>
-[CmdletBinding()]
+[CmdletBinding(PositionalBinding = $false)]
 param(
   # Package version (SemVer 2). Default: [workspace.package] version of the root Cargo.toml.
   [string]$Version,
   # Steps to run, in this order: build, deps, stage, check, pack.
-  [ValidateSet('build', 'deps', 'stage', 'check', 'pack')]
+  # (`pwsh -File build.ps1 -Steps a,b` passes one string "a,b": both forms are accepted.)
   [string[]]$Steps = @('build', 'deps', 'stage', 'check', 'pack'),
   # Cargo target dir (relative to the repo root or absolute).
   [string]$TargetDir = $(if ($env:CARGO_TARGET_DIR) { $env:CARGO_TARGET_DIR } else { 'target-g' }),
@@ -43,6 +48,8 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $PSNativeCommandUseErrorActionPreference = $true
+$Steps = @($Steps | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+foreach ($s in $Steps) { if ($s -notin 'build', 'deps', 'stage', 'check', 'pack') { throw "unknown step '$s' (build, deps, stage, check, pack)" } }
 $Root = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 Set-Location $Root
 if (-not [IO.Path]::IsPathRooted($TargetDir)) { $TargetDir = Join-Path $Root $TargetDir }
@@ -110,9 +117,13 @@ if ($Steps -contains 'build') {
   $hdr = (Join-Path $Root 'crates\engine-pdf\bindgen\max_align_t.h') -replace '\\', '/'
   $env:BINDGEN_EXTRA_CLANG_ARGS = "-D__CLANG_MAX_ALIGN_T_DEFINED -include $hdr"
   if (-not $env:LIBCLANG_PATH -and (Test-Path 'C:\Program Files\LLVM\bin')) { $env:LIBCLANG_PATH = 'C:/Program Files/LLVM/bin' }
+  # No MSVC whole-program optimisation in MuPDF's C objects (fast links; see env.sh).
+  $env:_CL_ = '-GL-'
   $env:CARGO_TARGET_DIR = $TargetDir
   $sw = [Diagnostics.Stopwatch]::StartNew()
-  cargo build --profile $CargoProfile -j $Jobs -p castor-app -p castor-cli -p castor-mcp
+  # One binary carries everything: `castor` (GUI), `castor cli …`, `castor mcp`. The launcher
+  # (~250 KB, console subsystem) is shipped as castor-cli.exe and runs `castor cli <args>`.
+  cargo build --locked --profile $CargoProfile -j $Jobs -p castor-app -p castor-launcher
   Write-Host ("cargo build: {0:n0} s" -f $sw.Elapsed.TotalSeconds)
 }
 
@@ -161,10 +172,11 @@ if ($Steps -contains 'stage') {
   $lic = Join-Path $Stage 'licenses'
   $fonts = Join-Path $Stage 'assets\fonts'
   New-Item -ItemType Directory -Force $bin, $lic, $fonts | Out-Null
-  foreach ($exe in 'castor.exe', 'castor-cli.exe', 'castor-mcp.exe') {
-    $p = Join-Path $BinDir $exe
+  # castor.exe = app + CLI + MCP server; castor-cli.exe = the tiny launcher (renamed).
+  foreach ($pair in @(@('castor.exe', 'castor.exe'), @('castor-cli-launcher.exe', 'castor-cli.exe'))) {
+    $p = Join-Path $BinDir $pair[0]
     if (-not (Test-Path $p)) { throw "missing $p (run the build step)" }
-    Copy-Item $p $Stage
+    Copy-Item $p (Join-Path $Stage $pair[1])
   }
   # FFmpeg: ffmpeg + ffprobe and the DLLs they share (no ffplay, headers, import libs, docs).
   Copy-Item (Join-Path $FfDir 'bin\ffmpeg.exe'), (Join-Path $FfDir 'bin\ffprobe.exe') $bin
@@ -198,8 +210,35 @@ if ($Steps -contains 'check') {
     $env:PATH = "$env:SystemRoot\System32;$env:SystemRoot;$env:SystemRoot\System32\Wbem"
     $env:CASTOR_HOME = Join-Path $work 'home'
     $cli = Join-Path $Stage 'castor-cli.exe'
+    $app = Join-Path $Stage 'castor.exe'
+    # castor-cli.exe is the launcher: it must find castor.exe next to it and pass stdio through.
     $n = (& $cli list | Measure-Object -Line).Lines
-    Write-Host "castor-cli list: $n lines"
+    Write-Host "castor-cli list (launcher): $n lines"
+    if ($n -lt 100) { throw "castor-cli list printed only $n lines" }
+    $n2 = (& $app cli list | Measure-Object -Line).Lines
+    Write-Host "castor cli list (direct, piped): $n2 lines"
+    if ($n2 -ne $n) { throw "castor cli list: $n2 lines, the launcher printed $n" }
+    # MCP server over stdio: initialize + tools/list, then EOF ends the server.
+    $mcpIn = @(
+      '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"castor-package-check","version":"1"}}}',
+      '{"jsonrpc":"2.0","method":"notifications/initialized"}',
+      '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
+    )
+    # Started the way MCP clients do (CreateProcess with pipes): PowerShell does not pipe stdin
+    # into GUI-subsystem programs, so `$mcpIn | & $app mcp` would test nothing.
+    $psi = [Diagnostics.ProcessStartInfo]::new($app, 'mcp')
+    $psi.UseShellExecute = $false; $psi.RedirectStandardInput = $true; $psi.RedirectStandardOutput = $true; $psi.RedirectStandardError = $true
+    $mp = [Diagnostics.Process]::Start($psi)
+    $errTask = $mp.StandardError.ReadToEndAsync()
+    $mcpIn | ForEach-Object { $mp.StandardInput.WriteLine($_) }
+    $mp.StandardInput.Close()
+    $mcpOut = $mp.StandardOutput.ReadToEnd() -split "`r?`n" | Where-Object { $_ }
+    if (-not $mp.WaitForExit(30000)) { $mp.Kill(); throw 'castor mcp did not exit at end of input' }
+    $null = $errTask.Result
+    $init = $mcpOut | ForEach-Object { try { $_ | ConvertFrom-Json } catch { } } | Where-Object { $_.id -eq 1 }
+    $list = $mcpOut | ForEach-Object { try { $_ | ConvertFrom-Json } catch { } } | Where-Object { $_.id -eq 2 }
+    if (-not $init.result.serverInfo) { throw "castor mcp: no initialize result. Output:`n$($mcpOut -join "`n")" }
+    Write-Host ("castor mcp: {0} {1}, protocol {2}, {3} MCP tools" -f $init.result.serverInfo.name, $init.result.serverInfo.version, $init.result.protocolVersion, @($list.result.tools).Count)
     & (Join-Path $Stage 'bin\ffmpeg.exe') -hide_banner -loglevel error -f lavfi -i 'sine=frequency=440:duration=2' -y (Join-Path $work 'tone.wav')
     & (Join-Path $Stage 'bin\ffprobe.exe') -hide_banner -loglevel error -show_entries format=duration -of csv=p=0 (Join-Path $work 'tone.wav')
     & (Join-Path $Stage 'bin\whisper-cli.exe') --help *> (Join-Path $work 'whisper-help.txt')
@@ -210,19 +249,34 @@ if ($Steps -contains 'check') {
     $pdf = Get-ChildItem (Join-Path $Root 'tests\fixtures') -Recurse -Filter *.pdf -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($pdf) { & $cli run pdf.compress $pdf.FullName --out (Join-Path $work 'out') }
     Get-ChildItem (Join-Path $work 'out') | ForEach-Object { '  out: {0} ({1:n0} B)' -f $_.Name, $_.Length } | Write-Host
+    # GUI start-up: time until the main window exists (isolated profile = its own instance).
+    foreach ($i in 1..3) {
+      $sw = [Diagnostics.Stopwatch]::StartNew()
+      $p = Start-Process $app -PassThru
+      while (-not $p.HasExited -and $p.MainWindowHandle -eq 0 -and $sw.Elapsed.TotalSeconds -lt 30) { Start-Sleep -Milliseconds 20; $p.Refresh() }
+      $t = $sw.Elapsed.TotalSeconds
+      if ($p.HasExited) { throw "castor.exe exited during start-up (code $($p.ExitCode)); see $work\home" }
+      if ($p.MainWindowHandle -eq 0) { Write-Warning 'castor.exe: no main window after 30 s' }
+      else { Write-Host ("start-up {0}: main window after {1:n2} s" -f $i, $t) }
+      Start-Sleep 2
+      $p | Stop-Process -Force; $p.WaitForExit(10000) | Out-Null
+    }
   } finally { $env:PATH = $oldPath; $env:CASTOR_HOME = $oldHome }
 
   $dumpbin = Find-Dumpbin
   if ($dumpbin) {
-    $system = '^(KERNEL32|USER32|GDI32|ADVAPI32|SHELL32|OLE32|OLEAUT32|COMDLG32|COMCTL32|SHLWAPI|WS2_32|CRYPT32|BCRYPT|bcryptprimitives|NTDLL|ntdll|SECUR32|IPHLPAPI|USERENV|WINMM|DWMAPI|UXTHEME|IMM32|VERSION|SETUPAPI|POWRPROF|PROPSYS|D3D11|D3D12|DXGI|D3DCOMPILER_47|dcomp|DWrite|d2d1|WINDOWSCODECS|MSIMG32|WININET|WINHTTP|NCRYPT|Normaliz|RPCRT4|CFGMGR32|HID|MF|MFPlat|MFReadWrite|AVRT|PSAPI|DBGHELP|WTSAPI32|WINSPOOL\.DRV|COMBASE|api-ms-win-.*|ext-ms-.*|CRYPTBASE|MSVCRT|ucrtbase|OPENGL32|VCRUNTIME140|VCRUNTIME140_1|MSVCP140|SHCORE|WINTRUST|NETAPI32|MPR|DNSAPI|CREDUI|MSCMS|HHCTRL\.OCX|WLDAP32|DXCORE|TaskSchd|urlmon|ntdll)\.dll$'
+    $system = '^(KERNEL32|USER32|GDI32|ADVAPI32|SHELL32|OLE32|OLEAUT32|COMDLG32|COMCTL32|SHLWAPI|WS2_32|CRYPT32|BCRYPT|bcryptprimitives|NTDLL|ntdll|SECUR32|IPHLPAPI|USERENV|WINMM|DWMAPI|UXTHEME|IMM32|VERSION|SETUPAPI|POWRPROF|PROPSYS|D3D11|D3D12|DXGI|D3DCOMPILER_47|dcomp|DWrite|d2d1|WINDOWSCODECS|MSIMG32|WININET|WINHTTP|NCRYPT|Normaliz|RPCRT4|CFGMGR32|HID|MF|MFPlat|MFReadWrite|AVRT|PSAPI|DBGHELP|WTSAPI32|WINSPOOL\.DRV|COMBASE|api-ms-win-.*|ext-ms-.*|CRYPTBASE|MSVCRT|ucrtbase|OPENGL32|VCRUNTIME140|VCRUNTIME140_1|MSVCP140|SHCORE|WINTRUST|NETAPI32|MPR|DNSAPI|CREDUI|MSCMS|HHCTRL\.OCX|WLDAP32|DXCORE|TaskSchd|urlmon|ntdll|USP10|AVICAP32|UIAutomationCore|icuuc|gdiplus|DirectML|MSVCP140_1)\.dll$'
     foreach ($f in (Get-ChildItem $Stage -Recurse -Include *.exe, *.dll)) {
       $deps = & $dumpbin /nologo /dependents $f.FullName | Where-Object { $_ -match '^\s+\S+\.(dll|DLL|ocx|drv)\s*$' } | ForEach-Object { $_.Trim() }
       $local = Get-ChildItem (Split-Path $f.FullName) -File | ForEach-Object Name
       $missing = $deps | Where-Object { ($_ -notmatch $system) -and ($local -notcontains $_) }
-      $crt = $deps | Where-Object { $_ -match '^(VCRUNTIME140|VCRUNTIME140_1|MSVCP140)\.dll$' }
+      $crt = $deps | Where-Object { $_ -match '^(VCRUNTIME140|VCRUNTIME140_1|MSVCP140|MSVCP140_1)\.dll$' }
       if ($missing) { Write-Warning "$($f.Name): not found next to it and not a system DLL: $($missing -join ', ')" }
       if ($crt -and $f.Directory.FullName -eq $Stage) { Write-Host "$($f.Name) needs the VC++ runtime: $($crt -join ', ')" }
-      if ($deps -match '(?i)onnxruntime|DirectML') { Write-Warning "$($f.Name) imports ONNX Runtime / DirectML DLLs" }
+      if ($deps -match '(?i)onnxruntime') { Write-Warning "$($f.Name) imports an ONNX Runtime DLL (should be static)" }
+      # pyke's static ONNX Runtime is the DirectML build: DirectML.dll comes from System32
+      # (Windows 10 2004+ / 11), like icuuc.dll (Windows 10 1903+).
+      if ($deps -match '(?i)^DirectML\.dll$') { Write-Host "$($f.Name) imports System32\DirectML.dll (Windows 10 2004 or later)" }
     }
   } else { Write-Warning 'dumpbin not found: DLL import check skipped' }
 }
@@ -238,7 +292,7 @@ if ($Steps -contains 'pack') {
     '--mainExe', 'castor.exe', '--packTitle', $Pins.APP_TITLE, '--packAuthors', $Pins.APP_AUTHORS,
     '--icon', (Join-Path $Root 'assets\brand\castor.ico'),
     '--splashImage', (Join-Path $Root 'assets\brand\png\castor-icon-256.png'),
-    '--channel', $Channel, '--outputDir', $Releases,
+    '--runtime', 'win-x64', '--channel', $Channel, '--outputDir', $Releases,
     '--shortcuts', 'StartMenuRoot',
     # The app needs the VC++ 2015-2022 runtime (Rust MSVC binaries, MuPDF); Setup installs it if missing.
     '--framework', 'vcredist143-x64',

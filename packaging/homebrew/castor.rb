@@ -12,7 +12,7 @@ cask "castor" do
 
   url "https://github.com/basedpolymer/castor/releases/download/v#{version}/Castor-#{version}-macos-#{arch}.dmg"
   name "Castor"
-  desc "Offline toolbox of ~100 file tools (PDF, image, video, audio, create, files)"
+  desc "Offline toolbox of 110 file tools (PDF, image, video, audio, create, files)"
   homepage "https://basedpolymer.eu/castor"
 
   livecheck do
@@ -24,8 +24,11 @@ cask "castor" do
   depends_on macos: ">= :big_sur"
 
   app "Castor.app"
+  # `castor-cli` is a small launcher that runs the app binary as `castor cli …`. MCP clients
+  # call the app binary itself: /Applications/Castor.app/Contents/MacOS/castor mcp
+  # `binary` installs a symlink: the launcher must resolve it to find `castor` (checked by
+  # packaging/macos/build.sh; not the case in 0.1.0 builds of 2026-11-06).
   binary "#{appdir}/Castor.app/Contents/MacOS/castor-cli"
-  binary "#{appdir}/Castor.app/Contents/MacOS/castor-mcp"
 
   zap trash: [
     "~/Library/Application Support/eu.basedpolymer.Castor",

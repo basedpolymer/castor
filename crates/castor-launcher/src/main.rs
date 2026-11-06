@@ -9,7 +9,9 @@ use std::path::PathBuf;
 use std::process::{Command, ExitCode};
 
 fn app_binary() -> Option<PathBuf> {
+    // Resolve symlinks first: Homebrew links `castor-cli` from its bin folder into the app bundle.
     let exe = std::env::current_exe().ok()?;
+    let exe = std::fs::canonicalize(&exe).unwrap_or(exe);
     let dir = exe.parent()?;
     let name = if cfg!(windows) { "castor.exe" } else { "castor" };
     let candidate = dir.join(name);
