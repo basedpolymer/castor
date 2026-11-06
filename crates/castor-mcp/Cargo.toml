@@ -9,7 +9,19 @@ license.workspace = true
 name = "castor-mcp"
 path = "src/main.rs"
 
+[lib]
+name = "castor_mcp"
+path = "src/lib.rs"
+
 [dependencies]
 anyhow.workspace = true
 castor-core.workspace = true
 castor-tools.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+rmcp = { version = "3.9", default-features = false, features = ["server", "macros", "transport-io"] }
+tracing-subscriber.workspace = true
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "io-std", "sync"] }
+
+[dev-dependencies]
+tempfile.workspace = true

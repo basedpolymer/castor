@@ -7,5 +7,34 @@ license.workspace = true
 [dependencies]
 anyhow.workspace = true
 castor-core.workspace = true
+engine-pdf.workspace = true
+engine-media.workspace = true
 sha2.workspace = true
 hex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+time.workspace = true
+rayon.workspace = true
+regex = "1"
+image.workspace = true
+ab_glyph = "0.2"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+blake3 = "1.8"
+# Archives.
+zip = { version = "2.6", default-features = false, features = ["aes-crypto", "deflate", "deflate64", "bzip2", "zstd", "time", "lzma"] }
+sevenz-rust2 = { version = "0.24", default-features = false, features = ["aes256", "bzip2", "compress", "ppmd", "util", "zstd", "deflate"] }
+tar = "0.4"
+flate2 = "1"
+zstd = "0.13"
+bzip2 = "0.6"
+lzma-rust2 = { version = "0.23", default-features = false, features = ["std", "xz", "encoder"] }
+# Metadata and content detection.
+kamadak-exif = "0.6"
+lofty = "0.25"
+infer.workspace = true
+file-format = { version = "0.29", default-features = false, features = ["reader"] }
+# Magika runs on tract (pure Rust), like engine-ml's fallback: no ONNX Runtime version clash.
+tract-onnx = "0.23"
+
+[dev-dependencies]
+tempfile.workspace = true

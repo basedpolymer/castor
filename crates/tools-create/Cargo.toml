@@ -8,4 +8,28 @@ license.workspace = true
 anyhow.workspace = true
 castor-core.workspace = true
 engine-media.workspace = true
-engine-pdf.workspace = true
+typst = "0.15.1"
+typst-pdf = "0.15.1"
+typst-render = "0.15.1"
+typst-svg = "0.15.1"
+typst-layout = "0.15.1"
+resvg = "0.47"
+qrcode = { version = "0.14", default-features = false }
+rqrr = "0.11"
+csv = "1"
+ttf2woff2 = { version = "0.14", default-features = false }
+wuff = "0.2"
+ttf-parser = "0.25"
+flate2 = "1"
+tungstenite = { version = "0.29", default-features = false, features = ["handshake"] }
+rxing = { version = "0.9", default-features = false, features = ["encoders", "decoders", "oned", "datamatrix", "pdf417", "qrcode", "aztec", "encoding_rs"] }
+image.workspace = true
+rayon.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+parking_lot.workspace = true
+time.workspace = true
+tempfile.workspace = true
+
+[dev-dependencies]
+tools-files.workspace = true

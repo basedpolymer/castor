@@ -22,3 +22,726 @@ files.checksum.opt.output.list:
 files.checksum.opt.output.each:
   en: One file per file
   fr: Un fichier par fichier
+
+# ------------------------------------------------------------------ shared
+files.err.no_files:
+  en: No files to work on.
+  fr: Aucun fichier à traiter.
+files.err.exists:
+  en: "“%{name}” already exists; nothing was overwritten."
+  fr: "« %{name} » existe déjà ; rien n’a été écrasé."
+files.err.duplicate_target:
+  en: "Two files would both be named “%{name}”. Add a number ({n}) to the pattern."
+  fr: "Deux fichiers s’appelleraient « %{name} ». Ajoutez un numéro ({n}) au modèle."
+files.err.gone:
+  en: moved or deleted since
+  fr: déplacé ou supprimé depuis
+files.err.occupied:
+  en: the old name is taken again
+  fr: l’ancien nom est de nouveau pris
+files.err.undo_partial:
+  en: "Some files could not be put back:"
+  fr: "Certains fichiers n’ont pas pu être remis en place :"
+files.preview.more:
+  en: "… and %{count} more"
+  fr: "… et %{count} de plus"
+files.col.file:
+  en: File
+  fr: Fichier
+
+# ------------------------------------------------------------------ Rename
+files.rename.name:
+  en: Batch rename
+  fr: Renommer en lot
+files.rename.desc:
+  en: Rename many files at once with patterns, numbers, dates and find & replace — previewed, undoable.
+  fr: Renommez des centaines de fichiers d’un coup avec modèles, numéros, dates et rechercher-remplacer — aperçu et annulation.
+files.rename.verb:
+  en: Rename
+  fr: Renommer
+files.rename.keywords:
+  en: rename batch bulk names numbering sequence regex replace exif date case
+  fr: renommer lot masse noms numérotation séquence regex remplacer exif date casse
+files.rename.caption:
+  en: "Table 1 — %{changed} of %{total} names change"
+  fr: "Tableau 1 — %{changed} noms sur %{total} changent"
+files.rename.col.before:
+  en: Now
+  fr: Actuel
+files.rename.col.after:
+  en: After
+  fr: Après
+files.rename.unchanged:
+  en: unchanged
+  fr: inchangé
+files.rename.opt.pattern:
+  en: New name
+  fr: Nouveau nom
+files.rename.opt.pattern.help:
+  en: "Tokens: {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. The extension is added for you."
+  fr: "Jetons : {name} {n} {n:03} {date:%Y-%m-%d} {created} {exif.date} {exif.camera} {parent} {ext} {size}. L’extension est ajoutée automatiquement."
+files.rename.opt.find:
+  en: Find
+  fr: Rechercher
+files.rename.opt.replace:
+  en: Replace with
+  fr: Remplacer par
+files.rename.opt.replace.help:
+  en: "With regular expressions, $1 inserts the first group."
+  fr: "Avec les expressions régulières, $1 insère le premier groupe."
+files.rename.opt.regex:
+  en: Regular expression
+  fr: Expression régulière
+files.rename.opt.match_case:
+  en: Match case
+  fr: Respecter la casse
+files.rename.opt.case:
+  en: Case
+  fr: Casse
+files.rename.opt.case.keep:
+  en: Keep
+  fr: Inchangée
+files.rename.opt.case.lower:
+  en: lowercase
+  fr: minuscules
+files.rename.opt.case.upper:
+  en: UPPERCASE
+  fr: MAJUSCULES
+files.rename.opt.case.title:
+  en: Title Case
+  fr: Première Lettre En Majuscule
+files.rename.opt.case.sentence:
+  en: Sentence case
+  fr: Comme une phrase
+files.rename.opt.case.kebab:
+  en: kebab-case
+  fr: kebab-case
+files.rename.opt.case.snake:
+  en: snake_case
+  fr: snake_case
+files.rename.opt.remove:
+  en: Remove characters
+  fr: Supprimer les caractères
+files.rename.opt.remove.help:
+  en: "Every character typed here is removed, e.g. #!()"
+  fr: "Chaque caractère saisi ici est supprimé, p. ex. #!()"
+files.rename.opt.ascii:
+  en: Replace accents (é → e)
+  fr: Remplacer les accents (é → e)
+files.rename.opt.extension:
+  en: Extension
+  fr: Extension
+files.rename.opt.extension.keep:
+  en: Keep
+  fr: Inchangée
+files.rename.opt.extension.lower:
+  en: lowercase
+  fr: minuscules
+files.rename.opt.extension.upper:
+  en: UPPERCASE
+  fr: MAJUSCULES
+files.rename.opt.extension.change:
+  en: Change to…
+  fr: Remplacer par…
+files.rename.opt.extension.remove:
+  en: Remove
+  fr: Supprimer
+files.rename.opt.new_extension:
+  en: New extension
+  fr: Nouvelle extension
+files.rename.opt.order:
+  en: Numbering order
+  fr: Ordre de numérotation
+files.rename.opt.order.natural:
+  en: By name (2 before 10)
+  fr: Par nom (2 avant 10)
+files.rename.opt.order.modified:
+  en: By date modified
+  fr: Par date de modification
+files.rename.opt.order.created:
+  en: By date created
+  fr: Par date de création
+files.rename.opt.order.exif:
+  en: By date taken
+  fr: Par date de prise de vue
+files.rename.opt.order.size:
+  en: By size
+  fr: Par taille
+files.rename.opt.start:
+  en: First number
+  fr: Premier numéro
+files.rename.opt.step:
+  en: Step
+  fr: Pas
+files.rename.opt.recursive:
+  en: Include subfolders
+  fr: Inclure les sous-dossiers
+files.rename.err.regex:
+  en: Invalid regular expression
+  fr: Expression régulière invalide
+files.rename.err.brace:
+  en: "A “{” has no matching “}” in the pattern."
+  fr: "Une « { » n’a pas de « } » correspondante dans le modèle."
+files.rename.err.token:
+  en: "Unknown token {%{token}}."
+  fr: "Jeton inconnu {%{token}}."
+
+# ------------------------------------------------------------------ Archive
+files.archive.name:
+  en: Create archive
+  fr: Créer une archive
+files.archive.desc:
+  en: ZIP, 7z or TAR archives, with an optional AES-256 password, exclusions and split volumes.
+  fr: Archives ZIP, 7z ou TAR, avec mot de passe AES-256 en option, exclusions et découpage en volumes.
+files.archive.verb:
+  en: Create archive
+  fr: Créer l’archive
+files.archive.keywords:
+  en: zip compress archive 7z tar gz zstd password encrypt split backup folder
+  fr: zip compresser archive 7z tar gz zstd mot de passe chiffrer découper sauvegarde dossier
+files.archive.note:
+  en: "%{files} files · %{before} → %{after} (%{change})"
+  fr: "%{files} fichiers · %{before} → %{after} (%{change})"
+files.archive.default_name:
+  en: archive
+  fr: archive
+files.archive.opt.format:
+  en: Format
+  fr: Format
+files.archive.opt.level:
+  en: Compression
+  fr: Compression
+files.archive.opt.level.store:
+  en: None
+  fr: Aucune
+files.archive.opt.level.fast:
+  en: Fast
+  fr: Rapide
+files.archive.opt.level.normal:
+  en: Normal
+  fr: Normale
+files.archive.opt.level.max:
+  en: Maximum
+  fr: Maximale
+files.archive.opt.zstd:
+  en: Zstandard inside the ZIP
+  fr: Zstandard dans le ZIP
+files.archive.opt.zstd.help:
+  en: Faster and smaller, but older unzip tools (and Windows Explorer) cannot open it.
+  fr: Plus rapide et plus petit, mais les anciens outils (et l’Explorateur Windows) ne savent pas l’ouvrir.
+files.archive.opt.password.help:
+  en: "AES-256 (ZIP and 7z; 7z also hides the file names). Windows Explorer cannot open AES ZIPs: use 7-Zip or Castor."
+  fr: "AES-256 (ZIP et 7z ; le 7z masque aussi les noms). L’Explorateur Windows n’ouvre pas les ZIP AES : utilisez 7-Zip ou Castor."
+files.archive.opt.name:
+  en: Archive name
+  fr: Nom de l’archive
+files.archive.opt.name.help:
+  en: Empty = the folder’s name.
+  fr: Vide = le nom du dossier.
+files.archive.opt.each:
+  en: One archive per item
+  fr: Une archive par élément
+files.archive.opt.exclude:
+  en: Leave out
+  fr: Exclure
+files.archive.opt.exclude.help:
+  en: "Name patterns separated by commas: *.tmp, node_modules"
+  fr: "Motifs de noms séparés par des virgules : *.tmp, node_modules"
+files.archive.opt.split_mb:
+  en: Split into parts of
+  fr: Découper en parties de
+files.archive.opt.split_mb.help:
+  en: 0 = one file. Parts are named .001, .002… and open in 7-Zip or Castor.
+  fr: 0 = un seul fichier. Les parties s’appellent .001, .002… et s’ouvrent avec 7-Zip ou Castor.
+files.archive.err.password_format:
+  en: Passwords work with ZIP and 7z only.
+  fr: Les mots de passe ne fonctionnent qu’avec ZIP et 7z.
+files.archive.err.empty:
+  en: Nothing to archive (everything was excluded or the folders are empty).
+  fr: Rien à archiver (tout est exclu ou les dossiers sont vides).
+
+# ------------------------------------------------------------------ Extract
+files.extract.name:
+  en: Extract archive
+  fr: Extraire une archive
+files.extract.desc:
+  en: Open ZIP, 7z and TAR archives (also password-protected and split), safely, into a folder.
+  fr: Ouvrez les archives ZIP, 7z et TAR (même protégées ou découpées), en toute sécurité, dans un dossier.
+files.extract.verb:
+  en: Extract
+  fr: Extraire
+files.extract.keywords:
+  en: unzip extract decompress zip 7z tar gz bz2 xz zstd open archive uncompress
+  fr: dézipper extraire décompresser zip 7z tar gz bz2 xz zstd ouvrir archive
+files.extract.note:
+  en: "%{count} files · %{size}"
+  fr: "%{count} fichiers · %{size}"
+files.extract.opt.password.help:
+  en: Only for protected archives. Never kept in history.
+  fr: Seulement pour les archives protégées. Jamais conservé dans l’historique.
+files.extract.opt.smart_folder:
+  en: No folder inside a folder
+  fr: Pas de dossier dans un dossier
+files.extract.opt.smart_folder.help:
+  en: When the archive holds a single folder, use it directly.
+  fr: Si l’archive contient un seul dossier, l’utiliser directement.
+files.extract.opt.keep_dates:
+  en: Keep the files’ dates
+  fr: Conserver les dates des fichiers
+files.extract.err.no_archive:
+  en: Drop an archive (ZIP, 7z, TAR…).
+  fr: Déposez une archive (ZIP, 7z, TAR…).
+files.extract.err.unknown:
+  en: This is not an archive Castor can open (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST).
+  fr: Ce n’est pas une archive que Castor sait ouvrir (ZIP, 7z, TAR, GZ, BZ2, XZ, ZST).
+files.extract.err.rar:
+  en: RAR archives are not supported (no free RAR decoder is compatible with Castor’s GPL licence). 7-Zip can open them.
+  fr: Les archives RAR ne sont pas prises en charge (aucun décodeur RAR libre n’est compatible avec la licence GPL de Castor). 7-Zip sait les ouvrir.
+files.extract.err.corrupt:
+  en: The archive is damaged or incomplete
+  fr: L’archive est endommagée ou incomplète
+files.extract.err.empty:
+  en: The archive is empty (0 bytes).
+  fr: L’archive est vide (0 octet).
+files.extract.err.password_needed:
+  en: This archive is protected — enter its password.
+  fr: Cette archive est protégée — saisissez son mot de passe.
+files.extract.err.password_wrong:
+  en: Wrong password.
+  fr: Mot de passe incorrect.
+
+# ------------------------------------------------------------------ Dates
+files.dates.name:
+  en: Change file dates
+  fr: Modifier les dates
+files.dates.desc:
+  en: Set created and modified dates to the photo’s capture date, to a date of your choice, or shift them.
+  fr: Réglez les dates de création et de modification sur la prise de vue, sur une date choisie, ou décalez-les.
+files.dates.verb:
+  en: Change dates
+  fr: Modifier les dates
+files.dates.keywords:
+  en: date timestamp created modified exif touch time shift timezone photos
+  fr: date horodatage création modification exif heure décaler fuseau photos
+files.dates.caption:
+  en: "Table 1 — new dates for %{count} files"
+  fr: "Tableau 1 — nouvelles dates de %{count} fichiers"
+files.dates.col.modified:
+  en: Modified now
+  fr: Modifié (actuel)
+files.dates.col.new_modified:
+  en: Modified after
+  fr: Modifié (après)
+files.dates.col.new_created:
+  en: Created after
+  fr: Créé (après)
+files.dates.no_date:
+  en: no capture date
+  fr: pas de date de prise de vue
+files.dates.skipped:
+  en: "%{count} without a date, left as they were"
+  fr: "%{count} sans date, laissés tels quels"
+files.dates.failed:
+  en: "%{count} could not be changed"
+  fr: "%{count} n’ont pas pu être modifiés"
+files.dates.opt.mode:
+  en: New date
+  fr: Nouvelle date
+files.dates.opt.mode.capture:
+  en: Date taken (EXIF / video)
+  fr: Date de prise de vue (EXIF / vidéo)
+files.dates.opt.mode.set:
+  en: A date I choose
+  fr: Une date choisie
+files.dates.opt.mode.shift:
+  en: Shift by…
+  fr: Décaler de…
+files.dates.opt.mode.modified_to_created:
+  en: Modified = created
+  fr: Modification = création
+files.dates.opt.mode.created_to_modified:
+  en: Created = modified
+  fr: Création = modification
+files.dates.opt.date:
+  en: Date and time
+  fr: Date et heure
+files.dates.opt.date.help:
+  en: "e.g. 2026-11-06 or 2026-11-06 19:30 (local time)"
+  fr: "p. ex. 2026-11-06 ou 2026-11-06 19:30 (heure locale)"
+files.dates.opt.shift_days:
+  en: Days
+  fr: Jours
+files.dates.opt.shift_hours:
+  en: Hours
+  fr: Heures
+files.dates.opt.shift_hours.help:
+  en: Handy for a camera left on the wrong time zone.
+  fr: Pratique pour un appareil réglé sur le mauvais fuseau horaire.
+files.dates.opt.shift_minutes:
+  en: Minutes
+  fr: Minutes
+files.dates.opt.which:
+  en: Dates to change
+  fr: Dates à modifier
+files.dates.opt.which.both:
+  en: Created and modified
+  fr: Création et modification
+files.dates.opt.which.modified:
+  en: Modified only
+  fr: Modification seulement
+files.dates.opt.which.created:
+  en: Created only
+  fr: Création seulement
+files.dates.opt.recursive:
+  en: Include subfolders
+  fr: Inclure les sous-dossiers
+files.dates.err.date:
+  en: "“%{value}” is not a date. Use 2026-11-06 or 2026-11-06 19:30."
+  fr: "« %{value} » n’est pas une date. Utilisez 2026-11-06 ou 2026-11-06 19:30."
+files.dates.err.zero:
+  en: Set a shift (days, hours or minutes).
+  fr: Indiquez un décalage (jours, heures ou minutes).
+files.dates.err.nothing:
+  en: None of these files has a date to apply.
+  fr: Aucun de ces fichiers n’a de date à appliquer.
+
+# ------------------------------------------------------------------ Sort
+files.sort.name:
+  en: Sort & route
+  fr: Trier et ranger
+files.sort.desc:
+  en: Tidy files into folders by type, year, month, camera, size or your own rules — every move undoable.
+  fr: Rangez les fichiers dans des dossiers par type, année, mois, appareil, taille ou vos règles — chaque déplacement s’annule.
+files.sort.verb:
+  en: Sort
+  fr: Ranger
+files.sort.keywords:
+  en: sort organize folders route tidy downloads photos by date camera rules clean
+  fr: trier ranger organiser dossiers téléchargements photos par date appareil règles nettoyer
+files.sort.caption:
+  en: "Table 1 — %{count} files into %{folders} folders"
+  fr: "Tableau 1 — %{count} fichiers dans %{folders} dossiers"
+files.sort.note:
+  en: "%{count} files moved"
+  fr: "%{count} fichiers déplacés"
+files.sort.col.folder:
+  en: Folder
+  fr: Dossier
+files.sort.col.files:
+  en: Files
+  fr: Fichiers
+files.sort.col.size:
+  en: Size
+  fr: Taille
+files.sort.folder.images:
+  en: Images
+  fr: Images
+files.sort.folder.videos:
+  en: Videos
+  fr: Vidéos
+files.sort.folder.audio:
+  en: Audio
+  fr: Audio
+files.sort.folder.documents:
+  en: Documents
+  fr: Documents
+files.sort.folder.archives:
+  en: Archives
+  fr: Archives
+files.sort.folder.fonts:
+  en: Fonts
+  fr: Polices
+files.sort.folder.subtitles:
+  en: Subtitles
+  fr: Sous-titres
+files.sort.folder.other:
+  en: Other
+  fr: Autres
+files.sort.folder.no_camera:
+  en: Unknown camera
+  fr: Appareil inconnu
+files.sort.folder.no_extension:
+  en: No extension
+  fr: Sans extension
+files.sort.folder.small:
+  en: Small (under 1 MB)
+  fr: Petits (moins de 1 Mo)
+files.sort.folder.medium:
+  en: Medium (1–100 MB)
+  fr: Moyens (1 à 100 Mo)
+files.sort.folder.large:
+  en: Large (over 100 MB)
+  fr: Gros (plus de 100 Mo)
+files.sort.opt.by:
+  en: Sort by
+  fr: Trier par
+files.sort.opt.by.type:
+  en: Type
+  fr: Type
+files.sort.opt.by.year:
+  en: Year
+  fr: Année
+files.sort.opt.by.month:
+  en: Month
+  fr: Mois
+files.sort.opt.by.day:
+  en: Day
+  fr: Jour
+files.sort.opt.by.camera:
+  en: Camera
+  fr: Appareil photo
+files.sort.opt.by.extension:
+  en: Extension
+  fr: Extension
+files.sort.opt.by.size:
+  en: Size
+  fr: Taille
+files.sort.opt.by.rules:
+  en: My rules
+  fr: Mes règles
+files.sort.opt.date_source:
+  en: Date
+  fr: Date
+files.sort.opt.date_source.capture:
+  en: Date taken (else modified)
+  fr: Prise de vue (sinon modification)
+files.sort.opt.date_source.modified:
+  en: Modified
+  fr: Modification
+files.sort.opt.date_source.created:
+  en: Created
+  fr: Création
+files.sort.opt.rules:
+  en: Rules
+  fr: Règles
+files.sort.opt.rules.help:
+  en: "One per line: patterns => folder. The first match wins. Tokens in folders: {year} {month} {ext} {type} {camera}."
+  fr: "Une par ligne : motifs => dossier. La première qui correspond s’applique. Jetons : {year} {month} {ext} {type} {camera}."
+files.sort.opt.destination:
+  en: Into folder
+  fr: Dans le dossier
+files.sort.opt.destination.help:
+  en: Empty = inside the folder you dropped.
+  fr: Vide = dans le dossier déposé.
+files.sort.opt.recursive:
+  en: Include subfolders
+  fr: Inclure les sous-dossiers
+files.sort.err.rule:
+  en: "Rule on line %{line} must look like: *.pdf => Documents"
+  fr: "La règle de la ligne %{line} doit ressembler à : *.pdf => Documents"
+files.sort.err.nothing:
+  en: Everything is already in place.
+  fr: Tout est déjà rangé.
+
+# ------------------------------------------------------------------ Duplicates
+files.duplicates.name:
+  en: Find duplicates
+  fr: Trouver les doublons
+files.duplicates.desc:
+  en: Find identical files byte for byte, see how much space they waste, set the copies aside — never deleted.
+  fr: Trouvez les fichiers identiques octet par octet, voyez la place perdue, mettez les copies de côté — jamais supprimées.
+files.duplicates.verb:
+  en: Find duplicates
+  fr: Chercher
+files.duplicates.keywords:
+  en: duplicates dedupe same files copies clean up free space hash identical
+  fr: doublons dédoublonner copies identiques nettoyer libérer espace empreinte
+files.duplicates.caption:
+  en: "Table 1 — %{groups} groups of identical files, %{wasted} in extra copies"
+  fr: "Tableau 1 — %{groups} groupes de fichiers identiques, %{wasted} en copies"
+files.duplicates.note:
+  en: "%{groups} groups · %{copies} extra copies · %{wasted}"
+  fr: "%{groups} groupes · %{copies} copies en trop · %{wasted}"
+files.duplicates.none:
+  en: No duplicates. Tidy already.
+  fr: Aucun doublon. Déjà bien rangé.
+files.duplicates.folder:
+  en: Duplicates
+  fr: Doublons
+files.duplicates.col.keep:
+  en: Kept
+  fr: Conservé
+files.duplicates.col.copy:
+  en: Copy
+  fr: Copie
+files.duplicates.msg.candidates:
+  en: "%{count} files share a size; comparing contents…"
+  fr: "%{count} fichiers ont la même taille ; comparaison du contenu…"
+files.duplicates.opt.action:
+  en: Then
+  fr: Ensuite
+files.duplicates.opt.action.report:
+  en: Report only
+  fr: Rapport seulement
+files.duplicates.opt.action.move:
+  en: Move copies to a “Duplicates” folder
+  fr: Déplacer les copies dans « Doublons »
+files.duplicates.opt.keep:
+  en: Keep
+  fr: Conserver
+files.duplicates.opt.keep.oldest:
+  en: The oldest
+  fr: Le plus ancien
+files.duplicates.opt.keep.newest:
+  en: The newest
+  fr: Le plus récent
+files.duplicates.opt.keep.shortest:
+  en: The shortest path
+  fr: Le chemin le plus court
+files.duplicates.opt.keep.first:
+  en: First by name
+  fr: Le premier par nom
+files.duplicates.opt.report:
+  en: Report
+  fr: Rapport
+files.duplicates.opt.min_size:
+  en: Ignore files under
+  fr: Ignorer les fichiers de moins de
+files.duplicates.opt.skip_empty:
+  en: Ignore empty files
+  fr: Ignorer les fichiers vides
+
+# ------------------------------------------------------------------ Identify
+files.identify.name:
+  en: What is this file?
+  fr: Quel est ce fichier ?
+files.identify.desc:
+  en: Find the real type of files with no or wrong extensions — 200+ types, with confidence — and fix them.
+  fr: Trouvez le vrai type des fichiers sans extension ou mal nommés — plus de 200 types, avec indice de confiance — et corrigez-les.
+files.identify.verb:
+  en: Identify
+  fr: Identifier
+files.identify.keywords:
+  en: identify file type what is this file unknown extension wrong magic trid mime detect format
+  fr: identifier type fichier inconnu extension erronée magique trid mime détecter format
+files.identify.caption:
+  en: "Table 1 — %{count} files"
+  fr: "Tableau 1 — %{count} fichiers"
+files.identify.col.type:
+  en: Really is
+  fr: Est en réalité
+files.identify.col.confidence:
+  en: Confidence
+  fr: Confiance
+files.identify.col.extension:
+  en: Extension
+  fr: Extension
+files.identify.note:
+  en: "%{count} files · %{mismatched} with a missing or wrong extension"
+  fr: "%{count} fichiers · %{mismatched} sans extension ou avec une mauvaise"
+files.identify.opt.report:
+  en: Report
+  fr: Rapport
+files.identify.opt.report.none:
+  en: None
+  fr: Aucun
+files.identify.opt.only_mismatches:
+  en: Report only the mismatches
+  fr: Ne lister que les incohérences
+files.identify.opt.fix_extensions:
+  en: Fix the extensions
+  fr: Corriger les extensions
+files.identify.opt.fix_extensions.help:
+  en: Renames binary files whose extension is missing or wrong (undoable). Text files keep theirs.
+  fr: Renomme les fichiers binaires sans extension ou avec une mauvaise (annulable). Les fichiers texte gardent la leur.
+files.identify.opt.min_confidence:
+  en: Minimum confidence to rename
+  fr: Confiance minimale pour renommer
+files.identify.err.nothing:
+  en: Nothing to report; choose a report format or “Fix the extensions”.
+  fr: Rien à produire ; choisissez un format de rapport ou « Corriger les extensions ».
+files.archive.opt.password:
+  en: Password
+  fr: Mot de passe
+files.extract.opt.password:
+  en: Password
+  fr: Mot de passe
+
+# ------------------------------------------------------------------ Metadata
+files.metadata.name:
+  en: Metadata
+  fr: Métadonnées
+files.metadata.desc:
+  en: See, edit or remove the hidden information in PDFs, photos, music and videos.
+  fr: Voyez, modifiez ou supprimez les informations cachées des PDF, photos, musiques et vidéos.
+files.metadata.verb:
+  en: Go
+  fr: Lancer
+files.metadata.keywords:
+  en: metadata tags exif id3 properties author title strip privacy gps xmp
+  fr: métadonnées tags exif id3 propriétés auteur titre supprimer vie privée gps xmp
+files.metadata.caption:
+  en: "Table 1 — metadata of %{name}"
+  fr: "Tableau 1 — métadonnées de %{name}"
+files.metadata.col.field:
+  en: Field
+  fr: Champ
+files.metadata.col.value:
+  en: Value
+  fr: Valeur
+files.metadata.fields:
+  en: "%{count} fields"
+  fr: "%{count} champs"
+files.metadata.stripped:
+  en: "%{before} fields → %{after}"
+  fr: "%{before} champs → %{after}"
+files.metadata.opt.action:
+  en: Action
+  fr: Action
+files.metadata.opt.action.view:
+  en: View (report)
+  fr: Voir (rapport)
+files.metadata.opt.action.edit:
+  en: Edit
+  fr: Modifier
+files.metadata.opt.action.strip:
+  en: Remove all
+  fr: Tout supprimer
+files.metadata.opt.action.help:
+  en: Edits and removals write a copy; the original stays as it is.
+  fr: Les modifications et suppressions écrivent une copie ; l’original reste intact.
+files.metadata.opt.report:
+  en: Report
+  fr: Rapport
+files.metadata.opt.title:
+  en: Title
+  fr: Titre
+files.metadata.opt.author:
+  en: Author / artist
+  fr: Auteur / artiste
+files.metadata.opt.subject:
+  en: Subject / album
+  fr: Sujet / album
+files.metadata.opt.keywords:
+  en: Keywords / genre
+  fr: Mots-clés / genre
+files.metadata.opt.year:
+  en: Year / date
+  fr: Année / date
+files.metadata.opt.comment:
+  en: Comment
+  fr: Commentaire
+files.metadata.opt.copyright:
+  en: Copyright
+  fr: Droits d’auteur
+files.metadata.opt.title.help:
+  en: Empty fields are left as they are.
+  fr: Les champs vides restent inchangés.
+files.metadata.err.nothing:
+  en: Fill in at least one field to change.
+  fr: Remplissez au moins un champ à modifier.
+files.metadata.err.read:
+  en: Could not read the metadata
+  fr: Impossible de lire les métadonnées
+files.metadata.err.unsupported:
+  en: This format cannot hold tags.
+  fr: Ce format ne peut pas contenir de tags.
+files.metadata.err.image_edit:
+  en: To write titles and keywords into photos, use the SEO image tool; here photos can be viewed or stripped.
+  fr: Pour écrire titres et mots-clés dans des photos, utilisez l’outil Image SEO ; ici, les photos peuvent être consultées ou nettoyées.
+files.metadata.err.image_format:
+  en: Lossless removal works for JPEG, PNG and WebP; for other formats use “Strip metadata” in the image tools.
+  fr: La suppression sans perte fonctionne pour JPEG, PNG et WebP ; pour les autres formats, utilisez « Supprimer les métadonnées » des outils d’image.
+files.metadata.err.corrupt:
+  en: The file is damaged.
+  fr: Le fichier est endommagé.

@@ -1,0 +1,2328 @@
+_version: 2
+# Owner: Create tools (crates/tools-create), agent E. English first, French by the author.
+
+create.common.figure:
+  en: "Figure 1 / %{text}"
+  fr: "Figure 1 / %{text}"
+create.common.scans:
+  en: "scans ✓"
+  fr: "se scanne ✓"
+create.common.no_scan:
+  en: "does not scan ✗"
+  fr: "ne se scanne pas ✗"
+create.common.err.no_input_file:
+  en: "Choose a file first."
+  fr: "Choisissez d’abord un fichier."
+
+# ------------------------------------------------------------------ QR code
+create.qr-code.name:
+  en: QR code
+  fr: Code QR
+create.qr-code.desc:
+  en: Links, Wi-Fi, contacts and events as stylish QR codes and printable cards — always checked to scan.
+  fr: Liens, Wi-Fi, contacts et événements en codes QR soignés et cartes à imprimer — toujours vérifiés au scan.
+create.qr-code.verb:
+  en: Create QR code
+  fr: Créer le code QR
+create.qr-code.keywords:
+  en: qr qrcode code wifi vcard contact link url menu scan card poster
+  fr: qr code wifi contact carte lien adresse menu scanner affiche invitation
+create.qr-code.describe:
+  en: "Version %{version} · correction %{ec} · %{n} × %{n} modules"
+  fr: "Version %{version} · correction %{ec} · %{n} × %{n} modules"
+create.qr-code.opt.content:
+  en: Content
+  fr: Contenu
+create.qr-code.opt.content.url:
+  en: Link
+  fr: Lien
+create.qr-code.opt.content.text:
+  en: Text
+  fr: Texte
+create.qr-code.opt.content.wifi:
+  en: Wi-Fi
+  fr: Wi-Fi
+create.qr-code.opt.content.contact:
+  en: Contact (vCard)
+  fr: Contact (vCard)
+create.qr-code.opt.content.email:
+  en: E-mail
+  fr: E-mail
+create.qr-code.opt.content.phone:
+  en: Phone call
+  fr: Appel
+create.qr-code.opt.content.sms:
+  en: SMS
+  fr: SMS
+create.qr-code.opt.content.geo:
+  en: Location
+  fr: Lieu
+create.qr-code.opt.content.event:
+  en: Calendar event
+  fr: Événement
+create.qr-code.opt.url:
+  en: Link
+  fr: Lien
+create.qr-code.opt.url.help:
+  en: "“https://” is added when you leave it out."
+  fr: "« https:// » est ajouté s’il manque."
+create.qr-code.opt.text:
+  en: Text
+  fr: Texte
+create.qr-code.opt.ssid:
+  en: Network name
+  fr: Nom du réseau
+create.qr-code.opt.wifi_password:
+  en: Wi-Fi password
+  fr: Mot de passe Wi-Fi
+create.qr-code.opt.wifi_password.help:
+  en: Encoded in the code; never kept in history or chains.
+  fr: Encodé dans le code ; jamais conservé dans l’historique ni les chaînes.
+create.qr-code.opt.security:
+  en: Security
+  fr: Sécurité
+create.qr-code.opt.security.open:
+  en: Open (no password)
+  fr: Ouvert (sans mot de passe)
+create.qr-code.opt.hidden:
+  en: Hidden network
+  fr: Réseau masqué
+create.qr-code.opt.name:
+  en: Full name
+  fr: Nom complet
+create.qr-code.opt.org:
+  en: Organisation
+  fr: Organisation
+create.qr-code.opt.job_title:
+  en: Job title
+  fr: Fonction
+create.qr-code.opt.phone:
+  en: Phone
+  fr: Téléphone
+create.qr-code.opt.email:
+  en: E-mail
+  fr: E-mail
+create.qr-code.opt.website:
+  en: Website
+  fr: Site web
+create.qr-code.opt.address:
+  en: Address
+  fr: Adresse
+create.qr-code.opt.subject:
+  en: Subject
+  fr: Objet
+create.qr-code.opt.message:
+  en: Message / note
+  fr: Message / note
+create.qr-code.opt.latitude:
+  en: Latitude
+  fr: Latitude
+create.qr-code.opt.longitude:
+  en: Longitude
+  fr: Longitude
+create.qr-code.opt.event_title:
+  en: Event
+  fr: Événement
+create.qr-code.opt.start:
+  en: Starts
+  fr: Début
+create.qr-code.opt.start.help:
+  en: "e.g. 2026-11-06 19:30"
+  fr: "p. ex. 2026-11-06 19:30"
+create.qr-code.opt.end:
+  en: Ends
+  fr: Fin
+create.qr-code.opt.location:
+  en: Place
+  fr: Lieu
+create.qr-code.opt.style:
+  en: Style
+  fr: Style
+create.qr-code.opt.style.square:
+  en: Square
+  fr: Carré
+create.qr-code.opt.style.gapped:
+  en: Gapped
+  fr: Espacé
+create.qr-code.opt.style.dots:
+  en: Dots
+  fr: Points
+create.qr-code.opt.style.rounded:
+  en: Rounded
+  fr: Arrondi
+create.qr-code.opt.style.fluid:
+  en: Fluid
+  fr: Fluide
+create.qr-code.opt.style.classy:
+  en: Classy
+  fr: Élégant
+create.qr-code.opt.style.leaf:
+  en: Leaves
+  fr: Feuilles
+create.qr-code.opt.style.diamond:
+  en: Diamonds
+  fr: Losanges
+create.qr-code.opt.style.star:
+  en: Sparkles
+  fr: Étincelles
+create.qr-code.opt.style.vbars:
+  en: Vertical bars
+  fr: Barres verticales
+create.qr-code.opt.style.hbars:
+  en: Horizontal bars
+  fr: Barres horizontales
+create.qr-code.opt.style.mosaic:
+  en: Mosaic
+  fr: Mosaïque
+create.qr-code.opt.eyes:
+  en: Corner markers
+  fr: Repères d’angle
+create.qr-code.opt.eyes.auto:
+  en: Match the style
+  fr: Assortis au style
+create.qr-code.opt.eyes.square:
+  en: Square
+  fr: Carrés
+create.qr-code.opt.eyes.rounded:
+  en: Rounded
+  fr: Arrondis
+create.qr-code.opt.eyes.circle:
+  en: Circles
+  fr: Ronds
+create.qr-code.opt.eyes.leaf:
+  en: Leaves
+  fr: Feuilles
+create.qr-code.opt.eyes.diamond:
+  en: Diamond centre
+  fr: Centre en losange
+create.qr-code.opt.color:
+  en: Colour
+  fr: Couleur
+create.qr-code.opt.background:
+  en: Background
+  fr: Fond
+create.qr-code.opt.background.help:
+  en: Set the alpha to 0 for a transparent background (PNG and SVG).
+  fr: Mettez l’alpha à 0 pour un fond transparent (PNG et SVG).
+create.qr-code.opt.gradient:
+  en: Gradient
+  fr: Dégradé
+create.qr-code.opt.gradient.none:
+  en: None
+  fr: Aucun
+create.qr-code.opt.gradient.linear:
+  en: Linear
+  fr: Linéaire
+create.qr-code.opt.gradient.radial:
+  en: Radial
+  fr: Radial
+create.qr-code.opt.color2:
+  en: Second colour
+  fr: Seconde couleur
+create.qr-code.opt.eye_color:
+  en: Corner marker colour
+  fr: Couleur des repères
+create.qr-code.opt.eye_color.help:
+  en: Empty = same as the code.
+  fr: Vide = comme le code.
+create.qr-code.opt.logo:
+  en: Logo in the centre
+  fr: Logo au centre
+create.qr-code.opt.logo.help:
+  en: Error correction goes up to H automatically so the code still scans.
+  fr: La correction d’erreurs passe automatiquement à H pour que le code reste lisible.
+create.qr-code.opt.logo_size:
+  en: Logo size
+  fr: Taille du logo
+create.qr-code.opt.ec:
+  en: Error correction
+  fr: Correction d’erreurs
+create.qr-code.opt.ec.help:
+  en: "Higher = more robust, denser code. Auto: Q, or H with a logo."
+  fr: "Plus haut = plus robuste, code plus dense. Auto : Q, ou H avec un logo."
+create.qr-code.opt.ec.auto:
+  en: Auto
+  fr: Auto
+create.qr-code.opt.ec.L:
+  en: L (7 %)
+  fr: L (7 %)
+create.qr-code.opt.ec.M:
+  en: M (15 %)
+  fr: M (15 %)
+create.qr-code.opt.ec.Q:
+  en: Q (25 %)
+  fr: Q (25 %)
+create.qr-code.opt.ec.H:
+  en: H (30 %)
+  fr: H (30 %)
+create.qr-code.opt.margin:
+  en: Quiet zone
+  fr: Marge blanche
+create.qr-code.opt.margin.help:
+  en: Scanners need about 4 modules of empty space around the code.
+  fr: Les lecteurs ont besoin d’environ 4 modules de vide autour du code.
+create.qr-code.opt.card:
+  en: Printable card
+  fr: Carte à imprimer
+create.qr-code.opt.card.none:
+  en: None (code only)
+  fr: Aucune (code seul)
+create.qr-code.opt.card.wifi:
+  en: Wi-Fi card
+  fr: Carte Wi-Fi
+create.qr-code.opt.card.table-tent:
+  en: Table tent (menu)
+  fr: Chevalet de table (menu)
+create.qr-code.opt.card.review:
+  en: Review request
+  fr: Demande d’avis
+create.qr-code.opt.card.business:
+  en: Business card
+  fr: Carte de visite
+create.qr-code.opt.card.ticket:
+  en: Ticket
+  fr: Billet
+create.qr-code.opt.card.poster:
+  en: Poster (A4)
+  fr: Affiche (A4)
+create.qr-code.opt.card.tag:
+  en: Product tag
+  fr: Étiquette produit
+create.qr-code.opt.card.social:
+  en: Social card
+  fr: Carte réseaux sociaux
+create.qr-code.opt.card.invitation:
+  en: Invitation
+  fr: Invitation
+create.qr-code.opt.card_title:
+  en: Card title
+  fr: Titre de la carte
+create.qr-code.opt.card_title.help:
+  en: Empty = a sensible default for the card.
+  fr: Vide = un texte par défaut adapté à la carte.
+create.qr-code.opt.card_subtitle:
+  en: Card subtitle
+  fr: Sous-titre de la carte
+create.qr-code.opt.card_text:
+  en: Card text
+  fr: Texte de la carte
+create.qr-code.opt.card_tint:
+  en: Card accent colour
+  fr: Couleur d’accent de la carte
+create.qr-code.opt.format:
+  en: Format
+  fr: Format
+create.qr-code.opt.size:
+  en: Image size
+  fr: Taille de l’image
+create.qr-code.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+create.qr-code.opt.file_name.help:
+  en: Empty = “qr-code”.
+  fr: Vide = « qr-code ».
+create.qr-code.err.no_scan:
+  en: This design does not scan reliably. Raise the contrast, make the logo smaller or pick another style.
+  fr: Ce rendu ne se scanne pas de façon fiable. Augmentez le contraste, réduisez le logo ou changez de style.
+create.qr-code.err.empty:
+  en: Nothing to encode yet — fill in the content.
+  fr: Rien à encoder pour l’instant — remplissez le contenu.
+create.qr-code.err.too_long:
+  en: Too much data for a QR code (about 2,900 characters at most). Shorten it, or use a link.
+  fr: Trop de données pour un code QR (environ 2 900 caractères au plus). Raccourcissez, ou utilisez un lien.
+create.qr-code.err.ssid:
+  en: Enter the Wi-Fi network name.
+  fr: Saisissez le nom du réseau Wi-Fi.
+create.qr-code.err.email:
+  en: Enter an e-mail address.
+  fr: Saisissez une adresse e-mail.
+create.qr-code.err.phone:
+  en: Enter a phone number.
+  fr: Saisissez un numéro de téléphone.
+create.qr-code.err.geo:
+  en: "Latitude and longitude must be numbers, e.g. 48.8584 and 2.2945."
+  fr: "La latitude et la longitude doivent être des nombres, p. ex. 48,8584 et 2,2945."
+create.qr-code.err.date:
+  en: "“%{value}” is not a date. Use 2026-11-06 or 2026-11-06 19:30."
+  fr: "« %{value} » n’est pas une date. Utilisez 2026-11-06 ou 2026-11-06 19:30."
+create.qr-code.card.scan:
+  en: Scan me
+  fr: Scannez-moi
+create.qr-code.card.wifi.title:
+  en: Wi-Fi
+  fr: Wi-Fi
+create.qr-code.card.wifi.subtitle:
+  en: Guest network
+  fr: Réseau invités
+create.qr-code.card.wifi.text:
+  en: ""
+  fr: ""
+create.qr-code.card.wifi.password:
+  en: "Password"
+  fr: "Mot de passe"
+create.qr-code.card.wifi.open:
+  en: No password needed
+  fr: Aucun mot de passe
+create.qr-code.card.table-tent.title:
+  en: Our menu
+  fr: Notre carte
+create.qr-code.card.table-tent.subtitle:
+  en: Scan with your phone camera
+  fr: Scannez avec votre téléphone
+create.qr-code.card.table-tent.text:
+  en: Starters, mains and desserts of the day.
+  fr: Entrées, plats et desserts du jour.
+create.qr-code.card.review.title:
+  en: Enjoyed your visit?
+  fr: Votre visite vous a plu ?
+create.qr-code.card.review.subtitle:
+  en: Tell us in thirty seconds
+  fr: Dites-le-nous en trente secondes
+create.qr-code.card.review.text:
+  en: Your review helps us more than you think.
+  fr: Votre avis nous aide plus que vous ne le pensez.
+create.qr-code.card.business.title:
+  en: Your name
+  fr: Votre nom
+create.qr-code.card.business.subtitle:
+  en: ""
+  fr: ""
+create.qr-code.card.business.text:
+  en: ""
+  fr: ""
+create.qr-code.card.ticket.title:
+  en: Admit one
+  fr: Entrée
+create.qr-code.card.ticket.subtitle:
+  en: Ticket
+  fr: Billet
+create.qr-code.card.ticket.text:
+  en: Show this code at the entrance.
+  fr: Présentez ce code à l’entrée.
+create.qr-code.card.poster.title:
+  en: Scan to learn more
+  fr: Scannez pour en savoir plus
+create.qr-code.card.poster.subtitle:
+  en: ""
+  fr: ""
+create.qr-code.card.poster.text:
+  en: Point your phone camera at the code.
+  fr: Visez le code avec l’appareil photo de votre téléphone.
+create.qr-code.card.tag.title:
+  en: Product
+  fr: Produit
+create.qr-code.card.tag.subtitle:
+  en: Details and care
+  fr: Détails et entretien
+create.qr-code.card.tag.text:
+  en: ""
+  fr: ""
+create.qr-code.card.social.title:
+  en: Follow us
+  fr: Suivez-nous
+create.qr-code.card.social.subtitle:
+  en: "@yourname"
+  fr: "@votrenom"
+create.qr-code.card.social.text:
+  en: New things every week.
+  fr: Du nouveau chaque semaine.
+create.qr-code.card.invitation.title:
+  en: You are invited
+  fr: Vous êtes invité·e
+create.qr-code.card.invitation.subtitle:
+  en: Save the date
+  fr: Réservez la date
+create.qr-code.card.invitation.text:
+  en: Scan the code for the details and to reply.
+  fr: Scannez le code pour les détails et pour répondre.
+
+# ------------------------------------------------------------------ Barcode
+create.barcode.name:
+  en: Barcode
+  fr: Code-barres
+create.barcode.desc:
+  en: EAN, UPC, Code 128, Data Matrix, PDF417 and more, print-ready and checked by a scanner.
+  fr: EAN, UPC, Code 128, Data Matrix, PDF417 et d’autres, prêts à imprimer et vérifiés au scanner.
+create.barcode.verb:
+  en: Create barcode
+  fr: Créer le code-barres
+create.barcode.keywords:
+  en: barcode ean upc isbn code128 code39 datamatrix pdf417 aztec gs1 label shelf
+  fr: code barres ean upc isbn étiquette datamatrix pdf417 aztec gs1 rayon
+create.barcode.opt.format:
+  en: Type
+  fr: Type
+create.barcode.opt.data:
+  en: Data
+  fr: Données
+create.barcode.opt.data.help:
+  en: "EAN-13: 12 digits (the check digit is added) or 13 (it is verified)."
+  fr: "EAN-13 : 12 chiffres (la clé est ajoutée) ou 13 (elle est vérifiée)."
+create.barcode.opt.batch:
+  en: One barcode per line
+  fr: Un code-barres par ligne
+create.barcode.opt.show_text:
+  en: Human-readable text
+  fr: Texte lisible sous le code
+create.barcode.opt.height:
+  en: Bar height
+  fr: Hauteur des barres
+create.barcode.opt.color:
+  en: Bars
+  fr: Barres
+create.barcode.opt.background:
+  en: Background
+  fr: Fond
+create.barcode.opt.margin:
+  en: Quiet zone
+  fr: Marge blanche
+create.barcode.opt.output:
+  en: Format
+  fr: Format
+create.barcode.opt.scale:
+  en: Pixels per module
+  fr: Pixels par module
+create.barcode.err.empty:
+  en: Enter the data to encode.
+  fr: Saisissez les données à encoder.
+create.barcode.err.digits:
+  en: Only digits are allowed for this type.
+  fr: Seuls des chiffres sont acceptés pour ce type.
+create.barcode.err.length:
+  en: "Enter %{n} digits (check digit added) or %{m} digits."
+  fr: "Saisissez %{n} chiffres (clé ajoutée) ou %{m} chiffres."
+create.barcode.err.check:
+  en: "Wrong check digit: it should be %{digit}."
+  fr: "Clé de contrôle erronée : elle devrait être %{digit}."
+create.barcode.err.itf_even:
+  en: ITF needs an even number of digits.
+  fr: L’ITF demande un nombre pair de chiffres.
+create.barcode.err.code39:
+  en: "Code 39 takes A–Z, 0–9, space and - . $ / + %."
+  fr: "Le Code 39 accepte A–Z, 0–9, l’espace et - . $ / + %."
+create.barcode.err.codabar:
+  en: "Codabar takes digits, - $ : / . + and the start/stop letters A–D."
+  fr: "Le Codabar accepte les chiffres, - $ : / . + et les lettres de début/fin A–D."
+create.barcode.err.ascii:
+  en: Code 128 only encodes plain ASCII characters; use Data Matrix for accents.
+  fr: Le Code 128 n’encode que l’ASCII ; utilisez Data Matrix pour les accents.
+create.barcode.err.encode:
+  en: Could not encode this data
+  fr: Impossible d’encoder ces données
+create.barcode.err.no_scan:
+  en: The barcode could not be read back. Raise the contrast or the height.
+  fr: Le code-barres n’a pas pu être relu. Augmentez le contraste ou la hauteur.
+create.barcode.err.mismatch:
+  en: "The barcode reads back as “%{read}”, not what was asked."
+  fr: "Le code-barres se relit « %{read} », pas ce qui était demandé."
+
+create.common.err.size:
+  en: "Width and height must be between 16 and 16,384 pixels."
+  fr: "La largeur et la hauteur doivent être comprises entre 16 et 16 384 pixels."
+
+# ------------------------------------------------------------------ Placeholder
+create.placeholder.name:
+  en: Placeholders
+  fr: Images de remplacement
+create.placeholder.desc:
+  en: Placeholder images of any size, or a whole set at once, with the dimensions written on them.
+  fr: Des images de remplacement de toute taille, ou toute une série d’un coup, avec leurs dimensions inscrites.
+create.placeholder.verb:
+  en: Create placeholders
+  fr: Créer les images
+create.placeholder.keywords:
+  en: placeholder dummy mock image size banner wireframe blank
+  fr: remplacement factice maquette image taille bannière vide
+create.placeholder.n_sizes:
+  en: "%{first} — first of %{count} sizes"
+  fr: "%{first} — première de %{count} tailles"
+create.placeholder.opt.preset:
+  en: Sizes
+  fr: Tailles
+create.placeholder.opt.preset.custom:
+  en: My sizes
+  fr: Mes tailles
+create.placeholder.opt.preset.social:
+  en: Social media set
+  fr: Série réseaux sociaux
+create.placeholder.opt.preset.web:
+  en: Web and ad banners
+  fr: Web et bannières publicitaires
+create.placeholder.opt.preset.devices:
+  en: Phone and tablet screens
+  fr: Écrans de téléphones et tablettes
+create.placeholder.opt.preset.thumbs:
+  en: Thumbnails
+  fr: Vignettes
+create.placeholder.opt.sizes:
+  en: Width × height
+  fr: Largeur × hauteur
+create.placeholder.opt.sizes.help:
+  en: "One or more, separated by commas: 1200x630, 800x600"
+  fr: "Une ou plusieurs, séparées par des virgules : 1200x630, 800x600"
+create.placeholder.opt.label:
+  en: Label
+  fr: Libellé
+create.placeholder.opt.show_size:
+  en: Write the size
+  fr: Inscrire la taille
+create.placeholder.opt.pattern:
+  en: Pattern
+  fr: Motif
+create.placeholder.opt.pattern.none:
+  en: None
+  fr: Aucun
+create.placeholder.opt.pattern.cross:
+  en: Cross
+  fr: Croix
+create.placeholder.opt.pattern.grid:
+  en: Grid
+  fr: Grille
+create.placeholder.opt.pattern.diamonds:
+  en: Diamonds
+  fr: Losanges
+create.placeholder.opt.pattern.stripes:
+  en: Stripes
+  fr: Rayures
+create.placeholder.opt.background:
+  en: Background
+  fr: Fond
+create.placeholder.opt.color:
+  en: Text and lines
+  fr: Texte et traits
+create.placeholder.opt.format:
+  en: Format
+  fr: Format
+create.placeholder.err.size:
+  en: "“%{value}” is not a size. Write it as 1200x630."
+  fr: "« %{value} » n’est pas une taille. Écrivez-la 1200x630."
+create.placeholder.err.none:
+  en: Enter at least one size.
+  fr: Saisissez au moins une taille.
+
+# ------------------------------------------------------------------ Favicon
+create.favicon.name:
+  en: Favicon
+  fr: Favicon
+create.favicon.desc:
+  en: A complete favicon pack — ICO, SVG, Apple and Android icons, manifest — from a letter, an emoji or a logo.
+  fr: Un jeu de favicons complet — ICO, SVG, icônes Apple et Android, manifeste — à partir d’une lettre, d’un emoji ou d’un logo.
+create.favicon.verb:
+  en: Create favicons
+  fr: Créer les favicons
+create.favicon.keywords:
+  en: favicon icon ico website tab pwa apple touch android manifest emoji letter
+  fr: favicon icône ico site onglet pwa apple android manifeste emoji lettre
+create.favicon.caption:
+  en: "512 px master, and how it looks at 48, 32 and 16 px"
+  fr: "Original 512 px, et son rendu à 48, 32 et 16 px"
+create.favicon.note_html:
+  en: "Paste these lines into the head of your page."
+  fr: "Collez ces lignes dans l’en-tête (head) de votre page."
+create.favicon.opt.text:
+  en: Letter, word or emoji
+  fr: Lettre, mot ou emoji
+create.favicon.opt.text.help:
+  en: Ignored when you drop a logo image.
+  fr: Ignoré si vous déposez une image de logo.
+create.favicon.opt.font:
+  en: Font
+  fr: Police
+create.favicon.opt.font.sans:
+  en: Sans serif (bold)
+  fr: Sans empattement (gras)
+create.favicon.opt.font.serif:
+  en: Serif (bold)
+  fr: Avec empattements (gras)
+create.favicon.opt.font.chorus:
+  en: Calligraphic
+  fr: Calligraphique
+create.favicon.opt.font.mono:
+  en: Monospace
+  fr: Chasse fixe
+create.favicon.opt.font.system:
+  en: Installed font…
+  fr: Police installée…
+create.favicon.opt.family:
+  en: Installed font
+  fr: Police installée
+create.favicon.opt.shape:
+  en: Shape
+  fr: Forme
+create.favicon.opt.shape.square:
+  en: Square
+  fr: Carré
+create.favicon.opt.shape.rounded:
+  en: Rounded square
+  fr: Carré arrondi
+create.favicon.opt.shape.circle:
+  en: Circle
+  fr: Cercle
+create.favicon.opt.shape.squircle:
+  en: Squircle
+  fr: Super-ellipse
+create.favicon.opt.shape.diamond:
+  en: Diamond
+  fr: Losange
+create.favicon.opt.shape.none:
+  en: None (transparent)
+  fr: Aucune (transparent)
+create.favicon.opt.background:
+  en: Background
+  fr: Fond
+create.favicon.opt.background2:
+  en: Gradient to
+  fr: Dégradé vers
+create.favicon.opt.background2.help:
+  en: Empty = plain background.
+  fr: Vide = fond uni.
+create.favicon.opt.color:
+  en: Letter colour
+  fr: Couleur de la lettre
+create.favicon.opt.scale:
+  en: Letter size
+  fr: Taille de la lettre
+create.favicon.opt.app_name:
+  en: Site name (manifest)
+  fr: Nom du site (manifeste)
+create.favicon.err.text:
+  en: Type a letter, a word or an emoji — or drop a logo.
+  fr: Tapez une lettre, un mot ou un emoji — ou déposez un logo.
+create.favicon.err.font:
+  en: This font has no glyph for that text. Pick another font.
+  fr: Cette police n’a pas de glyphe pour ce texte. Choisissez-en une autre.
+
+# ------------------------------------------------------------------ Gradient
+create.gradient.name:
+  en: Gradients
+  fr: Dégradés
+create.gradient.desc:
+  en: Soft mesh gradients with grain and light, as images of any size or seamless looping videos.
+  fr: Des dégradés maillés tout en douceur, avec grain et lumière, en images de toute taille ou en vidéos en boucle parfaite.
+create.gradient.verb:
+  en: Create gradient
+  fr: Créer le dégradé
+create.gradient.keywords:
+  en: gradient mesh background wallpaper blur aurora grain loop video
+  fr: dégradé maillage fond écran papier peint flou aurore grain boucle vidéo
+create.gradient.opt.palette:
+  en: Colours
+  fr: Couleurs
+create.gradient.opt.palette.castor:
+  en: Castor pastels
+  fr: Pastels Castor
+create.gradient.opt.palette.sunset:
+  en: Sunset
+  fr: Coucher de soleil
+create.gradient.opt.palette.ocean:
+  en: Ocean
+  fr: Océan
+create.gradient.opt.palette.aurora:
+  en: Aurora
+  fr: Aurore
+create.gradient.opt.palette.peach:
+  en: Peach
+  fr: Pêche
+create.gradient.opt.palette.forest:
+  en: Forest
+  fr: Forêt
+create.gradient.opt.palette.dusk:
+  en: Dusk
+  fr: Crépuscule
+create.gradient.opt.palette.ink:
+  en: Ink
+  fr: Encre
+create.gradient.opt.palette.custom:
+  en: My colours
+  fr: Mes couleurs
+create.gradient.opt.colors:
+  en: My colours
+  fr: Mes couleurs
+create.gradient.opt.colors.help:
+  en: "Two to eight colours, e.g. #ffeca4, #ade1ff, #aafaba"
+  fr: "De deux à huit couleurs, p. ex. #ffeca4, #ade1ff, #aafaba"
+create.gradient.opt.points:
+  en: Colour points
+  fr: Points de couleur
+create.gradient.opt.seed:
+  en: Variation
+  fr: Variante
+create.gradient.opt.seed.help:
+  en: Same number, same picture. Change it to reshuffle.
+  fr: Même nombre, même image. Changez-le pour redistribuer.
+create.gradient.opt.distortion:
+  en: Distortion
+  fr: Distorsion
+create.gradient.opt.softness:
+  en: Softness
+  fr: Douceur
+create.gradient.opt.lighting:
+  en: Lighting
+  fr: Éclairage
+create.gradient.opt.grain:
+  en: Grain
+  fr: Grain
+create.gradient.opt.size:
+  en: Size
+  fr: Taille
+create.gradient.opt.format:
+  en: Format
+  fr: Format
+create.gradient.opt.duration:
+  en: Loop length
+  fr: Durée de la boucle
+create.gradient.opt.fps:
+  en: Frame rate
+  fr: Images par seconde
+create.gradient.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+
+# ------------------------------------------------------------------ Social card
+create.social-card.name:
+  en: Social card
+  fr: Carte de partage
+create.social-card.desc:
+  en: Open Graph and social images from a title and a logo — or one per row of a CSV.
+  fr: Images Open Graph et réseaux sociaux à partir d’un titre et d’un logo — ou une par ligne d’un CSV.
+create.social-card.verb:
+  en: Create card
+  fr: Créer la carte
+create.social-card.keywords:
+  en: og open graph social card twitter x linkedin thumbnail banner share preview image blog
+  fr: og open graph carte partage réseaux sociaux miniature bannière aperçu image blog
+create.social-card.opt.template:
+  en: Template
+  fr: Modèle
+create.social-card.opt.template.classic:
+  en: Classic
+  fr: Classique
+create.social-card.opt.template.tint:
+  en: Pastel
+  fr: Pastel
+create.social-card.opt.template.split:
+  en: Split
+  fr: Deux colonnes
+create.social-card.opt.template.quote:
+  en: Quote
+  fr: Citation
+create.social-card.opt.template.photo:
+  en: Photo
+  fr: Photo
+create.social-card.opt.template.minimal:
+  en: Minimal
+  fr: Minimal
+create.social-card.opt.title:
+  en: Title
+  fr: Titre
+create.social-card.opt.title.help:
+  en: The text shrinks to fit. With a CSV, the “title” column wins.
+  fr: Le texte se réduit pour tenir. Avec un CSV, la colonne « title » l’emporte.
+create.social-card.opt.subtitle:
+  en: Subtitle
+  fr: Sous-titre
+create.social-card.opt.eyebrow:
+  en: Small heading
+  fr: Surtitre
+create.social-card.opt.footer:
+  en: Footer
+  fr: Pied
+create.social-card.opt.logo:
+  en: Logo
+  fr: Logo
+create.social-card.opt.image:
+  en: Background photo
+  fr: Photo de fond
+create.social-card.opt.size:
+  en: Size
+  fr: Taille
+create.social-card.opt.size.og:
+  en: Open Graph 1200 × 630
+  fr: Open Graph 1200 × 630
+create.social-card.opt.size.x:
+  en: X / large 1600 × 900
+  fr: X / grand 1600 × 900
+create.social-card.opt.size.square:
+  en: Square 1080 × 1080
+  fr: Carré 1080 × 1080
+create.social-card.opt.size.portrait:
+  en: Portrait 1080 × 1350
+  fr: Portrait 1080 × 1350
+create.social-card.opt.size.story:
+  en: Story 1080 × 1920
+  fr: Story 1080 × 1920
+create.social-card.opt.size.youtube:
+  en: Video thumbnail 1280 × 720
+  fr: Miniature vidéo 1280 × 720
+create.social-card.opt.size.linkedin-banner:
+  en: Profile banner 1584 × 396
+  fr: Bannière de profil 1584 × 396
+create.social-card.opt.size.custom:
+  en: Custom
+  fr: Personnalisée
+create.social-card.opt.custom_size:
+  en: Custom size
+  fr: Taille personnalisée
+create.social-card.opt.background:
+  en: Background
+  fr: Fond
+create.social-card.opt.color:
+  en: Text
+  fr: Texte
+create.social-card.opt.accent:
+  en: Accent
+  fr: Accent
+create.social-card.opt.font:
+  en: Title font
+  fr: Police du titre
+create.social-card.opt.font.sans:
+  en: Sans serif
+  fr: Sans empattement
+create.social-card.opt.font.serif:
+  en: Serif
+  fr: Avec empattements
+create.social-card.opt.font.chorus:
+  en: Calligraphic
+  fr: Calligraphique
+create.social-card.opt.font.system:
+  en: Installed font…
+  fr: Police installée…
+create.social-card.opt.family:
+  en: Installed font
+  fr: Police installée
+create.social-card.opt.format:
+  en: Format
+  fr: Format
+create.social-card.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+
+# ------------------------------------------------------------------ Data merge
+create.data-merge.name:
+  en: Data merge
+  fr: Publipostage
+create.data-merge.desc:
+  en: A spreadsheet and a layout become certificates, badges, labels or letters — one PDF per row or all in one.
+  fr: Un tableur et une mise en page deviennent certificats, badges, étiquettes ou lettres — un PDF par ligne ou tout en un.
+create.data-merge.verb:
+  en: Merge
+  fr: Fusionner
+create.data-merge.keywords:
+  en: mail merge csv spreadsheet certificates badges labels letters batch template typst
+  fr: publipostage csv tableur certificats badges étiquettes lettres lot modèle typst
+create.data-merge.caption:
+  en: "First page of %{pages}"
+  fr: "Première page sur %{pages}"
+create.data-merge.note:
+  en: "%{rows} rows → %{pages} pages"
+  fr: "%{rows} lignes → %{pages} pages"
+create.data-merge.row:
+  en: Row
+  fr: Ligne
+create.data-merge.opt.layout:
+  en: Layout
+  fr: Mise en page
+create.data-merge.opt.layout.letter:
+  en: Letter
+  fr: Lettre
+create.data-merge.opt.layout.certificate:
+  en: Certificate
+  fr: Certificat
+create.data-merge.opt.layout.badge:
+  en: Name badges (10 per A4)
+  fr: Badges (10 par A4)
+create.data-merge.opt.layout.label:
+  en: Address labels (24 per A4)
+  fr: Étiquettes d’adresse (24 par A4)
+create.data-merge.opt.layout.postcard:
+  en: Postcard
+  fr: Carte postale
+create.data-merge.opt.layout.typst:
+  en: My Typst template
+  fr: Mon modèle Typst
+create.data-merge.opt.template:
+  en: Typst template (.typ)
+  fr: Modèle Typst (.typ)
+create.data-merge.opt.template.help:
+  en: "Each row’s columns are in sys.inputs (e.g. #sys.inputs.name) and in json(\"/row.json\"). Images next to the template can be used."
+  fr: "Les colonnes de chaque ligne sont dans sys.inputs (p. ex. #sys.inputs.name) et dans json(\"/row.json\"). Les images à côté du modèle sont utilisables."
+create.data-merge.opt.title:
+  en: Title
+  fr: Titre
+create.data-merge.opt.title.help:
+  en: "Write {column} to insert a value from the row, e.g. {name}."
+  fr: "Écrivez {colonne} pour insérer une valeur de la ligne, p. ex. {name}."
+create.data-merge.opt.heading:
+  en: Heading
+  fr: En-tête
+create.data-merge.opt.body:
+  en: Body text
+  fr: Texte
+create.data-merge.opt.footer:
+  en: Footer
+  fr: Pied
+create.data-merge.opt.logo:
+  en: Logo
+  fr: Logo
+create.data-merge.opt.accent:
+  en: Accent
+  fr: Accent
+create.data-merge.opt.paper:
+  en: Paper
+  fr: Papier
+create.data-merge.opt.output:
+  en: Result
+  fr: Résultat
+create.data-merge.opt.output.merged:
+  en: One PDF
+  fr: Un seul PDF
+create.data-merge.opt.output.each:
+  en: One PDF per row
+  fr: Un PDF par ligne
+create.data-merge.opt.name_pattern:
+  en: File names
+  fr: Noms des fichiers
+create.data-merge.opt.name_pattern.help:
+  en: "e.g. certificate-{name}"
+  fr: "p. ex. certificat-{name}"
+create.data-merge.err.no_csv:
+  en: Drop a CSV or TSV file with one row per document.
+  fr: Déposez un fichier CSV ou TSV avec une ligne par document.
+create.data-merge.err.no_header:
+  en: The first line must hold the column names.
+  fr: La première ligne doit contenir les noms des colonnes.
+create.data-merge.err.no_rows:
+  en: The table has no data rows.
+  fr: Le tableau ne contient aucune ligne de données.
+create.data-merge.err.template:
+  en: Choose a Typst template (.typ).
+  fr: Choisissez un modèle Typst (.typ).
+
+# ------------------------------------------------------------------ HTML to image / PDF
+create.html.err.no_browser:
+  en: Needs Chrome, Edge, Brave or Chromium installed — Castor uses it headless, nothing is downloaded.
+  fr: Nécessite Chrome, Edge, Brave ou Chromium installé — Castor l’utilise en arrière-plan, rien n’est téléchargé.
+create.html.err.empty:
+  en: Enter a web address or some HTML.
+  fr: Saisissez une adresse web ou du HTML.
+create.html.err.no_file:
+  en: Drop HTML files, or switch the source to a web address or pasted HTML.
+  fr: Déposez des fichiers HTML, ou choisissez une adresse web ou du HTML collé comme source.
+create.html.err.load:
+  en: "Could not load %{url} (%{error})."
+  fr: "Impossible de charger %{url} (%{error})."
+create.html.msg.starting:
+  en: Starting the browser…
+  fr: Démarrage du navigateur…
+create.html-to-image.name:
+  en: HTML to image
+  fr: HTML en image
+create.html-to-image.desc:
+  en: Screenshots of web pages, HTML files or pasted HTML — full page, sharp at 2× or 3×.
+  fr: Captures de pages web, de fichiers HTML ou de HTML collé — page entière, nette en 2× ou 3×.
+create.html-to-image.verb:
+  en: Capture
+  fr: Capturer
+create.html-to-image.keywords:
+  en: html screenshot web page url website capture render full page
+  fr: html capture écran page web url site rendu page entière
+create.html-to-pdf.name:
+  en: HTML to PDF
+  fr: HTML en PDF
+create.html-to-pdf.desc:
+  en: Print web pages, HTML files or pasted HTML to PDF, with your paper size, margins and page numbers.
+  fr: Imprimez pages web, fichiers HTML ou HTML collé en PDF, avec format, marges et numéros de page.
+create.html-to-pdf.verb:
+  en: Make PDF
+  fr: Créer le PDF
+create.html-to-pdf.keywords:
+  en: html pdf print web page url website save as pdf
+  fr: html pdf imprimer page web url site enregistrer en pdf
+create.html-to-image.opt.source:
+  en: Source
+  fr: Source
+create.html-to-image.opt.source.files:
+  en: Dropped files
+  fr: Fichiers déposés
+create.html-to-image.opt.source.url:
+  en: Web address
+  fr: Adresse web
+create.html-to-image.opt.source.html:
+  en: Pasted HTML
+  fr: HTML collé
+create.html-to-image.opt.url:
+  en: Addresses
+  fr: Adresses
+create.html-to-image.opt.url.help:
+  en: One per line. Loading a web address uses the network.
+  fr: Une par ligne. Charger une adresse web utilise le réseau.
+create.html-to-image.opt.html:
+  en: HTML
+  fr: HTML
+create.html-to-image.opt.delay:
+  en: Wait after loading
+  fr: Attente après chargement
+create.html-to-image.opt.viewport:
+  en: Window size
+  fr: Taille de la fenêtre
+create.html-to-image.opt.full_page:
+  en: Whole page (scroll height)
+  fr: Page entière (toute la hauteur)
+create.html-to-image.opt.scale:
+  en: Pixel density
+  fr: Densité de pixels
+create.html-to-image.opt.format:
+  en: Format
+  fr: Format
+create.html-to-image.opt.dark:
+  en: Dark mode
+  fr: Mode sombre
+create.html-to-image.opt.transparent:
+  en: Transparent background (PNG)
+  fr: Fond transparent (PNG)
+create.html-to-pdf.opt.source:
+  en: Source
+  fr: Source
+create.html-to-pdf.opt.source.files:
+  en: Dropped files
+  fr: Fichiers déposés
+create.html-to-pdf.opt.source.url:
+  en: Web address
+  fr: Adresse web
+create.html-to-pdf.opt.source.html:
+  en: Pasted HTML
+  fr: HTML collé
+create.html-to-pdf.opt.url:
+  en: Addresses
+  fr: Adresses
+create.html-to-pdf.opt.url.help:
+  en: One per line. Loading a web address uses the network.
+  fr: Une par ligne. Charger une adresse web utilise le réseau.
+create.html-to-pdf.opt.html:
+  en: HTML
+  fr: HTML
+create.html-to-pdf.opt.delay:
+  en: Wait after loading
+  fr: Attente après chargement
+create.html-to-pdf.opt.paper:
+  en: Paper
+  fr: Papier
+create.html-to-pdf.opt.paper.css:
+  en: As the page asks (CSS)
+  fr: Selon la page (CSS)
+create.html-to-pdf.opt.landscape:
+  en: Landscape
+  fr: Paysage
+create.html-to-pdf.opt.margin:
+  en: Margins
+  fr: Marges
+create.html-to-pdf.opt.backgrounds:
+  en: Print backgrounds
+  fr: Imprimer les arrière-plans
+create.html-to-pdf.opt.header_footer:
+  en: Title, date and page numbers
+  fr: Titre, date et numéros de page
+create.html-to-pdf.opt.scale:
+  en: Scale
+  fr: Échelle
+create.html-to-pdf.opt.screen_media:
+  en: Screen styles instead of print styles
+  fr: Styles écran au lieu des styles d’impression
+
+# ------------------------------------------------------------------ Video downloader
+create.video-download.name:
+  en: Video downloader
+  fr: Téléchargeur de vidéos
+create.video-download.desc:
+  en: Save videos or their audio from the links you paste, in the quality you choose.
+  fr: Enregistrez des vidéos ou leur son à partir des liens collés, dans la qualité choisie.
+create.video-download.verb:
+  en: Download
+  fr: Télécharger
+create.video-download.keywords:
+  en: download video youtube vimeo yt-dlp save audio mp3 podcast playlist subtitles
+  fr: télécharger vidéo youtube vimeo yt-dlp enregistrer audio mp3 podcast playlist sous-titres
+create.video-download.help:
+  en: Only download what you have the right to — your own videos, public-domain or openly licensed works, or with the owner’s permission.
+  fr: Ne téléchargez que ce que vous avez le droit de télécharger — vos vidéos, des œuvres du domaine public ou sous licence libre, ou avec l’accord de l’ayant droit.
+create.video-download.opt.urls:
+  en: Links
+  fr: Liens
+create.video-download.opt.urls.help:
+  en: One or more links, one per line. Only download what you have the right to.
+  fr: Un ou plusieurs liens, un par ligne. Ne téléchargez que ce que vous avez le droit de télécharger.
+create.video-download.opt.quality:
+  en: Quality
+  fr: Qualité
+create.video-download.opt.quality.best:
+  en: Best available
+  fr: La meilleure
+create.video-download.opt.quality.audio:
+  en: Audio only
+  fr: Son seulement
+create.video-download.opt.audio_format:
+  en: Audio format
+  fr: Format audio
+create.video-download.opt.playlist:
+  en: Whole playlist
+  fr: Toute la playlist
+create.video-download.opt.subtitles:
+  en: Embed subtitles
+  fr: Intégrer les sous-titres
+create.video-download.opt.name_pattern:
+  en: File names
+  fr: Noms des fichiers
+create.video-download.opt.name_pattern.help:
+  en: "Tokens: {title}, {id}, {n}"
+  fr: "Jetons : {title}, {id}, {n}"
+create.video-download.opt.update:
+  en: Update yt-dlp first
+  fr: Mettre yt-dlp à jour d’abord
+create.video-download.opt.update.help:
+  en: Sites change often; an update fixes most “could not download” errors.
+  fr: Les sites changent souvent ; une mise à jour corrige la plupart des échecs.
+create.video-download.msg.updating:
+  en: Updating yt-dlp…
+  fr: Mise à jour de yt-dlp…
+create.video-download.msg.item:
+  en: "%{n} / %{total}: %{url}"
+  fr: "%{n} / %{total} : %{url}"
+create.video-download.err.no_url:
+  en: Paste at least one link.
+  fr: Collez au moins un lien.
+create.video-download.err.bad_url:
+  en: "“%{url}” is not a web link (it must start with https://)."
+  fr: "« %{url} » n’est pas un lien web (il doit commencer par https://)."
+create.video-download.err.nothing:
+  en: "Nothing was downloaded from %{url}."
+  fr: "Rien n’a été téléchargé depuis %{url}."
+create.video-download.err.ffmpeg:
+  en: ffmpeg is missing; it is needed to merge video and sound.
+  fr: ffmpeg est absent ; il sert à assembler l’image et le son.
+
+# ------------------------------------------------------------------ Fonts
+create.fonts.name:
+  en: Fonts
+  fr: Polices
+create.fonts.desc:
+  en: Specimen sheets, glyph grids and font info; convert between TTF, OTF, WOFF and WOFF2.
+  fr: Planches de spécimen, grilles de glyphes et infos ; conversion entre TTF, OTF, WOFF et WOFF2.
+create.fonts.verb:
+  en: Go
+  fr: Lancer
+create.fonts.keywords:
+  en: font typeface specimen woff woff2 ttf otf convert glyphs installed google fonts
+  fr: police caractères spécimen woff woff2 ttf otf convertir glyphes installées google fonts
+create.fonts.caption:
+  en: First page
+  fr: Première page
+create.fonts.specimen:
+  en: Font specimen
+  fr: Spécimen de police
+create.fonts.glyphs:
+  en: Glyphs
+  fr: Glyphes
+create.fonts.table:
+  en: About this font
+  fr: À propos de cette police
+create.fonts.catalog:
+  en: Installed fonts
+  fr: Polices installées
+create.fonts.note_pages:
+  en: "%{pages} pages"
+  fr: "%{pages} pages"
+create.fonts.msg.scanning:
+  en: Reading the installed fonts…
+  fr: Lecture des polices installées…
+create.fonts.k.family:
+  en: Family
+  fr: Famille
+create.fonts.k.style:
+  en: Style
+  fr: Style
+create.fonts.k.version:
+  en: Version
+  fr: Version
+create.fonts.k.weight:
+  en: Weight
+  fr: Graisse
+create.fonts.k.outlines:
+  en: Outlines
+  fr: Contours
+create.fonts.k.glyphs:
+  en: Glyphs
+  fr: Glyphes
+create.fonts.k.characters:
+  en: Characters
+  fr: Caractères
+create.fonts.k.axes:
+  en: Variable axes
+  fr: Axes variables
+create.fonts.k.designer:
+  en: Designer
+  fr: Dessin
+create.fonts.k.license:
+  en: Licence
+  fr: Licence
+create.fonts.opt.action:
+  en: Action
+  fr: Action
+create.fonts.opt.action.specimen:
+  en: Specimen sheet
+  fr: Planche de spécimen
+create.fonts.opt.action.convert:
+  en: Convert
+  fr: Convertir
+create.fonts.opt.action.info:
+  en: Info report
+  fr: Rapport d’informations
+create.fonts.opt.action.catalog:
+  en: Catalogue of installed fonts
+  fr: Catalogue des polices installées
+create.fonts.opt.action.google:
+  en: Get from Google Fonts
+  fr: Récupérer depuis Google Fonts
+create.fonts.opt.sample:
+  en: Sample text
+  fr: Texte d’exemple
+create.fonts.opt.specimen_format:
+  en: Format
+  fr: Format
+create.fonts.opt.to:
+  en: Convert to
+  fr: Convertir en
+create.fonts.opt.info_format:
+  en: Format
+  fr: Format
+create.fonts.opt.filter:
+  en: Only families containing
+  fr: Seulement les familles contenant
+create.fonts.opt.google_family:
+  en: Family name
+  fr: Nom de la famille
+create.fonts.opt.google_family.help:
+  en: "As on fonts.google.com, e.g. Inter or Playfair Display. Open licences (OFL, Apache) only."
+  fr: "Comme sur fonts.google.com, p. ex. Inter ou Playfair Display. Licences libres (OFL, Apache) seulement."
+create.fonts.opt.allow_network:
+  en: Allow downloading from github.com/google/fonts
+  fr: Autoriser le téléchargement depuis github.com/google/fonts
+create.fonts.opt.allow_network.help:
+  en: Off by default. Only the font files of this family are fetched.
+  fr: Désactivé par défaut. Seuls les fichiers de cette famille sont récupérés.
+create.fonts.err.no_font:
+  en: Drop one or more font files (TTF, OTF, WOFF, WOFF2).
+  fr: Déposez un ou plusieurs fichiers de police (TTF, OTF, WOFF, WOFF2).
+create.fonts.err.not_font:
+  en: This is not a font file Castor can read.
+  fr: Ce n’est pas un fichier de police lisible par Castor.
+create.fonts.err.collection:
+  en: Font collections (TTC) cannot become WOFF; convert to WOFF2 or extract a single font first.
+  fr: Une collection de polices (TTC) ne peut pas devenir WOFF ; convertissez en WOFF2 ou extrayez d’abord une police.
+create.fonts.err.none_found:
+  en: No installed font matches.
+  fr: Aucune police installée ne correspond.
+create.fonts.err.consent:
+  en: Tick “Allow downloading” first — Castor never goes online on its own.
+  fr: Cochez d’abord « Autoriser le téléchargement » — Castor ne se connecte jamais de lui-même.
+create.fonts.err.family:
+  en: Enter a family name.
+  fr: Saisissez un nom de famille.
+create.fonts.err.not_on_google:
+  en: "“%{family}” was not found in the Google Fonts repository."
+  fr: "« %{family} » est introuvable dans le dépôt Google Fonts."
+
+# ------------------------------------------------------------------ Shader
+create.shader.name:
+  en: Shaders
+  fr: Shaders
+create.shader.desc:
+  en: Generative backgrounds — silk, waves, aurora, contour lines — as images or seamless loops.
+  fr: Fonds génératifs — soie, vagues, aurore, courbes de niveau — en images ou en boucles parfaites.
+create.shader.verb:
+  en: Render
+  fr: Générer
+create.shader.keywords:
+  en: shader generative background waves silk aurora topography contour noise plasma dunes loop wallpaper
+  fr: shader génératif fond vagues soie aurore topographie courbes niveau bruit plasma dunes boucle fond écran
+create.shader.opt.preset:
+  en: Style
+  fr: Style
+create.shader.opt.preset.waves:
+  en: Waves
+  fr: Vagues
+create.shader.opt.preset.silk:
+  en: Silk
+  fr: Soie
+create.shader.opt.preset.noise:
+  en: Clouds
+  fr: Nuages
+create.shader.opt.preset.aurora:
+  en: Aurora
+  fr: Aurore
+create.shader.opt.preset.topography:
+  en: Contour lines
+  fr: Courbes de niveau
+create.shader.opt.preset.plasma:
+  en: Plasma
+  fr: Plasma
+create.shader.opt.preset.dunes:
+  en: Dunes
+  fr: Dunes
+create.shader.opt.palette:
+  en: Colours
+  fr: Couleurs
+create.shader.opt.palette.castor:
+  en: Castor pastels
+  fr: Pastels Castor
+create.shader.opt.palette.sunset:
+  en: Sunset
+  fr: Coucher de soleil
+create.shader.opt.palette.ocean:
+  en: Ocean
+  fr: Océan
+create.shader.opt.palette.aurora:
+  en: Aurora
+  fr: Aurore
+create.shader.opt.palette.peach:
+  en: Peach
+  fr: Pêche
+create.shader.opt.palette.forest:
+  en: Forest
+  fr: Forêt
+create.shader.opt.palette.dusk:
+  en: Dusk
+  fr: Crépuscule
+create.shader.opt.palette.ink:
+  en: Ink
+  fr: Encre
+create.shader.opt.palette.custom:
+  en: My colours
+  fr: Mes couleurs
+create.shader.opt.colors:
+  en: My colours
+  fr: Mes couleurs
+create.shader.opt.colors.help:
+  en: From background to highlights, e.g. #0b3d91, #1fa2ff, #a6ffcb
+  fr: Du fond vers les reflets, p. ex. #0b3d91, #1fa2ff, #a6ffcb
+create.shader.opt.seed:
+  en: Variation
+  fr: Variante
+create.shader.opt.scale:
+  en: Scale
+  fr: Échelle
+create.shader.opt.detail:
+  en: Detail
+  fr: Détail
+create.shader.opt.grain:
+  en: Grain
+  fr: Grain
+create.shader.opt.size:
+  en: Size
+  fr: Taille
+create.shader.opt.format:
+  en: Format
+  fr: Format
+create.shader.opt.duration:
+  en: Loop length
+  fr: Durée de la boucle
+create.shader.opt.fps:
+  en: Frame rate
+  fr: Images par seconde
+create.shader.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+
+# ------------------------------------------------------------------ Pattern
+create.pattern.name:
+  en: Pattern & texture
+  fr: Motifs et textures
+create.pattern.desc:
+  en: Seamless geometric patterns — diamonds, dots, terrazzo, hexagons… — as a tile or a full background.
+  fr: Motifs géométriques sans raccord — losanges, pois, terrazzo, hexagones… — en tuile ou en fond complet.
+create.pattern.verb:
+  en: Create pattern
+  fr: Créer le motif
+create.pattern.keywords:
+  en: pattern texture seamless tile background polka dots stripes terrazzo geometric repeat
+  fr: motif texture sans raccord tuile fond pois rayures terrazzo géométrique répétition
+create.pattern.opt.kind:
+  en: Pattern
+  fr: Motif
+create.pattern.opt.kind.dots:
+  en: Polka dots
+  fr: Pois
+create.pattern.opt.kind.grid:
+  en: Grid
+  fr: Grille
+create.pattern.opt.kind.diamonds:
+  en: Diamonds
+  fr: Losanges
+create.pattern.opt.kind.checker:
+  en: Checkerboard
+  fr: Damier
+create.pattern.opt.kind.stripes:
+  en: Stripes
+  fr: Rayures
+create.pattern.opt.kind.zigzag:
+  en: Zigzag
+  fr: Zigzag
+create.pattern.opt.kind.waves:
+  en: Waves
+  fr: Vagues
+create.pattern.opt.kind.hexagons:
+  en: Hexagons
+  fr: Hexagones
+create.pattern.opt.kind.triangles:
+  en: Triangles
+  fr: Triangles
+create.pattern.opt.kind.crosses:
+  en: Crosses
+  fr: Croix
+create.pattern.opt.kind.terrazzo:
+  en: Terrazzo
+  fr: Terrazzo
+create.pattern.opt.kind.confetti:
+  en: Confetti
+  fr: Confettis
+create.pattern.opt.kind.scales:
+  en: Scales
+  fr: Écailles
+create.pattern.opt.kind.herringbone:
+  en: Herringbone
+  fr: Chevrons
+create.pattern.opt.color:
+  en: Colour
+  fr: Couleur
+create.pattern.opt.color2:
+  en: Second colour
+  fr: Seconde couleur
+create.pattern.opt.background:
+  en: Background
+  fr: Fond
+create.pattern.opt.tile:
+  en: Tile size
+  fr: Taille de la tuile
+create.pattern.opt.stroke:
+  en: Line width
+  fr: Épaisseur des traits
+create.pattern.opt.angle:
+  en: Rotation
+  fr: Rotation
+create.pattern.opt.seed:
+  en: Variation
+  fr: Variante
+create.pattern.opt.output:
+  en: Export
+  fr: Export
+create.pattern.opt.output.tile:
+  en: One seamless tile
+  fr: Une tuile sans raccord
+create.pattern.opt.output.canvas:
+  en: Filled image
+  fr: Image remplie
+create.pattern.opt.output.help:
+  en: The tile repeats without seams; rotation applies to filled images.
+  fr: La tuile se répète sans raccord ; la rotation s’applique aux images remplies.
+create.pattern.opt.size:
+  en: Image size
+  fr: Taille de l’image
+create.pattern.opt.format:
+  en: Format
+  fr: Format
+create.pattern.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+
+# ------------------------------------------------------------------ Watermark tile
+create.watermark-tile.name:
+  en: Watermark tile
+  fr: Tuile de filigrane
+create.watermark-tile.desc:
+  en: A repeating, semi-transparent text watermark (“Confidential”, “Draft”, © name) to lay over anything.
+  fr: Un filigrane de texte répété et semi-transparent (« Confidentiel », « Brouillon », © nom) à superposer à tout.
+create.watermark-tile.verb:
+  en: Create tile
+  fr: Créer la tuile
+create.watermark-tile.keywords:
+  en: watermark tile overlay confidential draft copyright proof repeat transparent
+  fr: filigrane tuile superposition confidentiel brouillon copyright épreuve répétition transparent
+create.watermark-tile.opt.text:
+  en: Text
+  fr: Texte
+create.watermark-tile.opt.text2:
+  en: Second line
+  fr: Seconde ligne
+create.watermark-tile.opt.font:
+  en: Font
+  fr: Police
+create.watermark-tile.opt.font.sans:
+  en: Sans serif
+  fr: Sans empattement
+create.watermark-tile.opt.font.serif:
+  en: Serif
+  fr: Avec empattements
+create.watermark-tile.opt.font.mono:
+  en: Monospace
+  fr: Chasse fixe
+create.watermark-tile.opt.font.chorus:
+  en: Calligraphic
+  fr: Calligraphique
+create.watermark-tile.opt.font.system:
+  en: Installed font…
+  fr: Police installée…
+create.watermark-tile.opt.family:
+  en: Installed font
+  fr: Police installée
+create.watermark-tile.opt.font_size:
+  en: Text size
+  fr: Taille du texte
+create.watermark-tile.opt.color:
+  en: Colour and opacity
+  fr: Couleur et opacité
+create.watermark-tile.opt.background:
+  en: Background
+  fr: Fond
+create.watermark-tile.opt.background.help:
+  en: Fully transparent by default.
+  fr: Entièrement transparent par défaut.
+create.watermark-tile.opt.angle:
+  en: Angle
+  fr: Angle
+create.watermark-tile.opt.spacing:
+  en: Spacing
+  fr: Espacement
+create.watermark-tile.opt.stagger:
+  en: Staggered rows
+  fr: Rangées décalées
+create.watermark-tile.opt.output:
+  en: Export
+  fr: Export
+create.watermark-tile.opt.output.tile:
+  en: One seamless tile
+  fr: Une tuile sans raccord
+create.watermark-tile.opt.output.canvas:
+  en: Filled image
+  fr: Image remplie
+create.watermark-tile.opt.size:
+  en: Image size
+  fr: Taille de l’image
+create.watermark-tile.opt.format:
+  en: Format
+  fr: Format
+create.watermark-tile.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+create.watermark-tile.err.text:
+  en: Type the watermark text.
+  fr: Saisissez le texte du filigrane.
+
+# ------------------------------------------------------------------ Formula
+create.formula.name:
+  en: Formula
+  fr: Formule
+create.formula.desc:
+  en: Beautifully typeset maths from LaTeX or Typst, as SVG, PNG or PDF.
+  fr: Des mathématiques joliment composées à partir de LaTeX ou Typst, en SVG, PNG ou PDF.
+create.formula.verb:
+  en: Typeset
+  fr: Composer
+create.formula.keywords:
+  en: formula equation latex math maths typst tex integral fraction matrix
+  fr: formule équation latex maths mathématiques typst tex intégrale fraction matrice
+create.formula.opt.formula:
+  en: Formula
+  fr: Formule
+create.formula.opt.formula.help:
+  en: "LaTeX: \\frac, \\sqrt, \\sum, Greek letters, \\mathbb, matrices, cases, aligned… or Typst math."
+  fr: "LaTeX : \\frac, \\sqrt, \\sum, lettres grecques, \\mathbb, matrices, cases, aligned… ou maths Typst."
+create.formula.opt.syntax:
+  en: Syntax
+  fr: Syntaxe
+create.formula.opt.syntax.auto:
+  en: Detect
+  fr: Détecter
+create.formula.opt.syntax.latex:
+  en: LaTeX
+  fr: LaTeX
+create.formula.opt.syntax.typst:
+  en: Typst
+  fr: Typst
+create.formula.opt.display:
+  en: Display style (centred, big operators)
+  fr: Style hors texte (centré, grands opérateurs)
+create.formula.opt.font_size:
+  en: Size
+  fr: Taille
+create.formula.opt.color:
+  en: Colour
+  fr: Couleur
+create.formula.opt.background:
+  en: Background
+  fr: Fond
+create.formula.opt.padding:
+  en: Margin
+  fr: Marge
+create.formula.opt.format:
+  en: Format
+  fr: Format
+create.formula.opt.dpi:
+  en: Resolution
+  fr: Résolution
+create.formula.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+create.formula.err.empty:
+  en: Type a formula.
+  fr: Saisissez une formule.
+create.formula.err.brace:
+  en: "A “{” or “}” is missing in the formula."
+  fr: "Il manque une « { » ou une « } » dans la formule."
+create.formula.err.command:
+  en: "%{command} is not supported; write it in Typst syntax, or use a close command."
+  fr: "%{command} n’est pas pris en charge ; écrivez-le en syntaxe Typst ou utilisez une commande proche."
+create.formula.err.end:
+  en: "\\begin{%{env}} has no \\end."
+  fr: "\\begin{%{env}} n’a pas de \\end."
+
+# ------------------------------------------------------------------ Brand sheet
+create.brand-sheet.name:
+  en: Brand sheet
+  fr: Charte graphique
+create.brand-sheet.desc:
+  en: A one-page brand sheet from your logo, colours and fonts — values, specimens and contrast checks included.
+  fr: Une charte d’une page à partir de votre logo, de vos couleurs et polices — valeurs, spécimens et contrastes inclus.
+create.brand-sheet.verb:
+  en: Create sheet
+  fr: Créer la charte
+create.brand-sheet.keywords:
+  en: brand style guide identity colours palette logo fonts guidelines one pager wcag
+  fr: marque charte graphique identité couleurs palette logo polices guide une page wcag
+create.brand-sheet.opt.name:
+  en: Brand name
+  fr: Nom de la marque
+create.brand-sheet.opt.tagline:
+  en: Tagline
+  fr: Slogan
+create.brand-sheet.opt.logo:
+  en: Logo
+  fr: Logo
+create.brand-sheet.opt.logo_dark:
+  en: Logo for dark backgrounds
+  fr: Logo pour fonds sombres
+create.brand-sheet.opt.colors:
+  en: Colours
+  fr: Couleurs
+create.brand-sheet.opt.colors.help:
+  en: "One per line: Name #hex"
+  fr: "Une par ligne : Nom #hex"
+create.brand-sheet.opt.heading_font:
+  en: Heading font
+  fr: Police des titres
+create.brand-sheet.opt.heading_font.sans:
+  en: Latin Modern Sans
+  fr: Latin Modern Sans
+create.brand-sheet.opt.heading_font.serif:
+  en: Latin Modern Roman
+  fr: Latin Modern Roman
+create.brand-sheet.opt.heading_font.chorus:
+  en: TeX Gyre Chorus
+  fr: TeX Gyre Chorus
+create.brand-sheet.opt.heading_font.system:
+  en: Installed font…
+  fr: Police installée…
+create.brand-sheet.opt.heading_family:
+  en: Installed heading font
+  fr: Police de titre installée
+create.brand-sheet.opt.body_font:
+  en: Text font
+  fr: Police du texte
+create.brand-sheet.opt.body_font.serif:
+  en: Latin Modern Roman
+  fr: Latin Modern Roman
+create.brand-sheet.opt.body_font.sans:
+  en: Latin Modern Sans
+  fr: Latin Modern Sans
+create.brand-sheet.opt.body_font.system:
+  en: Installed font…
+  fr: Police installée…
+create.brand-sheet.opt.body_family:
+  en: Installed text font
+  fr: Police de texte installée
+create.brand-sheet.opt.notes:
+  en: Notes
+  fr: Notes
+create.brand-sheet.opt.format:
+  en: Format
+  fr: Format
+create.brand-sheet.opt.file_name:
+  en: File name
+  fr: Nom du fichier
+create.brand-sheet.err.colors:
+  en: "Enter at least one colour, e.g. Ink #1b1616."
+  fr: "Saisissez au moins une couleur, p. ex. Encre #1b1616."
+create.brand-sheet.t.title:
+  en: Brand sheet
+  fr: Charte graphique
+create.brand-sheet.t.logo:
+  en: Logo
+  fr: Logo
+create.brand-sheet.t.clear:
+  en: dashed line = clear space
+  fr: pointillés = zone de protection
+create.brand-sheet.t.colour:
+  en: Colour
+  fr: Couleurs
+create.brand-sheet.t.type:
+  en: Typography
+  fr: Typographie
+create.brand-sheet.t.contrast:
+  en: Contrast
+  fr: Contrastes
+create.brand-sheet.t.pair:
+  en: Text / background
+  fr: Texte / fond
+create.brand-sheet.t.ratio:
+  en: Ratio
+  fr: Rapport
+create.brand-sheet.t.wcag:
+  en: "Colour pairs by contrast. AA: body text, AAA: best, “AA large”: 18 pt and up only."
+  fr: "Paires de couleurs par contraste. AA : texte courant, AAA : idéal, « AA large » : 18 pt et plus seulement."
+create.brand-sheet.t.notes:
+  en: Notes
+  fr: Notes
+create.brand-sheet.t.headings:
+  en: headings
+  fr: titres
+create.brand-sheet.t.text:
+  en: text
+  fr: texte
+create.brand-sheet.t.sample:
+  en: The quick brown fox jumps over the lazy dog
+  fr: Portez ce vieux whisky au juge blond qui fume
+create.brand-sheet.t.nologo:
+  en: No logo yet
+  fr: Pas encore de logo
+
+# ------------------------------------------------------------------ Carousel
+create.carousel.name:
+  en: Carousel
+  fr: Carrousel
+create.carousel.desc:
+  en: Multi-slide social carousels from a few text blocks and images, in one consistent template.
+  fr: Des carrousels de plusieurs diapositives à partir de quelques textes et images, dans un modèle cohérent.
+create.carousel.verb:
+  en: Create slides
+  fr: Créer les diapositives
+create.carousel.keywords:
+  en: carousel slides instagram linkedin swipe post social thread pdf
+  fr: carrousel diapositives instagram linkedin balayer publication réseaux pdf
+create.carousel.caption:
+  en: "%{count} slides"
+  fr: "%{count} diapositives"
+create.carousel.swipe:
+  en: Swipe
+  fr: Faites défiler
+create.carousel.opt.slides:
+  en: Slides
+  fr: Diapositives
+create.carousel.opt.slides.help:
+  en: "Separate slides with a line of three dashes (---). First line = title, the rest = text. Dropped images go to slides 1, 2, 3… in order."
+  fr: "Séparez les diapositives par une ligne de trois tirets (---). Première ligne = titre, le reste = texte. Les images déposées vont aux diapositives 1, 2, 3… dans l’ordre."
+create.carousel.opt.template:
+  en: Template
+  fr: Modèle
+create.carousel.opt.template.classic:
+  en: Classic
+  fr: Classique
+create.carousel.opt.template.bold:
+  en: Bold
+  fr: Contrasté
+create.carousel.opt.template.minimal:
+  en: Minimal
+  fr: Minimal
+create.carousel.opt.template.photo:
+  en: Full-bleed photos
+  fr: Photos pleine page
+create.carousel.opt.size:
+  en: Size
+  fr: Taille
+create.carousel.opt.size.portrait:
+  en: Portrait 1080 × 1350
+  fr: Portrait 1080 × 1350
+create.carousel.opt.size.square:
+  en: Square 1080 × 1080
+  fr: Carré 1080 × 1080
+create.carousel.opt.size.story:
+  en: Story 1080 × 1920
+  fr: Story 1080 × 1920
+create.carousel.opt.size.landscape:
+  en: Landscape 1920 × 1080
+  fr: Paysage 1920 × 1080
+create.carousel.opt.background:
+  en: Background
+  fr: Fond
+create.carousel.opt.color:
+  en: Text
+  fr: Texte
+create.carousel.opt.accent:
+  en: Accent
+  fr: Accent
+create.carousel.opt.handle:
+  en: Handle or site
+  fr: Pseudo ou site
+create.carousel.opt.numbers:
+  en: Slide numbers
+  fr: Numéros des diapositives
+create.carousel.opt.name:
+  en: File names
+  fr: Noms des fichiers
+create.carousel.opt.name.help:
+  en: “carousel” → carousel-01.png, carousel-02.png…
+  fr: « carousel » → carousel-01.png, carousel-02.png…
+create.carousel.opt.pdf:
+  en: Also a PDF of all slides
+  fr: Aussi un PDF de toutes les diapositives
+create.carousel.err.empty:
+  en: Write at least one slide.
+  fr: Écrivez au moins une diapositive.
+
+# ------------------------------------------------------------------ Mockup
+create.mockup.name:
+  en: Device mockup
+  fr: Maquette d’appareil
+create.mockup.desc:
+  en: Put a screenshot or a screen recording into a phone, laptop or browser window on a styled scene.
+  fr: Placez une capture ou un enregistrement d’écran dans un téléphone, un portable ou une fenêtre de navigateur, sur une scène soignée.
+create.mockup.verb:
+  en: Create mockup
+  fr: Créer la maquette
+create.mockup.keywords:
+  en: mockup device phone laptop tablet monitor browser screenshot frame presentation store portfolio
+  fr: maquette appareil téléphone portable tablette écran navigateur capture cadre présentation portfolio
+create.mockup.placeholder:
+  en: Drop a screenshot here
+  fr: Déposez une capture ici
+create.mockup.opt.device:
+  en: Device
+  fr: Appareil
+create.mockup.opt.device.phone:
+  en: Phone
+  fr: Téléphone
+create.mockup.opt.device.tablet:
+  en: Tablet
+  fr: Tablette
+create.mockup.opt.device.laptop:
+  en: Laptop
+  fr: Ordinateur portable
+create.mockup.opt.device.desktop:
+  en: Desktop monitor
+  fr: Écran de bureau
+create.mockup.opt.device.browser:
+  en: Browser window
+  fr: Fenêtre de navigateur
+create.mockup.opt.finish:
+  en: Finish
+  fr: Finition
+create.mockup.opt.finish.graphite:
+  en: Graphite
+  fr: Graphite
+create.mockup.opt.finish.silver:
+  en: Silver
+  fr: Argent
+create.mockup.opt.finish.white:
+  en: White
+  fr: Blanc
+create.mockup.opt.scene:
+  en: Scene
+  fr: Scène
+create.mockup.opt.scene.castor:
+  en: Castor pastels
+  fr: Pastels Castor
+create.mockup.opt.scene.sunset:
+  en: Sunset gradient
+  fr: Dégradé coucher de soleil
+create.mockup.opt.scene.ocean:
+  en: Ocean gradient
+  fr: Dégradé océan
+create.mockup.opt.scene.aurora:
+  en: Aurora gradient
+  fr: Dégradé aurore
+create.mockup.opt.scene.peach:
+  en: Peach gradient
+  fr: Dégradé pêche
+create.mockup.opt.scene.forest:
+  en: Forest gradient
+  fr: Dégradé forêt
+create.mockup.opt.scene.dusk:
+  en: Dusk gradient
+  fr: Dégradé crépuscule
+create.mockup.opt.scene.ink:
+  en: Ink gradient
+  fr: Dégradé encre
+create.mockup.opt.scene.paper:
+  en: Paper
+  fr: Papier
+create.mockup.opt.scene.night:
+  en: Night
+  fr: Nuit
+create.mockup.opt.scene.tint:
+  en: Pastel yellow
+  fr: Jaune pastel
+create.mockup.opt.scene.wood:
+  en: Light wood
+  fr: Bois clair
+create.mockup.opt.scene.walnut:
+  en: Walnut
+  fr: Noyer
+create.mockup.opt.scene.concrete:
+  en: Concrete
+  fr: Béton
+create.mockup.opt.scene.marble:
+  en: Marble
+  fr: Marbre
+create.mockup.opt.scene.linen:
+  en: Linen
+  fr: Lin
+create.mockup.opt.scene.felt:
+  en: Green felt
+  fr: Feutre vert
+create.mockup.opt.scene.terrazzo:
+  en: Terrazzo
+  fr: Terrazzo
+create.mockup.opt.scene.desk:
+  en: Oak desk
+  fr: Bureau en chêne
+create.mockup.opt.scene.studio:
+  en: Studio backdrop
+  fr: Fond de studio
+create.mockup.opt.scene.custom:
+  en: My colour
+  fr: Ma couleur
+create.mockup.opt.scene.transparent:
+  en: Transparent
+  fr: Transparent
+create.mockup.opt.scene_color:
+  en: Scene colour
+  fr: Couleur de la scène
+create.mockup.opt.angle:
+  en: View
+  fr: Vue
+create.mockup.opt.angle.flat:
+  en: Front
+  fr: De face
+create.mockup.opt.angle.left:
+  en: Turned left
+  fr: Tourné à gauche
+create.mockup.opt.angle.right:
+  en: Turned right
+  fr: Tourné à droite
+create.mockup.opt.angle.low:
+  en: Lying back
+  fr: Incliné en arrière
+create.mockup.opt.shadow:
+  en: Shadow
+  fr: Ombre
+create.mockup.opt.shadow.none:
+  en: None
+  fr: Aucune
+create.mockup.opt.shadow.soft:
+  en: Soft
+  fr: Douce
+create.mockup.opt.shadow.strong:
+  en: Strong
+  fr: Marquée
+create.mockup.opt.fit:
+  en: Screenshot
+  fr: Capture
+create.mockup.opt.fit.fill:
+  en: Fill the screen
+  fr: Remplir l’écran
+create.mockup.opt.fit.fit:
+  en: Show all
+  fr: Tout afficher
+create.mockup.opt.url:
+  en: Address bar text
+  fr: Texte de la barre d’adresse
+create.mockup.opt.size:
+  en: Image size
+  fr: Taille de l’image
+create.mockup.opt.padding:
+  en: Margin
+  fr: Marge
+create.mockup.opt.format:
+  en: Format
+  fr: Format
+create.mockup.opt.format.help:
+  en: Screen recordings always give an MP4.
+  fr: Les enregistrements d’écran donnent toujours un MP4.
+create.mockup.opt.seed:
+  en: Scene variation
+  fr: Variante de la scène
+
+# ------------------------------------------------------------------ Audiogram
+create.audiogram.name:
+  en: Audiogram
+  fr: Audiogramme
+create.audiogram.desc:
+  en: Turn a podcast or voice clip into a video for social media — animated waveform, title, cover and captions.
+  fr: Transformez un extrait de podcast ou de voix en vidéo pour les réseaux — onde animée, titre, couverture et sous-titres.
+create.audiogram.verb:
+  en: Create video
+  fr: Créer la vidéo
+create.audiogram.keywords:
+  en: audiogram podcast waveform audio to video social captions clip visualizer spectrum
+  fr: audiogramme podcast onde audio en vidéo réseaux sous-titres extrait visualiseur spectre
+create.audiogram.msg.audio:
+  en: Preparing the sound…
+  fr: Préparation du son…
+create.audiogram.msg.transcribing:
+  en: Writing the captions…
+  fr: Écriture des sous-titres…
+create.audiogram.opt.style:
+  en: Waveform
+  fr: Forme d’onde
+create.audiogram.opt.style.bars:
+  en: Bars
+  fr: Barres
+create.audiogram.opt.style.line:
+  en: Line
+  fr: Ligne
+create.audiogram.opt.style.circle:
+  en: Circle
+  fr: Cercle
+create.audiogram.opt.aspect:
+  en: Format
+  fr: Format
+create.audiogram.opt.aspect.square:
+  en: Square 1:1
+  fr: Carré 1:1
+create.audiogram.opt.aspect.portrait:
+  en: Story 9:16
+  fr: Story 9:16
+create.audiogram.opt.aspect.landscape:
+  en: Wide 16:9
+  fr: Large 16:9
+create.audiogram.opt.aspect.feed:
+  en: Feed 4:5
+  fr: Fil 4:5
+create.audiogram.opt.title:
+  en: Title
+  fr: Titre
+create.audiogram.opt.title.help:
+  en: Empty = the file name.
+  fr: Vide = le nom du fichier.
+create.audiogram.opt.subtitle:
+  en: Subtitle
+  fr: Sous-titre
+create.audiogram.opt.cover:
+  en: Cover image
+  fr: Image de couverture
+create.audiogram.opt.scene:
+  en: Background
+  fr: Fond
+create.audiogram.opt.scene.castor:
+  en: Castor pastels
+  fr: Pastels Castor
+create.audiogram.opt.scene.sunset:
+  en: Sunset gradient
+  fr: Dégradé coucher de soleil
+create.audiogram.opt.scene.ocean:
+  en: Ocean gradient
+  fr: Dégradé océan
+create.audiogram.opt.scene.aurora:
+  en: Aurora gradient
+  fr: Dégradé aurore
+create.audiogram.opt.scene.peach:
+  en: Peach gradient
+  fr: Dégradé pêche
+create.audiogram.opt.scene.forest:
+  en: Forest gradient
+  fr: Dégradé forêt
+create.audiogram.opt.scene.dusk:
+  en: Dusk gradient
+  fr: Dégradé crépuscule
+create.audiogram.opt.scene.ink:
+  en: Ink gradient
+  fr: Dégradé encre
+create.audiogram.opt.scene.paper:
+  en: Paper
+  fr: Papier
+create.audiogram.opt.scene.night:
+  en: Night
+  fr: Nuit
+create.audiogram.opt.scene.tint:
+  en: Pastel yellow
+  fr: Jaune pastel
+create.audiogram.opt.scene.wood:
+  en: Light wood
+  fr: Bois clair
+create.audiogram.opt.scene.walnut:
+  en: Walnut
+  fr: Noyer
+create.audiogram.opt.scene.concrete:
+  en: Concrete
+  fr: Béton
+create.audiogram.opt.scene.marble:
+  en: Marble
+  fr: Marbre
+create.audiogram.opt.scene.linen:
+  en: Linen
+  fr: Lin
+create.audiogram.opt.scene.felt:
+  en: Green felt
+  fr: Feutre vert
+create.audiogram.opt.scene.terrazzo:
+  en: Terrazzo
+  fr: Terrazzo
+create.audiogram.opt.scene.desk:
+  en: Oak desk
+  fr: Bureau en chêne
+create.audiogram.opt.scene.studio:
+  en: Studio backdrop
+  fr: Fond de studio
+create.audiogram.opt.scene.custom:
+  en: My colour
+  fr: Ma couleur
+create.audiogram.opt.scene_color:
+  en: Background colour
+  fr: Couleur du fond
+create.audiogram.opt.wave_color:
+  en: Waveform colour
+  fr: Couleur de l’onde
+create.audiogram.opt.text_color:
+  en: Text colour
+  fr: Couleur du texte
+create.audiogram.opt.captions:
+  en: Captions
+  fr: Sous-titres
+create.audiogram.opt.captions.none:
+  en: None
+  fr: Aucun
+create.audiogram.opt.captions.speech:
+  en: From the speech
+  fr: D’après la parole
+create.audiogram.opt.captions.file:
+  en: From a subtitle file
+  fr: D’un fichier de sous-titres
+create.audiogram.opt.subtitles:
+  en: Subtitle file
+  fr: Fichier de sous-titres
+create.audiogram.opt.model:
+  en: Speech model
+  fr: Modèle de reconnaissance
+create.audiogram.opt.model.help:
+  en: Downloaded once (base ≈ 80 MB); then everything runs offline.
+  fr: Téléchargé une fois (base ≈ 80 Mo) ; ensuite tout fonctionne hors ligne.
+create.audiogram.opt.model.tiny:
+  en: Tiny (fastest)
+  fr: Très petit (le plus rapide)
+create.audiogram.opt.model.base:
+  en: Base
+  fr: Base
+create.audiogram.opt.model.small:
+  en: Small (better)
+  fr: Petit (meilleur)
+create.audiogram.opt.model.medium:
+  en: Medium (slow)
+  fr: Moyen (lent)
+create.audiogram.opt.model.turbo:
+  en: Turbo (best)
+  fr: Turbo (le meilleur)
+create.audiogram.opt.start:
+  en: Start at
+  fr: Début à
+create.audiogram.opt.start.help:
+  en: "e.g. 1:30"
+  fr: "p. ex. 1:30"
+create.audiogram.opt.length:
+  en: Length
+  fr: Durée
+create.audiogram.opt.length.help:
+  en: "Seconds or m:ss; social clips work best under a minute."
+  fr: "Secondes ou m:ss ; les extraits pour les réseaux marchent mieux sous la minute."
+create.audiogram.opt.progress:
+  en: Progress line
+  fr: Ligne de progression
+create.audiogram.opt.fps:
+  en: Frame rate
+  fr: Images par seconde
+create.audiogram.err.ffmpeg:
+  en: ffmpeg is missing.
+  fr: ffmpeg est absent.
+create.audiogram.err.no_audio:
+  en: This file has no sound.
+  fr: Ce fichier n’a pas de son.
+create.audiogram.err.start:
+  en: The start is after the end of the file.
+  fr: Le début est après la fin du fichier.
+create.audiogram.err.subtitles:
+  en: Choose a subtitle file (SRT, VTT or ASS).
+  fr: Choisissez un fichier de sous-titres (SRT, VTT ou ASS).
+
+# ------------------------------------------------------------------ Motion
+create.motion.name:
+  en: Motion
+  fr: Animation
+create.motion.desc:
+  en: Lower thirds, text reveals, logo stings and title cards as short clips with a transparent background.
+  fr: Bandeaux de nom, textes qui apparaissent, animations de logo et cartons de titre, en clips courts sur fond transparent.
+create.motion.verb:
+  en: Render
+  fr: Générer
+create.motion.keywords:
+  en: motion lower third title animation logo sting intro alpha overlay text animation prores webm
+  fr: animation bandeau titre logo intro alpha incrustation texte animé prores webm
+create.motion.opt.preset:
+  en: Animation
+  fr: Animation
+create.motion.opt.preset.lower-third:
+  en: Lower third
+  fr: Bandeau de nom
+create.motion.opt.preset.reveal:
+  en: Text reveal
+  fr: Texte qui apparaît
+create.motion.opt.preset.sting:
+  en: Logo sting
+  fr: Animation de logo
+create.motion.opt.preset.title:
+  en: Title card
+  fr: Carton de titre
+create.motion.opt.title:
+  en: Title
+  fr: Titre
+create.motion.opt.subtitle:
+  en: Subtitle
+  fr: Sous-titre
+create.motion.opt.logo:
+  en: Logo
+  fr: Logo
+create.motion.opt.accent:
+  en: Accent
+  fr: Accent
+create.motion.opt.color:
+  en: Text
+  fr: Texte
+create.motion.opt.background:
+  en: Background
+  fr: Fond
+create.motion.opt.background.help:
+  en: Transparent by default (MOV and WebM keep the transparency; MP4 cannot).
+  fr: Transparent par défaut (MOV et WebM gardent la transparence ; pas le MP4).
+create.motion.opt.duration:
+  en: Duration
+  fr: Durée
+create.motion.opt.size:
+  en: Size
+  fr: Taille
+create.motion.opt.format:
+  en: Format
+  fr: Format
+create.motion.opt.fps:
+  en: Frame rate
+  fr: Images par seconde
+create.qr-code.card.wifi.network:
+  en: Network
+  fr: Réseau
+create.barcode.err.latin1:
+  en: "This barcode type only carries Western European characters (no emoji, Greek, Cyrillic, Asian scripts…). Use a QR code for other text."
+  fr: "Ce type de code-barres ne porte que les caractères d’Europe de l’Ouest (pas d’emoji, de grec, de cyrillique, d’écritures asiatiques…). Utilisez un code QR pour les autres textes."
