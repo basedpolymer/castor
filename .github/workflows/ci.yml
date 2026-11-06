@@ -1,0 +1,82 @@
+# Windows-only CI: build every binary and run the tests that need no network or helpers.
+# No secrets, no signing, no publishing. The `package` job (manual) runs the Windows packaging
+# script end to end and keeps Setup.exe / portable zip as workflow artifacts.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Also build the Velopack packages (Setup.exe, portable zip)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+  CARGO_PROFILE_DEV_DEBUG: line-tables-only
+  # MuPDF bindgen (see CLAUDE.md, "Building on Windows"); LLVM is preinstalled on the runner.
+  LIBCLANG_PATH: C:/Program Files/LLVM/bin
+
+jobs:
+  build-test:
+    runs-on: windows-2022
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: ilammy/setup-nasm@v1          # rav1e (AVIF) assembly
+      - uses: Swatinem/rust-cache@v2
+      - name: MuPDF bindgen work-around
+        shell: pwsh
+        run: |
+          $h = "$env:GITHUB_WORKSPACE/crates/engine-pdf/bindgen/max_align_t.h" -replace '\\','/'
+          "BINDGEN_EXTRA_CLANG_ARGS=-D__CLANG_MAX_ALIGN_T_DEFINED -include $h" >> $env:GITHUB_ENV
+      - name: Build all binaries
+        run: cargo build --locked -p castor-app -p castor-cli -p castor-mcp
+      - name: Tests (no network, no helpers)
+        run: cargo test --locked -p castor-core -p engine-pdf -p tools-pdf -p tools-files
+      - name: castor-cli smoke
+        shell: pwsh
+        run: |
+          $env:CASTOR_HOME = "$env:RUNNER_TEMP/castor-home"
+          ./target/debug/castor-cli.exe list | Select-Object -First 5
+          ./target/debug/castor-cli.exe run files.checksum Cargo.toml --out "$env:RUNNER_TEMP/out"
+
+  package:
+    if: github.event_name == 'workflow_dispatch' && inputs.package
+    runs-on: windows-2022
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: ilammy/setup-nasm@v1
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - uses: Swatinem/rust-cache@v2
+      - name: Install vpk (pinned in packaging/pins.env)
+        shell: pwsh
+        run: |
+          $v = (Select-String -Path packaging/pins.env -Pattern '^VPK_VERSION=(.+)$').Matches[0].Groups[1].Value
+          dotnet tool install -g vpk --version $v
+      - name: Build, bundle, check, pack
+        shell: pwsh
+        run: pwsh packaging/windows/build.ps1 -TargetDir target -Jobs 4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: castor-windows
+          path: |
+            target/releases/win/*-Setup.exe
+            target/releases/win/*-Portable.zip
+          retention-days: 7

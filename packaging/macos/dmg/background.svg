@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 400" width="660" height="400">
+  <!-- Castor DMG window background (660 × 400 pt). Icons are placed by dmg-settings.py at
+       Castor.app (170, 190) and Applications (490, 190), 112 pt icons.
+       Rendered to background.png (660 px) and background@2x.png (1320 px) with Castor itself:
+       castor-cli run image.convert background.svg, format=png, svg_size=660 / 1320
+       (resvg + the bundled Latin Modern fonts). -->
+  <rect width="660" height="400" fill="#fcfbf9"/>
+  <!-- Section heading, TeXtured style -->
+  <text x="40" y="52" font-family="'LM Sans 10', 'Latin Modern Sans', sans-serif" font-weight="bold" font-size="20" fill="#1b1616">1.<tspan dx="10">Install Castor</tspan></text>
+  <!-- Page rule ending in a diamond (top right) -->
+  <line x1="400" y1="46" x2="608" y2="46" stroke="#1b1616" stroke-width="1"/>
+  <polygon points="616,40 622,46 616,52 610,46" fill="none" stroke="#1b1616" stroke-width="1.5"/>
+  <!-- Booktabs-like rule under the heading -->
+  <line x1="40" y1="70" x2="620" y2="70" stroke="#d9d6cf" stroke-width="1"/>
+  <!-- Arrow from the app to Applications -->
+  <line x1="256" y1="190" x2="398" y2="190" stroke="#1b1616" stroke-width="1.5"/>
+  <polyline points="390,182 400,190 390,198" fill="none" stroke="#1b1616" stroke-width="1.5" stroke-linejoin="miter"/>
+  <polygon points="250,190 255,185 260,190 255,195" fill="#1b1616"/>
+  <!-- Caption -->
+  <line x1="40" y1="318" x2="620" y2="318" stroke="#d9d6cf" stroke-width="1"/>
+  <text x="330" y="346" text-anchor="middle" font-family="'LM Roman 10', 'Latin Modern Roman', serif" font-size="14" fill="#5c5a55"><tspan font-weight="bold" fill="#1b1616">Figure 1</tspan> / Drag Castor onto the Applications folder.</text>
+  <text x="330" y="370" text-anchor="middle" font-family="'LM Roman 10', 'Latin Modern Roman', serif" font-size="13" fill="#8c8a84">Free software · GPL-3.0 · basedpolymer.eu/castor</text>
+</svg>

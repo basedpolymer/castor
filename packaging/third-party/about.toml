@@ -1,0 +1,45 @@
+# cargo-about configuration for THIRD_PARTY.md (packaging/third-party/generate.sh).
+# Every licence below is compatible with GPL-3.0-or-later (CLAUDE.md rule 6). A crate under any
+# other licence makes generation fail: check it before adding it here.
+accepted = [
+    "MIT",
+    "MIT-0",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "BSL-1.0",
+    "ISC",
+    "Zlib",
+    "0BSD",
+    "CC0-1.0",
+    "Unlicense",
+    "Unicode-3.0",
+    "Unicode-DFS-2016",
+    "MPL-2.0",
+    "CDLA-Permissive-2.0",
+    "bzip2-1.0.6",
+    "NCSA",
+    "OFL-1.1",
+    "LGPL-2.1",
+    "LGPL-2.1-or-later",
+    "LGPL-3.0",
+    "LGPL-3.0-or-later",
+    "GPL-3.0",
+    "GPL-3.0-or-later",
+    "AGPL-3.0",
+    "AGPL-3.0-only",
+    "AGPL-3.0-or-later",
+]
+# The platforms Castor ships on.
+targets = [
+    "x86_64-pc-windows-msvc",
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin",
+]
+ignore-build-dependencies = true
+ignore-dev-dependencies = true
+# Our own crates are covered by the main licence.
+private = { ignore = true }
+# Known crates whose licence files need help.
+workarounds = ["ring", "rustls", "chrono", "wasmtime", "bitvec", "cocoa", "gtk", "prost", "sentry", "tonic", "tract"]

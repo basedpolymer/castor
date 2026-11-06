@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Castor.app Info.plist. @VERSION@ / @BUILD@ are filled in by packaging/macos/build.sh. -->
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key><string>en</string>
+  <key>CFBundleName</key><string>Castor</string>
+  <key>CFBundleDisplayName</key><string>Castor</string>
+  <key>CFBundleIdentifier</key><string>eu.basedpolymer.castor</string>
+  <key>CFBundleExecutable</key><string>castor</string>
+  <key>CFBundleIconFile</key><string>castor</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleSignature</key><string>????</string>
+  <key>CFBundleShortVersionString</key><string>@VERSION@</string>
+  <key>CFBundleVersion</key><string>@BUILD@</string>
+  <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+  <key>LSMinimumSystemVersion</key><string>11.0</string>
+  <key>LSApplicationCategoryType</key><string>public.app-category.productivity</string>
+  <key>NSHumanReadableCopyright</key><string>© basedpolymer — GPL-3.0</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSSupportsAutomaticGraphicsSwitching</key><true/>
+  <key>NSPrincipalClass</key><string>NSApplication</string>
+  <!-- "Open with" in Finder: Castor is offered, never made the default (rank Alternate). -->
+  <key>CFBundleDocumentTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeName</key><string>PDF document</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array><string>com.adobe.pdf</string></array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>Image</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array><string>public.image</string><string>public.svg-image</string></array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>Video or audio</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array><string>public.audiovisual-content</string><string>public.movie</string><string>public.audio</string></array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>Archive</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array><string>public.archive</string><string>public.zip-archive</string></array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>Font</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array><string>public.font</string></array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>Document</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array><string>public.text</string><string>public.composite-content</string><string>public.spreadsheet</string><string>public.presentation</string></array>
+    </dict>
+  </array>
+</dict>
+</plist>

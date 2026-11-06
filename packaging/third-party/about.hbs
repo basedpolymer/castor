@@ -1,0 +1,23 @@
+## Rust crates
+
+Castor's executables are built from the Rust crates below (generated with `cargo-about` from
+`Cargo.lock`; build-only and test-only crates are left out). Licences by number of crates
+(Castor's own crates included):
+{{#each overview}}{{{name}}} ({{count}}){{#unless @last}}, {{/unless}}{{/each}}.
+
+| crate | version | licence |
+|---|---|---|
+{{#each crates}}| [{{package.name}}]({{#if package.repository}}{{package.repository}}{{else}}https://crates.io/crates/{{package.name}}{{/if}}) | {{package.version}} | {{license}} |
+{{/each}}
+
+## Licence texts
+
+{{#each licenses}}
+### {{name}}
+
+Used by: {{#each used_by}}{{crate.name}} {{crate.version}}{{#unless @last}}, {{/unless}}{{/each}}
+
+```text
+{{{text}}}
+```
+{{/each}}

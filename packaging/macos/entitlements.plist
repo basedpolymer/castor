@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Hardened-runtime entitlements for Castor.app and its helpers (ffmpeg, ffprobe, whisper-cli,
+  castor-cli, castor-mcp). Deliberately empty: no JIT, no unsigned executable memory, library
+  validation stays on (the only dylib loaded at run time, libonnxruntime.dylib on Intel Macs,
+  is signed with the same Developer ID as the app). Not sandboxed (the app works on any file
+  the user drops and runs helper programs).
+-->
+<plist version="1.0">
+<dict/>
+</plist>
