@@ -205,19 +205,30 @@ impl Tool for FromEbook {
             _ => (419.53, 595.28),
         };
         let m = mm(v.float("margin"));
+        // Page margins for the HTML/EPUB layout engine (user style sheet of this thread's
+        // context; reset by the guard whatever happens).
+        struct CssGuard(mupdf::Context);
+        impl Drop for CssGuard {
+            fn drop(&mut self) {
+                let _ = self.0.set_user_css("");
+            }
+        }
         let mut ctx = mupdf::Context::get();
         ctx.set_user_css(&format!("@page {{ margin: {m:.1}pt }}"))?;
+        let _guard = CssGuard(ctx);
         let mut doc = engine_pdf::open_document(&input.path, "")?;
         cx.message(tr("pdf.from-ebook.msg.layout"));
         if doc.is_reflowable()? {
             doc.layout(w, h, v.float("font_size").clamp(4.0, 48.0) as f32)?;
         }
         cx.check_cancel()?;
-        cx.progress(0.3);
+        cx.progress(0.2);
         let outline = doc.outlines().unwrap_or_default();
-        let mut pdf = doc.convert_to_pdf(0, -1, 0)?;
-        let _ = ctx.set_user_css("");
-        cx.progress(0.85);
+        let tmp = cx.tmp_dir().join("converted.pdf");
+        let token = cx.cancel_token();
+        engine_pdf::convert_to_pdf(&doc, &tmp, &|| token.is_cancelled(), &|i, n| cx.progress(0.2 + 0.7 * i as f32 / n as f32))?;
+        let mut pdf = engine_pdf::open_pdf(&tmp, "")?;
+        cx.progress(0.9);
         if !outline.is_empty() {
             let _ = pdf.set_outlines(&outline);
         }

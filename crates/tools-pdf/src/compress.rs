@@ -156,13 +156,18 @@ impl Tool for Compress {
         cx.message(tr("pdf.compress.msg.images"));
         // Pass 2: images, fonts, structure.
         let candidate = cx.tmp_dir().join("candidate.pdf");
-        // Some images (damaged JBIG2, exotic filters) cannot be decoded for recompression: retry
-        // without touching bitonal images, then without touching images at all.
+        // Some images (damaged JBIG2, exotic filters) cannot be decoded for recompression or
+        // recolouring: retry without touching bitonal images or colours, then without touching images at
+        // all (structure, fonts and streams are still optimised), and say so.
         let mut o = settings(v);
+        let mut degraded = false;
         if let Err(e) = optimize(&source, &candidate, pw, &o) {
             cx.check_cancel()?;
+            degraded = true;
             o.bitonal_dpi = 0;
+            o.recolor = Recolor::Keep;
             if optimize(&source, &candidate, pw, &o).is_err() {
+                cx.check_cancel()?;
                 o.rewrite_images = false;
                 o.image_dpi = 0;
                 optimize(&source, &candidate, pw, &o).map_err(|_| e)?;
@@ -173,9 +178,19 @@ impl Tool for Compress {
         let after = file_size(&candidate);
         if after == 0 || after >= before {
             std::fs::copy(&input.path, &out)?;
-            return Ok(vec![Output::new(out).with_note(tr("pdf.compress.note.not_smaller"))]);
+            let mut note = tr("pdf.compress.note.not_smaller");
+            if degraded {
+                note.push_str(" · ");
+                note.push_str(&tr("pdf.compress.note.damaged_images"));
+            }
+            return Ok(vec![Output::new(out).with_note(note)]);
         }
         std::fs::copy(&candidate, &out)?;
-        Ok(vec![Output::new(out).with_note(size_change(before, after))])
+        let mut note = size_change(before, after);
+        if degraded {
+            note.push_str(" · ");
+            note.push_str(&tr("pdf.compress.note.damaged_images"));
+        }
+        Ok(vec![Output::new(out).with_note(note)])
     }
 }

@@ -27,12 +27,14 @@ impl Merge {
 }
 
 /// Open an input as a PDF document: PDFs directly, other formats converted by MuPDF.
-pub fn open_as_pdf(f: &FileInfo, password: &str) -> Result<PdfDocument> {
+pub fn open_as_pdf(f: &FileInfo, password: &str, tmp: &std::path::Path) -> Result<PdfDocument> {
     if f.kind == FileKind::Pdf {
         return engine_pdf::open_pdf(&f.path, password);
     }
     let doc = engine_pdf::open_document(&f.path, "")?;
-    Ok(doc.convert_to_pdf(0, -1, 0)?)
+    let out = castor_core::job::unique_path(&tmp.join("converted.pdf"));
+    engine_pdf::convert_to_pdf(&doc, &out, &|| false, &|_, _| {})?;
+    engine_pdf::open_pdf(&out, "")
 }
 
 impl Tool for Merge {
@@ -61,7 +63,7 @@ impl Tool for Merge {
         for (i, f) in job.inputs.iter().enumerate() {
             cx.check_cancel()?;
             cx.message(format!("{} ({}/{n})", f.name(), i + 1));
-            let mut src = open_as_pdf(f, password(v)).map_err(|e| anyhow::anyhow!("{}: {e}", f.name()))?;
+            let mut src = open_as_pdf(f, password(v), cx.tmp_dir()).map_err(|e| anyhow::anyhow!("{}: {e}", f.name()))?;
             let count = src.page_count()?.max(0) as usize;
             if count == 0 {
                 continue;

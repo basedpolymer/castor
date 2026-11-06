@@ -21,6 +21,7 @@ pub mod ocr;
 pub mod optimize;
 pub mod pages;
 pub mod scan;
+pub mod sysfonts;
 pub mod text;
 pub mod textlayer;
 
@@ -44,6 +45,7 @@ fn check_readable(path: &Path) -> Result<()> {
 
 /// Open a PDF for editing. `password` may be empty. Errors are user-readable.
 pub fn open_pdf(path: &Path, password: &str) -> Result<PdfDocument> {
+    sysfonts::install();
     check_readable(path)?;
     let mut doc = PdfDocument::open(path_str(path)?)
         .map_err(|e| anyhow::anyhow!("{} ({e})", tr("pdf.err.corrupt")))?;
@@ -56,6 +58,7 @@ pub fn open_pdf(path: &Path, password: &str) -> Result<PdfDocument> {
 
 /// Open any document MuPDF understands (PDF, XPS, EPUB, MOBI, FB2, CBZ, images, HTML, TXT…).
 pub fn open_document(path: &Path, password: &str) -> Result<Document> {
+    sysfonts::install();
     check_readable(path)?;
     let mut doc =
         Document::open(path_str(path)?).map_err(|e| anyhow::anyhow!("{} ({e})", tr("pdf.err.corrupt")))?;
@@ -64,6 +67,29 @@ pub fn open_document(path: &Path, password: &str) -> Result<Document> {
         anyhow::ensure!(doc.authenticate(password)?, "{}", tr("pdf.err.password_wrong"));
     }
     Ok(doc)
+}
+
+/// Convert any document (laid out already if reflowable) to a PDF file, page by page, keeping
+/// text, vector graphics and images. Replaces `Document::convert_to_pdf` of the `mupdf` crate
+/// 0.8.0, whose C wrapper reuses freed page buffers after the first page (every page then
+/// carries the content of all previous ones).
+pub fn convert_to_pdf(doc: &Document, out: &Path, cancel: &dyn Fn() -> bool, progress: &dyn Fn(usize, usize)) -> Result<usize> {
+    let n = doc.page_count()?.max(0) as usize;
+    anyhow::ensure!(n > 0, "{}", tr("pdf.err.no_pages"));
+    {
+        let mut w = mupdf::DocumentWriter::new(path_str(out)?, "pdf", "compress")?;
+        for i in 0..n {
+            if cancel() {
+                return Err(castor_core::job::Cancelled.into());
+            }
+            let page = doc.load_page(i as i32)?;
+            let dev = w.begin_page(page.bounds()?)?;
+            page.run(&dev, &Matrix::IDENTITY)?;
+            w.end_page(dev)?;
+            progress(i + 1, n);
+        }
+    }
+    Ok(n)
 }
 
 /// Number of pages (fast: no page is loaded).
@@ -178,10 +204,23 @@ pub fn save_pdf(doc: &PdfDocument, out: &Path, opts: &Save) -> Result<()> {
         let _ = std::fs::remove_file(&tmp);
         return Err(anyhow::anyhow!("{}: {e}", tr("pdf.err.save")));
     }
-    std::fs::rename(&tmp, out).inspect_err(|_| {
-        let _ = std::fs::remove_file(&tmp);
-    })?;
-    Ok(())
+    persist(&tmp, out)
+}
+
+/// Move a finished temporary file into place. On Windows a scanner (Defender, the search
+/// indexer) may hold a freshly written file for a moment: retry, then fall back to a copy.
+pub fn persist(tmp: &Path, out: &Path) -> Result<()> {
+    let mut last = None;
+    for i in 0..20 {
+        match std::fs::rename(tmp, out) {
+            Ok(()) => return Ok(()),
+            Err(e) => last = Some(e),
+        }
+        std::thread::sleep(std::time::Duration::from_millis(50 * (i + 1)));
+    }
+    let copied = std::fs::copy(tmp, out).map(|_| ());
+    let _ = std::fs::remove_file(tmp);
+    copied.map_err(|e| anyhow::anyhow!("{}: {e} ({})", tr("pdf.err.save"), last.map(|l| l.to_string()).unwrap_or_default()))
 }
 
 /// `dir/.name.castor-tmp` next to `out`.
@@ -205,16 +244,21 @@ pub fn text_string(doc: &PdfDocument, value: &str) -> Result<mupdf::pdf::PdfObje
 
 /// Set the Info dictionary entry `key` (e.g. "Producer") to `value` ("" removes it).
 pub fn set_info(doc: &mut PdfDocument, key: &str, value: &str) -> Result<()> {
-    let mut trailer = doc.trailer()?;
-    let mut info = match trailer.get_dict("Info")? {
-        Some(i) if i.is_dict()? => i,
-        _ => {
+    // Never hold on to the trailer across an edit: the first change to a loaded document opens
+    // a new xref section whose trailer is a copy (MuPDF's `pdf_set_metadata` re-reads it too).
+    let existing = match doc.trailer()?.get_dict("Info")? {
+        Some(i) if i.is_dict()? => Some(i),
+        _ => None,
+    };
+    let mut info = match existing {
+        Some(i) => i,
+        None => {
             if value.is_empty() {
                 return Ok(());
             }
             let d = doc.new_dict()?;
             let d = doc.add_object(&d)?;
-            trailer.dict_put("Info", d.clone())?;
+            doc.trailer()?.dict_put("Info", d.clone())?;
             d
         }
     };

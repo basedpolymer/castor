@@ -139,6 +139,9 @@ pdf.compress.msg.images:
 pdf.compress.note.not_smaller:
   en: "Already well optimised: the original is kept as it was."
   fr: "Déjà bien optimisé : l’original est conservé tel quel."
+pdf.compress.note.damaged_images:
+  en: "some images are damaged and were left as they were"
+  fr: "certaines images sont abîmées et ont été laissées telles quelles"
 pdf.compress.done:
   en: "%{saved} lighter. Neatly gnawed."
   fr: "%{saved} de moins. Proprement rongé."
@@ -1268,8 +1271,8 @@ pdf.from-markdown.name:
   en: "Markdown to PDF"
   fr: "Markdown en PDF"
 pdf.from-markdown.desc:
-  en: "Typeset Markdown in a classic, book-like style."
-  fr: "Composer du Markdown dans un style classique, façon livre."
+  en: "Typeset Markdown in a classic, book-like style — LaTeX formulas included."
+  fr: "Composer du Markdown dans un style classique, façon livre — formules LaTeX comprises."
 pdf.from-markdown.verb:
   en: "Typeset"
   fr: "Composer"
@@ -1303,6 +1306,18 @@ pdf.from-markdown.figure:
 pdf.from-markdown.contents:
   en: "Contents"
   fr: "Table des matières"
+pdf.from-markdown.opt.language:
+  en: "Language"
+  fr: "Langue"
+pdf.from-markdown.opt.language.help:
+  en: "Two-letter code (en, fr, de…) for hyphenation and quotes."
+  fr: "Code à deux lettres (en, fr, de…) pour la césure et les guillemets."
+pdf.from-markdown.msg:
+  en: "Typesetting…"
+  fr: "Composition…"
+pdf.from-markdown.note.math:
+  en: "some formulas could not be read and are shown as code"
+  fr: "certaines formules illisibles sont affichées comme du code"
 pdf.extract-images.name:
   en: "Extract images"
   fr: "Extraire les images"

@@ -319,9 +319,14 @@ fn crop_metadata_compare_repair() {
     assert!(engine_pdf::text::page_text(&doc.load_page(0).unwrap()).unwrap().contains("Page one"));
 
     let (outs, _r) = run_tool("pdf.metadata", &[&a], &[("title", text("Quarterly — été")), ("author", text("basedpolymer"))]);
-    // KNOWN ISSUE (see docs/specs/A-pdf.md): Info edits on a re-opened file are not read back
-    // yet; only check that a valid file comes out.
-    assert!(engine_pdf::open_pdf(&outs[0].path, "").is_ok());
+    let doc = engine_pdf::open_pdf(&outs[0].path, "").unwrap();
+    assert_eq!(engine_pdf::get_info(&doc, "Title"), "Quarterly — été");
+    assert_eq!(engine_pdf::get_info(&doc, "Author"), "basedpolymer");
+    // Edit again the edited file (a re-opened file with an Info dictionary already).
+    let (outs2, _r2) = run_tool("pdf.metadata", &[&outs[0].path], &[("subject", text("Second pass"))]);
+    let doc = engine_pdf::open_pdf(&outs2[0].path, "").unwrap();
+    assert_eq!(engine_pdf::get_info(&doc, "Subject"), "Second pass");
+    assert_eq!(engine_pdf::get_info(&doc, "Title"), "Quarterly — été");
 
     let b2 = make_pdf(d.path(), "three-b.pdf", &[&["Page one", "alpha"], &["Page two", "BETA CHANGED"], &["Page three", "gamma"]]);
     let (outs, _r) = run_tool("pdf.compare", &[&a, &b2], &[]);
@@ -354,17 +359,16 @@ fn attach_and_markdown_and_ebook() {
     assert!(t[0].contains("Cover") && t[4].contains("Cover"));
 
     let md = d.path().join("note.md");
-    std::fs::write(&md, "---\ntitle: Castor notes\nauthor: basedpolymer\n---\n# Introduction\n\nSome *emphasis* and **strong** text.\n\n## Details\n\n- one\n- two\n\n| a | b |\n|---|---|\n| 1 | 2 |\n").unwrap();
+    std::fs::write(&md, "---\ntitle: Castor notes\nauthor: basedpolymer\n---\n# Introduction\n\nSome *emphasis* and **strong** text, and $\\frac{a}{b} + x^2$.\n\n## Details\n\n- one\n- two\n\n| a | b |\n|---|---|\n| 1 | 2 |\n").unwrap();
     let (outs, _r) = run_tool("pdf.from-markdown", &[&md], &[("toc", Value::Bool(true)), ("title_page", Value::Bool(true))]);
-    // KNOWN ISSUE (see docs/specs/A-pdf.md): text extracted from the typeset PDF comes out as
-    // glyph ids; only check that the layout produced pages (title, contents, body).
-    assert!(page_texts(&outs[0].path, "").len() >= 3);
+    let pages = page_texts(&outs[0].path, "");
+    let all = pages.join("\n");
+    assert!(pages.len() >= 3, "title page, contents, body: {}", pages.len());
+    assert!(all.contains("Introduction") && all.contains("Castor notes") && all.contains("emphasis"), "{all}");
+    assert!(!outs[0].note.as_deref().unwrap_or("").contains("·"), "math was read: {:?}", outs[0].note);
 }
 
-/// KNOWN ISSUE (see docs/specs/A-pdf.md): e-book layout of this tiny EPUB took ~15 min in a
-/// debug build and the first page did not contain the heading; ignored until investigated.
 #[test]
-#[ignore]
 fn ebook_to_pdf() {
     let d = tempfile::tempdir().unwrap();
     // A minimal EPUB.
@@ -384,9 +388,11 @@ fn ebook_to_pdf() {
         write!(z, "<html xmlns=\"http://www.w3.org/1999/xhtml\"><body><h1>Chapter</h1>{body}</body></html>").unwrap();
         z.finish().unwrap();
     }
+    let start = std::time::Instant::now();
     let (outs, _r) = run_tool("pdf.from-ebook", &[&epub], &[]);
     let t = page_texts(&outs[0].path, "");
-    assert!(t.len() > 2 && t[0].contains("Chapter"));
+    assert!(t.len() > 2 && t[0].contains("Chapter"), "{:?}", t.first());
+    assert!(start.elapsed().as_secs() < 60, "e-book layout took {:?}", start.elapsed());
 }
 
 #[test]
@@ -416,4 +422,24 @@ fn ocr_tools() {
     assert!(!hits.is_empty());
     let q = &hits[0];
     assert!((q.ul.x - 72.0).abs() < 8.0 && (q.ll.y - 154.0).abs() < 10.0, "{q:?}");
+}
+
+#[test]
+fn office_to_pdf() {
+    init();
+    let t = tool("pdf.from-office");
+    if let Some(why) = t.unavailable() {
+        eprintln!("skipping: {why}");
+        return;
+    }
+    let dir = workspace().join("tests/fixtures/generated/office");
+    for (name, needle) in [("report.docx", "Castor office test"), ("budget.xlsx", "Budget"), ("slides.pptx", "Second slide")] {
+        let p = dir.join(name);
+        if !p.is_file() {
+            continue;
+        }
+        let (outs, _r) = run_tool("pdf.from-office", &[&p], &[]);
+        let all = page_texts(&outs[0].path, "").join("\n");
+        assert!(all.contains(needle) || name == "budget.xlsx" && all.contains("Wood"), "{name}: {all}");
+    }
 }

@@ -1,20 +1,25 @@
-//! pdf.from-markdown — Markdown → PDF in the house ("TeXtured") style: Latin Modern, numbered
-//! headings, captions, optional title page and table of contents, page numbers.
-//!
-//! Rendering uses MuPDF's HTML/CSS layout engine (hyphenation and justification included): the
-//! Markdown is turned into XHTML with pulldown-cmark, laid out, and converted to PDF.
+//! pdf.from-markdown — Markdown → PDF in the house ("TeXtured") style, typeset with Typst:
+//! Latin Modern (embedded, extractable text), numbered headings, "Figure n / …" captions,
+//! booktabs tables, code in Latin Modern Mono, LaTeX-style math (`$…$`, `$$…$$`) converted to
+//! Typst math (see [`latex_to_typst`] for the supported subset), optional title page and table
+//! of contents, page numbers, paper and font size.
 
-use std::fmt::Write as _;
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use std::sync::OnceLock;
 
 use castor_core::options::{Choice, OptionSpec, Values};
-use castor_core::{Family, FileKind, InputSpec, Job, Output, Result, RunCx, Tool, ToolMeta, ToolStatus};
-use engine_pdf::draw::Canvas;
-use engine_pdf::fonts::{self, Face};
-use pulldown_cmark::{CodeBlockKind, Event, HeadingLevel, Options as MdOptions, Parser, Tag, TagEnd};
+use castor_core::{Family, FileKind, InputSpec, Job, Output, Result, RunCx, Tool, ToolMeta};
+use pulldown_cmark::{Alignment, Event, HeadingLevel, Options as MdOptions, Parser, Tag, TagEnd};
+use typst::diag::{FileError, FileResult, Severity};
+use typst::foundations::{Bytes, Datetime};
+use typst::syntax::{FileId, RootedPath, Source, VirtualPath, VirtualRoot};
+use typst::text::{Font, FontBook};
+use typst::utils::LazyHash;
+use typst::{Library, LibraryExt, World};
+use typst_layout::PagedDocument;
 
 use crate::common::*;
-use crate::structure::xml_escape;
 
 pub struct FromMarkdown {
     meta: ToolMeta,
@@ -22,18 +27,609 @@ pub struct FromMarkdown {
 
 impl FromMarkdown {
     pub fn new() -> Self {
-        let mut m = meta(
-            "pdf.from-markdown",
-            Family::Pdf,
-            InputSpec::kinds(&[FileKind::Markdown]).with_extensions(&["md", "markdown", "txt"]),
-            "PDF",
-            &["markdown", "md", "notes", "typeset", "latex", "report", "pretty"],
-            "",
-        );
-        m.status = ToolStatus::Beta;
-        FromMarkdown { meta: m }
+        FromMarkdown {
+            meta: meta(
+                "pdf.from-markdown",
+                Family::Pdf,
+                InputSpec::kinds(&[FileKind::Markdown]).with_extensions(&["md", "markdown", "txt"]),
+                "PDF",
+                &["markdown", "md", "notes", "typeset", "latex", "report", "pretty", "typst", "math"],
+                "",
+            ),
+        }
     }
 }
+
+// ------------------------------------------------------------------------------------------
+// Typst world: bundled fonts, in-memory files, no network, no system fonts.
+
+const MATH_FONT: &[u8] = include_bytes!("../data/NewCMMath-Regular.otf");
+
+fn fonts() -> &'static Vec<Font> {
+    static F: OnceLock<Vec<Font>> = OnceLock::new();
+    F.get_or_init(|| {
+        use engine_pdf::fonts as f;
+        [f::LM_ROMAN, f::LM_ROMAN_BOLD, f::LM_ROMAN_ITALIC, f::LM_SANS, f::LM_SANS_BOLD, f::LM_SANS_OBLIQUE, f::LM_MONO, MATH_FONT]
+            .iter()
+            .flat_map(|d| Font::iter(Bytes::new(*d)))
+            .collect()
+    })
+}
+
+fn library() -> &'static LazyHash<Library> {
+    static L: OnceLock<LazyHash<Library>> = OnceLock::new();
+    L.get_or_init(|| LazyHash::new(Library::default()))
+}
+
+fn book() -> &'static LazyHash<FontBook> {
+    static B: OnceLock<LazyHash<FontBook>> = OnceLock::new();
+    B.get_or_init(|| LazyHash::new(FontBook::from_fonts(fonts().iter())))
+}
+
+struct MdWorld {
+    main: FileId,
+    source: Source,
+    files: HashMap<FileId, Bytes>,
+}
+
+fn file_id(path: &str) -> Result<FileId> {
+    let vp = VirtualPath::new(path).map_err(|e| anyhow::anyhow!("bad path {path}: {e:?}"))?;
+    Ok(FileId::new(RootedPath::new(VirtualRoot::Project, vp)))
+}
+
+impl World for MdWorld {
+    fn library(&self) -> &LazyHash<Library> {
+        library()
+    }
+    fn book(&self) -> &LazyHash<FontBook> {
+        book()
+    }
+    fn main(&self) -> FileId {
+        self.main
+    }
+    fn source(&self, id: FileId) -> FileResult<Source> {
+        if id == self.main {
+            return Ok(self.source.clone());
+        }
+        Err(FileError::NotFound(PathBuf::from(id.vpath().get_without_slash())))
+    }
+    fn file(&self, id: FileId) -> FileResult<Bytes> {
+        self.files.get(&id).cloned().ok_or_else(|| FileError::NotFound(PathBuf::from(id.vpath().get_without_slash())))
+    }
+    fn font(&self, index: usize) -> Option<Font> {
+        fonts().get(index).cloned()
+    }
+    fn today(&self, _offset: Option<typst::foundations::Duration>) -> Option<Datetime> {
+        let now = time::OffsetDateTime::now_local().unwrap_or_else(|_| time::OffsetDateTime::now_utc());
+        Datetime::from_ymd(now.year(), now.month() as u8, now.day())
+    }
+}
+
+/// Compile Typst source with in-memory files into a PDF.
+pub fn typst_pdf(source: &str, files: &[(String, Vec<u8>)]) -> Result<(Vec<u8>, usize)> {
+    let main = file_id("/main.typ")?;
+    let mut map = HashMap::new();
+    for (p, d) in files {
+        map.insert(file_id(p)?, Bytes::new(d.clone()));
+    }
+    let world = MdWorld { main, source: Source::new(main, source.to_string()), files: map };
+    let warned = typst::compile::<PagedDocument>(&world);
+    typst::comemo::evict(10);
+    let doc = warned.output.map_err(|errs| {
+        let msgs: Vec<String> = errs
+            .iter()
+            .filter(|d| d.severity == Severity::Error)
+            .map(|d| {
+                let line = d
+                    .span
+                    .id()
+                    .and_then(|id| world.source(id).ok().zip(typst::WorldExt::range(&world, d.span)))
+                    .and_then(|(src, r)| src.lines().byte_to_line(r.start))
+                    .map(|l| format!("line {}: ", l + 1))
+                    .unwrap_or_default();
+                format!("{line}{}", d.message)
+            })
+            .collect();
+        anyhow::anyhow!("{}", msgs.join("; "))
+    })?;
+    let pages = doc.pages().len();
+    let opts = typst_pdf::PdfOptions { creator: typst::foundations::Smart::Custom(Some("Castor".into())), ..Default::default() };
+    let pdf = typst_pdf::pdf(&doc, &opts)
+        .map_err(|e| anyhow::anyhow!("PDF export failed: {}", e.iter().map(|d| d.message.as_str()).collect::<Vec<_>>().join("; ")))?;
+    Ok((pdf, pages))
+}
+
+// ------------------------------------------------------------------------------------------
+// Escaping.
+
+/// Escape text for Typst markup.
+pub fn esc(s: &str) -> String {
+    let mut o = String::with_capacity(s.len() + 8);
+    for c in s.chars() {
+        if matches!(c, '\\' | '*' | '_' | '`' | '$' | '#' | '@' | '<' | '>' | '[' | ']' | '~' | '=' | '+' | '-' | '/') {
+            o.push('\\');
+        }
+        o.push(c);
+    }
+    o
+}
+
+/// A Typst string literal.
+pub fn lit(s: &str) -> String {
+    let mut o = String::from("\"");
+    for c in s.chars() {
+        match c {
+            '\\' => o.push_str("\\\\"),
+            '"' => o.push_str("\\\""),
+            '\n' => o.push_str("\\n"),
+            '\r' => {}
+            '\t' => o.push_str("    "),
+            c => o.push(c),
+        }
+    }
+    o.push('"');
+    o
+}
+
+// ------------------------------------------------------------------------------------------
+// LaTeX math → Typst math.
+
+#[derive(Debug, Clone, PartialEq)]
+enum Tok {
+    Cmd(String),
+    Open,
+    Close,
+    Sup,
+    Sub,
+    Amp,
+    NewLine,
+    Ch(char),
+}
+
+fn tokenize(s: &str) -> Vec<Tok> {
+    let cs: Vec<char> = s.chars().collect();
+    let mut i = 0;
+    let mut out = Vec::new();
+    while i < cs.len() {
+        let c = cs[i];
+        match c {
+            '\\' => {
+                i += 1;
+                if i < cs.len() && cs[i].is_ascii_alphabetic() {
+                    let st = i;
+                    while i < cs.len() && cs[i].is_ascii_alphabetic() {
+                        i += 1;
+                    }
+                    out.push(Tok::Cmd(cs[st..i].iter().collect()));
+                    continue;
+                } else if i < cs.len() {
+                    if cs[i] == '\\' {
+                        out.push(Tok::NewLine);
+                    } else {
+                        out.push(Tok::Cmd(cs[i].to_string()));
+                    }
+                }
+            }
+            '{' => out.push(Tok::Open),
+            '}' => out.push(Tok::Close),
+            '^' => out.push(Tok::Sup),
+            '_' => out.push(Tok::Sub),
+            '&' => out.push(Tok::Amp),
+            c => out.push(Tok::Ch(c)),
+        }
+        i += 1;
+    }
+    out
+}
+
+fn symbol(name: &str) -> Option<&'static str> {
+    Some(match name {
+        "alpha" => "alpha",
+        "beta" => "beta",
+        "gamma" => "gamma",
+        "delta" => "delta",
+        "epsilon" => "epsilon.alt",
+        "varepsilon" => "epsilon",
+        "zeta" => "zeta",
+        "eta" => "eta",
+        "theta" => "theta",
+        "vartheta" => "theta.alt",
+        "iota" => "iota",
+        "kappa" => "kappa",
+        "lambda" => "lambda",
+        "mu" => "mu",
+        "nu" => "nu",
+        "xi" => "xi",
+        "pi" => "pi",
+        "varpi" => "pi.alt",
+        "rho" => "rho",
+        "varrho" => "rho.alt",
+        "sigma" => "sigma",
+        "varsigma" => "sigma.alt",
+        "tau" => "tau",
+        "upsilon" => "upsilon",
+        "phi" => "phi.alt",
+        "varphi" => "phi",
+        "chi" => "chi",
+        "psi" => "psi",
+        "omega" => "omega",
+        "Gamma" => "Gamma",
+        "Delta" => "Delta",
+        "Theta" => "Theta",
+        "Lambda" => "Lambda",
+        "Xi" => "Xi",
+        "Pi" => "Pi",
+        "Sigma" => "Sigma",
+        "Upsilon" => "Upsilon",
+        "Phi" => "Phi",
+        "Psi" => "Psi",
+        "Omega" => "Omega",
+        "sum" => "sum",
+        "prod" => "product",
+        "coprod" => "product.co",
+        "int" => "integral",
+        "iint" => "integral.double",
+        "iiint" => "integral.triple",
+        "oint" => "integral.cont",
+        "infty" => "infinity",
+        "partial" => "diff",
+        "nabla" => "nabla",
+        "cdot" => "dot.op",
+        "times" => "times",
+        "div" => "div",
+        "pm" => "plus.minus",
+        "mp" => "minus.plus",
+        "leq" | "le" => "lt.eq",
+        "geq" | "ge" => "gt.eq",
+        "neq" | "ne" => "eq.not",
+        "ll" => "lt.double",
+        "gg" => "gt.double",
+        "approx" => "approx",
+        "equiv" => "equiv",
+        "sim" => "tilde.op",
+        "simeq" => "tilde.eq",
+        "cong" => "tilde.equiv",
+        "propto" => "prop",
+        "to" | "rightarrow" => "arrow.r",
+        "leftarrow" | "gets" => "arrow.l",
+        "Rightarrow" | "implies" => "arrow.r.double",
+        "Leftarrow" => "arrow.l.double",
+        "Leftrightarrow" | "iff" => "arrow.l.r.double",
+        "leftrightarrow" => "arrow.l.r",
+        "mapsto" => "arrow.r.bar",
+        "longrightarrow" => "arrow.r.long",
+        "uparrow" => "arrow.t",
+        "downarrow" => "arrow.b",
+        "in" => "in",
+        "notin" => "in.not",
+        "ni" => "in.rev",
+        "subset" => "subset",
+        "subseteq" => "subset.eq",
+        "supset" => "supset",
+        "supseteq" => "supset.eq",
+        "cup" => "union",
+        "cap" => "sect",
+        "bigcup" => "union.big",
+        "bigcap" => "sect.big",
+        "setminus" => "without",
+        "forall" => "forall",
+        "exists" => "exists",
+        "nexists" => "exists.not",
+        "neg" | "lnot" => "not",
+        "land" | "wedge" => "and",
+        "lor" | "vee" => "or",
+        "emptyset" | "varnothing" => "emptyset",
+        "ldots" | "dots" => "dots.h",
+        "cdots" => "dots.c",
+        "vdots" => "dots.v",
+        "ddots" => "dots.down",
+        "langle" => "angle.l",
+        "rangle" => "angle.r",
+        "lfloor" => "floor.l",
+        "rfloor" => "floor.r",
+        "lceil" => "ceil.l",
+        "rceil" => "ceil.r",
+        "circ" => "compose",
+        "bullet" => "bullet",
+        "star" => "star.op",
+        "ast" => "ast.op",
+        "oplus" => "plus.circle",
+        "otimes" => "times.circle",
+        "perp" => "perp",
+        "parallel" => "parallel",
+        "mid" => "divides",
+        "angle" => "angle",
+        "hbar" => "planck.reduce",
+        "ell" => "ell",
+        "Re" => "Re",
+        "Im" => "Im",
+        "aleph" => "aleph",
+        "prime" => "prime",
+        "degree" => "degree",
+        "dagger" => "dagger",
+        "top" => "top",
+        "bot" => "bot",
+        "quad" => "quad",
+        "qquad" => "wide",
+        "," => "thin",
+        ":" | ">" => "med",
+        ";" => "thick",
+        " " => "space",
+        "|" => "bar.v.double",
+        "{" => "\\{",
+        "}" => "\\}",
+        "%" => "%",
+        "$" => "\\$",
+        "#" => "\\#",
+        "_" => "\\_",
+        "&" => "\\&",
+        "!" => "",
+        _ => return None,
+    })
+}
+
+/// Functions named like LaTeX operators that Typst knows as text operators.
+const OPS: &[&str] = &[
+    "sin", "cos", "tan", "cot", "sec", "csc", "arcsin", "arccos", "arctan", "sinh", "cosh", "tanh", "log", "ln", "lg", "exp", "lim",
+    "liminf", "limsup", "max", "min", "sup", "inf", "det", "dim", "ker", "deg", "gcd", "arg", "Pr", "mod",
+];
+
+struct MathConv {
+    toks: Vec<Tok>,
+    i: usize,
+}
+
+impl MathConv {
+    fn peek(&self) -> Option<&Tok> {
+        self.toks.get(self.i)
+    }
+    fn next(&mut self) -> Option<Tok> {
+        let t = self.toks.get(self.i).cloned();
+        self.i += 1;
+        t
+    }
+    /// One argument: a `{group}` or a single token.
+    fn arg(&mut self) -> String {
+        while matches!(self.peek(), Some(Tok::Ch(' '))) {
+            self.i += 1;
+        }
+        match self.peek() {
+            Some(Tok::Open) => {
+                self.i += 1;
+                self.until_close()
+            }
+            Some(_) => self.atom(),
+            None => String::new(),
+        }
+    }
+    /// Raw text of a `{group}` (for \text, \operatorname).
+    fn raw_arg(&mut self) -> String {
+        while matches!(self.peek(), Some(Tok::Ch(' '))) {
+            self.i += 1;
+        }
+        if self.peek() != Some(&Tok::Open) {
+            return match self.next() {
+                Some(Tok::Ch(c)) => c.to_string(),
+                _ => String::new(),
+            };
+        }
+        self.i += 1;
+        let mut depth = 0;
+        let mut s = String::new();
+        while let Some(t) = self.next() {
+            match t {
+                Tok::Open => {
+                    depth += 1;
+                    s.push('{');
+                }
+                Tok::Close if depth == 0 => break,
+                Tok::Close => {
+                    depth -= 1;
+                    s.push('}');
+                }
+                Tok::Ch(c) => s.push(c),
+                Tok::Cmd(c) => {
+                    s.push('\\');
+                    s.push_str(&c);
+                }
+                Tok::Sup => s.push('^'),
+                Tok::Sub => s.push('_'),
+                Tok::Amp => s.push('&'),
+                Tok::NewLine => s.push(' '),
+            }
+        }
+        s
+    }
+    fn until_close(&mut self) -> String {
+        let mut out = String::new();
+        while let Some(t) = self.peek() {
+            if *t == Tok::Close {
+                self.i += 1;
+                break;
+            }
+            out.push_str(&self.atom());
+        }
+        format!("({})", out.trim())
+    }
+    /// Read an `\begin{env}…\end{env}` body as rows of cells.
+    fn env_rows(&mut self, env: &str) -> Vec<Vec<String>> {
+        let mut rows = vec![vec![String::new()]];
+        while self.peek().is_some() {
+            if let Some(Tok::Cmd(c)) = self.peek() {
+                if c == "end" {
+                    self.i += 1;
+                    let name = self.raw_arg();
+                    if name == env {
+                        break;
+                    }
+                    continue;
+                }
+            }
+            match self.peek() {
+                Some(Tok::Amp) => {
+                    self.i += 1;
+                    rows.last_mut().unwrap().push(String::new());
+                }
+                Some(Tok::NewLine) => {
+                    self.i += 1;
+                    rows.push(vec![String::new()]);
+                }
+                _ => {
+                    let a = self.atom();
+                    rows.last_mut().unwrap().last_mut().unwrap().push_str(&a);
+                }
+            }
+        }
+        rows.retain(|r| r.iter().any(|c| !c.trim().is_empty()));
+        rows
+    }
+    fn atom(&mut self) -> String {
+        let Some(t) = self.next() else { return String::new() };
+        match t {
+            Tok::Open => self.until_close(),
+            Tok::Close => String::new(),
+            Tok::Sup => format!("^{} ", self.arg()),
+            Tok::Sub => format!("_{} ", self.arg()),
+            Tok::Amp => "& ".into(),
+            Tok::NewLine => "\\ ".into(),
+            Tok::Ch(c) if c.is_ascii_alphabetic() => format!("{c} "),
+            Tok::Ch(c) if c.is_ascii_digit() || c == '.' => c.to_string(),
+            Tok::Ch(c) if c.is_whitespace() => " ".into(),
+            Tok::Ch('/') => "\\/ ".into(),
+            Tok::Ch('"') => "\\\" ".into(),
+            Tok::Ch('#') => "\\# ".into(),
+            Tok::Ch('@') => "\\@ ".into(),
+            Tok::Ch('$') => "\\$ ".into(),
+            Tok::Ch('~') => " ".into(),
+            Tok::Ch('\'') => "'".into(),
+            Tok::Ch(c) => format!("{c} "),
+            Tok::Cmd(name) => self.command(&name),
+        }
+    }
+    fn command(&mut self, name: &str) -> String {
+        match name {
+            "frac" | "dfrac" | "tfrac" | "cfrac" => {
+                let a = self.arg();
+                let b = self.arg();
+                format!("frac({}, {}) ", strip(&a), strip(&b))
+            }
+            "binom" | "dbinom" | "tbinom" => {
+                let a = self.arg();
+                let b = self.arg();
+                format!("binom({}, {}) ", strip(&a), strip(&b))
+            }
+            "sqrt" => {
+                if matches!(self.peek(), Some(Tok::Ch('['))) {
+                    self.i += 1;
+                    let mut idx = String::new();
+                    while let Some(t) = self.peek() {
+                        if *t == Tok::Ch(']') {
+                            self.i += 1;
+                            break;
+                        }
+                        idx.push_str(&self.atom());
+                    }
+                    let a = self.arg();
+                    format!("root({}, {}) ", idx.trim(), strip(&a))
+                } else {
+                    let a = self.arg();
+                    format!("sqrt({}) ", strip(&a))
+                }
+            }
+            "mathbb" => format!("bb({}) ", strip(&self.arg())),
+            "mathcal" => format!("cal({}) ", strip(&self.arg())),
+            "mathfrak" => format!("frak({}) ", strip(&self.arg())),
+            "mathbf" | "boldsymbol" | "bm" => format!("bold({}) ", strip(&self.arg())),
+            "mathit" => format!("italic({}) ", strip(&self.arg())),
+            "mathsf" => format!("sans({}) ", strip(&self.arg())),
+            "mathtt" => format!("mono({}) ", strip(&self.arg())),
+            "mathrm" => format!("upright({}) ", strip(&self.arg())),
+            "text" | "textrm" | "textit" | "textbf" | "mbox" => format!("{} ", lit(&self.raw_arg())),
+            "operatorname" => format!("op({}) ", lit(&self.raw_arg())),
+            "hat" | "widehat" => format!("hat({}) ", strip(&self.arg())),
+            "bar" => format!("macron({}) ", strip(&self.arg())),
+            "overline" => format!("overline({}) ", strip(&self.arg())),
+            "underline" => format!("underline({}) ", strip(&self.arg())),
+            "vec" => format!("arrow({}) ", strip(&self.arg())),
+            "tilde" | "widetilde" => format!("tilde({}) ", strip(&self.arg())),
+            "dot" => format!("dot({}) ", strip(&self.arg())),
+            "ddot" => format!("dot.double({}) ", strip(&self.arg())),
+            "overbrace" => format!("overbrace({}) ", strip(&self.arg())),
+            "underbrace" => format!("underbrace({}) ", strip(&self.arg())),
+            "left" | "right" | "big" | "Big" | "bigg" | "Bigg" | "bigl" | "bigr" | "Bigl" | "Bigr" | "displaystyle" | "textstyle"
+            | "limits" | "nolimits" => {
+                // Typst sizes delimiters by itself; `\left.` means "no delimiter".
+                if matches!(self.peek(), Some(Tok::Ch('.'))) {
+                    self.i += 1;
+                }
+                String::new()
+            }
+            "begin" => {
+                let env = self.raw_arg();
+                let rows = self.env_rows(&env);
+                let cells = |sep: &str| rows.iter().map(|r| r.iter().map(|c| c.trim().to_string()).collect::<Vec<_>>().join(sep)).collect::<Vec<_>>();
+                match env.trim_end_matches('*') {
+                    "cases" => format!("cases({}) ", cells(" & quad ").join(", ")),
+                    "matrix" => format!("mat(delim: #none, {}) ", cells(", ").join("; ")),
+                    "pmatrix" => format!("mat({}) ", cells(", ").join("; ")),
+                    "bmatrix" => format!("mat(delim: \"[\", {}) ", cells(", ").join("; ")),
+                    "vmatrix" => format!("mat(delim: \"|\", {}) ", cells(", ").join("; ")),
+                    _ => cells(" & ").join(" \\ "),
+                }
+            }
+            n if OPS.contains(&n) => format!("{n} "),
+            n => match symbol(n) {
+                Some(s) => format!("{s} "),
+                None => format!("{} ", lit(&format!("\\{n}"))),
+            },
+        }
+    }
+}
+
+/// Remove one level of outer parentheses produced for groups.
+fn strip(s: &str) -> String {
+    let t = s.trim();
+    if t.starts_with('(') && t.ends_with(')') {
+        // Only if the parentheses match each other.
+        let mut depth = 0;
+        for (i, c) in t.char_indices() {
+            match c {
+                '(' => depth += 1,
+                ')' => {
+                    depth -= 1;
+                    if depth == 0 && i != t.len() - 1 {
+                        return t.to_string();
+                    }
+                }
+                _ => {}
+            }
+        }
+        return t[1..t.len() - 1].to_string();
+    }
+    t.to_string()
+}
+
+/// Convert LaTeX math to Typst math (inside `$…$`).
+///
+/// Supported: letters, digits, `^`/`_` with groups, `\frac \dfrac \binom \sqrt[n]`, Greek
+/// letters (`\epsilon`/`\varepsilon` and `\phi`/`\varphi` keep their LaTeX shapes), big
+/// operators (`\sum \prod \int \iint \oint`), `\lim \sin \log …`, relations and arrows
+/// (`\leq \neq \approx \in \subseteq \to \Rightarrow …`), dots, `\mathbb \mathcal \mathbf
+/// \mathrm \text \operatorname`, accents (`\hat \bar \vec \tilde \dot \overline`),
+/// `\left … \right` (auto-sized), spacing (`\, \; \quad`), and the environments `cases`,
+/// `matrix`, `pmatrix`, `bmatrix`, `vmatrix`, `aligned`/`align`/`gathered` (`&` and `\\`).
+/// Unknown commands are shown as text.
+pub fn latex_to_typst(src: &str) -> String {
+    let mut c = MathConv { toks: tokenize(src), i: 0 };
+    let mut out = String::new();
+    while c.peek().is_some() {
+        out.push_str(&c.atom());
+    }
+    out.split_whitespace().collect::<Vec<_>>().join(" ")
+}
+
+// ------------------------------------------------------------------------------------------
+// Markdown → Typst markup.
 
 struct Front {
     title: String,
@@ -65,93 +661,94 @@ fn front_matter(src: &str) -> (Front, &str) {
     (f, s)
 }
 
-const CSS: &str = r#"
-@font-face { font-family: "LM"; src: url("lmr.otf"); }
-@font-face { font-family: "LM"; font-weight: bold; src: url("lmb.otf"); }
-@font-face { font-family: "LM"; font-style: italic; src: url("lmi.otf"); }
-@font-face { font-family: "LMS"; src: url("lms.otf"); }
-@font-face { font-family: "LMS"; font-weight: bold; src: url("lmsb.otf"); }
-@font-face { font-family: "LMM"; src: url("lmm.otf"); }
-body { font-family: "LM"; line-height: 1.32; text-align: justify; hyphens: auto; margin: 0; }
-p { margin: 0 0 0.55em 0; }
-h1, h2, h3, h4, h5, h6 { font-family: "LM"; font-weight: bold; text-align: left; hyphens: none; line-height: 1.2; }
-h1 { font-size: 1.6em; margin: 1.2em 0 0.6em 0; }
-h2 { font-size: 1.3em; margin: 1.1em 0 0.5em 0; }
-h3 { font-size: 1.12em; margin: 1em 0 0.4em 0; }
-h4, h5, h6 { font-size: 1em; margin: 0.9em 0 0.3em 0; }
-.num { padding-right: 0.7em; }
-code, pre { font-family: "LMM"; font-size: 0.92em; }
-pre { text-align: left; white-space: pre-wrap; margin: 0.6em 0 0.8em 1.2em; line-height: 1.2; }
-blockquote { margin: 0.6em 2em; font-style: italic; }
-ul, ol { margin: 0.3em 0 0.6em 1.4em; padding: 0; }
-li { margin: 0 0 0.2em 0; }
-table { border-collapse: collapse; margin: 0.8em auto; font-size: 0.95em; }
-thead th { border-top: 1.2pt solid black; border-bottom: 0.6pt solid black; }
-tbody tr:last-child td { border-bottom: 1.2pt solid black; }
-th, td { padding: 0.2em 0.6em; text-align: left; }
-.fig { text-align: center; margin: 0.8em 0; page-break-inside: avoid; }
-.fig img { max-width: 100%; }
-.cap { text-align: center; font-size: 0.92em; margin: 0.3em 2em 0.9em 2em; }
-.capl { font-family: "LMS"; font-weight: bold; }
-hr { border: none; border-top: 0.5pt solid #888; margin: 1em 20%; }
-.title { text-align: center; margin-top: 30%; page-break-after: always; }
-.title .t { font-size: 2.2em; font-weight: bold; line-height: 1.2; margin-bottom: 1.2em; }
-.title .a { font-size: 1.25em; margin-bottom: 0.4em; }
-.title .d { font-size: 1.05em; }
-.toc { page-break-after: always; }
-.toc h1 { margin-top: 0; }
-.toc p { text-align: left; margin: 0.15em 0; }
-.toc .l2 { margin-left: 1.6em; }
-.toc .l3 { margin-left: 3.2em; }
-.toc .pg { float: right; }
-.fn { font-size: 0.85em; }
-"#;
-
-struct Heading {
-    level: u8,
-    number: String,
-    text: String,
+struct Conv<'a> {
+    base: &'a Path,
+    files: Vec<(String, Vec<u8>)>,
+    footnotes: HashMap<String, String>,
+    math_as_text: bool,
+    first_h1: Option<String>,
 }
 
-/// Markdown → XHTML body; collects headings; copies local images into `dir`.
-fn render_body(md: &str, numbered: bool, base: &Path, dir: &Path, headings: &mut Vec<Heading>) -> Result<String> {
-    let mut opts = MdOptions::empty();
-    opts.insert(MdOptions::ENABLE_TABLES);
-    opts.insert(MdOptions::ENABLE_FOOTNOTES);
-    opts.insert(MdOptions::ENABLE_STRIKETHROUGH);
-    opts.insert(MdOptions::ENABLE_TASKLISTS);
-    let parser = Parser::new_ext(md, opts);
-    let mut html = String::new();
-    let mut counters = [0u32; 6];
-    let mut in_heading: Option<(u8, String)> = None;
-    let mut in_image: Option<(String, String)> = None; // (src, alt so far)
-    let mut figures = 0;
-    let mut images = 0;
-    let mut in_table_head = false;
-    for ev in parser {
-        if let Some((_, ref mut alt)) = in_image {
-            match ev {
-                Event::Text(t) | Event::Code(t) => {
-                    alt.push_str(&t);
-                    continue;
+/// Image bytes in a format Typst reads (PNG, JPEG, GIF, WebP, SVG); others converted to PNG.
+fn image_file(p: &Path) -> Option<(String, Vec<u8>)> {
+    let data = std::fs::read(p).ok()?;
+    let ext = p.extension().map(|e| e.to_string_lossy().to_ascii_lowercase()).unwrap_or_default();
+    if matches!(ext.as_str(), "png" | "jpg" | "jpeg" | "gif" | "webp" | "svg") {
+        return Some((ext, data));
+    }
+    let img = image::load_from_memory(&data).ok()?;
+    let mut png = Vec::new();
+    img.write_to(&mut std::io::Cursor::new(&mut png), image::ImageFormat::Png).ok()?;
+    Some(("png".into(), png))
+}
+
+fn image_width_pt(ext: &str, data: &[u8]) -> f32 {
+    if ext == "svg" {
+        return 360.0;
+    }
+    let w = image::ImageReader::new(std::io::Cursor::new(data))
+        .with_guessed_format()
+        .ok()
+        .and_then(|r| r.into_dimensions().ok())
+        .map(|(w, _)| w)
+        .unwrap_or(1000);
+    // Natural size at 150 dpi, at most the text width.
+    (w as f32 * 72.0 / 150.0).clamp(36.0, 1000.0)
+}
+
+impl Conv<'_> {
+    /// Convert events[i..] until the end tag matching the start at `i - 1` (or the end).
+    fn run(&mut self, ev: &[Event], i: &mut usize, stop: Option<&TagEnd>) -> String {
+        let mut o = String::new();
+        while *i < ev.len() {
+            let e = ev[*i].clone();
+            *i += 1;
+            match e {
+                Event::End(ref end) => {
+                    if Some(end) == stop {
+                        return o;
+                    }
                 }
-                Event::End(TagEnd::Image) => {}
-                _ => continue,
+                Event::Start(tag) => o.push_str(&self.tag(tag, ev, i)),
+                Event::Text(t) => o.push_str(&esc(&t)),
+                Event::Code(t) => o.push_str(&format!("#raw({})", lit(&t))),
+                Event::InlineMath(m) => o.push_str(&self.math(&m, false)),
+                Event::DisplayMath(m) => o.push_str(&self.math(&m, true)),
+                // A space, not a newline: a wrapped line starting with "2." must not become a list.
+                Event::SoftBreak => o.push(' '),
+                Event::HardBreak => o.push_str("#linebreak()\n"),
+                Event::Rule => o.push_str("\n#align(center, line(length: 30%, stroke: 0.4pt))\n\n"),
+                Event::FootnoteReference(name) => {
+                    let body = self.footnotes.get(name.as_ref()).cloned().unwrap_or_default();
+                    o.push_str(&format!("#footnote[{body}]"));
+                }
+                Event::TaskListMarker(done) => {
+                    o.push_str(if done { "#box(baseline: 0.1em, $ballot.check$) " } else { "#box(baseline: 0.1em, $ballot$) " });
+                }
+                Event::Html(h) | Event::InlineHtml(h) => {
+                    let t = h.trim().to_ascii_lowercase();
+                    if t == "<br>" || t == "<br/>" || t == "<br />" {
+                        o.push_str("#linebreak()");
+                    }
+                }
             }
         }
-        if let Some((_, ref mut text)) = in_heading {
-            match &ev {
-                Event::Text(t) | Event::Code(t) => {
-                    text.push_str(t);
-                    continue;
-                }
-                Event::End(TagEnd::Heading(_)) => {}
-                _ => continue,
-            }
+        o
+    }
+
+    fn math(&self, m: &str, display: bool) -> String {
+        if self.math_as_text {
+            return format!("#raw({})", lit(m));
         }
-        match ev {
-            Event::Start(Tag::Heading { level, .. }) => {
-                let l = match level {
+        let t = latex_to_typst(m);
+        if display { format!("\n$ {t} $\n") } else { format!("${t}$") }
+    }
+
+    fn tag(&mut self, tag: Tag, ev: &[Event], i: &mut usize) -> String {
+        match tag {
+            Tag::Paragraph => format!("{}\n\n", self.run(ev, i, Some(&TagEnd::Paragraph))),
+            Tag::Heading { level, .. } => {
+                let n = match level {
                     HeadingLevel::H1 => 1,
                     HeadingLevel::H2 => 2,
                     HeadingLevel::H3 => 3,
@@ -159,154 +756,251 @@ fn render_body(md: &str, numbered: bool, base: &Path, dir: &Path, headings: &mut
                     HeadingLevel::H5 => 5,
                     HeadingLevel::H6 => 6,
                 };
-                in_heading = Some((l, String::new()));
-            }
-            Event::End(TagEnd::Heading(_)) => {
-                let (l, text) = in_heading.take().unwrap_or((1, String::new()));
-                let li = l as usize - 1;
-                counters[li] += 1;
-                for c in counters.iter_mut().skip(li + 1) {
-                    *c = 0;
+                let body = self.run(ev, i, Some(&TagEnd::Heading(level)));
+                if n == 1 && self.first_h1.is_none() {
+                    self.first_h1 = Some(body.clone());
                 }
-                let number = if numbered && l <= 3 {
-                    counters[..=li].iter().skip_while(|c| **c == 0).map(|c| c.to_string()).collect::<Vec<_>>().join(".")
+                format!("\n{} {}\n\n", "=".repeat(n), body.replace('\n', " "))
+            }
+            Tag::Emphasis => format!("#emph[{}]", self.run(ev, i, Some(&TagEnd::Emphasis))),
+            Tag::Strong => format!("#strong[{}]", self.run(ev, i, Some(&TagEnd::Strong))),
+            Tag::Strikethrough => format!("#strike[{}]", self.run(ev, i, Some(&TagEnd::Strikethrough))),
+            Tag::Superscript => format!("#super[{}]", self.run(ev, i, Some(&TagEnd::Superscript))),
+            Tag::Subscript => format!("#sub[{}]", self.run(ev, i, Some(&TagEnd::Subscript))),
+            Tag::BlockQuote(k) => format!("#quote(block: true)[{}]\n\n", self.run(ev, i, Some(&TagEnd::BlockQuote(k)))),
+            Tag::CodeBlock(kind) => {
+                let mut code = String::new();
+                while *i < ev.len() {
+                    let e = ev[*i].clone();
+                    *i += 1;
+                    match e {
+                        Event::Text(t) => code.push_str(&t),
+                        Event::End(TagEnd::CodeBlock) => break,
+                        _ => {}
+                    }
+                }
+                // No syntax colours: black ink, as in the rest of the page.
+                let _ = kind;
+                let lang = String::new();
+                format!("#raw(block: true, {lang}{})\n\n", lit(code.trim_end_matches('\n')))
+            }
+            Tag::List(start) => {
+                let ordered = start.is_some();
+                let mut items = Vec::new();
+                while *i < ev.len() {
+                    match &ev[*i] {
+                        Event::Start(Tag::Item) => {
+                            *i += 1;
+                            items.push(self.run(ev, i, Some(&TagEnd::Item)));
+                        }
+                        Event::End(TagEnd::List(_)) => {
+                            *i += 1;
+                            break;
+                        }
+                        _ => *i += 1,
+                    }
+                }
+                let body = items.iter().map(|it| format!("[{}]", it.trim())).collect::<Vec<_>>().join(", ");
+                match start {
+                    Some(n) if ordered => format!("#enum(start: {n}, {body})\n\n"),
+                    _ => format!("#list({body})\n\n"),
+                }
+            }
+            Tag::Item => self.run(ev, i, Some(&TagEnd::Item)),
+            Tag::Link { dest_url, .. } => {
+                let text = self.run(ev, i, Some(&TagEnd::Link));
+                if dest_url.starts_with('#') || dest_url.is_empty() {
+                    text
                 } else {
-                    String::new()
-                };
-                let num_html = if number.is_empty() { String::new() } else { format!("<span class=\"num\">{number}</span>") };
-                let _ = write!(html, "<h{l}>{num_html}{}</h{l}>\n", xml_escape(&text));
-                headings.push(Heading { level: l, number, text });
-            }
-            Event::Start(Tag::Image { dest_url, .. }) => {
-                in_image = Some((dest_url.to_string(), String::new()));
-            }
-            Event::End(TagEnd::Image) => {
-                let (src, alt) = in_image.take().unwrap_or_default();
-                let local = if src.starts_with("http://") || src.starts_with("https://") || src.starts_with("data:") {
-                    None
-                } else {
-                    let p = base.join(src.replace("%20", " "));
-                    p.is_file().then_some(p)
-                };
-                if let Some(p) = local {
-                    images += 1;
-                    let ext = p.extension().map(|e| e.to_string_lossy().to_ascii_lowercase()).unwrap_or_else(|| "png".into());
-                    let name = format!("img{images}.{ext}");
-                    std::fs::copy(&p, dir.join(&name))?;
-                    figures += 1;
-                    let cap = if alt.trim().is_empty() {
-                        String::new()
-                    } else {
-                        format!(
-                            "<p class=\"cap\"><span class=\"capl\">{} {figures}</span> {}</p>",
-                            xml_escape(&tr("pdf.from-markdown.figure")),
-                            xml_escape(&alt)
-                        )
-                    };
-                    let _ = write!(html, "</p><div class=\"fig\"><img src=\"{name}\"/></div>{cap}<p>");
-                } else if !alt.is_empty() {
-                    let _ = write!(html, "<em>{}</em>", xml_escape(&alt));
+                    format!("#link({})[{}]", lit(&dest_url), text)
                 }
             }
-            Event::Start(Tag::Paragraph) => html.push_str("<p>"),
-            Event::End(TagEnd::Paragraph) => html.push_str("</p>\n"),
-            Event::Start(Tag::Emphasis) => html.push_str("<em>"),
-            Event::End(TagEnd::Emphasis) => html.push_str("</em>"),
-            Event::Start(Tag::Strong) => html.push_str("<strong>"),
-            Event::End(TagEnd::Strong) => html.push_str("</strong>"),
-            Event::Start(Tag::Strikethrough) => html.push_str("<del>"),
-            Event::End(TagEnd::Strikethrough) => html.push_str("</del>"),
-            Event::Start(Tag::BlockQuote(_)) => html.push_str("<blockquote>"),
-            Event::End(TagEnd::BlockQuote(_)) => html.push_str("</blockquote>\n"),
-            Event::Start(Tag::CodeBlock(kind)) => {
-                let _ = matches!(kind, CodeBlockKind::Fenced(_));
-                html.push_str("<pre>");
-            }
-            Event::End(TagEnd::CodeBlock) => html.push_str("</pre>\n"),
-            Event::Start(Tag::List(Some(start))) => {
-                let _ = write!(html, "<ol start=\"{start}\">");
-            }
-            Event::Start(Tag::List(None)) => html.push_str("<ul>"),
-            Event::End(TagEnd::List(true)) => html.push_str("</ol>\n"),
-            Event::End(TagEnd::List(false)) => html.push_str("</ul>\n"),
-            Event::Start(Tag::Item) => html.push_str("<li>"),
-            Event::End(TagEnd::Item) => html.push_str("</li>\n"),
-            Event::TaskListMarker(done) => html.push_str(if done { "☑ " } else { "☐ " }),
-            Event::Start(Tag::Table(_)) => html.push_str("<table>"),
-            Event::End(TagEnd::Table) => html.push_str("</tbody></table>\n"),
-            Event::Start(Tag::TableHead) => {
-                in_table_head = true;
-                html.push_str("<thead><tr>");
-            }
-            Event::End(TagEnd::TableHead) => {
-                in_table_head = false;
-                html.push_str("</tr></thead><tbody>");
-            }
-            Event::Start(Tag::TableRow) => html.push_str("<tr>"),
-            Event::End(TagEnd::TableRow) => html.push_str("</tr>\n"),
-            Event::Start(Tag::TableCell) => html.push_str(if in_table_head { "<th>" } else { "<td>" }),
-            Event::End(TagEnd::TableCell) => html.push_str(if in_table_head { "</th>" } else { "</td>" }),
-            Event::Start(Tag::Link { .. }) | Event::End(TagEnd::Link) => {}
-            Event::Start(Tag::FootnoteDefinition(name)) => {
-                let _ = write!(html, "<p class=\"fn\"><sup>{}</sup> ", xml_escape(&name));
-            }
-            Event::End(TagEnd::FootnoteDefinition) => html.push_str("</p>\n"),
-            Event::FootnoteReference(name) => {
-                let _ = write!(html, "<sup>{}</sup>", xml_escape(&name));
-            }
-            Event::Text(t) => html.push_str(&xml_escape(&t)),
-            Event::Code(t) => {
-                let _ = write!(html, "<code>{}</code>", xml_escape(&t));
-            }
-            Event::SoftBreak => html.push(' '),
-            Event::HardBreak => html.push_str("<br/>"),
-            Event::Rule => html.push_str("<hr/>\n"),
-            Event::Html(h) | Event::InlineHtml(h) => {
-                // Keep simple line breaks only; anything else is shown as text.
-                if h.trim().eq_ignore_ascii_case("<br>") || h.trim().eq_ignore_ascii_case("<br/>") {
-                    html.push_str("<br/>");
+            Tag::Image { dest_url, .. } => {
+                // Alt text = the caption.
+                let mut alt = String::new();
+                while *i < ev.len() {
+                    let e = ev[*i].clone();
+                    *i += 1;
+                    match e {
+                        Event::End(TagEnd::Image) => break,
+                        Event::Text(t) | Event::Code(t) => alt.push_str(&t),
+                        _ => {}
+                    }
+                }
+                let url = dest_url.replace("%20", " ");
+                let local = (!url.contains("://")).then(|| self.base.join(&url)).filter(|p| p.is_file());
+                match local.and_then(|p| image_file(&p)) {
+                    Some((ext, data)) => {
+                        let w = image_width_pt(&ext, &data);
+                        let vpath = format!("/img{}.{ext}", self.files.len() + 1);
+                        self.files.push((vpath.clone(), data));
+                        // Natural size, but never wider than the text block.
+                        let img = format!("layout(size => image({}, width: calc.min({w:.0}pt, size.width)))", lit(&vpath));
+                        if alt.trim().is_empty() {
+                            format!("\n#align(center, block(width: 100%, align(center, {img})))\n\n")
+                        } else {
+                            format!("\n#figure({img}, caption: [{}])\n\n", esc(alt.trim()))
+                        }
+                    }
+                    None => format!("#emph[{}]", esc(if alt.is_empty() { &url } else { &alt })),
                 }
             }
-            _ => {}
+            Tag::Table(aligns) => {
+                let cols = aligns.len().max(1);
+                let al: Vec<&str> = aligns
+                    .iter()
+                    .map(|a| match a {
+                        Alignment::Right => "right",
+                        Alignment::Center => "center",
+                        _ => "left",
+                    })
+                    .collect();
+                let mut head: Vec<String> = Vec::new();
+                let mut rows: Vec<String> = Vec::new();
+                let mut in_head = false;
+                while *i < ev.len() {
+                    let e = ev[*i].clone();
+                    *i += 1;
+                    match e {
+                        Event::Start(Tag::TableHead) => in_head = true,
+                        Event::End(TagEnd::TableHead) => in_head = false,
+                        Event::Start(Tag::TableCell) => {
+                            let c = self.run(ev, i, Some(&TagEnd::TableCell));
+                            if in_head { head.push(format!("[{}]", c.trim())) } else { rows.push(format!("[{}]", c.trim())) }
+                        }
+                        Event::End(TagEnd::Table) => break,
+                        _ => {}
+                    }
+                }
+                format!(
+                    "\n#align(center, table(columns: {cols}, align: ({},), stroke: none, inset: (x: 0.6em, y: 0.35em), table.hline(stroke: 1.2pt), table.header({}), table.hline(stroke: 0.6pt), {} table.hline(stroke: 1.2pt)))\n\n",
+                    al.join(", "),
+                    head.iter().map(|h| format!("strong{h}")).collect::<Vec<_>>().join(", "),
+                    if rows.is_empty() { String::new() } else { format!("{},", rows.join(", ")) }
+                )
+            }
+            Tag::FootnoteDefinition(name) => {
+                // Already collected; skip it here.
+                let _ = self.run(ev, i, Some(&TagEnd::FootnoteDefinition));
+                let _ = name;
+                String::new()
+            }
+            Tag::HtmlBlock => {
+                let _ = self.run(ev, i, Some(&TagEnd::HtmlBlock));
+                String::new()
+            }
+            _ => String::new(),
         }
     }
-    Ok(html.replace("<p></p>", ""))
 }
 
-fn write_fonts(dir: &Path) -> Result<()> {
-    for (n, b) in [
-        ("lmr.otf", fonts::LM_ROMAN),
-        ("lmb.otf", fonts::LM_ROMAN_BOLD),
-        ("lmi.otf", fonts::LM_ROMAN_ITALIC),
-        ("lms.otf", fonts::LM_SANS),
-        ("lmsb.otf", fonts::LM_SANS_BOLD),
-        ("lmm.otf", fonts::LM_MONO),
+/// Markdown → (Typst body, in-memory files, first H1 text).
+fn convert(md: &str, base: &Path, math_as_text: bool) -> (String, Vec<(String, Vec<u8>)>, Option<String>) {
+    let mut opts = MdOptions::empty();
+    for o in [
+        MdOptions::ENABLE_TABLES,
+        MdOptions::ENABLE_FOOTNOTES,
+        MdOptions::ENABLE_STRIKETHROUGH,
+        MdOptions::ENABLE_TASKLISTS,
+        MdOptions::ENABLE_MATH,
+        MdOptions::ENABLE_SMART_PUNCTUATION,
+        MdOptions::ENABLE_SUPERSCRIPT,
+        MdOptions::ENABLE_SUBSCRIPT,
     ] {
-        std::fs::write(dir.join(n), b)?;
+        opts.insert(o);
     }
-    Ok(())
+    // Math is taken verbatim from the source: the parser applies backslash escapes inside it,
+    // which would turn LaTeX's `\` (new row) into a single backslash.
+    let ev: Vec<Event> = Parser::new_ext(md, opts)
+        .into_offset_iter()
+        .map(|(e, r)| match e {
+            Event::InlineMath(_) | Event::DisplayMath(_) => {
+                let raw = md.get(r).unwrap_or("").trim();
+                let inner = raw.trim_start_matches('$').trim_end_matches('$').to_string();
+                if matches!(e, Event::InlineMath(_)) { Event::InlineMath(inner.into()) } else { Event::DisplayMath(inner.into()) }
+            }
+            e => e,
+        })
+        .collect();
+    let mut c = Conv { base, files: Vec::new(), footnotes: HashMap::new(), math_as_text, first_h1: None };
+    // Footnote bodies first (references may come before definitions).
+    let mut k = 0;
+    while k < ev.len() {
+        if let Event::Start(Tag::FootnoteDefinition(name)) = &ev[k] {
+            let name = name.to_string();
+            let mut j = k + 1;
+            let body = c.run(&ev, &mut j, Some(&TagEnd::FootnoteDefinition));
+            c.footnotes.insert(name, body.trim().to_string());
+            k = j;
+        } else {
+            k += 1;
+        }
+    }
+    let mut i = 0;
+    let body = c.run(&ev, &mut i, None);
+    (body, c.files, c.first_h1)
 }
 
-fn page_size(v: &Values) -> (f32, f32) {
-    match v.str("paper") {
-        "letter" => (612.0, 792.0),
-        "a5" => (419.53, 595.28),
-        _ => (595.28, 841.89),
-    }
+/// The house style preamble.
+fn preamble(v: &Values, title: &str, author: &str) -> String {
+    let paper = match v.str("paper") {
+        "letter" => "us-letter",
+        "a5" => "a5",
+        _ => "a4",
+    };
+    let size = v.float("font_size").clamp(8.0, 14.0);
+    let lang = {
+        let l = v.str("language").trim().to_lowercase();
+        if l.len() == 2 && l.chars().all(|c| c.is_ascii_lowercase()) { l } else { "en".into() }
+    };
+    let numbering = if v.bool("numbered") { "\"1.1\"" } else { "none" };
+    let page_numbering = if v.bool("page_numbers") { "\"1\"" } else { "none" };
+    let margin = if paper == "a5" { "(x: 1.8cm, top: 2cm, bottom: 2.2cm)" } else { "(x: 2.8cm, top: 2.8cm, bottom: 3cm)" };
+    format!(
+        r##"#set document(title: {title}{author})
+#set page(paper: "{paper}", margin: {margin}, numbering: {page_numbering}, number-align: center + bottom)
+#set text(font: "Latin Modern Roman", size: {size}pt, lang: "{lang}", hyphenate: true)
+#set par(justify: true, leading: 0.62em, spacing: 0.95em)
+#show raw: set text(font: "Latin Modern Mono", size: 1em)
+#show raw.where(block: true): it => block(width: 100%, inset: (left: 1.2em, y: 0.4em), it)
+#show math.equation: set text(font: "New Computer Modern Math")
+#set heading(numbering: {numbering})
+#show heading: set text(font: "Latin Modern Sans", weight: "bold")
+#show heading: set block(above: 1.5em, below: 0.8em)
+#show heading.where(level: 1): set text(size: 1.45em)
+#show heading.where(level: 2): set text(size: 1.2em)
+#show heading.where(level: 3): set text(size: 1.05em)
+#show heading: it => {{
+  if it.numbering == none {{ it }} else {{
+    block(text(font: "Latin Modern Sans", weight: "bold", [#counter(heading).display(it.numbering)#h(0.9em)#it.body]))
+  }}
+}}
+#set figure(gap: 0.8em)
+#show figure.caption: it => context text(size: 0.92em, fill: rgb("#5c5a55"))[#strong[#it.supplement #it.counter.display(it.numbering)] / #it.body]
+#show quote.where(block: true): it => pad(x: 2em, emph(it.body))
+#set list(marker: ([•], [–]), indent: 0.6em)
+#set enum(indent: 0.6em)
+#show link: set text(fill: rgb("#2f6db5"))
+#show outline.entry.where(level: 1): set text(weight: "bold")
+"##,
+        title = lit(title),
+        author = if author.trim().is_empty() { String::new() } else { format!(", author: {}", lit(author)) },
+    )
 }
 
-/// Lay out `html_path` and return the PDF plus, for each top-level outline entry, its page.
-fn layout(html_path: &Path, v: &Values) -> Result<(mupdf::pdf::PdfDocument, Vec<(String, usize)>)> {
-    let (w, h) = page_size(v);
-    let mut ctx = mupdf::Context::get();
-    let margin = if v.str("paper") == "a5" { 50.0 } else { 72.0 };
-    ctx.set_user_css(&format!("@page {{ margin: {margin}pt {:.0}pt {:.0}pt {:.0}pt }}", margin * 1.1, margin * 1.15, margin * 1.1))?;
-    let mut doc = engine_pdf::open_document(html_path, "")?;
-    doc.layout(w, h, v.float("font_size").clamp(7.0, 16.0) as f32)?;
-    let entries = engine_pdf::pages::outline_entries(&doc).into_iter().filter_map(|(_, t, p)| p.map(|p| (t, p))).collect();
-    let pdf = doc.convert_to_pdf(0, -1, 0)?;
-    let _ = ctx.set_user_css("");
-    Ok((pdf, entries))
+fn title_block(front: &Front, title: &str, page: bool) -> String {
+    let mut s = String::new();
+    let t = format!("#text(font: \"Latin Modern Roman\", size: {}em, weight: \"bold\", {})", if page { "2.2" } else { "1.8" }, lit(title));
+    let a = if front.author.is_empty() { String::new() } else { format!("#v(0.8em) #text(size: 1.2em, {})", lit(&front.author)) };
+    let d = if front.date.is_empty() { String::new() } else { format!("#v(0.4em) #text(size: 1.05em, {})", lit(&front.date)) };
+    if page {
+        s.push_str(&format!(
+            "#page(numbering: none)[#v(1fr) #align(center)[{t} {a} {d} #v(1.5em) #text(size: 1.4em, sym.diamond.stroked)] #v(2fr)]\n#counter(page).update(1)\n"
+        ));
+    } else {
+        s.push_str(&format!("#align(center)[{t} {a} {d}]\n#v(1.5em)\n"));
+    }
+    s
 }
 
 impl Tool for FromMarkdown {
@@ -321,101 +1015,80 @@ impl Tool for FromMarkdown {
             OptionSpec::toggle("toc", false),
             OptionSpec::toggle("title_page", false),
             OptionSpec::toggle("page_numbers", true),
+            OptionSpec::text("language", "en").advanced(),
         ]
     }
     fn run(&self, job: &Job, v: &Values, cx: &RunCx) -> Result<Vec<Output>> {
         let input = job.input()?;
         let src = std::fs::read_to_string(&input.path).map_err(|e| anyhow::anyhow!("{}: {e}", input.name()))?;
         let (front, md) = front_matter(&src);
-        let dir: PathBuf = cx.tmp_dir().join("md");
-        std::fs::create_dir_all(&dir)?;
-        write_fonts(&dir)?;
         let base = input.path.parent().unwrap_or(Path::new("."));
-        let mut headings = Vec::new();
-        let body = render_body(md, v.bool("numbered"), base, &dir, &mut headings)?;
+        cx.message(tr("pdf.from-markdown.msg"));
+        let build = |math_as_text: bool| -> Result<(Vec<u8>, usize, String)> {
+            let (body, files, first_h1) = convert(md, base, math_as_text);
+            let title = if !front.title.is_empty() {
+                front.title.clone()
+            } else {
+                first_h1.map(|h| h.replace('\\', "")).unwrap_or_else(|| input.stem())
+            };
+            let mut s = preamble(v, &title, &front.author);
+            if v.bool("title_page") {
+                s.push_str(&title_block(&front, &title, true));
+            } else if !front.title.is_empty() {
+                s.push_str(&title_block(&front, &title, false));
+            }
+            if v.bool("toc") {
+                s.push_str(&format!(
+                    "#outline(title: [{}], indent: auto)\n#pagebreak(weak: true)\n",
+                    esc(&tr("pdf.from-markdown.contents"))
+                ));
+            }
+            s.push_str(&body);
+            if let Some(dir) = std::env::var_os("CASTOR_DEBUG_TYPST") {
+                let _ = std::fs::write(std::path::Path::new(&dir).join("main.typ"), &s);
+            }
+            let (pdf, pages) = typst_pdf(&s, &files)?;
+            Ok((pdf, pages, title))
+        };
         cx.progress(0.2);
-        let title = if front.title.is_empty() {
-            headings.iter().find(|h| h.level == 1).map(|h| h.text.clone()).unwrap_or_else(|| input.stem())
-        } else {
-            front.title.clone()
-        };
-        let title_html = if v.bool("title_page") {
-            format!(
-                "<div class=\"title\"><p class=\"t\">{}</p><p class=\"a\">{}</p><p class=\"d\">{}</p></div>\n",
-                xml_escape(&title),
-                xml_escape(&front.author),
-                xml_escape(&front.date)
-            )
-        } else {
-            String::new()
-        };
-        let html_path = dir.join("doc.xhtml");
-        let build = |toc: &str| -> Result<()> {
-            let doc = format!(
-                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta charset=\"utf-8\"/><title>{}</title><style>{CSS}</style></head><body>{title_html}{toc}{body}</body></html>",
-                xml_escape(&title)
-            );
-            std::fs::write(&html_path, doc)?;
-            Ok(())
-        };
-        let toc_html = |pages: &[(String, usize)], offset: usize| -> String {
-            let mut t = format!("<div class=\"toc\"><h1>{}</h1>\n", xml_escape(&tr("pdf.from-markdown.contents")));
-            let mut it = pages.iter();
-            for h in headings.iter().filter(|h| h.level <= 3) {
-                let skip = usize::from(v.bool("title_page"));
-                let page = it.find(|(tt, _)| tt.contains(h.text.trim())).map(|(_, p)| (p + 1 + offset).saturating_sub(skip));
-                let pg = page.map(|p| p.to_string()).unwrap_or_default();
-                let num = if h.number.is_empty() { String::new() } else { format!("{} ", h.number) };
-                let _ = writeln!(t, "<p class=\"l{}\">{num}{}<span class=\"pg\">{pg}</span></p>", h.level, xml_escape(&h.text));
+        let (pdf, pages, _title, note) = match build(false) {
+            Ok((p, n, t)) => (p, n, t, None),
+            Err(e) => {
+                // A formula Typst cannot read must not cost the whole document: retry with
+                // formulas shown as code, and say so.
+                let (p, n, t) = build(true).map_err(|_| e)?;
+                (p, n, t, Some(tr("pdf.from-markdown.note.math")))
             }
-            t.push_str("</div>\n");
-            t
         };
-        build("")?;
-        let (mut pdf, mut entries) = layout(&html_path, v)?;
-        if v.bool("toc") && !headings.is_empty() {
-            // Two passes: measure the TOC, then fill in the page numbers.
-            build(&toc_html(&entries, 0))?;
-            let (_, with_toc) = layout(&html_path, v)?;
-            let first = headings[0].text.trim().to_string();
-            let page_of = |e: &[(String, usize)]| e.iter().find(|(t, _)| t.contains(&first)).map(|(_, p)| *p).unwrap_or(0);
-            let shift = page_of(&with_toc).saturating_sub(page_of(&entries));
-            build(&toc_html(&entries, shift))?;
-            let (p2, e2) = layout(&html_path, v)?;
-            pdf = p2;
-            entries = e2;
-        }
-        let _ = entries;
-        cx.progress(0.75);
         cx.check_cancel()?;
-        if v.bool("page_numbers") {
-            let n = pdf.page_count()?;
-            let skip = if v.bool("title_page") { 1 } else { 0 };
-            for i in skip..n {
-                let mut page = pdf.load_pdf_page(i)?;
-                let mut canvas = Canvas::new(&page)?;
-                let label = (i - skip + 1).to_string();
-                let size = 10.0;
-                let w = canvas.measure(&mut pdf, &mut page, Face::LatinModern, size, &label)?;
-                let b = canvas.bounds;
-                canvas.text(&mut pdf, &mut page, Face::LatinModern, size, &label, (b.x0 + b.x1 - w) / 2.0, b.y1 - 36.0, 0.0, [0.0, 0.0, 0.0], 1.0)?;
-                canvas.commit(&mut pdf, &mut page, true)?;
-            }
-        }
-        engine_pdf::set_info(&mut pdf, "Title", &title)?;
-        if !front.author.is_empty() {
-            engine_pdf::set_info(&mut pdf, "Author", &front.author)?;
-        }
-        engine_pdf::stamp_producer(&mut pdf)?;
+        cx.progress(0.9);
         let out = cx.output_named(&format!("{}.pdf", input.stem()));
-        engine_pdf::save_pdf(&pdf, &out, &engine_pdf::Save::default())?;
-        // Subset the embedded Latin Modern fonts (full fonts are ~100 KB each).
-        let tmp = cx.tmp_dir().join("subset.pdf");
-        let o = engine_pdf::optimize::Optimize { subset_fonts: true, garbage: 4, ..Default::default() };
-        if engine_pdf::optimize::optimize(&out, &tmp, "", &o).is_ok() && file_size(&tmp) > 0 && file_size(&tmp) < file_size(&out) {
-            std::fs::copy(&tmp, &out)?;
+        std::fs::write(&out, &pdf)?;
+        let mut n = tr_args("pdf.note.pages", &[("count", &pages.to_string())]);
+        if let Some(extra) = note {
+            n.push_str(" · ");
+            n.push_str(&extra);
         }
-        let n = pdf.page_count()?.to_string();
-        Ok(vec![Output::new(out).with_note(tr_args("pdf.note.pages", &[("count", &n)]))])
+        Ok(vec![Output::new(out).with_note(n)])
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn latex_math() {
+        assert_eq!(latex_to_typst(r"\frac{a}{b}"), "frac(a, b)");
+        assert_eq!(latex_to_typst(r"x^{2} + y_i"), "x ^(2) + y _i");
+        assert_eq!(latex_to_typst(r"\sqrt[3]{x}"), "root(3, x)");
+        assert_eq!(latex_to_typst(r"\alpha \leq \beta"), "alpha lt.eq beta");
+        assert_eq!(latex_to_typst(r"\mathbb{R}"), "bb(R)");
+        assert_eq!(latex_to_typst(r"\text{if } x"), "\"if \" x");
+        assert!(latex_to_typst(r"\begin{pmatrix} a & b \\ c & d \end{pmatrix}").starts_with("mat(a, b; c, d)"));
+        assert_eq!(latex_to_typst("ab"), "a b");
+    }
+    #[test]
+    fn escaping() {
+        assert_eq!(esc("a*b_c #1 http://x"), "a\\*b\\_c \\#1 http:\\/\\/x");
     }
 }

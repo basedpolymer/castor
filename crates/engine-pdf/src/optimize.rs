@@ -95,8 +95,5 @@ pub fn optimize(input: &Path, output: &Path, password: &str, o: &Optimize) -> Re
         }
         anyhow::bail!("{}: {msg}", castor_core::tr("pdf.err.save"));
     }
-    std::fs::rename(&tmp, output).inspect_err(|_| {
-        let _ = std::fs::remove_file(&tmp);
-    })?;
-    Ok(())
+    crate::persist(&tmp, output)
 }

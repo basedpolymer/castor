@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Runs every PDF tool once through castor-cli on the fixtures in tests/fixtures/generated/pdf.
 # Usage (repo root, Git Bash or macOS):  bash crates/tools-pdf/tests/cli-smoke.sh [castor-cli path]
+# (or the faster-to-build example: target-a/debug/examples/run_tool.exe)
 # Outputs land in tests/fixtures/generated/out-a/<tool>/ (gitignored).
 set -u
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
@@ -17,7 +18,9 @@ pass=0; fail=0
 run() { # run <name> <tool> <args...>
   local name="$1"; shift; local tool="$1"; shift
   local start=$(date +%s)
-  if "$CLI" run "$tool" "$@" --out "$OUT/$name" > "$OUT/$name.log" 2>&1; then
+  local verb=run
+  case "$(basename "$CLI")" in run_tool*) verb="";; esac  # the tools-pdf example takes no verb
+  if "$CLI" $verb "$tool" "$@" --out "$OUT/$name" > "$OUT/$name.log" 2>&1; then
     pass=$((pass+1)); echo "ok   $name ($(( $(date +%s) - start )) s)"
   else
     fail=$((fail+1)); echo "FAIL $name"; tail -5 "$OUT/$name.log"
@@ -56,7 +59,12 @@ run ocr-scan pdf.ocr "$SCAN" --set pages=9-11 --set skip_text=false --set sideca
 run images-to-pdf image.images-to-pdf "$JPG" "$OUT/to-images"
 run scan-to-pdf image.to-pdf "$JPG"
 run extract-text image.extract-text "$JPG"
-printf '# Castor\n\nSome *text* with **bold**.\n\n## Part\n\n- a\n- b\n' > "$OUT/note.md"
-run from-markdown pdf.from-markdown "$OUT/note.md" --set toc=true
-cp "$OUT/note.md" "$OUT/note.txt"; run from-office pdf.from-office "$OUT/note.txt"
+MD="$ROOT/tests/fixtures/generated/md/sample.md"; OFFICE="$ROOT/tests/fixtures/generated/office"
+if [ -f "$MD" ]; then
+  run from-markdown pdf.from-markdown "$MD" --set toc=true --set title_page=true
+  run from-markdown-pages pdf.to-images "$OUT/from-markdown/sample.pdf" --set dpi=110
+fi
+for f in report.docx budget.xlsx slides.pptx; do
+  [ -f "$OFFICE/$f" ] && run "from-office-${f%%.*}" pdf.from-office "$OFFICE/$f"
+done
 echo "passed $pass, failed $fail"
