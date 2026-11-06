@@ -3,7 +3,20 @@ name = "engine-pdf"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+build = "build.rs"
 
 [dependencies]
 anyhow.workspace = true
 castor-core.workspace = true
+parking_lot.workspace = true
+image.workspace = true
+# MuPDF (AGPL-3.0, compatible with GPL-3.0-or-later). JS disabled (not needed, smaller attack surface).
+mupdf = { version = "=0.8.0", default-features = false, features = ["xps", "svg", "cbz", "img", "html", "epub", "system-fonts", "tesseract", "brotli", "base14-fonts"] }
+# Pinned: build.rs compiles csrc/ against this exact version's headers.
+mupdf-sys = "=0.8.0"
+
+[build-dependencies]
+cc = "1"
+
+[dev-dependencies]
+tempfile.workspace = true

@@ -8,4 +8,12 @@ license.workspace = true
 anyhow.workspace = true
 castor-core.workspace = true
 engine-pdf.workspace = true
-engine-ml.workspace = true
+image.workspace = true
+serde_json.workspace = true
+time.workspace = true
+zip = { version = "2", default-features = false, features = ["deflate"] }
+regex = "1"
+pulldown-cmark = { version = "0.13", default-features = false }
+
+[dev-dependencies]
+tempfile.workspace = true

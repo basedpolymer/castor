@@ -1,0 +1,1485 @@
+_version: 2
+# Owner: PDF tools and the PDF/OCR image tools (crates/tools-pdf, crates/engine-pdf), agent A.
+
+pdf.err.path:
+  en: "This path cannot be read (unsupported characters)"
+  fr: "Ce chemin ne peut pas être lu (caractères non pris en charge)"
+pdf.err.missing:
+  en: "File not found"
+  fr: "Fichier introuvable"
+pdf.err.empty:
+  en: "The file is empty."
+  fr: "Le fichier est vide."
+pdf.err.corrupt:
+  en: "This file could not be opened as a document. It may be damaged or not a real PDF — try Repair PDF."
+  fr: "Impossible d’ouvrir ce fichier comme document. Il est peut-être abîmé ou n’est pas un vrai PDF : essayez Réparer un PDF."
+pdf.err.password_needed:
+  en: "This PDF is protected by a password. Enter it under More options → Password."
+  fr: "Ce PDF est protégé par un mot de passe. Saisissez-le dans Plus d’options → Mot de passe."
+pdf.err.password_wrong:
+  en: "The password is not correct for this PDF."
+  fr: "Le mot de passe ne correspond pas à ce PDF."
+pdf.err.password_long:
+  en: "Passwords are limited to 126 characters."
+  fr: "Les mots de passe sont limités à 126 caractères."
+pdf.err.save:
+  en: "The PDF could not be written"
+  fr: "Le PDF n’a pas pu être écrit"
+pdf.err.ocr_language:
+  en: "Unknown OCR language"
+  fr: "Langue d’OCR inconnue"
+pdf.err.ocr_init:
+  en: "The OCR engine could not start"
+  fr: "Le moteur d’OCR n’a pas pu démarrer"
+pdf.err.pages:
+  en: "Invalid page range"
+  fr: "Plage de pages invalide"
+pdf.err.no_pages:
+  en: "No pages to process."
+  fr: "Aucune page à traiter."
+pdf.err.no_input:
+  en: "Add at least one file."
+  fr: "Ajoutez au moins un fichier."
+pdf.err.image:
+  en: "This image could not be decoded"
+  fr: "Impossible de décoder cette image"
+pdf.msg.downloading:
+  en: "Downloading %{name} (once, then it works offline)…"
+  fr: "Téléchargement de %{name} (une seule fois, ensuite tout fonctionne hors ligne)…"
+pdf.msg.ocr_waiting:
+  en: "Waiting for another OCR job to finish…"
+  fr: "En attente de la fin d’une autre OCR…"
+pdf.msg.page:
+  en: "Page %{n} of %{total}"
+  fr: "Page %{n} sur %{total}"
+pdf.note.pages:
+  en: "%{count} pages"
+  fr: "%{count} pages"
+pdf.compress.name:
+  en: "Compress PDF"
+  fr: "Compresser un PDF"
+pdf.compress.desc:
+  en: "Shrink the file while text stays sharp."
+  fr: "Alléger le fichier en gardant un texte net."
+pdf.compress.verb:
+  en: "Compress"
+  fr: "Compresser"
+pdf.compress.keywords:
+  en: "shrink smaller reduce size optimize email"
+  fr: "réduire alléger compresser taille poids optimiser mail"
+pdf.compress.opt.preset:
+  en: "Compression"
+  fr: "Compression"
+pdf.compress.opt.preset.help:
+  en: "Light only cleans up the file. Balanced resamples photos to 150 dpi. Strong goes to 120 dpi. Maximum goes to 96 dpi, converts CMYK to RGB and drops tags."
+  fr: "Léger nettoie seulement le fichier. Équilibré ramène les photos à 150 dpi. Fort descend à 120 dpi. Maximum descend à 96 dpi, convertit le CMJN en RVB et retire le balisage."
+pdf.compress.opt.preset.light:
+  en: "Light"
+  fr: "Léger"
+pdf.compress.opt.preset.balanced:
+  en: "Balanced"
+  fr: "Équilibré"
+pdf.compress.opt.preset.strong:
+  en: "Strong"
+  fr: "Fort"
+pdf.compress.opt.preset.max:
+  en: "Maximum"
+  fr: "Maximum"
+pdf.compress.opt.preset.custom:
+  en: "Custom"
+  fr: "Personnalisé"
+pdf.compress.opt.image_dpi:
+  en: "Image resolution"
+  fr: "Résolution des images"
+pdf.compress.opt.image_dpi.help:
+  en: "Images sharper than this are resampled."
+  fr: "Les images plus fines que cela sont rééchantillonnées."
+pdf.compress.opt.jpeg_quality:
+  en: "JPEG quality"
+  fr: "Qualité JPEG"
+pdf.compress.opt.lossless_to_jpeg:
+  en: "Also compress lossless images as JPEG"
+  fr: "Compresser aussi les images sans perte en JPEG"
+pdf.compress.opt.lossless_to_jpeg.help:
+  en: "Smaller for photos, can blur screenshots and diagrams."
+  fr: "Plus léger pour les photos, peut flouter captures et schémas."
+pdf.compress.opt.grayscale:
+  en: "Convert to grayscale"
+  fr: "Convertir en niveaux de gris"
+pdf.compress.opt.strip_metadata:
+  en: "Remove metadata"
+  fr: "Retirer les métadonnées"
+pdf.compress.opt.strip_bookmarks:
+  en: "Remove bookmarks"
+  fr: "Retirer les signets"
+pdf.compress.opt.strip_tags:
+  en: "Remove accessibility tags"
+  fr: "Retirer le balisage d’accessibilité"
+pdf.compress.opt.strip_tags.help:
+  en: "Makes the file smaller but harder to read with a screen reader."
+  fr: "Allège le fichier mais complique la lecture par un lecteur d’écran."
+pdf.compress.opt.strip_attachments:
+  en: "Remove attached files"
+  fr: "Retirer les pièces jointes"
+pdf.compress.opt.subset_fonts:
+  en: "Keep only the used characters of fonts"
+  fr: "Ne garder que les caractères utilisés des polices"
+pdf.compress.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.compress.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.compress.msg.analyse:
+  en: "Reading the file…"
+  fr: "Lecture du fichier…"
+pdf.compress.msg.images:
+  en: "Compressing images and fonts…"
+  fr: "Compression des images et des polices…"
+pdf.compress.note.not_smaller:
+  en: "Already well optimised: the original is kept as it was."
+  fr: "Déjà bien optimisé : l’original est conservé tel quel."
+pdf.compress.done:
+  en: "%{saved} lighter. Neatly gnawed."
+  fr: "%{saved} de moins. Proprement rongé."
+pdf.merge.name:
+  en: "Merge PDF"
+  fr: "Fusionner des PDF"
+pdf.merge.desc:
+  en: "Combine files into one PDF, in queue order."
+  fr: "Assembler des fichiers en un seul PDF, dans l’ordre de la file."
+pdf.merge.verb:
+  en: "Merge"
+  fr: "Fusionner"
+pdf.merge.keywords:
+  en: "combine join append concatenate bind"
+  fr: "fusionner assembler joindre combiner regrouper"
+pdf.merge.opt.bookmarks:
+  en: "Bookmarks"
+  fr: "Signets"
+pdf.merge.opt.bookmarks.keep:
+  en: "Keep the original ones"
+  fr: "Garder ceux d’origine"
+pdf.merge.opt.bookmarks.per_file:
+  en: "One per file"
+  fr: "Un par fichier"
+pdf.merge.opt.bookmarks.none:
+  en: "None"
+  fr: "Aucun"
+pdf.merge.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.merge.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.merge.note:
+  en: "%{files} files, %{pages} pages"
+  fr: "%{files} fichiers, %{pages} pages"
+pdf.split.name:
+  en: "Split PDF"
+  fr: "Diviser un PDF"
+pdf.split.desc:
+  en: "Cut a PDF into several files."
+  fr: "Découper un PDF en plusieurs fichiers."
+pdf.split.verb:
+  en: "Split"
+  fr: "Diviser"
+pdf.split.keywords:
+  en: "separate divide burst cut pages"
+  fr: "séparer diviser découper scinder pages"
+pdf.split.opt.mode:
+  en: "Split"
+  fr: "Découpage"
+pdf.split.opt.mode.every_page:
+  en: "Every page"
+  fr: "Chaque page"
+pdf.split.opt.mode.ranges:
+  en: "Ranges"
+  fr: "Plages"
+pdf.split.opt.mode.every_n:
+  en: "Every N pages"
+  fr: "Toutes les N pages"
+pdf.split.opt.mode.size:
+  en: "By size"
+  fr: "Par taille"
+pdf.split.opt.mode.bookmarks:
+  en: "By bookmarks"
+  fr: "Par signets"
+pdf.split.opt.ranges:
+  en: "Ranges"
+  fr: "Plages"
+pdf.split.opt.ranges.help:
+  en: "One file per range, separated by commas: 1-3, 4-10, 11-"
+  fr: "Un fichier par plage, séparées par des virgules : 1-3, 4-10, 11-"
+pdf.split.opt.ranges.placeholder:
+  en: "1-3, 4-10, 11-"
+  fr: "1-3, 4-10, 11-"
+pdf.split.opt.every:
+  en: "Pages per file"
+  fr: "Pages par fichier"
+pdf.split.opt.max_mb:
+  en: "Maximum size per file"
+  fr: "Taille maximale par fichier"
+pdf.split.opt.max_mb.help:
+  en: "Pages are never cut: a single huge page can exceed it."
+  fr: "Les pages ne sont jamais coupées : une seule page énorme peut dépasser."
+pdf.split.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.split.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.split.err.ranges:
+  en: "Enter the ranges to keep, e.g. 1-3, 4-10."
+  fr: "Indiquez les plages à garder, par ex. 1-3, 4-10."
+pdf.split.err.no_bookmarks:
+  en: "This PDF has no bookmarks to split on."
+  fr: "Ce PDF n’a pas de signets sur lesquels découper."
+pdf.split.note:
+  en: "%{count} files"
+  fr: "%{count} fichiers"
+pdf.ocr.name:
+  en: "OCR PDF"
+  fr: "OCR d’un PDF"
+pdf.ocr.desc:
+  en: "Make scanned PDFs searchable and selectable."
+  fr: "Rendre les PDF scannés consultables et sélectionnables."
+pdf.ocr.verb:
+  en: "Recognise text"
+  fr: "Reconnaître le texte"
+pdf.ocr.keywords:
+  en: "searchable scan recognize tesseract text layer copy"
+  fr: "ocr scan numérisation reconnaissance texte recherche copier"
+pdf.ocr.opt.languages:
+  en: "Languages"
+  fr: "Langues"
+pdf.ocr.opt.languages.help:
+  en: "Pick every language of the document. Each one is downloaded once (1 to 8 MB)."
+  fr: "Choisissez toutes les langues du document. Chacune est téléchargée une fois (1 à 8 Mo)."
+pdf.ocr.opt.skip_text:
+  en: "Skip pages that already have text"
+  fr: "Ignorer les pages qui ont déjà du texte"
+pdf.ocr.opt.deskew:
+  en: "Follow tilted lines"
+  fr: "Suivre les lignes penchées"
+pdf.ocr.opt.deskew.help:
+  en: "Measures the tilt of each scan so the hidden text lines up. The page itself is not changed."
+  fr: "Mesure l’inclinaison de chaque scan pour aligner le texte caché. La page elle-même n’est pas modifiée."
+pdf.ocr.opt.sidecar:
+  en: "Also save the text (.txt)"
+  fr: "Enregistrer aussi le texte (.txt)"
+pdf.ocr.opt.dpi:
+  en: "Recognition resolution"
+  fr: "Résolution de reconnaissance"
+pdf.ocr.opt.dpi.help:
+  en: "300 dpi suits most scans; 400 helps very small print."
+  fr: "300 dpi convient à la plupart des scans ; 400 aide pour les très petits caractères."
+pdf.ocr.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.ocr.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.ocr.note:
+  en: "OCR: %{pages} pages (%{skipped} already had text), %{words} words, %{langs}"
+  fr: "OCR : %{pages} pages (%{skipped} avaient déjà du texte), %{words} mots, %{langs}"
+pdf.ocr.done:
+  en: "Every word findable now."
+  fr: "Chaque mot se retrouve désormais."
+pdf.redact.name:
+  en: "Redact PDF"
+  fr: "Caviarder un PDF"
+pdf.redact.desc:
+  en: "Really remove sensitive text, not just hide it."
+  fr: "Supprimer vraiment le texte sensible, pas seulement le masquer."
+pdf.redact.verb:
+  en: "Redact"
+  fr: "Caviarder"
+pdf.redact.keywords:
+  en: "censor black out anonymize gdpr remove text privacy"
+  fr: "caviarder masquer anonymiser rgpd supprimer confidentialité"
+pdf.redact.opt.terms:
+  en: "Words to remove"
+  fr: "Mots à supprimer"
+pdf.redact.opt.terms.help:
+  en: "One term per line. The text is deleted from the file, then checked."
+  fr: "Un terme par ligne. Le texte est supprimé du fichier, puis vérifié."
+pdf.redact.opt.case_sensitive:
+  en: "Match case"
+  fr: "Respecter la casse"
+pdf.redact.opt.whole_word:
+  en: "Whole words only"
+  fr: "Mots entiers uniquement"
+pdf.redact.opt.emails:
+  en: "Email addresses"
+  fr: "Adresses e-mail"
+pdf.redact.opt.phones:
+  en: "Phone numbers"
+  fr: "Numéros de téléphone"
+pdf.redact.opt.iban:
+  en: "IBAN"
+  fr: "IBAN"
+pdf.redact.opt.iban.help:
+  en: "Checked with the IBAN checksum, so random numbers are left alone."
+  fr: "Vérifiés par la clé IBAN : les nombres au hasard ne sont pas touchés."
+pdf.redact.opt.cards:
+  en: "Card numbers"
+  fr: "Numéros de carte"
+pdf.redact.opt.cards.help:
+  en: "Checked with the Luhn checksum."
+  fr: "Vérifiés par la clé de Luhn."
+pdf.redact.opt.fr_ids:
+  en: "French IDs (social security, SIRET, SIREN)"
+  fr: "Identifiants français (NIR, SIRET, SIREN)"
+pdf.redact.opt.dates:
+  en: "Dates"
+  fr: "Dates"
+pdf.redact.opt.list:
+  en: "Import a list"
+  fr: "Importer une liste"
+pdf.redact.opt.list.help:
+  en: "A TXT file (one term per line) or a CSV/TSV file (every cell is a term)."
+  fr: "Un fichier TXT (un terme par ligne) ou CSV/TSV (chaque cellule est un terme)."
+pdf.redact.opt.fill:
+  en: "Box colour"
+  fr: "Couleur des cadres"
+pdf.redact.opt.strip_metadata:
+  en: "Also remove metadata"
+  fr: "Retirer aussi les métadonnées"
+pdf.redact.opt.strip_metadata.help:
+  en: "Title, author and other properties can leak names."
+  fr: "Le titre, l’auteur et les autres propriétés peuvent trahir des noms."
+pdf.redact.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.redact.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.redact.err.nothing:
+  en: "Nothing to look for: enter terms or turn on a preset."
+  fr: "Rien à chercher : saisissez des termes ou activez un préréglage."
+pdf.redact.err.verify:
+  en: "Some text was still readable on page %{page} after redaction; no file was written."
+  fr: "Du texte restait lisible page %{page} après le caviardage ; aucun fichier n’a été écrit."
+pdf.redact.msg.verify:
+  en: "Checking that nothing is left…"
+  fr: "Vérification que rien ne subsiste…"
+pdf.redact.note:
+  en: "%{count} passages removed on %{pages} pages"
+  fr: "%{count} passages supprimés sur %{pages} pages"
+pdf.sign.name:
+  en: "Sign PDF"
+  fr: "Signer un PDF"
+pdf.sign.desc:
+  en: "Add your signature: typed in a handwriting font, or from an image."
+  fr: "Ajouter votre signature : tapée dans une écriture manuscrite, ou depuis une image."
+pdf.sign.verb:
+  en: "Sign"
+  fr: "Signer"
+pdf.sign.keywords:
+  en: "signature autograph initials esign contract"
+  fr: "signature signer parapher contrat initiales"
+pdf.sign.opt.kind:
+  en: "Signature"
+  fr: "Signature"
+pdf.sign.opt.kind.typed:
+  en: "Typed"
+  fr: "Tapée"
+pdf.sign.opt.kind.image:
+  en: "Image"
+  fr: "Image"
+pdf.sign.opt.name:
+  en: "Your name"
+  fr: "Votre nom"
+pdf.sign.opt.color:
+  en: "Ink"
+  fr: "Encre"
+pdf.sign.opt.image:
+  en: "Signature image"
+  fr: "Image de la signature"
+pdf.sign.opt.image.help:
+  en: "A photo or scan of your signature on white paper works."
+  fr: "Une photo ou un scan de votre signature sur papier blanc convient."
+pdf.sign.opt.remove_background:
+  en: "Remove the white background"
+  fr: "Retirer le fond blanc"
+pdf.sign.opt.page:
+  en: "Page"
+  fr: "Page"
+pdf.sign.opt.page.last:
+  en: "Last"
+  fr: "Dernière"
+pdf.sign.opt.page.first:
+  en: "First"
+  fr: "Première"
+pdf.sign.opt.page.all:
+  en: "All"
+  fr: "Toutes"
+pdf.sign.opt.page.custom:
+  en: "Choose…"
+  fr: "Choisir…"
+pdf.sign.opt.position:
+  en: "Position"
+  fr: "Position"
+pdf.sign.opt.width:
+  en: "Width"
+  fr: "Largeur"
+pdf.sign.opt.date:
+  en: "Add the date below"
+  fr: "Ajouter la date en dessous"
+pdf.sign.opt.margin:
+  en: "Margin"
+  fr: "Marge"
+pdf.sign.opt.save:
+  en: "Keep this signature for next time"
+  fr: "Garder cette signature pour la prochaine fois"
+pdf.sign.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.sign.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.sign.err.name:
+  en: "Type the name to sign with."
+  fr: "Tapez le nom à signer."
+pdf.sign.err.image:
+  en: "Choose an image of your signature."
+  fr: "Choisissez une image de votre signature."
+pdf.sign.date_fmt:
+  en: "Signed on %{y}-%{m}-%{d}"
+  fr: "Signé le %{d}/%{m}/%{y}"
+pdf.sign.note:
+  en: "Signed (visual signature, not a certificate)."
+  fr: "Signé (signature visuelle, pas un certificat)."
+pdf.encrypt.name:
+  en: "Encrypt PDF"
+  fr: "Protéger un PDF"
+pdf.encrypt.desc:
+  en: "Lock a PDF with a password (AES-256)."
+  fr: "Verrouiller un PDF par mot de passe (AES-256)."
+pdf.encrypt.verb:
+  en: "Protect"
+  fr: "Protéger"
+pdf.encrypt.keywords:
+  en: "password protect lock secure aes"
+  fr: "mot de passe protéger verrouiller chiffrer sécuriser"
+pdf.encrypt.opt.user_password:
+  en: "Password to open"
+  fr: "Mot de passe d’ouverture"
+pdf.encrypt.opt.user_password.help:
+  en: "Leave empty to let anyone open it but keep the restrictions below."
+  fr: "Laissez vide pour que tout le monde puisse l’ouvrir avec les restrictions ci-dessous."
+pdf.encrypt.opt.owner_password:
+  en: "Password to change restrictions"
+  fr: "Mot de passe des restrictions"
+pdf.encrypt.opt.owner_password.help:
+  en: "If empty, a random one is used when something is restricted."
+  fr: "Vide : un mot de passe aléatoire est utilisé si quelque chose est restreint."
+pdf.encrypt.opt.allow_print:
+  en: "Allow printing"
+  fr: "Autoriser l’impression"
+pdf.encrypt.opt.allow_copy:
+  en: "Allow copying text"
+  fr: "Autoriser la copie du texte"
+pdf.encrypt.opt.allow_edit:
+  en: "Allow editing"
+  fr: "Autoriser la modification"
+pdf.encrypt.opt.allow_annotate:
+  en: "Allow comments"
+  fr: "Autoriser les commentaires"
+pdf.encrypt.opt.allow_forms:
+  en: "Allow filling forms"
+  fr: "Autoriser le remplissage des formulaires"
+pdf.encrypt.opt.allow_assemble:
+  en: "Allow adding and removing pages"
+  fr: "Autoriser l’ajout et le retrait de pages"
+pdf.encrypt.opt.password:
+  en: "Current password"
+  fr: "Mot de passe actuel"
+pdf.encrypt.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.encrypt.err.no_password:
+  en: "Set a password, or restrict something."
+  fr: "Définissez un mot de passe, ou restreignez quelque chose."
+pdf.encrypt.note.aes:
+  en: "AES-256. Keep the password somewhere safe: it cannot be recovered."
+  fr: "AES-256. Gardez le mot de passe en lieu sûr : il est irrécupérable."
+pdf.encrypt.note.restrict:
+  en: "Opens without a password; restrictions applied."
+  fr: "S’ouvre sans mot de passe ; restrictions appliquées."
+pdf.unlock.name:
+  en: "Unlock PDF"
+  fr: "Déverrouiller un PDF"
+pdf.unlock.desc:
+  en: "Remove the password from a PDF you can open."
+  fr: "Retirer le mot de passe d’un PDF que vous pouvez ouvrir."
+pdf.unlock.verb:
+  en: "Unlock"
+  fr: "Déverrouiller"
+pdf.unlock.keywords:
+  en: "decrypt remove password unprotect open"
+  fr: "déverrouiller retirer mot de passe déchiffrer"
+pdf.unlock.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.unlock.opt.password.help:
+  en: "The password you use to open the file."
+  fr: "Le mot de passe qui ouvre le fichier."
+pdf.unlock.err.not_encrypted:
+  en: "This PDF is not protected."
+  fr: "Ce PDF n’est pas protégé."
+pdf.to-images.name:
+  en: "PDF to images"
+  fr: "PDF en images"
+pdf.to-images.desc:
+  en: "Export pages as PNG, JPG, WebP or TIFF."
+  fr: "Exporter les pages en PNG, JPG, WebP ou TIFF."
+pdf.to-images.verb:
+  en: "Export"
+  fr: "Exporter"
+pdf.to-images.keywords:
+  en: "convert jpg png render rasterize export"
+  fr: "convertir jpg png image exporter rendu"
+pdf.to-images.opt.dpi:
+  en: "Resolution"
+  fr: "Résolution"
+pdf.to-images.opt.dpi.help:
+  en: "150 dpi for screens, 300 dpi for print."
+  fr: "150 dpi pour l’écran, 300 dpi pour l’impression."
+pdf.to-images.opt.gray:
+  en: "Grayscale"
+  fr: "Niveaux de gris"
+pdf.to-images.opt.format.help:
+  en: "WebP is saved lossless."
+  fr: "Le WebP est enregistré sans perte."
+pdf.organize.name:
+  en: "Organize pages"
+  fr: "Organiser les pages"
+pdf.organize.desc:
+  en: "Reorder, delete and rotate pages."
+  fr: "Réordonner, supprimer et pivoter des pages."
+pdf.organize.verb:
+  en: "Organize"
+  fr: "Organiser"
+pdf.organize.keywords:
+  en: "reorder arrange delete remove move pages sort"
+  fr: "réordonner organiser supprimer déplacer trier pages"
+pdf.organize.opt.order:
+  en: "New order"
+  fr: "Nouvel ordre"
+pdf.organize.opt.order.help:
+  en: "Pages in their new order, e.g. 3, 1-2, 4-. Pages left out are dropped. Empty = keep the order."
+  fr: "Les pages dans leur nouvel ordre, par ex. 3, 1-2, 4-. Les pages absentes sont retirées. Vide = ordre inchangé."
+pdf.organize.opt.order.placeholder:
+  en: "3, 1-2, 4-"
+  fr: "3, 1-2, 4-"
+pdf.organize.opt.reverse:
+  en: "Reverse the order"
+  fr: "Inverser l’ordre"
+pdf.organize.opt.delete:
+  en: "Delete pages"
+  fr: "Supprimer des pages"
+pdf.organize.opt.delete.help:
+  en: "Original page numbers, e.g. 2, 5-6."
+  fr: "Numéros d’origine, par ex. 2, 5-6."
+pdf.organize.opt.rotate_pages:
+  en: "Rotate pages"
+  fr: "Pivoter des pages"
+pdf.organize.opt.rotate_pages.help:
+  en: "Original page numbers."
+  fr: "Numéros d’origine."
+pdf.organize.opt.angle:
+  en: "Rotation"
+  fr: "Rotation"
+pdf.organize.opt.angle.90:
+  en: "90° clockwise"
+  fr: "90° horaire"
+pdf.organize.opt.angle.180:
+  en: "180°"
+  fr: "180°"
+pdf.organize.opt.angle.270:
+  en: "90° counter-clockwise"
+  fr: "90° antihoraire"
+pdf.rotate.opt.angle.90:
+  en: "90° clockwise"
+  fr: "90° horaire"
+pdf.rotate.opt.angle.180:
+  en: "180°"
+  fr: "180°"
+pdf.rotate.opt.angle.270:
+  en: "90° counter-clockwise"
+  fr: "90° antihoraire"
+pdf.organize.opt.blank_after:
+  en: "Insert a blank page after each page"
+  fr: "Insérer une page blanche après chaque page"
+pdf.organize.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.organize.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.organize.err.all_deleted:
+  en: "Every page would be deleted."
+  fr: "Toutes les pages seraient supprimées."
+pdf.rotate.name:
+  en: "Rotate PDF"
+  fr: "Pivoter un PDF"
+pdf.rotate.desc:
+  en: "Turn all pages, or only some."
+  fr: "Faire pivoter toutes les pages, ou quelques-unes."
+pdf.rotate.verb:
+  en: "Rotate"
+  fr: "Pivoter"
+pdf.rotate.keywords:
+  en: "turn orientation landscape portrait flip"
+  fr: "pivoter tourner orientation paysage portrait"
+pdf.rotate.opt.angle:
+  en: "Rotation"
+  fr: "Rotation"
+pdf.rotate.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.rotate.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.rotate.opt.pages.help:
+  en: "Ranges like 1-3, 5, or odd / even."
+  fr: "Plages comme 1-3, 5, ou odd / even (impaires / paires)."
+pdf.extract-pages.name:
+  en: "Extract pages"
+  fr: "Extraire des pages"
+pdf.extract-pages.desc:
+  en: "Copy chosen pages into a new PDF."
+  fr: "Copier les pages choisies dans un nouveau PDF."
+pdf.extract-pages.verb:
+  en: "Extract"
+  fr: "Extraire"
+pdf.extract-pages.keywords:
+  en: "select pick subset pages copy"
+  fr: "extraire sélectionner pages copier"
+pdf.extract-pages.opt.output:
+  en: "Result"
+  fr: "Résultat"
+pdf.extract-pages.opt.output.one:
+  en: "One file"
+  fr: "Un fichier"
+pdf.extract-pages.opt.output.each_range:
+  en: "One file per range"
+  fr: "Un fichier par plage"
+pdf.extract-pages.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.extract-pages.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.extract-pages.err.empty:
+  en: "Enter the pages to extract, e.g. 1-3, 7."
+  fr: "Indiquez les pages à extraire, par ex. 1-3, 7."
+pdf.crop.name:
+  en: "Crop PDF"
+  fr: "Rogner un PDF"
+pdf.crop.desc:
+  en: "Trim margins, or cut away the white around the content."
+  fr: "Rogner les marges, ou couper le blanc autour du contenu."
+pdf.crop.verb:
+  en: "Crop"
+  fr: "Rogner"
+pdf.crop.keywords:
+  en: "trim margins whitespace cut border"
+  fr: "rogner marges recadrer blanc bordure"
+pdf.crop.opt.mode:
+  en: "Crop"
+  fr: "Rognage"
+pdf.crop.opt.mode.auto:
+  en: "Around the content"
+  fr: "Autour du contenu"
+pdf.crop.opt.mode.margins:
+  en: "Fixed margins"
+  fr: "Marges fixes"
+pdf.crop.opt.padding:
+  en: "Breathing room"
+  fr: "Marge de respiration"
+pdf.crop.opt.same_box:
+  en: "Same size for every page"
+  fr: "Même taille pour toutes les pages"
+pdf.crop.opt.top:
+  en: "Top"
+  fr: "Haut"
+pdf.crop.opt.bottom:
+  en: "Bottom"
+  fr: "Bas"
+pdf.crop.opt.left:
+  en: "Left"
+  fr: "Gauche"
+pdf.crop.opt.right:
+  en: "Right"
+  fr: "Droite"
+pdf.crop.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.crop.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.crop.err.too_much:
+  en: "These margins leave nothing of the page."
+  fr: "Ces marges ne laissent rien de la page."
+pdf.attach-to-each.name:
+  en: "Attach to each"
+  fr: "Ajouter à chaque PDF"
+pdf.attach-to-each.desc:
+  en: "Add a cover or terms PDF to every file."
+  fr: "Ajouter une couverture ou des conditions à chaque fichier."
+pdf.attach-to-each.verb:
+  en: "Attach"
+  fr: "Ajouter"
+pdf.attach-to-each.keywords:
+  en: "cover prepend append terms insert add pages"
+  fr: "couverture ajouter insérer conditions pages"
+pdf.attach-to-each.opt.file:
+  en: "PDF to add"
+  fr: "PDF à ajouter"
+pdf.attach-to-each.opt.position:
+  en: "Where"
+  fr: "Où"
+pdf.attach-to-each.opt.position.before:
+  en: "Before"
+  fr: "Avant"
+pdf.attach-to-each.opt.position.after:
+  en: "After"
+  fr: "Après"
+pdf.attach-to-each.opt.position.both:
+  en: "Before and after"
+  fr: "Avant et après"
+pdf.attach-to-each.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.attach-to-each.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.attach-to-each.err.file:
+  en: "Choose the PDF to add."
+  fr: "Choisissez le PDF à ajouter."
+pdf.page-numbers.name:
+  en: "Page numbers"
+  fr: "Numéros de page"
+pdf.page-numbers.desc:
+  en: "Number the pages, in the style you like."
+  fr: "Numéroter les pages, dans le style de votre choix."
+pdf.page-numbers.verb:
+  en: "Number"
+  fr: "Numéroter"
+pdf.page-numbers.keywords:
+  en: "numbering paginate folio bates footer"
+  fr: "numéroter pagination folio pied de page"
+pdf.page-numbers.opt.format:
+  en: "Format"
+  fr: "Format"
+pdf.page-numbers.opt.format.page_n:
+  en: "Page 1"
+  fr: "Page 1"
+pdf.page-numbers.opt.format.page_n_of_total:
+  en: "Page 1 of N"
+  fr: "Page 1 sur N"
+pdf.page-numbers.opt.format.custom:
+  en: "Custom"
+  fr: "Personnalisé"
+pdf.page-numbers.fmt.page_n:
+  en: "Page %{n}"
+  fr: "Page %{n}"
+pdf.page-numbers.fmt.page_n_of_total:
+  en: "Page %{n} of %{total}"
+  fr: "Page %{n} sur %{total}"
+pdf.page-numbers.opt.custom:
+  en: "Text"
+  fr: "Texte"
+pdf.page-numbers.opt.custom.help:
+  en: "{n} = number, {total} = last number, {roman} = roman numeral."
+  fr: "{n} = numéro, {total} = dernier numéro, {roman} = chiffre romain."
+pdf.page-numbers.opt.position:
+  en: "Position"
+  fr: "Position"
+pdf.page-numbers.opt.font:
+  en: "Font"
+  fr: "Police"
+pdf.page-numbers.opt.font.help:
+  en: "Latin Modern and TeX Gyre Chorus are embedded; the others are the standard PDF fonts."
+  fr: "Latin Modern et TeX Gyre Chorus sont incorporées ; les autres sont les polices PDF standard."
+pdf.page-numbers.opt.size:
+  en: "Size"
+  fr: "Taille"
+pdf.page-numbers.opt.color:
+  en: "Colour"
+  fr: "Couleur"
+pdf.page-numbers.opt.start:
+  en: "First number"
+  fr: "Premier numéro"
+pdf.page-numbers.opt.skip:
+  en: "Leave the first pages unnumbered"
+  fr: "Ne pas numéroter les premières pages"
+pdf.page-numbers.opt.skip.help:
+  en: "For a cover or a title page."
+  fr: "Pour une couverture ou une page de titre."
+pdf.page-numbers.opt.margin:
+  en: "Margin"
+  fr: "Marge"
+pdf.page-numbers.opt.mirror:
+  en: "Mirror on even pages"
+  fr: "En miroir sur les pages paires"
+pdf.page-numbers.opt.mirror.help:
+  en: "For printed books: the number goes to the outer edge."
+  fr: "Pour les livres imprimés : le numéro va vers le bord extérieur."
+pdf.page-numbers.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.page-numbers.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.stamp.name:
+  en: "Stamp"
+  fr: "Tampon"
+pdf.stamp.desc:
+  en: "Add a text or image stamp or watermark."
+  fr: "Ajouter un tampon ou un filigrane, texte ou image."
+pdf.stamp.verb:
+  en: "Stamp"
+  fr: "Tamponner"
+pdf.stamp.keywords:
+  en: "watermark confidential draft logo overlay brand"
+  fr: "filigrane tampon confidentiel brouillon logo"
+pdf.stamp.opt.kind:
+  en: "Stamp"
+  fr: "Tampon"
+pdf.stamp.opt.kind.text:
+  en: "Text"
+  fr: "Texte"
+pdf.stamp.opt.kind.image:
+  en: "Image"
+  fr: "Image"
+pdf.stamp.opt.text:
+  en: "Text"
+  fr: "Texte"
+pdf.stamp.opt.font:
+  en: "Font"
+  fr: "Police"
+pdf.stamp.opt.font.help:
+  en: "Latin Modern and TeX Gyre Chorus are embedded; the others are the standard PDF fonts."
+  fr: "Latin Modern et TeX Gyre Chorus sont incorporées ; les autres sont les polices PDF standard."
+pdf.stamp.opt.size:
+  en: "Size"
+  fr: "Taille"
+pdf.stamp.opt.size.help:
+  en: "Shrunk automatically if it does not fit the page."
+  fr: "Réduite automatiquement si elle ne tient pas sur la page."
+pdf.stamp.opt.color:
+  en: "Colour"
+  fr: "Couleur"
+pdf.stamp.opt.image:
+  en: "Image"
+  fr: "Image"
+pdf.stamp.opt.image_width:
+  en: "Width (share of the page)"
+  fr: "Largeur (part de la page)"
+pdf.stamp.opt.opacity:
+  en: "Opacity"
+  fr: "Opacité"
+pdf.stamp.opt.angle:
+  en: "Angle"
+  fr: "Angle"
+pdf.stamp.opt.position:
+  en: "Position"
+  fr: "Position"
+pdf.stamp.opt.layer:
+  en: "Layer"
+  fr: "Plan"
+pdf.stamp.opt.layer.over:
+  en: "Over the content"
+  fr: "Par-dessus le contenu"
+pdf.stamp.opt.layer.under:
+  en: "Under the content"
+  fr: "Sous le contenu"
+pdf.stamp.opt.margin:
+  en: "Margin"
+  fr: "Marge"
+pdf.stamp.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.stamp.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.stamp.err.image:
+  en: "Choose the image to stamp."
+  fr: "Choisissez l’image à apposer."
+pdf.stamp.err.text:
+  en: "Enter the text to stamp."
+  fr: "Saisissez le texte du tampon."
+pdf.to-markdown.name:
+  en: "PDF to Markdown"
+  fr: "PDF en Markdown"
+pdf.to-markdown.desc:
+  en: "Headings, lists, tables and images, as clean Markdown."
+  fr: "Titres, listes, tableaux et images, en Markdown propre."
+pdf.to-markdown.verb:
+  en: "Convert"
+  fr: "Convertir"
+pdf.to-markdown.keywords:
+  en: "markdown text convert notes llm obsidian"
+  fr: "markdown texte convertir notes obsidian"
+pdf.to-markdown.opt.images:
+  en: "Extract images"
+  fr: "Extraire les images"
+pdf.to-markdown.opt.images.help:
+  en: "Saved in a folder next to the .md file."
+  fr: "Enregistrées dans un dossier à côté du fichier .md."
+pdf.to-markdown.opt.page_breaks:
+  en: "Mark page breaks"
+  fr: "Marquer les sauts de page"
+pdf.to-markdown.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.to-markdown.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.to-markdown.note:
+  en: "%{blocks} blocks, %{images} images"
+  fr: "%{blocks} blocs, %{images} images"
+pdf.to-epub.name:
+  en: "PDF to EPUB"
+  fr: "PDF en EPUB"
+pdf.to-epub.desc:
+  en: "A reflowable e-book from a text PDF."
+  fr: "Un livre numérique ajustable à partir d’un PDF texte."
+pdf.to-epub.verb:
+  en: "Convert"
+  fr: "Convertir"
+pdf.to-epub.keywords:
+  en: "ebook kindle kobo reflow e-reader epub"
+  fr: "livre numérique liseuse kobo kindle epub"
+pdf.to-epub.opt.images:
+  en: "Keep images"
+  fr: "Garder les images"
+pdf.to-epub.opt.language:
+  en: "Book language"
+  fr: "Langue du livre"
+pdf.to-epub.opt.language.help:
+  en: "Code like en, fr, de: helps e-readers with hyphenation."
+  fr: "Code comme en, fr, de : aide la liseuse pour la césure."
+pdf.to-epub.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.to-epub.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.to-epub.err.no_text:
+  en: "No text found: for a scan, run OCR PDF first."
+  fr: "Aucun texte trouvé : pour un scan, lancez d’abord OCR d’un PDF."
+pdf.to-epub.note:
+  en: "%{chapters} chapters"
+  fr: "%{chapters} chapitres"
+pdf.from-ebook.name:
+  en: "E-book to PDF"
+  fr: "Livre numérique en PDF"
+pdf.from-ebook.desc:
+  en: "EPUB, MOBI, FB2, CBZ, HTML or TXT to a printable PDF."
+  fr: "EPUB, MOBI, FB2, CBZ, HTML ou TXT en PDF imprimable."
+pdf.from-ebook.verb:
+  en: "Convert"
+  fr: "Convertir"
+pdf.from-ebook.keywords:
+  en: "epub mobi fb2 cbz comic print ebook convert"
+  fr: "epub mobi fb2 cbz bd imprimer livre convertir"
+pdf.from-ebook.opt.page_size:
+  en: "Page size"
+  fr: "Format de page"
+pdf.from-ebook.opt.page_size.pocket:
+  en: "Pocket (11 × 17.6 cm)"
+  fr: "Poche (11 × 17,6 cm)"
+pdf.from-ebook.opt.page_size.ereader:
+  en: "E-reader (9 × 12 cm)"
+  fr: "Liseuse (9 × 12 cm)"
+pdf.from-ebook.opt.font_size:
+  en: "Text size"
+  fr: "Taille du texte"
+pdf.from-ebook.opt.margin:
+  en: "Margins"
+  fr: "Marges"
+pdf.from-ebook.msg.layout:
+  en: "Laying out the pages…"
+  fr: "Mise en page…"
+pdf.from-office.name:
+  en: "Office to PDF"
+  fr: "Office en PDF"
+pdf.from-office.desc:
+  en: "Word, Excel, PowerPoint and OpenDocument to PDF, with LibreOffice."
+  fr: "Word, Excel, PowerPoint et OpenDocument en PDF, avec LibreOffice."
+pdf.from-office.verb:
+  en: "Convert"
+  fr: "Convertir"
+pdf.from-office.keywords:
+  en: "word docx excel xlsx powerpoint pptx libreoffice odt convert"
+  fr: "word docx excel xlsx powerpoint pptx libreoffice odt convertir"
+pdf.from-office.unavailable:
+  en: "Needs LibreOffice (free): install it from libreoffice.org, then come back."
+  fr: "Nécessite LibreOffice (gratuit) : installez-le depuis libreoffice.org, puis revenez."
+pdf.from-office.msg:
+  en: "LibreOffice is converting…"
+  fr: "LibreOffice convertit…"
+pdf.from-office.err.failed:
+  en: "LibreOffice did not produce a PDF for this file."
+  fr: "LibreOffice n’a pas produit de PDF pour ce fichier."
+pdf.flatten.name:
+  en: "Flatten PDF"
+  fr: "Aplatir un PDF"
+pdf.flatten.desc:
+  en: "Bake form fields and comments into the page."
+  fr: "Fondre champs de formulaire et commentaires dans la page."
+pdf.flatten.verb:
+  en: "Flatten"
+  fr: "Aplatir"
+pdf.flatten.keywords:
+  en: "bake forms annotations fields lock in"
+  fr: "aplatir formulaire annotations champs figer"
+pdf.flatten.opt.what:
+  en: "Flatten"
+  fr: "Aplatir"
+pdf.flatten.opt.what.all:
+  en: "Forms and comments"
+  fr: "Formulaires et commentaires"
+pdf.flatten.opt.what.forms:
+  en: "Forms only"
+  fr: "Formulaires seulement"
+pdf.flatten.opt.what.annotations:
+  en: "Comments only"
+  fr: "Commentaires seulement"
+pdf.flatten.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.flatten.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.repair.name:
+  en: "Repair PDF"
+  fr: "Réparer un PDF"
+pdf.repair.desc:
+  en: "Rebuild a damaged PDF so it opens everywhere."
+  fr: "Reconstruire un PDF abîmé pour qu’il s’ouvre partout."
+pdf.repair.verb:
+  en: "Repair"
+  fr: "Réparer"
+pdf.repair.keywords:
+  en: "fix broken corrupt damaged recover xref"
+  fr: "réparer corrompu abîmé récupérer"
+pdf.repair.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.repair.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.repair.msg:
+  en: "Rebuilding the file…"
+  fr: "Reconstruction du fichier…"
+pdf.metadata.name:
+  en: "PDF metadata"
+  fr: "Métadonnées PDF"
+pdf.metadata.desc:
+  en: "Edit title, author, subject and keywords — or remove everything."
+  fr: "Modifier titre, auteur, sujet et mots-clés, ou tout retirer."
+pdf.metadata.verb:
+  en: "Save"
+  fr: "Enregistrer"
+pdf.metadata.keywords:
+  en: "title author properties info xmp privacy clean"
+  fr: "titre auteur propriétés infos xmp confidentialité"
+pdf.metadata.opt.strip:
+  en: "Remove all existing metadata"
+  fr: "Retirer toutes les métadonnées existantes"
+pdf.metadata.opt.title:
+  en: "Title"
+  fr: "Titre"
+pdf.metadata.opt.title.help:
+  en: "Empty fields are left unchanged."
+  fr: "Les champs vides restent inchangés."
+pdf.metadata.opt.author:
+  en: "Author"
+  fr: "Auteur"
+pdf.metadata.opt.subject:
+  en: "Subject"
+  fr: "Sujet"
+pdf.metadata.opt.keywords:
+  en: "Keywords"
+  fr: "Mots-clés"
+pdf.metadata.opt.creator:
+  en: "Application"
+  fr: "Application"
+pdf.metadata.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.metadata.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.metadata.note.none:
+  en: "There was no metadata."
+  fr: "Il n’y avait pas de métadonnées."
+pdf.grayscale.name:
+  en: "Grayscale PDF"
+  fr: "PDF en niveaux de gris"
+pdf.grayscale.desc:
+  en: "Turn colours into grays, for cheaper printing."
+  fr: "Transformer les couleurs en gris, pour imprimer moins cher."
+pdf.grayscale.verb:
+  en: "Convert"
+  fr: "Convertir"
+pdf.grayscale.keywords:
+  en: "black and white gray grey monochrome print ink"
+  fr: "noir et blanc gris niveaux de gris monochrome impression"
+pdf.grayscale.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.grayscale.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.grayscale.msg:
+  en: "Converting colours…"
+  fr: "Conversion des couleurs…"
+pdf.compare.name:
+  en: "Compare PDFs"
+  fr: "Comparer des PDF"
+pdf.compare.desc:
+  en: "Highlight what changed between two versions."
+  fr: "Surligner ce qui a changé entre deux versions."
+pdf.compare.verb:
+  en: "Compare"
+  fr: "Comparer"
+pdf.compare.keywords:
+  en: "diff difference changes versions redline"
+  fr: "comparer différences changements versions"
+pdf.compare.opt.sensitivity:
+  en: "Sensitivity"
+  fr: "Sensibilité"
+pdf.compare.opt.sensitivity.high:
+  en: "High"
+  fr: "Haute"
+pdf.compare.opt.sensitivity.normal:
+  en: "Normal"
+  fr: "Normale"
+pdf.compare.opt.sensitivity.low:
+  en: "Low"
+  fr: "Basse"
+pdf.compare.opt.highlight:
+  en: "Highlight"
+  fr: "Surlignage"
+pdf.compare.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.compare.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.compare.err.two:
+  en: "Add exactly two PDFs: the old version first, then the new one."
+  fr: "Ajoutez exactement deux PDF : l’ancienne version d’abord, puis la nouvelle."
+pdf.compare.report.title:
+  en: "Comparison"
+  fr: "Comparaison"
+pdf.compare.report.same:
+  en: "No visible difference."
+  fr: "Aucune différence visible."
+pdf.compare.report.page:
+  en: "Page %{page}: %{count} changed areas"
+  fr: "Page %{page} : %{count} zones modifiées"
+pdf.compare.report.removed:
+  en: "%{count} pages removed at the end"
+  fr: "%{count} pages retirées à la fin"
+pdf.compare.report.added:
+  en: "%{count} pages added at the end"
+  fr: "%{count} pages ajoutées à la fin"
+pdf.compare.note.same:
+  en: "No visible difference."
+  fr: "Aucune différence visible."
+pdf.compare.note.diff:
+  en: "%{pages} of %{total} pages changed"
+  fr: "%{pages} pages modifiées sur %{total}"
+pdf.fill-form.name:
+  en: "Fill PDF form"
+  fr: "Remplir un formulaire PDF"
+pdf.fill-form.desc:
+  en: "Fill form fields from a CSV or JSON file, or list them."
+  fr: "Remplir les champs depuis un fichier CSV ou JSON, ou les lister."
+pdf.fill-form.verb:
+  en: "Fill"
+  fr: "Remplir"
+pdf.fill-form.keywords:
+  en: "form fields acroform mail merge csv fill in"
+  fr: "formulaire champs remplir publipostage csv"
+pdf.fill-form.opt.mode:
+  en: "Action"
+  fr: "Action"
+pdf.fill-form.opt.mode.fill:
+  en: "Fill"
+  fr: "Remplir"
+pdf.fill-form.opt.mode.list:
+  en: "List the fields (JSON)"
+  fr: "Lister les champs (JSON)"
+pdf.fill-form.opt.data:
+  en: "Data file"
+  fr: "Fichier de données"
+pdf.fill-form.opt.data.help:
+  en: "CSV/TSV with field names in the first row (one PDF per row), or JSON."
+  fr: "CSV/TSV avec les noms de champs en première ligne (un PDF par ligne), ou JSON."
+pdf.fill-form.opt.values:
+  en: "Values"
+  fr: "Valeurs"
+pdf.fill-form.opt.values.help:
+  en: "One per line: field name = value. Checkboxes take yes / no."
+  fr: "Une par ligne : nom du champ = valeur. Les cases à cocher prennent oui / non."
+pdf.fill-form.opt.name_field:
+  en: "Name files after column"
+  fr: "Nommer les fichiers d’après la colonne"
+pdf.fill-form.opt.flatten:
+  en: "Flatten after filling"
+  fr: "Aplatir après remplissage"
+pdf.fill-form.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.fill-form.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.fill-form.err.json:
+  en: "The JSON must be an object or a list of objects."
+  fr: "Le JSON doit être un objet ou une liste d’objets."
+pdf.fill-form.err.csv:
+  en: "The CSV needs a header row and at least one data row."
+  fr: "Le CSV doit avoir une ligne d’en-tête et au moins une ligne de données."
+pdf.fill-form.err.no_data:
+  en: "Choose a data file or type some values."
+  fr: "Choisissez un fichier de données ou saisissez des valeurs."
+pdf.fill-form.err.no_fields:
+  en: "This PDF has no form fields."
+  fr: "Ce PDF n’a pas de champs de formulaire."
+pdf.fill-form.note.list:
+  en: "%{count} fields"
+  fr: "%{count} champs"
+pdf.fill-form.note.fill:
+  en: "%{count} fields filled"
+  fr: "%{count} champs remplis"
+pdf.fill-form.note.missing:
+  en: "not found: %{names}"
+  fr: "introuvables : %{names}"
+pdf.from-markdown.name:
+  en: "Markdown to PDF"
+  fr: "Markdown en PDF"
+pdf.from-markdown.desc:
+  en: "Typeset Markdown in a classic, book-like style."
+  fr: "Composer du Markdown dans un style classique, façon livre."
+pdf.from-markdown.verb:
+  en: "Typeset"
+  fr: "Composer"
+pdf.from-markdown.keywords:
+  en: "markdown md notes typeset latex report pretty"
+  fr: "markdown md notes composer latex rapport"
+pdf.from-markdown.opt.paper:
+  en: "Paper"
+  fr: "Papier"
+pdf.from-markdown.opt.font_size:
+  en: "Text size"
+  fr: "Taille du texte"
+pdf.from-markdown.opt.numbered:
+  en: "Numbered headings"
+  fr: "Titres numérotés"
+pdf.from-markdown.opt.toc:
+  en: "Table of contents"
+  fr: "Table des matières"
+pdf.from-markdown.opt.title_page:
+  en: "Title page"
+  fr: "Page de titre"
+pdf.from-markdown.opt.title_page.help:
+  en: "Uses title, author and date from the front matter, or the first heading."
+  fr: "Utilise titre, auteur et date de l’en-tête YAML, ou le premier titre."
+pdf.from-markdown.opt.page_numbers:
+  en: "Page numbers"
+  fr: "Numéros de page"
+pdf.from-markdown.figure:
+  en: "Figure"
+  fr: "Figure"
+pdf.from-markdown.contents:
+  en: "Contents"
+  fr: "Table des matières"
+pdf.extract-images.name:
+  en: "Extract images"
+  fr: "Extraire les images"
+pdf.extract-images.desc:
+  en: "Save every picture of a PDF at full resolution."
+  fr: "Enregistrer chaque image d’un PDF en pleine résolution."
+pdf.extract-images.verb:
+  en: "Extract"
+  fr: "Extraire"
+pdf.extract-images.keywords:
+  en: "pictures photos export images embedded save images"
+  fr: "images photos extraire exporter enregistrer"
+pdf.extract-images.opt.min_size:
+  en: "Skip images smaller than"
+  fr: "Ignorer les images plus petites que"
+pdf.extract-images.opt.min_size.help:
+  en: "Leaves out icons, bullets and tiny decorations."
+  fr: "Écarte icônes, puces et petites décorations."
+pdf.extract-images.opt.password:
+  en: "Password"
+  fr: "Mot de passe"
+pdf.extract-images.opt.password.help:
+  en: "Only needed if the input is protected. Never stored."
+  fr: "Seulement si le fichier est protégé. Jamais enregistré."
+pdf.extract-images.err.none:
+  en: "No images found."
+  fr: "Aucune image trouvée."
+pdf.extract-images.note:
+  en: "%{count} images"
+  fr: "%{count} images"
+image.images-to-pdf.name:
+  en: "Images to PDF"
+  fr: "Images en PDF"
+image.images-to-pdf.desc:
+  en: "Put images into one PDF, one per page."
+  fr: "Réunir des images dans un PDF, une par page."
+image.images-to-pdf.verb:
+  en: "Create PDF"
+  fr: "Créer le PDF"
+image.images-to-pdf.keywords:
+  en: "combine photos scans album jpg to pdf png to pdf"
+  fr: "images photos scans album jpg en pdf réunir"
+image.images-to-pdf.opt.page_size:
+  en: "Page size"
+  fr: "Format de page"
+image.images-to-pdf.opt.page_size.image:
+  en: "Same as the image"
+  fr: "Comme l’image"
+image.images-to-pdf.opt.orientation:
+  en: "Orientation"
+  fr: "Orientation"
+image.images-to-pdf.opt.orientation.auto:
+  en: "Automatic"
+  fr: "Automatique"
+image.images-to-pdf.opt.orientation.portrait:
+  en: "Portrait"
+  fr: "Portrait"
+image.images-to-pdf.opt.orientation.landscape:
+  en: "Landscape"
+  fr: "Paysage"
+image.images-to-pdf.opt.margin:
+  en: "Margin"
+  fr: "Marge"
+image.images-to-pdf.opt.upscale:
+  en: "Enlarge small images to fit"
+  fr: "Agrandir les petites images pour remplir"
+image.images-to-pdf.opt.ocr:
+  en: "Make the text searchable (OCR)"
+  fr: "Rendre le texte consultable (OCR)"
+image.images-to-pdf.opt.languages:
+  en: "Languages"
+  fr: "Langues"
+image.images-to-pdf.opt.languages.help:
+  en: "Each language is downloaded once (1 to 8 MB)."
+  fr: "Chaque langue est téléchargée une fois (1 à 8 Mo)."
+image.to-pdf.opt.page_size:
+  en: "Page size"
+  fr: "Format de page"
+image.to-pdf.opt.page_size.image:
+  en: "Same as the image"
+  fr: "Comme l’image"
+image.to-pdf.opt.orientation:
+  en: "Orientation"
+  fr: "Orientation"
+image.to-pdf.opt.orientation.auto:
+  en: "Automatic"
+  fr: "Automatique"
+image.to-pdf.opt.orientation.portrait:
+  en: "Portrait"
+  fr: "Portrait"
+image.to-pdf.opt.orientation.landscape:
+  en: "Landscape"
+  fr: "Paysage"
+image.to-pdf.opt.margin:
+  en: "Margin"
+  fr: "Marge"
+image.to-pdf.opt.upscale:
+  en: "Enlarge small images to fit"
+  fr: "Agrandir les petites images pour remplir"
+image.to-pdf.opt.ocr:
+  en: "Make the text searchable (OCR)"
+  fr: "Rendre le texte consultable (OCR)"
+image.to-pdf.opt.languages:
+  en: "Languages"
+  fr: "Langues"
+image.to-pdf.opt.languages.help:
+  en: "Each language is downloaded once (1 to 8 MB)."
+  fr: "Chaque langue est téléchargée une fois (1 à 8 Mo)."
+image.images-to-pdf.opt.output:
+  en: "Result"
+  fr: "Résultat"
+image.images-to-pdf.opt.output.one:
+  en: "One PDF"
+  fr: "Un seul PDF"
+image.images-to-pdf.opt.output.each:
+  en: "One PDF per image"
+  fr: "Un PDF par image"
+image.images-to-pdf.opt.page_size.help:
+  en: "JPEG photos are embedded as they are, without re-compression."
+  fr: "Les photos JPEG sont incorporées telles quelles, sans recompression."
+image.to-pdf.name:
+  en: "Scan to PDF"
+  fr: "Scan en PDF"
+image.to-pdf.desc:
+  en: "Turn a photo of a page into a clean, searchable PDF."
+  fr: "Transformer la photo d’une page en PDF propre et consultable."
+image.to-pdf.verb:
+  en: "Create PDF"
+  fr: "Créer le PDF"
+image.to-pdf.keywords:
+  en: "scan document photo of a page receipt searchable clean up deskew"
+  fr: "scan document photo page ticket redresser nettoyer consultable"
+image.to-pdf.opt.crop:
+  en: "Find the page and crop"
+  fr: "Trouver la page et recadrer"
+image.to-pdf.opt.deskew:
+  en: "Straighten"
+  fr: "Redresser"
+image.to-pdf.opt.enhance:
+  en: "Clean-up"
+  fr: "Nettoyage"
+image.to-pdf.opt.enhance.auto:
+  en: "Brighter paper, crisper ink"
+  fr: "Papier plus clair, encre plus nette"
+image.to-pdf.opt.enhance.bw:
+  en: "Black and white"
+  fr: "Noir et blanc"
+image.to-pdf.opt.enhance.none:
+  en: "None"
+  fr: "Aucun"
+image.to-pdf.msg.clean:
+  en: "Cleaning up the scan…"
+  fr: "Nettoyage du scan…"
+image.extract-text.name:
+  en: "Extract text"
+  fr: "Extraire le texte"
+image.extract-text.desc:
+  en: "Read the text in images (OCR), to TXT or Markdown."
+  fr: "Lire le texte des images (OCR), en TXT ou Markdown."
+image.extract-text.verb:
+  en: "Extract"
+  fr: "Extraire"
+image.extract-text.keywords:
+  en: "ocr recognize read text screenshot copy text tesseract"
+  fr: "ocr reconnaître lire texte capture copier"
+image.extract-text.opt.languages:
+  en: "Languages"
+  fr: "Langues"
+image.extract-text.opt.languages.help:
+  en: "Each language is downloaded once (1 to 8 MB)."
+  fr: "Chaque langue est téléchargée une fois (1 à 8 Mo)."
+image.extract-text.opt.format:
+  en: "Format"
+  fr: "Format"
+image.extract-text.opt.deskew:
+  en: "Straighten tilted text"
+  fr: "Redresser le texte penché"
+image.extract-text.note:
+  en: "%{words} words"
+  fr: "%{words} mots"
