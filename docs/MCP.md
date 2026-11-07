@@ -20,16 +20,30 @@ make a QR code, rename a folder of photos — without uploading anything. It spe
 |---|---|---|
 | `list_tools` | `family?` (`pdf`, `image`, `video`, `audio`, `create`, `files`), `query?` (keywords, any language) | id, name, description, family, output formats, status, whether input files are needed, whether it edits files in place, why it is unavailable (if so) |
 | `describe_tool` | `id` | description, accepted inputs, requirements, downloads still needed, and a **JSON Schema of the options** (types, ranges, choices with their labels, defaults, "used when …" conditions) |
-| `run_tool` | `id`, `files?` (absolute paths; folders are expanded), `values?` (option values by key), `output_dir?` | run id, status, outputs, notes ("−69 %", "Version 3 · correction Q"…), errors |
-| `run_chain` | `toml` (chain file text), `files?`, `output_dir?` | as `run_tool`, for the whole chain |
+| `preview_tool` | `id`, `files?`, `values?` | the tool's live preview as a PNG image (before/after names of a rename, a QR code, an effect…), without changing anything |
+| `run_tool` | `id`, `files?` (absolute paths; folders are expanded), `values?` (option values by key), `output_dir?`, `allow_downloads?` | run id, status, outputs, notes ("−69 %", "Version 3 · correction Q"…), errors, skipped files, whether it can be undone |
+| `run_chain` | `toml` (chain file text), `files?`, `output_dir?`, `allow_downloads?` | as `run_tool`, for the whole chain |
+| `undo_run` | `run_id` | undoes an in-place run (rename, dates, sort, duplicates moved aside…) |
 | `history` | `limit?` (default 20) | recent runs |
+
+Every tool carries MCP annotations: `list_tools`, `describe_tool`, `preview_tool` and `history`
+are read-only; `run_tool` and `run_chain` may change files (`destructiveHint`) and reach the
+network for the tools that do so by nature (`openWorldHint`); `undo_run` changes files back.
+Clients use them to decide what to confirm with you.
 
 Without `output_dir`, results go next to the input files; tools that take no input (QR code,
 gradients…) write to `Documents/Castor`. Existing files are never overwritten (`name (2).ext`).
 
-Option values follow `describe_tool`'s schema: strings for choices, colours (`"#1b1616"`),
-paths, sizes (`"1200x630"` or `[1200, 630]`); numbers for numeric options; booleans for
-toggles. Unknown keys are rejected with the list of valid ones.
+**Paths are absolute.** The server runs in a folder of its own (often `/`), not in yours, so a
+relative `files`, `output_dir` or path option is refused with a clear message; `~` is expanded
+to your home folder.
+
+**Values are checked strictly**, in `run_tool`, `preview_tool` and `run_chain` alike: strings
+for choices, colours (`"#1b1616"`), paths, sizes (`"1200x630"` or `[1200, 630]`); numbers for
+numeric options; booleans for toggles. An unknown key, a wrong type, a value out of range, an
+unknown colour or language is an error that lists every problem; nothing is clamped or replaced
+by a default in silence, and a chain with a mistake does not start. Files a tool does not accept
+are listed under `skipped`.
 
 Example call (what the agent sends):
 
@@ -110,11 +124,13 @@ claude mcp add castor-dev -- "$PWD/target-e/debug/castor-mcp.exe"
 
 ## Notes for agents and users
 
-- Long runs (video, OCR, transcription) block the call until they finish; the agent sees the
-  result at the end. Cancelling from the client stops waiting, not yet the run itself.
-- Tools that need a one-time download (OCR languages, whisper models, ML models, yt-dlp)
-  download it on first use during the run. `describe_tool` lists what is still missing
-  (`downloads_needed_with_defaults`) so the agent can ask you first.
-- In-place tools (`in_place: true`) rename, move or re-date your files: they ask nothing.
-  Ask your agent to preview first (e.g. run `files.rename` on a copy), or undo from the app.
+- Long runs (video, OCR, transcription) report progress (`notifications/progress`) when the
+  client sends a `progressToken`. Cancelling the request from the client stops the run itself,
+  and a client that disconnects stops every run still going.
+- Tools that need a one-time download (OCR languages, whisper models, ML models, yt-dlp) do not
+  download anything on their own: the call fails with `"error": "downloads_needed"`, the names,
+  sizes and licences. The agent asks you, then calls again with `allow_downloads: true`.
+  `describe_tool` also lists what is still missing (`downloads_needed_with_defaults`).
+- In-place tools (`in_place: true`) rename, move or re-date your files. Agents should show you
+  `preview_tool` first; `undo_run` (or the app's **Runs** page) reverts the run.
 - Passwords given in `values` are used for the run and never stored in history.

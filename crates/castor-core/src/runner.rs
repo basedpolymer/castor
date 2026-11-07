@@ -85,6 +85,12 @@ impl RunHandle {
 
 /// Start a run on a background thread.
 pub fn start(req: RunRequest) -> RunHandle {
+    start_in(req, None)
+}
+
+/// Start a run on a background thread, recorded as made in this workspace (the app's active
+/// workspace; `None` for none).
+pub fn start_in(req: RunRequest, workspace: Option<String>) -> RunHandle {
     let (tx, rx) = unbounded();
     let cancel = CancelToken::new();
     let id = history::new_run_id();
@@ -92,7 +98,7 @@ pub fn start(req: RunRequest) -> RunHandle {
     std::thread::Builder::new()
         .name(format!("castor-run-{id}"))
         .spawn(move || {
-            execute(&id2, req, &cancel2, &tx);
+            execute(&id2, req, &cancel2, &tx, workspace);
         })
         .expect("spawn run thread");
     RunHandle { id, events: rx, cancel }
@@ -104,7 +110,7 @@ pub fn run_blocking(req: RunRequest, cancel: CancelToken, mut on_event: impl FnM
     let id = history::new_run_id();
     std::thread::scope(|s| {
         // `tx` moves into the worker: the channel closes when the run is over.
-        let t = s.spawn(move || execute(&id, req, &cancel, &tx));
+        let t = s.spawn(move || execute(&id, req, &cancel, &tx, None));
         for ev in rx.iter() {
             on_event(&ev);
         }
@@ -112,9 +118,10 @@ pub fn run_blocking(req: RunRequest, cancel: CancelToken, mut on_event: impl FnM
     })
 }
 
-fn execute(id: &str, req: RunRequest, cancel: &CancelToken, tx: &Sender<RunEvent>) -> RunRecord {
+fn execute(id: &str, req: RunRequest, cancel: &CancelToken, tx: &Sender<RunEvent>, workspace: Option<String>) -> RunRecord {
     let started = Instant::now();
     let mut record = RunRecord::new(id, &req);
+    record.workspace = workspace.filter(|w| !w.is_empty());
     let steps = req.steps.len();
     let mut inputs = req.inputs.clone();
     let tmp_root = crate::paths::temp_dir().join(id);

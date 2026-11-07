@@ -200,8 +200,9 @@ fn media_studio_exports_cuts_and_captions() {
     }
 }
 
-/// A crash seen in the app: a PDF thumbnail rendered while `pdf.compress` rewrites the images
-/// of a JBIG2 scan in another thread (access violation without `pdf_gate`). Slow (≈ 1 min).
+/// A crash seen in 0.8: a PDF thumbnail rendered while `pdf.compress` rewrites the images of a
+/// JBIG2 scan in another thread (access violation). engine-pdf now shares mupdf-rs's locks, so
+/// the app no longer keeps the two apart (the old `pdf_gate`). Slow (≈ 1 min).
 #[test]
 #[ignore]
 fn thumbnail_during_compress() {
@@ -211,10 +212,9 @@ fn thumbnail_during_compress() {
     let tool = reg.get("pdf.compress").unwrap();
     let values = castor_core::Values::defaults(&tool.options());
     let s2 = src.clone();
-    // As the app does it: thumbnails in the View group, PDF-engine jobs gated.
+    // As the app does it: thumbnails and tool jobs at the same time, nothing in between.
     let t = std::thread::spawn(move || {
         for _ in 0..20 {
-            let _g = crate::pdf_gate::enter(crate::pdf_gate::Group::View);
             let _ = castor_tools::thumbnail(&FileInfo::from_path(&s2), 72);
         }
     });
@@ -226,7 +226,7 @@ fn thumbnail_during_compress() {
         max_parallel: 1,
         record: false,
     };
-    let h = crate::pdf_gate::start_run(req);
+    let h = castor_core::runner::start(req);
     let mut status = None;
     for ev in h.events.iter() {
         if let castor_core::runner::RunEvent::Finished(r) = ev {

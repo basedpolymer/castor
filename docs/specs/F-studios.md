@@ -218,6 +218,8 @@ PDF, 3 real PDFs), `shot-tool-running-dark.png`, `shot-tool-done-light.png` /
 | engine-pdf, engine-media | workspace crates (feature `tools`) | — |
 
 ### Requests to the coordinator
+Status 0.9.1: 1 (gate removed), 2, 3, 4 (Quick Actions) and 5 are done; 6 and 7 stay open.
+
 1. **engine-pdf thread safety (crash)**: `csrc/castor_mupdf.c::new_ctx()` creates contexts with
    `fz_new_context(NULL, NULL, …)` (no locks) while mupdf-rs uses a locked base context on other
    threads; rendering a page during `pdf.compress` image rewriting of `yearbook-1890-scan.pdf` is

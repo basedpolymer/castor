@@ -635,7 +635,7 @@ impl MediaStudio {
             max_parallel: 1,
             record: true,
         };
-        self.job = Some(Job { handle: Some(runner::start(req)), frac: 0.0, message: None, record: None, transcribe: false });
+        self.job = Some(Job { handle: Some(crate::model::start_run(req, cx)), frac: 0.0, message: None, record: None, transcribe: false });
         cx.notify();
     }
 

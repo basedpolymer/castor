@@ -1,6 +1,8 @@
 //! The registry of every tool, shared by the app, the CLI and the MCP server,
 //! plus file thumbnails for the UI.
 
+pub mod downloads;
+
 use castor_core::{FileInfo, FileKind, Registry};
 
 pub fn registry() -> Registry {

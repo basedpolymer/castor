@@ -276,7 +276,7 @@ impl ChainsPage {
             record: true,
         };
         let n = req.steps.len();
-        let handle = crate::pdf_gate::start_run(req);
+        let handle = crate::model::start_run(req, cx);
         let rx = handle.events.clone();
         self.run = Some(ChainRun { step: 0, steps: n, jobs: vec![], record: None, handle: Some(handle) });
         cx.notify();

@@ -1354,6 +1354,7 @@ dependencies = [
  "anyhow",
  "castor-core",
  "castor-tools",
+ "image 0.25.8",
  "rmcp",
  "serde",
  "serde_json",

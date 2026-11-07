@@ -47,6 +47,9 @@ pub struct RunRecord {
     pub undo: Vec<(String, serde_json::Value)>,
     #[serde(default)]
     pub undone: bool,
+    /// Name of the workspace that was active when the run was made (app runs only).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub workspace: Option<String>,
 }
 
 impl RunRecord {
@@ -75,6 +78,7 @@ impl RunRecord {
             cancelled: 0,
             undo: Vec::new(),
             undone: false,
+            workspace: None,
         }
     }
 }

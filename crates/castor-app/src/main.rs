@@ -16,7 +16,6 @@ mod integration;
 mod ipc;
 mod model;
 mod palette;
-mod pdf_gate;
 mod panel;
 mod runs;
 mod search;

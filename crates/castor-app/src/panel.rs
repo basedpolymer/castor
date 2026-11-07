@@ -4,7 +4,7 @@
 
 use std::path::PathBuf;
 use std::sync::Arc;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 
 use castor_core::history::RunStatus;
 use castor_core::runner::{OutputPolicy, RunEvent, RunRequest, Step};
@@ -31,8 +31,24 @@ pub struct KeepOpen;
 impl Global for KeepOpen {}
 
 #[derive(Default)]
-struct PanelWindow(Option<AnyWindowHandle>);
+struct PanelWindow {
+    handle: Option<AnyWindowHandle>,
+    /// When the panel was last opened: it does not close on focus loss while it settles.
+    opened_at: Option<Instant>,
+    /// Last toggle from the shortcut or the icon: repeats closer than [`SETTLE`] are ignored.
+    toggled_at: Option<Instant>,
+}
 impl Global for PanelWindow {}
+
+/// Time for the panel to appear (macOS orders it in with an animation). Removing it during that
+/// time is the likely cause of the 0.9.0 crash on ⌥⌘Space (an AppKit exception in the Core
+/// Animation commit): that default shortcut is also the Finder's "search window" shortcut, so
+/// another app can take the focus while the panel appears, and the panel used to close at once.
+const SETTLE: Duration = Duration::from_millis(450);
+
+fn settling(cx: &App) -> bool {
+    cx.try_global::<PanelWindow>().and_then(|p| p.opened_at).is_some_and(|t| t.elapsed() < SETTLE)
+}
 
 fn panel_bounds(anchor: Anchor, cx: &App) -> Bounds<Pixels> {
     let size = size(px(W), px(H));
@@ -63,23 +79,38 @@ fn panel_bounds(anchor: Anchor, cx: &App) -> Bounds<Pixels> {
 }
 
 pub fn handle(cx: &App) -> Option<AnyWindowHandle> {
-    cx.try_global::<PanelWindow>().and_then(|p| p.0)
+    cx.try_global::<PanelWindow>().and_then(|p| p.handle)
 }
 
+/// The panel window exists (a handle whose window is gone, closed by the system, counts as closed).
 pub fn is_open(cx: &App) -> bool {
-    cx.try_global::<PanelWindow>().and_then(|p| p.0).is_some()
+    handle(cx).is_some_and(|h| cx.windows().iter().any(|w| w.window_id() == h.window_id()))
 }
 
 pub fn close(cx: &mut App) {
     if !cx.has_global::<PanelWindow>() {
         return;
     }
-    if let Some(h) = cx.global_mut::<PanelWindow>().0.take() {
-        let _ = h.update(cx, |_, window, _| window.remove_window());
+    if let Some(h) = cx.global_mut::<PanelWindow>().handle.take() {
+        // Never remove the window from inside an event or an activation callback of its own:
+        // on the next turn of the loop, when AppKit is done with it.
+        cx.defer(move |cx| {
+            let _ = h.update(cx, |_, window, _| window.remove_window());
+        });
     }
 }
 
 pub fn toggle(anchor: Anchor, cx: &mut App) {
+    if !cx.has_global::<PanelWindow>() {
+        cx.set_global(PanelWindow::default());
+    }
+    let now = Instant::now();
+    let p = cx.global_mut::<PanelWindow>();
+    // A held or repeated shortcut (and the tray icon's down/up pair) toggles once.
+    if p.toggled_at.is_some_and(|t| now.duration_since(t) < SETTLE) {
+        return;
+    }
+    p.toggled_at = Some(now);
     if is_open(cx) {
         close(cx);
     } else {
@@ -106,9 +137,13 @@ pub fn open_panel(anchor: Anchor, cx: &mut App) {
         app_id: Some("eu.basedpolymer.castor".into()),
         ..Default::default()
     };
+    // A stale handle (window closed by the system) must not block reopening.
+    cx.global_mut::<PanelWindow>().handle = None;
     match gpui_kit::open_window(options, cx, |window, cx| cx.new(|cx| QuickPanel::new(window, cx))) {
         Ok((h, _)) => {
-            cx.global_mut::<PanelWindow>().0 = Some(h);
+            let p = cx.global_mut::<PanelWindow>();
+            p.handle = Some(h);
+            p.opened_at = Some(Instant::now());
             let _ = h.update(cx, |_, window, _| window.activate_window());
         }
         Err(e) => tracing::warn!("could not open the quick panel: {e:#}"),
@@ -151,11 +186,27 @@ impl QuickPanel {
             InputEvent::PressEnter { .. } => this.open_selected(cx),
             _ => {}
         })];
-        // Close when the panel loses focus (click elsewhere).
+        // Close when the panel loses focus (click elsewhere), except while it is appearing:
+        // another app that grabs the focus then (the Finder answers ⌥⌘Space too) gets it back
+        // to the panel once it has settled, instead of the panel being removed mid-animation.
         subs.push(cx.observe_window_activation(window, |_, window, cx| {
-            if !window.is_window_active() && !cx.has_global::<KeepOpen>() {
-                cx.defer(|cx| close(cx));
+            if window.is_window_active() || cx.has_global::<KeepOpen>() {
+                return;
             }
+            if settling(cx) {
+                let h = window.window_handle();
+                cx.spawn(async move |_, cx| {
+                    cx.background_executor().timer(SETTLE).await;
+                    let _ = h.update(cx, |_, window, _| {
+                        if !window.is_window_active() {
+                            window.activate_window();
+                        }
+                    });
+                })
+                .detach();
+                return;
+            }
+            cx.defer(|cx| close(cx));
         }));
         let weak = cx.entity().downgrade();
         let handle = window.window_handle();
@@ -213,14 +264,15 @@ impl QuickPanel {
             Some(p) => OutputPolicy::Folder(p),
             None => m.output_policy(id),
         };
-        let handle = crate::pdf_gate::start_run(RunRequest {
+        let req = RunRequest {
             steps: vec![Step { tool: tool.clone(), values }],
             inputs,
             output: policy,
             chain_name: None,
             max_parallel: m.settings.max_parallel,
             record: true,
-        });
+        };
+        let handle = crate::model::start_run(req, cx);
         self.run = Some(QuickRun { tool: tool.meta().name(), frac: 0.0, done: None, to_clipboard });
         cx.notify();
         let rx = handle.events.clone();

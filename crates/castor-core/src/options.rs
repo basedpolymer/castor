@@ -279,6 +279,93 @@ impl OptionSpec {
             _ => Value::Text(s.into()),
         })
     }
+
+    /// Check a value from a chain file, the command line or an AI agent (MCP) against this
+    /// option, strictly: the right type, inside the bounds, one of the choices, a real colour,
+    /// a known language. Strings are accepted wherever the command line accepts them
+    /// ("1200x630" for a size, "12" for a number, "yes" for a toggle). Nothing is clamped or
+    /// replaced in silence: a bad value is an error that says why. Returns the canonical value.
+    pub fn check(&self, v: &Value) -> crate::Result<Value> {
+        use anyhow::{bail, ensure};
+        let text = || -> crate::Result<String> {
+            match v {
+                Value::Text(s) => Ok(s.clone()),
+                Value::Path(Some(p)) => Ok(p.to_string_lossy().into_owned()),
+                Value::Path(None) => Ok(String::new()),
+                other => bail!("expected text, got {}", other.kind_name()),
+            }
+        };
+        Ok(match &self.kind {
+            OptionKind::Toggle => match v {
+                Value::Bool(b) => Value::Bool(*b),
+                Value::Text(s) => match s.trim().to_ascii_lowercase().as_str() {
+                    "1" | "true" | "yes" | "on" => Value::Bool(true),
+                    "0" | "false" | "no" | "off" => Value::Bool(false),
+                    _ => bail!("expected true or false, got '{s}'"),
+                },
+                other => bail!("expected true or false, got {}", other.kind_name()),
+            },
+            OptionKind::Int { min, max, .. } => {
+                let n = match v {
+                    Value::Int(n) => *n,
+                    Value::Float(f) if f.is_finite() && f.fract() == 0.0 => *f as i64,
+                    Value::Text(s) => {
+                        s.trim().parse::<i64>().map_err(|_| anyhow::anyhow!("expected a whole number, got '{s}'"))?
+                    }
+                    other => bail!("expected a whole number, got {}", other.kind_name()),
+                };
+                ensure!((*min..=*max).contains(&n), "{n} is out of range ({min} to {max})");
+                Value::Int(n)
+            }
+            OptionKind::Float { min, max, .. } => {
+                let f = match v {
+                    Value::Float(f) => *f,
+                    Value::Int(n) => *n as f64,
+                    Value::Text(s) => s.trim().parse::<f64>().map_err(|_| anyhow::anyhow!("expected a number, got '{s}'"))?,
+                    other => bail!("expected a number, got {}", other.kind_name()),
+                };
+                ensure!(f.is_finite() && f >= *min && f <= *max, "{f} is out of range ({min} to {max})");
+                Value::Float(f)
+            }
+            OptionKind::Size => match v {
+                Value::Size(w, h) => Value::Size(*w, *h),
+                Value::Text(s) => self.parse(s).map_err(|_| anyhow::anyhow!("expected a size like 1200x630, got '{s}'"))?,
+                other => bail!("expected a size like 1200x630, got {}", other.kind_name()),
+            },
+            OptionKind::Choice(_) | OptionKind::Anchor | OptionKind::Path { .. } => self.parse(&text()?)?,
+            OptionKind::Color => {
+                let s = text()?;
+                ensure!(s.trim().is_empty() || parse_hex_color(&s).is_some(), "expected a colour like #1b1616, got '{s}'");
+                Value::Text(s)
+            }
+            OptionKind::Language { multi, list } => {
+                let s = text()?;
+                let is_default = self.default.as_str() == Some(s.as_str());
+                if !s.trim().is_empty() && !is_default {
+                    let codes: Vec<&str> = if *multi { s.split('+').map(str::trim).collect() } else { vec![s.trim()] };
+                    for c in codes {
+                        ensure!(
+                            list.iter().any(|(k, _)| *k == c),
+                            "unknown language '{c}' (one of: {})",
+                            list.iter().map(|(k, _)| *k).collect::<Vec<_>>().join(", ")
+                        );
+                    }
+                }
+                Value::Text(s)
+            }
+            OptionKind::PageRange => {
+                let s = text()?;
+                // Syntax only: the page count is known when the file is opened.
+                parse_page_range(&s, 10_000).map_err(|e| anyhow::anyhow!("bad page range '{s}': {e:#}"))?;
+                Value::Text(s)
+            }
+            OptionKind::Text { .. } | OptionKind::Password | OptionKind::Font => match v {
+                Value::Int(n) => Value::Text(n.to_string()),
+                Value::Float(f) => Value::Text(f.to_string()),
+                _ => Value::Text(text()?),
+            },
+        })
+    }
 }
 
 /// An option value. Serialised in chains and history (passwords excluded).
@@ -300,6 +387,17 @@ impl Value {
         match self {
             Value::Text(s) => Some(s),
             _ => None,
+        }
+    }
+
+    /// What kind of value this is, for error messages ("a number", "a size"…).
+    pub fn kind_name(&self) -> &'static str {
+        match self {
+            Value::Bool(_) => "true/false",
+            Value::Int(_) | Value::Float(_) => "a number",
+            Value::Size(..) => "a size",
+            Value::Text(_) => "text",
+            Value::Path(_) => "a path",
         }
     }
 }
@@ -434,6 +532,42 @@ mod tests {
         assert_eq!(parse_page_range("1-2, 5", 6).unwrap(), vec![0, 1, 4]);
         assert_eq!(parse_page_range("4-", 5).unwrap(), vec![3, 4]);
         assert_eq!(parse_page_range("odd", 5).unwrap(), vec![0, 2, 4]);
+    }
+    #[test]
+    fn check_is_strict() {
+        let size = OptionSpec::size("size", 1920, 1080);
+        assert_eq!(size.check(&Value::Text("150x100".into())).unwrap(), Value::Size(150, 100));
+        assert_eq!(size.check(&Value::Size(3, 4)).unwrap(), Value::Size(3, 4));
+        assert!(size.check(&Value::Int(3)).is_err());
+
+        let q = OptionSpec::int("quality", 1, 100, 88);
+        assert_eq!(q.check(&Value::Text("12".into())).unwrap(), Value::Int(12));
+        assert_eq!(q.check(&Value::Float(40.0)).unwrap(), Value::Int(40));
+        assert!(q.check(&Value::Int(500)).is_err(), "out of range is an error, not clamped");
+        assert!(q.check(&Value::Text("beaucoup".into())).is_err());
+        assert!(q.check(&Value::Float(2.5)).is_err());
+
+        let t = OptionSpec::toggle("on", false);
+        assert_eq!(t.check(&Value::Text("yes".into())).unwrap(), Value::Bool(true));
+        assert!(t.check(&Value::Text("vrai".into())).is_err());
+
+        let c = OptionSpec::color("bg", "#ffffff");
+        assert!(c.check(&Value::Text("rouge".into())).is_err());
+        assert!(c.check(&Value::Text("#1b1616".into())).is_ok());
+        assert!(c.check(&Value::Text(String::new())).is_ok());
+
+        let ch = OptionSpec::choice("mode", vec![Choice::key("fit"), Choice::key("fill")], "fit");
+        assert!(ch.check(&Value::Text("fill".into())).is_ok());
+        assert!(ch.check(&Value::Text("stretch".into())).is_err());
+
+        let p = OptionSpec::pages("pages");
+        assert!(p.check(&Value::Text("1-3, 5".into())).is_ok());
+        assert!(p.check(&Value::Text("3-1".into())).is_err());
+
+        const LANGS: &[(&str, &str)] = &[("fra", "Français"), ("eng", "English")];
+        let l = OptionSpec::language("lang", LANGS, true, "eng");
+        assert!(l.check(&Value::Text("fra+eng".into())).is_ok());
+        assert!(l.check(&Value::Text("fra+xxx".into())).is_err());
     }
     #[test]
     fn colors() {

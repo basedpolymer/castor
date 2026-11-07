@@ -262,7 +262,7 @@ fn from_rgb(c: Rgb, a: f32) -> Hsla {
 impl PdfStudio {
     pub fn new(window: &mut Window, cx: &mut Context<Self>) -> Self {
         let search = cx.new(|cx| InputState::new(window, cx).placeholder(t("app.pdf.redact.search_ph")));
-        let saved_reviewer = model(cx).read(cx).settings.tool_values.get(super::tools::PDF_ID).map(|v| v.str("reviewer").to_string()).unwrap_or_default();
+        let saved_reviewer = model(cx).read(cx).settings.pdf_reviewer.clone();
         let reviewer = cx.new(|cx| InputState::new(window, cx).placeholder(t("app.pdf.reviewer_ph")).default_value(saved_reviewer.clone()));
         let mark_text = cx.new(|cx| InputState::new(window, cx).placeholder(t("app.pdf.text_ph")));
         let subs = vec![
@@ -271,9 +271,7 @@ impl PdfStudio {
                     let v = st.read(cx).value().to_string();
                     this.edit.reviewer = v.clone();
                     model(cx).update(cx, |m, cx| {
-                        m.update_settings(cx, move |s| {
-                            s.tool_values.entry(super::tools::PDF_ID.to_string()).or_default().set("reviewer", castor_core::Value::Text(v));
-                        })
+                        m.update_settings(cx, move |s| s.pdf_reviewer = v)
                     });
                 }
             }),
@@ -1130,7 +1128,7 @@ impl PdfStudio {
             max_parallel: 1,
             record: true,
         };
-        self.saving = Some(Saving { handle: Some(crate::pdf_gate::start_run(req)), frac: 0.0, record: None, overwrite });
+        self.saving = Some(Saving { handle: Some(crate::model::start_run(req, cx)), frac: 0.0, record: None, overwrite });
         if pages.is_none() {
             self.clean = self.edit.clone();
         }
@@ -1512,7 +1510,7 @@ impl PdfStudio {
                     .child(Button::new("rot-left").small().icon(gpui_kit::component::Icon::empty().path(crate::assets::lucide("rotate-ccw"))).label(t("app.pdf.rotate_left")).on_click(cx.listener(|s, _, _, cx| s.rotate(270, cx))))
                     .child(Button::new("rot-right").small().icon(gpui_kit::component::Icon::empty().path(crate::assets::lucide("rotate-cw"))).label(t("app.pdf.rotate_right")).on_click(cx.listener(|s, _, _, cx| s.rotate(90, cx)))),
             )
-            .child(Button::new("del-pages").small().danger().icon(gpui_kit::component::Icon::empty().path(crate::assets::lucide("trash-2"))).label(ta("app.pdf.delete_pages", &[("count", &n.to_string())])).on_click(cx.listener(|s, _, w, cx| s.delete_pages(w, cx))))
+            .child(Button::new("del-pages").small().danger().icon(gpui_kit::component::Icon::empty().path(crate::assets::lucide("trash"))).label(ta("app.pdf.delete_pages", &[("count", &n.to_string())])).on_click(cx.listener(|s, _, w, cx| s.delete_pages(w, cx))))
             .child(ui::hrule(k.rule, 1.0))
             .child(Button::new("insert-pdf").small().icon(gpui_kit::component::IconName::Plus).label(t("app.pdf.insert")).on_click(cx.listener(|s, _, w, cx| s.insert_from_file(w, cx))))
             .child(

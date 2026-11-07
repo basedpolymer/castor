@@ -34,10 +34,19 @@ pub fn tr_args(key: &str, args: &[(&str, &str)]) -> String {
     s
 }
 
+/// "1 file" / "3 files" in the UI language (never "1 files").
+pub fn n_files(n: usize) -> String {
+    if n == 1 { tr("app.tool.one_file") } else { tr_args("common.n_files", &[("count", &n.to_string())]) }
+}
+
 /// True if the key exists in the current language or in English.
 pub fn has(key: &str) -> bool {
     tr(key) != key
 }
+
+/// Tests that switch the (global) UI language hold this lock, so they never run interleaved.
+#[cfg(test)]
+pub(crate) static TEST_LANGUAGE: std::sync::Mutex<()> = std::sync::Mutex::new(());
 
 /// Set the UI language. "" = system language (if shipped), else English.
 pub fn set_language(code: &str) {

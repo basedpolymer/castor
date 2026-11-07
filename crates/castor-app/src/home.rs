@@ -364,7 +364,7 @@ pub fn tool_card(k: &Tokens, tool: &Arc<dyn Tool>, st: CardState, id_prefix: &st
                             .bg(k.ink)
                             .text_color(k.paper)
                             .text_size(px(12.5))
-                            .child(ta("common.n_files", &[("count", &n.to_string())])),
+                            .child(castor_core::i18n::n_files(n)),
                     )
                 })
                 .when(st.takes == Some(0), |d| {
@@ -558,7 +558,7 @@ impl Home {
                         .child(
                             ui::sans()
                                 .font_weight(FontWeight::BOLD)
-                                .child(format!("{} · {}", ta("common.n_files", &[("count", &n.to_string())]), castor_core::units::bytes(size))),
+                                .child(format!("{} · {}", castor_core::i18n::n_files(n), castor_core::units::bytes(size))),
                         )
                         .child(ui::roman().text_size(px(13.5)).text_color(k.muted).truncate().child(format!("{}{more}", names.join(", ")))),
                 )

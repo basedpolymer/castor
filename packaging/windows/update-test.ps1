@@ -11,6 +11,9 @@
      -Mode restart: leaves the app running so "Restart to update" can be clicked in
                     Settings > Updates; then run the script again with -Verify
   5. -Uninstall removes the test installation.
+  The Explorer "Castor >" menu (per-user registry keys written by the Velopack hooks) is checked
+  at each stage: present after install and after the update, gone after uninstall. The install
+  hook skips it when the real profile's settings say explorer_menu = false.
 
   The app must honour CASTOR_UPDATE_FEED (crates/castor-app/src/updates.rs). Until it does in
   the main tree, -PatchedBuild builds castor.exe from a copy of the sources under
@@ -49,12 +52,32 @@ function Installed-Version {
 }
 function Castor-Processes { Get-Process castor -ErrorAction SilentlyContinue | Where-Object { $_.Path -like "$Install\*" } }
 
+# The Explorer menu: files (`*`) and folders, each with a command that runs the installed exe.
+$MenuKeys = @('HKCU:\Software\Classes\*\shell\Castor', 'HKCU:\Software\Classes\Directory\shell\Castor')
+function Explorer-Menu-Present {
+  foreach ($k in $MenuKeys) { if (-not (Test-Path -LiteralPath $k)) { return $false } }
+  # "00open" = Open in Castor (integration.rs, explorer::register_with).
+  $open = Join-Path $MenuKeys[0] 'shell\00open\command'
+  if (-not (Test-Path -LiteralPath $open)) { return $false }
+  $cmd = (Get-Item -LiteralPath $open).GetValue('')
+  return [bool]($cmd -and $cmd -like "*$Install*castor.exe*")
+}
+function Assert-Explorer-Menu([bool]$Expected, [string]$When) {
+  # The hooks run in Update.exe right after the version changes: give them a few seconds.
+  $deadline = (Get-Date).AddSeconds(15)
+  while ((Explorer-Menu-Present) -ne $Expected -and (Get-Date) -lt $deadline) { Start-Sleep 1 }
+  $now = Explorer-Menu-Present
+  if ($now -ne $Expected) { throw "Explorer menu $(if ($Expected) { 'missing' } else { 'still present' }) $When" }
+  Write-Host "OK: Explorer menu $(if ($Expected) { 'present' } else { 'gone' }) $When" -ForegroundColor Green
+}
+
 if ($Uninstall) {
   Castor-Processes | Stop-Process -Force
   $upd = Join-Path $Install 'Update.exe'
   # Setup.exe / Update.exe are GUI programs: PowerShell would not wait for them with `&`.
   if (Test-Path $upd) { Start-Process $upd -ArgumentList '--uninstall', '--silent' -Wait }
   Write-Host "installed version now: $(Installed-Version)"
+  Assert-Explorer-Menu $false 'after uninstall'
   return
 }
 
@@ -65,6 +88,7 @@ if ($Verify) {
   Write-Host ("running: " + (($p | ForEach-Object { "$($_.Id) $($_.Path)" }) -join '; '))
   if ($v -ne $VersionB) { throw "expected $VersionB, found $v" }
   Write-Host "OK: Castor runs $VersionB" -ForegroundColor Green
+  Assert-Explorer-Menu $true 'after the update'
   return
 }
 
@@ -111,6 +135,7 @@ $sp = Start-Process $setup.FullName -ArgumentList '--silent' -Wait -PassThru
 Write-Host ("setup exit {0} after {1:n1} s; installed version: {2}" -f $sp.ExitCode, $sw.Elapsed.TotalSeconds, (Installed-Version))
 Castor-Processes | Stop-Process -Force   # Setup starts the app after installing
 if ((Installed-Version) -ne $VersionA) { throw "install of $VersionA failed" }
+Assert-Explorer-Menu $true 'after install'
 
 # ------------------------------------------------------------------ B: pack (delta)
 Write-Host "=== pack $VersionB into the same feed"

@@ -157,7 +157,7 @@ fn real_main(cli: Cli) -> anyhow::Result<i32> {
             for kv in set {
                 let (k, v) = kv.split_once('=').with_context(|| format!("--set expects KEY=VALUE, got '{kv}'"))?;
                 let spec = specs.iter().find(|s| s.key == k).with_context(|| format!("'{tool}' has no option '{k}'"))?;
-                values.set(k, spec.parse(v).with_context(|| format!("option '{k}'"))?);
+                values.set(k, spec.check(&castor_core::Value::Text(v.to_string())).with_context(|| format!("option '{k}'"))?);
             }
             let inputs = castor_core::files::expand(&files, true);
             let usable: Vec<FileInfo> = inputs.iter().filter(|f| t.accepts(f)).cloned().collect();
@@ -185,7 +185,7 @@ fn real_main(cli: Cli) -> anyhow::Result<i32> {
         }
         Cmd::Chain { file, files, out } => {
             let chain = castor_core::chain::Chain::from_toml(&std::fs::read_to_string(&file)?)?;
-            let steps = chain.resolve(&reg)?;
+            let steps = chain.resolve_strict(&reg)?;
             let req = RunRequest {
                 steps,
                 inputs: castor_core::files::expand(&files, true),

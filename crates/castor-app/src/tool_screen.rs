@@ -178,7 +178,7 @@ impl RunView {
 /// Summary line: "3 files · 32 MB → 9.8 MB (−69 %) · 4.2 s".
 pub fn summary_line(r: &RunRecord) -> String {
     let n = r.files_in.max(r.inputs.len());
-    let mut parts = vec![if n == 1 { castor_core::tr("app.tool.one_file") } else { castor_core::tr_args("common.n_files", &[("count", &n.to_string())]) }];
+    let mut parts = vec![castor_core::i18n::n_files(n)];
     if r.bytes_in > 0 && r.bytes_out > 0 {
         parts.push(format!("{} → {} ({})", units::bytes(r.bytes_in), units::bytes(r.bytes_out), units::change(r.bytes_in, r.bytes_out)));
     } else if r.bytes_out > 0 {
@@ -416,11 +416,9 @@ impl ToolScreen {
         self.preview_task = Some(cx.spawn(async move |this, cx| {
             // Debounce: a new change within 150 ms replaces this task (and drops it).
             cx.background_executor().timer(Duration::from_millis(150)).await;
-            let ex = cx.background_executor().clone();
             let res = cx
                 .background_executor()
                 .spawn(async move {
-                    let _g = if crate::pdf_gate::uses_pdf_engine(tool.meta().id) { Some(crate::pdf_gate::enter_view(&ex).await) } else { None };
                     tool.preview(input.as_ref(), &values, PREVIEW_SIDE).map_err(|e| format!("{e:#}"))
                 })
                 .await;
@@ -536,7 +534,7 @@ impl ToolScreen {
             max_parallel: s.max_parallel,
             record: true,
         };
-        let handle = crate::pdf_gate::start_run(req);
+        let handle = crate::model::start_run(req, cx);
         let rx = handle.events.clone();
         self.run = Some(RunView::new(handle, usable));
         self.error_open = None;
@@ -630,7 +628,7 @@ impl ToolScreen {
         match n {
             0 => verb,
             1 => format!("{verb} {}", castor_core::tr("app.tool.one_file")),
-            n => format!("{verb} {}", castor_core::tr_args("common.n_files", &[("count", &n.to_string())])),
+            n => format!("{verb} {}", castor_core::i18n::n_files(n)),
         }
     }
 }
@@ -1243,7 +1241,7 @@ fn file_row(
     let kind = r.file.as_ref().map(|f| f.kind).unwrap_or(FileKind::Other);
     let size_text = if r.bytes_in > 0 { units::bytes(r.bytes_in) } else { r.file.as_ref().map(|f| units::bytes(f.size)).unwrap_or_default() };
     let status: AnyElement = match r.status {
-        JobStatus::Queued => ui::sans().text_color(k.faint).child(if in_run { t("app.status.waiting") } else { t("app.status.queued") }).into_any_element(),
+        JobStatus::Queued => ui::sans().text_color(k.faint).truncate().child(if in_run { t("app.status.waiting") } else { t("app.status.queued") }).into_any_element(),
         JobStatus::Running => div()
             .flex()
             .flex_col()
@@ -1252,12 +1250,20 @@ fn file_row(
             .when_some(r.message.clone(), |d, m| d.child(ui::sans().text_size(px(12.5)).text_color(k.muted).truncate().child(m)))
             .into_any_element(),
         JobStatus::Done => {
-            let change = if r.bytes_in > 0 && r.bytes_out > 0 { format!(" ({})", units::change(r.bytes_in, r.bytes_out)) } else { String::new() };
+            let sized = r.bytes_in > 0 && r.bytes_out > 0;
+            // One line, always: in the narrow column the change alone ("✓ −69 %"), else the size
+            // and the change. A wrapped line used to push the note out of the 44 px row.
+            let line = match (sized, compact()) {
+                (true, true) => format!("✓ {}", units::change(r.bytes_in, r.bytes_out)),
+                (true, false) => format!("✓ {} ({})", units::bytes(r.bytes_out), units::change(r.bytes_in, r.bytes_out)),
+                (false, _) => format!("✓ {}", units::bytes(r.bytes_out)),
+            };
             let note = r.outputs.iter().find_map(|o| o.note.clone());
             div()
                 .flex()
                 .flex_col()
-                .child(ui::sans().text_color(k.good).child(format!("✓ {}{change}", units::bytes(r.bytes_out))))
+                .min_w(px(0.0))
+                .child(ui::sans().text_color(k.good).truncate().child(line))
                 .when_some(note, |d, n| d.child(ui::sans().text_size(px(12.5)).text_color(k.muted).truncate().child(n)))
                 .into_any_element()
         }
@@ -1287,7 +1293,7 @@ fn file_row(
                 )
                 .into_any_element()
         }
-        JobStatus::Cancelled => ui::sans().text_color(k.muted).child(t("app.status.cancelled")).into_any_element(),
+        JobStatus::Cancelled => ui::sans().text_color(k.muted).truncate().child(t("app.status.cancelled")).into_any_element(),
     };
     let out = r.outputs.first().map(|o| o.path.clone());
     let src = r.file.as_ref().map(|f| f.path.clone());
@@ -1330,7 +1336,7 @@ fn file_row(
         )
         .child(ui::sans().flex_1().min_w(px(0.0)).text_color(k.ink).truncate().child(r.label.clone()))
         .when(!compact(), |d| d.child(ui::sans().w(px(72.0)).text_right().text_color(k.muted).child(size_text)))
-        .child(div().w(px(status_w())).pl(px(12.0)).child(status))
+        .child(div().w(px(status_w())).flex_none().min_w(px(0.0)).overflow_hidden().pl(px(12.0)).child(status))
         .child(
             div()
                 .w(px(70.0))

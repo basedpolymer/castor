@@ -96,6 +96,17 @@ pub fn settings(cx: &App) -> &Settings {
     &cx.global::<ModelHandle>().0.read(cx).settings
 }
 
+/// Name of the active workspace, if one is active.
+pub fn active_workspace_name(cx: &App) -> Option<String> {
+    Some(settings(cx).active_workspace.clone()).filter(|w| !w.is_empty())
+}
+
+/// Start a run from the app: like `runner::start`, recorded with the active workspace
+/// (`RunRecord::workspace`, shown in the Runs page).
+pub fn start_run(req: castor_core::runner::RunRequest, cx: &App) -> castor_core::runner::RunHandle {
+    castor_core::runner::start_in(req, active_workspace_name(cx))
+}
+
 pub fn registry(cx: &App) -> Arc<Registry> {
     cx.global::<ModelHandle>().0.read(cx).registry.clone()
 }

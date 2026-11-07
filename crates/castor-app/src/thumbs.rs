@@ -62,10 +62,7 @@ fn pump(cx: &mut App) {
         }
         let Some(f) = t.queue.pop_front() else { return };
         t.in_flight += 1;
-        let ex = cx.background_executor().clone();
         let task = cx.background_executor().spawn(async move {
-            // PDF pages wait (without blocking a thread) while a PDF-engine job runs.
-            let _g = if f.kind == castor_core::FileKind::Pdf && cfg!(feature = "tools") { Some(crate::pdf_gate::enter_view(&ex).await) } else { None };
             let png = thumbnail(&f, THUMB_PX);
             (f.path, png)
         });

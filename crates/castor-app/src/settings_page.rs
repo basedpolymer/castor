@@ -1,9 +1,14 @@
 //! Settings (DESIGN §4): a document — 1. General, 2. Menu bar / System tray, 3. Models &
 //! helpers, 4. Updates, 5. Privacy, 6. About.
 
+use std::collections::{HashMap, HashSet};
+use std::sync::Arc;
+use std::time::Duration;
+
 use castor_core::download::Asset;
 use castor_core::settings::{Appearance, OutputLocation};
-use castor_core::units;
+use castor_core::{CancelToken, units};
+use gpui_kit::component::progress::Progress;
 use gpui_kit::component::button::{Button, ButtonVariants as _};
 use gpui_kit::component::input::{Input, InputState};
 use gpui_kit::component::searchable_list::SearchableVec;
@@ -31,25 +36,95 @@ pub struct SettingsPage {
     ai_key: Entity<InputState>,
     recording: bool,
     record_focus: FocusHandle,
-    assets: Vec<(Asset, bool)>,
+    models: Models,
     login_error: Option<String>,
     _subs: Vec<Subscription>,
 }
 
-fn all_assets(cx: &App) -> Vec<(Asset, bool)> {
+/// One row of the "Models & helpers" table.
+#[derive(Clone)]
+struct ModelRow {
+    asset: Asset,
+    /// "Remove background — BiRefNet lite".
+    title: String,
+    /// Names of the tools that use it.
+    used_by: String,
+    /// Needed by a tool with its default options (the offline pack).
+    default: bool,
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum ModelFilter {
+    /// What the tools need with their defaults, plus anything already downloaded.
+    Pack,
+    Installed,
+    All,
+}
+
+/// State of section "Models & helpers": the full list, what is on disk, downloads in progress.
+struct Models {
+    rows: Vec<ModelRow>,
+    present: HashSet<&'static str>,
+    filter: ModelFilter,
+    /// id → (bytes done, total) for each download in progress.
+    active: Arc<parking_lot::Mutex<HashMap<&'static str, (u64, u64)>>>,
+    errors: Arc<parking_lot::Mutex<Vec<String>>>,
+    cancel: CancelToken,
+    polling: bool,
+}
+
+impl Models {
+    fn new(cx: &App) -> Models {
+        let mut m = Models {
+            rows: model_rows(cx),
+            present: HashSet::new(),
+            filter: ModelFilter::Pack,
+            active: Default::default(),
+            errors: Default::default(),
+            cancel: CancelToken::new(),
+            polling: false,
+        };
+        m.refresh();
+        m
+    }
+    fn refresh(&mut self) {
+        self.present = self.rows.iter().filter(|r| r.asset.is_present()).map(|r| r.asset.id).collect();
+    }
+}
+
+/// Every model, language and helper program the tools can download (see castor_tools::downloads).
+#[cfg(feature = "tools")]
+fn model_rows(cx: &App) -> Vec<ModelRow> {
     let reg = crate::model::registry(cx);
-    let mut out: Vec<(Asset, bool)> = Vec::new();
+    castor_tools::downloads::catalog(&reg)
+        .into_iter()
+        .map(|d| ModelRow { title: d.title(), used_by: d.tool_names().join(", "), default: d.default, asset: d.asset })
+        .collect()
+}
+
+/// Without the real tools (UI work): what the registered tools need with their defaults.
+#[cfg(not(feature = "tools"))]
+fn model_rows(cx: &App) -> Vec<ModelRow> {
+    let reg = crate::model::registry(cx);
+    let mut out: Vec<ModelRow> = Vec::new();
     for tool in reg.all() {
-        let v = castor_core::Values::defaults(&tool.options());
-        for a in tool.downloads(&v) {
-            if !out.iter().any(|(x, _)| x.id == a.id) {
-                let present = a.is_present();
-                out.push((a, present));
+        for a in tool.downloads(&castor_core::Values::defaults(&tool.options())) {
+            if !out.iter().any(|r| r.asset.id == a.id) {
+                out.push(ModelRow { title: a.id.to_string(), used_by: tool.meta().name(), default: true, asset: a });
             }
         }
     }
-    out.sort_by(|a, b| a.0.id.cmp(b.0.id));
     out
+}
+
+#[cfg(feature = "tools")]
+fn install(a: &Asset, cancel: &CancelToken, progress: impl Fn(u64, u64) + Send + Sync + 'static) -> castor_core::Result<std::path::PathBuf> {
+    castor_tools::downloads::install(a, cancel, progress)
+}
+
+#[cfg(not(feature = "tools"))]
+fn install(a: &Asset, cancel: &CancelToken, progress: impl Fn(u64, u64) + Send + Sync + 'static) -> castor_core::Result<std::path::PathBuf> {
+    castor_core::download::ensure(a, cancel, &progress)
 }
 
 fn auto_launch() -> anyhow::Result<auto_launch::AutoLaunch> {
@@ -98,10 +173,12 @@ impl SettingsPage {
         });
         let m = model(cx);
         let subs = vec![
-            cx.subscribe_in(&language, window, |_, _, ev: &SelectEvent<SearchableVec<Opt>>, window, cx| {
+            cx.subscribe_in(&language, window, |this, _, ev: &SelectEvent<SearchableVec<Opt>>, window, cx| {
                 if let SelectEvent::Confirm(Some(code)) = ev {
                     let code = code.clone();
                     crate::app::set_language(&code);
+                    // Model names come from the tools' translated labels.
+                    this.models.rows = model_rows(cx);
                     model(cx).update(cx, |m, cx| m.update_settings(cx, |s| s.language = code));
                     crate::tray::rebuild_menu(cx);
                     window.refresh();
@@ -125,7 +202,7 @@ impl SettingsPage {
             ai_key,
             recording: false,
             record_focus: cx.focus_handle(),
-            assets: all_assets(cx),
+            models: Models::new(cx),
             login_error: None,
             _subs: subs,
         }
@@ -207,15 +284,267 @@ impl SettingsPage {
         cx.notify();
     }
 
-    fn delete_asset(&mut self, ix: usize, window: &mut Window, cx: &mut Context<Self>) {
-        if let Some((a, _)) = self.assets.get(ix) {
-            let p = a.path();
-            if let Err(e) = std::fs::remove_file(&p) {
-                window.push_notification(format!("{e}"), cx);
+    fn delete_asset(&mut self, a: &Asset, window: &mut Window, cx: &mut Context<Self>) {
+        if let Err(e) = std::fs::remove_file(a.path()) {
+            window.push_notification(format!("{e}"), cx);
+        }
+        self.models.refresh();
+        cx.notify();
+    }
+
+    /// Download these files one after the other on a background thread (those not on disk and
+    /// not already coming). Progress and the table refresh every 150 ms.
+    fn download(&mut self, assets: Vec<Asset>, cx: &mut Context<Self>) {
+        let mut todo = Vec::new();
+        {
+            let mut active = self.models.active.lock();
+            for a in assets {
+                if a.is_present() || active.contains_key(a.id) {
+                    continue;
+                }
+                active.insert(a.id, (0, a.size));
+                todo.push(a);
             }
         }
-        self.assets = all_assets(cx);
+        if todo.is_empty() {
+            return;
+        }
+        let (active, errors, cancel) = (self.models.active.clone(), self.models.errors.clone(), self.models.cancel.clone());
+        let ids: Vec<&'static str> = todo.iter().map(|a| a.id).collect();
+        let spawned = std::thread::Builder::new().name("castor-downloads".into()).spawn(move || {
+            for a in todo {
+                let id = a.id;
+                if !cancel.is_cancelled() {
+                    let progress = active.clone();
+                    let res = install(&a, &cancel, move |done, total| {
+                        progress.lock().insert(id, (done, total));
+                    });
+                    if let Err(e) = res {
+                        if !e.is::<castor_core::job::Cancelled>() {
+                            tracing::warn!("download of {id} failed: {e:#}");
+                            errors.lock().push(format!("{id}: {e:#}"));
+                        }
+                    }
+                }
+                active.lock().remove(id);
+            }
+        });
+        if let Err(e) = spawned {
+            self.models.errors.lock().push(e.to_string());
+            let mut active = self.models.active.lock();
+            for id in ids {
+                active.remove(id);
+            }
+        }
+        self.poll_downloads(cx);
+    }
+
+    fn poll_downloads(&mut self, cx: &mut Context<Self>) {
+        if self.models.polling {
+            return;
+        }
+        self.models.polling = true;
         cx.notify();
+        cx.spawn(async move |this, cx| {
+            loop {
+                cx.background_executor().timer(Duration::from_millis(150)).await;
+                let busy = this.update(cx, |p, cx| {
+                    p.models.refresh();
+                    let busy = !p.models.active.lock().is_empty();
+                    if !busy {
+                        p.models.polling = false;
+                    }
+                    cx.notify();
+                    busy
+                });
+                if !matches!(busy, Ok(true)) {
+                    break;
+                }
+            }
+        })
+        .detach();
+    }
+
+    fn cancel_downloads(&mut self, cx: &mut Context<Self>) {
+        self.models.cancel.cancel();
+        // Later downloads get a fresh token.
+        self.models.cancel = CancelToken::new();
+        cx.notify();
+    }
+
+    fn render_models(&mut self, k: &Tokens, cx: &mut Context<Self>) -> AnyElement {
+        let m = &self.models;
+        if m.rows.is_empty() {
+            return ui::roman().text_color(k.muted).italic().child(t("app.settings.models_none")).into_any_element();
+        }
+        let active: HashMap<&'static str, (u64, u64)> = m.active.lock().clone();
+        let errors: Vec<String> = m.errors.lock().clone();
+        let on_disk: u64 = m
+            .rows
+            .iter()
+            .filter(|r| m.present.contains(r.asset.id))
+            .map(|r| std::fs::metadata(r.asset.path()).map(|md| md.len()).unwrap_or(r.asset.size))
+            .sum();
+        let pack_missing: Vec<Asset> = m.rows.iter().filter(|r| r.default && !m.present.contains(r.asset.id)).map(|r| r.asset.clone()).collect();
+        let pack_size: u64 = pack_missing.iter().map(|a| a.size).sum();
+        let shown: Vec<(usize, ModelRow)> = m
+            .rows
+            .iter()
+            .enumerate()
+            .filter(|(_, r)| {
+                let here = m.present.contains(r.asset.id) || active.contains_key(r.asset.id);
+                match m.filter {
+                    ModelFilter::Pack => r.default || here,
+                    ModelFilter::Installed => here,
+                    ModelFilter::All => true,
+                }
+            })
+            .map(|(i, r)| (i, r.clone()))
+            .collect();
+        let present = m.present.clone();
+        let filter = ui::segmented(
+            "models-filter",
+            k,
+            vec![
+                ("pack".into(), t("app.settings.models_filter_pack")),
+                ("installed".into(), t("app.settings.models_filter_installed")),
+                ("all".into(), ta("app.settings.models_filter_all", &[("count", &m.rows.len().to_string())])),
+            ],
+            match m.filter {
+                ModelFilter::Pack => "pack",
+                ModelFilter::Installed => "installed",
+                ModelFilter::All => "all",
+            },
+            {
+                let this = cx.entity().downgrade();
+                std::rc::Rc::new(move |v, _, cx| {
+                    let f = match v {
+                        "installed" => ModelFilter::Installed,
+                        "all" => ModelFilter::All,
+                        _ => ModelFilter::Pack,
+                    };
+                    let _ = this.update(cx, |p, cx| {
+                        p.models.filter = f;
+                        cx.notify();
+                    });
+                })
+            },
+        );
+        let pack_button = if pack_missing.is_empty() {
+            ui::roman().italic().text_size(px(14.0)).text_color(k.good).child(t("app.settings.models_pack_ready")).into_any_element()
+        } else {
+            Button::new("models-download-all")
+                .small()
+                .primary()
+                .label(ta("app.settings.models_download_all", &[("size", &units::bytes(pack_size))]))
+                .on_click(cx.listener(move |p, _, _, cx| p.download(pack_missing.clone(), cx)))
+                .into_any_element()
+        };
+        div()
+            .flex()
+            .flex_col()
+            .gap(px(4.0))
+            .child(
+                div()
+                    .flex()
+                    .flex_row()
+                    .flex_wrap()
+                    .items_center()
+                    .gap(px(12.0))
+                    .child(filter)
+                    .child(pack_button)
+                    .when(!active.is_empty(), |d| {
+                        d.child(Button::new("models-cancel").small().ghost().label(t("app.settings.models_cancel")).on_click(cx.listener(|p, _, _, cx| p.cancel_downloads(cx))))
+                    }),
+            )
+            .child(div().h(px(8.0)))
+            .child(ui::caption(
+                k,
+                format!("{} 1", castor_core::tr("app.caption.table")),
+                "—",
+                format!(
+                    "{} · {}",
+                    ta("app.settings.models_caption", &[("size", &units::bytes(on_disk))]),
+                    ta("app.settings.models_count", &[("present", &present.len().to_string()), ("total", &m.rows.len().to_string())])
+                ),
+            ))
+            .child(div().h(px(6.0)))
+            .child(ui::rule_strong(k))
+            .child(
+                div()
+                    .flex()
+                    .flex_row()
+                    .h(px(30.0))
+                    .items_center()
+                    .gap(px(12.0))
+                    .child(ui::sans().flex_1().font_weight(FontWeight::BOLD).child(t("app.table.name")))
+                    .child(ui::sans().w(px(110.0)).font_weight(FontWeight::BOLD).child(t("app.settings.licence")))
+                    .child(ui::sans().w(px(80.0)).text_right().font_weight(FontWeight::BOLD).child(t("app.table.size")))
+                    .child(ui::sans().w(px(190.0)).font_weight(FontWeight::BOLD).pl(px(10.0)).child(t("app.table.status"))),
+            )
+            .child(ui::hrule(k.rule, 1.0))
+            .children(shown.into_iter().map(|(i, r)| {
+                let id = r.asset.id;
+                let here = present.contains(id);
+                let status: AnyElement = if let Some((done, total)) = active.get(id).copied() {
+                    let frac = if total > 0 { (done as f32 / total as f32).clamp(0.0, 1.0) } else { 0.0 };
+                    div()
+                        .flex()
+                        .flex_col()
+                        .gap(px(2.0))
+                        .child(Progress::new(("model-progress", i)).value(frac * 100.0))
+                        .child(ui::sans().text_size(px(12.5)).text_color(k.muted).child(if total > 0 {
+                            format!("{} / {}", units::bytes(done), units::bytes(total))
+                        } else {
+                            t("app.settings.models_waiting").to_string()
+                        }))
+                        .into_any_element()
+                } else if here {
+                    let a = r.asset.clone();
+                    div()
+                        .flex()
+                        .flex_row()
+                        .items_center()
+                        .gap(px(8.0))
+                        .child(ui::sans().text_color(k.good).truncate().child(t("app.settings.present")))
+                        .child(Button::new(("del-asset", i)).xsmall().danger().label(t("app.common.delete")).on_click(cx.listener(move |p, _, window, cx| p.delete_asset(&a, window, cx))))
+                        .into_any_element()
+                } else {
+                    let a = r.asset.clone();
+                    Button::new(("get-asset", i))
+                        .xsmall()
+                        .label(t("app.settings.models_download"))
+                        .on_click(cx.listener(move |p, _, _, cx| p.download(vec![a.clone()], cx)))
+                        .into_any_element()
+                };
+                div()
+                    .flex()
+                    .flex_row()
+                    .min_h(px(46.0))
+                    .py(px(5.0))
+                    .items_center()
+                    .gap(px(12.0))
+                    .child(
+                        div()
+                            .flex_1()
+                            .min_w(px(0.0))
+                            .flex()
+                            .flex_col()
+                            .gap(px(1.0))
+                            .child(ui::sans().text_color(k.ink).truncate().child(r.title.clone()))
+                            .when(!r.used_by.is_empty(), |d| {
+                                d.child(ui::sans().text_size(px(12.5)).text_color(k.muted).truncate().child(ta("app.settings.models_used_by", &[("tools", &r.used_by)])))
+                            }),
+                    )
+                    .child(ui::sans().w(px(110.0)).text_color(k.muted).truncate().child(r.asset.license.to_string()))
+                    .child(ui::sans().w(px(80.0)).text_right().child(if r.asset.size > 0 { units::bytes(r.asset.size) } else { "—".into() }))
+                    .child(div().w(px(190.0)).flex_none().min_w(px(0.0)).pl(px(10.0)).child(status))
+            }))
+            .child(ui::rule_strong(k))
+            .when(!errors.is_empty(), |d| {
+                d.child(ui::sans().pt(px(6.0)).text_size(px(13.0)).text_color(k.bad).child(ta("app.settings.models_failed", &[("errors", &errors.join("; "))])))
+            })
+            .into_any_element()
     }
 }
 
@@ -385,56 +714,7 @@ impl Render for SettingsPage {
             ));
 
         // 3. Models & helpers
-        let models: AnyElement = if self.assets.is_empty() {
-            ui::roman().text_color(k.muted).italic().child(t("app.settings.models_none")).into_any_element()
-        } else {
-            let total: u64 = self.assets.iter().filter(|(_, p)| *p).map(|(a, _)| a.size).sum();
-            div()
-                .flex()
-                .flex_col()
-                .child(ui::caption(&k, format!("{} 1", castor_core::tr("app.caption.table")), "—", ta("app.settings.models_caption", &[("size", &units::bytes(total))])))
-                .child(div().h(px(6.0)))
-                .child(ui::rule_strong(&k))
-                .child(
-                    div()
-                        .flex()
-                        .flex_row()
-                        .h(px(30.0))
-                        .items_center()
-                        .gap(px(12.0))
-                        .child(ui::sans().flex_1().font_weight(FontWeight::BOLD).child(t("app.table.name")))
-                        .child(ui::sans().w(px(110.0)).font_weight(FontWeight::BOLD).child(t("app.settings.licence")))
-                        .child(ui::sans().w(px(80.0)).text_right().font_weight(FontWeight::BOLD).child(t("app.table.size")))
-                        .child(ui::sans().w(px(160.0)).font_weight(FontWeight::BOLD).pl(px(10.0)).child(t("app.table.status"))),
-                )
-                .child(ui::hrule(k.rule, 1.0))
-                .children(self.assets.iter().enumerate().map(|(i, (a, present))| {
-                    div()
-                        .flex()
-                        .flex_row()
-                        .h(px(34.0))
-                        .items_center()
-                        .gap(px(12.0))
-                        .child(ui::mono().flex_1().min_w(px(0.0)).truncate().child(a.id.to_string()))
-                        .child(ui::sans().w(px(110.0)).text_color(k.muted).child(a.license.to_string()))
-                        .child(ui::sans().w(px(80.0)).text_right().child(if a.size > 0 { units::bytes(a.size) } else { "—".into() }))
-                        .child(
-                            div()
-                                .w(px(160.0))
-                                .pl(px(10.0))
-                                .flex()
-                                .flex_row()
-                                .items_center()
-                                .gap(px(8.0))
-                                .child(ui::sans().text_color(if *present { k.good } else { k.muted }).child(if *present { t("app.settings.present") } else { t("app.settings.absent") }))
-                                .when(*present, |d| {
-                                    d.child(Button::new(("del-asset", i)).xsmall().danger().label(t("app.common.delete")).on_click(cx.listener(move |p, _, window, cx| p.delete_asset(i, window, cx))))
-                                }),
-                        )
-                }))
-                .child(ui::rule_strong(&k))
-                .into_any_element()
-        };
+        let models = self.render_models(&k, cx);
 
         // 4. Updates
         let status: SharedString = match &update {

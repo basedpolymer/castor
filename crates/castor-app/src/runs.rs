@@ -228,7 +228,8 @@ impl RunsPage {
                     .flex_row()
                     .gap(px(8.0))
                     .child(ui::sans().font_weight(FontWeight::BOLD).text_color(status_color(k, r.status)).child(status_label(r.status)))
-                    .when(r.undone, |d| d.child(ui::tag(k, t("app.runs.undone_tag"), k.surface))),
+                    .when(r.undone, |d| d.child(ui::tag(k, t("app.runs.undone_tag"), k.surface)))
+                    .when_some(r.workspace.clone(), |d, w| d.child(ui::tag(k, w, k.surface))),
             )
             .child(ui::roman().text_color(k.ink).child(summary_line(r)))
             .when(r.steps.len() > 1, |d| {
@@ -308,10 +309,12 @@ impl Render for RunsPage {
         let active_ws = crate::workspaces::active(&m.settings);
         let ws_runs: Option<std::collections::HashSet<String>> =
             active_ws.as_ref().filter(|_| self.ws_only).map(|w| w.runs.iter().cloned().collect());
+        let ws_name: Option<String> = active_ws.as_ref().map(|w| w.name.clone());
         let mut rows: Vec<Row> = Vec::new();
         let mut last_day = None;
         for (i, r) in runs.iter().enumerate() {
-            if !filter.accepts(r.status) || ws_runs.as_ref().is_some_and(|set| !set.contains(&r.id)) {
+            // Runs carry their workspace since 0.9.1; older ones are in the workspace's own list.
+            if !filter.accepts(r.status) || ws_runs.as_ref().is_some_and(|set| !set.contains(&r.id) && r.workspace != ws_name) {
                 continue;
             }
             let (d, label) = day_of(r.started);

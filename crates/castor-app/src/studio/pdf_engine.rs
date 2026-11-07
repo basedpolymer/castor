@@ -305,7 +305,6 @@ impl Renderer {
 fn worker(rx: Receiver<Req>, tx: Sender<Reply>) {
     let mut docs: Vec<mupdf::Document> = Vec::new();
     while let Ok(first) = rx.recv() {
-        let _g = crate::pdf_gate::enter(crate::pdf_gate::Group::View);
         let mut batch = vec![first];
         while let Ok(r) = rx.try_recv() {
             batch.push(r);
@@ -416,7 +415,6 @@ fn page_chars(d: &mupdf::Document, page: usize) -> Result<Vec<TChar>> {
 /// Form fields of a PDF (text, checkboxes, radio buttons, choices), in page order.
 pub fn read_fields(path: &Path) -> Result<Vec<Field>> {
     use mupdf::pdf::WidgetType;
-    let _g = crate::pdf_gate::enter(crate::pdf_gate::Group::View);
     let doc = engine_pdf::open_pdf(path, "")?;
     let mut out = Vec::new();
     for i in 0..doc.page_count()?.max(0) {
@@ -570,7 +568,6 @@ fn redact_options() -> PdfRedactOptions {
 
 /// Write the edited PDF to `out`.
 pub fn apply(edit: &PdfEdit, out: &Path, cx: &RunCx) -> Result<Applied> {
-    let _g = crate::pdf_gate::enter(crate::pdf_gate::Group::View);
     anyhow::ensure!(!edit.sources.is_empty(), "nothing to save");
     anyhow::ensure!(!edit.pages.is_empty(), "{}", castor_core::tr("app.pdf.err.no_pages"));
     let mut docs: Vec<PdfDocument> = Vec::new();

@@ -2,15 +2,13 @@
 //! the app and by the Velopack install/update hooks, removed on uninstall or from Settings) and
 //! watch folders (new files in a folder run through a chain, results in a sub-folder).
 //!
-//! Until `Settings` gets dedicated fields (see F-studios.md, requests to the coordinator), both
-//! settings live under `Settings::tool_values["app.integration"]`:
-//! `context_menu` (bool) and `watch` (JSON list of [`WatchFolder`]).
+//! Both live in `Settings`: `explorer_menu` and `watch_folders` (0.9.0 kept them in
+//! `tool_values["app.integration"]`; `Settings::load` moves them).
 
 use std::collections::{HashMap, HashSet, VecDeque};
 use std::path::{Path, PathBuf};
 use std::time::{Duration, Instant, SystemTime};
 
-use castor_core::options::Value;
 use castor_core::runner::{self, OutputPolicy, RunEvent, RunRequest};
 use castor_core::settings::Settings;
 use castor_core::FileInfo;
@@ -19,30 +17,19 @@ use gpui_kit::component::switch::Switch;
 use gpui_kit::component::Sizable as _;
 use gpui_kit::prelude::FluentBuilder as _;
 use gpui_kit::*;
-use serde::{Deserialize, Serialize};
+pub use castor_core::settings::WatchFolder;
 
 use crate::model::model;
 use crate::theme::tokens;
 use crate::ui::{self, t, ta};
 
-const KEY: &str = "app.integration";
 /// Results of a watch folder go here, inside the folder (and are never picked up again).
 pub const RESULTS_DIR: &str = "Castor";
 
-fn get(s: &Settings, k: &str) -> Option<Value> {
-    s.tool_values.get(KEY).and_then(|v| v.get(k)).cloned()
-}
-
-fn set(s: &mut Settings, k: &str, v: Value) {
-    s.tool_values.entry(KEY.to_string()).or_default().set(k, v);
-}
-
-/// Is the Explorer menu wanted? Default: on for installed builds, off for development builds.
+/// Is the Explorer menu wanted? `None` = not chosen yet: on for installed builds, off for
+/// development builds.
 pub fn context_menu_enabled(s: &Settings) -> Option<bool> {
-    match get(s, "context_menu") {
-        Some(Value::Bool(b)) => Some(b),
-        _ => None,
-    }
+    s.explorer_menu
 }
 
 // ---- Windows Explorer menu ---------------------------------------------------------------
@@ -115,22 +102,142 @@ pub mod explorer {
     }
 }
 
-/// Write the Explorer menu for this exe and the favourites in `s` (Windows; no-op elsewhere).
+// ---- macOS Finder Quick Actions ------------------------------------------------------------
+
+#[cfg(target_os = "macos")]
+pub mod quick_actions {
+    //! Finder Quick Actions (right-click → Quick Actions): one Automator `.workflow` bundle per
+    //! entry in `~/Library/Services` ("Open in Castor" and one per favourite tool), built from the
+    //! template shipped in `packaging/macos/quick-action` (embedded at build time). Each runs the
+    //! app with `--tool <id>` on the selected files: forwarded to the running app through the
+    //! single-instance channel, or `open -b` when Castor is not running.
+    use std::path::{Path, PathBuf};
+
+    const INFO: &str = include_str!("../../../packaging/macos/quick-action/Contents/Info.plist");
+    const WFLOW: &str = include_str!("../../../packaging/macos/quick-action/Contents/document.wflow");
+    /// Marks the bundles Castor wrote, so it only ever removes its own.
+    const MARKER: &str = "castor-quick-action";
+    const BUNDLE_ID: &str = "eu.basedpolymer.castor";
+
+    fn services_dir() -> Option<PathBuf> {
+        std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Library").join("Services"))
+    }
+
+    fn xml(s: &str) -> String {
+        s.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;").replace('"', "&quot;")
+    }
+
+    fn sh_quote(s: &str) -> String {
+        format!("'{}'", s.replace('\'', r"'\''"))
+    }
+
+    /// The shell script of one Quick Action.
+    pub fn command(exe: &Path, tool: Option<&str>) -> String {
+        let args = tool.map(|t| format!(" --tool {}", sh_quote(t))).unwrap_or_default();
+        format!(
+            "# Castor Quick Action: hand the files to the running app, or open it with them.\n\
+             if [ \"$(osascript -e 'application id \"{bundle}\" is running' 2>/dev/null)\" = \"true\" ]; then\n\
+             \x20 {exe}{args} \"$@\"\n\
+             else\n\
+             \x20 open -b {bundle} --args{args} \"$@\"\n\
+             fi\n",
+            exe = sh_quote(&exe.to_string_lossy()),
+            bundle = BUNDLE_ID,
+        )
+    }
+
+    fn write(dir: &Path, title: &str, script: &str) -> std::io::Result<()> {
+        let c = dir.join("Contents");
+        std::fs::create_dir_all(&c)?;
+        std::fs::write(c.join("Info.plist"), INFO.replace("__TITLE__", &xml(title)))?;
+        std::fs::write(c.join("document.wflow"), WFLOW.replace("__COMMAND__", &xml(script)))?;
+        std::fs::write(c.join(MARKER), "")?;
+        Ok(())
+    }
+
+    fn ours() -> Vec<PathBuf> {
+        let Some(dir) = services_dir() else { return Vec::new() };
+        let Ok(rd) = std::fs::read_dir(dir) else { return Vec::new() };
+        rd.flatten()
+            .map(|e| e.path())
+            .filter(|p| p.extension().is_some_and(|x| x == "workflow") && p.join("Contents").join(MARKER).is_file())
+            .collect()
+    }
+
+    /// Ask macOS to re-read the Services (otherwise new Quick Actions show after a log out).
+    fn refresh() {
+        let _ = castor_core::process::command("/System/Library/CoreServices/pbs").arg("-update").output();
+    }
+
+    /// Write "Open in Castor" and one Quick Action per favourite (tool id, localized name).
+    pub fn install(exe: &Path, favorites: &[(String, String)], open_label: &str) -> std::io::Result<()> {
+        remove_quietly();
+        let Some(dir) = services_dir() else { return Ok(()) };
+        std::fs::create_dir_all(&dir)?;
+        let name = |t: &str| dir.join(format!("{}.workflow", castor_core::job::sanitize_file_name(t)));
+        write(&name(open_label), open_label, &command(exe, None))?;
+        for (id, tool) in favorites {
+            let title = format!("Castor — {tool}");
+            write(&name(&title), &title, &command(exe, Some(id)))?;
+        }
+        refresh();
+        Ok(())
+    }
+
+    fn remove_quietly() {
+        for p in ours() {
+            let _ = std::fs::remove_dir_all(p);
+        }
+    }
+
+    /// Remove every Quick Action Castor wrote.
+    pub fn remove() {
+        remove_quietly();
+        refresh();
+    }
+
+    pub fn is_installed() -> bool {
+        !ours().is_empty()
+    }
+
+    #[cfg(test)]
+    mod tests {
+        #[test]
+        fn template_has_placeholders() {
+            assert!(super::INFO.contains("__TITLE__"));
+            assert!(super::WFLOW.contains("__COMMAND__"));
+            let c = super::command(std::path::Path::new("/Applications/Castor.app/Contents/MacOS/castor"), Some("pdf.compress"));
+            assert!(c.contains("--tool 'pdf.compress' \"$@\""), "{c}");
+            assert!(c.contains("open -b eu.basedpolymer.castor"), "{c}");
+        }
+    }
+}
+
+/// Favourite tools as (id, localized name), for the Explorer menu and the Quick Actions.
+fn favorite_names(s: &Settings) -> Vec<(String, String)> {
+    s.favorites
+        .iter()
+        .map(|id| (id.clone(), castor_core::tr(&format!("{id}.name"))))
+        .filter(|(id, n)| *n != format!("{id}.name"))
+        .collect()
+}
+
+/// Write the Explorer menu (Windows) or the Finder Quick Actions (macOS) for this exe and the
+/// favourites in `s`.
 pub fn register_context_menu(s: &Settings) -> Result<(), String> {
     #[cfg(windows)]
     {
         let exe = std::env::current_exe().map_err(|e| e.to_string())?;
-        let favs: Vec<(String, String)> = s
-            .favorites
-            .iter()
-            .map(|id| (id.clone(), castor_core::tr(&format!("{id}.name"))))
-            .filter(|(id, n)| *n != format!("{id}.name"))
-            .collect();
-        explorer::register_with(&exe, &favs, &castor_core::tr("app.integration.open_in")).map_err(|e| e.to_string())
+        explorer::register_with(&exe, &favorite_names(s), &castor_core::tr("app.integration.open_in")).map_err(|e| e.to_string())
     }
-    #[cfg(not(windows))]
+    #[cfg(target_os = "macos")]
     {
-        let _ = s;
+        let exe = std::env::current_exe().map_err(|e| e.to_string())?;
+        quick_actions::install(&exe, &favorite_names(s), &castor_core::tr("app.integration.open_in")).map_err(|e| e.to_string())
+    }
+    #[cfg(not(any(windows, target_os = "macos")))]
+    {
+        let _ = favorite_names(s);
         Ok(())
     }
 }
@@ -138,6 +245,8 @@ pub fn register_context_menu(s: &Settings) -> Result<(), String> {
 pub fn unregister_context_menu() {
     #[cfg(windows)]
     explorer::unregister();
+    #[cfg(target_os = "macos")]
+    quick_actions::remove();
 }
 
 /// Velopack install / update hook (Windows): write the menu without UI, fast.
@@ -149,12 +258,13 @@ pub fn hook_register() {
     }
 }
 
-/// At launch: keep the menu in step with the favourites and the exe location. Installed builds
-/// get it by default; development builds only when switched on in Settings.
+/// At launch: keep the menu in step with the favourites and the exe location. Installed Windows
+/// builds get the Explorer menu by default; the Finder Quick Actions (macOS) and development
+/// builds only when switched on in Settings.
 pub fn sync_context_menu(cx: &mut App) {
     let s = crate::model::settings(cx).clone();
     let installed = !matches!(model(cx).read(cx).update, crate::model::UpdateState::Disabled);
-    let want = context_menu_enabled(&s).unwrap_or(installed);
+    let want = context_menu_enabled(&s).unwrap_or(installed && cfg!(windows));
     cx.background_executor()
         .spawn(async move {
             if want {
@@ -170,24 +280,12 @@ pub fn sync_context_menu(cx: &mut App) {
 
 // ---- watch folders ------------------------------------------------------------------------
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-pub struct WatchFolder {
-    pub folder: PathBuf,
-    /// Chain name (a template or a saved chain).
-    pub chain: String,
-    #[serde(default)]
-    pub paused: bool,
-}
-
 pub fn watch_folders(s: &Settings) -> Vec<WatchFolder> {
-    match get(s, "watch") {
-        Some(Value::Text(j)) => serde_json::from_str(&j).unwrap_or_default(),
-        _ => Vec::new(),
-    }
+    s.watch_folders.clone()
 }
 
 pub fn store_watch_folders(s: &mut Settings, v: &[WatchFolder]) {
-    set(s, "watch", Value::Text(serde_json::to_string(v).unwrap_or_default()));
+    s.watch_folders = v.to_vec();
 }
 
 /// Every chain by name: templates, then saved chains.
@@ -286,6 +384,7 @@ fn start_poll(cx: &mut App) {
 
 fn tick(cx: &mut App) {
     let reg = crate::model::registry(cx);
+    let workspace = crate::model::active_workspace_name(cx);
     let mut finished = None;
     let mut status_changed = false;
     {
@@ -356,7 +455,7 @@ fn tick(cx: &mut App) {
                 };
                 let name = p.file_name().map(|s| s.to_string_lossy().into_owned()).unwrap_or_default();
                 w.status = Some(ta("app.watch.processing", &[("name", &name)]).to_string());
-                w.running = Some((crate::pdf_gate::start_run(req), p));
+                w.running = Some((castor_core::runner::start_in(req, workspace.clone()), p));
                 status_changed = true;
                 break;
             }
@@ -423,10 +522,13 @@ impl Render for IntegrationSection {
         let status = cx.try_global::<Watcher>().and_then(|w| w.status.clone());
         #[cfg(windows)]
         let menu_on = explorer::is_registered();
-        #[cfg(not(windows))]
+        #[cfg(target_os = "macos")]
+        let menu_on = quick_actions::is_installed();
+        #[cfg(not(any(windows, target_os = "macos")))]
         let menu_on = false;
+        let mac = cfg!(target_os = "macos");
         let mut col = div().flex().flex_col().gap(px(10.0));
-        if cfg!(windows) {
+        if cfg!(windows) || mac {
             col = col.child(
                 div()
                     .flex()
@@ -441,8 +543,12 @@ impl Render for IntegrationSection {
                             .flex()
                             .flex_col()
                             .gap(px(2.0))
-                            .child(ui::sans().text_color(k.ink).child(t("app.integration.explorer")))
-                            .child(ui::roman().text_size(px(13.0)).line_height(px(16.5)).text_color(k.muted).child(t("app.integration.explorer_help"))),
+                            .child(ui::sans().text_color(k.ink).child(if mac { t("app.integration.quick_actions") } else { t("app.integration.explorer") }))
+                            .child(ui::roman().text_size(px(13.0)).line_height(px(16.5)).text_color(k.muted).child(if mac {
+                                t("app.integration.quick_actions_help")
+                            } else {
+                                t("app.integration.explorer_help")
+                            })),
                     )
                     .child(
                         div()
@@ -456,12 +562,13 @@ impl Render for IntegrationSection {
                                     unregister_context_menu();
                                     None
                                 };
-                                model(cx).update(cx, |m, cx| m.update_settings(cx, move |s| set(s, "context_menu", Value::Bool(v))));
+                                model(cx).update(cx, |m, cx| m.update_settings(cx, move |s| s.explorer_menu = Some(v)));
                             })))
                             .when_some(self.error.clone(), |d, e| d.child(ui::sans().text_size(px(13.0)).text_color(k.bad).child(e))),
                     ),
             );
-        } else {
+        }
+        if !cfg!(windows) {
             col = col.child(ui::roman().text_size(px(14.0)).text_color(k.muted).max_w(px(700.0)).child(t("app.integration.finder_help")));
         }
         col.child(ui::hrule(k.rule, 1.0))
